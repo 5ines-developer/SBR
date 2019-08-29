@@ -25,5 +25,12 @@ class Vendors extends CI_Controller {
         $data['vendors']    = $this->m_vendors->getVendors($city,$category);
 		$this->load->view('vendors/result', $data, FALSE);
     }
+
+
+    public function detail()
+    {
+        $data['title']      = 'Vendors - ShaadiBaraati';
+        $this->load->view('vendors/detail', $data, FALSE);
+    }
     
 }

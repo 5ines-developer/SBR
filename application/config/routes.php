@@ -78,6 +78,7 @@ $route['subscribe'] 		    		= 'home/subscribe';
 
 //vendors
 $route['vendors']           			= 'vendors/index';
+$route['detail']           			    = 'vendors/detail';
 
 //search
 $route['vendors']  						= 'search/index';
