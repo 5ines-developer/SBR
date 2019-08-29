@@ -6,18 +6,17 @@
                         <h6>Quick Links</h6>
                         <div class="line"></div>
                         <ul>
-                            <li>About Us</li>
-                            <li>Contact Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
-                            <li>About Us</li>
+                            <a href="" ><li class="hov">About Us</li></a>
+                            <a href="" ><li class="hov">Contact Us</li></a>
+                            <a href="" ><li class="hov">Wedding Gallery</li></a>
+                            <a href="" ><li class="hov">Real Wedding</li></a>
+                            <a href="" ><li class="hov">Testimonial</li></a>
+                            <a href="" ><li class="hov">wedding Destination</li></a>
+                            <a href="" ><li class="hov">Franchise Proposal</li></a>
+                            <a href="" ><li class="hov">Vendor Reviews</li></a>
+                            <a href="" ><li class="hov">E-Invite</li></a>
+                            <a href="" ><li class="hov">Feedbacck / Complaints</li></a>
+                            <a href="" ><li class="hov">Sitemap</li></a>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +30,7 @@
 
                            if (!empty($category)) {
                             foreach ($category as $key => $value) { ?>
-                            <li><?php echo $value->category ?></li>
+                            <li class=""><a href="#" class="hov-a"><?php echo $value->category ?></a></li>
                            <?php } } ?>
                         </ul>
                     </div>
@@ -45,7 +44,7 @@
                            $city = $this->m_home->getCity();
                             if (!empty($city)) {
                                 foreach ($city as $key1 => $value1) { ?>
-                                <li><a class="black-text" href="<?php echo base_url('vendors/').$value1->city?>"><?php echo $value1->city ?></a></li>
+                                <li><a class="hov-a" href="<?php echo base_url('vendors/').$value1->city?>"><?php echo $value1->city ?></a></li>
                                <?php } } ?>
                         </ul>
                     </div>

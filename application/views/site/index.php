@@ -19,17 +19,16 @@
             <div class="banner-img">
                 <img src="<?php echo base_url() ?>assets/img/banner.jpg" class="img-responsive" width="100%" alt="">
                 <div class="lec-search">
-                    <h5>Your Online Wedding Market</h5>
-                    <p>Find the best wedding vendors with thousands of trusted reviews</p>
-                    <div class="row hide-on-small-only">
+                    <h5 class="hide-on-small-only">Your Online Wedding Market</h5>
+                    <p class="hide-on-small-only">Find the best wedding vendors with thousands of trusted reviews</p>
+                    <div class="row">
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
-
                             <div class="form-search">
                                 <div class="container">
-                                    <div class="col l4  mp">
+                                    <div class="col l4 s4 mp">
                                         <div class="input-field if-fil">
                                             <select class="" name="q" id="sel-city">
-                                                <option value="" selected>Select City</option>
+                                                <option value="" selected>City</option>
                                                 <?php if (!empty($city)) {
                                                     foreach ($city as $citys => $cities) { ?>
                                                       <option value="<?php echo $cities->city ?>"><?php echo (!empty($cities->city))?$cities->city:''; ?></option>
@@ -37,10 +36,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col l6 mp">
+                                    <div class="col l6 s5 mp">
                                         <div class="input-field  if-fil-sel">
                                             <select name="ct" class="" id="sel-cato">
-                                            <option value="" selected>Select Category</option>
+                                            <option value="" selected>Category</option>
                                             <?php if (!empty($category)) {
                                                     foreach ($category as $categorys => $categories) { ?>
                                                       <option value="<?php echo $categories->category ?>"><?php echo (!empty($categories->category))?$categories->category:''; ?></option>
@@ -48,7 +47,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col l2 mp">
+                                    <div class="col l2 s3 mp">
                                         <div class="input-field ">
                                             <button type="submit" class="btn-find">Get Start</button>
                                         </div>
@@ -69,17 +68,20 @@
                         <h4>Top Cities</h4>
                         <p>Find the best Vender Cities with thousands of trusted reviews</p>
                         <div class="top-city-slide">
+                        
                             <div class="top-citys">
                                 <?php 
 
                                 if (!empty($city)) { 
                                     foreach ($city as $key => $value) { ?>
+                                <a href="#" class="black-text">
                                 <div class="top-city-sl">
                                     <center><img src="<?php echo (!empty($value->image))?$value->image:''  ?>" class="img-responsive city-icon"
                                             alt="">
                                     </center>
                                     <p><?php echo (!empty($value->city))?$value->city:''  ?></p>
                                 </div>
+                                </a>
                                 <?php } }?>
 
 
@@ -94,7 +96,7 @@
                 <div class="row">
                     <div class="col l12">
                         <div class="vender-detail">
-                            <h4>Venders Categories</h4>
+                            <h4>Vendors Categories</h4>
                             <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                             <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
                                 dis
@@ -107,17 +109,18 @@
                         <?php if (!empty($category)) {
                     foreach ($category as $cat => $cats) { ?>
                         <div class="col l4 s6">
-                            <div class="vender-im">
-                                <img src="<?php echo (!empty($cats->image))?$cats->image:''  ?>" class="img-responsive"
+                        <a href=""> <div class="vender-im">
+                              <img src="<?php echo (!empty($cats->image))?$cats->image:''  ?>" class="img-responsive"
                                     width="100%" alt="">
                                 <div class="title-ven">
                                     <p class="m0"><?php echo (!empty($cats->category))?$cats->category:''  ?></p>
                                 </div>
                             </div>
+                            </a>
                         </div>
                          <?php    } } ?>
                     </div>
-                    <center><button class="btn-cate">View All Categories</button></center>
+                    <center><a  href=""><button class="btn-cate">View All Categories</button></a></center>
 
                 </div>
             </div>
@@ -187,7 +190,7 @@
             <div class="row">
                 <div class="vender-list">
                     <div class="row">
-                        <div class="col l3 s6">
+                        <div class="col l3 s6 p10">
                             <a href="">
                                 <div class="vender-ei">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei1.jpg"
@@ -199,7 +202,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col l3 s6">
+                        <div class="col l3 s6 p10">
                             <a href="">
                                 <div class="vender-ei">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei2.jpg"
@@ -211,7 +214,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col l3 s6">
+                        <div class="col l3 s6 p10">
                             <a href="">
                                 <div class="vender-ei">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei3.jpg"
@@ -223,7 +226,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col l3 s6">
+                        <div class="col l3 s6 p10">
                             <a href="">
                                 <div class="vender-ei">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei4.jpg"
@@ -236,12 +239,11 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
-    <section class="sec">
+    <section class="sec  mb30">
         <div class="container">
             <div class="row">
                 <div class="col l12">
@@ -327,44 +329,55 @@
                 <div class="">
                     <div class="wedding-list">
                         <div class="wedding-detail">
+                        <a href="">
                             <img src="<?php echo base_url() ?>assets/img/real-wedding/rw1.jpg"
                                 class="img-responsive icn-real" width="100%" alt="">
                             <div class="title-real-wedding">
                                 <h6 class="white-text">Naveen </h6>
                                 <p class="m0">Bangalore</p>
                             </div>
+                            </a>
                         </div>
+                        
                         <div class="wedding-detail">
+                        <a href="">
                             <img src="<?php echo base_url() ?>assets/img/real-wedding/rw2.jpg"
                                 class="img-responsive icn-real" width="100%" alt="">
                             <div class="title-real-wedding">
                                 <h6 class="white-text">Naveen </h6>
                                 <p class="m0">Bangalore</p>
                             </div>
+                            </a>
                         </div>
                         <div class="wedding-detail">
+                        <a href="">
                             <img src="<?php echo base_url() ?>assets/img/real-wedding/rw3.jpg"
                                 class="img-responsive icn-real" width="100%" alt="">
                             <div class="title-real-wedding">
                                 <h6 class="white-text">Naveen </h6>
                                 <p class="m0">Bangalore</p>
                             </div>
+                            </a>
                         </div>
                         <div class="wedding-detail">
+                        <a href="">
                             <img src="<?php echo base_url() ?>assets/img/real-wedding/rw4.jpg"
                                 class="img-responsiveicn-real" width="100%" alt="">
                             <div class="title-real-wedding">
                                 <h6 class="white-text">Naveen </h6>
                                 <p class="m0">Bangalore</p>
                             </div>
+                            </a>
                         </div>
                         <div class="wedding-detail">
+                        <a href="">
                             <img src="<?php echo base_url() ?>assets/img/real-wedding/rw5.jpg"
                                 class="img-responsiveicn-real" width="100%" alt="">
                             <div class="title-real-wedding">
                                 <h6 class="white-text">Naveen </h6>
                                 <p class="m0">Bangalore</p>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -385,43 +398,49 @@
             </div>
             <div class="row">
                 <div class="col l4 m4 s12">
+                <a href=""> 
                     <div class="blog-detail">
                         <img src="<?php echo base_url() ?>assets/img/vender/wp6.jpg" alt=""
                             class="img-responsive blog-img">
-                        <div class="blog-li">
-                            <h6 class="black-text">15 BRILLIANT WEDDING</h6>
+                            <div class="blog-li">
+                           <h6 class="black-text">15 BRILLIANT WEDDING</h6>
                             <P class="date-blog cr">3 JUN 2018</P>
-                            <P>Aenean commodo ligula eget dolor. Aenean natoque penatibus et magnis
+                            <P class="black-text">Aenean commodo ligula eget dolor. Aenean natoque penatibus et magnis
                                 dis parturient montesmassa. Cum sociis natoque penatibus et magnis
                                 dis parturient montes, nascetur ridiculus mus. </P>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col l4 m4 s12">
+                <a href=""> 
                     <div class="blog-detail">
                         <img src="<?php echo base_url() ?>assets/img/vender/wp3.jpg" alt=""
                             class="img-responsive blog-img">
                         <div class="blog-li">
                             <h6 class="black-text">15 BRILLIANT WEDDING</h6>
                             <P class="date-blog cr">3 JUN 2018</P>
-                            <P>Aenean commodo ligula eget dolor. Aenean natoque penatibus et magnis
+                            <P class="black-text">Aenean commodo ligula eget dolor. Aenean natoque penatibus et magnis
                                 dis parturient montesmassa. Cum sociis natoque penatibus et magnis
                                 dis parturient montes, nascetur ridiculus mus. </P>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col l4 m4 s12">
+                <a href="" > 
                     <div class="blog-detail">
                         <img src="<?php echo base_url() ?>assets/img/vender/wp.jpg" alt=""
                             class="img-responsive blog-img">
                         <div class="blog-li">
                             <h6 class="black-text">15 BRILLIANT WEDDING</h6>
                             <P class="date-blog cr">3 JUN 2018</P>
-                            <P>Aenean commodo ligula eget dolor. Aenean natoque penatibus et magnis
+                            <P class="black-text">Aenean commodo ligula eget dolor. Aenean natoque penatibus et magnis
                                 dis parturient montesmassa. Cum sociis natoque penatibus et magnis
                                 dis parturient montes, nascetur ridiculus mus. </P>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
             <center><button class="btn-cate">View All </button></center>
@@ -527,7 +546,7 @@
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1
                 }
             }
