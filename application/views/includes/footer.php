@@ -30,7 +30,7 @@
 
                            if (!empty($category)) {
                             foreach ($category as $key => $value) { ?>
-                            <li class=""><a href="#" class="hov-a"><?php echo $value->category ?></a></li>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/all/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category ?></a></li>
                            <?php } } ?>
                         </ul>
                     </div>
@@ -52,6 +52,6 @@
             </div>
         </div>
         <div class="coptext">
-            <p> © <?php echo date('Y'); ?> All rights Reserved by Shaadi baraati, Developed by <a href="https://www.5ines.com/">5ine</a></p>
+            <p> © <?php echo date('Y'); ?> Shaadi baraati, All rights reserved. Developed by <a href="https://www.5ines.com/">5ine</a></p>
         </div>
     </section>
