@@ -70,6 +70,21 @@ class M_search extends CI_Model {
 		}
     }
 
+
+    public function SingleCity($id = null)
+    {
+        $this->db->select('city');
+        $this->db->where('id', $id);
+        return $this->db->get('city')->row_array();
+    }
+
+    public function SingleCategory($id = null)
+    {
+        $this->db->select('category');
+        $this->db->where('id', $id);
+        return $this->db->get('category')->row_array();
+    }
+
 }
 
 /* End of file M_search.php */

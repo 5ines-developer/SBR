@@ -28,11 +28,6 @@ class Search extends CI_Controller {
         if (empty($category)) {
         	$category = 'all-category'; 
         }
-
-        // $this->input->get('name')
-
-
-
 		$per_page = 16;
 		$data['title']      = 'Vendors - ShaadiBaraati';
         $rows = $this->m_search->rowsCount(ucfirst($city),str_replace("-"," ",$category));
@@ -84,16 +79,37 @@ class Search extends CI_Controller {
 		$data='';
 		$vendor = $this->input->post('vendor');
 		$result = $this->m_search->get_search(trim($vendor));
-		
-		foreach ($result as $key => $value) {
-			$data .= '<li class="sg-result-list left-align">';
-            $data .= '<a href="'.base_url().'vendor/profile/'.$value->uniq.'"><div class="sgrl-item-title">'.$value->name.'</div></a>';
-            $data .= '</li>';
+
+		if (!empty($result)) {
+			foreach ($result as $key => $value) {
+
+				$city 		= $this->m_search->SingleCity($value->city);
+				$category 	= $this->m_search->SingleCategory($value->city);
+				$data .= '<li class="sg-result-list left-align">';
+				$data .= '<a href="'.base_url().'vendor/profile/'.$value->uniq.'">
+					<div class="vendor-inf">
+						<div class="row m0">
+							<div class="col lg2">
+								<img src="'.base_url().$value->profile_file.'" width="80">
+							</div>
+							<div class="col lg10">
+								<p class="m0 black-text">'.$value->name.'</p>
+								<p class="auto-loc-cat black-text">'.$category['category'].',  '.$city['city'].'</p>
+							</div>
+						</div>
+					</div>
+				 </a>';
+				$data .= '</li>';
+			}
+		}else{
+			$data .= $result;
 		}
+
 		echo $data;
 	}
 
 
+	
 
 
 

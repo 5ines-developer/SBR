@@ -30,7 +30,7 @@ $this->load->model('m_search');
                         <h4 class="white-text">India's Favourite Wedding Planning Platform</h4>
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                             <input type="search" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
-                            <ul class="sg-box" :class="{'visible':visible}" v-html="autocomplete"></ul>
+                            <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
                             <div class="row m0">
                                 <div class="col s12 m6">
                                     <select name="ct" class="white select-search" id="sel-cato">
@@ -38,7 +38,7 @@ $this->load->model('m_search');
                                         <?php if (!empty($category)) {
                                                     foreach ($category as $categorys => $categories) { ?>
                                                       <option value="<?php echo $categories->category ?>" 
-                                                        <?php echo ($this->uri->segment(3) == $categories->category)?'selected':''; ?>
+                                                        <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?>
                                                             ><?php echo (!empty($categories->category))?$categories->category:''; ?></option>
                                                 <?php   } } ?>
                                     </select>
@@ -360,7 +360,8 @@ $this->load->model('m_search');
                 isFilter:true,
                 autocomplete:'',
                 vendor:'',
-                visible:false
+                visible:false,
+                
             },
             created() {
                 window.addEventListener('resize', this.handleResize)
@@ -376,7 +377,7 @@ $this->load->model('m_search');
 
                 vendorcheck(){
                     this.autocomplete = '';
-                    this.visible=true;
+                    this.visible = true;
                     const formData = new FormData();
                         formData.append('vendor', this.vendor);
                         axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
@@ -429,13 +430,17 @@ $this->load->model('m_search');
 
 
             $('html').click(function() {
-                $('.sg-box').hide();
+                // $('.sg-box').hide();
                 $(".sg-box").removeClass("visible");
             })
 
             $('.sg-box').click(function(e){
                 e.stopPropagation();
             });
+
+            $('#search-vend').keyup(function(){
+                $(".sg-box").addClass("visible");
+            })
 
         });
 

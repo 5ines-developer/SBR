@@ -225,6 +225,7 @@ h4 {
     padding: 40px 0px;
 }
 
+
 /* .title-ven:hover {
     background: #0000009c;
     top: 0px;
@@ -835,12 +836,10 @@ h6 {
 }
 
 @media(min-width:600px) and (max-width:767px) {
-
     /* 28-08 */
     .p10 {
         padding: 10px !important;
     }
-
     /* end */
     .social-reg {
         position: relative;
@@ -1587,25 +1586,31 @@ r-crd-category {
     right: 10px
 }
 
+
 /* 28-08-2019 */
+
 .btn-find:hover {
     background: #930000;
     border: 1px solid #930000;
     cursor: pointer;
 }
-/* i remover the hovee effet on  vender  226*/
-.btn-find-get:hover {
 
+
+/* i remover the hovee effet on  vender  226*/
+
+.btn-find-get:hover {
     background: #9d0000;
     border: 1px solid #9d0000;
-
 }
+
 .hov:hover {
     color: #ce0000;
 }
+
 .hov-a {
     color: black;
 }
+
 .hov-a:hover {
     color: #d0021b;
 }
@@ -1613,13 +1618,12 @@ r-crd-category {
 
 /* end 20-08-2019 */
 
-
 @media(max-width:600px) {
     /* start28-08 */
-    .p10{
+    .p10 {
         padding: 10px !important;
     }
-    .m30{
+    .m30 {
         margin-bottom: 30px;
     }
     .top-city-sl {
@@ -1630,18 +1634,13 @@ r-crd-category {
         cursor: pointer;
     }
     .select-dropdown.dropdown-trigger {
-
         font-size: 10px !important;
-    
     }
     .if-fil {
-
         background: white;
         border-right: 1px solid #ddd;
-    
     }
     .btn-find {
-
         float: left;
         background: #d0021b;
         color: white;
@@ -1649,17 +1648,11 @@ r-crd-category {
         height: 42px;
         padding: 0px 10px;
         font-size: 11px;
-    
     }
     #search-form svg {
         display: none;
     }
-
     /* end  */
-
-
-
-
     .container-1,
     .container-2 {
         margin: auto;
@@ -1707,8 +1700,7 @@ r-crd-category {
     }
 }
 
-
-    .sg-box {
+.sg-box {
     visibility: visible;
     opacity: 0;
     z-index: 999999;
@@ -1735,16 +1727,17 @@ r-crd-category {
     opacity: 1;
     display: block !important;
 }
-.sg-result{
+
+.sg-result {
     margin-left: 0;
     padding-left: 0;
 }
+
 .sg-result-list {
     list-style-type: none;
     padding: 3px;
     cursor: pointer;
     padding-left: 20px;
-
 }
 
 .sg-result-list:hover {
