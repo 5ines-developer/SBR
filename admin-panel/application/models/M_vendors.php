@@ -194,6 +194,18 @@ class M_vendors extends CI_Model {
 	}
 
 
+	public function add_video($insert='')
+	{
+		$this->db->where('vendor_id', $insert['vendor_id']);
+		$query = $this->db->get('vendor_video')->result();
+		if (count($query) < 6 ) {
+			return $this->db->insert('vendor_video', $insert);
+		}else{
+			return false;
+		}
+	}
+
+
 	
 
 }

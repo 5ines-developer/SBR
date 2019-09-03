@@ -184,15 +184,6 @@ class Vendors extends CI_Controller {
     public function insert_about($id='')
     {
         $id = $this->input->post('id');
-        // $this->form_validation->set_rules('about', 'About vendor', 'trim|required');
-        // $this->form_validation->set_rules('tags', 'Tags', 'trim|required');
-        // $this->form_validation->set_rules('policy', 'Policy', 'trim|required');
-        // if ($this->form_validation->run() == FALSE) {
-        //     $errors = validation_errors();
-        //     $this->session->set_flashdata('formerror', $error);
-        //     redirect('vendors/edit/'.$id);
-        // } else {
-
            $about       =  $this->input->post('about');
            $tags        =  $this->input->post('tags');
            $policy      =  $this->input->post('policy');
@@ -214,8 +205,6 @@ class Vendors extends CI_Controller {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
                 redirect('vendors/edit/'.$id);
             }
-            
-        // }
     }
 
 
@@ -334,6 +323,104 @@ class Vendors extends CI_Controller {
                 redirect('vendors/manage','refresh'); // if you are redirect to list of the data add controller name here
             }
         }
+
+
+        public function add_service($value='')
+        {
+                $files = $_FILES;
+                $filesCount = count($_FILES['vimage']['name']);
+                if (file_exists($_FILES['vimage']['tmp_name'])) {
+                    $config['upload_path'] = '../vendors-profile/';
+                    $config['allowed_types'] = 'jpg|png|jpeg';
+                    $config['max_width'] = 0;
+                    $config['encrypt_name'] = true;
+                    $this->load->library('upload');
+                    $this->upload->initialize($config);
+                    if (!is_dir($config['upload_path'])) {
+                        mkdir($config['upload_path'], 0777, true);
+                    }
+
+                    if (!$this->upload->do_upload('vimage')) {
+                        $error = array('error' => $this->upload->display_errors());
+                        // print_r($error);exit();
+                        $this->session->set_flashdata('error', $this->upload->display_errors());
+                        redirect('vendors/add');
+                    } else {
+                        // echo "ok";exit();
+                        $upload_data = $this->upload->data();
+                        $config['image_library'] = 'gd2';
+                        $config['source_image'] = $upload_data['full_path'];
+                        $config['create_thumb'] = true;
+                        $config['maintain_ratio'] = true;
+                        $config['height'] = 250;
+
+                        $this->load->library('image_lib', $config);
+                        $this->image_lib->resize();
+
+                        $file_name = $upload_data['file_name'];
+                        $imgpath = 'vendors-profile/'.$file_name;
+                    }
+                }
+
+
+                    $name       = $this->input->post('name');
+                    $email      = $this->input->post('email');
+                    $phone      = $this->input->post('phone');
+                    $price      = $this->input->post('price');
+                    $category   = $this->input->post('category');
+                    $city       = $this->input->post('city');
+                    $edit       = $this->input->post('edit');
+                    $uniq       = $this->input->post('uniq');
+
+                $insert =  array(
+                    'name'          =>  $name , 
+                    'phone'         =>  $phone , 
+                    'email'         =>  $email , 
+                    'category'      =>  $category , 
+                    'reference_id'  =>  random_string('alnum','20') , 
+                    'is_active'     =>  '1' ,
+                    'uniq'          =>  $uniq,
+                    'city'          =>  $city,
+                    'price'         =>  $price
+                );
+
+                if (file_exists($_FILES['vimage']['tmp_name'])) {
+                    $insert['profile_file'] =  $imgpath; 
+                    $insert['img']          = $file_name;
+                }
+        }
+
+
+    public function add_video($value='')
+    {
+            $id             = $this->input->post('id');
+            $vd_category    = $this->input->post('vd_category');
+            $youtube        = $this->input->post('vd_link');
+            $fb             = $this->input->post('vdfb_link');
+
+            if ($vd_category == '1') {
+               $link = $youtube;
+            }else if($vd_category == '2'){
+                $link = $fb;
+            }
+
+            $insert = array(
+                'type'      => $vd_category, 
+                'link'      => $link, 
+                'vendor_id' => $id,
+            );
+
+            $output = $this->m_vendors->add_video($insert);
+
+            if(!empty($output))
+            {
+                $this->session->set_flashdata('success', 'Vendor video link added Successfully');
+                redirect('vendors/edit/'.$id,'refresh');
+            }else{
+                $this->session->set_flashdata('error', 'You have already added 6 videos of this vendor please delete the existing video and try again!');
+               redirect('vendors/edit/'.$id,'refresh');
+            }
+    }
 
 
 
