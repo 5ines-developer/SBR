@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="col 12 m6 right-align">
-                                <a href="<?php echo base_url('vendors/edit/'.$result->id)  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable ">Edit Vendors</a>
+                                <a href="<?php echo base_url('vendors/edit/'.$result->id)  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable ">Edit Vendor</a>
                             </div>
                         </div><!-- end row1 -->
                         <div class="row">

@@ -14,12 +14,31 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- bar -->
     <style>
-        .ck-editor__editable {min-height: 300px; }
-        .currencyinput {border: 1px inset #ccc; }
-        .currencyinput input {border: 0; }
-        .input-field .prefix ~ input , .input-field .prefix ~ label{margin-left: 10rem; }
-        .input-field .prefix {font-size: 1rem;}
-        #youtube-link, #fb-link {display: none; }
+    .ck-editor__editable {
+        min-height: 300px;
+    }
+
+    .currencyinput {
+        border: 1px inset #ccc;
+    }
+
+    .currencyinput input {
+        border: 0;
+    }
+
+    .input-field .prefix~input,
+    .input-field .prefix~label {
+        margin-left: 10rem;
+    }
+
+    .input-field .prefix {
+        font-size: 1rem;
+    }
+
+    #youtube-link,
+    #fb-link {
+        display: none;
+    }
     </style>
 </head>
 
@@ -38,23 +57,25 @@
                         <?php $this->load->view('include/menu.php'); ?>
                     </div>
                     <div class="col m12 s12 l9">
-                        <p class="h5-para black-text ">Update Vendor</p>
-
-
-
+                        <div class="row">
+                            <div class="col 12 m6">
+                                <p class="h5-para black-text  m0">Update Vendor</p>
+                            </div>
+                            <div class="col 12 m6 right-align">
+                                <a href="<?php echo base_url('vendors/view/'.$result->id)  ?>"
+                                    class="waves-effect waves-light btn green darken-4 white-text hoverable ">view
+                                    Vendor</a>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-content">
                                 <div class="form-container">
-
                                     <form action="<?php echo base_url() ?>vendors/insert" method="post"
                                         style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
                                         enctype="multipart/form-data">
-
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Profile</p>
                                         </div>
-
-
                                         <div class="row m0">
                                             <div class="input-field col s6 l6">
                                                 <input type="text" id="name" name="name" class="validate" required
@@ -79,7 +100,8 @@
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="price" name="price" class="validate" required
                                                     value="<?php echo (!empty($result->price)?$result->price:'') ?>">
-                                                <label for="price">Starting Price <span class="red-text">*</span></label>
+                                                <label for="price">Starting Price <span
+                                                        class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price'); ?></span></p>
                                                 <?php if (!empty($result)) { ?>
                                                 <input type="hidden" value="1" name="edit">
@@ -90,7 +112,6 @@
                                             </div>
                                         </div>
                                         <div class="row m0">
-
                                             <div class="file-field input-field col s12 l6">
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
@@ -102,15 +123,15 @@
                                                     <input class="file-path validate" type="text">
                                                 </div>
                                                 <span class="helper-text"><b>Note</b>: Please select only image file
-                                                    (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
+                                                    (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
                                                         size:</span> 512kb <span class="red-text">*</span></span>
                                             </div>
                                             <div class="input-field col s12 l6">
                                                 <select name="category">
                                                     <option value="">Choose a category</option>
                                                     <?php
-                                if (!empty($category)) {
-                                foreach ($category as $key => $value) { ?>
+                                                                if (!empty($category)) {
+                                                                foreach ($category as $key => $value) { ?>
                                                     <option value="<?php echo $value->id ?>"
                                                         <?php echo $value->id == $result->category?"selected":''; ?>>
                                                         <?php echo $value->category ?></option>
@@ -120,14 +141,13 @@
                                                 <p><span class="error"><?php echo form_error('category'); ?></span></p>
                                             </div>
                                         </div>
-
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
                                                 <select name="city">
                                                     <option value="">Choose a City</option>
                                                     <?php
-                                if (!empty($city)) {
-                                foreach ($city as $key => $value) { ?>
+                                                                if (!empty($city)) {
+                                                                foreach ($city as $key => $value) { ?>
                                                     <option value="<?php echo $value->id ?>"
                                                         <?php echo $value->id == $result->city?"selected":''; ?>>
                                                         <?php echo $value->city ?></option>
@@ -136,18 +156,15 @@
                                                 <label>City</label>
                                                 <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                             </div>
-
                                         </div>
-
                                         <div class="col s12">
                                             <?php
-                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
-                        ?>
+                                                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
+                                                        ?>
                                             <?php ?>
                                         </div>
                                         <input type="hidden" name="vendor_id"
                                             value="<?php echo random_string('alnum',10) ?>">
-
                                         <div class="col s12 center mtb20">
                                             <button
                                                 class="btn waves-effect waves-light green darken-4 hoverable btn-large"
@@ -160,79 +177,40 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="card" style="overflow: auto;">
                             <div class="card-content">
                                 <div class="form-container">
-
                                     <div class="row m0">
-                                            <p class="bold  black-text  mb10 h6">Information and Service</p>
+                                        <p class="bold  black-text  mb10 h6">Information and Service</p>
                                     </div>
-                                    <div class="row m0">
-                                        <a id="marqueeplus" class="marqueeplus"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                                    </div>
-
-                                    <form action="<?php echo base_url() ?>vendors/add-service">
-                                        <div class="col l12">
-                                            <div class="row m0">
-                                                <div class="input-field col s3">
-                                                  <input id="serv" type="text" class="validate" name="serv">
-                                                  <label for="serv">Service</label>
-                                                </div>
-                                                <div class="input-field col s3">
-                                                  <input id="sr_subtitle" type="text" class="validate" name="sr_subtitle">
-                                                  <label for="sr_subtitle">Subtitle</label>
-                                                </div>
-                                                <div class="file-field input-field col s3">
-                                                <div class="btn btn-small black-text grey lighten-3">
-                                                    <i class="far fa-image left  "></i>
-                                                    <span class="">Icon</span>
-                                                    <input type="file" name="sr_icon" accept=".png, .jpg, .jpeg, .gif"
-                                                        <?php echo (!empty($result)?'':'required') ?>>
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text">
-                                                </div>
-                                                <span class="helper-text"><b>Note</b>: Please select only image file
-                                                    (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
-                                                        size:</span> 512kb <span class="red-text">*</span></span>
-                                            </div>
-                                                <div class="input-field col s3">
-                                                    <button style="position: relative; top: 12px;" class="btn waves-effect waves-light green darken-4 hoverable btn-small"
-                                                type="submit">Submit </button>
-                                                </div>
-
-                                        </div>
-
-                                        </div>
-
-                                    </form>
-
-
-                                    
-
-
-                                    <form action="<?php echo base_url() ?>vendors/insert" method="post"
+                                    <form action="<?php echo base_url() ?>vendors/service" method="post"
                                         style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
                                         enctype="multipart/form-data" class="col l12">
                                         <div class="row m0">
-                                            <div class="input-field col s6 l6">
+                                            <?php if (!empty($service)) {
+                                                        foreach ($service as $key => $value) { ?>
+                                            <div class="input-field col s6 l4">
                                                 <p>
-                                                  <label>
-                                                    <input id="indeterminate-checkbox" type="checkbox" />
-                                                    <span>Indeterminate Style</span>
-                                                  </label>
+                                                    <label>
+                                                        <input id="indeterminate-checkbox" type="checkbox"
+                                                            name="service[]" value="<?php echo $value->id; ?>"  <?php 
+
+                                                            foreach ($vendor_info as $key1 => $value1) {
+                                                                echo ($value->id == $value1->information_id)?'checked="true"':'';
+                                                            }
+
+                                                            ?>/>
+                                                        <span><?php echo $value->service; ?></span>
+                                                    </label>
                                                 </p>
                                             </div>
+                                            <?php } } ?>
                                         </div>
-
                                         <div class="col s12">
                                             <?php echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : '' ?>
                                         </div>
-                                        <input type="hidden" name="vendor_id"
-                                            value="<?php echo random_string('alnum',10) ?>">
-
+                                        <input type="hidden" value="<?php echo $result->id ?>" name="id">
+                                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add New</a>
                                         <div class="col s12 center mtb20">
                                             <button
                                                 class="btn waves-effect waves-light green darken-4 hoverable btn-large"
@@ -242,27 +220,72 @@
                                             <br>
                                         </div>
                                     </form>
+                                    <!-- Modal Trigger -->
+
+                                    <!-- Modal Structure -->
+                                    <div id="modal1" class="modal" style="width: 35%;">
+                                        <div class="modal-content">
+                                            <h6>New Information and Services</h6>
+                                            <form action="<?php echo base_url() ?>vendors/new-service" method="post"
+                                                enctype="multipart/form-data">
+                                                <div class="col l12">
+                                                    <div class="row m0">
+                                                        <div class="input-field col s12">
+                                                            <input type="hidden" value="<?php echo $result->id ?>"
+                                                                name="id">
+                                                            <input id="serv" type="text" class="validate" name="serv">
+                                                            <label for="serv">Service</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m0">
+                                                        <div class="input-field col s12">
+                                                            <input id="sr_subtitle" type="text" class="validate"
+                                                                name="sr_subtitle">
+                                                            <label for="sr_subtitle">Subtitle</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m0">
+                                                        <div class="file-field input-field col s12">
+                                                            <div class="btn btn-small black-text grey lighten-3">
+                                                                <i class="far fa-image left  "></i>
+                                                                <span class="">Icon</span>
+                                                                <input type="file" name="sr_icon"
+                                                                    accept=".png, .jpg, .jpeg, .gif"
+                                                                    <?php echo (!empty($result)?'':'required') ?>>
+                                                            </div>
+                                                            <div class="file-path-wrapper">
+                                                                <input class="file-path validate" type="text">
+                                                            </div>
+                                                            <span class="helper-text"><b>Note</b>: Please select only
+                                                                image file
+                                                                (eg: .jpg, .png, .jpeg, etc.) <br> <span
+                                                                    class="bold">Max file
+                                                                    size:</span> 512kb <span
+                                                                    class="red-text">*</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <button
+                                                            class="btn waves-effect waves-light green darken-4 hoverable btn-small"
+                                                            type="submit">Submit </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
                         <div class="card">
                             <div class="card-content">
                                 <div class="form-container">
-
                                     <form action="<?php echo base_url() ?>vendors/insert_about" method="post"
                                         style="overflow-y: auto;overflow-x: hidden;" id="vendor-about"
                                         enctype="multipart/form-data">
-
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">About Vendor and Policy </p>
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col s12 l12">
                                                 <label for="description" class="mb10">About Vendor<span
@@ -274,7 +297,6 @@
                                                 <p><span class="error"><?php echo form_error('about'); ?></span></p>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col s12 l12">
                                                 <label for="specific" class="h5-para-p2 mb10">Specification</label>
@@ -285,7 +307,6 @@
                                                 <textarea name="specific" id="specific" style="display:none"></textarea>
                                             </div>
                                         </div>
-
                                         <div class="row m0">
                                             <div class="input-field col s12 l12">
                                                 <label for="tags" class="mb10">Tags<span
@@ -297,8 +318,6 @@
                                                 <p><span class="error"><?php echo form_error('tags'); ?></span></p>
                                             </div>
                                         </div>
-
-
                                         <div class="row">
                                             <div class="col s12 l12">
                                                 <label for="policy" class="h5-para-p2 mb10">Policy<span
@@ -310,19 +329,13 @@
                                                 <p><span class="error"><?php echo form_error('policy'); ?></span></p>
                                             </div>
                                         </div>
-
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
-
-
-
                                         <div class="col s12">
                                             <?php
-                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
-                        ?>
+                                                                echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
+                                                                ?>
                                             <?php ?>
                                         </div>
-
-
                                         <div class="col s12 center mtb20">
                                             <button
                                                 class="btn waves-effect waves-light green darken-4 hoverable btn-large"
@@ -335,21 +348,15 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="card">
                             <div class="card-content">
                                 <div class="form-container">
-
                                     <form action="<?php echo base_url() ?>vendors/portfolio_insert" method="post"
                                         style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
                                         enctype="multipart/form-data">
-
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Portfolio Images</p>
                                         </div>
-
-
                                         <div class="row m0">
                                             <div class="file-field input-field col s12 l12">
                                                 <div class="input-images"></div>
@@ -359,19 +366,15 @@
                                                         size:</span> 512kb <span class="red-text">*</span></span>
                                             </div>
                                         </div>
-
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
-
-
                                         <div class="col s12">
                                             <?php
-                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
-                        ?>
+                                                                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
+                                                                        ?>
                                             <?php ?>
                                         </div>
                                         <input type="hidden" name="vendor_id"
                                             value="<?php echo random_string('alnum',10) ?>">
-
                                         <div class="col s12 center mtb20">
                                             <button
                                                 class="btn waves-effect waves-light green darken-4 hoverable btn-large"
@@ -384,23 +387,15 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
                         <div class="card">
                             <div class="card-content">
                                 <div class="form-container">
-
                                     <form action="<?php echo base_url() ?>vendors/add-video" method="post"
                                         style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
                                         enctype="multipart/form-data">
-
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Video Links</p>
                                         </div>
-
-
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
                                                 <select name="vd_category" required="" id="vd_category">
@@ -410,44 +405,43 @@
                                                 </select>
                                                 <label>Category</label>
                                                 <p><span class="error"><?php echo form_error('category'); ?></span></p>
-
                                                 <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                             </div>
                                         </div>
                                         <div class="row m0" id="youtube-link">
-                                            <div class="input-field col s12 l12">
-                                                <div class="row m0">
-                                                    <div class="input-field col s12 l6">
-                                                        <span class="prefix">www.youtube.com</span><input type="text" name="vd_link" id="autocomplete-input" class="autocomplete">
-                                                        <label for="autocomplete-input">Link<span class="red-text">*</span></label>
-                                                        <p><span class="error"><?php echo form_error('vd_link'); ?></span></p>
-                                                    </div>
-                                                </div>
+                                            <div class="input-field col s12 l8">
+                                                <input type="text" name="vd_link" id="autocomplete-input"
+                                                    class="autocomplete">
+                                                <p style="font-size: 12px;">Eg : https://youtu.be/<span
+                                                        style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
+                                                </p>
+                                                <label for="autocomplete-input">Link<span
+                                                        class="red-text">*</span></label>
+                                                <p><span class="error"><?php echo form_error('vd_link'); ?></span></p>
                                             </div>
                                         </div>
-
                                         <div class="row m0" id="fb-link">
-                                            <div class="input-field col s12 l12">
-                                                <div class="row m0">
-                                                    <div class="input-field col s12 l6">
-                                                        <span class="prefix">www.facebook.com</span><input type="text" name="vdfb_link" id="autocomplete-input1" class="autocomplete">
-                                                        <label for="autocomplete-input1">Link<span class="red-text">*</span></label>
-                                                        <p><span class="error"><?php echo form_error('vd_link'); ?></span></p>
-                                                    </div>
-                                                </div>
+
+                                            <div class="input-field col s12 l8">
+                                                <input type="text" name="vdfb_link" id="autocomplete-input1"
+                                                    class="autocomplete">
+                                                <p style="font-size: 12px;">Eg : https://www.facebook.com/<span
+                                                        style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
+                                                </p>
+                                                <label for="autocomplete-input1">Link<span
+                                                        class="red-text">*</span></label>
+                                                <p><span class="error"><?php echo form_error('vd_link'); ?></span></p>
                                             </div>
+
                                         </div>
-
-
                                         <div class="col s12">
                                             <?php
-                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
-                        ?>
+                                                                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
+                                                                        ?>
                                             <?php ?>
                                         </div>
                                         <input type="hidden" name="vendor_id"
                                             value="<?php echo random_string('alnum',10) ?>">
-
                                         <div class="col s12 center mtb20">
                                             <button
                                                 class="btn waves-effect waves-light green darken-4 hoverable btn-large"
@@ -460,15 +454,12 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div><!-- cad end -->
                 </div>
             </div>
         </div>
         </div>
     </section>
-
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
@@ -476,14 +467,12 @@
     <script src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url() ?>assets/js/image-uploader.min.js"></script>
     <script>
-    <?php $this->load->view('include/message.php'); ?>
+    < ? php $this - > load - > view('include/message.php'); ? >
     </script>
     <script>
     $(document).ready(function() {
         $('select').formSelect();
-
         $('.input-images').imageUploader();
-
         $('#vendor-about').submit(function() {
             var text = $('#editor').html();
             $('#description').val(text);
@@ -492,20 +481,13 @@
             var text2 = $('#editor2').html();
             $('#policy').val(text2);
         });
-
-
         $('input.autocomplete').autocomplete({
-      data: {
-        "Apple": null,
-        "Microsoft": null,
-        "Google": 'https://placehold.it/250x250'
-      },
-    });
-
-
-
-
-
+            data: {
+                "Apple": null,
+                "Microsoft": null,
+                "Google": 'https://placehold.it/250x250'
+            },
+        });
         $("#vendor-form").validate({
             rules: {
                 about: {
@@ -525,7 +507,6 @@
                 },
             },
             messages: {
-
                 about: "Please enter a vendor Name",
                 email: "Please enter a vendor Email",
                 phone: "Please enter a vendor Phone Number",
@@ -533,9 +514,6 @@
                 city: "Please Select the City",
             }
         });
-
-
-
         // $("#vendor-about").validate({
         // rules: {
         // about: {
@@ -549,109 +527,61 @@
         // },
         // },
         // messages: {
-
         // about: "Please enter the about details",
         // policy: "Please enter the vendor policy",
         // tags: "Please enter the tags",
         // }
         // });
-
-
-
     });
     </script>
-
     <script>
     DecoupledEditor
         .create(document.querySelector('#editor'))
         .then(editor => {
             const toolbarContainer = document.querySelector('#toolbar-container');
-
             toolbarContainer.appendChild(editor.ui.view.toolbar.element);
         })
         .catch(error => {
             console.error(error);
         });
     </script>
-
     <script>
     DecoupledEditor
         .create(document.querySelector('#editor1'))
         .then(editor => {
             const toolbarContainer = document.querySelector('#toolbar-container1');
-
             toolbarContainer.appendChild(editor.ui.view.toolbar.element);
         })
         .catch(error => {
             console.error(error);
         });
     </script>
-
     <script>
     DecoupledEditor
         .create(document.querySelector('#editor2'))
         .then(editor => {
             const toolbarContainer = document.querySelector('#toolbar-container2');
-
             toolbarContainer.appendChild(editor.ui.view.toolbar.element);
         })
         .catch(error => {
             console.error(error);
         });
     </script>
-
-
-
-        <script>
-
+    <script>
     $(document).ready(function() {
-
-            $("#vd_category").change(function(){
-                var cat = $(this).children("option:selected").val();
-                if (cat == '2') { 
-                    $("#fb-link").css("display", "block");
-                    $("#youtube-link").css("display", "none");
-                 } else if (cat == '1'){ 
-                    $("#youtube-link").css("display", "block"); 
-                    $("#fb-link").css("display", "none");
-                }
-            });
-
-
-
-
-
-        $(function() {
-
-            $('#marqueeplus').on('click', function(e) {
-
-                alert('ok')
-
-                e.preventDefault();
-
-                $('<div class="row"><div class="col-md-6 col-sm-6 col-xs-12 mar-12"><input type="text"class="form-control " name="marquee_title[]" placeholder="Scrolling Text"></div> <div class="col-md-4 col-sm-4 col-xs-12"> <input type="text"class="form-control" name="marquee_link[]" placeholder="Link"> </div> <div class="col-md-2 col-sm-2"> <a id="brandplus" class="marqueeplus remov"><i class="fa fa-times" aria-hidden="true"></i></a></div></div>')
-
-                    .append().insertBefore('#marqaddnext');
-
-
-
-            });
-
-            $(document).on('click', '.marqueeplus.remov', function(e) {
-
-                e.preventDefault();
-
-                $(this).closest('div.row').remove();
-
-            });
-
+        $('.modal').modal();
+        $("#vd_category").change(function() {
+            var cat = $(this).children("option:selected").val();
+            if (cat == '2') {
+                $("#fb-link").css("display", "block");
+                $("#youtube-link").css("display", "none");
+            } else if (cat == '1') {
+                $("#youtube-link").css("display", "block");
+                $("#fb-link").css("display", "none");
+            }
         });
-
     });
-
     </script>
-
-
 </body>
 
 </html>

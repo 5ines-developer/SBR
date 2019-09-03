@@ -99,7 +99,8 @@ $route['vendors/manage']		=	'vendors/manage_vendors'; //manage vendors table
 $route['vendors/view/(:any)']	=	'vendors/detail/$1'; //vendor detail
 $route['vendors/edit/(:any)']	=	'vendors/edit/$1'; //vendor edit
 $route['vendors/delete/(:any)']	=	'vendors/delete/$1'; //vendor edit
-$route['vendors/add-service']	=	'vendors/add_service'; //vendor information and services
+$route['vendors/new-service']	=	'vendors/new_service'; //vendor information and services
+$route['vendors/service']	=	'vendors/service'; //vendor information and services
 
 
 $route['vendors/add-video']		=	'vendors/add_video'; //vendor edit

@@ -186,14 +186,23 @@ class M_vendors extends CI_Model {
 		return true;
 	}
 
-	public function get_portfolio($id='')
+	/**
+    * Vendors -> get portfolio images
+    * url : vendors/view/id
+    * @param : id
+    */
+    public function get_portfolio($id='')
 	{
 		$this->db->where('vendor_id', $id);
 		$port = $this->db->get('vendor_portfolio')->result();
 		return $port;
 	}
 
-
+	/**
+    * Vendors -> add new video 
+    * url : vendors/view/id
+    * @param : id
+    */
 	public function add_video($insert='')
 	{
 		$this->db->where('vendor_id', $insert['vendor_id']);
@@ -205,6 +214,56 @@ class M_vendors extends CI_Model {
 		}
 	}
 
+	/**
+    * Vendors -> add new information service 
+    * url : vendors/new-service
+    * @param : id
+    */
+	public function new_service($insert)
+	{
+		return $this->db->insert('information_service', $insert);
+	}
+
+
+	/**
+    * Vendors -> add new information service 
+    * url : vendors/add-video
+    * @param : id
+    */
+	public function get_service()
+	{
+		return $this->db->get('information_service')->result();
+	}
+
+	/**
+    * Vendors -> get perticular vendor information service 
+    * url : vendors/edit/id
+    * @param : id
+    */	
+	public function vendor_info($id='')
+	{
+		$this->db->where('vendor_id', $id);
+		return $this->db->get('vendor_infoservice')->result();
+	}
+
+
+	public function deletService($id='')
+	{
+		$this->db->where('vendor_id', $id);
+		return $this->db->delete('vendor_infoservice');
+	}
+
+	public function service($insert='')
+	{
+		$this->db->where('vendor_id', $insert['vendor_id']);
+		$query = $this->db->get('vendor_infoservice')->result();
+		if (count($query) < 6 ) {
+			return $this->db->insert('vendor_infoservice', $insert);
+		}else{
+			return false;
+		}
+		
+	}
 
 	
 
