@@ -8,14 +8,20 @@ $this->load->model('m_search');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shaadi Baraati</title>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <style>
+        .fixed-action-btn {
+            position: relative;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
 </head>
-
 <body>
     <div id="app">
         <!-- header -->
@@ -23,13 +29,17 @@ $this->load->model('m_search');
         <!-- end header -->
 
         <!-- body  -->
+
+        <?php if (!empty($vendor)) {
+            foreach ($vendor as $key => $value) {
+            ?>
         <section id="detail">
             <div class="container-fluide">
                 <div class="row">
                     <div class="col s12 m12 l8">
                         <div class="banner-container ">
                             <img class="responsive-img z-depth-1"
-                                src="https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/655/a84606c1-feed-47d8-b64b-f4c38d78c901.png"
+                                src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:''; ?>"
                                 alt="">
                         </div>
                         <!-- basic info -->
@@ -39,17 +49,19 @@ $this->load->model('m_search');
                                     <div class="row m0">
                                         <div class="col s12">
                                             <div class="dt-card-title">
-                                                <p>Focus Wala</p>
+                                                <p><?php echo (!empty($value->name))?$value->name:''; ?></p>
                                             </div>
                                         </div>
                                         <div class="col s12 m7 l8">
-                                            <span class="mb10 location">Chandigar</span>
-                                            <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-                                                maiores provident non quae neque rem ipsa quasi itaque vero ex. Lorem
-                                                ipsum dolor sit amet consectetur adipisicing elit. Adipisci, maiores.
-                                            </p>
+                                            <span class="mb10 location"><?php echo (!empty($value->city))?$value->city:''; ?></span>
+                                            <p><?php echo (!empty($value->address))?$value->address:''; ?> </p>
                                         </div>
+
+                                        <form action="" style="display: none">
+                                            <input id="vndr_id" ref="myTestField" type="text" class="validate in-l" name="vndr_id" value="<?php echo (!empty($value->id))?$value->id:''; ?>">
+                                        </form>
+
+
                                         <div class="col s12 m5 l4">
                                             <div class="dbi-right">
 
@@ -68,14 +80,35 @@ $this->load->model('m_search');
                                                 </div>
 
                                                 <div class="btn-group">
+                                                    <div class="fixed-action-btn">
                                                     <a
                                                         class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
                                                             class="fas fa-share-alt tiny"></i></a>
                                                     <span>Share</span>
+
+
+                                                    <ul>
+                                                        <li> <a href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->name ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->name ?>" target="_blank" class="btn-floating blue"><i class="fab fa-facebook-f"></i></a></li>
+
+                                                        <li><a href="http://twitter.com/home?url=<?php echo $value->name ?>+<?php echo current_url(); ?>" target="_blank" class="btn-floating blue"><i class="fab fa-twitter"></i></a></li>
+
+                                                        <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo current_url(); ?>&description=<?php $desc = str_replace(' ', '-', $value->name); echo $desc ?>" class="btn-floating red" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
+
+                                                         <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $value->name ?>&amp;amp;source=5ineproject.com/shaadibaraati" target="_blank" class="btn-floating blue"><i class="fab fa-linkedin-in"></i></a></li>
+
+
+
+                                                        
+                                                    </ul>
+
+                                                </div>
                                                 </div>
 
-                                                <a class="waves-effect waves-light btn red plr20 accent-4 white-text">View
+                                                <a class="waves-effect waves-light btn red plr20 accent-4 white-text" onclick="focusMethod()">View
                                                     Contact</a>
+
+
+
 
                                             </div>
                                         </div>
@@ -87,7 +120,7 @@ $this->load->model('m_search');
                         <!-- tabs -->
                         <div class="tab-links">
                             <ul class="tabs z-depth-1">
-                                <li class="tab "><a href="#about-vendor" class="active">About Focus Wala</a></li>
+                                <li class="tab "><a href="#about-vendor" class="active">About <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
                                 <li class="tab"><a href="#!">Services</a></li>
                                 <li class="tab"><a href="#!">Gallery</a></li>
                                 <li class="tab"><a href="#!">Reviews</a></li>
@@ -103,31 +136,9 @@ $this->load->model('m_search');
                                     <div class="row m0">
                                         <div class="col s12">
                                             <div class="dt-card-title">
-                                                <p>Focus Wala</p>
+                                                <p><?php echo (!empty($value->name))?$value->name:''; ?></p>
                                             </div>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia suscipit in
-                                                et sunt debitis odit, ullam eaque obcaecati, voluptates eligendi dolorem
-                                                delectus neque sequi mollitia incidunt exercitationem magni sint tempora
-                                                dicta reprehenderit deserunt. Nemo, deserunt dignissimos? Deleniti
-                                                consequuntur harum culpa minus fugit placeat natus? Expedita autem
-                                                sapiente architecto blanditiis, itaque animi, unde porro minima
-                                                recusandae aut aliquam quam soluta ratione laborum repellendus maiores
-                                                sunt numquam cumque voluptatibus provident mollitia ipsa quae
-                                                perferendis molestiae. Quasi, ullam.</p>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut magnam
-                                                dolorem possimus voluptate iure fugiat repellendus, vero dolores
-                                                deserunt doloremque, reprehenderit culpa! Inventore a, voluptatem
-                                                tempora ea laudantium nesciunt nulla accusamus totam quos asperiores
-                                                tempore, quibusdam ipsa similique culpa placeat sed blanditiis ex iure
-                                                sint nihil. Nobis cupiditate possimus assumenda omnis aliquid excepturi
-                                                soluta consectetur dolores voluptate eius velit, fuga architecto
-                                                molestias, temporibus illum atque cum? Excepturi placeat ullam odio
-                                                nostrum ipsum, deserunt dolores beatae maxime officiis velit eos
-                                                corporis corrupti et magni facilis vel expedita amet. Pariatur magnam
-                                                voluptatem voluptatum, doloremque ipsum tempora doloribus consequatur
-                                                eveniet, iusto dicta id, explicabo enim? Alias assumenda vel qui
-                                                aspernatur cum exercitationem nesciunt neque, quis laborum a magnam
-                                                minus fugiat aperiam tempora unde!</p>
+                                            <p><?php echo (!empty($value->detail))?wordwrap($value->detail,25,"<br>\n"):''; ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -146,9 +157,31 @@ $this->load->model('m_search');
                                         </div>
                                         <div class="bbx-content">
                                             <ul>
-                                                <li v-for="s in 4">
+                                                <li>
                                                     <span class="bbx-name">Studio Photograpgy</span>
-                                                    <span class="bbx-rate">- $70000 per day</span>
+                                                    <span class="bbx-rate">- &#8377; <?php
+                                                    $amount = (!empty($value->price))?$value->price:'';
+                                                    $num =$amount;
+                                                    $explrestunits ='';
+                                                    if(strlen($num)>3){
+                                                    $lastthree = substr($num, strlen($num)-3, strlen($num));
+                                                    $restunits = substr($num, 0, strlen($num)-3); // extracts the last three digits
+                                                    $restunits = (strlen($restunits)%2 == 1)?"0".$restunits:$restunits; // explodes the remaining digits in 2's formats, adds a zero in the beginning to maintain the 2's grouping.
+                                                    $expunit = str_split($restunits, 2);
+                                                    for($i=0; $i < sizeof($expunit);  $i++){
+                                                    // creates each of the 2's group and adds a comma to the end
+                                                    if($i==0)
+                                                    {
+                                                    $explrestunits .= (int)$expunit[$i].","; // if is first value , convert into integer
+                                                    }else{
+                                                    $explrestunits .= $expunit[$i].",";
+                                                    }
+                                                    }
+                                                    $thecash = $explrestunits.$lastthree;
+                                                    } else {
+                                                    $thecash = $num;
+                                                    }
+                                                    echo $thecash; ?> per day</span>
                                                 </li>
                                             </ul>
                                             
@@ -218,13 +251,24 @@ $this->load->model('m_search');
                                     </div>
                                 </div>
                                 <div class="row m0">
-                                    <div class="col s6 m4 l2" v-for="i in 6">
+
+                                    <?php if ($value->service) {
+                                        foreach ($value->service as $servic => $ser) { ?>
+
+                                            <div class="col s6 m4 l2">
                                         <div class="service-box center-align">
-                                            <i class="small fas fa-info-circle"></i>
-                                            <p class="sb-title m0">Inclusions</p>
-                                            <p class="detail m0">Idealization & design</p>
+                                            <img class="responsive-img z-depth-1"
+                                src="<?php echo (!empty($ser->image))?base_url().$ser->image:''; ?>"
+                                alt="">
+                                
+                                            <p class="sb-title m0"><?php echo (!empty($ser->service))?$ser->service:''; ?></p>
+                                            <p class="detail m0"><?php echo (!empty($ser->subtitle))?$ser->subtitle:''; ?></p>
                                         </div>
                                     </div>
+
+
+                                    <?php  } } ?>
+                                    
                                     <div class="clearfix"></div>
 
                                     <div class="col s12">
@@ -264,7 +308,7 @@ $this->load->model('m_search');
                                     </div>
                                     <div class="clearfix"></div>
 
-                                    <div class="">
+                                    <div class="" onload="myFunction()">
                                         <div v-for="(src, index) in imgs" :key="index" class="pic col5s">
                                             <div @click="() => showImg(index)" v-if="index < 9">
                                                 <img :src="src" class="">
@@ -300,12 +344,25 @@ $this->load->model('m_search');
                                     </div>
                                     <div class="clearfix"></div>
 
-                                    <div class="col s12 m6 l4 mb15" v-for="i in 6">
-                                        <iframe width="100%" height="200"
-                                            src="https://www.youtube.com/embed/E6JgXcdZ7DQ" frameborder="0"
+                                    <?php if (!empty($value->video)) {
+                                        foreach ($value->video as $vid => $vids) { ?>
+                                           <div class="col s12 m6 l4 mb15">
+                                    <?php //youtube
+                                        if ($vids->type == '1') { ?>
+                                            <iframe width="100%" height="200"
+                                            src="https://www.youtube.com/embed/<?php echo $vids->link ?>" frameborder="0"
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
-                                    </div>
+                                            <?php }else if ($vids->type == '2'){ ?>
+
+                                                <!-- https://www.facebook.com/oppomobileindia/videos/1333675383459276/ -->
+                                                
+
+                                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+
+                                                 <?php } ?>
+                                        </div>
+                                     <?php  } } ?>
 
                                 </div>
                             </div>
@@ -488,7 +545,9 @@ $this->load->model('m_search');
                 </div>
             </div>
         </div>
-    </section>
+        </section>
+
+    <?php } } ?>
 
 
 
@@ -501,6 +560,8 @@ $this->load->model('m_search');
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script>
     <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <script>
     Vue.component('star-rating', VueStarRating.default);
     var app = new Vue({
@@ -508,17 +569,18 @@ $this->load->model('m_search');
         data: {
             isShow: true,
             visible: false,
+            vndr_id:'',
             imgs: [
-                'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
+                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
             ],
         },
 
@@ -541,12 +603,52 @@ $this->load->model('m_search');
             setCurrentSelectedRating: function(rating) {
                 this.currentSelectedRating = "You have Selected: " + rating + " stars";
             },
-
             loadMore() {
-                alert('load more image using axios')
-            }
+                const formData = new FormData();
+                formData.append('vndr_id', this.$refs.myTestField.value);
+                axios.post('<?php echo base_url() ?>detail/full-gallery', formData)
+                .then(response => {
+                    if(response.data != ''){
+                        this.imgs = response.data;
+                    }
+                })
+                .catch(error => {
+                    console.log(response);
+                    
+                })
+            },
+             getData: function () {
+                const formData = new FormData();
+                formData.append('vndr_id', this.$refs.myTestField.value);
+                axios.post('<?php echo base_url() ?>detail/gallery', formData)
+                .then(response => {
+                    if(response.data != ''){
+                        this.imgs = response.data;
+                    }
+                })
+                .catch(error => {
+                    console.log(response);
+                    
+                })
+
+             }
+        },
+        mounted: function(){
+            this.getData();
         }
     });
+
+    focusMethod = function getFocus() {           
+        document.getElementById("name").focus();
+    }
+
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+      direction: 'right'
+    });
+  });
+
     </script>
 
 </body>

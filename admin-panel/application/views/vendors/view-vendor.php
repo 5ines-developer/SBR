@@ -12,6 +12,12 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/dataTable/datatables.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/dataTable/button/css/buttons.dataTables.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css">
+
+    <style>
+        #experience .material-placeholder {
+    margin-bottom: 23px;
+}
+    </style>
 </head>
 
 <body>

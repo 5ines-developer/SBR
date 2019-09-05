@@ -108,7 +108,6 @@ class Search extends CI_Controller {
 		echo $data;
 	}
 
-
 	
 
 

@@ -412,8 +412,7 @@
                                             <div class="input-field col s12 l8">
                                                 <input type="text" name="vd_link" id="autocomplete-input"
                                                     class="autocomplete">
-                                                <p style="font-size: 12px;">Eg : https://youtu.be/<span
-                                                        style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
+                                                <p style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
                                                 </p>
                                                 <label for="autocomplete-input">Link<span
                                                         class="red-text">*</span></label>
@@ -467,7 +466,7 @@
     <script src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url() ?>assets/js/image-uploader.min.js"></script>
     <script>
-    < ? php $this - > load - > view('include/message.php'); ? >
+    <?php $this->load->view('include/message.php'); ?>
     </script>
     <script>
     $(document).ready(function() {

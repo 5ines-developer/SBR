@@ -271,7 +271,7 @@ $this->load->model('m_search');
                             <div class="col s6 m6 l4" v-for="item in ">
                                 <div class="result-items">
                                     <div class="card">
-                                        <a href="">
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" target="_blank">
                                             <div class="card-image">
                                                 <img
                                                     src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:'' ?>">

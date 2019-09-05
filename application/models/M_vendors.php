@@ -7,12 +7,11 @@ class M_vendors extends CI_Model
     /*
      *Home-> get cities
      **/
-    public function getVendors($city='',$category='')
+    public function getVendors($uniqid='')
     {
-        if (!empty($city)) { $this->db->where('v.city', $city); }
-        if (!empty($category)) {$this->db->where('v.category', $category); }
+        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,');
         $this->db->where('v.is_active', '1');
-        $this->db->select('v.name,v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq');
+        $this->db->where('v.uniq', $uniqid);
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
         $this->db->join('category cat', 'cat.id = v.category', 'left');
@@ -23,4 +22,46 @@ class M_vendors extends CI_Model
             return false;
         }
     }
+
+    /*
+     *vendor detail-> get services
+    **/
+
+    public function getService($id='')
+    {
+       $this->db->where('vi.vendor_id', $id);
+       $this->db->from('vendor_infoservice vi');
+       $this->db->join('information_service in', 'in.id = vi.information_id', 'left');
+       $this->db->limit(6);
+       return $this->db->get()->result();
+    }
+
+    /*
+     *vendor detail-> get gallery(portfolio images)
+    **/
+    public function getGallery($id='')
+    {
+        $this->db->where('vendor_id', $id);
+        $this->db->limit(10);
+        return $this->db->get('vendor_portfolio')->result();
+    }
+
+    /*
+     *vendor detail-> gallery(portfolio images) fetch all
+    **/
+    public function full_gallery($id='')
+    {
+        $this->db->where('vendor_id', $id);
+        return $this->db->get('vendor_portfolio')->result();
+    }
+
+
+    public function getVideo($id='')
+    {
+        $this->db->where('vendor_id', $id);
+        return $this->db->get('vendor_video')->result();
+    }
+
+
+
 }

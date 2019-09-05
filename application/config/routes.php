@@ -76,15 +76,19 @@ $route['profile/update'] 				= 'account/update_profile';
 // newsletter subscribe
 $route['subscribe'] 		    		= 'home/subscribe';
 
-//vendors
-$route['vendors']           			= 'vendors/index';
-$route['detail']           			    = 'vendors/detail';
-
 //search
 $route['vendors']  						= 'search/index';
 $route['vendors/(:any)']  				= 'search/index/$1/';
 $route['vendors/(:any)/(:any)']  		= 'search/index/$1/$2';
 $route['vendors/(:any)/(:any)/(:any)']  = 'search/index/$1/$2/$3';
+
+//vendors detail
+$route['detail/(:any)/(:any)/(:any)']   = 'vendors/detail/$1/$2/$3';
+$route['detail/gallery']   				= 'vendors/gallery';
+$route['detail/full-gallery']   		= 'vendors/full_gallery';
+
+
+
 
 
 

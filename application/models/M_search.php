@@ -70,7 +70,7 @@ class M_search extends CI_Model {
 		}
     }
 
-
+    //get single city name
     public function SingleCity($id = null)
     {
         $this->db->select('city');
@@ -78,12 +78,15 @@ class M_search extends CI_Model {
         return $this->db->get('city')->row_array();
     }
 
+    //get single category name name
     public function SingleCategory($id = null)
     {
         $this->db->select('category');
         $this->db->where('id', $id);
         return $this->db->get('category')->row_array();
     }
+
+
 
 }
 
