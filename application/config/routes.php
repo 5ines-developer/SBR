@@ -73,6 +73,11 @@ $route['forgot-password/update'] 		= 'authentication/update_pass';
 $route['profile'] 						= 'account/index';
 $route['profile/update'] 				= 'account/update_profile';
 
+//shortlisted vendor
+
+$route['profile/shortlisted-vendor'] 	= 'account/getShortist';
+
+
 // newsletter subscribe
 $route['subscribe'] 		    		= 'home/subscribe';
 
@@ -86,6 +91,17 @@ $route['vendors/(:any)/(:any)/(:any)']  = 'search/index/$1/$2/$3';
 $route['detail/(:any)/(:any)/(:any)']   = 'vendors/detail/$1/$2/$3';
 $route['detail/gallery']   				= 'vendors/gallery';
 $route['detail/full-gallery']   		= 'vendors/full_gallery';
+
+//vendor review
+$route['review/submit']   				= 'vendors/review_submit';
+$route['review/session-check']   		= 'vendors/reviewSession';
+
+//make favourite vendor
+$route['make-favourite']   				= 'vendors/makeFavourite';
+$route['get-favourite']   				= 'vendors/getFavourite';
+
+
+
 
 
 

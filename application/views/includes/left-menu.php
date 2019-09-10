@@ -1,7 +1,7 @@
  <div class="col s12 m4 l3">
                         <div class="sidemenu">
                             <div class="card-panel   profile-box">
-                                <a href="" class=" pb-edit btn-floating btn-flat waves-effect waves-light"><i
+                                <a href="<?php echo base_url('profile')?>" class=" pb-edit btn-floating btn-flat waves-effect waves-light"><i
                                         class="material-icons">edit</i></a>
                                 <div class="pb-pic">
                                     <?php $this->load->model('m_account');
@@ -16,10 +16,10 @@
                             <div class="">
                                 <ul class="sidemenu-list-container z-depth-1">
                                     <li>
-                                        <a href="<?php echo base_url('profile') ?>" class="<?php if($this->uri->segment(1)=="profile"){echo "active";}?>"> <i class=" material-icons ">person</i> Profile</a>
+                                        <a href="<?php echo base_url('profile') ?>" class="<?php if( ($this->uri->segment(1)=="profile") && ($this->uri->segment(2) == '') ){echo "active";}?>"> <i class=" material-icons ">person</i> Profile</a>
                                     </li>
                                     <li>
-                                        <a href=""><i class=" material-icons ">favorite</i> Shortlisted Vendor's</a>
+                                        <a href="<?php echo base_url('profile/shortlisted-vendor') ?>" class="<?php if(($this->uri->segment(1)=="profile") && ($this->uri->segment(2) == 'shortlisted-vendor')){echo "active";}?>"><i class=" material-icons ">favorite</i> Shortlisted Vendor's</a>
                                     </li>
 
                                     <li>

@@ -26,6 +26,49 @@ class M_account extends CI_Model {
     	return$this->db->select('su_profile_file,su_name')->where('su_id', $uid)->get('user')->row();
     }
 
+    //get shortlisted vendors
+    public function getShortlisted($userid='')
+    {
+        $this->db->where('sh.user_id', $userid);
+        $this->db->where('sh.status', '1');
+        $this->db->from('shortlist_vendor sh');
+        $this->db->join('vendor v', 'v.id = sh.vendor_id', 'left');
+        $result = $this->db->get();
+
+        if ($result->num_rows() > 0) {
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
+
+    public function getCity($id='')
+    {
+        $this->db->select('city');
+        $this->db->where('id', $id);
+        $result = $this->db->get('city')->row_array();
+        return $result['city'];
+    }
+
+    public function getCategory($id='')
+    {
+        $this->db->select('category as name');
+        $this->db->where('id', $id);
+        $result = $this->db->get('category')->row_array();
+        return $result['name'];
+    }
+
+
+    //get review details
+    public function getReview($id='')
+    {
+       $this->db->where('vendor_id', $id);
+       $this->db->where('status', '1');
+       return $this->db->get('vendor_review')->result();
+    }
+
+
+
 
 	
 

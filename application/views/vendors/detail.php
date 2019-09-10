@@ -20,6 +20,20 @@ $this->load->model('m_search');
             right: 0;
             bottom: 0;
         }
+        .check-group p{
+            float: left;
+            margin-right: 10px;
+        }
+        .favcol{
+            border-color: #d0021b;
+            background: #d0021b !important;
+            box-shadow: 0 0 2px #9f0202 !important;
+        }
+        .favcol i{
+            color: #fff !important;
+        }
+
+
     </style>
 </head>
 <body>
@@ -65,10 +79,11 @@ $this->load->model('m_search');
                                         <div class="col s12 m5 l4">
                                             <div class="dbi-right">
 
+                                                    <!-- <?php if($value->fav == '1'){ echo 'favcol'; } ?>  -->
+
+
                                                 <div class="btn-group">
-                                                    <a
-                                                        class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
-                                                            class="fas fa-heart tiny"></i></a>
+                                                    <a v-on:click="favourite" :class="{'favcol': favcol }" class="btn-floating  waves-effect waves-red transparent z-depth-0"><i class="fas fa-heart tiny"></i></a>
                                                     <span>Favorite</span>
                                                 </div>
 
@@ -76,7 +91,27 @@ $this->load->model('m_search');
                                                     <a
                                                         class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
                                                             class="fas fa-star tiny"></i></a>
-                                                    <span>4.5</span>
+                                                    <span>
+                                                        
+                                                        <?php if (!empty($value->review)) {
+                                                    $ratingSum = 0;
+                                                    foreach ($value->review as $rev => $revw) {
+                                                    $ratingSum += $revw->rating;
+                                                     $avg = $ratingSum / count($value->review);
+                                            } 
+
+                                            echo round($avg, 1); 
+
+
+                                        }else{
+                                            echo '0';
+                                        }
+
+                                        ?>
+
+
+
+                                                    </span>
                                                 </div>
 
                                                 <div class="btn-group">
@@ -85,8 +120,6 @@ $this->load->model('m_search');
                                                         class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
                                                             class="fas fa-share-alt tiny"></i></a>
                                                     <span>Share</span>
-
-
                                                     <ul>
                                                         <li> <a href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->name ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->name ?>" target="_blank" class="btn-floating blue"><i class="fab fa-facebook-f"></i></a></li>
 
@@ -95,21 +128,12 @@ $this->load->model('m_search');
                                                         <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo current_url(); ?>&description=<?php $desc = str_replace(' ', '-', $value->name); echo $desc ?>" class="btn-floating red" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
 
                                                          <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $value->name ?>&amp;amp;source=5ineproject.com/shaadibaraati" target="_blank" class="btn-floating blue"><i class="fab fa-linkedin-in"></i></a></li>
-
-
-
-                                                        
                                                     </ul>
 
                                                 </div>
                                                 </div>
-
                                                 <a class="waves-effect waves-light btn red plr20 accent-4 white-text" onclick="focusMethod()">View
                                                     Contact</a>
-
-
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -227,12 +251,7 @@ $this->load->model('m_search');
                                                 <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
                                         </form>
-                                    </div>
-                                    
-
-
-
-
+                                    </div> 
                                 </div>
                             </div>
 
@@ -259,14 +278,10 @@ $this->load->model('m_search');
                                         <div class="service-box center-align">
                                             <img class="responsive-img z-depth-1"
                                 src="<?php echo (!empty($ser->image))?base_url().$ser->image:''; ?>"
-                                alt="">
-                                
-                                            <p class="sb-title m0"><?php echo (!empty($ser->service))?$ser->service:''; ?></p>
+                                alt=""> <p class="sb-title m0"><?php echo (!empty($ser->service))?$ser->service:''; ?></p>
                                             <p class="detail m0"><?php echo (!empty($ser->subtitle))?$ser->subtitle:''; ?></p>
                                         </div>
                                     </div>
-
-
                                     <?php  } } ?>
                                     
                                     <div class="clearfix"></div>
@@ -354,13 +369,9 @@ $this->load->model('m_search');
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
                                             <?php }else if ($vids->type == '2'){ ?>
-
-                                                <!-- https://www.facebook.com/oppomobileindia/videos/1333675383459276/ -->
-                                                
-
                                                 <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 
-                                                 <?php } ?>
+                                            <?php } ?>
                                         </div>
                                      <?php  } } ?>
 
@@ -381,109 +392,259 @@ $this->load->model('m_search');
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <form action="">
+                                    <form action="<?php echo base_url('review/submit') ?>" method="post">
                                         <div class="col s12 mt20">
                                             <div class="left rateus"> Rate us : </div>
-                                            <star-rating :star-size="20"></star-rating>
+                                            <star-rating v-model="ar" :star-size="20"></star-rating>
                                         </div>
 
-                                        <div class="col s12 m10 l7">
-                                            <div class="row m0">
-                                                <div class="input-field col s12 m6">
-                                                    <input id="first_name" type="text" class="validate">
-                                                    <label for="first_name">Your Name</label>
-                                                </div>
-                                                <div class="input-field col s12 m6">
-                                                    <input id="email" type="email" class="validate">
-                                                    <label for="email">Email</label>
-                                                </div>
+                                        <div class="col s12 m10 l12">
 
-                                                <div class="input-field col s12">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                            <div class="row m0 check-group">
+                                                <p>
+                                                  <label>
+                                                    <input name="rev_proffesional" class="filled-in" type="checkbox"      @change="onFocus" value="1" />
+                                                    <span>Professionalism</span>
+                                                  </label>
+                                              </p>
+                                                <p>
+                                                  <label>
+                                                    <input name="rev_quality" class="filled-in" type="checkbox" @change="onFocus" value="1"/>
+                                                    <span>Quality of Work</span>
+                                                  </label>
+                                              </p>
+
+                                                <p>
+                                                  <label>
+                                                    <input name="rev_service" class="filled-in" type="checkbox"     @change="onFocus" value="1" />
+                                                    <span>On Time Service</span>
+                                                  </label>
+                                              </p>
+
+                                                <p>
+                                                  <label>
+                                                    <input name="rev_money" class="filled-in" type="checkbox"   @change="onFocus" value="1"/>
+                                                    <span>Value for Money</span>
+                                                  </label>
+                                              </p>
+
+                                                <p>
+                                                  <label>
+                                                    <input name="rev_experience" class="filled-in" type="checkbox"  @change="onFocus" value="1"/>
+                                                    <span>Highly Experienced</span>
+                                                  </label>
+                                              </p>
+                                            </div>
+
+                                            <div class="row m0">
+                                                <div class="input-field col l7 s12">
+                                                    <textarea id="textarea1" name="rev_description" v-on:focus="onFocus" class="materialize-textarea" required=""></textarea>
                                                     <label for="textarea1">Write Review</label>
                                                 </div>
-                                                <button
-                                                    class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
+                                            <input type="hidden" value="" name="rev_rating" v-model="rev_rating">
+                                            <input type="hidden" value="<?php echo $value->id ?>" name="rev_vendor">
+                                            <input type="hidden" value="<?php echo $value->uniq ?>" name="vendoruniq">
+                                                    <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                         </div>
                                     </form>
                                     <div class="clearfix"></div>
+
+                                    <?php if(!empty($value->review)){ ?>
+
                                     <div class="full-line"></div>
+
+                                <?php } ?>
 
                                 </div>
 
                                 <div class="row m0">
                                     <div class="">
-                                        <div class="">
+
+                                            <?php 
+
+                                            if(!empty($value->review)){
+
+                                            if ($value->review) {
+                                                    $ratingSum = 0;
+                                                    $num1 = 0;
+                                                    $num2 = 0;
+                                                    $num3 = 0;
+                                                    $num4 = 0;
+                                                    $num5 = 0;
+                                                    foreach ($value->review as $rev => $revw) {
+                                                    $ratingSum += $revw->rating;
+
+                                                    if ($revw->rating == 1) {$num1 += 1;} elseif ($revw->rating == 2) {$num2 += 1;} elseif ($revw->rating == 3) {$num3 += 1;} elseif ($revw->rating == 4) {$num4 += 1;} elseif ($revw->rating == 5) {$num5 += 1;}
+                                                    }
+                                                     $avg = $ratingSum / count($value->review);
+                                            }  ?>
+                                            <div class="">
                                             <div class="row m0">
                                                 <div class="push  col m5">
                                                     <div class="rating">
                                                         <div class="title">
-                                                           Rating Distribution
+                                                           Rating Distribution <?php echo (!empty($value->review))?count($value->review):''; ?>reviews
                                                         </div>
 
                                                         <div class="score">
                                                             <div class="average-score">
-                                                                <p class="numb">4.5</p>
+                                                                <p class="numb"><?php echo (!empty($avg))?round($avg, 1):''; ?></p>
                                                             </div>
                                                             <div class="queue">
-                                                                <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                <i class="fa fa-star avg-start " aria-hidden="true"></i> 
+
+                                                                                                    <?php
+
+    for ($i = 0; $i < 5; $i++) {
+
+        (!empty($avg))?$avg:$avg=''; 
+
+
+        if ($i < round($avg, 0, PHP_ROUND_HALF_DOWN)) {
+           $startCheck = ' ratingStar';
+        } else { 
+           $startCheck = '';
+        }
+        echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
+    }
+    ?>
+                                                                 
                                                             </div>
                                                         </div>
                                                         <div class="clearfix"></div>
 
-                                                        <ul class="queue-box">
-                                                            <li class="five-star" v-for="(i, k) in 5" :key="k">
-                                                                <span>
-                                                                    <i class="fa fa-star " v-for="(is, ks) in 5"  :key="is" v-bind:class="{'ratingStar': k <= ks }" aria-hidden="true"></i>
-                                                                </span>
-                                                                <span class="start-count">1</span>
-                                                                <span class="start-progress">
-                                                                    <span class="start-bar" style="width: 70%"></span>
-                                                                </span>
-                                                            </li>                                                            
-                                                        </ul>
+                            <ul class="queue-box">
+                                <li class="five-star">
+                                    <span>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="start-count"><?php echo (!empty($num5))?$num5:'' ?></span>
+                                    <span class="start-progress">
+                                        <span class="start-bar"
+                                            style="width: <?php echo (!empty($value->review))?(($num5 / count($value->review)) * 100):'';  ?>%"></span>
+                                    </span>
+                                </li>
+                                <li class="four-star">
+                                    <span>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="start-count"><?php echo (!empty($num4))?$num4:'' ?></span>
+                                    <span class="start-progress">
+                                        <span class="start-bar"
+                                            style="width:<?php echo (!empty($value->review))?(($num4 / count($value->review)) * 100):'';  ?>%"></span>
+                                    </span>
+                                </li>
+                                <li class="three-star">
+                                    <span>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="start-count"><?php echo (!empty($num3))?$num3:'' ?></span>
+                                    <span class="start-progress">
+                                        <span class="start-bar"
+                                            style="width:<?php echo (!empty($value->review))?(($num3 / count($value->review)) * 100):'';  ?>%"></span>
+                                    </span>
+
+                                </li>
+                                <li class="two-star">
+                                    <span>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="start-count"><?php echo (!empty($num2))?$num2:'' ?></span>
+                                    <span class="start-progress">
+                                        <span class="start-bar"
+                                            style="width:<?php echo (!empty($value->review))?(($num2 / count($value->review)) * 100):'';  ?>%"></span>
+
+                                            
+                                    </span>
+                                </li>
+                                <li class="one-star">
+                                    <span>
+                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <span class="start-count"><?php echo (!empty($num1))?$num1:'' ?></span>
+                                    <span class="start-progress">
+                                        <span class="start-bar"
+                                            style="width:<?php echo (!empty($value->review))?(($num1 / count($value->review)) * 100):'';  ?>%"></span>
+                                    </span>
+                                </li>
+                            </ul>
                                                     </div><!-- /.rating -->
                                                 </div><!-- /.col-md-6 -->
 
                                                 <div class="col m7">
                                                     <ul class="review-list">
-                                                        <li v-for="i in 2">
+
+                                                        <?php if ($value->review) {
+
+                                                            foreach ($value->review as $revs => $revsw) { ?>
+                                                        <li>
                                                             <div class="review-metadata">
                                                                 
                                                                 <div class="queue">
-                                                                    <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                    <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                    <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                    <i class="fa fa-star avg-start ratingStar" aria-hidden="true"></i> 
-                                                                    <i class="fa fa-star avg-start " aria-hidden="true"></i>
+                                                                <?php
+                                                                    for ($i = 0; $i < 5; $i++) {
+                                                                    if ($i < $revsw->rating) {
+                                                                        $startCheck = ' ratingStar';
+                                                                    } else {
+                                                                        $startCheck = '';
+                                                                    }
+                                                                        echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
+                                                                    }
+                                                                ?>
                                                                 </div>
                                                                 <div class="name">
-                                                                    5ine test : <span> Jul 26, 2019</span> 
+                                                                    <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?> : <span> <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span> 
                                                                 </div>
                                                             </div><!-- /.review-metadata -->
                                                             <div class="review-content">
                                                                 <p>
-                                                                    <span class="bold">Testing</span><br>
-                                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quasi dolores iste? Repellat maiores libero, voluptates ipsam qui possimus natus maxime. Fugit dolorum corrupti quod at laboriosam eaque fuga sit!
+                                                                    <span class="bold"><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span><br>
+
+                                                                   <?php echo $revsw->review; ?>
                                                                 </p>
                                                             </div><!-- /.review-content -->
                                                         </li>
+                                                         <?php   } } ?>
+                                                        
+
+
+
                                                         <li>
                                                             <button class="waves-effect waves-light btn red plr30 accent-4 white-text">View More</button>
                                                         </li>
                                                        
                                                     </ul><!-- /.review-list -->
                                                 </div><!-- /.col-md-12 -->
-
-
                                             </div>
 
+
+
                                         </div>
+
+                                    <?php } ?>
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -563,13 +724,20 @@ $this->load->model('m_search');
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
+        <?php $this->load->view('includes/message'); ?>
+    </script>
+
+    <script>
     Vue.component('star-rating', VueStarRating.default);
     var app = new Vue({
         el: '#app',
         data: {
             isShow: true,
             visible: false,
+            favcol:false,
             vndr_id:'',
+            rev_rating:'',
+            ar:'1',
             imgs: [
                 // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
                 // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
@@ -631,10 +799,63 @@ $this->load->model('m_search');
                     
                 })
 
-             }
+             },
+
+             onFocus() {
+                axios.post('<?php echo base_url() ?>review/session-check')
+                .then(response => {
+                        if(response.data == ''){
+                            window.location.href = "<?php echo base_url('login') ?>";;
+                        }
+                        this.rev_rating = this.ar;
+                })
+                .catch(error => {
+                })
+            },
+            favourite(){
+                const formData = new FormData();
+                formData.append('vndr_id', this.$refs.myTestField.value);
+                axios.post('<?php echo base_url() ?>make-favourite', formData)
+                .then(response => {
+                        if(response.data == '5'){
+                            window.location.href = "<?php echo base_url('login') ?>";;
+                        }else if(response.data == '0'){
+                            this.favcol = false;
+                        }else if(response.data == '1'){
+                            this.favcol = true;
+                        }
+                })
+                .catch(error => {
+                    console.log(response);
+                    
+                })
+
+            },
+            getfavourite(){
+                const formData = new FormData();
+                formData.append('vndr_id', this.$refs.myTestField.value);
+                axios.post('<?php echo base_url() ?>get-favourite', formData)
+                .then(response => {
+                        if(response.data == '5'){
+                            window.location.href = "<?php echo base_url('login') ?>";;
+                        }else if(response.data == '0'){
+                            this.favcol = false;
+                        }else if(response.data == '1'){
+                            this.favcol = true;
+                        }
+                })
+                .catch(error => {
+                    console.log(response);
+                    
+                })
+
+            }
         },
         mounted: function(){
             this.getData();
+            this.getfavourite();
+
+
         }
     });
 

@@ -18,16 +18,10 @@ class Account extends CI_Controller {
 		*/
         public function index()
         {
-            if($this->session->userdata('shdid') != '') 
-            { 
-                $data['title'] = 'Account settings - ShaadiBaraati';
-                $data['setting'] = $this->m_account->account($this->uid);
-                $this->load->view('account/profile.php', $data, FALSE);
-            }else{
-                $this->session->set_flashdata('error', 'Please login');
-                redirect('login');
-            }
-		}
+            $data['title'] = 'Account settings - ShaadiBaraati';
+            $data['setting'] = $this->m_account->account($this->uid);
+            $this->load->view('account/profile.php', $data, FALSE); 
+        }
 
 		/**
 		*account settings -> update profile
@@ -93,6 +87,14 @@ class Account extends CI_Controller {
                     $this->session->set_flashdata('error', 'Something went wrong please try again later!');
                     redirect('profile','refresh');
                 }
+		}
+
+
+		public function getShortist($value='')
+		{
+			$data['title'] = 'Shortlisted vendors - ShaadiBaraati';
+			$data['vendor'] = $this->m_account->getShortlisted($this->uid);
+			$this->load->view('account/shortlist', $data, FALSE);
 		}
 
 

@@ -345,6 +345,10 @@ $this->load->model('m_search');
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
+        <?php $this->load->view('includes/message'); ?>
+    </script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('select');
             var instances = M.FormSelect.init(elems);

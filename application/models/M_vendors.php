@@ -55,12 +55,111 @@ class M_vendors extends CI_Model
         return $this->db->get('vendor_portfolio')->result();
     }
 
-
+    /*
+     *vendor detail-> fetch all video
+    **/
     public function getVideo($id='')
     {
         $this->db->where('vendor_id', $id);
+        $this->db->limit(6);
         return $this->db->get('vendor_video')->result();
     }
+
+
+    //get user details to add review
+    public function getUser($id='')
+    {
+        $this->db->select('su_id, su_name,su_email');
+        $this->db->where('su_is_active', '1');
+        $this->db->where('su_id', $id);
+        return $this->db->get('user')->row();
+    }
+
+    //get vendor for review
+    public function vendor($vendoruniq='')
+    {
+        $this->db->select('name, category,city,uniq');
+        $this->db->where('is_active', '1');
+        $this->db->where('uniq', $vendoruniq);
+        return $this->db->get('vendor')->row();
+    }
+
+    //add review
+    public function addReview($insert='')
+    {
+        $this->db->where('user_id', $insert['user_id']);
+    	$this->db->where('vendor_id', $insert['vendor_id']);
+    	$query = $this->db->get('vendor_review');
+    	if ($query->num_rows() > 0) {
+    		$this->db->where('user_id', $insert['user_id']);
+            $this->db->where('vendor_id', $insert['vendor_id']);
+    		$this->db->update('vendor_review', $insert);
+    		if ($this->db->affected_rows() > 0) {
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}else{
+        	return $this->db->insert('vendor_review', $insert);
+    	}
+    }
+
+    //get review details
+    public function getReview($id='')
+    {
+       $this->db->where('vendor_id', $id);
+       $this->db->where('status', '1');
+       return $this->db->get('vendor_review')->result();
+    }
+
+    public function makeFavourite($userid='',$vendorid='')
+    {
+        $this->db->where('vendor_id', $vendorid);
+        $this->db->where('user_id', $userid);
+        $result = $this->db->get('shortlist_vendor')->row();
+        
+        if ($result->id > 0) {
+            if ($result->status == '0') {$status = '1'; }else{$status = '0'; }
+            $this->db->where('vendor_id', $vendorid);
+            $this->db->where('user_id', $userid);
+            $this->db->update('shortlist_vendor', array('status' => $status ));
+            if ($this->db->affected_rows() > 0) {
+                $this->db->select('status');
+                $this->db->where('vendor_id', $vendorid);
+                $this->db->where('user_id', $userid);
+                $ouput = $this->db->get('shortlist_vendor')->row();
+                return $ouput->status;
+            }else{
+                return 3;
+            }
+        }else{
+            if($this->db->insert('shortlist_vendor', array('vendor_id'=> $vendorid,'user_id'=> $userid,'status'=> '1')))
+            {
+                return true;
+            }else{
+                return 3; 
+            }
+
+        }
+    }
+
+    //get favourite
+    public function getFavourite($vendorid='')
+    {
+        $this->db->select('status');
+        $this->db->where('vendor_id', $vendorid);
+        $this->db->where('user_id', $this->session->userdata('shdid'));
+        $ouput = $this->db->get('shortlist_vendor')->row();
+        if (!empty($ouput)) {
+        	return $ouput->status;
+        }else{
+        	return false;
+        }
+        
+    }
+
+
+    
 
 
 

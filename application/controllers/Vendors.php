@@ -19,12 +19,12 @@ class Vendors extends CI_Controller {
     **/
     public function detail($category="",$name="",$uniqid="")
     {
-
         $output = $this->m_vendors->getVendors($uniqid);
-
         foreach ($output as $key => $value) {
-           $value->service          = $this->m_vendors->getService($value->id);
-           $value->video          = $this->m_vendors->getVideo($value->id);
+           $value->service     = $this->m_vendors->getService($value->id);
+           $value->video       = $this->m_vendors->getVideo($value->id);
+           $value->review      = $this->m_vendors->getReview($value->id);
+           $value->fav         = $this->m_vendors->getFavourite($value->id);
         }
         $data['vendor'] = $output;
         $data['title']  = $value->name.'- ShaadiBaraati';
@@ -56,6 +56,93 @@ class Vendors extends CI_Controller {
         }
        echo json_encode($data);
     }
+
+
+    //check if the user logged in or not
+    public function reviewSession($value='')
+    {
+
+      $user =  $this->session->userdata('shdid');
+      if (!empty($user)) {
+        echo "1";
+      }else{
+        echo "0";
+      }
+    }
+
+    public function review_submit($value='')
+    {
+
+      $proffesional = $this->input->post('rev_proffesional');
+        $quality      = $this->input->post('rev_quality');
+        $service      = $this->input->post('rev_service');
+        $money        = $this->input->post('rev_money');
+        $experience   = $this->input->post('rev_experience');
+        $description  = $this->input->post('rev_description');
+        $rating       = $this->input->post('rev_rating');
+        $vendorid     = $this->input->post('rev_vendor');
+        $vendoruniq   = $this->input->post('vendoruniq');
+
+        $user   = $this->m_vendors->getUser($this->session->userdata('shdid'));
+        $vendor = $this->m_vendors->getVendors($vendoruniq);
+
+        foreach ($vendor as $key => $value) {}
+
+      $this->form_validation->set_rules('rev_description', 'Review', 'trim|required|min_length[15]', array('min_length[15]'=> 'Review description Should not be less than 15 character'));
+      if ($this->form_validation->run() == false) {
+            $error = validation_errors();
+            $this->session->set_flashdata('error', $error);
+            redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
+      }else{
+        
+        $insert = array(
+          'proffesional'  => $proffesional, 
+          'quality'       => $quality, 
+          'service'       => $service, 
+          'money'         => $money, 
+          'experience'    => $experience, 
+          'review'        => $description, 
+          'vendor_id'     => $vendorid,
+          'user_id'       => $user->su_id,
+          'user_name'     => $user->su_name,
+          'user_email'    => $user->su_email,
+          'rating'        => $rating,
+          'status'        =>  '1'
+        );
+
+          if($this->m_vendors->addReview($insert)){
+               $this->session->set_flashdata('success', 'Review added Successfully');
+               redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
+          }else{
+                    $this->session->set_flashdata('error', 'Something went wrong please try again later!');
+              redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
+          }
+    }
+
+  }
+
+
+  public function makeFavourite($id='')
+  {
+      $user =  $this->session->userdata('shdid');
+      if (!empty($user)) {
+
+        $vndr_id = $this->input->post('vndr_id');
+        $output = $this->m_vendors->makeFavourite($user,$vndr_id);
+        echo $output; //1 if favourited , 3 if not performed anything, 0 not favourited
+        
+      }else{
+        echo "5"; //not logged in
+      }
+  }
+
+
+  public function getFavourite($value='')
+  {
+    $vndr_id = $this->input->post('vndr_id');
+    $output  = $this->m_vendors->getFavourite($vndr_id);
+    echo  $output;
+  }
 
 
 
