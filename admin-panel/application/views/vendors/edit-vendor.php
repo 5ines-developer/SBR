@@ -39,6 +39,26 @@
     #fb-link {
         display: none;
     }
+    .faqform{
+        padding: 30px !important;
+        border-bottom: 1px dotted #cecece;
+    }
+    .faqform:last-child{
+        padding:0px;
+        border-bottom: 0px dotted #cecece;
+
+    }
+    .faqform .addfaq{
+        visibility: hidden;
+    }
+
+    .faqform:last-child .addfaq{
+        visibility: visible;
+    }
+
+    .faqform:last-child .closefaq{
+        visibility: hidden;
+    }
     </style>
 </head>
 
@@ -453,7 +473,69 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="form-container">
+                                    <div class="row m0">
+                                            <p class="bold  black-text col  mb10 h6">FAQ's</p>
+                                    </div>
+                                    <div class="hide">
+                                        <div class="row m0 faqform" id="faqform">
+                                            <div class="col s12 m8 input-field">
+                                                <textarea name="quation[]" class="materialize-textarea"></textarea>
+                                                <label for="textarea1">Question</label>
+                                            </div>
+                                            <div class="col s12 m8 input-field">
+                                                <textarea name="asw[]" class="materialize-textarea"></textarea>
+                                                <label for="textarea1">Answers</label>
+                                            </div>
+                                            <div class="col s12 m4">
+                                                <button class="btn blue addfaq waves-effect waves-light hoverable" type="button">Add  <i class="material-icons right">add</i></button>
+                                                <button class="btn red closefaq waves-effect waves-light hoverable"  type="button">Close  <i class="material-icons right">close</i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form action="<?php echo base_url() ?>vendors/faq_insert" method="post" id="">
+                                        <input type="hidden" value="<?php echo $result->id ?>" name="id">
+                                        
+                                        <?php foreach ($faq as $key => $faaqval) { ?>
+                                            <div class="row m0 faqform" id="faqform">
+                                                <div class="col s12 m8 input-field">
+                                                    <textarea name="quation[]" class="materialize-textarea"><?php echo $faaqval->quotation  ?></textarea>
+                                                    <label for="textarea1">Question</label>
+                                                </div>
+                                                <div class="col s12 m8 input-field">
+                                                    <textarea name="asw[]" class="materialize-textarea"><?php echo $faaqval->asw  ?></textarea>
+                                                    <label for="textarea1">Answers</label>
+                                                </div>
+                                                <div class="col s12 m4">
+                                                    <button class="btn blue addfaq waves-effect waves-light hoverable" type="button">Add  <i class="material-icons right">add</i></button>
+                                                    <button class="btn red closefaq waves-effect waves-light hoverable"  type="button">Close  <i class="material-icons right">close</i></button>
+                                                </div>
+                                            </div>
+                                        
+
+                                        <?php } ?>
+                                                        
+
+                                        <div id="faq-form-box"></div>                  
+                                        <div class="col s12 input-field">
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable " type="submit">Submit
+                                                <i class="fas fa-paper-plane right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div><!-- cad end -->
+
+
+
+
                 </div>
             </div>
         </div>
@@ -468,6 +550,32 @@
     <script>
     <?php $this->load->view('include/message.php'); ?>
     </script>
+    <script>
+       
+        $(document).ready(function() {
+        
+            
+           
+        
+        });
+        $(function(){
+            function cloneform(){
+                $("#faqform").clone().appendTo("#faq-form-box");
+            }
+
+            
+            cloneform();
+
+            $(document).on('click', '.addfaq', function(){
+                cloneform();
+            });
+
+            $(document).on('click', '.closefaq', function(){
+                $(this).closest('#faqform').remove()
+            });
+        });
+    </script>
+
     <script>
     $(document).ready(function() {
         $('select').formSelect();

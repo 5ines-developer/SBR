@@ -25,6 +25,7 @@ class Vendors extends CI_Controller {
            $value->video       = $this->m_vendors->getVideo($value->id);
            $value->review      = $this->m_vendors->getReview($value->id);
            $value->fav         = $this->m_vendors->getFavourite($value->id);
+           $value->faq         = $this->m_vendors->faq($value->id);
         }
         $data['vendor'] = $output;
         $data['title']  = $value->name.'- ShaadiBaraati';

@@ -265,6 +265,27 @@ class M_vendors extends CI_Model {
 		
 	}
 
+	//  add faq
+    public function faq_insert($data)
+    {
+
+       $this->db->insert('vendor_faq', $data);
+       return true;
+    }
+
+	// faq get
+	public function faqget($id)
+	{
+		return $this->db->where('vendor_id',$id )->get('vendor_faq')->result();
+		
+	}
+
+	// deltefaq
+	public function delfaq($id)
+	{
+		$this->db->where('vendor_id', $id)->delete('vendor_faq');
+		return true;
+	}
 	
 
 }

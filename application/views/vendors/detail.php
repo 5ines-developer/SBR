@@ -15,27 +15,29 @@ $this->load->model('m_search');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
-        .fixed-action-btn {
-            position: relative;
-            right: 0;
-            bottom: 0;
-        }
-        .check-group p{
-            float: left;
-            margin-right: 10px;
-        }
-        .favcol{
-            border-color: #d0021b;
-            background: #d0021b !important;
-            box-shadow: 0 0 2px #9f0202 !important;
-        }
-        .favcol i{
-            color: #fff !important;
-        }
+    .fixed-action-btn {
+        position: relative;
+        right: 0;
+        bottom: 0;
+    }
 
+    .check-group p {
+        float: left;
+        margin-right: 10px;
+    }
 
+    .favcol {
+        border-color: #d0021b;
+        background: #d0021b !important;
+        box-shadow: 0 0 2px #9f0202 !important;
+    }
+
+    .favcol i {
+        color: #fff !important;
+    }
     </style>
 </head>
+
 <body>
     <div id="app">
         <!-- header -->
@@ -54,7 +56,7 @@ $this->load->model('m_search');
                         <div class="banner-container ">
                             <img class="responsive-img z-depth-1"
                                 src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:''; ?>"
-                                alt="">
+                                alt="><?php echo (!empty($value->name))?$value->name:''; ?>" width="100%">
                         </div>
                         <!-- basic info -->
                         <div class="detail-bs-info">
@@ -67,23 +69,28 @@ $this->load->model('m_search');
                                             </div>
                                         </div>
                                         <div class="col s12 m7 l8">
-                                            <span class="mb10 location"><?php echo (!empty($value->city))?$value->city:''; ?></span>
+                                            <span
+                                                class="mb10 location"><?php echo (!empty($value->city))?$value->city:''; ?></span>
                                             <p><?php echo (!empty($value->address))?$value->address:''; ?> </p>
                                         </div>
 
                                         <form action="" style="display: none">
-                                            <input id="vndr_id" ref="myTestField" type="text" class="validate in-l" name="vndr_id" value="<?php echo (!empty($value->id))?$value->id:''; ?>">
+                                            <input id="vndr_id" ref="myTestField" type="text" class="validate in-l"
+                                                name="vndr_id"
+                                                value="<?php echo (!empty($value->id))?$value->id:''; ?>">
                                         </form>
 
 
                                         <div class="col s12 m5 l4">
                                             <div class="dbi-right">
 
-                                                    <!-- <?php if($value->fav == '1'){ echo 'favcol'; } ?>  -->
+                                                <!-- <?php if($value->fav == '1'){ echo 'favcol'; } ?>  -->
 
 
                                                 <div class="btn-group">
-                                                    <a v-on:click="favourite" :class="{'favcol': favcol }" class="btn-floating  waves-effect waves-red transparent z-depth-0"><i class="fas fa-heart tiny"></i></a>
+                                                    <a v-on:click="favourite" :class="{'favcol': favcol }"
+                                                        class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
+                                                            class="fas fa-heart tiny"></i></a>
                                                     <span>Favorite</span>
                                                 </div>
 
@@ -92,7 +99,7 @@ $this->load->model('m_search');
                                                         class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
                                                             class="fas fa-star tiny"></i></a>
                                                     <span>
-                                                        
+
                                                         <?php if (!empty($value->review)) {
                                                     $ratingSum = 0;
                                                     foreach ($value->review as $rev => $revw) {
@@ -116,23 +123,32 @@ $this->load->model('m_search');
 
                                                 <div class="btn-group">
                                                     <div class="fixed-action-btn">
-                                                    <a
-                                                        class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
-                                                            class="fas fa-share-alt tiny"></i></a>
-                                                    <span>Share</span>
-                                                    <ul>
-                                                        <li> <a href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->name ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->name ?>" target="_blank" class="btn-floating blue"><i class="fab fa-facebook-f"></i></a></li>
+                                                        <a
+                                                            class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
+                                                                class="fas fa-share-alt tiny"></i></a>
+                                                        <span>Share</span>
+                                                        <ul>
+                                                            <li> <a href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->name ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->name ?>"
+                                                                    target="_blank" class="btn-floating blue"><i
+                                                                        class="fab fa-facebook-f"></i></a></li>
 
-                                                        <li><a href="http://twitter.com/home?url=<?php echo $value->name ?>+<?php echo current_url(); ?>" target="_blank" class="btn-floating blue"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="http://twitter.com/home?url=<?php echo $value->name ?>+<?php echo current_url(); ?>"
+                                                                    target="_blank" class="btn-floating blue"><i
+                                                                        class="fab fa-twitter"></i></a></li>
 
-                                                        <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo current_url(); ?>&description=<?php $desc = str_replace(' ', '-', $value->name); echo $desc ?>" class="btn-floating red" target="_blank"><i class="fab fa-pinterest-p"></i></a></li>
+                                                            <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo current_url(); ?>&description=<?php $desc = str_replace(' ', '-', $value->name); echo $desc ?>"
+                                                                    class="btn-floating red" target="_blank"><i
+                                                                        class="fab fa-pinterest-p"></i></a></li>
 
-                                                         <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $value->name ?>&amp;amp;source=5ineproject.com/shaadibaraati" target="_blank" class="btn-floating blue"><i class="fab fa-linkedin-in"></i></a></li>
-                                                    </ul>
+                                                            <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $value->name ?>&amp;amp;source=5ineproject.com/shaadibaraati"
+                                                                    target="_blank" class="btn-floating blue"><i
+                                                                        class="fab fa-linkedin-in"></i></a></li>
+                                                        </ul>
 
+                                                    </div>
                                                 </div>
-                                                </div>
-                                                <a class="waves-effect waves-light btn red plr20 accent-4 white-text" onclick="focusMethod()">View
+                                                <a class="waves-effect waves-light btn red plr20 accent-4 white-text"
+                                                    onclick="focusMethod()">View
                                                     Contact</a>
                                             </div>
                                         </div>
@@ -144,7 +160,8 @@ $this->load->model('m_search');
                         <!-- tabs -->
                         <div class="tab-links">
                             <ul class="tabs z-depth-1">
-                                <li class="tab "><a href="#about-vendor" class="active">About <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
+                                <li class="tab "><a href="#about-vendor" class="active">About
+                                        <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
                                 <li class="tab"><a href="#!">Services</a></li>
                                 <li class="tab"><a href="#!">Gallery</a></li>
                                 <li class="tab"><a href="#!">Reviews</a></li>
@@ -162,7 +179,8 @@ $this->load->model('m_search');
                                             <div class="dt-card-title">
                                                 <p><?php echo (!empty($value->name))?$value->name:''; ?></p>
                                             </div>
-                                            <p><?php echo (!empty($value->detail))?wordwrap($value->detail,25,"<br>\n"):''; ?></p>
+                                            <p><?php echo (!empty($value->detail))?wordwrap($value->detail,25,"<br>\n"):''; ?>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +226,7 @@ $this->load->model('m_search');
                                                     echo $thecash; ?> per day</span>
                                                 </li>
                                             </ul>
-                                            
+
                                         </div>
                                     </div>
 
@@ -219,7 +237,7 @@ $this->load->model('m_search');
                                         <form class="row m0" action="">
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="name" type="text" class="validate">
+                                                    <input id="name" type="text" class="validate">
                                                     <label for="name">Name</label>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -229,7 +247,7 @@ $this->load->model('m_search');
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="phone" type="text" class="validate">
+                                                    <input id="phone" type="text" class="validate">
                                                     <label for="phone">Mobile Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -239,7 +257,7 @@ $this->load->model('m_search');
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="guest" type="text" class="validate">
+                                                    <input id="guest" type="text" class="validate">
                                                     <label for="guest">Number of Guest</label>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -248,10 +266,11 @@ $this->load->model('m_search');
                                                 </div>
                                             </div>
                                             <div class="input-field">
-                                                <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                                                <button
+                                                    class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
                                         </form>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
 
@@ -261,6 +280,7 @@ $this->load->model('m_search');
 
                     <div class="clearfix"></div>
                     <!-- Servicess -->
+                    <?php if(!empty($value->service) || !empty($value->faq)){ ?>
                     <div id="vendor-services">
                         <div class="card">
                             <div class="card-container">
@@ -272,18 +292,21 @@ $this->load->model('m_search');
                                 <div class="row m0">
 
                                     <?php if ($value->service) {
-                                        foreach ($value->service as $servic => $ser) { ?>
+                                            foreach ($value->service as $servic => $ser) { ?>
 
-                                            <div class="col s6 m4 l2">
+                                    <div class="col s6 m4 l2">
                                         <div class="service-box center-align">
                                             <img class="responsive-img z-depth-1"
-                                src="<?php echo (!empty($ser->image))?base_url().$ser->image:''; ?>"
-                                alt=""> <p class="sb-title m0"><?php echo (!empty($ser->service))?$ser->service:''; ?></p>
-                                            <p class="detail m0"><?php echo (!empty($ser->subtitle))?$ser->subtitle:''; ?></p>
+                                                src="<?php echo (!empty($ser->image))?base_url().$ser->image:''; ?>"
+                                                alt="">
+                                            <p class="sb-title m0">
+                                                <?php echo (!empty($ser->service))?$ser->service:''; ?></p>
+                                            <p class="detail m0">
+                                                <?php echo (!empty($ser->subtitle))?$ser->subtitle:''; ?></p>
                                         </div>
                                     </div>
                                     <?php  } } ?>
-                                    
+
                                     <div class="clearfix"></div>
 
                                     <div class="col s12">
@@ -295,11 +318,12 @@ $this->load->model('m_search');
                                             </div>
                                             <transition name="slide">
                                                 <div class="vs-contentbox" v-if="isShow">
-                                                    <div class="vs-ic-content" v-for="i in 6">
-                                                        <p class="vs-qtn">Total year of Experience?</p>
-                                                        <p class="vs-aws">Lorem, ipsum dolor sit amet consectetur
-                                                            adipisicing.</p>
+                                                    <?php  foreach ($value->faq as $key => $faqs) {  ?>
+                                                    <div class="vs-ic-content">
+                                                        <p class="vs-qtn"><?php echo $faqs->quotation ?></p>
+                                                        <p class="vs-aws"><?php echo $faqs->asw ?></p>
                                                     </div>
+                                                    <?php } ?>
                                                 </div>
                                             </transition>
                                         </div>
@@ -309,6 +333,7 @@ $this->load->model('m_search');
                         </div>
                     </div>
                     <div class="clearfix"></div>
+                    <?php } ?>
                     <!-- end Servicess -->
 
                     <!-- gallery -->
@@ -361,19 +386,23 @@ $this->load->model('m_search');
 
                                     <?php if (!empty($value->video)) {
                                         foreach ($value->video as $vid => $vids) { ?>
-                                           <div class="col s12 m6 l4 mb15">
-                                    <?php //youtube
+                                    <div class="col s12 m6 l4 mb15">
+                                        <?php //youtube
                                         if ($vids->type == '1') { ?>
-                                            <iframe width="100%" height="200"
-                                            src="https://www.youtube.com/embed/<?php echo $vids->link ?>" frameborder="0"
+                                        <iframe width="100%" height="200"
+                                            src="https://www.youtube.com/embed/<?php echo $vids->link ?>"
+                                            frameborder="0"
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
-                                            <?php }else if ($vids->type == '2'){ ?>
-                                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+                                        <?php }else if ($vids->type == '2'){ ?>
+                                        <iframe
+                                            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476"
+                                            width="auto" height="200" style="border:none;overflow:auto" scrolling="no"
+                                            frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 
-                                            <?php } ?>
-                                        </div>
-                                     <?php  } } ?>
+                                        <?php } ?>
+                                    </div>
+                                    <?php  } } ?>
 
                                 </div>
                             </div>
@@ -402,50 +431,57 @@ $this->load->model('m_search');
 
                                             <div class="row m0 check-group">
                                                 <p>
-                                                  <label>
-                                                    <input name="rev_proffesional" class="filled-in" type="checkbox"      @change="onFocus" value="1" />
-                                                    <span>Professionalism</span>
-                                                  </label>
-                                              </p>
+                                                    <label>
+                                                        <input name="rev_proffesional" class="filled-in" type="checkbox"
+                                                            @change="onFocus" value="1" />
+                                                        <span>Professionalism</span>
+                                                    </label>
+                                                </p>
                                                 <p>
-                                                  <label>
-                                                    <input name="rev_quality" class="filled-in" type="checkbox" @change="onFocus" value="1"/>
-                                                    <span>Quality of Work</span>
-                                                  </label>
-                                              </p>
+                                                    <label>
+                                                        <input name="rev_quality" class="filled-in" type="checkbox"
+                                                            @change="onFocus" value="1" />
+                                                        <span>Quality of Work</span>
+                                                    </label>
+                                                </p>
 
                                                 <p>
-                                                  <label>
-                                                    <input name="rev_service" class="filled-in" type="checkbox"     @change="onFocus" value="1" />
-                                                    <span>On Time Service</span>
-                                                  </label>
-                                              </p>
+                                                    <label>
+                                                        <input name="rev_service" class="filled-in" type="checkbox"
+                                                            @change="onFocus" value="1" />
+                                                        <span>On Time Service</span>
+                                                    </label>
+                                                </p>
 
                                                 <p>
-                                                  <label>
-                                                    <input name="rev_money" class="filled-in" type="checkbox"   @change="onFocus" value="1"/>
-                                                    <span>Value for Money</span>
-                                                  </label>
-                                              </p>
+                                                    <label>
+                                                        <input name="rev_money" class="filled-in" type="checkbox"
+                                                            @change="onFocus" value="1" />
+                                                        <span>Value for Money</span>
+                                                    </label>
+                                                </p>
 
                                                 <p>
-                                                  <label>
-                                                    <input name="rev_experience" class="filled-in" type="checkbox"  @change="onFocus" value="1"/>
-                                                    <span>Highly Experienced</span>
-                                                  </label>
-                                              </p>
+                                                    <label>
+                                                        <input name="rev_experience" class="filled-in" type="checkbox"
+                                                            @change="onFocus" value="1" />
+                                                        <span>Highly Experienced</span>
+                                                    </label>
+                                                </p>
                                             </div>
 
                                             <div class="row m0">
                                                 <div class="input-field col l7 s12">
-                                                    <textarea id="textarea1" name="rev_description" v-on:focus="onFocus" class="materialize-textarea" required=""></textarea>
+                                                    <textarea id="textarea1" name="rev_description" v-on:focus="onFocus"
+                                                        class="materialize-textarea" required=""></textarea>
                                                     <label for="textarea1">Write Review</label>
                                                 </div>
                                             </div>
                                             <input type="hidden" value="" name="rev_rating" v-model="rev_rating">
                                             <input type="hidden" value="<?php echo $value->id ?>" name="rev_vendor">
                                             <input type="hidden" value="<?php echo $value->uniq ?>" name="vendoruniq">
-                                                    <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                                            <button
+                                                class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                         </div>
                                     </form>
                                     <div class="clearfix"></div>
@@ -454,14 +490,14 @@ $this->load->model('m_search');
 
                                     <div class="full-line"></div>
 
-                                <?php } ?>
+                                    <?php } ?>
 
                                 </div>
 
                                 <div class="row m0">
                                     <div class="">
 
-                                            <?php 
+                                        <?php 
 
                                             if(!empty($value->review)){
 
@@ -479,115 +515,137 @@ $this->load->model('m_search');
                                                     }
                                                      $avg = $ratingSum / count($value->review);
                                             }  ?>
-                                            <div class="">
+                                        <div class="">
                                             <div class="row m0">
                                                 <div class="push  col m5">
                                                     <div class="rating">
                                                         <div class="title">
-                                                           Rating Distribution <?php echo (!empty($value->review))?count($value->review):''; ?>reviews
+                                                            Rating Distribution
+                                                            <?php echo (!empty($value->review))?count($value->review):''; ?>reviews
                                                         </div>
 
                                                         <div class="score">
                                                             <div class="average-score">
-                                                                <p class="numb"><?php echo (!empty($avg))?round($avg, 1):''; ?></p>
+                                                                <p class="numb">
+                                                                    <?php echo (!empty($avg))?round($avg, 1):''; ?></p>
                                                             </div>
                                                             <div class="queue">
 
-                                                                                                    <?php
+                                                                <?php
 
-    for ($i = 0; $i < 5; $i++) {
+                                                            for ($i = 0; $i < 5; $i++) {
 
-        (!empty($avg))?$avg:$avg=''; 
+                                                                (!empty($avg))?$avg:$avg=''; 
 
 
-        if ($i < round($avg, 0, PHP_ROUND_HALF_DOWN)) {
-           $startCheck = ' ratingStar';
-        } else { 
-           $startCheck = '';
-        }
-        echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
-    }
-    ?>
-                                                                 
+                                                                if ($i < round($avg, 0, PHP_ROUND_HALF_DOWN)) {
+                                                                $startCheck = ' ratingStar';
+                                                                } else { 
+                                                                $startCheck = '';
+                                                                }
+                                                                echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
+                                                            }
+                                                            ?>
+
                                                             </div>
                                                         </div>
                                                         <div class="clearfix"></div>
 
-                            <ul class="queue-box">
-                                <li class="five-star">
-                                    <span>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="start-count"><?php echo (!empty($num5))?$num5:'' ?></span>
-                                    <span class="start-progress">
-                                        <span class="start-bar"
-                                            style="width: <?php echo (!empty($value->review))?(($num5 / count($value->review)) * 100):'';  ?>%"></span>
-                                    </span>
-                                </li>
-                                <li class="four-star">
-                                    <span>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="start-count"><?php echo (!empty($num4))?$num4:'' ?></span>
-                                    <span class="start-progress">
-                                        <span class="start-bar"
-                                            style="width:<?php echo (!empty($value->review))?(($num4 / count($value->review)) * 100):'';  ?>%"></span>
-                                    </span>
-                                </li>
-                                <li class="three-star">
-                                    <span>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="start-count"><?php echo (!empty($num3))?$num3:'' ?></span>
-                                    <span class="start-progress">
-                                        <span class="start-bar"
-                                            style="width:<?php echo (!empty($value->review))?(($num3 / count($value->review)) * 100):'';  ?>%"></span>
-                                    </span>
+                                                        <ul class="queue-box">
+                                                            <li class="five-star">
+                                                                <span>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="start-count"><?php echo (!empty($num5))?$num5:'' ?></span>
+                                                                <span class="start-progress">
+                                                                    <span class="start-bar"
+                                                                        style="width: <?php echo (!empty($value->review))?(($num5 / count($value->review)) * 100):'';  ?>%"></span>
+                                                                </span>
+                                                            </li>
+                                                            <li class="four-star">
+                                                                <span>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="start-count"><?php echo (!empty($num4))?$num4:'' ?></span>
+                                                                <span class="start-progress">
+                                                                    <span class="start-bar"
+                                                                        style="width:<?php echo (!empty($value->review))?(($num4 / count($value->review)) * 100):'';  ?>%"></span>
+                                                                </span>
+                                                            </li>
+                                                            <li class="three-star">
+                                                                <span>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="start-count"><?php echo (!empty($num3))?$num3:'' ?></span>
+                                                                <span class="start-progress">
+                                                                    <span class="start-bar"
+                                                                        style="width:<?php echo (!empty($value->review))?(($num3 / count($value->review)) * 100):'';  ?>%"></span>
+                                                                </span>
 
-                                </li>
-                                <li class="two-star">
-                                    <span>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="start-count"><?php echo (!empty($num2))?$num2:'' ?></span>
-                                    <span class="start-progress">
-                                        <span class="start-bar"
-                                            style="width:<?php echo (!empty($value->review))?(($num2 / count($value->review)) * 100):'';  ?>%"></span>
+                                                            </li>
+                                                            <li class="two-star">
+                                                                <span>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="start-count"><?php echo (!empty($num2))?$num2:'' ?></span>
+                                                                <span class="start-progress">
+                                                                    <span class="start-bar"
+                                                                        style="width:<?php echo (!empty($value->review))?(($num2 / count($value->review)) * 100):'';  ?>%"></span>
 
-                                            
-                                    </span>
-                                </li>
-                                <li class="one-star">
-                                    <span>
-                                        <i class="fa fa-star ratingStar" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="start-count"><?php echo (!empty($num1))?$num1:'' ?></span>
-                                    <span class="start-progress">
-                                        <span class="start-bar"
-                                            style="width:<?php echo (!empty($value->review))?(($num1 / count($value->review)) * 100):'';  ?>%"></span>
-                                    </span>
-                                </li>
-                            </ul>
+
+                                                                </span>
+                                                            </li>
+                                                            <li class="one-star">
+                                                                <span>
+                                                                    <i class="fa fa-star ratingStar"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span
+                                                                    class="start-count"><?php echo (!empty($num1))?$num1:'' ?></span>
+                                                                <span class="start-progress">
+                                                                    <span class="start-bar"
+                                                                        style="width:<?php echo (!empty($value->review))?(($num1 / count($value->review)) * 100):'';  ?>%"></span>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
                                                     </div><!-- /.rating -->
                                                 </div><!-- /.col-md-6 -->
 
@@ -599,9 +657,9 @@ $this->load->model('m_search');
                                                             foreach ($value->review as $revs => $revsw) { ?>
                                                         <li>
                                                             <div class="review-metadata">
-                                                                
+
                                                                 <div class="queue">
-                                                                <?php
+                                                                    <?php
                                                                     for ($i = 0; $i < 5; $i++) {
                                                                     if ($i < $revsw->rating) {
                                                                         $startCheck = ' ratingStar';
@@ -613,26 +671,31 @@ $this->load->model('m_search');
                                                                 ?>
                                                                 </div>
                                                                 <div class="name">
-                                                                    <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?> : <span> <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span> 
+                                                                    <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?>
+                                                                    : <span>
+                                                                        <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span>
                                                                 </div>
                                                             </div><!-- /.review-metadata -->
                                                             <div class="review-content">
                                                                 <p>
-                                                                    <span class="bold"><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span><br>
+                                                                    <span
+                                                                        class="bold"><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span><br>
 
-                                                                   <?php echo $revsw->review; ?>
+                                                                    <?php echo $revsw->review; ?>
                                                                 </p>
                                                             </div><!-- /.review-content -->
                                                         </li>
-                                                         <?php   } } ?>
-                                                        
+                                                        <?php   } } ?>
+
 
 
 
                                                         <li>
-                                                            <button class="waves-effect waves-light btn red plr30 accent-4 white-text">View More</button>
+                                                            <button
+                                                                class="waves-effect waves-light btn red plr30 accent-4 white-text">View
+                                                                More</button>
                                                         </li>
-                                                       
+
                                                     </ul><!-- /.review-list -->
                                                 </div><!-- /.col-md-12 -->
                                             </div>
@@ -641,7 +704,7 @@ $this->load->model('m_search');
 
                                         </div>
 
-                                    <?php } ?>
+                                        <?php } ?>
 
 
 
@@ -657,58 +720,58 @@ $this->load->model('m_search');
         </section>
 
         <section class="sec bg-col">
-        <div class="container">
-            <div class="row">
-                <div class="col l12">
-                    <div class="vender-detail">
-                        <h4>Get In Touch</h4>
-                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive " alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                            dis parturient montes, nascetur ridiculus mus. </p>
+            <div class="container">
+                <div class="row">
+                    <div class="col l12">
+                        <div class="vender-detail">
+                            <h4>Get In Touch</h4>
+                            <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive " alt="">
+                            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                                dis parturient montes, nascetur ridiculus mus. </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="touch-email">
-                <div class="row">
-                    <div class="col l9 push-l2 m9 push-m2 s12">
+                <div class="touch-email">
+                    <div class="row">
+                        <div class="col l9 push-l2 m9 push-m2 s12">
+                            <div class="row">
+                                <form action="<?php echo base_url('subscribe') ?>" method="post" id="demo">
+                                    <div class="col l8 m8 s8">
+                                        <div class="input-field if-mail">
+                                            <input id="email" type="email" name="email" class="validate email-si"
+                                                placeholder="Email" required="">
+                                            <span class="helper-text red-text"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col l4 m4 s4">
+                                        <button type="submit" class="btn-find-get">Get Start</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="row">
-                            <form action="<?php echo base_url('subscribe') ?>" method="post" id="demo">
-                            <div class="col l8 m8 s8">
-                                <div class="input-field if-mail">
-                                    <input id="email" type="email" name="email" class="validate email-si"
-                                        placeholder="Email" required=""  >
-                                        <span class="helper-text red-text" ></span>
+                            <div class="col l7 push-l4 m7 push-m4 s12">
+                                <div class="social-media ">
+                                    <ul>
+                                        <li><img src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
+                                                class="img-responisve socil-icon" alt=""></li>
+                                        <li><img src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
+                                                class="img-responisve socil-icon" alt=""></li>
+                                        <li><img src="<?php echo base_url() ?>assets/img/svg/pinterest-brands.svg"
+                                                class="img-responisve socil-icon" alt=""></li>
+                                        <li><img src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
+                                                class="img-responisve socil-icon" alt=""></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="col l4 m4 s4">
-                                <button type="submit" class="btn-find-get">Get Start</button>
-                            </div>
-                            </form>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col l7 push-l4 m7 push-m4 s12">
-                            <div class="social-media ">
-                                <ul>
-                                    <li><img src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
-                                            class="img-responisve socil-icon" alt=""></li>
-                                    <li><img src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
-                                            class="img-responisve socil-icon" alt=""></li>
-                                    <li><img src="<?php echo base_url() ?>assets/img/svg/pinterest-brands.svg"
-                                            class="img-responisve socil-icon" alt=""></li>
-                                    <li><img src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
-                                            class="img-responisve socil-icon" alt=""></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
         </section>
 
-    <?php } } ?>
+        <?php } } ?>
 
 
 
@@ -724,7 +787,7 @@ $this->load->model('m_search');
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-        <?php $this->load->view('includes/message'); ?>
+    < ? php $this - > load - > view('includes/message'); ? >
     </script>
 
     <script>
@@ -734,10 +797,10 @@ $this->load->model('m_search');
         data: {
             isShow: true,
             visible: false,
-            favcol:false,
-            vndr_id:'',
-            rev_rating:'',
-            ar:'1',
+            favcol: false,
+            vndr_id: '',
+            rev_rating: '',
+            ar: '1',
             imgs: [
                 // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
                 // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
@@ -775,83 +838,82 @@ $this->load->model('m_search');
                 const formData = new FormData();
                 formData.append('vndr_id', this.$refs.myTestField.value);
                 axios.post('<?php echo base_url() ?>detail/full-gallery', formData)
-                .then(response => {
-                    if(response.data != ''){
-                        this.imgs = response.data;
-                    }
-                })
-                .catch(error => {
-                    console.log(response);
-                    
-                })
+                    .then(response => {
+                        if (response.data != '') {
+                            this.imgs = response.data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(response);
+
+                    })
             },
-             getData: function () {
+            getData: function() {
                 const formData = new FormData();
                 formData.append('vndr_id', this.$refs.myTestField.value);
                 axios.post('<?php echo base_url() ?>detail/gallery', formData)
-                .then(response => {
-                    if(response.data != ''){
-                        this.imgs = response.data;
-                    }
-                })
-                .catch(error => {
-                    console.log(response);
-                    
-                })
+                    .then(response => {
+                        if (response.data != '') {
+                            this.imgs = response.data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(response);
 
-             },
+                    })
 
-             onFocus() {
+            },
+
+            onFocus() {
                 axios.post('<?php echo base_url() ?>review/session-check')
-                .then(response => {
-                        if(response.data == ''){
+                    .then(response => {
+                        if (response.data == '') {
                             window.location.href = "<?php echo base_url('login') ?>";;
                         }
                         this.rev_rating = this.ar;
-                })
-                .catch(error => {
-                })
+                    })
+                    .catch(error => {})
             },
-            favourite(){
+            favourite() {
                 const formData = new FormData();
                 formData.append('vndr_id', this.$refs.myTestField.value);
                 axios.post('<?php echo base_url() ?>make-favourite', formData)
-                .then(response => {
-                        if(response.data == '5'){
+                    .then(response => {
+                        if (response.data == '5') {
                             window.location.href = "<?php echo base_url('login') ?>";;
-                        }else if(response.data == '0'){
+                        } else if (response.data == '0') {
                             this.favcol = false;
-                        }else if(response.data == '1'){
+                        } else if (response.data == '1') {
                             this.favcol = true;
                         }
-                })
-                .catch(error => {
-                    console.log(response);
-                    
-                })
+                    })
+                    .catch(error => {
+                        console.log(response);
+
+                    })
 
             },
-            getfavourite(){
+            getfavourite() {
                 const formData = new FormData();
                 formData.append('vndr_id', this.$refs.myTestField.value);
                 axios.post('<?php echo base_url() ?>get-favourite', formData)
-                .then(response => {
-                        if(response.data == '5'){
+                    .then(response => {
+                        if (response.data == '5') {
                             window.location.href = "<?php echo base_url('login') ?>";;
-                        }else if(response.data == '0'){
+                        } else if (response.data == '0') {
                             this.favcol = false;
-                        }else if(response.data == '1'){
+                        } else if (response.data == '1') {
                             this.favcol = true;
                         }
-                })
-                .catch(error => {
-                    console.log(response);
-                    
-                })
+                    })
+                    .catch(error => {
+                        console.log(response);
+
+                    })
 
             }
         },
-        mounted: function(){
+        mounted: function() {
             this.getData();
             this.getfavourite();
 
@@ -859,17 +921,16 @@ $this->load->model('m_search');
         }
     });
 
-    focusMethod = function getFocus() {           
+    focusMethod = function getFocus() {
         document.getElementById("name").focus();
     }
 
-   document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {
-      direction: 'right'
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {
+            direction: 'right'
+        });
     });
-  });
-
     </script>
 
 </body>
