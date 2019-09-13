@@ -20,6 +20,10 @@ $this->load->model('m_search');
         right: 0;
         bottom: 0;
     }
+    html {
+  scroll-behavior: smooth;
+}
+
 
     .check-group p {
         float: left;
@@ -95,9 +99,7 @@ $this->load->model('m_search');
                                                 </div>
 
                                                 <div class="btn-group">
-                                                    <a
-                                                        class="btn-floating  waves-effect waves-red transparent z-depth-0"><i
-                                                            class="fas fa-star tiny"></i></a>
+                                                    <a class="btn-floating  waves-effect waves-red transparent z-depth-0" href="#vendor-rating"><i class="fas fa-star tiny"></i></a>
                                                     <span>
 
                                                         <?php if (!empty($value->review)) {
@@ -162,10 +164,10 @@ $this->load->model('m_search');
                             <ul class="tabs z-depth-1">
                                 <li class="tab "><a href="#about-vendor" class="active">About
                                         <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
-                                <li class="tab"><a href="#!">Services</a></li>
-                                <li class="tab"><a href="#!">Gallery</a></li>
-                                <li class="tab"><a href="#!">Reviews</a></li>
-                                <li class="tab right"><a href="#!">Privacy Policy <i
+                                <li class="tab"><a href="#vendor-services">Services</a></li>
+                                <li class="tab"><a href="#vendor-gallery">Gallery</a></li>
+                                <li class="tab"><a href="#vendor-rating">Reviews</a></li>
+                                <li class="tab right"><a href="#policy">Privacy Policy <i
                                             class=" tiny fas fa-info-circle"></i></a></li>
                             </ul>
                         </div>
@@ -179,7 +181,7 @@ $this->load->model('m_search');
                                             <div class="dt-card-title">
                                                 <p><?php echo (!empty($value->name))?$value->name:''; ?></p>
                                             </div>
-                                            <p><?php echo (!empty($value->detail))?wordwrap($value->detail,25,"<br>\n"):''; ?>
+                                            <p><?php echo (!empty($value->detail))? $value->detail :''; ?>
                                             </p>
                                         </div>
                                     </div>
@@ -187,6 +189,26 @@ $this->load->model('m_search');
                             </div>
                         </div>
                         <!-- end about vendor -->
+
+                        <!-- vendor policy  -->
+                         <?php if(!empty($value->policy)){ ?>               
+                            <div class="about-vendor" id="policy">
+                                <div class="card">
+                                    <div class="card-container">
+                                        <div class="row m0">
+                                        <div class="dt-card-title col "><p> Privacy Policy</p></div>
+                                            <div class="col s12">
+                                                
+                                                <p><?php echo (!empty($value->policy))?$value->policy : ''; ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         <?php } ?>
+
+
                     </div><!-- left -->
 
                     <div class="col s12 m12 l4">
@@ -275,13 +297,15 @@ $this->load->model('m_search');
                             </div>
 
                             <img src="https://dummyimage.com/360x400/a81010/ffffff" class="responsive-img" alt="">
+                             <div id="vendor-services"></div>                       
                         </div>
+
                     </div><!-- right -->
 
                     <div class="clearfix"></div>
                     <!-- Servicess -->
                     <?php if(!empty($value->service) || !empty($value->faq)){ ?>
-                    <div id="vendor-services">
+                    <div id="">
                         <div class="card">
                             <div class="card-container">
                                 <div class="col s12">
@@ -353,7 +377,7 @@ $this->load->model('m_search');
                                             <div @click="() => showImg(index)" v-if="index < 9">
                                                 <img :src="src" class="">
                                             </div>
-                                            <div v-else-if="index == 9 " @click="loadMore" class="load-more-pick">
+                                            <div v-else-if="index == 9 && imgs.length < 11" @click="loadMore" class="load-more-pick">
                                                 <span class="morecount">+100 more</span>
                                                 <img :src="src" class="">
                                             </div>
@@ -406,12 +430,13 @@ $this->load->model('m_search');
 
                                 </div>
                             </div>
+                            <div id="vendor-rating"></div>
                         </div>
                     </div>
                     <!-- end video section -->
 
                     <!-- rating and review -->
-                    <div id="vendor-rating">
+                    <div  >
                         <div class="card">
                             <div class="card-container">
                                 <div class="row m0">
@@ -787,7 +812,7 @@ $this->load->model('m_search');
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-    < ? php $this - > load - > view('includes/message'); ? >
+    <?php $this->load-> view('includes/message'); ?>
     </script>
 
     <script>
@@ -801,18 +826,7 @@ $this->load->model('m_search');
             vndr_id: '',
             rev_rating: '',
             ar: '1',
-            imgs: [
-                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/member/72861/1552031350_Day2_Apula_Nikhil_81.jpg',
-                // 'https://image.wedmegood.com/resized/1000X/uploads/vendor_cover_pic/15084/6aebad28-3c3d-436e-a87f-ba2c70f04d46.png',
-            ],
+            imgs: [],
         },
 
         methods: {
@@ -928,8 +942,12 @@ $this->load->model('m_search');
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.fixed-action-btn');
         var instances = M.FloatingActionButton.init(elems, {
-            direction: 'right'
+            direction: 'buttom',
+            // hoverEnabled: false
         });
+
+        var scrolls = document.querySelectorAll('.scrollspy');
+        var instances = M.ScrollSpy.init(scrolls);
     });
     </script>
 

@@ -309,7 +309,7 @@ $this->load->model('m_search');
                                                     </div>
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">
-                                                        <p class="m0 r-crd-category"><?php echo 'Photo + Video' ?></p>
+                                                        <p class=" r-crd-category"><?php echo 'Photo + Video' ?></p>
                                                     </div>
                                                     <div class="col s12 m6 hide-on-small-only">
                                                         <p class="m0 r-crd-ratings"><?php echo $this->ci->m_search->countReview($value->id) ?> reviews <span class="c-badge green"><i class="material-icons">star</i> 5.0</span></p>
