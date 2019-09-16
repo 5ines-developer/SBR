@@ -80,13 +80,12 @@ class Search extends CI_Controller {
 		$data='';
 		$vendor = $this->input->post('vendor');
 		$result = $this->m_search->get_search(trim($vendor));
-
 		if (!empty($result)) {
 			foreach ($result as $key => $value) {
 				$city 		= $this->m_search->SingleCity($value->city);
 				$category 	= $this->m_search->SingleCategory($value->city);
 				$data .= '<li class="sg-result-list left-align">';
-				$data .= '<a href="'.base_url().'detail/'.str_replace(" ","-",strtolower($value->categoryname)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq.'">
+				$data .= '<a href="'.base_url().'detail/'.urlencode(str_replace(" ","-",strtolower($value->categoryname))).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq.'">
 					<div class="vendor-inf">
 						<div class="row m0">
 							<div class="left">

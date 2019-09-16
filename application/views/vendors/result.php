@@ -14,13 +14,42 @@ $this->load->model('m_search');
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <style>
+    .no-result{
+        margin-top:60px;
+        margin-bottom:60px;
+    }
+    .preloader{
+        display:none;
+    }
+    .preloader-wrapper.big {
+
+width: 30px;
+height: 30px;
+
+}
+    .previsible {
+
+        top: 110px;
+        text-align: center;
+        display:block;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        cursor: pointer;
+        left: 12px;
+
+    }
+    </style>
 </head>
 
 <body>
     <div id="app">
         <!-- header -->
-    <?php $this->load->view('includes/header.php'); ?>
-    <!-- end header -->
+        <?php $this->load->view('includes/header.php'); ?>
+        <!-- end header -->
 
         <!-- body  -->
         <section class="result-head">
@@ -29,30 +58,89 @@ $this->load->model('m_search');
                     <div class="col s12 m8 push-m2">
                         <h4 class="white-text">India's Favourite Wedding Planning Platform</h4>
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
-                        
 
-                            <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor"  v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
-                        
+
+                            <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor"
+                                v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+
                             <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
+
+                            <div class="preloader" :class="{'previsible': previsible }">
+                                <div class="preloader-wrapper big active" id="prelod">
+                                    <div class="spinner-layer spinner-blue">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-red">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-yellow">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="spinner-layer spinner-green">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
                             <div class="row m0">
                                 <div class="col s12 m6 ">
                                     <select name="ct" class="white select-search" id="sel-cato">
-                                        <option >All Categories</option>
+                                        <option value="">All Categories</option>
                                         <?php if (!empty($category)) {
                                                     foreach ($category as $categorys => $categories) { ?>
-                                                      <option value="<?php echo $categories->category ?>" 
-                                                        <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?>
-                                                            ><?php echo (!empty($categories->category))?$categories->category:''; ?></option>
-                                                <?php   } } ?>
+                                        <option value="<?php echo $categories->category ?>"
+                                            <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?>>
+                                            <?php echo (!empty($categories->category))?$categories->category:''; ?>
+                                        </option>
+                                        <?php   } } ?>
                                     </select>
                                 </div>
                                 <div class="col s12 m6">
                                     <select name="q" id="sel-city">
-                                        <option >All Cities</option>
-                                         <?php if (!empty($city)) {
+                                        <option value="">All Cities</option>
+                                        <?php if (!empty($city)) {
                                                     foreach ($city as $citys => $cities) { ?>
-                                                      <option value="<?php echo $cities->city ?>" <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?>><?php echo (!empty($cities->city))?$cities->city:''; ?></option>
-                                                <?php   } } ?>
+                                        <option value="<?php echo $cities->city ?>"
+                                            <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?>>
+                                            <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
+                                        <?php   } } ?>
                                     </select>
                                 </div>
                             </div>
@@ -62,18 +150,34 @@ $this->load->model('m_search');
                 </div>
             </div>
         </section>
+
+<?php if (empty($vendors)) { ?>
+            '<section class="no-result">
+
+    <div class="col l12">
+                        <center>
+                            <img src="<?php echo base_url('assets/img/no-result.png') ?>" alt="">
+                        </center>
+                        </div>
+
+    </section>
+<?php } ?>
+
         <section class="result-body">
             <div class="container-2">
                 <div class="row m0">
                     <!-- left menu -->
                     <div class="col s12 m4 l3">
-                        <a @click="isFilter = !isFilter" class="btn-floating btn filter-btn waves-effect waves-light red accent-4 hide-on-med-and-up"><i class="material-icons">filter_list</i></a>
+                        <a @click="isFilter = !isFilter"
+                            class="btn-floating btn filter-btn waves-effect waves-light red accent-4 hide-on-med-and-up"><i
+                                class="material-icons">filter_list</i></a>
                         <div class="filter-container" v-if="isFilter">
                             <div class="filter-header">
                                 <span><i class="material-icons">filter_list</i></span>
                                 <span>Filter by Your Choice</span>
-                                <span class="right center-align hide-on-med-and-up  waves-effect waves-red"  @click="isFilter = !isFilter">
-                                        <i class="material-icons" >close</i>
+                                <span class="right center-align hide-on-med-and-up  waves-effect waves-red"
+                                    @click="isFilter = !isFilter">
+                                    <i class="material-icons">close</i>
                                 </span>
                             </div>
                             <div class="filter-divider"></div>
@@ -171,7 +275,7 @@ $this->load->model('m_search');
 
                             <!-- Budget -->
                             <div class="filter-sub-head">
-                                <span >Budget</span>
+                                <span>Budget</span>
                                 <span class="right  waves-effect waves-red" @click="isbudget = !isbudget">
                                     <i class="material-icons" v-if="isbudget">remove</i>
                                     <i class="material-icons" v-if="!isbudget">add</i>
@@ -183,31 +287,31 @@ $this->load->model('m_search');
                                     <ul class="chekbox-item">
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="budget" class="filled-in"  value="1000" />
+                                                <input type="checkbox" name="budget" class="filled-in" value="1000" />
                                                 <span>1000</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="budget" class="filled-in"  />
+                                                <input type="checkbox" name="budget" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="budget" class="filled-in"  />
+                                                <input type="checkbox" name="budget" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="budget" class="filled-in"  />
+                                                <input type="checkbox" name="budget" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="budget" class="filled-in"  />
+                                                <input type="checkbox" name="budget" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
@@ -217,7 +321,7 @@ $this->load->model('m_search');
 
                             <!-- ratings -->
                             <div class="filter-sub-head">
-                                <span >Average ratings</span>
+                                <span>Average ratings</span>
                                 <span class="right  waves-effect waves-red" @click="isAvg = !isAvg">
                                     <i class="material-icons" v-if="isAvg">remove</i>
                                     <i class="material-icons" v-if="!isAvg">add</i>
@@ -229,31 +333,31 @@ $this->load->model('m_search');
                                     <ul class="chekbox-item">
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="rating" class="filled-in"  />
+                                                <input type="checkbox" name="rating" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="rating" class="filled-in"  />
+                                                <input type="checkbox" name="rating" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="rating" class="filled-in"  />
+                                                <input type="checkbox" name="rating" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="rating" class="filled-in"  />
+                                                <input type="checkbox" name="rating" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
                                         <li>
                                             <label>
-                                                <input type="checkbox" name="rating" class="filled-in"  />
+                                                <input type="checkbox" name="rating" class="filled-in" />
                                                 <span>Filled in</span>
                                             </label>
                                         </li>
@@ -274,7 +378,8 @@ $this->load->model('m_search');
                             <div class="col s6 m6 l4" v-for="item in ">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" target="_blank">
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>"
+                                            target="_blank">
                                             <div class="card-image">
                                                 <img
                                                     src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:'' ?>">
@@ -282,8 +387,10 @@ $this->load->model('m_search');
                                             <div class="card-content">
                                                 <div class="row m0">
                                                     <div class="col s12 m6">
-                                                        <p class="m0 r-crd-title"><?php echo (!empty($value->name))?$value->name:'' ?></p>
-                                                        <p class="m0 r-crd-location"><?php echo (!empty($value->city))?$value->city:'' ?></p>
+                                                        <p class="m0 r-crd-title">
+                                                            <?php echo (!empty($value->name))?$value->name:'' ?></p>
+                                                        <p class="m0 r-crd-location">
+                                                            <?php echo (!empty($value->city))?$value->city:'' ?></p>
                                                     </div>
                                                     <div class="col s12 m6">
                                                         <p class="m0 r-crd-price">&#8377; <?php
@@ -315,7 +422,10 @@ $this->load->model('m_search');
                                                         <p class=" r-crd-category"><?php echo 'Photo + Video' ?></p>
                                                     </div>
                                                     <div class="col s12 m6 hide-on-small-only">
-                                                        <p class="m0 r-crd-ratings"><?php echo $this->ci->m_search->countReview($value->id) ?> reviews <span class="c-badge green"><i class="material-icons">star</i> 5.0</span></p>
+                                                        <p class="m0 r-crd-ratings">
+                                                            <?php echo $this->ci->m_search->countReview($value->id) ?>
+                                                            reviews <span class="c-badge green"><i
+                                                                    class="material-icons">star</i> 5.0</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -323,7 +433,7 @@ $this->load->model('m_search');
                                     </div>
                                 </div>
                             </div>
-                            <?php   } } ?> 
+                            <?php   } } ?>
                         </div>
                         <div class="row m0">
                             <div class="col s12">
@@ -348,114 +458,114 @@ $this->load->model('m_search');
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
-        <?php $this->load->view('includes/message'); ?>
+    <?php $this->load->view('includes/message'); ?>
     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
-        });
-        var app = new Vue({
-            el: '#app',
-            data:{
-                listItem:'',
-                isShow:true,
-                isDay:true,
-                isbudget:true,
-                isAvg:true,
-                isFilter:true,
-                autocomplete:'',
-                vendor:'',
-                visible:false,
-                
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+    var app = new Vue({
+        el: '#app',
+        data: {
+            listItem: '',
+            isShow: true,
+            isDay: true,
+            isbudget: true,
+            isAvg: true,
+            isFilter: true,
+            autocomplete: '',
+            vendor: '',
+            visible: false,
+            previsible: false
+
+        },
+        created() {
+            window.addEventListener('resize', this.handleResize)
+            this.handleResize();
+        },
+        methods: {
+            handleResize() {
+                if (window.innerWidth <= 600) {
+                    this.isFilter = false;
+                }
             },
-            created() {
-                window.addEventListener('resize', this.handleResize)
-                this.handleResize();
-            },
-            methods: {
-                handleResize() {
-                    if(window.innerWidth <= 600){
-                        this.isFilter = false;
-                    }
-                },
 
 
-                vendorcheck(){
-                    this.autocomplete = '';
-                    this.visible = true;
-                    const formData = new FormData();
-                        formData.append('vendor', this.vendor);
-                        axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
-                      .then(response => {
-                        if(response.data != ''){
+            vendorcheck() {
+                this.autocomplete = '';
+                this.visible = true;
+                this.previsible = true;
+                const formData = new FormData();
+                formData.append('vendor', this.vendor);
+                axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
+                    .then(response => {
+                        if (response.data != '') {
+                            this.previsible = false;
                             this.autocomplete = response.data;
-                        }else{
+                        } else {
+                            this.previsible = false;
                             this.autocomplete = '';
                         }
-                      })
-                      .catch(error => {
+                    })
+                    .catch(error => {
+                        this.previsible = false;
                         if (error.response) {
                             this.errormsg = error.response.data.error;
                         }
-                      })
-                }
-            },
-
-            
+                    })
+            }
+        },
 
 
 
-        });
 
-       
+
+    });
     </script>
     <script>
-
-         //search in reasult page
-        $(document).ready(function(){
-
-
-              $(document).on('change','#sel-city,#sel-cato',function(e){
-                e.preventDefault();
-
-                var cityval = $('#sel-city').children("option:selected").val();
-                var city    = cityval.toLowerCase();
-                var categoryval = $('#sel-cato').children("option:selected").val();
-                var cat         = categoryval.toLowerCase();
-               
-                if (city == '') {
-                    var finalUrl = '<?php echo base_url()?>vendors/all/'+cat; 
-                }else{
-                    var finalUrl = '<?php echo base_url()?>vendors/'+city+'/'+cat; 
-                }
-                var url = finalUrl.replace(" ","-",);
-                $("#search-form").attr('action',url);
-                $("#search-form").submit();
-            });
+    // search in reasult page
+    $(document).ready(function() {
 
 
-            $('html').click(function() {
-                // $('.sg-box').hide();
-                $(".sg-box").removeClass("visible");
-            })
+        $(document).on('change', '#sel-city,#sel-cato', function(e) {
+            e.preventDefault();
 
-            $('.sg-box').click(function(e){
-                e.stopPropagation();
-            });
+            var cityval = $('#sel-city').children("option:selected").val();
+            var city = cityval.toLowerCase();
+            var categoryval = $('#sel-cato').children("option:selected").val();
+            var cat = categoryval.toLowerCase();
 
-            $('#search-vend').keyup(function(){
-                $(".sg-box").addClass("visible");
-            })
+            if (city == '') {
+                var finalUrl = '<?php echo base_url()?>vendors/all/' + cat.replace(" ", "-", );
+            } else {
+                var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat
+                    .replace(" ", "-", );
+            }
+            var url = finalUrl.replace(" ", "-", );
 
+
+
+            $("#search-form").attr('action', url);
+            $("#search-form").submit();
         });
 
 
-         
+        $('html').click(function() {
+            // $('.sg-box').hide();
+            $(".sg-box").removeClass("visible");
+        })
 
-       
+        $('.sg-box').click(function(e) {
+            e.stopPropagation();
+        });
 
+        $('#search-vend').keyup(function() {
+            $(".sg-box").addClass("visible");
+        })
+
+    });
     </script>
 </body>
 
