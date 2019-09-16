@@ -15,7 +15,6 @@ $this->load->model('m_search');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
-<<<<<<< HEAD
         .fixed-action-btn {
             position: relative;
             right: 0;
@@ -39,7 +38,6 @@ $this->load->model('m_search');
         [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::after {
             background-color: #d50000;
         }
-=======
     .fixed-action-btn {
         position: relative;
         right: 0;
@@ -48,7 +46,6 @@ $this->load->model('m_search');
     html {
   scroll-behavior: smooth;
 }
->>>>>>> 2f17124c4677feb082de6d44675afc09d835fe48
 
 
     .check-group p {
@@ -292,11 +289,8 @@ $this->load->model('m_search');
                                         <form class="row m0" action="<?php echo base_url()?>enquire-vendor" method="post">
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-<<<<<<< HEAD
                                                     <input  id="name" type="text" class="validate" name="e_name" <?php echo (!empty($user->su_name))?'readonly':''; ?> value="<?php echo (!empty($user->su_name))?$user->su_name:''; ?>">
-=======
                                                     <input id="name" type="text" class="validate">
->>>>>>> 2f17124c4677feb082de6d44675afc09d835fe48
                                                     <label for="name">Name</label>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -306,11 +300,7 @@ $this->load->model('m_search');
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-<<<<<<< HEAD
                                                     <input  id="phone" type="text" class="validate" name="e_mobile" <?php echo (!empty($user->su_phone))?'readonly':''; ?> value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>">
-=======
-                                                    <input id="phone" type="text" class="validate">
->>>>>>> 2f17124c4677feb082de6d44675afc09d835fe48
                                                     <label for="phone">Mobile Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -318,7 +308,6 @@ $this->load->model('m_search');
                                                     <label for="date">Funcation Date</label>
                                                 </div>
                                             </div>
-<<<<<<< HEAD
 
                                             <?php if ($value->category == 'wedding venues') { ?> 
                                                 <div class="row m0">
@@ -330,12 +319,6 @@ $this->load->model('m_search');
                                                         <input id="rooms" type="text" class="validate" name="rooms">
                                                         <label for="rooms">No of rooms</label>
                                                     </div>
-=======
-                                            <div class="row m0">
-                                                <div class="input-field col s6">
-                                                    <input id="guest" type="text" class="validate">
-                                                    <label for="guest">Number of Guest</label>
->>>>>>> 2f17124c4677feb082de6d44675afc09d835fe48
                                                 </div>
                                                 <div class="row m0">
                                                     <p>Function Type</p>
@@ -1036,17 +1019,14 @@ $this->load->model('m_search');
             // hoverEnabled: false
         });
 
-<<<<<<< HEAD
      document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(elems, options);
   });
 
-=======
         var scrolls = document.querySelectorAll('.scrollspy');
         var instances = M.ScrollSpy.init(scrolls);
     });
->>>>>>> 2f17124c4677feb082de6d44675afc09d835fe48
     </script>
 
 </body>
