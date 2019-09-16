@@ -29,12 +29,15 @@ $this->load->model('m_search');
                     <div class="col s12 m8 push-m2">
                         <h4 class="white-text">India's Favourite Wedding Planning Platform</h4>
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
-                            <input type="search" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+                        
+
+                            <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor"  v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+                        
                             <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
                             <div class="row m0">
-                                <div class="col s12 m6">
+                                <div class="col s12 m6 ">
                                     <select name="ct" class="white select-search" id="sel-cato">
-                                        <option value="">All Categories</option>
+                                        <option >All Categories</option>
                                         <?php if (!empty($category)) {
                                                     foreach ($category as $categorys => $categories) { ?>
                                                       <option value="<?php echo $categories->category ?>" 
@@ -45,7 +48,7 @@ $this->load->model('m_search');
                                 </div>
                                 <div class="col s12 m6">
                                     <select name="q" id="sel-city">
-                                        <option value="">All Cities</option>
+                                        <option >All Cities</option>
                                          <?php if (!empty($city)) {
                                                     foreach ($city as $citys => $cities) { ?>
                                                       <option value="<?php echo $cities->city ?>" <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?>><?php echo (!empty($cities->city))?$cities->city:''; ?></option>
@@ -269,8 +272,8 @@ $this->load->model('m_search');
                             <?php if (!empty($vendors)) {
                                 foreach ($vendors as $key => $value) { ?>
                             <div class="col s6 m6 l4" v-for="item in ">
-                                <div class="result-items">
-                                    <div class="card">
+                                <div class="result-items hoverable">
+                                    <div class="card z-depth-0">
                                         <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" target="_blank">
                                             <div class="card-image">
                                                 <img
