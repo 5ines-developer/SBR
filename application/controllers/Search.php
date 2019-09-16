@@ -31,7 +31,8 @@ class Search extends CI_Controller {
 		$per_page = 16;
 		$data['title']      = 'Vendors - ShaadiBaraati';
         $rows = $this->m_search->rowsCount(ucfirst($city),str_replace("-"," ",$category));
-        $data['vendors']    = $this->m_search->getSearch(ucfirst($city),str_replace("-"," ",$category),$per_page,$page);
+		$data['vendors']    = $this->m_search->getSearch(ucfirst($city),str_replace("-"," ",$category),$per_page,$page);
+
         $config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
 		$config['total_rows'] = (!empty($rows)? count($rows) : '0');
 		$config['per_page'] = 16;
@@ -82,11 +83,10 @@ class Search extends CI_Controller {
 
 		if (!empty($result)) {
 			foreach ($result as $key => $value) {
-
 				$city 		= $this->m_search->SingleCity($value->city);
 				$category 	= $this->m_search->SingleCategory($value->city);
 				$data .= '<li class="sg-result-list left-align">';
-				$data .= '<a href="'.base_url().'vendor/profile/'.$value->uniq.'">
+				$data .= '<a href="'.base_url().'detail/'.str_replace(" ","-",strtolower($value->categoryname)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq.'">
 					<div class="vendor-inf">
 						<div class="row m0">
 							<div class="col lg2">
@@ -94,7 +94,7 @@ class Search extends CI_Controller {
 							</div>
 							<div class="col lg10">
 								<p class="m0 black-text">'.$value->name.'</p>
-								<p class="auto-loc-cat black-text">'.$category['category'].',  '.$city['city'].'</p>
+								<p class="auto-loc-cat black-text">'.$value->categoryname.',  '.$value->cityname.'</p>
 							</div>
 						</div>
 					</div>
