@@ -1403,7 +1403,7 @@ ul.detail li span {
     border: 1px solid #fff;
     padding-left: 10px;
     padding-right: 10px;
-    color: #fff
+    color: #fff;
 }
 
 .result-head input[type="search"]:focus {
@@ -1442,7 +1442,8 @@ result-head .dropdown-content li>a,
 }
 
 .result-body {
-    padding: 30px 0
+    padding: 30px 0;
+    background: #fbfbfb;
 }
 
 .result-body .card .card-content {
@@ -1506,6 +1507,7 @@ r-crd-category {
 .filter-container {
     border: 1px solid #eaeaea;
     padding: 0 15px;
+    background: #fff;
 }
 
 .filter-header {
@@ -1713,7 +1715,7 @@ r-crd-category {
 .sg-box {
     visibility: visible;
     opacity: 0;
-    z-index: 999999;
+    z-index: 0;
     transition: 0.05s;
     padding: 15px;
     vertical-align: middle;
@@ -1736,6 +1738,7 @@ r-crd-category {
     visibility: visible;
     opacity: 1;
     display: block !important;
+    z-index: 999;
 }
 
 .sg-result {
@@ -1819,6 +1822,7 @@ r-crd-category {
     height: 175px;
     overflow: hidden;
     background: #d0021b;
+    border-radius: 4px 4px 0 0;
 }
 .result-items .card-image img {
     min-height: 175px;
@@ -1850,3 +1854,27 @@ r-crd-category {
 
 
 .steps-det img{background: #fff}
+.sg-result-list p {
+
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.sg-result-list p:first-child{font-weight: 600;}
+.sg-result-list p:last-child{font-weight: 500; color:#686868 }
+.ml15{margin-left: 15px}
+.result-items {
+    box-shadow: 0px 0px 11px -5px gray;
+}
+.result-items {
+    box-shadow: 0px 0px 7px -2px gray;
+    border-radius: 4px;
+}
+
+@media (max-width: 400px){
+    .sg-result-list{padding-left: 3px}
+    .ml15{margin:0px}
+}

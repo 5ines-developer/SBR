@@ -89,12 +89,12 @@ class Search extends CI_Controller {
 				$data .= '<a href="'.base_url().'vendor/profile/'.$value->uniq.'">
 					<div class="vendor-inf">
 						<div class="row m0">
-							<div class="col lg2">
+							<div class="left">
 								<img src="'.base_url().$value->profile_file.'" width="80">
 							</div>
-							<div class="col lg10">
+							<div class="left ml15">
 								<p class="m0 black-text">'.$value->name.'</p>
-								<p class="auto-loc-cat black-text">'.$category['category'].',  '.$city['city'].'</p>
+								<p class="auto-loc-cat">'.(!empty($category['category']) ? $category['category'].',  ' : '') .$city['city'].'</p>
 							</div>
 						</div>
 					</div>
