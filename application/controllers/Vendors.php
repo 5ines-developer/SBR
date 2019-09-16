@@ -155,6 +155,71 @@ class Vendors extends CI_Controller {
   }
 
 
+  public function enquireVendor($id='')
+  {
+        $name       =   $this->input->post('e_name');
+        $email      =   $this->input->post('e_email');
+        $mobile      =   $this->input->post('e_mobile');
+        $fnDate     =   $this->input->post('fn_date');
+        $guestNo    =   $this->input->post('guest_no');
+        $rooms      =   $this->input->post('rooms');
+        $fnType     =   $this->input->post('fn_type');
+        $fnTime     =   $this->input->post('fn_time');
+        $WedDetail  =   $this->input->post('wed_detail');
+        $vendor_id  =   $this->input->post('vendor_id');
+        $uniq       =   $this->input->post('uniq');
+
+        $vendors = $this->m_vendors->getVendors($vendor_id);
+
+        foreach ($vendors as $key => $value) { }
+
+        $insert = array(
+          'user_name'   =>  $name , 
+          'user_email'  =>  $email , 
+          'user_phone'  =>  $mobile , 
+          'vendor_id'   =>  $vendor_id , 
+          'fn_date'     =>  $fnDate , 
+          'fn_type'     =>  $fnType , 
+          'fn_time'     =>  $fnTime , 
+          'guest_no'    =>  $guestNo , 
+          'wed_detail'  =>  $WedDetail , 
+          'category'    =>  $value->category , 
+          'uniq'        =>  $uniq
+        );
+
+      $url = 'detail/'.str_replace(' ', '-', strtolower($value->category)).'/'.str_replace(' ', '-', strtolower($value->name)).'/'.$vendor_id;
+
+        $data['output']  =  $this->m_vendors->addenquiry($insert);
+        $data['result']  =  $insert;
+        $data['value']    =   $value;
+
+        
+
+        if (!empty($data['output'])  && !empty($vendors)) {
+            $this->load->config('email');
+            $this->load->library('email');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/vendor-enquiry', $data, true);
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to('prathwi@5ine.in');
+            $this->email->subject('Vendor enquiry request-'.$value->name);
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
+                redirect($url,'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                redirect($url,'refresh');
+            }
+        }else{
+              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+              redirect($url,'refresh');
+        }
+
+  }
+
+
 
     
 }

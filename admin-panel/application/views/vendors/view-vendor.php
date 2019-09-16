@@ -220,6 +220,8 @@
                                                     <th id="b" class="h5-para-p2" width="100px">Email ID</th>
                                                     <th id="c" class="h5-para-p2" width="120px">Phone</th>
                                                     <th id="e" class="h5-para-p2" width="100px">Enquired Date</th>
+                                                    <th id="e" class="h5-para-p2" width="100px">Function Type</th>
+                                                    <th id="e" class="h5-para-p2" width="100px">Function Time</th>
                                                     <th id="f" class="h5-para-p2" width="100px">Description</th>
                                                     <th id="g" class="h5-para-p2" width="62px">Function Date</th>
                                                 </tr>
@@ -232,18 +234,19 @@
                                       foreach ($enquiry as $key => $value) {
                                       ?>
                                                 <tr>
-                                                    <td><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
+                                                    <td><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></td>
                                                     <td><a
-                                                            href="mailto:<?php echo (!empty($value->email))?$value->email:'---'  ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a>
+                                                            href="mailto:<?php echo (!empty($value->user_email))?$value->user_email:'---'  ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a>
                                                     </td>
                                                     <td><a
-                                                            href="tel:<?php echo (!empty($value->phone))?$value->phone:'---'  ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a>
+                                                            href="tel:<?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a>
                                                     </td>
                                                     <td><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?>
                                                     </td>
-                                                    <td><?php echo (!empty($value->details))?$value->details:'---'  ?>
-                                                    </td>
-                                                    <td><?php echo (!empty($value->function_date))?date("M d, Y ", strtotime($value->function_date)):'---'; ?>
+                                                    <td><?php echo (!empty($value->fn_type) == '1')?'Pre Wedding':'---'; (!empty($value->fn_type) == '2')?'Wedding':'---'  ?> </td>
+                                                    <td><?php echo (!empty($value->fn_type) == '1')?'Evening':'---'; (!empty($value->fn_type) == '2')?'Day':'---'  ?> </td>
+                                                    <td><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?> </td>
+                                                    <td><?php echo (!empty($value->fn_date))?date("M d, Y ", strtotime($value->fn_date)):'---'; ?>
                                                     </td>
                                                 </tr>
                                                 <?php } } ?>

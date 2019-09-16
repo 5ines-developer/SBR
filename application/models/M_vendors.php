@@ -158,6 +158,34 @@ class M_vendors extends CI_Model
         
     }
 
+    //insert enquiries
+    public function addenquiry($insert='')
+    {
+        $this->db->where('uniq', $insert['uniq']);
+        $query = $this->db->get('vendor_enquiry');
+        if ($query->num_rows() > 0) {
+            $this->db->where('uniq', $insert['uniq']);
+            $this->db->update('vendor_enquiry', $insert);
+            if ($this->db->affected_rows() > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return $this->db->insert('vendor_enquiry', $insert);
+        }
+       
+    }
+
+
+    public function userget($id='')
+    {
+        $this->db->select('su_name, su_email, su_phone');
+       $this->db->where('su_id', $id);
+       return $this->db->get('user')->row();
+    }
+
+
     //  add faq
     public function faq($id)
     {

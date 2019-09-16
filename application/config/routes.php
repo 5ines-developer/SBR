@@ -77,6 +77,9 @@ $route['profile/update'] 				= 'account/update_profile';
 
 $route['profile/shortlisted-vendor'] 	= 'account/getShortist';
 
+//enquired vendors
+$route['profile/enquired-vendors']   	= 'account/enquireVendor';
+
 
 // newsletter subscribe
 $route['subscribe'] 		    		= 'home/subscribe';
@@ -99,6 +102,12 @@ $route['review/session-check']   		= 'vendors/reviewSession';
 //make favourite vendor
 $route['make-favourite']   				= 'vendors/makeFavourite';
 $route['get-favourite']   				= 'vendors/getFavourite';
+
+//enquire vendors
+$route['enquire-vendor']   				= 'vendors/enquireVendor';
+
+
+
 
 
 

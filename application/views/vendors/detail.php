@@ -15,6 +15,29 @@ $this->load->model('m_search');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
+        .fixed-action-btn {
+            position: relative;
+            right: 0;
+            bottom: 0;
+        }
+        .check-group p{
+            float: left;
+            margin-right: 10px;
+        }
+        .favcol{
+            border-color: #d0021b;
+            background: #d0021b !important;
+            box-shadow: 0 0 2px #9f0202 !important;
+        }
+        .favcol i{
+            color: #fff !important;
+        }
+        [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::before, [type="radio"].with-gap:checked + span::after {
+                border: 2px solid #d50000;
+        }
+        [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::after {
+            background-color: #d50000;
+        }
     .fixed-action-btn {
         position: relative;
         right: 0;
@@ -51,8 +74,7 @@ $this->load->model('m_search');
         <!-- body  -->
 
         <?php if (!empty($vendor)) {
-            foreach ($vendor as $key => $value) {
-            ?>
+            foreach ($vendor as $key => $value) { ?>
         <section id="detail">
             <div class="container-fluide">
                 <div class="row">
@@ -256,37 +278,88 @@ $this->load->model('m_search');
                                         <div class="bbx-heading">
                                             SEND MESSAGE
                                         </div>
-                                        <form class="row m0" action="">
+
+                                        <?php
+
+                                        $this->load->model('m_vendors');
+                                        $user = $this->m_vendors->userget($this->session->userdata('shdid'));
+
+                                       
+                                         ?>
+                                        <form class="row m0" action="<?php echo base_url()?>enquire-vendor" method="post">
                                             <div class="row m0">
                                                 <div class="input-field col s6">
+                                                    <input  id="name" type="text" class="validate" name="e_name" <?php echo (!empty($user->su_name))?'readonly':''; ?> value="<?php echo (!empty($user->su_name))?$user->su_name:''; ?>">
                                                     <input id="name" type="text" class="validate">
                                                     <label for="name">Name</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <input id="email" type="text" class="validate">
+                                                    <input id="email" type="text" class="validate" name="e_email" <?php echo (!empty($user->su_email))?'readonly':''; ?> value="<?php echo (!empty($user->su_email))?$user->su_email:''; ?>">
                                                     <label for="email">Email</label>
                                                 </div>
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input id="phone" type="text" class="validate">
+                                                    <input  id="phone" type="text" class="validate" name="e_mobile" <?php echo (!empty($user->su_phone))?'readonly':''; ?> value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>">
                                                     <label for="phone">Mobile Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <input id="date" type="text" class="validate">
+                                                    <input id="date" type="text" class="validate datepicker" name="fn_date">
                                                     <label for="date">Funcation Date</label>
                                                 </div>
                                             </div>
-                                            <div class="row m0">
-                                                <div class="input-field col s6">
-                                                    <input id="guest" type="text" class="validate">
-                                                    <label for="guest">Number of Guest</label>
+
+                                            <?php if ($value->category == 'wedding venues') { ?> 
+                                                <div class="row m0">
+                                                    <div class="input-field col s6">
+                                                        <input  id="guest" type="text" class="validate" name="guest_no">
+                                                        <label for="guest">Number of Guest</label>
+                                                    </div>
+                                                    <div class="input-field col s6">
+                                                        <input id="rooms" type="text" class="validate" name="rooms">
+                                                        <label for="rooms">No of rooms</label>
+                                                    </div>
                                                 </div>
-                                                <div class="input-field col s6">
-                                                    <input id="rooms" type="text" class="validate">
-                                                    <label for="rooms">No of rooms</label>
+                                                <div class="row m0">
+                                                    <p>Function Type</p>
+                                                    <p>
+                                                        <label>
+                                                            <input class="with-gap" name="fn_type" type="radio" checked value="1"/>
+                                                            <span>Pre-Wedding</span>
+                                                        </label>
+                                                        <label>
+                                                            <input class="with-gap" name="fn_type" type="radio" value="2" />
+                                                            <span>Wedding</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                                <div class="row m0">
+                                                    <p>Function Time</p>
+                                                    <p>
+                                                        <label>
+                                                            <input class="with-gap" name="fn_time" type="radio" checked value="1" />
+                                                            <span>Evening</span>
+                                                        </label>
+                                                        <label>
+                                                            <input class="with-gap" name="fn_time" type="radio"  value="2"/>
+                                                            <span>Day</span>
+                                                        </label>
+                                                    </p>
+                                                </div>
+                                            <?php } ?>
+                                            <div class="row m0">
+                                                <div class="input-field col s12">
+                                                    <textarea id="wed_detail" class="materialize-textarea" name="wed_detail"></textarea>
+                                                    <label for="wed_detail">Details about my wedding</label>
                                                 </div>
                                             </div>
+
+                                            <input type="hidden" name="vendor_id" value="<?php echo $value->uniq ?>">
+                                            <input type="hidden" name="uniq" value="<?php echo random_string('alnum',20); ?>">
+
+                                            
+
+
                                             <div class="input-field">
                                                 <button
                                                     class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
@@ -945,6 +1018,11 @@ $this->load->model('m_search');
             direction: 'buttom',
             // hoverEnabled: false
         });
+
+     document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, options);
+  });
 
         var scrolls = document.querySelectorAll('.scrollspy');
         var instances = M.ScrollSpy.init(scrolls);
