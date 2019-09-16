@@ -67,6 +67,22 @@ class M_account extends CI_Model {
        return $this->db->get('vendor_review')->result();
     }
 
+        //get enquired
+    public function enquireVendor($shduser='')
+    {
+
+        $this->db->where('ve.user_email', $shduser);
+        $this->db->from('vendor_enquiry ve');
+        $this->db->join('vendor v', 'v.uniq = ve.vendor_id', 'left');
+        $result = $this->db->get();
+
+        if ($result->num_rows() > 0) {
+            return $result->result();
+        }else{
+            return false;
+        }
+    }
+
 
 
 

@@ -235,6 +235,8 @@ class M_vendors extends CI_Model {
 		return $this->db->get('information_service')->result();
 	}
 
+
+
 	/**
     * Vendors -> get perticular vendor information service 
     * url : vendors/edit/id

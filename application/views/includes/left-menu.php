@@ -23,12 +23,12 @@
                                     </li>
 
                                     <li>
-                                        <a href=""><i class=" material-icons ">comment</i> Enquired Vendor's</a>
+                                        <a href="<?php echo base_url('profile/enquired-vendors') ?>" class="<?php if(($this->uri->segment(1)=="profile") && ($this->uri->segment(2) == 'enquired-vendors')){echo "active";}?>"><i class=" material-icons ">comment</i> Enquired Vendor's</a>
                                     </li>
 
-                                    <li>
+                                   <!--  <li>
                                         <a href=""><i class=" material-icons ">settings</i> Account Settings</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
