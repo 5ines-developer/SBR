@@ -172,6 +172,7 @@ class Vendors extends CI_Controller {
         $data['city']       = $this->m_vendors->get_city();
         $data['service']    = $this->m_vendors->get_service();
         $data['vendor_info'] = $this->m_vendors->vendor_info($id);
+        $data['faq']        = $this->m_vendors->faqget($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $this->load->view('vendors/edit-vendor', $data, FALSE);
     }
@@ -445,6 +446,31 @@ class Vendors extends CI_Controller {
                 $this->session->set_flashdata('error', 'You have already added 6 videos of this vendor please delete the existing video and try again!');
                redirect('vendors/edit/'.$id,'refresh');
             }
+    }
+
+    public function faq_insert()
+    {
+        $qtn = $this->input->post('quation');
+        $ans = $this->input->post('asw');
+        $posts = $this->input->post();
+        $id =  $this->input->post('id');
+        $this->m_vendors->delfaq($id);
+        foreach ($ans as $key => $value) {
+            if(!empty($ans[$key]) && !empty($qtn[$key])){
+                $data = array(
+                    'quotation' => $qtn[$key], 
+                    'asw' => $ans[$key],
+                    'vendor_id' => $id,
+                );
+                $this->m_vendors->faq_insert($data);
+                
+            }
+            
+        }
+        // vendor_faq
+        $this->session->set_flashdata('success', 'FAQ added Successfully');
+        redirect('vendors/edit/'.$id,'refresh');
+        
     }
 
 

@@ -25,7 +25,9 @@ class Vendors extends CI_Controller {
            $value->video       = $this->m_vendors->getVideo($value->id);
            $value->review      = $this->m_vendors->getReview($value->id);
            $value->fav         = $this->m_vendors->getFavourite($value->id);
+           $value->faq         = $this->m_vendors->faq($value->id);
         }
+
         $data['vendor'] = $output;
         $data['title']  = $value->name.'- ShaadiBaraati';
         $this->load->view('vendors/detail', $data, FALSE);
@@ -34,13 +36,18 @@ class Vendors extends CI_Controller {
 
     public function gallery($value='')
     {
-        $data='';
+        // $data ='';
        $vndr_id =  $this->input->post('vndr_id');
       $output = $this->m_vendors->getGallery($vndr_id);
-
-      foreach ($output as $key => $value) {
-          $data[] =  base_url().'vendor-portfolio/'.$value->thumb_image;
+      if(!empty($output)){
+          foreach ($output as $key => $value) {
+            $data[] =  base_url().'vendor-portfolio/'.$value->thumb_image;
+        }
+      }else{
+        $data = '';
       }
+      
+      
 
        echo json_encode($data);
     }
@@ -48,12 +55,15 @@ class Vendors extends CI_Controller {
 
     public function full_gallery($value='')
     {
-        $data='';
+        $data = array();
         $vndr_id =  $this->input->post('vndr_id');
         $output = $this->m_vendors->full_gallery($vndr_id);
-        foreach ($output as $key => $value) {
-          $data[] =  base_url().'vendor-portfolio/'.$value->thumb_image;
+        if(!empty($output)){
+          foreach ($output as $key => $value) {
+            $data[] =  base_url().'vendor-portfolio/'.$value->thumb_image;
+          }
         }
+        
        echo json_encode($data);
     }
 

@@ -51,12 +51,14 @@ body {
     color: white;
     font-weight: 700;
     letter-spacing: 2px;
+    text-shadow: 0 0 7px #0000008a;
 }
 
 .lec-search p {
     color: white;
     font-size: 16px;
     font-weight: 500;
+    text-shadow: 0 0 7px #000;
 }
 
 .mp {
@@ -86,7 +88,7 @@ body {
     background: #d0021b;
     color: white;
     border: 1px solid #d0021b;
-    height: 45px;
+    height: 42px;
     padding: 0px 30px;
 }
 
@@ -276,7 +278,7 @@ h6 {
     height: 2px;
     border: 1px dashed #e1e1e1;
     left: 14%;
-    top: 55px;
+    top: 71px;
     z-index: -1;
 }
 
@@ -322,6 +324,11 @@ h6 {
     z-index: -1;
     left: 95px;
 }
+.happy-cop {
+    position: relative;
+    top: -35px;
+}
+.slick-list.draggable{cursor: pointer;}
 
 .test-com {
     position: relative;
@@ -346,9 +353,10 @@ h6 {
     text-align: center;
     border-radius: 25px;
     position: absolute;
-    top: 100%;
-    right: 44%;
+    right: 29%;
     cursor: pointer;
+    bottom: 51px;
+
 }
 
 .ll {
@@ -360,9 +368,9 @@ h6 {
     text-align: center;
     border-radius: 25px;
     position: absolute;
-    top: 100%;
-    left: 44%;
+    left: 62%;
     cursor: pointer;
+    bottom: 51px;
 }
 
 .wedding-detail {
@@ -440,13 +448,14 @@ h6 {
     background: #d0021b;
     color: white;
     border: 1px solid #d0021b;
-    height: 47px;
+    height: 45px;
     padding: 0px 50px;
     cursor: pointer;
 }
 
 .socil-icon {
     width: 15px;
+    margin-bottom: -3px;
 }
 
 .social-media li {
@@ -1438,6 +1447,7 @@ result-head .dropdown-content li>a,
 
 .result-body .card .card-content {
     padding: 12px;
+    height: 98px;
 }
 
 .r-crd-title {
@@ -1754,7 +1764,7 @@ r-crd-category {
 .btn-group .btn-floating {border:1px solid gray}
 .btn-group .btn-floating:hover {border-color:#d0021b;  background: #d0021b !important;box-shadow: 0 0 2px #9f0202 !important;}
 .btn-group .btn-floating:hover i{color:#fff}
-.btn-group .btn-floating i{font-size:1rem; color:#333; margin:0px 0 0 -1px;}
+.btn-group .btn-floating i{font-size:1rem; color:#333; margin:0px 0 0 -1px;position: relative; top: -1.5px;}
 .btn-group span{display:block;text-align: center;font-size: 12px}
 .dbi-right .btn{text-transform: capitalize;}
 .plr20{padding-left: 20px !important;padding-right: 20px !important}
@@ -1805,6 +1815,22 @@ r-crd-category {
 .bbx-content  ul li{line-height: 25px}
 .bbx-content  ul li span.bbx-rate{color:#d50000}
 .borderbox form .col{padding: 0 3px}
+.result-items .card-image {
+    height: 175px;
+    overflow: hidden;
+    background: #d0021b;
+}
+.result-items .card-image img {
+    min-height: 175px;
+    width: 100%;
+    margin: auto;
+}
+
+
+/* .btn-group .fixed-action-btn.direction-buttom ul { text-align: left; direction: ltr; left: 40px; }
+.btn-group  .fixed-action-btn.direction-buttom ul li { margin: 0 0 0 0px; }
+.btn-group  .fixed-action-btn.direction-buttom ul li:first-child{margin-left: 20px} */
+.btn-group  .fixed-action-btn.direction-buttom ul li .btn-floating { border: 1px solid transparent; }
 
 @media(max-width: 992px){
     .col5s{ width: calc(100% / 3) }
@@ -1816,5 +1842,11 @@ r-crd-category {
     .container-fluide { width: 96%; }
     .review-metadata .queue{float: none;}
     .review-metadata .name{line-height: 22px}
+    .result-body .card .card-content { padding: 5px; height: 85px; }
+    .result-items .card-image { height: auto; }
+    .result-items .card-image img { min-height: auto; }
     
 }
+
+
+.steps-det img{background: #fff}

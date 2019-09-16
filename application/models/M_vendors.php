@@ -158,6 +158,7 @@ class M_vendors extends CI_Model
         
     }
 
+<<<<<<< HEAD
     //insert enquiries
     public function addenquiry($insert='')
     {
@@ -186,6 +187,16 @@ class M_vendors extends CI_Model
     }
 
 
+=======
+    //  add faq
+    public function faq($id)
+    {
+        $this->db->where('vendor_id', $id);
+        return $this->db->get('vendor_faq')->result();
+        
+    }
+
+>>>>>>> 2f17124c4677feb082de6d44675afc09d835fe48
 
     
 
