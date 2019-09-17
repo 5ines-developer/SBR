@@ -4,6 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.addEventListener('DOMContentLoaded', function() {
-    var toll = document.querySelectorAll('.tollfree');
+    var toll = document.querySelectorAll('.tooltipped');
     var instances = M.Tooltip.init(toll);
 });

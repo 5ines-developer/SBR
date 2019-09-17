@@ -156,7 +156,7 @@
                             <img src="<?php echo base_url() ?>assets/img/icon/c.png" class="img-responsive" alt="">
                             <h6>SEARCH</h6>
                             <p>Get Quotations, Compare, And Book The Best Vendor For Your Wedding.</p>
-                            <p class="cr">1</p>
+                            <!-- <p class="cr">1</p> -->
                         </div>
                     </div>
                     <div class="col l4 m4">
@@ -164,7 +164,7 @@
                             <img src="<?php echo base_url() ?>assets/img/icon/b.png" class="img-responsive" alt="">
                             <h6>SELECT</h6>
                             <p>Select The Preferred Vendors And Send Your Requirements To Them.</p>
-                            <p class="cr">2</p>
+                            <!-- <p class="cr">2</p> -->
                         </div>
                     </div>
                     <div class="col l4 m4">
@@ -172,7 +172,7 @@
                             <img src="<?php echo base_url() ?>assets/img/icon/a.png" class="img-responsive " alt="">
                             <h6>BOOK</h6>
                             <p>Get Quotations, Compare, And Book The Best Vendor For Your Wedding.</p>
-                            <p class="cr">3</p>
+                            <!-- <p class="cr">3</p> -->
                         </div>
                     </div>
                 </div>
@@ -263,74 +263,48 @@
             </div>
             <div class="test-com">
                 <div class="row">
-                    <!-- <div class="col l4 s12 m12">
-                        <div class="happy-cop">
-                            <img src="<?php echo base_url() ?>assets/img/testimonial.jpg" class="img-responsive" alt="">
-                        </div>
-                    </div> -->
+                        <div class="col l8 s12 m12 push-l2">
                     <div class=" testimonial-wedd">
 
                             <div class="testi-coup">
-                                <div class="row">
-                                    <div class="col l4 s12 m12">
-                                        <div class="happy-cop">
-                                            <img src="<?php echo base_url() ?>assets/img/review/Ravi-S-rathore.jpg"
-                                                class="img-responsive" alt="Ravi-S-rathore">
-                                        </div>
-                                    </div>
-                                    <div class="col l8 s12 m12">
-                                        <center><img src="<?php echo base_url() ?>assets/img/tes.png"
-                                                class="img-responsive" alt=""></center>
+                               
+                                   
+                                    
+                                        <center><img src="<?php echo base_url() ?>assets/img/review/Ravi-S-rathore.jpg"
+                                                class="img-responsive tsimg" alt=""></center>
                                         <h6 class="black-text">Mr & Mrs. Rathore</h6>
                                         <p>"Shaadi Baraati was very professional and dedicated. They have eased my
                                             wedding smooth and all the vendors were on time and even Shaadi Baraati Team
                                             was available on my wedding to ensure the quality services"</p>
                                         <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
                                                 class="img-responsive"> </center>
-                                        <!-- <p class="cr">26-07-2019</p> -->
-                                    </div>
-                                </div>
+                                    
+                                
                             </div>
 
                             <div class="testi-coup">
-                                <div class="row">
-                                    <div class="col l4 s12 m12">
-                                        <div class="happy-cop">
-                                            <img src="<?php echo base_url() ?>assets/img/review/Raj-Nandi-Testimonial.jpg"
-                                                class="img-responsive" alt="Raj-Nandi-Testimonial">
-                                        </div>
-                                    </div>
-                                    <div class="col l8 s12 m12">
-                                        <center><img src="<?php echo base_url() ?>assets/img/tes.png"
-                                                class="img-responsive" alt=""></center>
+                                
+                                        <center><img src="<?php echo base_url() ?>assets/img/review/Raj-Nandi-Testimonial.jpg"
+                                                class="img-responsive tsimg" alt=""></center>
                                         <h6 class="black-text">Mr & Mrs. Nandi</h6>
                                         <p>"We never thought planning a wedding would be this easy. Thankyou Shaadi Baraati for making life easy for us. We are so happy that we found your website"</p>
                                         <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
                                                 class="img-responsive"> </center>
-                                        <!-- <p class="cr">26-07-2019</p> -->
-                                    </div>
-                                </div>
+                                  
                             </div>
 
 
                             <div class="testi-coup">
-                                <div class="row">
-                                    <div class="col l4 s12 m12">
-                                        <div class="happy-cop">
-                                            <img src="<?php echo base_url() ?>assets/img/review/Bharadwaj.jpg"
-                                                class="img-responsive" alt="Bharadwaj">
-                                        </div>
-                                    </div>
-                                    <div class="col l8 s12 m12">
-                                        <center><img src="<?php echo base_url() ?>assets/img/tes.png"
-                                                class="img-responsive" alt=""></center>
+                                
+                                        <center><img src="<?php echo base_url() ?>assets/img/review/Bharadwaj.jpg"
+                                                class="img-responsive tsimg" alt="Bharadwaj"></center>
                                         <h6 class="black-text">Mr & Mrs Bhardwaj</h6>
                                         <p>"Thank you Shaadi Baraati for hassle free events and making my dream come true"</p>
                                         <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
                                                 class="img-responsive"> </center>
                                         <!-- <p class="cr">26-07-2019</p> -->
-                                    </div>
-                                </div>
+                                  
+                            </div>
                             </div>
 
                             
@@ -483,59 +457,71 @@
         </div>
     </section>
     <section class="sec bg-col">
-        <div class="container">
-            <div class="row">
-                <div class="col l12">
-                    <div class="vender-detail">
-                        <h4>Get In Touch</h4>
-                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive " alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                            dis parturient montes, nascetur ridiculus mus. </p>
+        <div class="container-2">
+           <div class="row m0">
+               <div class="col s12 m12 l6 bfrb">
+               
+                    <div class="center-align">
+                        <h4>Wed Assistance</h4>
+                        <p>Assisted Wedding Planner is Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
                     </div>
-                </div>
-            </div>
-            <div class="touch-email">
-                <div class="row">
-                    <div class="col l9 push-l2 m9 push-m2 s12">
-                        <div class="row">
-                            <form action="<?php echo base_url('subscribe') ?>" method="post" id="demo">
-                                <div class="col l8 m8 s8">
-                                    <div class="input-field if-mail">
-                                        <input id="email" type="email" name="email" class="validate email-si"
-                                            placeholder="Email" required="" @change="emailCheck" v-model="email">
-                                        <span class="helper-text red-text">{{ emailError }}</span>
-                                    </div>
-                                </div>
-                                <div class="col l4 m4 s4">
-                                    <button type="submit" class="btn-find-get">Get Start</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col l7 push-l4 m7 push-m4 s12">
-                            <div class="social-media ">
-                                <ul>
-                                    <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
-                                                src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
-                                                class="img-responisve socil-icon" alt=""> </a></li>
-                                    <li><a href="https://www.twitter.com/shaadibaraati" taraget="_blank"><img
-                                                src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
-                                                class="img-responisve socil-icon" alt=""></a></li>
-                                    <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg"
-                                            taraget="_blank"><img
-                                                src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
-                                                class="img-responisve socil-icon" alt=""></a></li>
-                                    <li><a href="https://www.instagram.com/shaadibaraatiofficial/" taraget="_blank"><img
-                                                src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
-                                                class="img-responisve socil-icon" alt=""></a></li>
-                                </ul>
+                        
+               </div>
+               <div class="col s12 m12 l6">
+                    <div class="touch-email">
+                     <div class="row">
+                        <div class="col l12">
+                            <div class="center-align">
+                                <h4>Get In Touch</h4>
+                                <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                                    dis parturient montes, nascetur ridiculus mus. </p>
                             </div>
                         </div>
-                    </div>
+                            <div class="col  s12">
+                                <div class="row">
+                                    <form action="<?php echo base_url('subscribe') ?>" method="post" id="demo">
+                                        <div class="col l8 m8 s8">
+                                            <div class="input-field if-mail">
+                                                <input id="email" type="email" name="email" class="validate email-si"
+                                                    placeholder="Email" required="" @change="emailCheck" v-model="email">
+                                                <span class="helper-text red-text">{{ emailError }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col l4 m4 s4">
+                                            <button type="submit" class="btn-find-get">Get Start</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                           
 
-                </div>
-            </div>
+                        </div>
+                    </div>
+               </div>
+               <div class="clearfix"></div>
+               <div class="col l7 push-l4 m7 push-m4 s12">
+           
+                    <div class="social-media ">
+                        <ul>
+                            <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
+                                        class="img-responisve socil-icon" alt=""> </a></li>
+                            <li><a href="https://www.twitter.com/shaadibaraati" taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
+                                        class="img-responisve socil-icon" alt=""></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg"
+                                    taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
+                                        class="img-responisve socil-icon" alt=""></a></li>
+                            <li><a href="https://www.instagram.com/shaadibaraatiofficial/" taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
+                                        class="img-responisve socil-icon" alt=""></a></li>
+                        </ul>
+                    </div>
+                                
+               </div>
+           </div>
+            
         </div>
     </section>
 
@@ -547,7 +533,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-    < ? php $this - > load - > view('includes/message'); ? >
+    <?php $this->load->view('includes/message'); ?>
     </script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -600,9 +586,9 @@
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        // nextArrow: '<span class="next"><i class="Tiny material-icons ll">chevron_left</i></span>',
-        // prevArrow: '<span class="prev"><i class="Tiny material-icons rr">chevron_right</i></span>',
-        arrows: false,
+        nextArrow: '<span class="next"><i class="Tiny material-icons ll">chevron_left</i></span>',
+        prevArrow: '<span class="prev"><i class="Tiny material-icons rr">chevron_right</i></span>',
+        arrows: true,
 
 
     });

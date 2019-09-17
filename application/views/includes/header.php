@@ -18,7 +18,7 @@
                     <li class="br-lo"><a href="<?php echo base_url('login') ?>">SIGN IN </a></li>
                     <li><span class="black-text">|</span></li>
                     <li class="br-lo"><a href="<?php echo base_url('register') ?>">SIGN UP</a></li>
-                    <li class="tollfree"  data-position="bottom" data-tooltip="1800 419 9456"><a href="tel:18004199456"> <i class="material-icons">local_phone</i><span>Toll Free</span></a></li>
+                    <li class="tollfree" ><a href="tel:18004199456" class="tooltipped"  data-position="bottom" data-tooltip="1800 419 9456"> <i class="material-icons">local_phone</i><span>Toll Free</span></a></li>
                     <?php } ?>
                     
                 </ul>

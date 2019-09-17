@@ -1,5 +1,6 @@
 
-		<?php if ($this->session->flashdata('error')) { ?>
+    
+    <?php if ($this->session->flashdata('error')) { ?>
     		M.toast({html: '<?php echo trim($this->session->flashdata('error')) ?>', classes: 'red'});
         <?php } ?>
 
