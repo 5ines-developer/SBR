@@ -33,17 +33,17 @@ body {
 }
 
 .brand-logo {
-    width: 250px;
-    margin-top: 3px;
+    width: 318px;
+    margin-top: -4px;
 }
 
 .lec-search {
     position: absolute;
-    top: 55%;
     width: 100%;
     left: 0;
     right: 0;
     text-align: center;
+    bottom: 100px;
 }
 
 .lec-search h5 {
@@ -703,6 +703,12 @@ h6 {
     letter-spacing: 1px;
 }
 
+.banner-img {
+
+    position: relative;
+
+}
+
 @media (max-width:600px) {
     .social-reg {
         position: relative;
@@ -770,16 +776,17 @@ h6 {
         font-size: 14px;
     }
     .brand-logo {
-        width: 210px;
+        width: 241px;
         margin-top: 0px;
     }
     .lec-search h5 {
         font-size: 18px;
     }
     .lec-search {
-        top: 15%;
+        bottom: 0px;
         padding: 0px 0px;
     }
+    
     .lec-search p {
         color: white;
         font-size: 14px;
@@ -908,14 +915,14 @@ h6 {
         font-size: 14px;
     }
     .brand-logo {
-        width: 210px;
+        width: 275px;
         margin-top: 0px;
     }
     .lec-search h5 {
         font-size: 18px;
     }
     .lec-search {
-        top: 10%;
+        bottom: 75px;
         padding: 0px 30px;
     }
     .lec-search p {
@@ -1878,3 +1885,7 @@ r-crd-category {
     .sg-result-list{padding-left: 3px}
     .ml15{margin:0px}
 }
+.tollfree{text-align: center}
+.tollfree a i{ height: 18px; line-height: 55px; }
+.tollfree a span{font-size: 11px; font-weight: 500; color: #333;}
+.tollfree a{height: 64px;}
