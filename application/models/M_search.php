@@ -58,13 +58,17 @@ class M_search extends CI_Model {
     //search autocompletee
     public function get_search($vendor='')
     {
-    	$this->db->where('is_active', '1');
-    	$this->db->like('name', $vendor, 'BOTH');
+        $this->db->select('v.*,cty.city as cityname,cat.category as categoryname');
+        $this->db->where('v.is_active', '1');
+    	$this->db->like('v.name', $vendor, 'BOTH');
 		$this->db->limit(20);
-		$area = $this->db->get('vendor');
-		if($area->num_rows() > 0)
+        $this->db->from('vendor v');
+        $this->db->join('city cty', 'cty.id = v.city', 'left');
+        $this->db->join('category cat', 'cat.id = v.category', 'left');
+        $query = $this->db->get();
+		if($query->num_rows() > 0)
 		{
-			return $area->result();
+			return $query->result();
 		}else{
 			return false;
 		}
