@@ -110,6 +110,8 @@ $route['get-favourite']   				= 'vendors/getFavourite';
 $route['enquire-vendor']   				= 'vendors/enquireVendor';
 //all category
 $route['view-category']   				= 'vendors/allCategory';
+$route['terms-conditions']   		    = 'home/terms_conditions';
+$route['privacy-policy']   				= 'home/privacy_policy';
 
 
 

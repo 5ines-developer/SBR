@@ -117,8 +117,18 @@ class Home extends CI_Controller {
         }
     }
 
+    public function privacy_policy()
+    {
+        $data['title']  = 'privacy-policy - ShaadiBaraati';
+        $this->load->view('site/privacy-policy',$data);
+    }
     
-    
+
+    public function terms_conditions()
+    {
+        $data['title']  = 'terms-conditions - ShaadiBaraati';
+        $this->load->view('site/terms-conditions',$data);
+    }
 
 }
 
