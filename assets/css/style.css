@@ -37,17 +37,17 @@ html {
 }
 
 .brand-logo {
-    width: 250px;
-    margin-top: 3px;
+    width: 318px;
+    margin-top: -4px;
 }
 
 .lec-search {
     position: absolute;
-    top: 55%;
     width: 100%;
     left: 0;
     right: 0;
     text-align: center;
+    bottom: 100px;
 }
 
 .lec-search h5 {
@@ -317,7 +317,7 @@ h6 {
     border-radius: 5px;
 }
 
-.test-com::before {
+/* .test-com::before {
     content: '';
     position: absolute;
     border: 1px solid #7a7a7a;
@@ -327,12 +327,35 @@ h6 {
     top: -20px;
     z-index: -1;
     left: 95px;
-}
+} */
 
 .happy-cop {
     position: relative;
     top: -35px;
+    border: 1px solid gray;
+
+padding: 1px;
+
+border-radius: 3px;
 }
+.happy-cop img{
+    border: 1px dotted gray;
+
+    padding: 3px;
+    
+    border-radius: 3px;
+}
+
+.testi-coup img.tsimg{width: 150px;
+
+    height: 150px;
+    
+    border-radius: 50%;
+    
+    border: 1px dashed gray;
+    
+    padding: 2px;}
+
 
 .slick-list.draggable {
     cursor: pointer;
@@ -345,14 +368,13 @@ h6 {
 
 .testi-coup {
     text-align: center;
-    padding-top: 35px;
 }
 
 .testi-coup p {
     font-size: 14px;
 }
 
-.rr {
+.rr, .ll {
     background: #d0021b;
     color: white;
     width: 30px;
@@ -361,24 +383,14 @@ h6 {
     text-align: center;
     border-radius: 25px;
     position: absolute;
-    right: 29%;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    bottom: 51px;
-}
+    z-index: 900;
 
-.ll {
-    background: #d0021b;
-    color: white;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 25px;
-    position: absolute;
-    left: 62%;
-    cursor: pointer;
-    bottom: 51px;
 }
+.rr{ right: -30px; }
+.ll { left: -30px; }
 
 .wedding-detail {
     position: relative;
@@ -455,7 +467,7 @@ h6 {
     background: #d0021b;
     color: white;
     border: 1px solid #d0021b;
-    height: 45px;
+    height: 44px;
     padding: 0px 50px;
     cursor: pointer;
 }
@@ -710,6 +722,12 @@ h6 {
     letter-spacing: 1px;
 }
 
+.banner-img {
+
+    position: relative;
+
+}
+
 @media (max-width:600px) {
     .social-reg {
         position: relative;
@@ -777,16 +795,17 @@ h6 {
         font-size: 14px;
     }
     .brand-logo {
-        width: 210px;
+        width: 241px;
         margin-top: 0px;
     }
     .lec-search h5 {
         font-size: 18px;
     }
     .lec-search {
-        top: 15%;
+        bottom: 0px;
         padding: 0px 0px;
     }
+    
     .lec-search p {
         color: white;
         font-size: 14px;
@@ -833,12 +852,7 @@ h6 {
     .coptext p {
         font-size: 12px;
     }
-    .rr {
-        right: 35%;
-    }
-    .ll {
-        left: 35%;
-    }
+   
     .work-detail::before {
         display: none;
     }
@@ -915,14 +929,14 @@ h6 {
         font-size: 14px;
     }
     .brand-logo {
-        width: 210px;
+        width: 275px;
         margin-top: 0px;
     }
     .lec-search h5 {
         font-size: 18px;
     }
     .lec-search {
-        top: 10%;
+        bottom: 75px;
         padding: 0px 30px;
     }
     .lec-search p {
@@ -971,12 +985,7 @@ h6 {
     .coptext p {
         font-size: 12px;
     }
-    .rr {
-        right: 35%;
-    }
-    .ll {
-        left: 35%;
-    }
+    
     .work-detail::before {
         display: none;
     }
@@ -2120,6 +2129,7 @@ r-crd-category {
 .btn-group .fixed-action-btn.direction-buttom ul li .btn-floating {
     border: 1px solid transparent;
 }
+.bfrb{border-right: 1px solid #ccc;}
 
 @media(max-width: 992px) {
     .col5s {
@@ -2128,6 +2138,8 @@ r-crd-category {
     .container-fluide {
         width: 94%;
     }
+.bfrb{border-right: transparent;}
+
 }
 
 @media(max-width: 600px) {
@@ -2188,11 +2200,11 @@ r-crd-category {
     border-radius: 4px;
 }
 
-@media (max-width: 400px) {
-    .sg-result-list {
-        padding-left: 3px
-    }
-    .ml15 {
-        margin: 0px
-    }
+@media (max-width: 400px){
+    .sg-result-list{padding-left: 3px}
+    .ml15{margin:0px}
 }
+.tollfree{text-align: center}
+.tollfree a i{ height: 18px; line-height: 55px; }
+.tollfree a span{font-size: 11px; font-weight: 500; color: #333;}
+.tollfree a{height: 64px;}
