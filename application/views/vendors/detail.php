@@ -368,8 +368,7 @@ $this->load->model('m_search');
                                     </div>
                                 </div>
                             </div>
-
-                            <img src="https://dummyimage.com/360x400/a81010/ffffff" class="responsive-img" alt="">
+                            <img src="<?php echo (!empty($value->offer['image']))?base_url($value->offer['image']):'https://dummyimage.com/360x400/a81010/ffffff'  ?>" class="responsive-img" alt="">
                              <div id="vendor-services"></div>                       
                         </div>
 

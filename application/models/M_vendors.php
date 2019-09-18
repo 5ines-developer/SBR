@@ -214,6 +214,12 @@ class M_vendors extends CI_Model
         $this->db->order_by('city', 'asc');
         return $this->db->get('city')->result();
     }
+
+    public function offer($id='')
+    {
+        $this->db->where('vendor_id', $id);
+        return $this->db->get('vendor_offer')->row_array();
+    }
     
 
 
