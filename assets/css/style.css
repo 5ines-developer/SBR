@@ -2208,3 +2208,30 @@ r-crd-category {
 .tollfree a i{ height: 18px; line-height: 55px; }
 .tollfree a span{font-size: 11px; font-weight: 500; color: #333;}
 .tollfree a{height: 64px;}
+
+#vendordropdown {
+    column-count: 2;
+}
+
+#vendordropdown li a {
+	color: #333;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 9px 15px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#vendordropdown li {
+	min-height: 43px;
+	line-height: 43px;
+    width: 100%;
+    max-width: 280px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 2px;}
