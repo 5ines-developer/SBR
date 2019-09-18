@@ -135,6 +135,8 @@ $this->load->model('m_search');
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="<?php echo base_url()?>assets/js/script.js"></script>
+
         <script>
         <?php $this->load->view('includes/message'); ?>
         </script>
@@ -146,48 +148,49 @@ $this->load->model('m_search');
         var app = new Vue({
         el: '#app',
         data: {
-        listItem: '',
-        isShow: true,
-        isDay: true,
-        isbudget: true,
-        isAvg: true,
-        isFilter: true,
-        autocomplete: '',
-        vendor: '',
-        visible: false,
-        previsible: false
+            listItem: '',
+            isShow: true,
+            isDay: true,
+            isbudget: true,
+            isAvg: true,
+            isFilter: true,
+            autocomplete: '',
+            vendor: '',
+            visible: false,
+            previsible: false
         },
         created() {
-        window.addEventListener('resize', this.handleResize)
-        this.handleResize();
+            window.addEventListener('resize', this.handleResize)
+            this.handleResize();
         },
         methods: {
         handleResize() {
-        if (window.innerWidth <= 600) {
-        this.isFilter = false;
-        }
+            if (window.innerWidth <= 600) {
+                this.isFilter = false;
+            }
         },
         vendorcheck() {
-        this.autocomplete = '';
-        this.visible = true;
-        this.previsible = true;
-        const formData = new FormData();
-        formData.append('vendor', this.vendor);
-        axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
+            this.autocomplete = '';
+            this.visible = true;
+            this.previsible = true;
+            const formData = new FormData();
+            formData.append('vendor', this.vendor);
+            axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
         .then(response => {
-        if (response.data != '') {
-        this.previsible = false;
-        this.autocomplete = response.data;
-        } else {
-        this.previsible = false;
-        this.autocomplete = '';
-        }
+            if (response.data != '') {
+                this.previsible = false;
+                this.autocomplete = response.data;
+            } 
+            else {
+                this.previsible = false;
+                this.autocomplete = '';
+            }
         })
         .catch(error => {
-        this.previsible = false;
-        if (error.response) {
-        this.errormsg = error.response.data.error;
-        }
+            this.previsible = false;
+            if (error.response) {
+                this.errormsg = error.response.data.error;
+            }
         })
         }
         },

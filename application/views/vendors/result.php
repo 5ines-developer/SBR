@@ -15,10 +15,7 @@ $this->load->model('m_search');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
-    .no-result{
-        margin-top:60px;
-        margin-bottom:60px;
-    }
+   
     .preloader{
         display:none;
     }
@@ -146,7 +143,7 @@ height: 30px;
         </section>
 
 <?php if (empty($vendors)) { ?>
-            '<section class="no-result">
+            <section class="no-result">
 
     <div class="col l12">
                         <center>
@@ -434,7 +431,7 @@ height: 30px;
                         </div>
                         <div class="row m0">
                             <div class="col s12">
-                                <?php echo (!empty($pagelink))?$pagelink:'' ?>
+                                <?php echo (!empty($pagelink))?$pagelink: '' ?>
                             </div>
                         </div>
                     </div>

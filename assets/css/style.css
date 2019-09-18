@@ -2227,7 +2227,31 @@ r-crd-category {
 	line-height: 43px;
 }
 
-<<<<<<< HEAD
+#vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 7px;}
+.citylist li {
+    width: calc((100% - 36px ) / 6 );
+    border: 1px solid #eee;
+    padding: 5px;
+    cursor: pointer;
+    float: left;
+    margin: 0 3px;
+}
+.citylist{ margin-top:25px}
+.citylist:after{content:''; display: block; clear:both}
+.citylist li a{color:#333;font-weight: 600}
+a.viewmore{font-size:16px;font-weight: 600;padding: 20px 0 0 0; display: block;}
+a.viewmore:hover{color:#d0021b;cursor: pointer;}
+.morecitylink li { display: inline-block; margin-right: 10px; margin-bottom: 10px;  width: calc((100% - 36px ) / 6 ); margin: auto;text-align: center; }
+.morecitylink li a{transition: all .5s ease; color: #333;}
+.morecitylink li a:hover{ color: #d0021b;}
+#citymodel h4 i{top:4px; position: relative;}
+.no-result {
+
+    background: #f9f9f9;
+    padding: 60px;
+    margin:0px !important;
+}
+
 #vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 2px;}
 
 /***contact us***/
@@ -2331,6 +2355,5 @@ margin-top: -20px;
     
     }
 }
-=======
 #vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 7px;}
->>>>>>> dc58678e15b9b1b253531d2479e29c685352a0c6
+
