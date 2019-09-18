@@ -194,7 +194,13 @@ class M_vendors extends CI_Model
         
     }
 
+    // fetch vendor category
 
+    public function allcategory(Type $var = null)
+    {
+        $this->db->select('id, category, icon, uniq');
+        return $this->db->get('category')->result();
+    }
     
 
 

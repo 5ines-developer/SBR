@@ -2219,19 +2219,12 @@ r-crd-category {
 	font-size: 14px;
 	padding: 9px 15px;
     line-height: 25px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    
 }
 
 #vendordropdown li {
 	min-height: 43px;
 	line-height: 43px;
-    width: 100%;
-    max-width: 280px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
-#vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 2px;}
+#vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 7px;}

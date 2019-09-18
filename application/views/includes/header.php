@@ -1,3 +1,4 @@
+
 <div class="navbar-fixed">
         <nav class="z-depth-1 navbar-fixed">
             <div class="nav-wrapper white">
@@ -7,8 +8,7 @@
                     <div class="right hide-on-med-and-down header-ul ">
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
-                            <li><a class="dropdown-trigger" href="#!" data-target="vendordropdown" >VENDORS</a></li>
-                            <!-- href="<?php echo base_url('vendors')?>" -->
+                            <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
                             <li><a href="#!">SELECT CITY</a></li>
                             <li><a href="#">WED ASSISTANCE</a></li>
                             <li><a href="#">E-INVITE</a></li>
@@ -32,28 +32,21 @@
 
 
         <ul id="vendordropdown" class="dropdown-content">
-            
-           <li><a href="#!"><img src="<?php echo base_url() ?>assets/img/svg/vicon.svg" alt="" width="50px">  Category</a></li>
-           <li><a href="#!">Wedding Photography</a></li>
-           <li><a href="#!">Wedding Venues</a></li>
-           <li><a href="#!">Bridal Makeup</a></li>
-           <li><a href="#!">Wedding Card</a></li>
-           <li><a href="#!">Wedding Decorator</a></li>
-           <li><a href="#!">Bridal Wear</a></li>
-           <li><a href="#!">Groom Wear</a></li>
-           <li><a href="#!">Wedding Band</a></li>
-           <li><a href="#!">Mehendi Artist</a></li>
-           <li><a href="#!">Wedding Jewellery</a></li>
-           <li><a href="#!">Wedding Catering</a></li>
-           <li><a href="#!">Wedding Cakes</a></li>
-           <li><a href="#!">Rental Wear</a></li>
-           <li><a href="#!">Wedding Planner</a></li>
-           <li><a href="#!">Astrology & Religious Services</a></li>
-           <li><a href="#!">Background Verification & Detective Services</a></li>
-           <li><a href="#!">Balloon Decorators</a></li>
-           <li><a href="#!">Safa Wala</a></li>
-           <li><a href="#!">Honeymoon Packages </a></li>
-            
+            <?php foreach (vendor_category() as $key => $cvalue) { 
+                // id, icon, uniq, category
+                $count = count(vendor_category());
+                $clink = strtolower(str_replace(" ","-",$cvalue->category));
+                if($count % 2 == 1){ $num = $count - 1; }else{ $num = $count; }
+                if($key < $num){
+                    echo '<li>
+
+                    <a href="vendors/all/'.$clink.'">
+                        <img src="'.base_url().'assets/img/svg/vicon.svg" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
+                    </li>';
+                }
+                
+            } ?>
+            <!-- <li><a href=""></a></li> -->
         </ul>
 
 
