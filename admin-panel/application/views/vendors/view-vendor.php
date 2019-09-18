@@ -17,6 +17,11 @@
         #experience .material-placeholder {
     margin-bottom: 23px;
 }
+.table-box.hide-on-med-and-down {
+    overflow-x: auto;
+}   
+
+
     </style>
 </head>
 
@@ -107,10 +112,11 @@
                             </div>
                             <div class="tab-buttons show-on-large hide-on-med-and-down">
                                 <ul class="tabs1 transparent">
-                                    <li class="tab1 col s3"><a href="#personal-detail" class="active">Profile</a></li>
-                                    <li class="tab1 col s3"><a href="#profile" class="">Details</a></li>
-                                    <li class="tab1 col s3"><a href="#experience" class="">Portfolio</a></li>
-                                    <li class="tab1 col s3"><a href="#education" class="">Enquiries</a></li>
+                                    <li class="tab1 col s2"><a href="#personal-detail" class="active">Profile</a></li>
+                                    <li class="tab1 col s2"><a href="#profile" class="">Details</a></li>
+                                    <li class="tab1 col s2"><a href="#experience" class="">Portfolio</a></li>
+                                    <li class="tab1 col s2"><a href="#education" class="">Enquiries</a></li>
+                                    <li class="tab1 col s2"><a href="#education1" class="">Reviews</a></li>
                                 </ul>
                             </div>
                             <div class="card scrollspy" id="personal-detail">
@@ -255,6 +261,83 @@
                                     </div>
                                 </div>
                             </div>
+
+                             <div class="card scrollspy" id="education1">
+                                <div class="card-content">
+                                    <p class="bold mb10 h6">Reviews</p>
+                                    <div class="table-box hide-on-med-and-down">
+                                        <table id="dynamic1" class="striped">
+                                            <thead>
+                                                <tr class="tt">
+                                                    <th id="a" class="h5-para-p2" width="130px">User Name</th>
+                                                    <th id="b" class="h5-para-p2" width="100px">User Email ID</th>
+                                                    <th id="e" class="h5-para-p2" width="100px">Rating</th>
+                                                    <th id="e" class="h5-para-p2" width="100px">Good At</th>
+                                                    <th id="e" class="h5-para-p2" width="100px">Review</th>
+                                                    <th id="g" class="h5-para-p2" width="62px">Date</th>
+                                                    <th id="g" class="h5-para-p2" width="62px">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                <?php
+
+                                    if (!empty($review)) {
+                                      foreach ($review as $key => $value) {
+                                      ?>
+                                                <tr>
+                                                    <td><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></td>
+                                                    <td><a
+                                                            href="mailto:<?php echo (!empty($value->user_email))?$value->user_email:'---'  ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a>
+                                                    </td>
+                                                    <td><?php echo (!empty($value->rating))?$value->rating:'---'  ?></td>
+                                                    <td><?php echo (!empty($value->proffesional))?'Proffesionalism ,':'';  echo (!empty($value->quality))?'Quality Of Work,':''; echo (!empty($value->service))?'On Time Service ,':''; echo (!empty($value->money))?'Value for Money ,':''; echo (!empty($value->experience))?'Highly Experienced ,':''; ?></td>
+                                                    <td><?php echo (!empty($value->review))?substr($value->review,0,150).'...':'---'  ?></td>
+
+                                                    <td><?php echo (!empty($value->added_date))?date("M d, Y ", strtotime($value->added_date)):'---'; ?>
+                                                    </td>
+                                                    <td class="action-btn  center-align">
+                                                        <!-- view user -->
+                                                        <a href="#modal<?php echo $value->id ?>"  class="blue hoverable  modal-trigger"><i class="fas fa-edit "></i></i></a>
+
+
+                                                        <div id="modal<?php echo $value->id ?>" class="modal" style="width: 35%;">
+                                        <div class="modal-content">
+                                            <h6>Edit review</h6>
+                                            <form action="<?php echo base_url() ?>vendor-review/update" method="post"
+                                                enctype="multipart/form-data">
+                                                <div class="col l12">
+                                                    <div class="row m0">
+                                                        <div class="input-field col s12">
+                                                            <input type="hidden" value="<?php echo $value->id ?>" name="id">
+                                                            <input type="hidden" value="<?php echo $value->vendor_id ?>" name="vendid">
+                                                             <textarea id="revw" class="materialize-textarea" name="revw" required="true"><?php echo $value->review ?></textarea>
+                                                            <label for="revw">Review</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-field col s12">
+                                                        <button
+                                                            class="btn waves-effect waves-light green darken-4 hoverable btn-small"
+                                                            type="submit">Submit </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                    
+                                                        <!-- view user -->
+                                                        <!-- delete user -->
+                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('vendor-review/delete/'.$value->id.'/'.$value->vendor_id) ?> " class="red hoverable delete-btn"><i class="fas fa-trash  "></i></a>
+                                                        <!-- delete user -->
+                                                    </td>
+                                                </tr>
+                                                <?php } } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div><!-- end row2 -->
 
 
@@ -283,12 +366,21 @@
     </script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/dataTable/button/js/pdfmake.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url() ?>assets/dataTable/button/js/vfs_fonts.js"></script>
+        <script>
+    <?php $this->load->view('include/message.php'); ?>
+    </script>
     <script>
     $(document).ready(function() {
         $('.scrollspy').scrollSpy();
         $('.materialboxed').materialbox();
         $('.modal').modal();
         $('#dynamic').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf'
+            ],
+        });
+        $('#dynamic1').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf'

@@ -101,9 +101,6 @@ class Account extends CI_Controller {
 		{
 			$data['title'] = 'Enquired vendors - ShaadiBaraati';
 			$data['vendor'] = $this->m_account->enquireVendor($this->session->userdata('shduser'));
-			echo "<pre>";
-			print_r ($data['vendor']);
-			echo "</pre>";
 			$this->load->view('account/enq-vendor', $data, FALSE);
 		}
 

@@ -151,8 +151,9 @@ class Vendors extends CI_Controller {
         $data['result']     = $this->m_vendors->detail($id);
         $data['enquiry']    = $this->m_vendors->vendorEnquiry($data['result']->uniq);
         $data['port']       = $this->m_vendors->get_portfolio($id);
-        $data['title']   = $data['result']->name.' - Shaadibaraati';
-        $data['title']   = 'Detail Vendor - Shaadibaraati';
+        $data['review']     = $this->m_vendors->vendor_review($id);
+        $data['title']      = $data['result']->name.' - Shaadibaraati';
+        $data['title']      = 'Detail Vendor - Shaadibaraati';
         $this->load->view('vendors/view-vendor', $data, FALSE);
     }
 
@@ -471,6 +472,35 @@ class Vendors extends CI_Controller {
         $this->session->set_flashdata('success', 'FAQ added Successfully');
         redirect('vendors/edit/'.$id,'refresh');
         
+    }
+
+
+    public function reviewupdate($id='')
+    {
+       $id = $this->input->post('id');
+       $review = $this->input->post('revw');
+       $vendid = $this->input->post('vendid');
+            $output = $this->m_vendors->updateReview($id,$review,$vendid);
+
+            if(!empty($output))
+            {
+                $this->session->set_flashdata('success', 'Vendor review updated Successfully');
+                redirect('vendors/view/'.$vendid,'refresh');
+            }else{
+                $this->session->set_flashdata('error', 'Something went wrong Please try again!');
+               redirect('vendors/view/'.$vendid,'refresh');
+            }
+    }
+
+    public function reviewdelete($id='',$vendid='')
+    {
+            if($this->m_vendors->reviewdelete($id)){
+                $this->session->set_flashdata('success', 'Vendor review Deleted Successfully');
+                redirect('vendors/view/'.$vendid,'refresh'); // if you are redirect to list of the data add controller name here
+            }else{
+                $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+                redirect('vendors/view/'.$vendid,'refresh'); // if you are redirect to list of the data add controller name here
+            }
     }
 
 

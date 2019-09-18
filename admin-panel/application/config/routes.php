@@ -100,8 +100,10 @@ $route['vendors/view/(:any)']	=	'vendors/detail/$1'; //vendor detail
 $route['vendors/edit/(:any)']	=	'vendors/edit/$1'; //vendor edit
 $route['vendors/delete/(:any)']	=	'vendors/delete/$1'; //vendor edit
 $route['vendors/new-service']	=	'vendors/new_service'; //vendor information and services
-$route['vendors/service']	=	'vendors/service'; //vendor information and services
-
-
+$route['vendors/service']		=	'vendors/service'; //vendor information and services
 $route['vendors/add-video']		=	'vendors/add_video'; //vendor edit
+$route['vendor-review/update']  = 	'vendors/reviewupdate';
+$route['vendor-review/delete/(:any)/(:any)']  = 	'vendors/reviewdelete/$1/$2';
+
+
 

@@ -22,7 +22,7 @@ class M_vendors extends CI_Model {
 
     /**
      * Vendors -> get Vendors
-     * get Vendors details from database
+     * get Vendors details from databases
      * url : vendors/view/id
     **/
 	public function detail($id='')
@@ -289,6 +289,26 @@ class M_vendors extends CI_Model {
 		return true;
 	}
 	
+
+	public function vendor_review($id='')
+	{
+		return $this->db->where('vendor_id', $id)->get('vendor_review')->result();
+	}
+
+	public function updateReview($id='',$review='',$vendid='')
+	{
+		$this->db->where('id', $id)->update('vendor_review', array('review' => $review));
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function reviewdelete($id='')
+	{
+		return $this->db->where('id', $id)->delete('vendor_review');
+	}
 
 }
 
