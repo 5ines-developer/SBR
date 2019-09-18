@@ -117,7 +117,7 @@
                             $clink = strtolower(str_replace(" ","-",$cats->category));
                     ?>
                         <div class="col l4 s6">
-                            <a href="<?php echo base_url().'vendors/all/'.$clink?>">
+                            <a href="<?php echo base_url().'vendors/all/'.urlencode($clink)?>">
                                 <div class="vender-im">
                                     <img src="<?php echo (!empty($cats->image))?$cats->image:''  ?>"
                                         class="img-responsive" width="100%"
@@ -130,7 +130,7 @@
                         </div>
                         <?php    } } }?>
                     </div>
-                    <center><a href="<?php echo base_url() ?>vendors/category"><button class="btn-cate">View All
+                    <center><a href="<?php echo base_url() ?>view-category"><button class="btn-cate">View All
                                 Categories</button></a></center>
 
                 </div>

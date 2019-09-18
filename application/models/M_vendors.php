@@ -194,6 +194,11 @@ class M_vendors extends CI_Model
         
     }
 
+    public function getCategory($value='')
+    {
+        return $this->db->order_by('category', 'asc')->get('category')->result();
+    }
+
 
     
 
