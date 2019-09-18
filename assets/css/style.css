@@ -94,6 +94,7 @@ html {
     border: 1px solid #d0021b;
     height: 42px;
     padding: 0px 30px;
+    border-radius: 0px 4px 4px 0px;
 }
 
 .btn-find:focus {

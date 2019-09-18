@@ -53,7 +53,7 @@ height: 30px;
             <div class="container center-align">
                 <div class="row m0">
                     <div class="col s12 m8 push-m2">
-                        <h4 class="white-text">India's Favourite Wedding Planning Platform</h4>
+                        <h4 class="white-text">India's Most Trusted Online Wedding Market</h4>
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
 
 

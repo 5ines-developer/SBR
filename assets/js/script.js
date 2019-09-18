@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   //  tool tip
     var toll = document.querySelectorAll('.tooltipped');
-    var tollinstances = M.Tooltip.init(toll);
+    var tollinstances = M.Tooltip.init(toll, {
+      margin: 0
+    });
 
   // droupdown
     var droup = document.querySelectorAll('.dropdown-trigger');
@@ -9,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
       constrainWidth: false,
       coverTrigger: false,
       hover: true
-    }, );
+    } );
 
   // selcet
     var slect = document.querySelectorAll('select');
