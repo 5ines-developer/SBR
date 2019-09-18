@@ -84,7 +84,7 @@
                                                     <div class="col s12 center m4 mt40">
                                                         <!-- user block and unblock -->
                                                         <?php
-                                if ((!empty($result->is_active)) && $result->is_active == '1') { ?>
+                                                        if ((!empty($result->is_active)) && $result->is_active == '1') { ?>
                                                         <a href="<?php echo base_url('users/block/'.$result->id.'') ?>"
                                                             class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"
                                                             id="block">Block</a>

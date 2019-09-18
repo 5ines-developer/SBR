@@ -105,6 +105,8 @@ $route['get-favourite']   				= 'vendors/getFavourite';
 
 //enquire vendors
 $route['enquire-vendor']   				= 'vendors/enquireVendor';
+//all category
+$route['view-category']   				= 'vendors/allCategory';
 
 
 

@@ -125,21 +125,15 @@ height: 30px;
                                         <option value="">All Categories</option>
                                         <?php if (!empty($category)) {
                                                     foreach ($category as $categorys => $categories) { ?>
-                                        <option value="<?php echo $categories->category ?>"
-                                            <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?>>
-                                            <?php echo (!empty($categories->category))?$categories->category:''; ?>
-                                        </option>
+                                        <option <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?> value="<?php echo $categories->category ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                         <?php   } } ?>
                                     </select>
                                 </div>
                                 <div class="col s12 m6">
                                     <select name="q" id="sel-city">
                                         <option value="">All Cities</option>
-                                        <?php if (!empty($city)) {
-                                                    foreach ($city as $citys => $cities) { ?>
-                                        <option value="<?php echo $cities->city ?>"
-                                            <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?>>
-                                            <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
+                                        <?php if (!empty($city)) {foreach ($city as $citys => $cities) { ?>
+                                        <option <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                         <?php   } } ?>
                                     </select>
                                 </div>
@@ -161,9 +155,9 @@ height: 30px;
                         </div>
 
     </section>
-<?php } ?>
+<?php }else{ ?>
 
-        <section class="result-body">
+            <section class="result-body">
             <div class="container-2">
                 <div class="row m0">
                     <!-- left menu -->
@@ -373,6 +367,9 @@ height: 30px;
 
                     <div class="col s12 m8 l9">
                         <div class="row  result-item-box">
+
+
+
                             <?php if (!empty($vendors)) {
                                 foreach ($vendors as $key => $value) { ?>
                             <div class="col s6 m6 l4" v-for="item in ">
@@ -419,7 +416,7 @@ height: 30px;
                                                     </div>
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">
-                                                        <p class=" r-crd-category"><?php echo 'Photo + Video' ?></p>
+                                                        <p class=" r-crd-category"><?php echo $value->category ?></p>
                                                     </div>
                                                     <div class="col s12 m6 hide-on-small-only">
                                                         <p class="m0 r-crd-ratings">
@@ -445,6 +442,10 @@ height: 30px;
                 </div>
             </div>
         </section>
+
+<?php } ?>
+
+
 
 
     </div>

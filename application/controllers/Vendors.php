@@ -215,10 +215,15 @@ class Vendors extends CI_Controller {
         }else{
               $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
               redirect($url,'refresh');
-        }
-
+        } 
   }
 
+
+  public function allCategory($id='')
+  {
+    $data['category']   = $this->m_vendors->getCategory();
+    $this->load->view('vendors/all-category.php',$data);
+  }
 
 
     
