@@ -75,6 +75,11 @@ class Authentication extends CI_Controller {
     {
         if ($this->session->userdata('sha_id') != '') {
             $data['title'] = 'Dashboard - Shaadi Baraati';
+            $data['enquiry'] = $this->m_authentication->getEnquiry();
+            $data['vcount'] = $this->m_authentication->vendorCount();
+            $data['uscount'] = $this->m_authentication->userCount();
+            $data['vnenquirycount'] = $this->m_authentication->vnenquiryCount();
+            $data['catcount'] = $this->m_authentication->categoryCount();
             $this->load->view('pages/dashboard.php', $data);
         } else {
             $this->session->set_flashdata('error', 'Please login and try again');

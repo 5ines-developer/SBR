@@ -43,59 +43,60 @@
 
                         <div class="row ">
                            <div class="col l3 m6 s12">
-                              <a href="">
+                              <a href="<?php echo base_url('vendors/manage') ?>">
                                  <div class="list-dashboard white z-depth-0">
                                     <div class="row m0">
                                        <div class="col l3 m3 s3">
-                                          <div class="round amber accent-4"><i class="fas fa-user-alt  white-text"></i></div>
+                                          <div class="round amber accent-4"><i class="fas fa-handshake  white-text"></i></div>
                                        </div>
                                        <div class="col l9 m9 s9">
-                                          <p class="h5-para1 black-text m0">100  <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
-                                          <p class="para-p1 grey-text m0">New Candidates</p>
+                                          <p class="h5-para1 black-text m0"><?php echo (!empty($vcount))?$vcount:'0'; ?>  <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
+                                          <p class="para-p1 grey-text m0">Total Vendors</p>
                                        </div>
                                     </div>
                                  </div>
                               </a>
                            </div>
                            <div class="col l3 m6 s12">
-                              <a href="">
+                              <a href="<?php echo base_url('users/manage') ?>">
                                  <div class="list-dashboard white z-depth-0">
                                     <div class="row m0">
                                        <div class="col l3 m3 s3">
-                                          <div class="round deep-purple lighten-1"><i class="fas fa-users   white-text"></i></div>
-                                       </div>
-                                       <div class="col l9 m9 s9">500<i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
-                                          <p class="para-p1 grey-text m0">New Employeers</p>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <div class="col l3 m6 s12">
-                              <a href="">
-                                 <div class="list-dashboard white z-depth-0">
-                                    <div class="row m0">
-                                       <div class="col l3 m3 s3">
-                                          <div class="round light-green accent-4"><i class="fas fa-briefcase  white-text"></i></div>
+                                          <div class="round deep-purple lighten-1"><i class="fas fa-users  white-text"></i></div>
                                        </div>
                                        <div class="col l9 m9 s9">
-                                          <p class="h5-para1 black-text m0">600 <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
-                                          <p class="para-p1 grey-text m0">Total Jobs</p>
+                                          <p class="h5-para1 black-text m0"><?php echo (!empty($uscount))?$uscount:'0'; ?>  <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
+                                          <p class="para-p1 grey-text m0">Registered Users</p>
                                        </div>
                                     </div>
                                  </div>
                               </a>
                            </div>
                            <div class="col l3 m6 s12">
-                              <a href="">
+                              <a href="<?php echo base_url('category/manage') ?>">
+                                 <div class="list-dashboard white z-depth-0">
+                                    <div class="row m0">
+                                       <div class="col l3 m3 s3">
+                                          <div class="round light-green accent-4"><i class="fas fa-th-list   white-text"></i></div>
+                                       </div>
+                                       <div class="col l9 m9 s9">
+                                          <p class="h5-para1 black-text m0"><?php echo (!empty($catcount))?$catcount:'0'; ?> <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
+                                          <p class="para-p1 grey-text m0">Total Categories</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </a>
+                           </div>
+                           <div class="col l3 m6 s12">
+                              <a href="<?php echo base_url('vendors/manage') ?>">
                                  <div class="list-dashboard white z-depth-0">
                                     <div class="row m0">
                                        <div class="col l3 m3 s3">
                                           <div class="round brown"><i class="fas white-text fa-handshake"></i></div>
                                        </div>
                                        <div class="col l9 m9 s9">
-                                          <p class="h5-para1 black-text m0">30 <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
-                                          <p class="para-p1 grey-text m0">Partners enquiry</p>
+                                          <p class="h5-para1 black-text m0"><?php echo (!empty($vnenquirycount))?$vnenquirycount:'0'; ?> <i class="fas fa-chevron-circle-up green-text down-aro"></i></p>
+                                          <p class="para-p1 grey-text m0">Vendor enquiry</p>
                                        </div>
                                     </div>
                                  </div>
@@ -106,10 +107,10 @@
 
                      </div>
                      <!-- end dash -->
-                     <div class="char-dashboard">
+                     <!-- <div class="char-dashboard">
                         <div class="row">
                            <div class="col l8 m12 s12">
-                              <div class="chart-border">
+                              <div class="chart-border"> -->
                                  <!-- <div class="row">
                                     <div class="col l12 m12 s12">
                                        <div class="m0 border-button">
@@ -119,10 +120,10 @@
                                        </div>
                                     </div>
                                  </div> -->
-                                 <canvas id="myChart" width="100%" height="60"></canvas>
+                                 <!-- <canvas id="myChart" width="100%" height="60"></canvas> -->
                               </div>
                            </div>
-                           <div class="col m4 s12 l4">
+                           <!-- <div class="col m4 s12 l4">
                            
                               <div class="bar-line white">
                                  <p class="h5-para-p1 ">Pending Employeer Approval</p>
@@ -215,9 +216,9 @@
                                     </div>
                                  </div>
                               </div>
-                           </div>
-                        </div>
-                     </div>
+                           </div> -->
+                        <!-- </div>
+                     </div> -->
 
                      <!-- chart-table -->
                      <!-- shorting -->
@@ -225,109 +226,43 @@
                         <div class="row">
                            <div class="col l12 m12 s12">
                               <div class="">
-                                 <p class="h5-para-p2">Manage Employees</p>
+                                 <p class="h5-para-p2">User Enquiries</p>
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">
-                                          <th id="a" class="h5-para-p2" width="130px">Company Name</th>
-                                          <th id="b" class="h5-para-p2" width="100px">Company Person</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Contact No</th>
-                                          <th id="d" class="h5-para-p2">Email ID</th>
-                                          <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
-                                          <th id="f" class="h5-para-p2" width="100px">Status</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Name</th>
+                                          <th id="b" class="h5-para-p2" width="100px">Email</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Phone</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Subject</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Date</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
                                        </tr>
                                     </thead>
-                                    
-                                        <tr>
-                                            <td >5ines</td>
-                                            <td >developer</td>
-                                            <td >0123 456 789</td>
-                                            <td >test@test.com</td>
-                                            <td >12 Agu 2019</td>
-                                            <td>
-                                                <span class='green-text'>Active</span>
-                                                    <!-- <span class='red-text'>Pending</span> 
-                                                <span class='Red-text'>Remove</span> -->
+                                    <tbody>
+
+                                    <?php
+
+                                    if (!empty($enquiry)) {
+                                      $count= 0;
+                                      foreach ($enquiry as $key => $value) { $count += 1;
+                                      ?>
+                                      <tr>
+                                            <td ><?php echo (!empty($enquiry))?$count:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->email))?$value->email:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->subject))?$value->subject:'---'  ?></td>
+                                            <td><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></td>
+                                            <td class="action-btn  center-align">
+                                              <!-- view user -->
+                                                <a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
+                                              <!-- view user -->
                                             </td>
-                                            <td class="para-sub">
-                                                <a href=""><i class="fas fa-pen blue-text  darken-4"></i></a>
-                                                <a href=""><i class="far fa-trash-alt red-text"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                        <td >5ines</td>
-                                        <td >developer</td>
-                                        <td >0123 456 789</td>
-                                        <td >test@test.com</td>
-                                        <td >12 Agu 2019</td>
-                                        <td>
-                                           
-                                             <span class='Red-text'>Remove</span>
-                                        </td>
-                                        <td class="para-sub">
-                                           <a href=""><i class="fas fa-pen blue-text  darken-4"></i></a>
-                                           <a href=""><i class="far fa-trash-alt red-text"></i></a>
-                                        </td>
-                                        </tr>
-                                        <tr>
-                                            <td >5ines</td>
-                                            <td >developer</td>
-                                            <td >0123 456 789</td>
-                                            <td >test@test.com</td>
-                                            <td >12 Agu 2019</td>
-                                            <td>
-                                            <span class='green-text'>Active</span>
-                                                
-                                            </td>
-                                            <td class="para-sub">
-                                            <a href=""><i class="fas fa-pen blue-text  darken-4"></i></a>
-                                            <a href=""><i class="far fa-trash-alt red-text"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td >5ines</td>
-                                            <td >developer</td>
-                                            <td >0123 456 789</td>
-                                            <td >test@test.com</td>
-                                            <td >12 Agu 2019</td>
-                                            <td>
-                                                <span class='Red-text'>Remove</span> 
-                                            </td>
-                                            <td class="para-sub">
-                                            <a href=""><i class="fas fa-pen blue-text  darken-4"></i></a>
-                                            <a href=""><i class="far fa-trash-alt red-text"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td >5ines</td>
-                                            <td >developer</td>
-                                            <td >0123 456 789</td>
-                                            <td >test@test.com</td>
-                                            <td >12 Agu 2019</td>
-                                            <td>
-                                                <span class='Red-text'>Remove</span> 
-                                            </td>
-                                            <td class="para-sub">
-                                            <a href=""><i class="fas fa-pen blue-text  darken-4"></i></a>
-                                            <a href=""><i class="far fa-trash-alt red-text"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td >5ines</td>
-                                            <td >developer</td>
-                                            <td >0123 456 789</td>
-                                            <td >test@test.com</td>
-                                            <td >12 Agu 2019</td>
-                                            <td>
-                                                <span class='red-text'>Pending</span> 
-                                            </td>
-                                            <td class="para-sub">
-                                            <a href=""><i class="fas fa-pen blue-text  darken-4"></i></a>
-                                            <a href=""><i class="far fa-trash-alt red-text"></i></a>
-                                            </td>
+                                          
                                         </tr>
                                       
+                                    <?php } } ?>
                                     </tbody>
                                  </table>
                               </div>

@@ -78,6 +78,39 @@ class M_authentication extends CI_Model {
 			
         }
 
+          //get enquiries
+  public function getEnquiry($value='')
+  {
+    return $this->db->order_by('id', 'desc')->get('contact')->result();
+  }
+
+  public function vendorCount($value='')
+  {
+    $result =  $this->db->get('vendor')->result();
+    return count($result);
+  }
+
+  public function userCount($value='')
+  {
+    $this->db->where('su_is_active', '1');
+    $result =  $this->db->get('user')->result();
+    return count($result);
+  }
+
+  public function vnenquiryCount($value='')
+  {
+    $result =  $this->db->get('vendor_enquiry')->result();
+    return count($result);
+  }
+
+  public function categoryCount($value='')
+  {
+    $result =  $this->db->get('category')->result();
+    return count($result);
+  }
+
+  
+
 	
 
 }
