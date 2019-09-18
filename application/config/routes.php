@@ -83,6 +83,9 @@ $route['profile/enquired-vendors']   	= 'account/enquireVendor';
 
 // newsletter subscribe
 $route['subscribe'] 		    		= 'home/subscribe';
+//contact us
+$route['contact-us']   					= 'home/contact';
+$route['contact-us/insert']   			= 'home/insertcontact';
 
 //search
 $route['vendors']  						= 'search/index';
@@ -107,6 +110,9 @@ $route['get-favourite']   				= 'vendors/getFavourite';
 $route['enquire-vendor']   				= 'vendors/enquireVendor';
 //all category
 $route['view-category']   				= 'vendors/allCategory';
+
+
+
 
 
 

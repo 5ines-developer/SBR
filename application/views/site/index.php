@@ -456,7 +456,8 @@
             <center><button class="btn-cate">View All </button></center>
         </div>
     </section>
-    <section class="sec bg-col">
+
+       <section class="sec bg-col">
         <div class="container-2">
            <div class="row m0">
                <div class="col s12 m12 l6 bfrb">
@@ -524,6 +525,7 @@
             
         </div>
     </section>
+
 
     <?php $this->load->view('includes/footer'); ?>
     <!-- script -->
