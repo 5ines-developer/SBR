@@ -106,6 +106,7 @@
     <!-- script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="<?php echo base_url()?>assets/js/script.js"></script>
     <script>
         <?php $this->load->view('includes/message'); ?>
     </script>

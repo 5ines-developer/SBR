@@ -1,9 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems, options);
+  //  tool tip
+    var toll = document.querySelectorAll('.tooltipped');
+    var tollinstances = M.Tooltip.init(toll);
+  // droupdown
+    var droup = document.querySelectorAll('.dropdown-trigger');
+    var droupinstances = M.Dropdown.init(droup, {
+      constrainWidth: false,
+      coverTrigger: false,
+      hover: true
+    }, );
+  // selcet
+    var slect = document.querySelectorAll('select');
+    var slectinstances = M.FormSelect.init(slect);
+  // nav drwaver
+    var sidenav = document.querySelectorAll('.sidenav');
+    var sidenavinstances = M.Sidenav.init(sidenav);
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var toll = document.querySelectorAll('.tooltipped');
-    var instances = M.Tooltip.init(toll);
-});
+

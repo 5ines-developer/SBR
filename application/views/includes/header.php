@@ -7,7 +7,8 @@
                     <div class="right hide-on-med-and-down header-ul ">
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
-                            <li><a href="<?php echo base_url('vendors')?>">VENDORS</a></li>
+                            <li><a class="dropdown-trigger" href="#!" data-target="vendordropdown" >VENDORS</a></li>
+                            <!-- href="<?php echo base_url('vendors')?>" -->
                             <li><a href="#!">SELECT CITY</a></li>
                             <li><a href="#">WED ASSISTANCE</a></li>
                             <li><a href="#">E-INVITE</a></li>
@@ -25,9 +26,38 @@
                             
                         </ul>
                     </div>
-               
+                    
             </div>
         </nav>
+
+
+        <ul id="vendordropdown" class="dropdown-content">
+            
+           <li><a href="#!"><img src="<?php echo base_url() ?>assets/img/svg/vicon.svg" alt="" width="50px">  Category</a></li>
+           <li><a href="#!">Wedding Photography</a></li>
+           <li><a href="#!">Wedding Venues</a></li>
+           <li><a href="#!">Bridal Makeup</a></li>
+           <li><a href="#!">Wedding Card</a></li>
+           <li><a href="#!">Wedding Decorator</a></li>
+           <li><a href="#!">Bridal Wear</a></li>
+           <li><a href="#!">Groom Wear</a></li>
+           <li><a href="#!">Wedding Band</a></li>
+           <li><a href="#!">Mehendi Artist</a></li>
+           <li><a href="#!">Wedding Jewellery</a></li>
+           <li><a href="#!">Wedding Catering</a></li>
+           <li><a href="#!">Wedding Cakes</a></li>
+           <li><a href="#!">Rental Wear</a></li>
+           <li><a href="#!">Wedding Planner</a></li>
+           <li><a href="#!">Astrology & Religious Services</a></li>
+           <li><a href="#!">Background Verification & Detective Services</a></li>
+           <li><a href="#!">Balloon Decorators</a></li>
+           <li><a href="#!">Safa Wala</a></li>
+           <li><a href="#!">Honeymoon Packages </a></li>
+            
+        </ul>
+
+
+
         <ul class="sidenav" id="mobile-demo">
             <li><a href="<?php echo base_url()?>">HOME</a></li>
             <li><a href="<?php echo base_url('vendors')?>">VENDORS</a></li>

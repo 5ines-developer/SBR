@@ -883,6 +883,7 @@ $this->load->model('m_search');
     <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script>
     <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/script.js"></script>
 
     <script>
     <?php $this->load-> view('includes/message'); ?>

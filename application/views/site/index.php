@@ -532,19 +532,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/script.js"></script>
     <script>
     <?php $this->load->view('includes/message'); ?>
     </script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-
-        // nav
-        var sidenav = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(sidenav);
-
-    });
+    
 
     // top-cities
     $('.top-citys').slick({
@@ -634,6 +627,7 @@
         data: {
             email: '',
             emailError: '',
+           
         },
 
         methods: {
