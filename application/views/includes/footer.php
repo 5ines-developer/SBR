@@ -1,4 +1,5 @@
-<section class="sec-footer">
+ 
+    <section class="sec-footer">
         <div class="container-fluide">
             <div class="row">
                 <div class="col l2">
@@ -7,15 +8,14 @@
                         <div class="line"></div>
                         <ul>
                             <a href="" ><li class="hov">About Us</li></a>
-                            <a href="" ><li class="hov">Contact Us</li></a>
+                            <a href="<?php echo base_url('contact-us') ?>" ><li class="hov">Contact Us</li></a>
                             <a href="" ><li class="hov">Wedding Gallery</li></a>
                             <a href="" ><li class="hov">Real Wedding</li></a>
                             <a href="" ><li class="hov">Testimonial</li></a>
                             <a href="" ><li class="hov">wedding Destination</li></a>
-                            <a href="" ><li class="hov">Franchise Proposal</li></a>
                             <a href="" ><li class="hov">Vendor Reviews</li></a>
                             <a href="" ><li class="hov">E-Invite</li></a>
-                            <a href="" ><li class="hov">Feedbacck / Complaints</li></a>
+                            <a href="" ><li class="hov">Feedback / Complaints</li></a>
                             <a href="" ><li class="hov">Sitemap</li></a>
                         </ul>
                     </div>

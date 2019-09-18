@@ -2251,3 +2251,109 @@ a.viewmore:hover{color:#d0021b;cursor: pointer;}
     padding: 60px;
     margin:0px !important;
 }
+
+#vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 2px;}
+
+/***contact us***/
+.contact-back {
+
+    background: #000000db url('../img/banner.jpg');
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 6% 0px;
+
+}
+.banner-up h5 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+}
+.contact-form {
+
+    background:#000000ab url('../img/contact-res.png');
+
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+
+background-repeat: no-repeat;
+
+background-position: right;
+
+background-size: 45%;
+
+background-blend-mode: color;
+margin-top: -20px;
+
+}
+.back-con{
+    background: #d0021b;
+}
+.padd-con {
+
+    padding: 20px;
+
+}
+.hch h6 {
+
+    font-size: 18px;
+    letter-spacing: 1px;
+
+}
+.form-contact, ::placeholder {
+    color: white !important;
+}
+.con-us{
+    border-bottom: 1px solid white !important;
+}
+.whit-btn {
+    background: white;
+    border: 1px solid white;
+    padding: 10px 35px;
+    cursor: pointer
+}
+.whit-btn:hover {
+    background: #d0021b;
+    color: white;
+}
+
+.bor-bot {
+    border: 1px solid white;
+    color: white;
+    padding: 35px;
+}
+.address-detail {
+    padding: 10% 40px 0px 40px;
+}
+.padd-li {
+    padding: 20px 0px;
+}
+.padd-li i {
+    font-size: 15px;
+    padding-top: 5px;
+}
+.padd-li p {
+
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 25px;
+
+}
+@media(max-width:767px){
+    .address-detail {
+
+        padding: 0px;
+    
+    }
+    .bor-bot {
+
+        border: none;
+        color: white;
+        padding: 10px;
+    
+    }
+}
+#vendordropdown li a img{width: 18px; position: relative; top: 3px; margin-right: 7px;}
+

@@ -65,6 +65,58 @@ class Home extends CI_Controller {
         
         
     }
+
+
+    public function contact($id='')
+    {
+        $data['title']  = 'contact - ShaadiBaraati';
+        $data['user']   = $this->m_home->getuser($this->session->userdata('shdid'));
+        $this->load->view('site/contact-us',$data);
+    }
+
+    public function insertcontact($value='')
+    {
+        $name       =   $this->input->post('name');
+        $email      =   $this->input->post('email');
+        $phone      =   $this->input->post('phone');
+        $subject    =   $this->input->post('subject');
+        $message    =   $this->input->post('message');
+        $uniq       =   $this->input->post('uniq');
+
+        $insert = array(
+          'name'    =>  $name , 
+          'email'   =>  $email , 
+          'phone'   =>  $phone , 
+          'subject' =>  $subject , 
+          'message' =>  $message ,
+          'uniq'    =>  $uniq
+        );
+
+        $data['result'] = $insert;
+        $data['output']  =  $this->m_home->addenquiry($insert);
+        if (!empty($data['output'])) {
+            $this->load->config('email');
+            $this->load->library('email');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/enquiry', $data, true);
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to('prathwi@5ine.in');
+            $this->email->subject('Enquiry Form');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
+                redirect('contact-us','refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                redirect('contact-us','refresh');
+            }
+        }else{
+              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+              redirect('contact-us','refresh');
+        }
+    }
+
     
     
 

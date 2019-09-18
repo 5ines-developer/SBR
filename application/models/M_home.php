@@ -59,6 +59,29 @@ class M_home extends CI_Model
         }
     }
 
+    //get user
+    public function getuser($id='')
+    {
+       return $this->db->where('su_id', $id)->get('user')->row_array();
+    }
+
+    public function addenquiry($insert='')
+    {
+        $this->db->where('uniq', $insert['uniq']);
+        $query = $this->db->get('contact');
+        if ($query->num_rows() > 0) {
+            $this->db->where('uniq',$insert['uniq']);
+            $this->db->update('contact', $insert);
+            if ($this->db->affected_rows() > 0) {
+               return true;
+            }else{
+                return false;
+            }
+        }else{
+            return $this->db->insert('contact', $insert);
+        }
+    }
+
 }
 
 /* End of file ModelName.php */
