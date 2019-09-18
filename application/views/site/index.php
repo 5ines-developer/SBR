@@ -19,7 +19,7 @@
             <div class="banner-img">
                 <img src="<?php echo base_url() ?>assets/img/banner.jpg" class="img-responsive" width="100%" alt="">
                 <div class="lec-search">
-                    <h5 class="hide-on-small-only">Your Online Wedding Market</h5>
+                    <h5 class="hide-on-small-only">India's Most Trusted Online Wedding Market</h5>
                     <p class="hide-on-small-only">Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="row">
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
