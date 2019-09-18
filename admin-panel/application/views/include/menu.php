@@ -9,7 +9,7 @@
         <li class="<?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a href="<?php echo base_url('category/manage') ?>"><i class="fas fa-th-list li-icon"></i>Category</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'vendors'?'active':'' ?>"><a href="<?php echo base_url('vendors/manage') ?>"><i class="fas  li-icon fa-handshake"></i>Vendors</a></li>
 
-        <li class=""><a href=""><i class="fas fa-briefcase li-icon"></i>Form</a></li>
+        <!-- <li class=""><a href=""><i class="fas fa-briefcase li-icon"></i>Form</a></li>
         <li class=""><a href=""><i class="fab fa-black-tie li-icon"></i>Manage Jobs</a></li>
         <li class=""><a href=""><i class="fas fa-hand-holding-usd li-icon"></i>Manage Price</a></li>
         <li class=""><a href=""><i class="fas fa-search li-icon"></i>Candidate Search</a></li>
@@ -18,7 +18,7 @@
         <li class=""><a href=""><i class="fas fa-share-alt li-icon"></i>Blog</a></li>
         <li class=""><a href=""><i class="far li-icon fa-comments"></i>Testimonial</a></li>
         <li class=""><a href=""><i class="fas  li-icon fa-handshake"></i>Partners enquiry</a></li>
-        <li class=""><a href=""><i class="fas fa-user-plus li-icon"></i>Add New Admin</a></li>
+        <li class=""><a href=""><i class="fas fa-user-plus li-icon"></i>Add New Admin</a></li> -->
        
       </ul>
    </div>
