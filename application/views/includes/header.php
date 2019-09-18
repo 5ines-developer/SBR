@@ -9,7 +9,7 @@
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
                             <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
-                            <li><a href="#!">SELECT CITY</a></li>
+                            <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
                             <li><a href="#">WED ASSISTANCE</a></li>
                             <li><a href="#">E-INVITE</a></li>
                             <li><a href="#">REAL WEDDING</a></li>
@@ -41,13 +41,53 @@
                     echo '<li>
 
                     <a href="vendors/all/'.$clink.'">
-                        <img src="'.base_url().'assets/img/svg/vicon.svg" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
+                        <img src="'.$cvalue->icon.'" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
                     </li>';
                 }
                 
             } ?>
             <!-- <li><a href=""></a></li> -->
         </ul>
+
+          <!-- Modal Structure -->
+            <div id="citymodel" class="modal">
+                <div class="modal-content">
+                    <a href="#!" class="modal-close waves-effect waves-green right"> <i class="material-icons">close</i></a>
+                    <div class="center-align">
+                        <h4> <i class="material-icons">location_on</i> Popular Cities</h4>
+                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                        <p>Find top vendors in your city.</p>
+
+                        <ul class="citylist">
+                            <?php foreach (cities() as $key => $city) { 
+                                if($city->status == 1){
+                            ?>
+                            <li class="hoverable">
+                                <a href="<?php echo base_url('vendors/').strtolower(str_replace(" ","-",$city->city)) ?>">
+                                    <img src="<?php echo $city->icon ?>" class="img-responsive city-icon" alt="<?php echo $city->city ?>" >
+                                    <p class="m0"><?php echo $city->city ?></p>
+                                </a>
+                            </li>
+                            <?php } }?>
+                            
+                        </ul>
+
+                        <a  class="viewmore">All Cities</a>
+                    </div>
+
+                    <div class="morecitylink">
+                        <ul>
+                            <?php foreach (cities() as $key => $city) { 
+                                if($city->status != 1){ 
+                                    echo '<li><a href="'.base_url().'vendors/'.strtolower(str_replace(" ","-",$city->city)).'">'.$city->city.'</a></li>';
+                                } 
+                            }?>
+                            
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
 
 
 

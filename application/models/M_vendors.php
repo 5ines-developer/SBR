@@ -201,11 +201,18 @@ class M_vendors extends CI_Model
     }
 
 
-    public function allcategory(Type $var = null)
+    public function allcategory()
     {
         $this->db->select('id, category, icon, uniq');
         $this->db->order_by('category', 'asc');
         return $this->db->get('category')->result();
+    }
+
+    public function allcities()
+    {
+        $this->db->select('icon, city, status');
+        $this->db->order_by('city', 'asc');
+        return $this->db->get('city')->result();
     }
     
 
