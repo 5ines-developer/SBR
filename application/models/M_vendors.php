@@ -204,6 +204,7 @@ class M_vendors extends CI_Model
     public function allcategory(Type $var = null)
     {
         $this->db->select('id, category, icon, uniq');
+        $this->db->order_by('category', 'asc');
         return $this->db->get('category')->result();
     }
     
