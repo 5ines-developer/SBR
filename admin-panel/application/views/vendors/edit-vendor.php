@@ -531,6 +531,54 @@
                             </div>
                         </div>
 
+
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="form-container">
+                                    <form action="<?php echo base_url() ?>vendors/offer_insert" method="post"
+                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
+                                        enctype="multipart/form-data">
+                                        <div class="row m0">
+                                            <p class="bold  black-text  mb10 h6">Offer Image</p>
+                                        </div>
+                                        
+                                        
+                                        <div class="row m0">
+                                            <div class="file-field input-field col s12 l6">
+                                                <div class="btn btn-small black-text grey lighten-3">
+                                                    <i class="far fa-image left  "></i>
+                                                    <span class="">Add Image</span>
+                                                    <input type="file" name="offimage" accept=".png, .jpg, .jpeg, .gif"
+                                                        <?php echo (!empty($result)?'':'required') ?>>
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text">
+                                                </div>
+                                                <span class="helper-text"><b>Note</b>: Please select only image file
+                                                    (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
+                                                        size:</span> 512kb <span class="red-text">*</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="col s12">
+                                            <?php
+                                                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
+                                                        ?>
+                                            <?php ?>
+                                        </div>
+                                        <input type="hidden" value="<?php echo $result->id ?>" name="id">
+                                        <div class="col s12 center mtb20">
+                                            <button
+                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
+                                                type="submit">Submit
+                                                <i class="fas fa-paper-plane right"></i>
+                                            </button>
+                                            <br>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div><!-- cad end -->
 
 

@@ -310,6 +310,30 @@ class M_vendors extends CI_Model {
 		return $this->db->where('id', $id)->delete('vendor_review');
 	}
 
+	public function offer_image($insert='')
+	{
+		$this->db->where('vendor_id', $insert['vendor_id']);
+		$query = $this->db->get('vendor_offer');
+		if ($query->num_rows() > 0) {
+			$this->db->where('vendor_id', $insert['vendor_id']);
+			$this->db->update('vendor_offer', $insert);
+			if ($this->db->affected_rows() > 0) {
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return $this->db->insert('vendor_offer', $insert);
+		}
+	}
+
+	public function vendor_offer($id='')
+	{
+		return $this->db->where('vendor_id', $id)->get('vendor_offer')->row_array();
+	}
+
+	
+
 }
 
 /* End of file M_vendors.php */
