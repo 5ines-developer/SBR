@@ -152,6 +152,7 @@ class Vendors extends CI_Controller {
         $data['enquiry']    = $this->m_vendors->vendorEnquiry($data['result']->uniq);
         $data['port']       = $this->m_vendors->get_portfolio($id);
         $data['review']     = $this->m_vendors->vendor_review($id);
+        $data['offer']     = $this->m_vendors->vendor_offer($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $data['title']      = 'Detail Vendor - Shaadibaraati';
         $this->load->view('vendors/view-vendor', $data, FALSE);
@@ -501,6 +502,60 @@ class Vendors extends CI_Controller {
                 $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
                 redirect('vendors/view/'.$vendid,'refresh'); // if you are redirect to list of the data add controller name here
             }
+    }
+
+    public function offer_insert($value='')
+    {
+        $id = $this->input->post('id');
+
+                $files = $_FILES;
+                    $config['upload_path'] = '../offer-image/';
+                    $config['allowed_types'] = 'jpg|png|jpeg|gif';
+                    $config['max_width'] = 0;
+                    $config['encrypt_name'] = true;
+                    $this->load->library('upload');
+                    $this->upload->initialize($config);
+                    if (!is_dir($config['upload_path'])) {
+                        mkdir($config['upload_path'], 0777, true);
+                    }
+
+                    if (!$this->upload->do_upload('offimage')) {
+                        $error = array('error' => $this->upload->display_errors());
+                        // print_r($error);exit();
+                        $this->session->set_flashdata('error', $this->upload->display_errors());
+                         redirect('vendors/edit/'.$id,'refresh');
+                    } else {
+                        // echo "ok";exit();
+                        $upload_data = $this->upload->data();
+                        $config['image_library'] = 'gd2';
+                        $config['source_image'] = $upload_data['full_path'];
+                        $config['create_thumb'] = true;
+                        $config['maintain_ratio'] = true;
+                        $config['height'] = 250;
+
+                        $this->load->library('image_lib', $config);
+                        $this->image_lib->resize();
+
+                        $file_name = $upload_data['file_name'];
+                        $imgpath = 'offer-image/'.$file_name;
+                }
+
+
+                $insert =  array(
+                    'image'       =>  $imgpath , 
+                    'vendor_id'      =>  $id , 
+                );
+            $output = $this->m_vendors->offer_image($insert);
+            if(!empty($output))
+            {
+                $this->session->set_flashdata('success', 'Vendor offer image added Successfully');
+                redirect('vendors/edit/'.$id,'refresh');
+            }else{
+                $this->session->set_flashdata('error', 'Something went wrong, please try again later.');
+               redirect('vendors/edit/'.$id,'refresh');
+            }
+        
+
     }
 
 

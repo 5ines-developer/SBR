@@ -117,6 +117,7 @@
                                     <li class="tab1 col s2"><a href="#experience" class="">Portfolio</a></li>
                                     <li class="tab1 col s2"><a href="#education" class="">Enquiries</a></li>
                                     <li class="tab1 col s2"><a href="#education1" class="">Reviews</a></li>
+                                    <li class="tab1 col s2"><a href="#education2" class="">Offer</a></li>
                                 </ul>
                             </div>
                             <div class="card scrollspy" id="personal-detail">
@@ -298,7 +299,7 @@
                                                     </td>
                                                     <td class="action-btn  center-align">
                                                         <!-- view user -->
-                                                        <a href="#modal<?php echo $value->id ?>"  class="blue hoverable  modal-trigger"><i class="fas fa-edit "></i></i></a>
+                                                        <a href="#modal<?php echo $value->id ?>"  class="blue hoverable  modal-trigger"><i class="fas fa-edit "></i></a>
 
 
                                                         <div id="modal<?php echo $value->id ?>" class="modal" style="width: 35%;">
@@ -338,6 +339,18 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <div class="card scrollspy" id="education2">
+                                <div class="card-content">
+                                    <p class="bold mb10 h6">Offer</p>
+                                    <div class="table-box hide-on-med-and-down">
+                                        <img src="<?php echo (!empty($offer['image']))?$this->config->item('web_url').$offer['image']:''  ?>" alt="" style="width: 400px; height: auto;">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
                         </div><!-- end row2 -->
 
 
