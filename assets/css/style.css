@@ -2263,6 +2263,7 @@ a.viewmore:hover{color:#d0021b;cursor: pointer;}
     background-repeat: no-repeat;
     background-size: cover;
     padding: 6% 0px;
+    background-attachment: fixed;
 
 }
 .banner-up h5 {

@@ -62,27 +62,27 @@
                 </div>
             </div>
         </section>
-        <section class="contact-back">
+        <section class="contact-back " id="counter" >
             <div class="container">
                 <div class="row m0">
                     <div class="col l4 m4 s12">
-                        <div class="about-sha">
+                        <div class="about-sha ">
                             <i class="fas fa-users"></i>
-                            <p>200000</p>
+                            <p class="counter-value" data-count="1000000">0</p>
                             <h5>Unique User</h5>
                         </div>
                     </div>
                     <div class="col l4 m4 s12">
                         <div class="about-sha">
                             <i class="fas fa-star"></i>
-                            <p>700000</p>
+                            <p class="counter-value" data-count="700000">0</p>
                             <h5>Reviews</h5>
                         </div>
                     </div>
                     <div class="col l4 m4 s12">
                         <div class="about-sha">
                             <i class="fas fa-heart"></i>
-                            <p>5000</p>
+                            <p class="counter-value" data-count="5000">0</p>
                             <h5>Wedding</h5>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                 vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
                                 Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
                                 elementum semper nisi.</p>
-                                <button class="btn-about">I am Vendor</button>
+                                <a href="<?php echo base_url() ?>vendors"><button class="btn-about">I am Vendor</button></a>
                         </div>
                     </div>
                     <div class="col l6 m5 s12">
@@ -175,40 +175,41 @@
     <!-- script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 var a = 0;
 $(window).scroll(function() {
 
-  var oTop = $('#counter').offset().top - window.innerHeight;
-  if (a == 0 && $(window).scrollTop() > oTop) {
-    $('.counter-value').each(function() {
-      var $this = $(this),
-        countTo = $this.attr('data-count');
-      $({
-        countNum: $this.text()
-      }).animate({
-          countNum: countTo
+var oTop = $('#counter').offset().top - window.innerHeight;
+if (a == 0 && $(window).scrollTop() > oTop) {
+  $('.counter-value').each(function() {
+    var $this = $(this),
+      countTo = $this.attr('data-count');
+    $({
+      countNum: $this.text()
+    }).animate({
+        countNum: countTo
+      },
+
+      {
+
+        duration: 3000,
+        easing: 'swing',
+        step: function() {
+          $this.text(Math.floor(this.countNum));
         },
+        complete: function() {
+          $this.text(this.countNum);
+          //alert('finished');
+        }
 
-        {
+      });
+  });
+  a = 1;
+}
 
-          duration: 2000,
-          easing: 'swing',
-          step: function() {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function() {
-            $this.text(this.countNum);
-            //alert('finished');
-          }
-
-        });
-    });
-    a = 1;
-  }
-
-});</script>
+});
+</script>
 </body>
 
 </html>
