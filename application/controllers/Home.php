@@ -135,6 +135,11 @@ class Home extends CI_Controller {
         $data['title']  = 'about-us - ShaadiBaraati';
         $this->load->view('site/about-us',$data);
     }
+    public function site_map()
+    {
+        $data['title']  = 'site-map - ShaadiBaraati';
+        $this->load->view('site/site-map',$data);
+    }
 
 }
 
