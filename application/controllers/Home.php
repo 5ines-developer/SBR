@@ -130,6 +130,12 @@ class Home extends CI_Controller {
         $this->load->view('site/terms-conditions',$data);
     }
 
+    public function about_us()
+    {
+        $data['title']  = 'about-us - ShaadiBaraati';
+        $this->load->view('site/about-us',$data);
+    }
+
 }
 
 /* End of file Controllername.php */
