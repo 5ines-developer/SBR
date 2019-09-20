@@ -102,60 +102,12 @@
                 </div>
             </div>
         </section>
-    <section class="sec bg-col">
-            <div class="container">
-                <div class="row">
-                    <div class="col l12">
-                        <div class="vender-detail">
-                            <h4>Get In Touch</h4>
-                            <img src="assets/img/saprator.png" class="img-responsive " alt="">
-                            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                dis parturient montes, nascetur ridiculus mus. </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="touch-email">
-                    <div class="row">
-                        <div class="col l9 push-l2 m9 push-m2 s12">
-                            <div class="row">
-                                <div class="col l8 m8 s8">
-                                    <div class="input-field if-mail">
-                                        <input id="email" type="email" name="email" class="validate email-si"
-                                            placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col l4 m4 s4">
-                                    <button class="btn-find-get">Get Start</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col l7 push-l4 m7 push-m4 s12">
-                                <div class="social-media ">
-                                    <ul>
-                                        <li><img src="assets/img/svg/facebook-brands.svg" class="img-responisve socil-icon"
-                                                alt=""></li>
-                                        <li><img src="assets/img/svg/twitter-brands.svg" class="img-responisve socil-icon"
-                                                alt=""></li>
-                                        <li><img src="assets/img/svg/pinterest-brands.svg" class="img-responisve socil-icon"
-                                                alt=""></li>
-                                        <li><img src="assets/img/svg/instagram-brands.svg" class="img-responisve socil-icon"
-                                                alt=""></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-        </section>
         <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="<?php echo base_url()?><?php echo base_url() ?>assets/js/script.js"></script>
 </body>
 
 </html>
