@@ -26,7 +26,8 @@ class Vendors extends CI_Controller {
            $value->review      = $this->m_vendors->getReview($value->id);
            $value->fav         = $this->m_vendors->getFavourite($value->id);
            $value->faq         = $this->m_vendors->faq($value->id);
-           $value->offer         = $this->m_vendors->offer($value->id);
+           $value->offer       = $this->m_vendors->offer($value->id);
+           $value->similar     = $this->m_vendors->similarVendors($value->cityId,$value->catId);
         }
 
         $data['vendor'] = $output;
@@ -197,16 +198,14 @@ class Vendors extends CI_Controller {
         
 
         if (!empty($data['output'])  && !empty($vendors)) {
-            $this->load->config('email');
-            $this->load->library('email');
-            $from = $this->config->item('smtp_user');
-            $msg = $this->load->view('email/vendor-enquiry', $data, true);
-            $this->email->set_newline("\r\n");
-            $this->email->from($from, 'ShaadiBaraati');
-            $this->email->to('prathwi@5ine.in');
-            $this->email->subject('Vendor enquiry request-'.$value->name);
-            $this->email->message($msg);
-            if ($this->email->send()) {
+
+          $output1 = $this->send_user($data);
+          $output2 = $this->send_admin($data);
+
+          
+
+
+            if (!empty($output1)  && !empty($output2)) {
                 $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
                 redirect($url,'refresh');
             } else {
@@ -220,11 +219,53 @@ class Vendors extends CI_Controller {
   }
 
 
+
+    public function send_user($data='')
+    {
+      $this->load->config('email');
+      $this->load->library('email');
+      $from = $this->config->item('smtp_user');
+      $msg = $this->load->view('email/vendor-enquiry', $data, true);
+      $this->email->set_newline("\r\n");
+      $this->email->from($from, 'ShaadiBaraati');
+      $this->email->to('prathwi@5ine.in');
+      $this->email->subject('Vendor enquiry request-'.$data['value']->name);
+      $this->email->message($msg);
+      if ($this->email->send()) {
+          return true;
+      }else{
+          return false;
+      }
+    }
+
+    public function send_admin($data='')
+    {
+      
+      $this->load->config('email');
+      $this->load->library('email');
+      $from = $this->config->item('smtp_user');
+      $msg = $this->load->view('email/vendorEnquiry-user', $data, true);
+      $this->email->set_newline("\r\n");
+      $this->email->from($from, 'ShaadiBaraati');
+      $this->email->to('prathwi@5ine.in');
+      // $this->email->to($data['result']['user_email']);
+      $this->email->subject('Vendor enquiry request-'.$data['value']->name);
+      $this->email->message($msg);
+      if ($this->email->send()) {
+          return true;
+      }else{
+          return false;
+      }
+    }
+
+
   public function allCategory($id='')
   {
     $data['category']   = $this->m_vendors->getCategory();
     $this->load->view('vendors/all-category.php',$data);
   }
+
+
 
 
 

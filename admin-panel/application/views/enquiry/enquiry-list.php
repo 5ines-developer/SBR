@@ -77,12 +77,12 @@
                                       foreach ($result as $key => $value) { $count += 1;
                                       ?>
                                       <tr>
-                                            <td ><?php echo (!empty($result))?$count:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->email))?$value->email:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->subject))?$value->subject:'---'  ?></td>
-                                            <td><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></td>
+                                            <td ><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($value->subject))?$value->subject:'---'  ?></a></td>
+                                            <td><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
                                             <td class="action-btn  center-align">
                                               <!-- view user -->
                                                 <a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>

@@ -58,7 +58,7 @@
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text" style="border:transparent">
                                                     </div>
-                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
 
                                                  <?php if(!empty($result)) {?>

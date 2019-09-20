@@ -280,7 +280,7 @@
                                                                 image file
                                                                 (eg: .jpg, .png, .jpeg, etc.) <br> <span
                                                                     class="bold">Max file
-                                                                    size:</span> 512kb <span
+                                                                    size:</span> 512kb<span> Max file ratio</span> 200px * 200px<span
                                                                     class="red-text">*</span></span>
                                                         </div>
                                                     </div>

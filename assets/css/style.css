@@ -1935,7 +1935,7 @@ r-crd-category {
 }
 
 .col5s img {
-    width: auto;
+    width: 100%;
     height: 100%;
 }
 
@@ -2368,6 +2368,7 @@ a.viewmore:hover {
     font-size: 18px;
     letter-spacing: 1px;
 }
+<<<<<<< HEAD
 
 .form-contact,
  ::placeholder {
@@ -2375,6 +2376,12 @@ a.viewmore:hover {
 }
 
 .con-us {
+=======
+/*.form-contact, ::placeholder {
+    color: white !important;
+}*/
+.con-us{
+>>>>>>> b0c9edf33719f70581bc435c40728e03116b931a
     border-bottom: 1px solid white !important;
 }
 

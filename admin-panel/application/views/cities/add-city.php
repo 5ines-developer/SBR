@@ -53,12 +53,12 @@
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Add Image</span>
-                                                        <input type="file" name="image" accept=".png, .jpg, .jpeg, .gif" required>
+                                                        <input type="file" name="image" accept=".png, .jpg, .jpeg" >
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text" style="border:transparent">
                                                     </div>
-                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
                                             </div> 
 
@@ -67,7 +67,7 @@
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Add Icon</span>
-                                                        <input type="file" name="icon" accept=".png, .jpg, .jpeg, .gif" required>
+                                                        <input type="file" name="icon" accept=".png, .jpg, .jpeg, .gif">
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text" style="border:transparent">
@@ -119,19 +119,10 @@
                 city: {
                     required: true,
                 },
-                image: {
-                    required: true,
-                },
-                icon: {
-                    required: true,
-                },
-
             },
             messages: {
                 
                 city: "Please enter a city",
-                image: "Please add a image",
-                icon: "Please add a icon",
             }
         });
     });
