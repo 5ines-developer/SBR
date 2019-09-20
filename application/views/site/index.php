@@ -457,74 +457,6 @@
         </div>
     </section>
 
-       <section class="sec bg-col">
-        <div class="container-2">
-           <div class="row m0">
-               <div class="col s12 m12 l6 bfrb">
-               
-                    <div class="center-align">
-                        <h4>Wed Assistance</h4>
-                        <p>Assisted Wedding Planner is Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
-                    </div>
-                        
-               </div>
-               <div class="col s12 m12 l6">
-                    <div class="touch-email">
-                     <div class="row">
-                        <div class="col l12">
-                            <div class="center-align">
-                                <h4>Get In Touch</h4>
-                                <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                    dis parturient montes, nascetur ridiculus mus. </p>
-                            </div>
-                        </div>
-                            <div class="col  s12">
-                                <div class="row">
-                                    <form action="<?php echo base_url('subscribe') ?>" method="post" id="demo">
-                                        <div class="col l8 m8 s8">
-                                            <div class="input-field if-mail">
-                                                <input id="email" type="email" name="email" class="validate email-si"
-                                                    placeholder="Email" required="" @change="emailCheck" v-model="email">
-                                                <span class="helper-text red-text">{{ emailError }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col l4 m4 s4">
-                                            <button type="submit" class="btn-find-get">Get Start</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                           
-
-                        </div>
-                    </div>
-               </div>
-               <div class="clearfix"></div>
-               <div class="col l7 push-l4 m7 push-m4 s12">
-           
-                    <div class="social-media ">
-                        <ul>
-                            <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
-                                        class="img-responisve socil-icon" alt=""> </a></li>
-                            <li><a href="https://www.twitter.com/shaadibaraati" taraget="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
-                                        class="img-responisve socil-icon" alt=""></a></li>
-                            <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg"
-                                    taraget="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
-                                        class="img-responisve socil-icon" alt=""></a></li>
-                            <li><a href="https://www.instagram.com/shaadibaraatiofficial/" taraget="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
-                                        class="img-responisve socil-icon" alt=""></a></li>
-                        </ul>
-                    </div>
-                                
-               </div>
-           </div>
-            
-        </div>
-    </section>
 
 
     <?php $this->load->view('includes/footer'); ?>
@@ -654,7 +586,7 @@
                     })
             },
             checkForm() {
-                if ((this.cpswerror == '') && (this.phoneError == '') && (this.emailError == '')) {
+                if (this.emailError == '') {
 
 
                     this.$refs.form.submit()

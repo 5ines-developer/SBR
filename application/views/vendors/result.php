@@ -158,7 +158,7 @@ height: 30px;
             <div class="container-2">
                 <div class="row m0">
                     <!-- left menu -->
-                    <div class="col s12 m4 l3">
+                    <!-- <div class="col s12 m4 l3">
                         <a @click="isFilter = !isFilter"
                             class="btn-floating btn filter-btn waves-effect waves-light red accent-4 hide-on-med-and-up"><i
                                 class="material-icons">filter_list</i></a>
@@ -172,7 +172,7 @@ height: 30px;
                                 </span>
                             </div>
                             <div class="filter-divider"></div>
-
+ -->
                             <!-- locality -->
                             <!-- <div class="filter-sub-head" >
                                 <span >Locality</span>
@@ -265,7 +265,7 @@ height: 30px;
                             </transition> -->
 
                             <!-- Budget -->
-                            <div class="filter-sub-head">
+                            <!-- <div class="filter-sub-head">
                                 <span>Budget</span>
                                 <span class="right  waves-effect waves-red" @click="isbudget = !isbudget">
                                     <i class="material-icons" v-if="isbudget">remove</i>
@@ -308,10 +308,10 @@ height: 30px;
                                         </li>
                                     </ul>
                                 </div>
-                            </transition>
+                            </transition> -->
 
                             <!-- ratings -->
-                            <div class="filter-sub-head">
+                            <!-- <div class="filter-sub-head">
                                 <span>Average ratings</span>
                                 <span class="right  waves-effect waves-red" @click="isAvg = !isAvg">
                                     <i class="material-icons" v-if="isAvg">remove</i>
@@ -354,22 +354,23 @@ height: 30px;
                                         </li>
                                     </ul>
                                 </div>
-                            </transition>
+                            </transition> -->
 
 
 
 
-                        </div>
-                    </div><!-- end left menu -->
+                        <!-- </div>
+                    </div> -->
+                    <!-- end left menu -->
 
-                    <div class="col s12 m8 l9">
+                    <div class="col s12 m12 l12">
                         <div class="row  result-item-box">
 
 
 
                             <?php if (!empty($vendors)) {
                                 foreach ($vendors as $key => $value) { ?>
-                            <div class="col s6 m6 l4" v-for="item in ">
+                            <div class="col s6 m4 l3" v-for="item in ">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
                                         <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>"
@@ -477,7 +478,9 @@ height: 30px;
             autocomplete: '',
             vendor: '',
             visible: false,
-            previsible: false
+            previsible: false,
+            email: '',
+            emailError: '',
 
         },
         created() {
@@ -485,6 +488,33 @@ height: 30px;
             this.handleResize();
         },
         methods: {
+
+                        // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+             checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
+            },
             handleResize() {
                 if (window.innerWidth <= 600) {
                     this.isFilter = false;

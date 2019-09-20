@@ -244,7 +244,7 @@ $this->load->model('m_search');
                                         <div class="bbx-content">
                                             <ul>
                                                 <li>
-                                                    <span class="bbx-name">Studio Photograpgy</span>
+                                                    <span class="bbx-name">Starting Price</span>
                                                     <span class="bbx-rate">- &#8377; <?php
                                                     $amount = (!empty($value->price))?$value->price:'';
                                                     $num =$amount;
@@ -289,18 +289,17 @@ $this->load->model('m_search');
                                         <form class="row m0" action="<?php echo base_url()?>enquire-vendor" method="post">
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="name" type="text" class="validate" name="e_name" <?php echo (!empty($user->su_name))?'readonly':''; ?> value="<?php echo (!empty($user->su_name))?$user->su_name:''; ?>">
-                                                    <input id="name" type="text" class="validate">
+                                                    <input  id="name" type="text" class="validate" name="e_name" <?php echo (!empty($user->su_name))?'readonly':''; ?> value="<?php echo (!empty($user->su_name))?$user->su_name:''; ?>" required>
                                                     <label for="name">Name</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <input id="email" type="text" class="validate" name="e_email" <?php echo (!empty($user->su_email))?'readonly':''; ?> value="<?php echo (!empty($user->su_email))?$user->su_email:''; ?>">
+                                                    <input id="email" type="text" class="validate" name="e_email" <?php echo (!empty($user->su_email))?'readonly':''; ?> value="<?php echo (!empty($user->su_email))?$user->su_email:''; ?>" required>
                                                     <label for="email">Email</label>
                                                 </div>
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="phone" type="text" class="validate" name="e_mobile" <?php echo (!empty($user->su_phone))?'readonly':''; ?> value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>">
+                                                    <input  id="phone" type="text" class="validate" name="e_mobile" <?php echo (!empty($user->su_phone))?'readonly':''; ?> value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>" required>
                                                     <label for="phone">Mobile Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -309,7 +308,7 @@ $this->load->model('m_search');
                                                 </div>
                                             </div>
 
-                                            <?php if ($value->category == 'wedding venues') { ?> 
+                                            <?php if ($value->category == 'wedding venues' || $value->category == 'Wedding Venues') { ?> 
                                                 <div class="row m0">
                                                     <div class="input-field col s6">
                                                         <input  id="guest" type="text" class="validate" name="guest_no">
@@ -349,7 +348,7 @@ $this->load->model('m_search');
                                             <?php } ?>
                                             <div class="row m0">
                                                 <div class="input-field col s12">
-                                                    <textarea id="wed_detail" class="materialize-textarea" name="wed_detail"></textarea>
+                                                    <textarea id="wed_detail" class="materialize-textarea" required name="wed_detail"></textarea>
                                                     <label for="wed_detail">Details about my wedding</label>
                                                 </div>
                                             </div>
@@ -392,7 +391,7 @@ $this->load->model('m_search');
 
                                     <div class="col s6 m4 l2">
                                         <div class="service-box center-align">
-                                            <img class="responsive-img z-depth-1"
+                                            <img height="40px" class="responsive-img"
                                                 src="<?php echo (!empty($ser->image))?base_url().$ser->image:''; ?>"
                                                 alt="">
                                             <p class="sb-title m0">
@@ -816,57 +815,91 @@ $this->load->model('m_search');
             </div>
         </section>
 
-        <section class="sec bg-col">
-            <div class="container">
+        <section style="background: #f1f1f1; padding: 30px 0;">
+            <div class="container-fluide">
                 <div class="row">
-                    <div class="col l12">
-                        <div class="vender-detail">
-                            <h4>Get In Touch</h4>
-                            <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive " alt="">
-                            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                dis parturient montes, nascetur ridiculus mus. </p>
-                        </div>
-                    </div>
+                 <div class="col 12 m6">
+                    <h4>Similar Vendors</h4>
                 </div>
-                <div class="touch-email">
-                    <div class="row">
-                        <div class="col l9 push-l2 m9 push-m2 s12">
-                            <div class="row">
-                                <form action="<?php echo base_url('subscribe') ?>" method="post" id="demo">
-                                    <div class="col l8 m8 s8">
-                                        <div class="input-field if-mail">
-                                            <input id="email" type="email" name="email" class="validate email-si"
-                                                placeholder="Email" required="">
-                                            <span class="helper-text red-text"></span>
-                                        </div>
+                <div class="col 12 m6 right-align">
+                    <a href="<?php echo base_url('cities/add')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable "><i class="fas fa-plus left"></i> View All</a>
+                </div>
+                </div>
+            
+
+            <div class="col s12 m12 l12">
+                        <div class="row  result-item-box">
+
+
+
+                            <?php if (!empty($value->similar)) {
+                                foreach ($value->similar as $sim => $simi) { ?>
+                            <div class="col s6 m4 l3" v-for="item in ">
+                                <div class="result-items hoverable">
+                                    <div class="card z-depth-0">
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.str_replace(" ","-",strtolower($simi->name)).'/'.$simi->uniq)?>"
+                                            target="_blank">
+                                            <div class="card-image">
+                                                <img
+                                                    src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="row m0">
+                                                    <div class="col s12 m6">
+                                                        <p class="m0 r-crd-title">
+                                                            <?php echo (!empty($simi->name))?$simi->name:'' ?></p>
+                                                        <p class="m0 r-crd-location">
+                                                            <?php echo (!empty($simi->city))?$simi->city:'' ?></p>
+                                                    </div>
+                                                    <div class="col s12 m6">
+                                                        <p class="m0 r-crd-price">&#8377; <?php
+                                                    $amount = (!empty($simi->price))?$simi->price:'';
+                                                    $num =$amount;
+                                                    $explrestunits ='';
+                                                    if(strlen($num)>3){
+                                                    $lastthree = substr($num, strlen($num)-3, strlen($num));
+                                                    $restunits = substr($num, 0, strlen($num)-3); // extracts the last three digits
+                                                    $restunits = (strlen($restunits)%2 == 1)?"0".$restunits:$restunits; // explodes the remaining digits in 2's formats, adds a zero in the beginning to maintain the 2's grouping.
+                                                    $expunit = str_split($restunits, 2);
+                                                    for($i=0; $i < sizeof($expunit);  $i++){
+                                                    // creates each of the 2's group and adds a comma to the end
+                                                    if($i==0)
+                                                    {
+                                                    $explrestunits .= (int)$expunit[$i].","; // if is first value , convert into integer
+                                                    }else{
+                                                    $explrestunits .= $expunit[$i].",";
+                                                    }
+                                                    }
+                                                    $thecash = $explrestunits.$lastthree;
+                                                    } else {
+                                                    $thecash = $num;
+                                                    }
+                                                    echo $thecash; ?> Per day</p>
+                                                    </div>
+                                                    <div class="cdivider hide-on-small-only"></div>
+                                                    <div class="col s12 m6 hide-on-small-only">
+                                                        <p class=" r-crd-category"><?php echo $simi->category ?></p>
+                                                    </div>
+                                                    <div class="col s12 m6 hide-on-small-only">
+                                                        <p class="m0 r-crd-ratings">
+                                                            <?php echo $this->ci->m_search->countReview($simi->id) ?>
+                                                            reviews <span class="c-badge green"><i
+                                                                    class="material-icons">star</i> 5.0</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div class="col l4 m4 s4">
-                                        <button type="submit" class="btn-find-get">Get Start</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col l7 push-l4 m7 push-m4 s12">
-                                <div class="social-media ">
-                                    <ul>
-                                        <li><img src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
-                                                class="img-responisve socil-icon" alt=""></li>
-                                        <li><img src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
-                                                class="img-responisve socil-icon" alt=""></li>
-                                        <li><img src="<?php echo base_url() ?>assets/img/svg/pinterest-brands.svg"
-                                                class="img-responisve socil-icon" alt=""></li>
-                                        <li><img src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
-                                                class="img-responisve socil-icon" alt=""></li>
-                                    </ul>
                                 </div>
                             </div>
+                            <?php   } } ?>
                         </div>
-
                     </div>
-                </div>
-            </div>
+                    </div>
+
         </section>
+
+        
 
         <?php } } ?>
 
@@ -900,9 +933,38 @@ $this->load->model('m_search');
             rev_rating: '',
             ar: '1',
             imgs: [],
+            email: '',
+            emailError: '',
         },
 
         methods: {
+
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+             checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
+            },
             showImg(index) {
                 this.index = index
                 this.visible = true
@@ -1019,10 +1081,11 @@ $this->load->model('m_search');
             // hoverEnabled: false
         });
 
-     document.addEventListener('DOMContentLoaded', function() {
+
     var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, options);
-  });
+    var instances = M.Datepicker.init(elems, {
+        format:'yyyy-mm-dd',
+    });
 
         var scrolls = document.querySelectorAll('.scrollspy');
         var instances = M.ScrollSpy.init(scrolls);

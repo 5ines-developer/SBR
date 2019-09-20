@@ -105,11 +105,18 @@ class Cities extends CI_Controller {
         }
 
         $insert =  array(
-        	'image' => $imgpath,
-        	'icon' => $icnpath,
         	'uniq' => $this->input->post('city_id'),
         	'city' => $this->input->post('city')
         );
+
+        if (file_exists($_FILES['image']['tmp_name'])) {
+            $insert['image'] = $imgpath;
+        }
+
+        if (file_exists($_FILES['icon']['tmp_name'])) {
+            $insert['icon'] = $icnpath;
+
+        }
 
 			if($this->m_cities->insert_city($insert))
 			{

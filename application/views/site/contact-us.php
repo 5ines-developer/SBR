@@ -41,7 +41,7 @@
                                     </p>
                                 </div>
                                 <div class="form-contact">
-                                    <form action="<?php echo base_url('contact-us/insert') ?>" method="post" enctype="multipart/form-data">
+                                    <form action="<?php echo base_url('contact-us/insert') ?>" method="post" enctype="multipart/form-data" id="contactform">
                                         <div class="row">
                                             <div class="col l6 s12">
                                                 <div class="d-input">
@@ -88,6 +88,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col l12 s12">
+                                             <div class="d-input">
+                                                <div class="g-recaptcha" data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div>
+                                            </div>
+                                            <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div>
+                                            </div>
+
+
                                             <div class="col l12 s12">
                                                 <button class="whit-btn" type="submit" value="Submit">Submit</button>
                                             </div>
@@ -249,14 +257,87 @@
         <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/script.js"></script>
+
+    <script>
+        <?php $this->load->view('includes/message'); ?>
+    </script>
+
+    <script>
+    var demo = new Vue({
+        el: '#app',
+        data: {
+            email: '',
+            emailError: '',
+           
+        },
+
+        methods: {
+            // mobile number check on database
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+            checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
+            }
+        },
+    });
+
+
+
+    
+    </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.collapsible');
             var instances = M.Collapsible.init(elems);
         });
     </script>
+                <script type="text/javascript">
+
+             $(function(){
+
+                 $('#contactform').on('submit', function(e) {
+
+                  if(grecaptcha.getResponse() == "") {
+
+                     e.preventDefault();
+
+                    $('.error').text('Captcha is required');
+
+                }
+
+                });
+
+             });
+
+            </script>
 </body>
 
 </html>

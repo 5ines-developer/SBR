@@ -1939,7 +1939,7 @@ r-crd-category {
 }
 
 .col5s img {
-    width: auto;
+    width: 100%;
     height: 100%;
 }
 
@@ -2303,9 +2303,9 @@ margin-top: -20px;
     letter-spacing: 1px;
 
 }
-.form-contact, ::placeholder {
+/*.form-contact, ::placeholder {
     color: white !important;
-}
+}*/
 .con-us{
     border-bottom: 1px solid white !important;
 }

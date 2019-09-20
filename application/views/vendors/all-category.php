@@ -51,7 +51,7 @@ $this->load->model('m_search');
         }
         .card-icon img{
         position: absolute;
-        top: 9px;
+        top: 4px;
         }
         .card .card-title{
         padding-left: 37px;
@@ -60,6 +60,27 @@ $this->load->model('m_search');
         font-size: 16px;
         font-weight: 600;
         margin-left: 10px;
+        }
+        .back-image {
+    width: 100%;
+}
+
+       @media only screen and (max-width: 567px) {
+        .back-image{
+
+            height: 120px;
+        }
+        .card .card-title {
+    padding-left: 0;
+    display: block;
+    line-height: 18px;
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: 0;
+}
+
+
+            
         }
         </style>
     </head>
@@ -100,15 +121,15 @@ $this->load->model('m_search');
                                 
                                 <div class="row m0">
                                     <?php foreach ($category as $key => $value) { ?>
-                                    <div class="col l3 s12 m4">
+                                    <div class="col l3 s6 m4">
                                         <a href="<?php echo base_url().'vendors/all/'.urlencode(strtolower(str_replace(" ","-",$value->category))) ?>" >
                                         
-                                        <div class="card">
-                                            <div class="card-image1">
-                                                <img src="<?php echo base_url().$value->image ?>">
+                                        <div class="card hoverable">
+                                            <div class="card-image1 ">
+                                                <img src="<?php echo base_url().$value->image ?>" class="back-image">
                                                 <div class="overlay">
                                                     <div class="card-icon">
-                                                        <img src="<?php echo base_url().$value->icon ?>" width="30px">
+                                                        <img class="hide-on-small-only" src="<?php echo base_url().$value->icon ?>" width="30px">
                                                         <span class="card-title"> <?php echo $value->category ?> </span>
                                                     </div>
                                                     
@@ -134,67 +155,56 @@ $this->load->model('m_search');
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="<?php echo base_url()?>assets/js/script.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/script.js"></script>
 
-        <script>
+    <script>
         <?php $this->load->view('includes/message'); ?>
-        </script>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-        });
-        var app = new Vue({
-        el: '#app',
+    </script>
+
+    <script>
+    var demo = new Vue({
+        el: '#demo',
         data: {
-            listItem: '',
-            isShow: true,
-            isDay: true,
-            isbudget: true,
-            isAvg: true,
-            isFilter: true,
-            autocomplete: '',
-            vendor: '',
-            visible: false,
-            previsible: false
+            email: '',
+            emailError: '',
+           
         },
-        created() {
-            window.addEventListener('resize', this.handleResize)
-            this.handleResize();
-        },
+
         methods: {
-        handleResize() {
-            if (window.innerWidth <= 600) {
-                this.isFilter = false;
+            // mobile number check on database
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+            checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
             }
         },
-        vendorcheck() {
-            this.autocomplete = '';
-            this.visible = true;
-            this.previsible = true;
-            const formData = new FormData();
-            formData.append('vendor', this.vendor);
-            axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
-        .then(response => {
-            if (response.data != '') {
-                this.previsible = false;
-                this.autocomplete = response.data;
-            } 
-            else {
-                this.previsible = false;
-                this.autocomplete = '';
-            }
-        })
-        .catch(error => {
-            this.previsible = false;
-            if (error.response) {
-                this.errormsg = error.response.data.error;
-            }
-        })
-        }
-        },
-        });
-        </script>
+    });
+
+
+
+    
+    </script>
     </body>
 </html>

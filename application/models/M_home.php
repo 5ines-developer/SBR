@@ -24,7 +24,6 @@ class M_home extends CI_Model
      **/
     public function getCategory($var = null)
     {
-
         $query = $this->db->get('category');
         if ($query->num_rows() > 0) {
             return $query->result();
