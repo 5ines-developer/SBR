@@ -141,6 +141,12 @@ class Home extends CI_Controller {
         $this->load->view('site/site-map',$data);
     }
 
+    public function wed_assistance()
+    {
+        $data['title']  = 'ShaadiBaraati | Wed assistance';
+        $this->load->view('site/wed-assistance',$data);
+    }
+
 }
 
 /* End of file Controllername.php */

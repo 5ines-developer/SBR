@@ -9,10 +9,10 @@
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
                             <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
-                            <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
-                            <li><a href="#">WED ASSISTANCE</a></li>
-                            <li><a href="#">E-INVITE</a></li>
+                            <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
+                            <!-- <li><a href="#">E-INVITE</a></li> -->
                             <li><a href="#">REAL WEDDING</a></li>
+                            <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
                             <li><a href="#">BLOG</a></li>
                             <?php if ($this->session->userdata('shdid') !='') { ?>
                                 <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a><span class="l-d">|</span></li>
@@ -96,7 +96,7 @@
             <li><a href="<?php echo base_url('vendors')?>">VENDORS</a></li>
             <li><a href="#">WED ASSISTANCE</a></li>
             <li><a href="#">E-INVITE</a></li>
-            <li><a href="#">WED ASSISTANCE</a></li>
+            <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
             <li><a href="#">BLOG</a></li>
             <?php if ($this->session->userdata('shdid') !='') { ?>
                     <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a><span class="l-d">|</span></li>
