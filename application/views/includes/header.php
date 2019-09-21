@@ -41,7 +41,7 @@
                     echo '<li>
 
                     <a href="vendors/all/'.$clink.'">
-                        <img src="'.$cvalue->icon.'" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
+                        <img src="'base_url().$cvalue->icon.'" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
                     </li>';
                 }
                 
