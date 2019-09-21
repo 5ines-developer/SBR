@@ -19,7 +19,6 @@ class Account extends CI_Controller {
         public function index()
         {
             $data['title'] = 'Account settings - ShaadiBaraati';
-            $data['title'] = 'Account settings - ShaadiBaraati';
             $data['setting'] = $this->m_account->account($this->uid);
             $this->load->view('account/profile.php', $data, FALSE); 
         }

@@ -110,3 +110,6 @@ $route['enquiries']			=	'enquiries/index'; //add vendor
 $route['enquiries/view/(:any)']	=	'enquiries/view/$1'; //add vendor
 $route['enquiries/delete/(:any)']	=	'enquiries/delete/$1'; //add vendor
 
+//vendor enquiry
+$route['vendor-enquiry']			=	'vendorenquiry/index'; //add vendor
+
