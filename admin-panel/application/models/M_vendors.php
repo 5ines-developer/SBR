@@ -108,7 +108,7 @@ class M_vendors extends CI_Model {
      * url : vendors/about_insert
     **/
     public function insert_about($insert='',$id='')
-    {
+    {	
 
     	$this->db->where('id', $id);
     	$this->db->update('vendor', $insert);

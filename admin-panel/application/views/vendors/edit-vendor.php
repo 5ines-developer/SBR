@@ -59,6 +59,12 @@
     .faqform:last-child .closefaq{
         visibility: hidden;
     }
+    .stcky-nav{
+        position: sticky;
+top: 65px;
+z-index: 9999;
+background-color: #fff;
+    }
     </style>
 </head>
 
@@ -87,7 +93,20 @@
                                     Vendor</a>
                             </div>
                         </div>
-                        <div class="card">
+
+                        <div class="tab-buttons show-on-large hide-on-med-and-down stcky-nav z-depth-1">
+                                <ul class="tabs1 transparent">
+                                    <li class="tab1 col s2"><a href="#personal-detail" class="active">Profile</a></li>
+                                    <li class="tab1 col s2"><a href="#information" class="">Information & Service</a></li>
+                                    <li class="tab1 col s1"><a href="#about" class="">About</a></li>
+                                    <li class="tab1 col s2"><a href="#portfolio" class="">Portfolio</a></li>
+                                    <li class="tab1 col s2"><a href="#video" class="">Video Links</a></li>
+                                    <li class="tab1 col s1"><a href="#faq" class="">FAQ's</a></li>
+                                    <li class="tab1 col s2"><a href="#offer" class="">Offers</a></li>
+                                </ul>
+                            </div>
+
+                        <div class="card scrollspy" id="personal-detail">
                             <div class="card-content">
                                 <div class="form-container">
                                     <form action="<?php echo base_url() ?>vendors/insert" method="post"
@@ -197,7 +216,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card" style="overflow: auto;">
+                        <div class="card scrollspy" style="overflow: auto;" id="information">
                             <div class="card-content">
                                 <div class="form-container">
                                     <div class="row m0">
@@ -297,14 +316,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card scrollspy" id="about">
                             <div class="card-content">
                                 <div class="form-container">
                                     <form action="<?php echo base_url() ?>vendors/insert_about" method="post"
                                         style="overflow-y: auto;overflow-x: hidden;" id="vendor-about"
                                         enctype="multipart/form-data">
                                         <div class="row m0">
-                                            <p class="bold  black-text  mb10 h6">About Vendor and Policy </p>
+                                            <p class="bold  black-text  mb10 h6">About Vendor</p>
                                         </div>
                                         <div class="row">
                                             <div class="col s12 l12">
@@ -316,39 +335,9 @@
                                                 <textarea name="about" id="description" style="display:none"></textarea>
                                                 <p><span class="error"><?php echo form_error('about'); ?></span></p>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12 l12">
-                                                <label for="specific" class="h5-para-p2 mb10">Specification</label>
-                                                <div id="toolbar-container1"></div>
-                                                <div id="editor1">
-                                                    <?php echo (!empty($result->specification)?$result->specification:'') ?>
-                                                </div>
-                                                <textarea name="specific" id="specific" style="display:none"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="row m0">
-                                            <div class="input-field col s12 l12">
-                                                <label for="tags" class="mb10">Tags<span
-                                                        class="red-text">*</span></label>
-                                                <div class="chips">
-                                                    <input class="custom-class" name="tags"
-                                                        value="<?php echo (!empty($result->tags)?$result->tags:'') ?>">
-                                                </div>
-                                                <p><span class="error"><?php echo form_error('tags'); ?></span></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col s12 l12">
-                                                <label for="policy" class="h5-para-p2 mb10">Policy<span
-                                                        class="red-text">*</span></label>
-                                                <div id="toolbar-container2"></div>
-                                                <div id="editor2">
-                                                    <?php echo (!empty($result->policy)?$result->policy:'') ?> </div>
-                                                <textarea name="policy" id="policy" style="display:none"></textarea>
-                                                <p><span class="error"><?php echo form_error('policy'); ?></span></p>
-                                            </div>
-                                        </div>
+                                        </div>                                       
+                                        
+                                        
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         <div class="col s12">
                                             <?php
@@ -368,7 +357,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card scrollspy" id="portfolio">
                             <div class="card-content">
                                 <div class="form-container">
                                     <form action="<?php echo base_url() ?>vendors/portfolio_insert" method="post"
@@ -407,7 +396,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card scrollspy" id="video">
                             <div class="card-content">
                                 <div class="form-container">
                                     <form action="<?php echo base_url() ?>vendors/add-video" method="post"
@@ -474,7 +463,7 @@
                             </div>
                         </div>
 
-                        <div class="card">
+                        <div class="card scrollspy" id="faq">
                             <div class="card-content">
                                 <div class="form-container">
                                     <div class="row m0">
@@ -532,7 +521,7 @@
                         </div>
 
 
-                        <div class="card">
+                        <div class="card scrollspy" id="offer">
                             <div class="card-content">
                                 <div class="form-container">
                                     <form action="<?php echo base_url() ?>vendors/offer_insert" method="post"
@@ -725,6 +714,7 @@
     <script>
     $(document).ready(function() {
         $('.modal').modal();
+        $('.scrollspy').scrollSpy();
         $("#vd_category").change(function() {
             var cat = $(this).children("option:selected").val();
             if (cat == '2') {

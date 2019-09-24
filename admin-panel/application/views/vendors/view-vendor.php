@@ -162,41 +162,13 @@
                             </div>
                             <div class="card scrollspy" id="profile">
                                 <div class="card-content">
-                                    <p class="bold mb10 h6">Details</p>
+                                    <p class="bold mb10 h6">About</p>
                                     <ul class="profile-box">
                                         <li class="profile-items">
-                                            <div class="profile-item-title">
-                                                <span>About</span>
-                                            </div>
                                             <div class="profile-item-content">
                                                 <p><?php echo (!empty($result->detail))?$result->detail:'---'  ?></p>
                                             </div>
-                                        </li>
-                                        <li class="profile-items">
-                                            <div class="profile-item-title">
-                                                <span>Specifications</span>
-                                            </div>
-                                            <div class="profile-item-content">
-                                                <p><?php echo (!empty($result->specification))?$result->specification:'---'  ?>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li class="profile-items">
-                                            <div class="profile-item-title">
-                                                <span>Policy</span>
-                                            </div>
-                                            <div class="profile-item-content">
-                                                <p><?php echo (!empty($result->policy))?$result->policy:'---'  ?></p>
-                                            </div>
-                                        </li>
-                                        <li class="profile-items">
-                                            <div class="profile-item-title">
-                                                <span>Tags</span>
-                                            </div>
-                                            <div class="profile-item-content">
-                                                <p><?php echo (!empty($result->tags))?$result->tags:'---'  ?></p>
-                                            </div>
-                                        </li>
+                                        </li>                                       
                                     </ul>
                                 </div>
                             </div>
