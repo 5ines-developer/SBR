@@ -133,7 +133,7 @@ class Vendors extends CI_Controller {
 
         foreach ($vendor as $key => $value) {}
 
-      $this->form_validation->set_rules('rev_description', 'Review', 'trim|required|min_length[15]', array('min_length[15]'=> 'Review description Should not be less than 15 character'));
+      $this->form_validation->set_rules('rev_description', 'Review', 'trim|required');
       if ($this->form_validation->run() == false) {
             $error = validation_errors();
             $this->session->set_flashdata('error', $error);

@@ -419,7 +419,7 @@ $this->load->model('m_search');
                                 <div class="row m0">
                                     <div class="col s12">
                                         <div class="dt-card-title">
-                                            <p>Project Photo Gallery</p>
+                                            <p>Photo Gallery</p>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -455,7 +455,7 @@ $this->load->model('m_search');
                                 <div class="row m0">
                                     <div class="col s12">
                                         <div class="dt-card-title">
-                                            <p>Vendor's Videos Gallery</p>
+                                            <p>Videos</p>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
@@ -498,7 +498,7 @@ $this->load->model('m_search');
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <form action="<?php echo base_url('review/submit') ?>" method="post" ref="form"  @submit.prevent="checkForm">
+                                    <form action="<?php echo base_url('review/submit') ?>" method="post" ref="reviewForm"  @submit.prevent="checkForm">
                                         <div class="col s12 mt20">
                                             <div class="left rateus"> Rate us : </div>
                                             <star-rating v-model="ar" :star-size="20"></star-rating>
@@ -598,7 +598,7 @@ $this->load->model('m_search');
                                                     <div class="rating">
                                                         <div class="title">
                                                             Rating Distribution
-                                                            <?php echo (!empty($value->review))?count($value->review):''; ?>reviews
+                                                            <?php echo (!empty($value->review))?count($value->review):''; ?> reviews
                                                         </div>
 
                                                         <div class="score">
@@ -643,7 +643,7 @@ $this->load->model('m_search');
                                                                         aria-hidden="true"></i>
                                                                 </span>
                                                                 <span
-                                                                    class="start-count"><?php echo (!empty($num5))?$num5:'' ?></span>
+                                                                    class="start-count"><?php echo (!empty($num5))?$num5:'0' ?></span>
                                                                 <span class="start-progress">
                                                                     <span class="start-bar"
                                                                         style="width: <?php echo (!empty($value->review))?(($num5 / count($value->review)) * 100):'';  ?>%"></span>
@@ -662,7 +662,7 @@ $this->load->model('m_search');
                                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                                 </span>
                                                                 <span
-                                                                    class="start-count"><?php echo (!empty($num4))?$num4:'' ?></span>
+                                                                    class="start-count"><?php echo (!empty($num4))?$num4:'0' ?></span>
                                                                 <span class="start-progress">
                                                                     <span class="start-bar"
                                                                         style="width:<?php echo (!empty($value->review))?(($num4 / count($value->review)) * 100):'';  ?>%"></span>
@@ -680,7 +680,7 @@ $this->load->model('m_search');
                                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                                 </span>
                                                                 <span
-                                                                    class="start-count"><?php echo (!empty($num3))?$num3:'' ?></span>
+                                                                    class="start-count"><?php echo (!empty($num3))?$num3:'0' ?></span>
                                                                 <span class="start-progress">
                                                                     <span class="start-bar"
                                                                         style="width:<?php echo (!empty($value->review))?(($num3 / count($value->review)) * 100):'';  ?>%"></span>
@@ -698,7 +698,7 @@ $this->load->model('m_search');
                                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                                 </span>
                                                                 <span
-                                                                    class="start-count"><?php echo (!empty($num2))?$num2:'' ?></span>
+                                                                    class="start-count"><?php echo (!empty($num2))?$num2:'0' ?></span>
                                                                 <span class="start-progress">
                                                                     <span class="start-bar"
                                                                         style="width:<?php echo (!empty($value->review))?(($num2 / count($value->review)) * 100):'';  ?>%"></span>
@@ -716,7 +716,7 @@ $this->load->model('m_search');
                                                                     <i class="fa fa-star" aria-hidden="true"></i>
                                                                 </span>
                                                                 <span
-                                                                    class="start-count"><?php echo (!empty($num1))?$num1:'' ?></span>
+                                                                    class="start-count"><?php echo (!empty($num1))?$num1:'0' ?></span>
                                                                 <span class="start-progress">
                                                                     <span class="start-bar"
                                                                         style="width:<?php echo (!empty($value->review))?(($num1 / count($value->review)) * 100):'';  ?>%"></span>
@@ -731,12 +731,12 @@ $this->load->model('m_search');
 
                                                         <?php if ($value->review) {
 
-                                                            foreach ($value->review as $revs => $revsw) { ?>
-                                                        <li>
+                                                            foreach ($value->review as $revs => $revsw) {  ?>
+                                                        <li v-if="reviewcount >=  <?php echo $revs + 1 ?>">
                                                             <div class="review-metadata">
 
                                                                 <div class="queue">
-                                                                    <?php
+                                                                    <?php 
                                                                     for ($i = 0; $i < 5; $i++) {
                                                                     if ($i < $revsw->rating) {
                                                                         $startCheck = ' ratingStar';
@@ -754,10 +754,11 @@ $this->load->model('m_search');
                                                                 </div>
                                                             </div><!-- /.review-metadata -->
                                                             <div class="review-content">
+                                                                <div class="ntg">
+                                                                <span
+                                                                        class=""><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span>
+                                                                </div>
                                                                 <p>
-                                                                    <span
-                                                                        class="bold"><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span><br>
-
                                                                     <?php echo $revsw->review; ?>
                                                                 </p>
                                                             </div><!-- /.review-content -->
@@ -767,13 +768,11 @@ $this->load->model('m_search');
 
 
 
-                                                        <li>
-                                                            <button
-                                                                class="waves-effect waves-light btn red plr30 accent-4 white-text">View
-                                                                More</button>
-                                                        </li>
-
+                                                      
+                                                        
+                                                        
                                                     </ul><!-- /.review-list -->
+                                                    <button @click="morereview" v-if="<?php echo $revs + 1 ?> > 3 && reviewcount < 4" class="waves-effect waves-light btn red plr30 accent-4 white-text">View More</button>
                                                 </div><!-- /.col-md-12 -->
                                             </div>
 
@@ -803,7 +802,9 @@ $this->load->model('m_search');
                     <h4 class="m0">Similar Vendors</h4>
                 </div>
                 <div class="col 12 m6 right-align">
-                    <a href="<?php echo base_url('vendors/'.urlencode(str_replace(" ","-",strtolower($value->city))).'/'.urlencode(str_replace(" ","-",strtolower($value->category)))) ?>" class="similar-more"> View All</a>
+                    <?php if(count($value->similar) > 4){ ?>
+                        <a href="<?php echo base_url('vendors/'.urlencode(str_replace(" ","-",strtolower($value->city))).'/'.urlencode(str_replace(" ","-",strtolower($value->category)))) ?>" class="similar-more"> View All</a>
+                    <?php } ?>
                 </div>
                 </div>
             
@@ -863,10 +864,7 @@ $this->load->model('m_search');
                                                         <p class=" r-crd-category"><?php echo $simi->category ?></p>
                                                     </div>
                                                     <div class="col s12 m6 hide-on-small-only">
-                                                        <p class="m0 r-crd-ratings">
-                                                            <?php echo $this->ci->m_search->countReview($simi->id) ?>
-                                                            reviews <span class="c-badge green"><i
-                                                                    class="material-icons">star</i> 5</span></p>
+                                                        <p class="m0 r-crd-ratings right"> <span class="c-badge green"><i class="material-icons">star</i> 5</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -887,10 +885,10 @@ $this->load->model('m_search');
 
 
 
-    </div>
+   
 
     <?php $this->load->view('includes/footer'); ?>
-
+    </div>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
@@ -918,11 +916,14 @@ $this->load->model('m_search');
             imgs: [],
             email: '',
             emailError: '',
-            count:''
+            count:'',
+            reviewcount: 3
         },
 
         methods: {
-
+            morereview(){
+                this.reviewcount = 1000;
+            },
             // email check on database
             emailCheck() {
                 this.emailError = '';
@@ -1000,9 +1001,10 @@ $this->load->model('m_search');
             checkForm(){
                    if((this.ar <= '3')){                        
                         if(confirm('Do you really want to review this vendor with '+ this.ar + ' rating')){
-                            this.$refs.form.submit()
+                            this.$refs.reviewForm.submit()
                         }                
                     }else{
+                        this.$refs.reviewForm.submit()
                    }
                 },
 

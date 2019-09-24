@@ -2068,6 +2068,9 @@ r-crd-category {
     margin-bottom: 20px
 }
 
+.review-list .ntg{margin-top: 18px; font-style: oblique;}
+
+
 .review-list li:last-child {
     border: transparent
 }
@@ -2989,6 +2992,9 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 .city-more:hover .viewall-button{background: #fff; color: #d0021b;}
 .city-more:hover p {color: #fff; }
 .footer-wed{background: #fff; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #e3e3e3;}
+
+
+
 
 
 
