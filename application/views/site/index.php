@@ -127,9 +127,7 @@
                         <div class="col l4 s6 ">
                             <a href="<?php echo base_url().'vendors/all/'.urlencode($clink)?>">
                                 <div class="vender-im hoverable">
-                                    <img src="<?php echo (!empty($cats->image))?$cats->image:''  ?>"
-                                        class="img-responsive" width="100%"
-                                        alt="<?php echo (!empty($cats->category))?$cats->category:''  ?>">
+                                    <img src="<?php echo (!empty($cats->image))?$cats->image:''  ?>" class="img-responsive" width="100%" alt="<?php echo (!empty($cats->category))?$cats->category:''  ?>">
                                     <div class="title-ven">
                                         <p class="m0"><?php echo (!empty($cats->category))?$cats->category:''  ?></p>
                                     </div>
