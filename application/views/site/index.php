@@ -92,7 +92,10 @@
 
                                 <a href="#citymodel" class="modal-trigger">
                                     <div class="top-city-sl city-more" style="height: 153px;">
-                                    <p class="black-text">View All</p>
+                                        <div class="viewall-button">
+                                            <i class="material-icons">arrow_forward</i>
+                                        </div>
+                                        <p>VIEW ALL</p>
                                     </div>
                                 </a>
 
@@ -145,7 +148,7 @@
     <section class="sec">
         <div class="container-fluide">
             <div class="row">
-                <div class="col l12">
+                <div class="col s12">
                     <div class="vender-detail">
                         <h4>How It's Works</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
@@ -183,7 +186,73 @@
             </div>
         </div>
     </section>
-    <section class="sec bg-col">
+
+    <section class="h-wed-assistance sec bg-col">
+        <div class="container-fluide">
+            <div class="row m0">
+                <div class="col l12">
+                    <div class="vender-detail">
+                        <h4>What is Wed Assistance ?</h4>
+                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                        <p>Plan your dream wedding with the help of our wedding planning experts. </p>
+                    </div>
+                </div>
+                <div class="col s12">
+                    <div class="h-wed-slider">
+                        
+                        <div class="h-wd-item ">
+                            <div class="h-wd-item-contanier">
+                                <div class="h-wd-item-content">
+                                    <div class="h-wd-item-content-headin">Hello Wed Planner</div>
+                                    <div class="h-wd-item-content-phara">Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</div>
+                                    <div class="h-wd-item-button">
+                                        <a class="btn-cate">Book Now</a>
+                                    </div>
+                                   
+                                    <div class="margin-box"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="h-wd-item ">
+                            <div class="h-wd-item-contanier">
+                                <div class="h-wd-item-content">
+                                    <div class="h-wd-item-content-headin">Assisted Wed Planner</div>
+                                    <div class="h-wd-item-content-phara">Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</div>
+                                    <div class="h-wd-item-button">
+                                        <a class="btn-cate">Book Now</a>
+                                    </div>
+                                   
+                                    <div class="margin-box"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="h-wd-item ">
+                            <div class="h-wd-item-contanier">
+                                <div class="h-wd-item-content">
+                                    <div class="h-wd-item-content-headin">Premium Wed Planner</div>
+                                    <div class="h-wd-item-content-phara">Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</div>
+                                    <div class="h-wd-item-button">
+                                        <a class="btn-cate">Book Now</a>
+                                    </div>
+                                   
+                                    <div class="margin-box"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div> 
+                </div>
+            </div>
+        </div>                        
+    </section>
+
+
+
+    <section class="sec ">
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12">
@@ -199,7 +268,7 @@
                     <div class="row">
                         <div class="col l3 s6 p10">
                             <a href="">
-                                <div class="vender-ei">
+                                <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei1.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
@@ -211,7 +280,7 @@
                         </div>
                         <div class="col l3 s6 p10">
                             <a href="">
-                                <div class="vender-ei">
+                                <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei2.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
@@ -223,7 +292,7 @@
                         </div>
                         <div class="col l3 s6 p10">
                             <a href="">
-                                <div class="vender-ei">
+                                <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei3.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
@@ -235,7 +304,7 @@
                         </div>
                         <div class="col l3 s6 p10">
                             <a href="">
-                                <div class="vender-ei">
+                                <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei4.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
@@ -250,77 +319,12 @@
             </div>
         </div>
     </section>
-    <section class="sec  mb30">
-        <div class="container">
-            <div class="row">
-                <div class="col l12">
-                    <div class="vender-detail">
-                        <h4>Happy Couple's</h4>
-                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                            dis
-                            parturient montes, nascetur ridiculus mus. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="test-com">
-                <div class="row">
-                        <div class="col l8 s12 m12 push-l2">
-                    <div class=" testimonial-wedd">
+    
 
-                            <div class="testi-coup">
-                               
-                                   
-                                    
-                                        <center><img src="<?php echo base_url() ?>assets/img/review/Ravi-S-rathore.jpg"
-                                                class="img-responsive tsimg" alt=""></center>
-                                        <h6 class="black-text">Mr & Mrs. Rathore</h6>
-                                        <p>"Shaadi Baraati was very professional and dedicated. They have eased my
-                                            wedding smooth and all the vendors were on time and even Shaadi Baraati Team
-                                            was available on my wedding to ensure the quality services"</p>
-                                        <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
-                                                class="img-responsive"> </center>
-                                    
-                                
-                            </div>
-
-                            <div class="testi-coup">
-                                
-                                        <center><img src="<?php echo base_url() ?>assets/img/review/Raj-Nandi-Testimonial.jpg"
-                                                class="img-responsive tsimg" alt=""></center>
-                                        <h6 class="black-text">Mr & Mrs. Nandi</h6>
-                                        <p>"We never thought planning a wedding would be this easy. Thankyou Shaadi Baraati for making life easy for us. We are so happy that we found your website"</p>
-                                        <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
-                                                class="img-responsive"> </center>
-                                  
-                            </div>
-
-
-                            <div class="testi-coup">
-                                
-                                        <center><img src="<?php echo base_url() ?>assets/img/review/Bharadwaj.jpg"
-                                                class="img-responsive tsimg" alt="Bharadwaj"></center>
-                                        <h6 class="black-text">Mr & Mrs Bhardwaj</h6>
-                                        <p>"Thank you Shaadi Baraati for hassle free events and making my dream come true"</p>
-                                        <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
-                                                class="img-responsive"> </center>
-                                        <!-- <p class="cr">26-07-2019</p> -->
-                                  
-                            </div>
-                            </div>
-
-                            
-                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="sec bg-col">
+    <div class="sec bg-col pb-0">
         <section>
             <div class="container">
-                <div class="row">
+                <div class="row m0">
                     <div class="col l12">
                         <div class="vender-detail">
                             <h4>Real Wedding Storie's</h4>
@@ -391,7 +395,74 @@
             </div>
         </section>
     </div>
-    <section class="sec">
+    <section class="sec mb30">
+        <div class="container">
+            <div class="row">
+                <div class="col l12">
+                    <div class="vender-detail">
+                        <h4>Happy Couple's</h4>
+                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+                            dis
+                            parturient montes, nascetur ridiculus mus. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="test-com">
+                <div class="row">
+                        <div class="col l8 s12 m12 push-l2">
+                    <div class=" testimonial-wedd">
+
+                            <div class="testi-coup">
+                               
+                                   
+                                    
+                                        <center><img src="<?php echo base_url() ?>assets/img/review/Ravi-S-rathore.jpg"
+                                                class="img-responsive tsimg" alt=""></center>
+                                        <h6 class="black-text">Mr & Mrs. Rathore</h6>
+                                        <p>"Shaadi Baraati was very professional and dedicated. They have eased my
+                                            wedding smooth and all the vendors were on time and even Shaadi Baraati Team
+                                            was available on my wedding to ensure the quality services"</p>
+                                        <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
+                                                class="img-responsive"> </center>
+                                    
+                                
+                            </div>
+
+                            <div class="testi-coup">
+                                
+                                        <center><img src="<?php echo base_url() ?>assets/img/review/Raj-Nandi-Testimonial.jpg"
+                                                class="img-responsive tsimg" alt=""></center>
+                                        <h6 class="black-text">Mr & Mrs. Nandi</h6>
+                                        <p>"We never thought planning a wedding would be this easy. Thankyou Shaadi Baraati for making life easy for us. We are so happy that we found your website"</p>
+                                        <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
+                                                class="img-responsive"> </center>
+                                  
+                            </div>
+
+
+                            <div class="testi-coup">
+                                
+                                        <center><img src="<?php echo base_url() ?>assets/img/review/Bharadwaj.jpg"
+                                                class="img-responsive tsimg" alt="Bharadwaj"></center>
+                                        <h6 class="black-text">Mr & Mrs Bhardwaj</h6>
+                                        <p>"Thank you Shaadi Baraati for hassle free events and making my dream come true"</p>
+                                        <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
+                                                class="img-responsive"> </center>
+                                        <!-- <p class="cr">26-07-2019</p> -->
+                                  
+                            </div>
+                            </div>
+
+                            
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec bg-col">
         <div class="container-fluide">
             <div class="row">
                 <div class="col l12">
@@ -495,14 +566,16 @@
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2
+                    slidesToScroll: 2,
+                    dots: false,
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: false,
                 }
             }
         ]
@@ -517,9 +590,18 @@
         nextArrow: '<span class="next"><i class="Tiny material-icons ll">chevron_left</i></span>',
         prevArrow: '<span class="prev"><i class="Tiny material-icons rr">chevron_right</i></span>',
         arrows: true,
-
-
     });
+
+    // wed assistence 
+    $('.h-wed-slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        arrows: false,
+    });
+
     // real-wedding
     $('.wedding-list').slick({
         infinite: true,

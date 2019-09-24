@@ -301,7 +301,7 @@ h6 {
     position: absolute;
     top: 0px;
     width: 100%;
-    height: 98.5%;
+    height: 100%;
     border: 0px;
     left: 0px;
     right: 0;
@@ -310,10 +310,12 @@ h6 {
     padding-left: 20px;
     font-size: 14px;
     border-radius: 5px;
+    line-height: 1.5;
 }
 
 .vender-ei {
     position: relative;
+    line-height: 0
 }
 
 .icn-li {
@@ -437,6 +439,7 @@ h6 {
 .blog-detail {
     border: 1px solid #f2f2f2;
     border-radius: 10px;
+    background: #fff;
 }
 
 .date-blog {
@@ -496,15 +499,7 @@ h6 {
     color: #d0021b;
 }
 
-.social-media ul {
-    background: white;
-    box-shadow: 0px 0px 6px -3px #e9e9e9;
-    padding: 10px 10px;
-    text-align: center;
-    border-radius: 35px;
-    width: 50%;
-    margin: 0;
-}
+.social-media ul { background: white; padding: 10px 10px; text-align: center; border-radius: 35px; width: 50%; margin: 21px 0 0 0; border: 1px solid #e1e1e1; }
 
 .list-foot li {
     line-height: 24px;
@@ -518,15 +513,16 @@ h6 {
 }
 
 .vc ul {
-    column-count: 2;
+    column-count: 3;
     column-fill: balance;
 }
 
 .line {
     border-bottom: 1px dashed;
     padding-top: 10px;
-    width: 160px;
+    width: 100%
 }
+.pb-0{padding-bottom: 0px !important}
 
 .coptext p {
     margin: 0px;
@@ -765,7 +761,7 @@ h6 {
         position: absolute;
         top: 0px;
         width: 100%;
-        height: 97.5%;
+        height: 100%;
         border: 0px;
         left: 0px;
         right: 0;
@@ -897,11 +893,11 @@ h6 {
         position: absolute;
         top: 0px;
         width: 100%;
-        height: 98.5%;
+        height: 100%;
         border: 0px;
         left: 0px;
         right: 0;
-        padding-top: 65%;
+        padding-top: 53%;
         padding-right: 0px;
         padding-left: 0px;
         font-size: 10px;
@@ -2780,15 +2776,58 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 .wda-serviceitem{position: relative;margin-bottom: 50px; box-shadow: 0px 0 6px -4px black;background-size: cover !important;}
 .wdas-item-content .wdatitle{margin: 15px 0px 0px 0; font-size: 1.75rem; font-weight: 400; color: rgb(54, 54, 54);}
 .wdas-item-content p{font-size: 14px; line-height: 25px;  margin-top: 15px; }
-.wdas-item-content .btn-cate { border: 1.9px dashed #d0021b; background: transparent !important; }
-.wdas-item-content .btn-cate:hover{background:#d0021b !important}
-.wdleft{float: left;z-index:0px;}
-.wdright{float: right; position: absolute; right: 20px; bottom: -38px;}
+.wdas-item-content .btn-cate, .h-wd-item-button a{ border: 1.9px dashed #d0021b; background: transparent !important; }
+.wdas-item-content .btn-cate:hover, .h-wd-item-button a:hover{background:#d0021b !important}
+
 .wda-serviceitem:nth-child(1){background: url('../img/wedassistance/fst.png')}
 .wda-serviceitem:nth-child(2){background: url('../img/wedassistance/snd.png')}
 .wda-serviceitem:nth-child(3){background: url('../img/wedassistance/trd.png'); margin-bottom: 0px;}
 .wd-testimonial{background: url('../img/wedassistance/img_testimonials.jpg');background-size: cover; padding: 50px 0; color: #fff;}
 .wd-testimonial h6{color:#fff}
+.wdleft { width: 60%; height: 300px; background: url('../img/wedassistance/fst.png'); }
+.j{width: 50%; position: absolute; right: 0px; bottom: 0;}
+
+.h-wd-item-contanier {
+    background-image: url("//www.matrimonybazaar.com/assets/bg/wedding-assist-banner.webp");
+}
+.h-wd-item-contanier {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    background-repeat: no-repeat;
+    height: 350px;
+    width: 60vw;
+    background-size: cover;
+    background-position-x: -4rem;
+}
+.h-wd-item-content {
+    position: relative;
+    margin-top: 50px;
+    width: 40vw;
+    background-color: #ffdee4;
+    float: right;
+    right: -19vw;
+    box-shadow: 1px 1px 4px -3px gray;
+}
+.h-wd-item-content-headin {
+    margin: 41px 0px 0px 42px;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: rgb(54, 54, 54);
+}
+.h-wd-item-content-phara {
+    font-size: 14px;
+    line-height: 25px;
+    margin-left: 42px;
+    margin-top: 15px;
+    margin-right: 60px;
+}
+.h-wd-item-content .margin-box {
+    margin: 22px 22px 36px;
+}
+.h-wd-item-button{margin: 20px 0px 0 42px;}
+
+
+
 
 .pricing {
     display: -webkit-flex;
@@ -2857,6 +2896,7 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     background: rgb(242, 37, 62);
     padding: 4em 0 9em;
     position: relative;
+    
   }
   .pricing-palden .pricing-deco-img {
     position: absolute;
@@ -2942,7 +2982,13 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     padding: 5em 0 8.885em 0;
   }
   
-
+.viewall-button { width: 50px; height: 50px; color: #fff; background: #d0021b; line-height: 50px; margin: 9px auto 0 auto; border-radius: 50%; }
+.viewall-button i{line-height: 50px;}
+.city-more p { color: #d0021b; line-height: 53px; font-weight: 600; font-size: 17px; }
+.city-more:hover {background: #d0021b; }
+.city-more:hover .viewall-button{background: #fff; color: #d0021b;}
+.city-more:hover p {color: #fff; }
+.footer-wed{background: #fff; border-top: 1px solid #e3e3e3; border-bottom: 1px solid #e3e3e3;}
 
 
 
@@ -2950,4 +2996,15 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     .wdas-item-content{padding: 30px}
     .wda-serviceitem { border-radius: 4px; margin-bottom: 20px;}
     .wed-assis-banner{padding: 30px 0; background-size: cover;}
+    .h-wd-item-contanier { height: auto; width: 100%; }
+    .h-wd-item-content { width: 100%; right:0;margin: 0px; box-shadow: none}
+    .h-wd-item-content-phara { font-size: 14px; line-height: 25px; margin-left: 15px; margin-top: 15px; margin-right: 15px; }
+    .h-wd-item-content-headin { margin: 31px 0px 0px 16px; font-size: 2rem; font-weight: 400; color: rgb(54, 54, 54); }
+    .h-wd-item-contanier { margin-top: 7px; }
+    .vender-im { position: relative; margin: 2px -8px; line-height: 0; }
+}
+
+@media (min-width:601px) and (max-width:982px){
+    .h-wd-item-content { position: relative; margin-top: 50px; width: 107%; background-color: #ffdee4; float: right; right: -30vw; box-shadow: 1px 1px 4px -3px gray; }
+
 }

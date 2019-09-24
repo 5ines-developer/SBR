@@ -1,4 +1,4 @@
-       <section class="sec bg-col">
+       <section class="sec footer-wed">
         <div class="container-2">
            <div class="row m0">
                <div class="col s12 m12 l6 bfrb">
