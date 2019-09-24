@@ -138,7 +138,7 @@
                         </div>
                         <?php    } } }?>
                     </div>
-                    <center><a href="<?php echo base_url() ?>view-category"><button class="btn-cate">View All
+                    <center><a href="<?php echo base_url() ?>categories"><button class="btn-cate">View All
                                 Categories</button></a></center>
 
                 </div>
