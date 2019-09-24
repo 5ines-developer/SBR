@@ -97,6 +97,7 @@ $route['vendors/(:any)/(:any)/(:any)']  = 'search/index/$1/$2/$3';
 $route['detail/(:any)/(:any)/(:any)']   = 'vendors/detail/$1/$2/$3';
 $route['detail/gallery']   				= 'vendors/gallery';
 $route['detail/full-gallery']   		= 'vendors/full_gallery';
+$route['details/gallery-count']   		= 'vendors/galleryCount';
 
 //vendor review
 $route['review/submit']   				= 'vendors/review_submit';

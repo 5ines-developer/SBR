@@ -9,7 +9,10 @@
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
                             <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
+<<<<<<< HEAD
+=======
                             <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
+>>>>>>> a5e436e9dad173158af9da80d57f3209ce2f4000
                             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
                             <!-- <li><a href="#">E-INVITE</a></li> -->
                             <li><a href="#">REAL WEDDING</a></li>
@@ -22,7 +25,7 @@
                             <li class="br-lo"><a href="<?php echo base_url('login') ?>">SIGN IN </a></li>
                             <li><span class="black-text">|</span></li>
                             <li class="br-lo"><a href="<?php echo base_url('register') ?>">SIGN UP</a></li>
-                            <li class="tollfree" ><a href="tel:18004199456" class="tooltipped"  data-position="bottom" data-tooltip="1800 419 9456"> <i class="material-icons">local_phone</i><span>Toll Free</span></a></li>
+                            <li class="tollfree" ><a href="tel:18004199456" class="tooltipped"  data-position="bottom" data-tooltip="1800 4199 456"> <i class="material-icons">local_phone</i><span>Toll Free</span></a></li>
                             <?php } ?>
                             
                         </ul>
@@ -41,7 +44,7 @@
                 if($key < $num){
                     echo '<li>
 
-                    <a href="vendors/all/'.$clink.'">
+                    <a href="'.base_url().'vendors/all/'.$clink.'">
                         <img src="'.base_url().$cvalue->icon.'" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
                     </li>';
                 }
@@ -96,7 +99,7 @@
             <li><a href="<?php echo base_url()?>">HOME</a></li>
             <li><a href="<?php echo base_url('vendors')?>">VENDORS</a></li>
             <li><a href="#">WED ASSISTANCE</a></li>
-            <li><a href="#">E-INVITE</a></li>
+            <!-- <li><a href="#">E-INVITE</a></li> -->
             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
             <li><a href="#">BLOG</a></li>
             <?php if ($this->session->userdata('shdid') !='') { ?>

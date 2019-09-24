@@ -13,6 +13,7 @@ $this->load->model('m_search');
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
         .fixed-action-btn {
             position: relative;
@@ -81,7 +82,7 @@ $this->load->model('m_search');
                         <div class="banner-container ">
                             <img class="responsive-img z-depth-1"
                                 src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:''; ?>"
-                                alt="><?php echo (!empty($value->name))?$value->name:''; ?>" width="100%">
+                                alt="<?php echo (!empty($value->name))?$value->name:''; ?>" width="100%">
                         </div>
                         <!-- basic info -->
                         <div class="detail-bs-info">
@@ -183,8 +184,7 @@ $this->load->model('m_search');
                         <!-- tabs -->
                         <div class="tab-links">
                             <ul class="tabs z-depth-1">
-                                <li class="tab "><a href="#about-vendor" class="active">About
-                                        <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
+                                <li class="tab "><a href="#about-vendor" class="active">About <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
                                 <li class="tab"><a href="#vendor-services">Services</a></li>
                                 <li class="tab"><a href="#vendor-gallery">Gallery</a></li>
                                 <li class="tab"><a href="#vendor-rating">Reviews</a></li>
@@ -426,11 +426,11 @@ $this->load->model('m_search');
 
                                     <div class="" onload="myFunction()">
                                         <div v-for="(src, index) in imgs" :key="index" class="pic col5s">
-                                            <div @click="() => showImg(index)" v-if="index < 9">
+                                            <div @click="() => showImg(index)" v-if="index < 11">
                                                 <img :src="src" class="">
                                             </div>
-                                            <div v-else-if="index == 9 && imgs.length < 11" @click="loadMore" class="load-more-pick">
-                                                <span class="morecount">+100 more</span>
+                                            <div v-else-if="index == 11 && imgs.length < 13" @click="loadMore" class="load-more-pick">
+                                                <span class="morecount">+ {{ count }} more</span>
                                                 <img :src="src" class="">
                                             </div>
                                             <div @click="() => showImg(index)" v-else>
@@ -498,7 +498,7 @@ $this->load->model('m_search');
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <form action="<?php echo base_url('review/submit') ?>" method="post">
+                                    <form action="<?php echo base_url('review/submit') ?>" method="post" ref="form"  @submit.prevent="checkForm">
                                         <div class="col s12 mt20">
                                             <div class="left rateus"> Rate us : </div>
                                             <star-rating v-model="ar" :star-size="20"></star-rating>
@@ -795,15 +795,15 @@ $this->load->model('m_search');
                 </div>
             </div>
         </section>
-
-        <section style="background: #f1f1f1; padding: 30px 0;">
+        <?php   if (!empty($value->similar)) { ?>
+        <section style="background: #fff; padding: 30px 0;">
             <div class="container-fluide">
                 <div class="row">
                  <div class="col 12 m6">
-                    <h4>Similar Vendors</h4>
+                    <h4 class="m0">Similar Vendors</h4>
                 </div>
                 <div class="col 12 m6 right-align">
-                    <a href="<?php echo base_url('cities/add')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable "><i class="fas fa-plus left"></i> View All</a>
+                    <a href="<?php echo base_url('vendors/'.urlencode(str_replace(" ","-",strtolower($value->city))).'/'.urlencode(str_replace(" ","-",strtolower($value->category)))) ?>" class="similar-more"> View All</a>
                 </div>
                 </div>
             
@@ -813,9 +813,10 @@ $this->load->model('m_search');
 
 
 
-                            <?php if (!empty($value->similar)) {
-                                foreach ($value->similar as $sim => $simi) { ?>
-                            <div class="col s6 m4 l3" v-for="item in ">
+                            <?php foreach ($value->similar as $sim => $simi) { 
+                                
+                                ?>
+                            <div class="col s6 m4 l3">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
                                         <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.str_replace(" ","-",strtolower($simi->name)).'/'.$simi->uniq)?>"
@@ -865,7 +866,7 @@ $this->load->model('m_search');
                                                         <p class="m0 r-crd-ratings">
                                                             <?php echo $this->ci->m_search->countReview($simi->id) ?>
                                                             reviews <span class="c-badge green"><i
-                                                                    class="material-icons">star</i> 5.0</span></p>
+                                                                    class="material-icons">star</i> 5</span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -917,6 +918,7 @@ $this->load->model('m_search');
             imgs: [],
             email: '',
             emailError: '',
+            count:''
         },
 
         methods: {
@@ -995,6 +997,31 @@ $this->load->model('m_search');
 
             },
 
+            checkForm(){
+                   if((this.ar <= '3')){                        
+                        if(confirm('Do you really want to review this vendor with '+ this.ar + ' rating')){
+                            this.$refs.form.submit()
+                        }                
+                    }else{
+                   }
+                },
+
+            getCount: function() {
+                const formData = new FormData();
+                formData.append('vndr_id', this.$refs.myTestField.value);
+                axios.post('<?php echo base_url() ?>details/gallery-count', formData)
+                .then(response => {
+                        if (response.data != '') {
+                            this.count = response.data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(response);
+
+                    })
+
+            },
+
             onFocus() {
                 axios.post('<?php echo base_url() ?>review/session-check')
                     .then(response => {
@@ -1047,6 +1074,7 @@ $this->load->model('m_search');
         mounted: function() {
             this.getData();
             this.getfavourite();
+            this.getCount();
 
 
         }

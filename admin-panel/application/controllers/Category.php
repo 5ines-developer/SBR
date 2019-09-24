@@ -72,7 +72,7 @@ class Category extends CI_Controller {
         $filesCount = count($_FILES['icon']['name']);
         if (file_exists($_FILES['icon']['tmp_name'])) {
             $config['upload_path'] = '../category-icon/';
-            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['allowed_types'] = 'svg|SVG';
             $config['max_width'] = 0;
             $config['encrypt_name'] = true;
             $this->load->library('upload');
@@ -223,7 +223,7 @@ class Category extends CI_Controller {
 
         if (file_exists($_FILES['icon']['tmp_name'])) {
 	            $config['upload_path'] = '../category-icon/';
-	            $config['allowed_types'] = 'jpg|png|jpeg';
+	            $config['allowed_types'] = 'svg|SVG';
 	            $config['max_width'] = 0;
 	            $config['encrypt_name'] = true;
 	            $this->load->library('upload');

@@ -51,9 +51,11 @@ class M_search extends CI_Model {
             $result =  $query->result();
             return count($result);
         } else {
-            return false;
+            return 0;
         }
     }
+
+
 
     //search autocompletee
     public function get_search($vendor='')

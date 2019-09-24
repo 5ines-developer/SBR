@@ -42,8 +42,20 @@ class M_vendors extends CI_Model
     public function getGallery($id='')
     {
         $this->db->where('vendor_id', $id);
-        $this->db->limit(10);
+        $this->db->limit(12);
         return $this->db->get('vendor_portfolio')->result();
+    }
+
+    public function galleryCount($id = null)
+    {
+        $this->db->where('vendor_id', $id);
+        $query = $this->db->get('vendor_portfolio');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        }else{
+            return false;
+        }
+        
     }
 
     /*
@@ -221,9 +233,9 @@ class M_vendors extends CI_Model
         return $this->db->get('vendor_offer')->row_array();
     }
 
-    public function similarVendors($city='',$category='')
-    {
-        
+    public function similarVendors($city='',$category='',$id='')
+    {        
+        $this->db->where('v.id !=', $id);
         $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->where('v.city', $city);
         $this->db->where('v.category', $category); 

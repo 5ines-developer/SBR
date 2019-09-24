@@ -661,6 +661,7 @@ h6 {
 
 .img-reg {
     float: right;
+    line-height: 0;
 }
 
 .p0 {
@@ -1930,9 +1931,9 @@ r-crd-category {
 }
 
 .col5s {
-    width: calc(100% / 5);
+    width: calc(100% / 4);
     float: left;
-    padding: 3px 2px;
+    padding: 9px 4px;
     height: 150px;
     overflow: hidden;
 }
@@ -2372,8 +2373,7 @@ a.viewmore:hover {
     letter-spacing: 1px;
 }
 
-.form-contact,
- ::placeholder {
+.form-contact::placeholder {
     color: white !important;
 }
 
@@ -2710,6 +2710,21 @@ height: 50px;
 
 nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     line-height: 75px;
+}
+
+.similar-more{
+    border: 1px dashed #d0021b;
+    height: 47px;
+    padding: 8px 50px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000;
+}
+
+.similar-more:hover {
+    height: 75px;
+    background-color: #d0021b;
+    color: #fff;
 }
 
 @media(max-width:767px) {

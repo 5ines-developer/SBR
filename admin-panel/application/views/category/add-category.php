@@ -66,7 +66,7 @@
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text" style="border:transparent">
                                                     </div>
-                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
                                             </div> 
 
@@ -75,12 +75,12 @@
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Add Icon</span>
-                                                        <input type="file" name="icon" accept=".png, .jpg, .jpeg, .gif" required>
+                                                        <input type="file" name="icon" accept=".svg, .SVG" required>
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate" type="text" style="border:transparent">
                                                     </div>
-                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
                                             </div>
 
