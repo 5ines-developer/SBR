@@ -4,9 +4,9 @@
 <head>
     <title>Shaadi Baraati</title>
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
 </head>
 
@@ -69,7 +69,7 @@
                 <div class="col 12">
                     <div class="top-cities">
                         <h4>Top Cities</h4>
-                        <p>Find the best Vender Cities with thousands of trusted reviews</p>
+                        <p>Find the best Vendor Cities with thousands of trusted reviews</p>
                         <div class="top-city-slide">
 
                             <div class="top-citys">
@@ -78,6 +78,7 @@
                                 if (!empty($city)) { 
                                     foreach ($city as $key => $value) { 
                                     $ctlink = strtolower(str_replace(" ","-",$value->city));
+                                    if (!empty($value->image)) {
                                 ?>
                                 <a href="<?php echo base_url('vendors/').$ctlink ?>" class="black-text">
                                     <div class="top-city-sl">
@@ -87,7 +88,13 @@
                                         <p><?php echo (!empty($value->city))?$value->city:''  ?></p>
                                     </div>
                                 </a>
-                                <?php } }?>
+                                <?php } } }?>
+
+                                <a href="#citymodel" class="modal-trigger">
+                                    <div class="top-city-sl city-more" style="height: 153px;">
+                                    <p class="black-text">View All</p>
+                                    </div>
+                                </a>
 
 
                             </div>
@@ -103,9 +110,7 @@
                         <div class="vender-detail">
                             <h4>Vendors Categories</h4>
                             <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                dis
-                                parturient montes, nascetur ridiculus mus. </p>
+                            <p>Find trusted wedding services in all Indian cities & Book Verified Vendors in simple steps. </p>
                         </div>
                     </div>
                 </div>
@@ -116,9 +121,9 @@
                         if($cat < 6)   {
                             $clink = strtolower(str_replace(" ","-",$cats->category));
                     ?>
-                        <div class="col l4 s6">
+                        <div class="col l4 s6 ">
                             <a href="<?php echo base_url().'vendors/all/'.urlencode($clink)?>">
-                                <div class="vender-im">
+                                <div class="vender-im hoverable">
                                     <img src="<?php echo (!empty($cats->image))?$cats->image:''  ?>"
                                         class="img-responsive" width="100%"
                                         alt="<?php echo (!empty($cats->category))?$cats->category:''  ?>">
@@ -144,8 +149,7 @@
                     <div class="vender-detail">
                         <h4>How It's Works</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. </p>
+                        <p>Book the Best Verified Vendors according to you requirement in 3 Simple Steps.</p>
                     </div>
                 </div>
             </div>
@@ -186,9 +190,7 @@
                     <div class="vender-detail">
                         <h4>E-Invite</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                            dis
-                            parturient montes, nascetur ridiculus mus. </p>
+                        <p>Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of templates. </p>
                     </div>
                 </div>
             </div>
@@ -323,9 +325,7 @@
                         <div class="vender-detail">
                             <h4>Real Wedding Storie's</h4>
                             <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                            <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                dis
-                                parturient montes, nascetur ridiculus mus. </p>
+                            <p>Real Life Happy Couple’s share their touching and Sweet wedding stories. </p>
                         </div>
                     </div>
                 </div>
@@ -398,8 +398,7 @@
                     <div class="vender-detail">
                         <h4>Our Blogs</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive " alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                            dis parturient montes, nascetur ridiculus mus. </p>
+                        <p>Read up on these wedding Blogs while you are looking forward to your own special day. </p>
                     </div>
                 </div>
             </div>
@@ -461,12 +460,14 @@
 
     <?php $this->load->view('includes/footer'); ?>
     <!-- script -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+
+
     <script>
     <?php $this->load->view('includes/message'); ?>
     </script>

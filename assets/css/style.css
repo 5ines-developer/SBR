@@ -38,7 +38,7 @@ html {
 
 .brand-logo {
     width: 318px;
-    margin-top: -4px;
+    margin-top: 3px;
 }
 
 .lec-search {
@@ -193,6 +193,7 @@ h4 {
 .vender-im {
     position: relative;
     margin: 8px 0px;
+    line-height: 0;
 }
 
 .btn-cate {
@@ -223,9 +224,10 @@ h4 {
     text-align: center;
     font-size: 14px;
     position: absolute;
-    bottom: 5px;
+    bottom: 0;
     width: 100%;
     cursor: pointer;
+    line-height: 1.5;
 }
 
 .sec {
@@ -1057,6 +1059,8 @@ h6 {
     .form-input {
         padding: 0px 25px 10px;
     }
+
+
 }
 
 .input-field>label {
@@ -1417,6 +1421,9 @@ ul.detail li span {
     padding-left: 10px;
     padding-right: 10px;
     color: #fff;
+    width: 700px;
+    position: relative;
+    left: -47px;
 }
 
 .result-head input[type="search"]:focus {
@@ -2638,6 +2645,109 @@ a.viewmore:hover {
         color: black;
         font-size: 11px;
     }
+}
+
+
+/* changes 23-09-2019 */
+@media(max-width:567px) {
+    .top-city-sl.city-more{
+    height: 120px;
+    }
+
+    .bottom-button .b2, .bottom-button .b3 {
+        margin-left: 5px;
+    }
+
+    .bottom-button a {
+        border: 1px dashed #d0021b;
+        height: 47px;
+        padding: 6px 5px;
+        cursor: pointer;
+        font-size: 12px;
+        color: #3e3e3e;
+    }
+}
+
+.top-city-sl.city-more{
+    height: 153px;
+}
+
+.wed-bottom{
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.wed-bottom img{
+width: 50px;
+height: 50px;
+}
+.wed-bottom-inner {
+    width: calc(100% / 3);
+    text-align: center;
+}
+
+.wed-bottom-inner span {
+	width: 100%;
+	display: block;
+}
+
+.bottom-button .b2 , .bottom-button .b3{
+    margin-left: 12px;
+}
+
+.bottom-button a{
+    border: 1px dashed #d0021b;
+    height: 47px;
+    padding: 8px 50px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #3e3e3e;
+}
+.bottom-button a:hover{
+    background-color: #d0021b;
+    color: #fff;
+}
+
+.navbar-fixed {
+    height: 75px;
+}
+
+nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+    line-height: 75px;
+}
+
+@media(max-width:767px) {
+
+    .bottom-button .b2, .bottom-button .b3 {
+        margin-left: 5px;
+    }
+
+    .bottom-button a {
+        border: 1px dashed #d0021b;
+        height: 47px;
+        padding: 6px 5px;
+        cursor: pointer;
+        font-size: 12px;
+        color: #3e3e3e;
+    }
+
+    .result-head input[type="search"] {        
+        width: 100%;
+        position: relative;
+        left: 0;
+    }
+}
+
+@media(max-width:992px) {
+.result-head input[type="search"] {
+    width: 100%;
+    position: relative;
+    left: 0;
+}
+
+.detail-bs-info {
+    margin: auto auto auto auto;
+}
 }
 
 

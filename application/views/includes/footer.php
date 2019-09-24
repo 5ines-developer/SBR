@@ -3,11 +3,25 @@
            <div class="row m0">
                <div class="col s12 m12 l6 bfrb">
                
-                    <div class="center-align">
+                    <div class="left-align">
                         <h4>Wed Assistance</h4>
                         <p>Assisted Wedding Planner is Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
                     </div>
-                        
+                     
+                    <div class="wed-bottom">
+                        <div class="wed-bottom-inner">
+                            <img src="<?php echo base_url()?>assets/img/icon/C.png" alt="">
+                            <span>SEARCH</span>
+                        </div>
+                        <div class="wed-bottom-inner">
+                            <img src="<?php echo base_url()?>assets/img/icon/b.png" alt="">
+                            <span>SELECT</span>
+                        </div>
+                        <div class="wed-bottom-inner">
+                            <span><img src="<?php echo base_url()?>assets/img/icon/A.png" alt=""></span>
+                            <span>BOOK</span>
+                        </div>
+                    </div>
                </div>
                <div class="col s12 m12 l6">
                     <div class="touch-email">
@@ -15,8 +29,7 @@
                         <div class="col l12">
                             <div class="center-align">
                                 <h4>Get In Touch</h4>
-                                <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                                    dis parturient montes, nascetur ridiculus mus. </p>
+                                <p>Subscribe to Shaadi Baraati and Get access to our latest Blogs, Wedding Ideas and get the best quotes from trusted Wedding Vendors. </p>
                             </div>
                         </div>
                             <div class="col  s12">
@@ -33,6 +46,13 @@
                                             <button type="submit" class="btn-find-get">Get Start</button>
                                         </div>
                                     </form>
+                                </div>
+
+                                <div class="bottom-button">
+                                    <a class="b1">Submit Wedding</a>
+                                    <a class="b2">Register as Vendor</a>
+                                    <a class="b3">Pay Now</a>
+
                                 </div>
                             </div>
                            

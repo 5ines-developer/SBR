@@ -9,11 +9,10 @@ $this->load->model('m_search');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $title ?></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
         .fixed-action-btn {
             position: relative;
@@ -189,8 +188,6 @@ $this->load->model('m_search');
                                 <li class="tab"><a href="#vendor-services">Services</a></li>
                                 <li class="tab"><a href="#vendor-gallery">Gallery</a></li>
                                 <li class="tab"><a href="#vendor-rating">Reviews</a></li>
-                                <li class="tab right"><a href="#policy">Privacy Policy <i
-                                            class=" tiny fas fa-info-circle"></i></a></li>
                             </ul>
                         </div>
 
@@ -212,23 +209,7 @@ $this->load->model('m_search');
                         </div>
                         <!-- end about vendor -->
 
-                        <!-- vendor policy  -->
-                         <?php if(!empty($value->policy)){ ?>               
-                            <div class="about-vendor" id="policy">
-                                <div class="card">
-                                    <div class="card-container">
-                                        <div class="row m0">
-                                        <div class="dt-card-title col "><p> Privacy Policy</p></div>
-                                            <div class="col s12">
-                                                
-                                                <p><?php echo (!empty($value->policy))?$value->policy : ''; ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                         <?php } ?>
+                   
 
 
                     </div><!-- left -->
@@ -367,7 +348,7 @@ $this->load->model('m_search');
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?php echo (!empty($value->offer['image']))?base_url($value->offer['image']):'https://dummyimage.com/360x400/a81010/ffffff'  ?>" class="responsive-img" alt="">
+                            <img src="<?php echo (!empty($value->offer['image']))?base_url($value->offer['image']):''  ?>" class="responsive-img" alt="">
                              <div id="vendor-services"></div>                       
                         </div>
 
@@ -910,12 +891,13 @@ $this->load->model('m_search');
     <?php $this->load->view('includes/footer'); ?>
 
     <!-- script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script>
     <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+
 
     <script>
     <?php $this->load-> view('includes/message'); ?>

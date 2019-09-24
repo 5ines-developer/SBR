@@ -5,11 +5,10 @@
     <title><?php echo $title ?></title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
 </head>
 
 <body>
@@ -99,11 +98,11 @@
     </section>
 
     <!-- script -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+
     <script>
         <?php $this->load->view('includes/message'); ?>
     </script>

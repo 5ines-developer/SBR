@@ -10,8 +10,8 @@
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
                             <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
                             <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
-                            <li><a href="#">WED ASSISTANCE</a></li>
-                            <li><a href="#">E-INVITE</a></li>
+                            <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
+                            <!-- <li><a href="#">E-INVITE</a></li> -->
                             <li><a href="#">REAL WEDDING</a></li>
                             <li><a href="#">BLOG</a></li>
                             <?php if ($this->session->userdata('shdid') !='') { ?>
@@ -64,7 +64,7 @@
                             ?>
                             <li class="hoverable">
                                 <a href="<?php echo base_url('vendors/').strtolower(str_replace(" ","-",$city->city)) ?>">
-                                    <img src="<?php echo $city->icon ?>" class="img-responsive city-icon" alt="<?php echo $city->city ?>" >
+                                    <img src="<?php echo base_url().$city->icon ?>" class="img-responsive city-icon" alt="<?php echo $city->city ?>" >
                                     <p class="m0"><?php echo $city->city ?></p>
                                 </a>
                             </li>
