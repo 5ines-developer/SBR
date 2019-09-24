@@ -23,7 +23,7 @@
                     <div class="reg-li">
                         <h6>Change Password</h6>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" alt="" class="img-responsive">
-                        <p>Change your Shaadi Braati account password</p>
+                        <p>Change your Shaadi Baraati account password</p>
                         <div class="form-forgot">
                             <form action="<?php echo base_url() ?>forgot-password/update" method="post" enctype="multipart/form-data">
                                 <div class="d-input">

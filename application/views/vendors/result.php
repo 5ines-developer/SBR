@@ -372,7 +372,7 @@ height: 30px;
                             <div class="col s6 m4 l3" v-for="item in ">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>"
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
                                                 <img

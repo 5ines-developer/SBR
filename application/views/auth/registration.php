@@ -20,19 +20,19 @@
     <section class="back-sig">
         <div class="container-reg">
             <div class="sign-reg">
-                <div class="row">
+                <div class="row m0">
                     <div class="col xl7 l6 s12 m6 ">
                         <div class="reg-li">
                             <h6>SIGN UP</h6>
                             <img src="<?php echo base_url()?>assets/img/saprator.png" class="img-responsive" alt="">
-                            <P>"Grow your Business With Shaadi Baraathi"</P>
+                            <P>"Grow your Business With Shaadi Baraati"</P>
                         </div>
-                        <div class="social-reg">
+                        <!-- <div class="social-reg">
                             <a class="btn-floating btn-large waves-effect waves-light white pos-al"><img
                                         src="<?php echo base_url()?>assets/img/svg/google.svg" class="img-responsive g-icon" alt="">></a>
                             <a class="btn-floating btn-large waves-effect waves-light white pos-al1"><i
                                         class="fab fa-facebook-f  i-icon"></i></a>
-                        </div>
+                        </div> -->
                         <form id="demo" ref="form"  @submit.prevent="checkForm"  action="<?php echo base_url('register/add') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-input">
                                 <div class="d-input">
@@ -76,7 +76,7 @@
                             </center>
                             <div class="ss-h">
                                 <p class="p-arg">If You Have an Account ?<a href="<?php echo base_url('login') ?>" class="cr sr-ang">Sign In</a></p>
-                                <p class="p-arg">Are You a Vender ?<a href="#" class="cr si-vender">Sign In</a></p>
+                                <p class="p-arg">Are You a Vendor ?<a href="#" class="cr si-vender">Sign In</a></p>
                             </div>
                             <!-- <div class="my-data">
                                 <p>{{ name }}</p>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="col xl5 l6 s12  m6 p0">
                         <div class="img-reg">
-                            <img src="<?php echo base_url()?>assets/img/reg.jpg" class="img-responsive" width="100%" alt="">
+                            <img src="<?php echo base_url()?>assets/img/reg.png" class="img-responsive" width="100%" alt="">
                         </div>
                     </div>
                 </div>

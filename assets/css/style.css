@@ -665,6 +665,7 @@ h6 {
 
 .img-reg {
     float: right;
+    line-height: 0;
 }
 
 .p0 {
@@ -1934,9 +1935,9 @@ r-crd-category {
 }
 
 .col5s {
-    width: calc(100% / 5);
+    width: calc(100% / 4);
     float: left;
-    padding: 3px 2px;
+    padding: 9px 4px;
     height: 150px;
     overflow: hidden;
 }
@@ -2376,8 +2377,7 @@ a.viewmore:hover {
     letter-spacing: 1px;
 }
 
-.form-contact,
- ::placeholder {
+.form-contact::placeholder {
     color: white !important;
 }
 
@@ -2648,7 +2648,6 @@ a.viewmore:hover {
 }
 
 
-<<<<<<< HEAD
 /* changes 23-09-2019 */
 @media(max-width:567px) {
     .top-city-sl.city-more{
@@ -2717,6 +2716,21 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     line-height: 75px;
 }
 
+.similar-more{
+    border: 1px dashed #d0021b;
+    height: 47px;
+    padding: 8px 50px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #000;
+}
+
+.similar-more:hover {
+    height: 75px;
+    background-color: #d0021b;
+    color: #fff;
+}
+
 @media(max-width:767px) {
 
     .bottom-button .b2, .bottom-button .b3 {
@@ -2753,7 +2767,6 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 
 
 /* end sitemap */
-=======
 /* end sitemap */
 
 /* wed assistance */
@@ -2938,4 +2951,3 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     .wda-serviceitem { border-radius: 4px; margin-bottom: 20px;}
     .wed-assis-banner{padding: 30px 0; background-size: cover;}
 }
->>>>>>> 59bf7e7d3d4f031964b24ed9d07e4551667fc043

@@ -23,14 +23,14 @@
                             <div class="reg-li">
                                 <h6>LOGIN</h6>
                                 <img src="assets/img/saprator.png" class="img-responsive" alt="">
-                                <P>"Grow your Business With Shaadi Baraathi"</P>
+                                <P>"Grow your Business With Shaadi Baraati"</P>
                             </div>
-                            <div class="social-reg">
+                            <!-- <div class="social-reg">
                                 <a class="btn-floating btn-large waves-effect waves-light white pos-al"><img
                                         src="assets/img/svg/google.svg" class="img-responsive g-icon" alt="">></a>
                                 <a class="btn-floating btn-large waves-effect waves-light white pos-al1"><i
                                         class="fab fa-facebook-f  i-icon"></i></a>
-                            </div>
+                            </div> -->
                             <form action="<?php echo base_url('login/check') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-input-login">
                                     <div class="d-input">
@@ -53,14 +53,14 @@
                                 </center>
                                 <div class="ss-h">
                                     <p class="p-arg-login">If You Have an Account ?<a href="<?php echo base_url('register') ?>" class="cr sr-ang">Sign Up</a></p>
-                                    <p class="p-arg-login">Are You a Vender ?<a href="#" class="cr si-vender">Sign Up</a></p>
+                                    <p class="p-arg-login">Are You a Vendor ?<a href="#" class="cr si-vender">Sign Up</a></p>
                                 </div>
 
                             </form>
                         </div>
                         <div class="col xl5 l6 s12  m6 p0">
                             <div class="img-reg">
-                                <img src="assets/img/reg.jpg" class="img-responsive" width="100%" alt="">
+                                <img src="assets/img/reg.png" class="img-responsive" width="100%" alt="">
                             </div>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ class Vendors extends CI_Controller {
            $value->fav         = $this->m_vendors->getFavourite($value->id);
            $value->faq         = $this->m_vendors->faq($value->id);
            $value->offer       = $this->m_vendors->offer($value->id);
-           $value->similar     = $this->m_vendors->similarVendors($value->cityId,$value->catId);
+           $value->similar     = $this->m_vendors->similarVendors($value->cityId,$value->catId,$value->id);
         }
 
         $data['vendor'] = $output;
@@ -52,6 +52,39 @@ class Vendors extends CI_Controller {
       
 
        echo json_encode($data);
+    }
+
+
+    public function galleryCount($id = null)
+    {
+      $output = '';
+      $vndr_id =  $this->input->post('vndr_id');
+      $output = $this->m_vendors->galleryCount($vndr_id);
+
+      switch ($output) {
+        case $output <= 20:
+        echo $output = 12;
+        break;
+        case $output <= 40:
+        echo $output = 30;
+        break;
+        case $output <= 75:
+        echo $output = 50;
+        break;
+        case $output <= 100:
+        echo $output = 75;
+        break;
+        case $output > 100:
+        echo $output = 100;
+        break;
+        
+        default:
+          echo $output = 100;
+          break;
+      }
+
+
+
     }
 
 
