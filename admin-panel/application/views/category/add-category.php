@@ -14,6 +14,11 @@
         .ck-editor__editable {
             min-height: 300px;
         }
+        #banner_image-error{
+            top: -53px;
+text-transform: none;
+left: -133px !important;
+        }
      </style>
    </head>
    <body>
@@ -46,16 +51,8 @@
                                                   <p><span class="error"><?php echo form_error('category'); ?></span></p>
                                                 </div>
                                             </div>
+                                            
 
-                                            <div class="row m0">
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="subtitle" name="subtitle" class="validate" value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
-                                                  <label for="subtitle">Subtitle </label>
-                                                  <p><span class="error"><?php echo form_error('subtitle'); ?></span></p>
-                                                </div>
-                                            </div>
-                                          
-                                          
                                             <div class="row m0">
                                               <div class="file-field input-field col s12 l6">
                                                     <div class="btn btn-small black-text grey lighten-3">
@@ -70,7 +67,7 @@
                                                 </div>
                                             </div> 
 
-                                            <div class="row ">
+                                            <div class="row m0">
                                                   <div class="file-field input-field col s12 l6">
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
@@ -83,6 +80,22 @@
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
                                             </div>
+
+
+                                            <div class="row m0">
+                                              <div class="file-field input-field col s12 l6">
+                                                    <div class="btn btn-small black-text grey lighten-3">
+                                                    <i class="far fa-image left  "></i>
+                                                        <span class="">Banner Image</span>
+                                                        <input type="file" name="banner_image" accept=".png, .jpg, .jpeg, .gif" required>
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                    </div>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg,png,jpeg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                </div>
+                                            </div> 
+
 
                                               <div class="col s12">
                                               <?php 
@@ -133,6 +146,9 @@
                 icon: {
                     required: true,
                 },
+                banner_image:{
+                    required: true,
+                },
 
             },
             messages: {
@@ -140,6 +156,7 @@
                 category: "Please enter a category",
                 image: "Please add a image",
                 icon: "Please add a icon",
+                banner_image: "Please add a Banner Image",
             }
         });
     });

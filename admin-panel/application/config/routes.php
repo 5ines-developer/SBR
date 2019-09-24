@@ -104,6 +104,10 @@ $route['vendors/service']		=	'vendors/service'; //vendor information and service
 $route['vendors/add-video']		=	'vendors/add_video'; //vendor edit
 $route['vendor-review/update']  = 	'vendors/reviewupdate';
 $route['vendor-review/delete/(:any)/(:any)']  = 	'vendors/reviewdelete/$1/$2';
+$route['vendors/gallery_delete/(:any)/(:any)']  = 	'vendors/gallery_delete/$1/$2';
+$route['vendors/video_delete/(:any)/(:any)']  = 	'vendors/video_delete/$1/$2';
+
+
 
 //enquiry
 $route['enquiries']			=	'enquiries/index'; //add vendor
