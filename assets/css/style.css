@@ -2648,7 +2648,6 @@ a.viewmore:hover {
 }
 
 
-<<<<<<< HEAD
 /* changes 23-09-2019 */
 @media(max-width:567px) {
     .top-city-sl.city-more{
@@ -2753,7 +2752,6 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 
 
 /* end sitemap */
-=======
 /* end sitemap */
 
 /* wed assistance */
@@ -2938,4 +2936,3 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     .wda-serviceitem { border-radius: 4px; margin-bottom: 20px;}
     .wed-assis-banner{padding: 30px 0; background-size: cover;}
 }
->>>>>>> 59bf7e7d3d4f031964b24ed9d07e4551667fc043

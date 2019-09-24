@@ -9,10 +9,7 @@
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
                             <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
-<<<<<<< HEAD
                             <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
-=======
->>>>>>> 59bf7e7d3d4f031964b24ed9d07e4551667fc043
                             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
                             <!-- <li><a href="#">E-INVITE</a></li> -->
                             <li><a href="#">REAL WEDDING</a></li>
