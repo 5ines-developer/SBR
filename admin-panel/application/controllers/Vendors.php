@@ -32,6 +32,8 @@ class Vendors extends CI_Controller {
     **/
 	public function insert_vendors($value='')
 	{
+        $this->load->library('upload');
+        $this->load->library('image_lib');
 		$files = $_FILES;
         $filesCount = count($_FILES['vimage']['name']);
         if (file_exists($_FILES['vimage']['tmp_name'])) {
@@ -53,11 +55,11 @@ class Vendors extends CI_Controller {
             } else {
                 // echo "ok";exit();
                 $upload_data = $this->upload->data();
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = $upload_data['full_path'];
-                $config['create_thumb'] = true;
-                $config['maintain_ratio'] = true;
-                $config['height'] = 250;
+                // $config['image_library'] = 'gd2';
+                // $config['source_image'] = $upload_data['full_path'];
+                // $config['create_thumb'] = true;
+                // $config['maintain_ratio'] = true;
+                // $config['height'] = 250;
 
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
@@ -65,6 +67,19 @@ class Vendors extends CI_Controller {
                 $file_name = $upload_data['file_name'];
                 $imgpath = 'vendors-profile/'.$file_name;
 
+
+                $config['source_image'] = $upload_data['full_path'];
+                $config['wm_text'] = 'Shaadibaraati.com';
+                $config['wm_type'] = 'text';
+                $config['wm_font_path'] = './system/fonts/texb.ttf';
+                $config['wm_font_size'] = '16';
+                $config['wm_font_color'] = 'ffffff';
+                $config['wm_vrt_alignment'] = 'bottom';
+                $config['wm_hor_alignment'] = 'left';
+                $config['wm_hor_offset'] = '40';
+                $config['wm_padding'] = '-20';
+                $this->image_lib->initialize($config);
+                $this->image_lib->watermark();           
             }
         }
 
@@ -189,16 +204,10 @@ class Vendors extends CI_Controller {
     public function insert_about($id='')
     {
         $id = $this->input->post('id');
-           $about       =  $this->input->post('about');
-           $tags        =  $this->input->post('tags');
-           $policy      =  $this->input->post('policy');
-           $specific    =  $this->input->post('specific');
+           $about       =  $this->input->post('about');          
 
            $insert = array(
-            'detail'        => $about,
-            'policy'        => $policy,
-            'specification' => $specific,
-            'tags'          => $tags,
+            'detail'        => $about            
            );
 
             $output = $this->m_vendors->insert_about($insert,$id);
@@ -223,6 +232,9 @@ class Vendors extends CI_Controller {
     */
     public function portfolio_insert($value='')
     {
+
+        $this->load->library('upload');
+        $this->load->library('image_lib');
 
         $files = $_FILES;
         $id = $this->input->post('id');
@@ -256,16 +268,16 @@ class Vendors extends CI_Controller {
                 
                 $width  = 700;
                 $height = 400;
-                
-                $thumbnail = $this->thumbnail($upload_data, $width, $height);
 
                 $file_name = $upload_data['file_name'];
                 $imgpath = 'vendor-portfolio/'.$file_name;
-
+                
+                // $thumbnail = $this->thumbnail($upload_data, $width, $height);
+                $watermark = $this->watermark($upload_data,$file_name);
                 $insert = array (
                     'path'          => $imgpath,
                     'image'         => $file_name,
-                    'thumb_image'   => $thumbnail, 
+                    'thumb_image'   => $file_name, 
                     'vendor_id'     => $id,
                 );
                 $output = $this->m_vendors->insert_portfolio($insert);
@@ -284,6 +296,28 @@ class Vendors extends CI_Controller {
             $this->session->set_flashdata('error', 'Something went wrong please try again!');
             redirect('vendors/edit/'.$id);
         }
+    }
+
+
+    public function watermark($upload_data = " ",$thumbnail)
+    {     
+        $this->load->library('upload');
+        $this->load->library('image_lib');
+
+            $config['source_image'] = $upload_data['file_path'].'/'.$thumbnail;
+            $config['wm_text'] = 'Shaadibaraati.com';
+            $config['wm_type'] = 'text';
+            $config['wm_font_path'] = './system/fonts/texb.ttf';
+            $config['wm_font_size'] = '16';
+            $config['wm_font_color'] = 'ffffff';
+            $config['wm_vrt_alignment'] = 'bottom';
+            $config['wm_hor_alignment'] = 'left';
+            $config['wm_hor_offset'] = '60';
+            $config['wm_vrt_offset'] = '0';
+            $config['wm_padding'] = '-20';
+
+            $this->image_lib->initialize($config);
+            $this->image_lib->watermark();
     }
 
 
@@ -309,6 +343,8 @@ class Vendors extends CI_Controller {
         $file_tumb_ex = $upload_data['file_ext'];
         $thum_file    = $file_tumb . '_thumb' . $file_tumb_ex;
         return $thum_file;
+
+
     }
 
 
