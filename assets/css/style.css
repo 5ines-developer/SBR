@@ -2648,6 +2648,7 @@ a.viewmore:hover {
 }
 
 
+<<<<<<< HEAD
 /* changes 23-09-2019 */
 @media(max-width:567px) {
     .top-city-sl.city-more{
@@ -2752,3 +2753,189 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 
 
 /* end sitemap */
+=======
+/* end sitemap */
+
+/* wed assistance */
+.wed-assis-banner { background: #00000054 url('../img/wedassistance/banner.png'); padding: 100px 0; background-size: 100%; background-blend-mode: overlay; text-align: center; }
+.wed-assis-banner p{font-weight: 600;font-size: 16px}
+.wed-assis-banner h3{font-weight: 600; font-variant: petite-caps;}
+.wdas-item-content { background: #ffdee4; padding: 50px; margin: 0 -10px;}
+.weda-service{padding: 50px 0}
+.wda-serviceitem .wdas-item-img { width: 60%; max-height: 350px; overflow: hidden; box-shadow: 0px 0 6px -4px black;}
+.wda-serviceitem:after{display: block;content:"";clear: both;}
+.wda-serviceitem{position: relative;margin-bottom: 50px; box-shadow: 0px 0 6px -4px black;background-size: cover !important;}
+.wdas-item-content .wdatitle{margin: 15px 0px 0px 0; font-size: 1.75rem; font-weight: 400; color: rgb(54, 54, 54);}
+.wdas-item-content p{font-size: 14px; line-height: 25px;  margin-top: 15px; }
+.wdas-item-content .btn-cate { border: 1.9px dashed #d0021b; background: transparent !important; }
+.wdas-item-content .btn-cate:hover{background:#d0021b !important}
+.wdleft{float: left;z-index:0px;}
+.wdright{float: right; position: absolute; right: 20px; bottom: -38px;}
+.wda-serviceitem:nth-child(1){background: url('../img/wedassistance/fst.png')}
+.wda-serviceitem:nth-child(2){background: url('../img/wedassistance/snd.png')}
+.wda-serviceitem:nth-child(3){background: url('../img/wedassistance/trd.png'); margin-bottom: 0px;}
+.wd-testimonial{background: url('../img/wedassistance/img_testimonials.jpg');background-size: cover; padding: 50px 0; color: #fff;}
+.wd-testimonial h6{color:#fff}
+
+.pricing {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto 3em;
+  }
+  .pricing-item {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    text-align: center;
+    -webkit-flex: 0 1 330px;
+    flex: 0 1 330px;
+  }
+  .pricing-action {
+    color: inherit;
+    border: none;
+    background: none;
+  }
+  .pricing-action:focus {
+    outline: none;
+  }
+  
+  .pricing-feature-list {
+    text-align: left;
+  }
+  
+  .pricing-palden .pricing-item {
+    font-family: 'Open Sans', sans-serif;
+    cursor: default;
+    color: #373737;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+    border-radius: 20px 20px 10px 10px;
+    margin: 1em;
+  }
+  .wd-pricing {
+
+    padding: 50px 0;
+
+}
+  
+  @media screen and (min-width: 66.25em) {
+    .pricing-palden .pricing-item {
+      margin: 1em -0.5em;
+      
+    }
+  
+    .pricing-palden .pricing__item--featured {
+      margin: 0;
+      z-index: 10;
+      box-shadow: 0 0 20px rgba(46, 59, 125, 0.23);
+    }
+  }
+  .pricing-palden .pricing-deco {
+    border-radius: 10px 10px 0 0;
+    background: rgb(242, 37, 62);
+    padding: 4em 0 9em;
+    position: relative;
+  }
+  .pricing-palden .pricing-deco-img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+  }
+  .pricing-palden .pricing-title {
+    font-size: 0.75em;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: #fff;
+  }
+  .pricing-palden .deco-layer {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+  }
+  .pricing-palden .pricing-item:hover .deco-layer--1 {
+    -webkit-transform: translate3d(15px, 0, 0);
+    transform: translate3d(15px, 0, 0);
+  }
+  .pricing-palden .pricing-item:hover .deco-layer--2 {
+    -webkit-transform: translate3d(-15px, 0, 0);
+    transform: translate3d(-15px, 0, 0);
+  }
+  .pricing-palden .icon {
+    font-size: 2.5em;
+  }
+  .pricing-palden .pricing-price {
+    font-size: 5em;
+    font-weight: bold;
+    padding: 0;
+    color: #fff;
+    margin: 0 0 0.25em 0;
+    line-height: 0.75;
+  }
+  .pricing-palden .pricing-currency {
+    font-size: 0.15em;
+    vertical-align: top;
+  }
+  .pricing-palden .pricing-period {
+    font-size: 0.15em;
+    padding: 0 0 0 0.5em;
+    font-style: italic;
+  }
+  .pricing-palden .pricing__sentence {
+    font-weight: bold;
+    margin: 0 0 1em 0;
+    padding: 0 0 0.5em;
+  }
+  .pricing-palden .pricing-feature-list {
+    margin: -7px 0 0 0;
+    padding: 0.25em 0 2.5em;
+    list-style: none;
+    text-align: center;
+    padding: 0 13px 0 34px;
+  }
+  .pricing-palden .pricing-feature {
+
+    padding: 7px 0px;
+    text-align: left;
+    list-style: circle;
+    
+
+}
+  .pricing-palden .pricing-action {
+    font-weight: bold;
+    margin: auto 3em 2em 3em;
+    padding: 1em 2em;
+    color: #fff;
+    border-radius: 30px;
+    background: #d0021b;
+    -webkit-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+  }
+  .pricing-palden .pricing-action:hover, .pricing-palden .pricing-action:focus {
+    background-color: #100A13;
+  }
+  
+  .pricing-palden .pricing-item--featured .pricing-deco {
+    padding: 5em 0 8.885em 0;
+  }
+  
+
+
+
+
+@media (max-width:600px){
+    .wdas-item-content{padding: 30px}
+    .wda-serviceitem { border-radius: 4px; margin-bottom: 20px;}
+    .wed-assis-banner{padding: 30px 0; background-size: cover;}
+}
+>>>>>>> 59bf7e7d3d4f031964b24ed9d07e4551667fc043

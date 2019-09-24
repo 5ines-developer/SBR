@@ -114,6 +114,7 @@ $route['terms-conditions']   		    = 'home/terms_conditions';
 $route['privacy-policy']   				= 'home/privacy_policy';
 $route['about-us']   				    = 'home/about_us';
 $route['site-map']   				    = 'home/site_map';
+$route['wed-assistance']   				= 'home/wed_assistance';
 
 
 
