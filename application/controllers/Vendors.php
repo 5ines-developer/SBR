@@ -24,6 +24,7 @@ class Vendors extends CI_Controller {
            $value->service     = $this->m_vendors->getService($value->id);
            $value->video       = $this->m_vendors->getVideo($value->id);
            $value->review      = $this->m_vendors->getReview($value->id);
+           $value->userReview  = $this->m_vendors->getuserReview($value->id);
            $value->fav         = $this->m_vendors->getFavourite($value->id);
            $value->faq         = $this->m_vendors->faq($value->id);
            $value->offer       = $this->m_vendors->offer($value->id);

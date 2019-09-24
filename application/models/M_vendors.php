@@ -121,8 +121,19 @@ class M_vendors extends CI_Model
     {
        $this->db->where('vendor_id', $id);
        $this->db->where('status', '1');
+       $this->db->order_by('id', 'desc');
        return $this->db->get('vendor_review')->result();
     }
+
+    // getuserreview
+    public function getuserReview($id)
+    {
+        $this->db->where('vendor_id', $id);
+        $this->db->where('status', '1');
+        $this->db->where('user_id', $this->session->userdata('shdid'));
+        return $this->db->get('vendor_review')->row();
+    }
+    
 
     public function makeFavourite($userid='',$vendorid='')
     {

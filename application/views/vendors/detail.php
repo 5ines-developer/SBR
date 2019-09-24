@@ -510,14 +510,14 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_proffesional" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" />
+                                                            @change="onFocus" value="1" v-model="useriview.professionalism" />
                                                         <span>Professionalism</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                     <label>
                                                         <input name="rev_quality" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" />
+                                                            @change="onFocus" value="1" v-model="useriview.qualityofWork" />
                                                         <span>Quality of Work</span>
                                                     </label>
                                                 </p>
@@ -525,7 +525,7 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_service" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" />
+                                                            @change="onFocus" value="1" v-model="useriview.onTimeService" />
                                                         <span>On Time Service</span>
                                                     </label>
                                                 </p>
@@ -533,7 +533,7 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_money" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" />
+                                                            @change="onFocus" value="1"  v-model="useriview.valueOfMoney"/>
                                                         <span>Value for Money</span>
                                                     </label>
                                                 </p>
@@ -541,7 +541,7 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_experience" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" />
+                                                            @change="onFocus" value="1" v-model="useriview.highlyExperiencw" />
                                                         <span>Highly Experienced</span>
                                                     </label>
                                                 </p>
@@ -549,11 +549,13 @@ $this->load->model('m_search');
 
                                             <div class="row m0">
                                                 <div class="input-field col l7 s12">
-                                                    <textarea id="textarea1" name="rev_description" v-on:focus="onFocus"
-                                                        class="materialize-textarea" required=""></textarea>
+                                                    <textarea ref="tsarea" id="textarea1" name="rev_description" v-on:focus="onFocus"
+                                                        class="materialize-textarea" required="">{{useriview.review}}</textarea>
                                                     <label for="textarea1">Write Review</label>
                                                 </div>
                                             </div>
+                                           
+
                                             <input type="hidden" value="" name="rev_rating" v-model="rev_rating">
                                             <input type="hidden" value="<?php echo $value->id ?>" name="rev_vendor">
                                             <input type="hidden" value="<?php echo $value->uniq ?>" name="vendoruniq">
@@ -724,46 +726,92 @@ $this->load->model('m_search');
                                                             </li>
                                                         </ul>
                                                     </div><!-- /.rating -->
+                                                    
                                                 </div><!-- /.col-md-6 -->
 
                                                 <div class="col m7">
                                                     <ul class="review-list">
 
-                                                        <?php if ($value->review) {
+                                                           
+                                                        <?php 
+                                                        $totalrate = 1;
+                                                        $ustags = '';
+                                                        if(!empty($value->userReview)){
+                                                            $totalrate += 1;
+                                                            $usrate = '';
+                                                            for ($i = 0; $i < 5; $i++) {
+                                                                if ($i < $value->userReview->rating){ $startCheck = ' ratingStar'; }else { $startCheck = ''; }
+                                                                    $usrate    .=  '<i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';    
+                                                            }
+                                                            $usname         = (!empty($value->userReview->user_name))?$value->userReview->user_name:'---';
+                                                            $usdate         = (!empty($value->userReview->added_date))?date("M d, Y ", strtotime($value->userReview->added_date)):'---';
+                                                            $proffesional   = (!empty($value->userReview->proffesional))?'Professionalism &nbsp;&nbsp;':'';  
+                                                            $quality        =(!empty($value->userReview->quality))?'Quality of Work &nbsp;&nbsp;':''; 
+                                                            $money          =(!empty($value->userReview->money))?'  Value For Money &nbsp;&nbsp;':''; 
+                                                            $service        =(!empty($value->userReview->service))?'  On Time Service &nbsp;&nbsp;':''; 
+                                                            $experience     =(!empty($value->userReview->experience))?'  Higly Experienced &nbsp;&nbsp;':'';
+                                                            $ustags         = $proffesional.$quality.$money.$service.$experience;
+                                                            $usreview       = $value->userReview->review;
+                                                            $ustrate        = $value->userReview->rating;
+                                                            echo '
+                                                                <li>
+                                                                    <div class="review-edit"><a class="waves-effect waves-teal btn-flat right" href="#vendor-rating" @click="editRating"><i class="material-icons tiny left">edit</i> Edit</a></div>
+                                                                    <div class="review-metadata">
+                                                                        <div class="queue">'.$usrate.'</div>
+                                                                        <div class="name">'.$usname.' : '.$usdate.'</div>
+                                                                    </div>
 
-                                                            foreach ($value->review as $revs => $revsw) {  ?>
-                                                        <li v-if="reviewcount >=  <?php echo $revs + 1 ?>">
-                                                            <div class="review-metadata">
+                                                                    <div class="review-content">
+                                                                        <div class="ntg">
+                                                                            <span class="">'.$ustags.'</span>
+                                                                            <p>'.$usreview.'</p>
+                                                                        <div>
+                                                                    </div>
+                                                                </li>
+                                                            ';
+                                                            
+                                                        }
 
-                                                                <div class="queue">
-                                                                    <?php 
-                                                                    for ($i = 0; $i < 5; $i++) {
-                                                                    if ($i < $revsw->rating) {
-                                                                        $startCheck = ' ratingStar';
-                                                                    } else {
-                                                                        $startCheck = '';
-                                                                    }
-                                                                        echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
-                                                                    }
-                                                                ?>
-                                                                </div>
-                                                                <div class="name">
-                                                                    <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?>
-                                                                    : <span>
-                                                                        <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span>
-                                                                </div>
-                                                            </div><!-- /.review-metadata -->
-                                                            <div class="review-content">
-                                                                <div class="ntg">
-                                                                <span
-                                                                        class=""><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span>
-                                                                </div>
-                                                                <p>
-                                                                    <?php echo $revsw->review; ?>
-                                                                </p>
-                                                            </div><!-- /.review-content -->
-                                                        </li>
-                                                        <?php   } } ?>
+
+
+                                                            if ($value->review) { 
+                                                                foreach ($value->review as $revs => $revsw) 
+                                                                { 
+                                                                    if($this->session->userdata('shdid') != $revsw->user_id)
+                                                                    {
+                                                        ?>
+                                                            <li v-if="reviewcount >=  <?php echo $revs +  $totalrate ?>">
+                                                                <div class="review-metadata">
+
+                                                                    <div class="queue">
+                                                                        <?php 
+                                                                        for ($i = 0; $i < 5; $i++) {
+                                                                        if ($i < $revsw->rating) {
+                                                                            $startCheck = ' ratingStar';
+                                                                        } else {
+                                                                            $startCheck = '';
+                                                                        }
+                                                                            echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
+                                                                        }
+                                                                    ?>
+                                                                    </div>
+                                                                    <div class="name">
+                                                                        <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?>
+                                                                        : <span>
+                                                                            <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span>
+                                                                    </div>
+                                                                </div><!-- /.review-metadata -->
+                                                                <div class="review-content">
+                                                                    <div class="ntg">
+                                                                    <span
+                                                                            class=""><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span>
+                                                                    </div>
+                                                                    <p>
+                                                                        <?php echo $revsw->review; ?>
+                                                                    </p>
+                                                                </div><!-- /.review-content -->
+                                                            </li>
+                                                        <?php   } }  }?>
 
 
 
@@ -917,12 +965,35 @@ $this->load->model('m_search');
             email: '',
             emailError: '',
             count:'',
-            reviewcount: 3
+            reviewcount: 3,
+            useriview :{
+                professionalism : false,
+                qualityofWork : false,
+                onTimeService: false,
+                valueOfMoney:false,
+                highlyExperiencw:false,
+                review:'',
+            },
         },
 
+        
+
         methods: {
+            // more review view
             morereview(){
                 this.reviewcount = 1000;
+            },
+            // edite Review
+            editRating(){
+                
+                this.useriview.professionalism = '<?php echo  (!empty($proffesional)) ? '1' : '' ?>';
+                this.useriview.qualityofWork = '<?php echo   (!empty($quality)) ? '1' : '' ?>';
+                this.useriview.onTimeService = '<?php echo   (!empty($service)) ? '1' : '' ?>';
+                this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? '1' : '' ?>';
+                this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? '' : '' ?>';
+                this.useriview.review = '<?php echo  $usreview ?>';
+                this.ar = '<?php echo  $ustrate ?>';
+                this.$refs.tsarea.focus()
             },
             // email check on database
             emailCheck() {

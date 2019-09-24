@@ -2063,6 +2063,9 @@ r-crd-category {
     float: right;
     line-height: 0
 }
+.review-edit{
+    min-height: 50px;
+}
 
 .review-list li {
     border-bottom: 1px solid #b2b2b2;
