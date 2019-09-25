@@ -166,6 +166,7 @@ class Vendors extends CI_Controller {
         $data['result']     = $this->m_vendors->detail($id);
         $data['enquiry']    = $this->m_vendors->vendorEnquiry($data['result']->uniq);
         $data['port']       = $this->m_vendors->get_portfolio($id);
+        $data['video']       = $this->m_vendors->get_video($id);
         $data['review']     = $this->m_vendors->vendor_review($id);
         $data['offer']     = $this->m_vendors->vendor_offer($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
@@ -190,6 +191,8 @@ class Vendors extends CI_Controller {
         $data['service']    = $this->m_vendors->get_service();
         $data['vendor_info'] = $this->m_vendors->vendor_info($id);
         $data['faq']        = $this->m_vendors->faqget($id);
+        $data['port']       = $this->m_vendors->get_portfolio($id);
+        $data['video']       = $this->m_vendors->get_video($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $this->load->view('vendors/edit-vendor', $data, FALSE);
     }
@@ -219,6 +222,30 @@ class Vendors extends CI_Controller {
                 $this->session->set_flashdata('error', 'Something went wrong please try again!');
                 redirect('vendors/edit/'.$id);
             }
+    }
+
+    public function gallery_delete($id = '',$vendor='')
+    {
+                 // send to model
+                 if($this->m_vendors->gallery_delete($id)){
+                    $this->session->set_flashdata('success', 'Vendor portfolio Deleted Successfully');
+                    redirect('vendors/edit/'.$vendor,'refresh'); // if you are redirect to list of the data add controller name here
+                }else{
+                    $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+                    redirect('vendors/edit/'.$vendor,'refresh'); // if you are redirect to list of the data add controller name here
+                }
+    }
+
+    public function video_delete($id = '',$vendor='')
+    {
+                 // send to model
+                 if($this->m_vendors->video_delete($id)){
+                    $this->session->set_flashdata('success', 'Vendor Video Deleted Successfully');
+                    redirect('vendors/edit/'.$vendor,'refresh'); // if you are redirect to list of the data add controller name here
+                }else{
+                    $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+                    redirect('vendors/edit/'.$vendor,'refresh'); // if you are redirect to list of the data add controller name here
+                }
     }
 
 

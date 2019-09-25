@@ -104,9 +104,50 @@ class Category extends CI_Controller {
             }
         }
 
+
+        $files2 = $_FILES;
+        $filesCount = count($_FILES['banner_image']['tmp_name']);
+        if (file_exists($_FILES['banner_image']['tmp_name'])) {
+            $config['upload_path'] = '../category-banner/';
+            $config['allowed_types'] = 'jpg|png|jpeg|gif';
+            $config['max_width'] = 0;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+            if (!is_dir($config['upload_path'])) {
+                mkdir($config['upload_path'], 0777, true);
+            }
+
+            if (!$this->upload->do_upload('banner_image')) {
+                $error = array('error' => $this->upload->display_errors());
+                // print_r($error);exit();
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                redirect('category/add');
+            } else {
+                // echo "ok";exit();
+                $upload_data1 = $this->upload->data();
+                $config1['image_library'] = 'gd2';
+                $config1['source_image'] = $upload_data1['full_path'];
+                $config1['create_thumb'] = true;
+                $config1['maintain_ratio'] = true;
+                $config1['height'] = 250;
+
+                $this->load->library('image_lib', $config1);
+                $this->image_lib->resize();
+
+                $file_name2 = $upload_data1['file_name'];
+                $banrpath = 'category-banner/'.$file_name2;
+
+            }
+        }
+
+
+        
+
         $insert =  array(
         	'image' => $imgpath,
         	'icon' => $icnpath,
+        	'banner' => $banrpath,
         	'uniq' => $this->input->post('category_id'),
             'subtitle' => $this->input->post('subtitle'),
         	'category' => $this->input->post('category')

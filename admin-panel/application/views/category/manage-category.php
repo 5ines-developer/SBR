@@ -63,7 +63,7 @@
                                     <thead>
                                        <tr class="tt">
                                           <th id="a" class="h5-para-p2" width="130px">Category</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Subtitle</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Banner Image</th>
                                           <th id="b" class="h5-para-p2" width="100px">Image</th>
                                           <th id="c" class="h5-para-p2" width="120px">Icon</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
@@ -78,8 +78,7 @@
                                       ?>
                                       <tr>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->subtitle))?$value->subtitle:'---'  ?></td>
-
+                                            <td ><img class="table-image" src="<?php echo $this->config->item('web_url').$value->banner; ?>" alt="image"></td>
                                             <td ><img class="table-image" src="<?php echo $this->config->item('web_url').$value->image; ?>" alt="image"></td>
                                             <td ><img class="table-image" src="<?php echo $this->config->item('web_url').$value->icon; ?>" alt="image"></td>
                                             <td class="action-btn  center-align">

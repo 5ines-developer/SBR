@@ -263,6 +263,28 @@ class M_vendors extends CI_Model
         }
         
     }
+
+    public function bannimage($cat = null)
+    {
+        $this->db->select('banner');        
+        $this->db->where('category', $cat);        
+        $result =  $this->db->get('category')->row();
+
+        if (!empty($result->banner)) {
+            return base_url().$result->banner;
+        }else{
+            return base_url().'assets/img/result_banner.jpg';
+        }
+
+
+        
+        echo "<pre>";
+        print_r ($result);
+        echo "</pre>";
+        
+        
+        
+    }
     
 
 

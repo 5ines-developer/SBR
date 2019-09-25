@@ -198,6 +198,12 @@ class M_vendors extends CI_Model {
 		return $port;
 	}
 
+	public function get_video($id='')
+	{
+		$this->db->where('vendor_id', $id);
+		return $this->db->get('vendor_video')->result();
+	}
+
 	/**
     * Vendors -> add new video 
     * url : vendors/view/id
@@ -253,6 +259,28 @@ class M_vendors extends CI_Model {
 	{
 		$this->db->where('vendor_id', $id);
 		return $this->db->delete('vendor_infoservice');
+	}
+
+	public function gallery_delete($id = '')
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('vendor_portfolio');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function video_delete($id = '')
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('vendor_video');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public function service($insert='')

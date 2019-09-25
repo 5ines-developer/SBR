@@ -75,7 +75,7 @@
                                                                     <input type="hidden" name="edit" value="edit">
                                                                     <div class="" id="edt-image">
                                                                         <div class="image view view-first">
-                                                                            <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->icon ?>" alt="image">
+                                                                            <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->image ?>" alt="image">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -100,7 +100,7 @@
                                                                     <input type="hidden" name="edit" value="edit">
                                                                     <div class="" id="edt-image">
                                                                         <div class="image view view-first">
-                                                                            <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->image ?>" alt="image">
+                                                                            <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->icon ?>" alt="image">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -108,6 +108,34 @@
 
 
                                             </div>
+
+
+                                            <div class="row m0">
+                                              <div class="file-field input-field col s12 l6">
+                                                    <div class="btn btn-small black-text grey lighten-3">
+                                                    <i class="far fa-image left  "></i>
+                                                        <span class="">Banner Image</span>
+                                                        <input type="file" name="banner_image" accept=".png, .jpg, .jpeg, .gif" required>
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                    </div>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg,png,jpeg  ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                </div>
+
+                                                <?php if(!empty($result)) {?>
+                                                                <div class="form-group">
+                                                                    <input type="hidden" name="edit" value="edit">
+                                                                    <div class="" id="edt-image">
+                                                                        <div class="image view view-first">
+                                                                            <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->banner ?>" alt="image">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                 <?php }?>
+
+                                            </div> 
+
 
                                               <div class="col s12">
                                               <?php 

@@ -65,6 +65,47 @@ top: 65px;
 z-index: 9999;
 background-color: #fff;
     }
+
+    .portfolio-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-img:hover .port-delete {
+    top: 0;
+}
+.port-delete{
+    position: absolute;
+text-align: center;
+width: 100%;
+background: rgba(0,0,0,0.4);
+height: 100%;
+line-height: 100px;
+}
+.port-delete i{
+color: red;
+font-size: 18px;
+}
+.vid-delete{
+    position: relative;
+
+text-align: center;
+
+width: 100%;
+
+background: #fff;
+
+padding: 4px;
+
+top: -5px;
+
+border: 1px dotted;
+}
+.vid-delete i{
+    color: red;
+font-size: 18px;
+}
+
     </style>
 </head>
 
@@ -366,6 +407,24 @@ background-color: #fff;
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Portfolio Images</p>
                                         </div>
+
+                                        <div class="row">
+
+                                        <?php if (!empty($port)) {
+                                foreach ($port as $key => $value) { ?>
+                                        <div class="col s12 l3 m6 ">
+                                            <div class="portfolio-img">
+                                            <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="<?php echo $this->config->item('web_url').'/vendor-portfolio/'.$value->thumb_image ?>" style="cursor: pointer;">
+                                            <div class="port-delete">
+                                                <a href="<?php echo base_url('vendors/gallery_delete/').$value->id.'/'.$result->id ?>">
+                                            <i class="fas fa-trash"></i></a>
+                                            </div>
+
+                                            </div>
+                                        </div>
+                                        <?php } } ?>
+                                        </div>
+
                                         <div class="row m0">
                                             <div class="file-field input-field col s12 l12">
                                                 <div class="input-images"></div>
@@ -405,6 +464,43 @@ background-color: #fff;
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Video Links</p>
                                         </div>
+
+                                        <div class="row m0">
+                                        
+                                        <?php //youtube
+                                        if (!empty($video)) {
+                                            foreach ($video as $vide => $vids) {
+                                        if ($vids->type == '1') {                                             
+                                            ?>
+                                            <div class="col s12 l3 m6 ">
+                                       <div class="portfolio-img"> 
+                                        <iframe width="100%" height="200"   src="https://www.youtube.com/embed/<?php echo $vids->link ?>"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                            <div class="vid-delete">
+                                                <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>">
+                                            <i class="fas fa-trash"></i></a>
+                                        </div>
+                                        </div> 
+                                        </div>
+                                        <?php }else if ($vids->type == '2'){  ?>
+                                            <div class="col s12 l3 m6 ">
+                                             <div class="portfolio-img"> 
+                                            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476"
+                                            width="auto" height="200" style="border:none;overflow:auto" scrolling="no"
+                                            frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+                                            <div class="vid-delete">
+                                                <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>"><i class="fas fa-trash"></i></a>
+                                            </div>
+                                        </div> 
+                                        </div>
+
+
+                                        <?php } } } ?>
+                                        </div>
+
+
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
                                                 <select name="vd_category" required="" id="vd_category">
@@ -616,6 +712,7 @@ background-color: #fff;
     <script>
     $(document).ready(function() {
         $('select').formSelect();
+        // $('.materialboxed').materialbox();
         $('.input-images').imageUploader();
         $('#vendor-about').submit(function() {
             var text = $('#editor').html();

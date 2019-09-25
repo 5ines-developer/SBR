@@ -1,5 +1,8 @@
 <?php  $this->ci =& get_instance();
 $this->load->model('m_search'); 
+$this->load->model('m_vendors'); 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +51,8 @@ height: 30px;
         <!-- end header -->
 
         <!-- body  -->
-        <section class="result-head">
-            <div class="container center-align">
+        <section class="result-head" style="background-image:url(<?php echo $this->m_vendors->bannimage(ucwords(str_replace("-"," ",$this->uri->segment(3)))); ?>)">
+            <div class="container center-align" >
                 <div class="row m0">
                     <div class="col s12 m8 push-m2">
                         <h4 class="white-text">India's Most Trusted Online Wedding Market</h4>

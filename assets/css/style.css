@@ -1407,7 +1407,8 @@ ul.detail li span {
 /* result page */
 
 .result-head {
-    background: rgba(0, 0, 0, 0.6) url('https://www.magicorbits.com/Contents/images/6.jpg');
+    /* background: rgba(0, 0, 0, 0.6) url('https://www.magicorbits.com/Contents/images/6.jpg'); */
+    background: rgba(0, 0, 0, 0.6);
     background-size: cover;
     background-blend-mode: color;
     padding: 40px 0;
