@@ -2460,6 +2460,8 @@ a.viewmore:hover {
     position: relative;
     top: 3px;
     margin-right: 7px;
+    filter: invert(10%) sepia(1) saturate(100) hue-rotate(340deg);
+    -webkit-filter: invert(10%) sepia(1) saturate(100) hue-rotate(340deg);
 }
 
 .tcheading {
