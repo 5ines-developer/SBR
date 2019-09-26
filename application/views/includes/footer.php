@@ -10,7 +10,7 @@
                      
                     <div class="wed-bottom">
                         <div class="wed-bottom-inner">
-                            <img src="<?php echo base_url()?>assets/img/icon/C.png" alt="">
+                            <img src="<?php echo base_url()?>assets/img/icon/c.png" alt="">
                             <span>SEARCH</span>
                         </div>
                         <div class="wed-bottom-inner">
@@ -18,7 +18,7 @@
                             <span>SELECT</span>
                         </div>
                         <div class="wed-bottom-inner">
-                            <span><img src="<?php echo base_url()?>assets/img/icon/A.png" alt=""></span>
+                            <span><img src="<?php echo base_url()?>assets/img/icon/a.png" alt=""></span>
                             <span>BOOK</span>
                         </div>
                     </div>

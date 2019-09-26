@@ -19,6 +19,12 @@
 text-transform: none;
 left: -133px !important;
         }
+        #marqueeplus {
+    background-color: #1b5e20;
+    padding: 4px 7px;
+    color: #fff;
+    cursor: pointer;
+}
      </style>
    </head>
    <body>
@@ -50,22 +56,23 @@ left: -133px !important;
                                                   <label for="category">category <span class="red-text">*</span></label>
                                                   <p><span class="error"><?php echo form_error('category'); ?></span></p>
                                                 </div>
-                                            </div>
-                                            
 
-                                            <div class="row m0">
-                                              <div class="file-field input-field col s12 l6">
+                                                <div class="file-field input-field col s12 l6">
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Add Image</span>
                                                         <input type="file" name="image" accept=".png, .jpg, .jpeg, .gif" required>
                                                     </div>
                                                     <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                        <input class="file-path validate" type="text">
                                                     </div>
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
-                                            </div> 
+
+                                            </div>
+                                            
+
+                                            
 
                                             <div class="row m0">
                                                   <div class="file-field input-field col s12 l6">
@@ -75,27 +82,48 @@ left: -133px !important;
                                                         <input type="file" name="icon" accept=".svg, .SVG" required>
                                                     </div>
                                                     <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                        <input class="file-path validate" type="text">
                                                     </div>
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
-                                            </div>
 
-
-                                            <div class="row m0">
-                                              <div class="file-field input-field col s12 l6">
+                                                <div class="file-field input-field col s12 l6">
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Banner Image</span>
                                                         <input type="file" name="banner_image" accept=".png, .jpg, .jpeg, .gif" required>
                                                     </div>
                                                     <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                        <input class="file-path validate" type="text"">
                                                     </div>
-                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg,png,jpeg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg,png,jpeg ) <br> <span class="bold">File ratio:</span> 1350 * 240  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
-                                            </div> 
+                                            </div><br>
 
+                                            <div class="row m0">
+                                                <p class="bold  black-text col  mb10 h6">Information Services</p>
+                                            </div>
+                                            <div class="row m0" id="marqaddnext">
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="i_title" name="i_title[]" class="validate" required value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
+                                                  <label for="i_title">Title <span class="red-text">*</span></label>
+                                                  <p><span class="error"><?php echo form_error('category'); ?></span></p>
+                                                </div>
+                                                <div class="file-field input-field col s12 l4">
+                                                    <div class="btn btn-small black-text grey lighten-3">
+                                                    <i class="far fa-image left  "></i>
+                                                        <span class="">Add Image</span>
+                                                        <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required>
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" >
+                                                    </div>
+                                                    
+                                                </div><br>
+                                                <div class="col l2">
+                                                    <a id="marqueeplus" class="marqueeplus"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+                                                </div>
+                                            </div>
 
                                               <div class="col s12">
                                               <?php 
@@ -133,6 +161,25 @@ left: -133px !important;
   <?php $this->load->view('include/message.php'); ?>
     
   </script>
+
+<script>
+    $(document).ready(function() {
+
+        $(function() {
+            $('#marqueeplus').on('click', function(e) {
+                e.preventDefault();
+                $('<div class="row m0"> <div class="input-field col s12 l6"> <input type="text" id="i_title" name="i_title[]" class="validate" required > <label for="i_title">Title <span class="red-text">*</span></label> <p><span class="error"><?php echo form_error('category'); ?></span></p> </div> <div class="file-field input-field col s12 l4"> <div class="btn btn-small black-text grey lighten-3"> <i class="far fa-image left  "></i> <span class="">Add Image</span> <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required> </div> <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>  </div><br> <div class="col l2"> <a id="brandplus" class="marqueeplus remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
+                    .append().insertBefore('#marqaddnext');
+
+            });
+            $(document).on('click', '.marqueeplus.remov', function(e) {
+                e.preventDefault();
+                $(this).closest('div.row').remove();
+            });
+        });
+    });
+    </script>
+
       <script>
     $(document).ready(function() {
         $("#category-form").validate({

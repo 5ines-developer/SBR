@@ -62,7 +62,7 @@
                                                 </div>
                                             </div> 
 
-                                            <div class="row ">
+                                            <div class="row m0">
                                                   <div class="file-field input-field col s12 l6">
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
@@ -73,6 +73,19 @@
                                                         <input class="file-path validate" type="text" style="border:transparent">
                                                     </div>
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m0">
+                                                <div class="input-field col s12 l6">
+                                                    <select name="top_city" required="">
+                                                        <option value="" >Top City</option>
+                                                        <option value="1" >Yes</option>
+                                                        <option value="" >No</option>
+                                                        
+                                                    </select>
+                                                    <label>Top City</label>
+                                                    <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                                 </div>
                                             </div>
 
@@ -114,6 +127,8 @@
   </script>
       <script>
     $(document).ready(function() {
+
+        $('select').formSelect();
         $("#city-form").validate({
             rules: {
                 city: {

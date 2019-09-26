@@ -96,8 +96,19 @@
                                                                     </div>
                                                                 </div>
                                                  <?php }?>
+                                            </div>
 
-
+                                            <div class="row m0">
+                                                <div class="input-field col s12 l6">
+                                                    <select name="top_city" required="">
+                                                        <option value="" >Top City</option>
+                                                        <option value="1" <?php echo (!empty($result->status))?'selected':''; ?> >Yes</option>
+                                                        <option value="" <?php echo (empty($result->status))?'selected':''; ?> >No</option>
+                                                        
+                                                    </select>
+                                                    <label>Top City</label>
+                                                    <p><span class="error"><?php echo form_error('city'); ?></span></p>
+                                                </div>
                                             </div>
 
                                               <div class="col s12">
@@ -136,6 +147,14 @@
   <?php $this->load->view('include/message.php'); ?>
     
   </script>
+
+<script>
+    $(document).ready(function() {
+
+        $('select').formSelect();
+
+    });
+    </script>
         
     </body>
 </html>

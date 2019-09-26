@@ -153,7 +153,53 @@ class Category extends CI_Controller {
         	'category' => $this->input->post('category')
         );
 
-			if($this->m_category->insert_category($insert))
+        $output1 = $this->m_category->insert_category($insert);
+
+       $i_title=  $this->input->post('i_title');
+        $files3 = $_FILES;
+        $filesCount3 = count($_FILES['i_image']['name']);
+        
+        
+        
+        if (!empty($filesCount3)) {
+            for ($i = 0; $i < $filesCount3; $i++) {
+                $_FILES['i_image']['name']     = $files['i_image']['name'][$i];
+                $_FILES['i_image']['type']     = $files['i_image']['type'][$i];
+                $_FILES['i_image']['tmp_name'] = $files['i_image']['tmp_name'][$i];
+                $_FILES['i_image']['error']    = $files['i_image']['error'][$i];
+                $_FILES['i_image']['size']     = $files['i_image']['size'][$i];
+
+                $config['upload_path']   = '../vendors-service/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['max_width']     = 0;
+                $config['encrypt_name']  = TRUE;
+
+                $this->load->library('upload');
+                $this->upload->initialize($config);
+                if (!is_dir($config['upload_path']))
+                mkdir($config['upload_path'], 0777, TRUE);
+
+                if (!$this->upload->do_upload('i_image')) {
+                    $error =  $this->upload->display_errors();
+                     $this->session->set_flashdata('error', $this->upload->display_errors());
+                     redirect('category/add');
+                 } else {
+
+                    $upload_data = $this->upload->data();
+                    $i_file = $upload_data['file_name'];
+                    $i_path = 'vendors-service/'.$i_file;
+
+                    $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$this->input->post('category_id')  );
+                    $output = $this->m_category->new_service($information);
+
+                 }
+            }
+        }
+
+
+        
+
+			if(!empty($output) && !empty($output1) )
 			{
 				$this->session->set_flashdata('success', 'category Added Successfully');
 				redirect('category/manage','refresh');
@@ -161,7 +207,16 @@ class Category extends CI_Controller {
 				$this->session->set_flashdata('error', 'Something went wrong please try again!');
 				redirect('category/add','refresh');
 			}
-		}
+        }
+        
+
+        public function deleteInfo($id = null)
+        {
+            $id = $this->input->get('id');
+            $output = $this->m_category->deleteInfo($id);
+            echo $output;
+            
+        }
 
         /**
          * category -> delete city
@@ -206,6 +261,7 @@ class Category extends CI_Controller {
     public function single_category($id='')
     {
         $data['result']  = $this->m_category->single_category($id);
+        $data['service'] = $this->m_category->getInfo($data['result']->uniq);
         $data['title']   = $data['result']->category.' - Shaadibaraati';
         $this->load->view('category/edit-category', $data, FALSE);
     }
@@ -218,6 +274,7 @@ class Category extends CI_Controller {
     **/
 	public function update_category($value='')
 	{
+       
 		$files = $_FILES;
         $filesCount = count($_FILES['image']['name']);
 		if (!empty($filesCount)) {
@@ -256,6 +313,7 @@ class Category extends CI_Controller {
         }
         }
 
+
        
         $files1 = $_FILES;
         $filesCount1 = count($_FILES['icon']['name']);
@@ -263,6 +321,7 @@ class Category extends CI_Controller {
          if (!empty($filesCount1)) {
 
         if (file_exists($_FILES['icon']['tmp_name'])) {
+            
 	            $config['upload_path'] = '../category-icon/';
 	            $config['allowed_types'] = 'svg|SVG';
 	            $config['max_width'] = 0;
@@ -275,11 +334,9 @@ class Category extends CI_Controller {
 
 	            if (!$this->upload->do_upload('icon')) {
 	                $error = array('error' => $this->upload->display_errors());
-	                // print_r($error);exit();
 	                $this->session->set_flashdata('error', $this->upload->display_errors());
 	                redirect('category/add');
 	            } else {
-	                // echo "ok";exit();
 	                $upload_data1 = $this->upload->data();
 	                $config1['image_library'] = 'gd2';
 	                $config1['source_image'] = $upload_data1['full_path'];
@@ -298,7 +355,10 @@ class Category extends CI_Controller {
         	}
         }
 
+
         $id = $this->input->post('city_id');
+        $cat_uniq = $this->input->post('cat_uniq');
+        $serviceid = $this->input->post('serviceid');
 
         $update =  array(
             'category' => $this->input->post('category'),
@@ -312,10 +372,53 @@ class Category extends CI_Controller {
         	$update['icon'] = $icnpath;
         }
 
+        $output1 = $this->m_category->update_category($update,$id);
 
-			if($this->m_category->update_category($update,$id))
+
+        $i_title=  $this->input->post('i_title');
+        $files3 = $_FILES;
+        $filesCount3 = count($_FILES['i_image']['name']);
+
+        if (!empty($filesCount3)) {
+            for ($i = 0; $i < $filesCount3; $i++) {
+                $_FILES['i_image']['name']     = $files['i_image']['name'][$i];
+                $_FILES['i_image']['type']     = $files['i_image']['type'][$i];
+                $_FILES['i_image']['tmp_name'] = $files['i_image']['tmp_name'][$i];
+                $_FILES['i_image']['error']    = $files['i_image']['error'][$i];
+                $_FILES['i_image']['size']     = $files['i_image']['size'][$i];
+
+                $config['upload_path']   = '../vendors-service/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
+                $config['max_width']     = 0;
+                $config['encrypt_name']  = TRUE;
+
+                $this->load->library('upload');
+                $this->upload->initialize($config);
+                if (!is_dir($config['upload_path']))
+                mkdir($config['upload_path'], 0777, TRUE);
+
+                if (!$this->upload->do_upload('i_image')) {
+                    $error =  $this->upload->display_errors(); 
+                    $this->session->set_flashdata('error', $this->upload->display_errors());
+                     redirect('category/add');
+                 } else {
+                     
+
+
+                    $upload_data = $this->upload->data();
+                    $i_file = $upload_data['file_name'];
+                    $i_path = 'vendors-service/'.$i_file;
+
+                    $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$cat_uniq  );
+                    $output = $this->m_category->new_service1($information,$serviceid);
+
+                 }
+            }
+        }
+
+        if(!empty($output) || !empty($output1) )
 			{
-				$this->session->set_flashdata('success', 'City Updated Successfully');
+				$this->session->set_flashdata('success', 'Category Updated Successfully');
 				redirect('category/manage','refresh');
 			}else{
 				$this->session->set_flashdata('error', 'Something went wrong please try again!');

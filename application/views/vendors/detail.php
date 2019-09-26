@@ -460,9 +460,15 @@ $this->load->model('m_search');
                                     </div>
                                     <div class="clearfix"></div>
 
-                                    <?php if (!empty($value->video)) {
+                                    
+
+                                    <?php 
+                                    $totalrate = 1;
+                                    $vid='';
+                                    
+                                    if (!empty($value->video)) {
                                         foreach ($value->video as $vid => $vids) { ?>
-                                    <div class="col s12 m6 l4 mb15">
+                                    <div v-if="videocount >= <?php echo $vid +  $totalrate ?>" class="col s12 m6 l4 mb15">
                                         <?php //youtube
                                         if ($vids->type == '1') { ?>
                                         <iframe width="100%" height="200"
@@ -473,12 +479,23 @@ $this->load->model('m_search');
                                         <?php }else if ($vids->type == '2'){ ?>
                                         <iframe
                                             src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476"
-                                            width="auto" height="200" style="border:none;overflow:auto" scrolling="no"
+                                            width="100%" height="200" style="border:none;overflow:auto" scrolling="no"
                                             frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 
                                         <?php } ?>
                                     </div>
                                     <?php  } } ?>
+
+                                    <div class="center-align">
+
+                                    <button @click="morevideo" v-if="<?php echo $vid + 1 ?> > 3 && videocount < 4" class="waves-effect waves-light btn red plr30 accent-4 white-text">View More</button>
+
+
+                                    </div>
+
+
+
+                                    
 
                                 </div>
                             </div>
@@ -966,6 +983,7 @@ $this->load->model('m_search');
             emailError: '',
             count:'',
             reviewcount: 3,
+            videocount: 3,
             useriview :{
                 professionalism : false,
                 qualityofWork : false,
@@ -983,6 +1001,10 @@ $this->load->model('m_search');
             morereview(){
                 this.reviewcount = 1000;
             },
+            // more review view
+            morevideo(){
+                this.videocount = 1000;
+            },
             // edite Review
             editRating(){
                 
@@ -991,8 +1013,8 @@ $this->load->model('m_search');
                 this.useriview.onTimeService = '<?php echo   (!empty($service)) ? '1' : '' ?>';
                 this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? '1' : '' ?>';
                 this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? '' : '' ?>';
-                this.useriview.review = '<?php echo  $usreview ?>';
-                this.ar = '<?php echo  $ustrate ?>';
+                this.useriview.review = '<?php echo  (!empty($usreview))?$usreview:''; ?>';
+                this.ar = '<?php echo  (!empty($ustrate))?$ustrate:''; ?>';
                 this.$refs.tsarea.focus()
             },
             // email check on database

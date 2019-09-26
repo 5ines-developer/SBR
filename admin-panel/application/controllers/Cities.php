@@ -106,7 +106,8 @@ class Cities extends CI_Controller {
 
         $insert =  array(
         	'uniq' => $this->input->post('city_id'),
-        	'city' => $this->input->post('city')
+            'city' => $this->input->post('city'),
+            'status'=> $this->input->post('top_city')
         );
 
         if (file_exists($_FILES['image']['tmp_name'])) {
@@ -266,7 +267,8 @@ class Cities extends CI_Controller {
         $id = $this->input->post('city_id');
 
         $update =  array(
-        	'city' => $this->input->post('city')
+            'city' => $this->input->post('city'),
+            'status'=> $this->input->post('top_city')
         );
 
         if (!empty($imgpath)) {

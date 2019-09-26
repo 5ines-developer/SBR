@@ -132,10 +132,10 @@
     <script>
     function showImage(src, target) {
         var fr = new FileReader();
+ 
         fr.onload = function(){
             target.src = fr.result;
         }
-        console.log(target.src);
         fr.readAsDataURL(src.files[0]);
     }
 

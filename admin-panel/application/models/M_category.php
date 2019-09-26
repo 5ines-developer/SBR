@@ -32,7 +32,26 @@ class M_category extends CI_Model {
 		{
 			return $this->db->insert('category',$insert);
 		}
-    }
+	}
+	
+	public function new_service($insert)
+	{
+		return $this->db->insert('information_service', $insert);
+	}
+
+	public function new_service1($insert='',$id='')
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->get('information_service');
+
+		if ($query->num_rows() > 0) {
+			$this->db->where('id', $id);
+			$this->db->update('information_service', $insert);
+		}else{
+			return $this->db->insert('information_service', $insert);			
+		}
+				
+	}
 
 
 
@@ -81,6 +100,24 @@ class M_category extends CI_Model {
 		}else{
 			return false;
 		}
+	}
+
+	public function getInfo($id = null)
+	{
+		return $this->db->where('category_uniq', $id)->get('information_service', 6)->result();
+	
+	}
+
+	public function deleteInfo($id = null)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('information_service');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	
 	}
 
 	
