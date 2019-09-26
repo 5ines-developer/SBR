@@ -2461,6 +2461,8 @@ a.viewmore:hover {
     position: relative;
     top: 3px;
     margin-right: 7px;
+    filter: invert(10%) sepia(1) saturate(100) hue-rotate(340deg);
+    -webkit-filter: invert(10%) sepia(1) saturate(100) hue-rotate(340deg);
 }
 
 .tcheading {
@@ -2786,13 +2788,19 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 .wdas-item-content .btn-cate, .h-wd-item-button a{ border: 1.9px dashed #d0021b; background: transparent !important; }
 .wdas-item-content .btn-cate:hover, .h-wd-item-button a:hover{background:#d0021b !important}
 
-.wda-serviceitem:nth-child(1){background: url('../img/wedassistance/fst.png')}
-.wda-serviceitem:nth-child(2){background: url('../img/wedassistance/snd.png')}
-.wda-serviceitem:nth-child(3){background: url('../img/wedassistance/trd.png'); margin-bottom: 0px;}
+.wda-serviceitem:nth-child(1), .hwed-item.hwd1{background: url('../img/wedassistance/fst.png'); background-size: cover}
+.wda-serviceitem:nth-child(2), .hwed-item.hwd2{background: url('../img/wedassistance/snd.png'); background-size: cover}
+.wda-serviceitem:nth-child(3), .hwed-item.hwd3{background: url('../img/wedassistance/trd.png'); margin-bottom: 0px; background-size: cover}
 .wd-testimonial{background: url('../img/wedassistance/img_testimonials.jpg');background-size: cover; padding: 50px 0; color: #fff;}
 .wd-testimonial h6{color:#fff}
 .wdleft { width: 60%; height: 300px; background: url('../img/wedassistance/fst.png'); }
 .j{width: 50%; position: absolute; right: 0px; bottom: 0;}
+
+
+
+
+
+
 
 .h-wd-item-contanier {
     background-image: url("//www.matrimonybazaar.com/assets/bg/wedding-assist-banner.webp");
@@ -2815,11 +2823,10 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     right: -19vw;
     box-shadow: 1px 1px 4px -3px gray;
 }
-.h-wd-item-content-headin {
-    margin: 41px 0px 0px 42px;
+.wdheading {
     font-size: 2.5rem;
     font-weight: 400;
-    color: rgb(54, 54, 54);
+    color: #fff;
 }
 .h-wd-item-content-phara {
     font-size: 14px;
@@ -2831,8 +2838,13 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 .h-wd-item-content .margin-box {
     margin: 22px 22px 36px;
 }
-.h-wd-item-button{margin: 20px 0px 0 42px;}
-
+.h-wd-item-button{margin: 20px 0px 30px 42px;}
+.redsahde{background: #d0021be3;}
+.hwd-conetnt { padding: 50px 100px; line-height: 30px; color: #fff; }
+.bokmore-btn { border: 2px dashed #fff; padding: 8px 35px; font-size: 16px; color: #fff; font-weight: 600; }
+.bokmore-btn:hover { color: #d0021b; background: #fff; }
+.btbtn { padding: 15px 0; }
+.hwd-conetnt p{font-size: 15px; font-weight: 600;}
 
 
 
@@ -3012,9 +3024,10 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     .h-wd-item-content-headin { margin: 31px 0px 0px 16px; font-size: 2rem; font-weight: 400; color: rgb(54, 54, 54); }
     .h-wd-item-contanier { margin-top: 7px; }
     .vender-im { position: relative; margin: 2px -8px; line-height: 0; }
+    .hwd-conetnt { padding: 34px 17px; line-height: 26px; color: #f9f9f9; }
 }
 
 @media (min-width:601px) and (max-width:982px){
     .h-wd-item-content { position: relative; margin-top: 50px; width: 107%; background-color: #ffdee4; float: right; right: -30vw; box-shadow: 1px 1px 4px -3px gray; }
-
+    .hwd-conetnt { padding: 50px 10px; }
 }
