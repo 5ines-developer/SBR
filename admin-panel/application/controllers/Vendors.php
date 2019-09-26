@@ -189,10 +189,10 @@ class Vendors extends CI_Controller {
         $data['category']   = $this->m_vendors->get_category();
         $data['city']       = $this->m_vendors->get_city();
         $data['service']    = $this->m_vendors->get_service();
-        $data['vendor_info'] = $this->m_vendors->vendor_info($id);
+        $data['vendor_info']= $this->m_vendors->vendor_info($id);
         $data['faq']        = $this->m_vendors->faqget($id);
         $data['port']       = $this->m_vendors->get_portfolio($id);
-        $data['video']       = $this->m_vendors->get_video($id);
+        $data['video']      = $this->m_vendors->get_video($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $this->load->view('vendors/edit-vendor', $data, FALSE);
     }
@@ -392,81 +392,24 @@ class Vendors extends CI_Controller {
             }
         }
 
-        /**
-         * vendors -> new servics
-         * url : vendors/new-service
-         * @param : id
-        */
-        public function new_service($value='')
-        {
-                $files = $_FILES;
-                $filesCount = count($_FILES['sr_icon']['name']);
-                if (file_exists($_FILES['sr_icon']['tmp_name'])) {
-                    $config['upload_path'] = '../vendors-service/';
-                    $config['allowed_types'] = 'jpg|png|jpeg';
-                    $config['max_width'] = 0;
-                    $config['encrypt_name'] = true;
-                    $this->load->library('upload');
-                    $this->upload->initialize($config);
-                    if (!is_dir($config['upload_path'])) {
-                        mkdir($config['upload_path'], 0777, true);
-                    }
-
-                    if (!$this->upload->do_upload('sr_icon')) {
-                        $error = array('error' => $this->upload->display_errors());
-                        // print_r($error);exit();
-                        $this->session->set_flashdata('error', $this->upload->display_errors());
-                        redirect('vendors/add');
-                    } else {
-                        // echo "ok";exit();
-                        $upload_data = $this->upload->data();
-                        $config['image_library'] = 'gd2';
-                        $config['source_image'] = $upload_data['full_path'];
-                        $config['create_thumb'] = true;
-                        $config['maintain_ratio'] = true;
-                        $config['height'] = 250;
-
-                        $this->load->library('image_lib', $config);
-                        $this->image_lib->resize();
-
-                        $file_name = $upload_data['file_name'];
-                        $imgpath = 'vendors-service/'.$file_name;
-                    }
-                }
-
-                $service     = $this->input->post('serv');
-                $subtitle    = $this->input->post('sr_subtitle');
-                $id          = $this->input->post('id');
-                $insert =  array(
-                    'service'       =>  $service , 
-                    'subtitle'      =>  $subtitle , 
-                    'image'         =>  $imgpath , 
-                );
-            $output = $this->m_vendors->new_service($insert);
-            if(!empty($output))
-            {
-                $this->session->set_flashdata('success', 'New Services added Successfully');
-                redirect('vendors/edit/'.$id,'refresh');
-            }else{
-                $this->session->set_flashdata('error', 'Something went wrong, please try again later.');
-               redirect('vendors/edit/'.$id,'refresh');
-            }
-              
-        }
-
-
         public function service($value='')
         {
            $id  = $this->input->post('id');
-           $service  = $this->input->post('service');
+           $service  = $this->input->post('serv');
+           $subtitle  = $this->input->post('sr_subtitle');
 
-           if($this->m_vendors->deletService($id))
-           {
-                for ($i=0; $i < count($service) ; $i++) { 
-                    $insert = array('vendor_id' => $id, 'information_id' => $service[$i]);
-                    $output[] = $this->m_vendors->service($insert);
+           $this->m_vendors->deletService($id);          
+
+           for ($i=0; $i < count($service) ; $i++) { 
+
+            if (!empty($subtitle[$i])) {
+                $insert = array('vendor_id' => $id, 'information_id' => $service[$i],'subtitle'=>$subtitle[$i]);
+                $output[] = $this->m_vendors->service($insert);
+            }             
+
             }
-           }
+
+
 
             if(!empty($output[0]))
             {

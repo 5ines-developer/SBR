@@ -22,6 +22,11 @@
         color: #fff;
         cursor: pointer;
     }
+    .marqaddnext {
+
+background-color: #f4f4f4;
+margin-bottom: 10px !important;
+border-radius: 4px;}
     </style>
 </head>
 
@@ -177,10 +182,10 @@
                                         <?php if (!empty($service)) {
                                                foreach ($service as $key => $value) { ?>
 
-                                        <div class="row m0" id="marqaddnext">
-                                            <div class="input-field col s12 l6">
-                                                <input type="text" id="i_title" name="i_title[]" class="validate"
-                                                    value="<?php echo (!empty($value->service)?$value->service:'') ?>">
+                                        <div class="row m0 marqaddnext">
+                                            <div class="input-field col s12 l6">                                                
+                                                <input type="text" id="i_title" name="i_title1[]" class="validate"
+                                                    value="<?php echo (!empty($value->service)?$value->service:'') ?>" >
                                                 <label for="i_title">Title <span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('category'); ?></span></p>
                                             </div>
@@ -189,13 +194,11 @@
                                                     src="<?php echo $this->config->item('web_url').$value->image; ?>"
                                                     alt="image" width="250px" id="targetimg<?php echo $key ?>">
                                                 <div class="btn btn-small black-text grey lighten-3"
-                                                    style="background-color: #151111c2 !important; box-shadow: none; position: absolute;padding: 0px 8px 0px 10px; bottom: 3px; right: 80px;">
+                                                    style="background-color: #151111c2 !important; box-shadow: none; position: absolute;padding: 0px 8px 0px 10px; bottom: 10px; right: 80px;">
                                                     <i class="far fa-edit left m0 "
                                                         style="font-size: 16px;color: #fff;"></i>
                                                     <!-- <span class="">Add Image</span> -->
-                                                    <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif"
-                                                         image-index="<?php echo $key ?>"
-                                                        class="imagecls" id="profileimg<?php echo $key ?>">
+                                                    <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" image-index="<?php echo $key ?>" class="imagecls" id="profileimg<?php echo $key ?>">
                                                 </div>
                                                 <div class="file-path-wrapper" style="display:none;">
                                                     <input class="file-path validate" type="text">
@@ -203,16 +206,18 @@
 
                                             </div><br>
                                             <div class="col l2">
-                                            <a id="brandplus" class="marqueeplus remove" value="<?php echo $value->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <a id="brandplus" class="marqueeplus remov" value="<?php echo $value->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
 
-                                        <input type="hidden" value="<?php echo $value->id; ?>" name="serviceid">
+                                        <input type="hidden" value="<?php echo (!empty($value->i_uniq))?$value->i_uniq:random_string('alnum',10); ?>" name="serviceid[]">
 
                                         <?php  } } ?>
                                         <br>
 
-                                        <div class="row m0" id="marqaddnext">
+                                        
+
+                                        <div class="row m0 marqaddnext" id="marqaddnext">
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="i_title" name="i_title[]" class="validate" value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
                                                   <label for="i_title">Title <span class="red-text">*</span></label>
@@ -230,7 +235,7 @@
                                                     
                                                 </div><br>
                                                 <div class="col l2">
-                                                    <a id="marqueeplus" class="marqueeplus remov"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+                                                    <a id="marqueeplus" class="marqueeplus "><i class="fa fa-plus" aria-hidden="true"></i> </a>
                                                 </div>
                                             </div>
 
@@ -283,8 +288,9 @@
     function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
+
         reader.onload = function (e) {
-            $('#targetimg'+input.attributes[4].value).attr('src', e.target.result);
+            $('#targetimg'+input.attributes[3].value).attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
         }
@@ -300,7 +306,7 @@
         $(function() {
             $('#marqueeplus').on('click', function(e) {
                 e.preventDefault();
-                $('<div class="row m0"> <div class="input-field col s12 l6"> <input type="text" id="i_title" name="i_title[]" class="validate" required > <label for="i_title">Title <span class="red-text">*</span></label> <p><span class="error"><?php echo form_error('category'); ?></span></p> </div> <div class="file-field input-field col s12 l4"> <div class="btn btn-small black-text grey lighten-3"> <i class="far fa-image left  "></i> <span class="">Add Image</span> <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required> </div> <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>  </div><br> <div class="col l2"> <a id="brandplus" class="marqueeplus remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
+                $('<div class="row m0 marqaddnext"> <div class="input-field col s12 l6"> <input type="text" id="i_title" name="i_title[]" class="validate" required > <label for="i_title">Title <span class="red-text">*</span></label> <p><span class="error"><?php echo form_error('category'); ?></span></p> </div> <div class="file-field input-field col s12 l4"> <div class="btn btn-small black-text grey lighten-3"> <i class="far fa-image left  "></i> <span class="">Add Image</span> <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required> </div> <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>  </div><br> <div class="col l2"> <a id="brandplus" class="marqueeplus remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
                     .append().insertBefore('#marqaddnext');
 
             });
@@ -315,7 +321,7 @@
 <script>
 
 $(document).ready(function() {
-    $('.marqueeplus.remove').on('click', function(e) {
+    $('.marqueeplus.remov').on('click', function(e) {
         e.preventDefault();
         var id = $(this).attr('value');
         if (!confirm("Are you sure you want to delete this item?")) {

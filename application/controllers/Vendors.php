@@ -31,6 +31,7 @@ class Vendors extends CI_Controller {
            $value->similar     = $this->m_vendors->similarVendors($value->cityId,$value->catId,$value->id);
         }
 
+
         $data['vendor'] = $output;
         $data['title']  = $value->name.'- ShaadiBaraati';
         $this->load->view('vendors/detail', $data, FALSE);

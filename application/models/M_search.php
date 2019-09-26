@@ -92,6 +92,21 @@ class M_search extends CI_Model {
         return $this->db->get('category')->row_array();
     }
 
+    public function getSubtitle($vendorid,$serviceid)
+    {
+        $this->db->select('subtitle');		
+		$this->db->where('vendor_id', $vendorid);
+		$this->db->where('information_id', $serviceid);
+		$query = $this->db->get('vendor_infoservice')->row();
+
+		if (!empty($query)) {
+			return $query->subtitle;
+		}else{
+			return false;
+		}
+       
+    }
+
 
 
 }

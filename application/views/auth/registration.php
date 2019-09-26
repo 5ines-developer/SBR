@@ -76,7 +76,7 @@
                             </center>
                             <div class="ss-h">
                                 <p class="p-arg">If You Have an Account ?<a href="<?php echo base_url('login') ?>" class="cr sr-ang">Sign In</a></p>
-                                <p class="p-arg">Are You a Vendor ?<a href="#" class="cr si-vender">Sign In</a></p>
+                                <p class="p-arg">Are You a Vendor ?<a href="<?php echo base_url('vendor-register') ?>" class="cr si-vender">Sign In</a></p>
                             </div>
                             <!-- <div class="my-data">
                                 <p>{{ name }}</p>

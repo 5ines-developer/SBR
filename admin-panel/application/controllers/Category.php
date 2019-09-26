@@ -46,11 +46,9 @@ class Category extends CI_Controller {
 
             if (!$this->upload->do_upload('image')) {
                 $error = array('error' => $this->upload->display_errors());
-                // print_r($error);exit();
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect('cities/add');
             } else {
-                // echo "ok";exit();
                 $upload_data = $this->upload->data();
                 $config['image_library'] = 'gd2';
                 $config['source_image'] = $upload_data['full_path'];
@@ -83,11 +81,9 @@ class Category extends CI_Controller {
 
             if (!$this->upload->do_upload('icon')) {
                 $error = array('error' => $this->upload->display_errors());
-                // print_r($error);exit();
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect('category/add');
             } else {
-                // echo "ok";exit();
                 $upload_data1 = $this->upload->data();
                 $config1['image_library'] = 'gd2';
                 $config1['source_image'] = $upload_data1['full_path'];
@@ -120,11 +116,9 @@ class Category extends CI_Controller {
 
             if (!$this->upload->do_upload('banner_image')) {
                 $error = array('error' => $this->upload->display_errors());
-                // print_r($error);exit();
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect('category/add');
             } else {
-                // echo "ok";exit();
                 $upload_data1 = $this->upload->data();
                 $config1['image_library'] = 'gd2';
                 $config1['source_image'] = $upload_data1['full_path'];
@@ -153,14 +147,13 @@ class Category extends CI_Controller {
         	'category' => $this->input->post('category')
         );
 
+
         $output1 = $this->m_category->insert_category($insert);
 
        $i_title=  $this->input->post('i_title');
         $files3 = $_FILES;
         $filesCount3 = count($_FILES['i_image']['name']);
-        
-        
-        
+
         if (!empty($filesCount3)) {
             for ($i = 0; $i < $filesCount3; $i++) {
                 $_FILES['i_image']['name']     = $files['i_image']['name'][$i];
@@ -189,16 +182,11 @@ class Category extends CI_Controller {
                     $i_file = $upload_data['file_name'];
                     $i_path = 'vendors-service/'.$i_file;
 
-                    $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$this->input->post('category_id')  );
+                    $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$this->input->post('category_id'),'i_uniq'=> random_string('alnum',10)  );
                     $output = $this->m_category->new_service($information);
-
                  }
             }
         }
-
-
-        
-
 			if(!empty($output) && !empty($output1) )
 			{
 				$this->session->set_flashdata('success', 'category Added Successfully');
@@ -291,11 +279,9 @@ class Category extends CI_Controller {
 
             if (!$this->upload->do_upload('image')) {
                 $error = array('error' => $this->upload->display_errors());
-                // print_r($error);exit();
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 redirect('category/add');
             } else {
-                // echo "ok";exit();
                 $upload_data = $this->upload->data();
                 $config['image_library'] = 'gd2';
                 $config['source_image'] = $upload_data['full_path'];
@@ -316,7 +302,7 @@ class Category extends CI_Controller {
 
        
         $files1 = $_FILES;
-        $filesCount1 = count($_FILES['icon']['name']);
+        $filesCount1 = count($_FILES['icon']['name']);       
 
          if (!empty($filesCount1)) {
 
@@ -358,7 +344,7 @@ class Category extends CI_Controller {
 
         $id = $this->input->post('city_id');
         $cat_uniq = $this->input->post('cat_uniq');
-        $serviceid = $this->input->post('serviceid');
+        
 
         $update =  array(
             'category' => $this->input->post('category'),
@@ -375,17 +361,22 @@ class Category extends CI_Controller {
         $output1 = $this->m_category->update_category($update,$id);
 
 
-        $i_title=  $this->input->post('i_title');
-        $files3 = $_FILES;
-        $filesCount3 = count($_FILES['i_image']['name']);
+        $i_title =  $this->input->post('i_title');
 
-        if (!empty($filesCount3)) {
+        $serviceid = $this->input->post('serviceid');
+        $files3 = $_FILES;
+
+        
+        $filesCount3 = count($_FILES['i_image']['name']); 
             for ($i = 0; $i < $filesCount3; $i++) {
-                $_FILES['i_image']['name']     = $files['i_image']['name'][$i];
-                $_FILES['i_image']['type']     = $files['i_image']['type'][$i];
-                $_FILES['i_image']['tmp_name'] = $files['i_image']['tmp_name'][$i];
-                $_FILES['i_image']['error']    = $files['i_image']['error'][$i];
-                $_FILES['i_image']['size']     = $files['i_image']['size'][$i];
+                
+
+            if (!empty($filesCount3)) {
+                $_FILES['i_image']['name']     = $files3['i_image']['name'][$i];
+                $_FILES['i_image']['type']     = $files3['i_image']['type'][$i];
+                $_FILES['i_image']['tmp_name'] = $files3['i_image']['tmp_name'][$i];
+                $_FILES['i_image']['error']    = $files3['i_image']['error'][$i];
+                $_FILES['i_image']['size']     = $files3['i_image']['size'][$i];
 
                 $config['upload_path']   = '../vendors-service/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
@@ -400,21 +391,26 @@ class Category extends CI_Controller {
                 if (!$this->upload->do_upload('i_image')) {
                     $error =  $this->upload->display_errors(); 
                     $this->session->set_flashdata('error', $this->upload->display_errors());
-                     redirect('category/add');
+                    redirect('category/edit/'.$id,'refresh');
                  } else {
-                     
-
-
-                    $upload_data = $this->upload->data();
+                    $upload_data = $this->upload->data(); 
                     $i_file = $upload_data['file_name'];
                     $i_path = 'vendors-service/'.$i_file;
 
-                    $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$cat_uniq  );
-                    $output = $this->m_category->new_service1($information,$serviceid);
-
+                    if (!empty($_FILES['i_image']['name'][$i])) {
+                        $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$cat_uniq);
+                        if (!empty($serviceid)) {
+                            $information['i_uniq'] = $serviceid[$i];
+                        }else{
+                            $information['i_uniq'] = random_string('alnum',10);;
+                        }                        
+                        $output = $this->m_category->new_service($information);
+                    }
                  }
             }
         }
+
+
 
         if(!empty($output) || !empty($output1) )
 			{

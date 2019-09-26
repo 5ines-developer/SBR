@@ -36,22 +36,17 @@ class M_category extends CI_Model {
 	
 	public function new_service($insert)
 	{
-		return $this->db->insert('information_service', $insert);
-	}
-
-	public function new_service1($insert='',$id='')
-	{
-		$this->db->where('id', $id);
+		$this->db->where('i_uniq', $insert['i_uniq']);
 		$query = $this->db->get('information_service');
 
 		if ($query->num_rows() > 0) {
-			$this->db->where('id', $id);
+			$this->db->where('i_uniq',  $insert['i_uniq']);
 			$this->db->update('information_service', $insert);
 		}else{
 			return $this->db->insert('information_service', $insert);			
 		}
-				
 	}
+
 
 
 

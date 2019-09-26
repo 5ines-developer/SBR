@@ -117,6 +117,9 @@ $route['about-us']   				    = 'home/about_us';
 $route['site-map']   				    = 'home/site_map';
 $route['wed-assistance']   				= 'home/wed_assistance';
 
+//vendor register
+$route['vendor-register'] 		        = 'authentication/vendorRegister';
+$route['vendor-register/send'] 		        = 'authentication/vendorsend';
 
 
 

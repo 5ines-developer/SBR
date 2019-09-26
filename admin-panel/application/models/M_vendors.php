@@ -241,6 +241,22 @@ class M_vendors extends CI_Model {
 		return $this->db->get('information_service')->result();
 	}
 
+	public function getSubtitle($servId='',$vendorId='')
+	{		
+		$this->db->select('subtitle');		
+		$this->db->where('vendor_id', $vendorId);
+		$this->db->where('information_id', $servId);
+		$query = $this->db->get('vendor_infoservice')->row();
+
+		if (!empty($query)) {
+			return $query->subtitle;
+		}else{
+			return false;
+		}
+		
+		
+	}
+
 
 
 	/**
@@ -259,6 +275,31 @@ class M_vendors extends CI_Model {
 	{
 		$this->db->where('vendor_id', $id);
 		return $this->db->delete('vendor_infoservice');
+	}
+
+	public function service($insert='')
+	{
+		$this->db->where('vendor_id', $insert['vendor_id']);
+		$this->db->where('information_id', $insert['information_id']);
+		$query = $this->db->get('vendor_infoservice');
+		if ($query->num_rows() > 0) {
+			$this->db->where('vendor_id', $insert['vendor_id']);
+			$this->db->where('information_id', $insert['information_id']);
+			$this->db->update('vendor_infoservice', $insert);
+			if ($this->db->affected_rows() > 0) {
+				return true;
+			}else{
+				return false;
+			}
+			
+		}else{
+
+			return $this->db->insert('vendor_infoservice', $insert);
+			
+
+		}
+		
+		
 	}
 
 	public function gallery_delete($id = '')
@@ -283,17 +324,7 @@ class M_vendors extends CI_Model {
 		}
 	}
 
-	public function service($insert='')
-	{
-		$this->db->where('vendor_id', $insert['vendor_id']);
-		$query = $this->db->get('vendor_infoservice')->result();
-		if (count($query) < 6 ) {
-			return $this->db->insert('vendor_infoservice', $insert);
-		}else{
-			return false;
-		}
-		
-	}
+
 
 	//  add faq
     public function faq_insert($data)

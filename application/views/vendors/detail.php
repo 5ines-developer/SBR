@@ -285,7 +285,7 @@ $this->load->model('m_search');
                                                 </div>
                                                 <div class="input-field col s6">
                                                     <input id="date" type="text" class="validate datepicker" name="fn_date">
-                                                    <label for="date">Funcation Date</label>
+                                                    <label for="date">Function Date</label>
                                                 </div>
                                             </div>
 
@@ -378,7 +378,7 @@ $this->load->model('m_search');
                                             <p class="sb-title m0">
                                                 <?php echo (!empty($ser->service))?$ser->service:''; ?></p>
                                             <p class="detail m0">
-                                                <?php echo (!empty($ser->subtitle))?$ser->subtitle:''; ?></p>
+                                                <?php echo $this->ci->m_search->getSubtitle($value->id,$ser->id); ?></p>
                                         </div>
                                     </div>
                                     <?php  } } ?>

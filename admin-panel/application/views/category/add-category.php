@@ -24,7 +24,12 @@ left: -133px !important;
     padding: 4px 7px;
     color: #fff;
     cursor: pointer;
-}
+        }
+        .marqaddnext {
+
+background-color: #f4f4f4;
+margin-bottom: 10px !important;
+border-radius: 4px;}
      </style>
    </head>
    <body>
@@ -103,7 +108,7 @@ left: -133px !important;
                                             <div class="row m0">
                                                 <p class="bold  black-text col  mb10 h6">Information Services</p>
                                             </div>
-                                            <div class="row m0" id="marqaddnext">
+                                            <div class="row m0 marqaddnext" id="marqaddnext">
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="i_title" name="i_title[]" class="validate" required value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
                                                   <label for="i_title">Title <span class="red-text">*</span></label>
@@ -133,6 +138,7 @@ left: -133px !important;
                                               </div>
 
                                               <input type="hidden" name="category_id" value="<?php echo random_string('alnum',10) ?>">
+                                              
 
                                             
                                             <div class="col s12 mtb20">
@@ -168,7 +174,7 @@ left: -133px !important;
         $(function() {
             $('#marqueeplus').on('click', function(e) {
                 e.preventDefault();
-                $('<div class="row m0"> <div class="input-field col s12 l6"> <input type="text" id="i_title" name="i_title[]" class="validate" required > <label for="i_title">Title <span class="red-text">*</span></label> <p><span class="error"><?php echo form_error('category'); ?></span></p> </div> <div class="file-field input-field col s12 l4"> <div class="btn btn-small black-text grey lighten-3"> <i class="far fa-image left  "></i> <span class="">Add Image</span> <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required> </div> <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>  </div><br> <div class="col l2"> <a id="brandplus" class="marqueeplus remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
+                $('<div class="row m0 marqaddnext"> <div class="input-field col s12 l6"> <input type="text" id="i_title" name="i_title[]" class="validate" required > <label for="i_title">Title <span class="red-text">*</span></label> <p><span class="error"><?php echo form_error('category'); ?></span></p> </div> <div class="file-field input-field col s12 l4"> <div class="btn btn-small black-text grey lighten-3"> <i class="far fa-image left  "></i> <span class="">Add Image</span> <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required> </div> <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>  </div><br> <div class="col l2"> <a id="brandplus" class="marqueeplus remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
                     .append().insertBefore('#marqaddnext');
 
             });

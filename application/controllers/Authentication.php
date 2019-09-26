@@ -60,8 +60,7 @@ class Authentication extends CI_Controller {
     **/
 	public function register_insert($value='')
 	{
-		$this->form_validation->set_rules('name', 'Name', 'required|is_unique[user.su_name]',
-            array('required'      => 'You have not provided %s.', 'is_unique'     => 'This %s already exists.') );
+		$this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric|is_unique[user.su_phone]',
             array('required'      => 'You have not provided %s.', 'numeric'       =>  'Invalid Phone number', 'is_unique'     => 'This %s already exists.') );
         $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[user.su_email]',
@@ -86,10 +85,12 @@ class Authentication extends CI_Controller {
         		'su_email' 		=> $email,
         		'su_phone' 		=> $phone,
         		'su_password' 	=> $hash,
-        		'su_referenceid'=> random_string('alnum','20'),
-        		 );
+        		'su_referenceid'=> $refid,
+                 );
 
-        	$data['output'] = $this->m_authentication->register($insert);
+            $data['output'] = $this->m_authentication->register($insert);
+            
+
 
         	if (!empty($data['output'])) {
         		if($this->sendregister($email, $refid))
@@ -344,6 +345,66 @@ class Authentication extends CI_Controller {
             {
                 return TRUE;
             }
+    }
+
+
+    public function vendorRegister($var = null)
+    {
+        
+		if ($this->session->userdata('shdid') == '') {
+			$data['title'] = 'Register - ShaadiBaraati';
+			$this->load->view('auth/vendor-registration', $data, FALSE);
+		}else{
+			redirect('profile');
+		}
+    }
+
+
+    public function vendorsend($var = null)
+    {
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric',array('required'      => 'You have not provided %s.', 'numeric'       =>  'Invalid Phone number') );
+        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email', array('required'      => 'You have not provided %s.', 'is_unique'     => 'This %s already exists.') );
+        if ($this->form_validation->run() == false) {
+        	$error = validation_errors();
+            $this->session->set_flashdata('error', $error);
+        	redirect('vendor-register','refresh');
+        }else{
+
+            $name 		= $this->input->post('name');
+        	$phone 		= $this->input->post('phone');
+        	$email 		= $this->input->post('email');
+
+            $insert = array(
+        		'su_name' 		=> $name,
+        		'su_email' 		=> $email,
+        		'su_phone' 		=> $phone,
+                 );
+
+                 $this->load->config('email');
+                 $this->load->library('email');
+                 $from = $this->config->item('smtp_user');
+                 $data['result'] = $insert;
+                 $msg = $this->load->view('email/vendor-registartion', $data, true);
+                 $this->email->set_newline("\r\n");
+                 $this->email->from($from , 'ShaadiBaraati');
+                 $this->email->to($email);
+                 $this->email->subject('Vendor registartion'); 
+                 $this->email->message($msg);
+                  if($this->email->send())  
+                 {
+                    $this->session->set_flashdata('success', 'Your request has been successfully submitted to our team, our team get back to you soon!');
+                    redirect('vendor-register','refresh');
+                 } 
+                 else
+                 {
+                    $this->session->set_flashdata('error', 'Something went wromg please try again later!');
+                    redirect('vendor-register','refresh');
+                 }
+
+
+        }
+        
     }
 
 

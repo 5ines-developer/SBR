@@ -1,3 +1,8 @@
+<?php 
+$this->ci =& get_instance();
+$this->load->model('m_vendors'); 
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -257,106 +262,59 @@ font-size: 18px;
                                 </div>
                             </div>
                         </div>
-                        <div class="card scrollspy" style="overflow: auto;" id="information">
+
+                        <div class="card scrollspy" id="information">
                             <div class="card-content">
                                 <div class="form-container">
                                     <div class="row m0">
-                                        <p class="bold  black-text  mb10 h6">Information and Service</p>
+                                            <p class="bold  black-text col  mb10 h6">Information and Service</p>
                                     </div>
-                                    <form action="<?php echo base_url() ?>vendors/service" method="post"
-                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
-                                        enctype="multipart/form-data" class="col l12">
-                                        <div class="row m0">
-                                            <?php if (!empty($service)) {
-                                                        foreach ($service as $key => $value) { ?>
-                                            <div class="input-field col s6 l4">
-                                                <p>
-                                                    <label>
-                                                        <input id="indeterminate-checkbox" type="checkbox"
-                                                            name="service[]" value="<?php echo $value->id; ?>"  <?php 
+                                    
 
-                                                            foreach ($vendor_info as $key1 => $value1) {
-                                                                echo ($value->id == $value1->information_id)?'checked="true"':'';
-                                                            }
-
-                                                            ?>/>
-                                                        <span><?php echo $value->service; ?></span>
-                                                    </label>
-                                                </p>
-                                            </div>
-                                            <?php } } ?>
-                                        </div>
-                                        <div class="col s12">
-                                            <?php echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : '' ?>
-                                        </div>
+                                    <form action="<?php echo base_url() ?>vendors/service" method="post" id="">
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
-                                        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add New</a>
-                                        <div class="col s12 center mtb20">
-                                            <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
-                                                type="submit">Submit
-                                                <i class="fas fa-paper-plane right"></i>
-                                            </button>
-                                            <br>
-                                        </div>
-                                    </form>
-                                    <!-- Modal Trigger -->
-
-                                    <!-- Modal Structure -->
-                                    <div id="modal1" class="modal" style="width: 35%;">
-                                        <div class="modal-content">
-                                            <h6>New Information and Services</h6>
-                                            <form action="<?php echo base_url() ?>vendors/new-service" method="post"
-                                                enctype="multipart/form-data">
-                                                <div class="col l12">
-                                                    <div class="row m0">
-                                                        <div class="input-field col s12">
-                                                            <input type="hidden" value="<?php echo $result->id ?>"
-                                                                name="id">
-                                                            <input id="serv" type="text" class="validate" name="serv">
-                                                            <label for="serv">Service</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row m0">
-                                                        <div class="input-field col s12">
-                                                            <input id="sr_subtitle" type="text" class="validate"
-                                                                name="sr_subtitle">
-                                                            <label for="sr_subtitle">Subtitle</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row m0">
-                                                        <div class="file-field input-field col s12">
-                                                            <div class="btn btn-small black-text grey lighten-3">
-                                                                <i class="far fa-image left  "></i>
-                                                                <span class="">Icon</span>
-                                                                <input type="file" name="sr_icon"
-                                                                    accept=".png, .jpg, .jpeg, .gif"
-                                                                    <?php echo (!empty($result)?'':'required') ?>>
-                                                            </div>
-                                                            <div class="file-path-wrapper">
-                                                                <input class="file-path validate" type="text">
-                                                            </div>
-                                                            <span class="helper-text"><b>Note</b>: Please select only
-                                                                image file
-                                                                (eg: .jpg, .png, .jpeg, etc.) <br> <span
-                                                                    class="bold">Max file
-                                                                    size:</span> 512kb<span> Max file ratio</span> 200px * 200px<span
-                                                                    class="red-text">*</span></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-field col s12">
-                                                        <button
-                                                            class="btn waves-effect waves-light green darken-4 hoverable btn-small"
-                                                            type="submit">Submit </button>
+                                        
+                                        <?php foreach ($service as $ser => $serv) { ?>
+                                            <div class="row m0" id="info-form">
+                                            <div class="input-field col s12 l4">                                                
+                                                <input type="text" id="serv" name="serv[]" class="validate"
+                                                    value="<?php echo (!empty($serv->id)?$serv->id:'') ?>" >
+                                                <label for="serv">Title </label>
+                                                <p><span class="error"><?php echo form_error('serv'); ?></span></p>
+                                            </div>
+                                            <div class="input-field col s12 l4">                                                
+                                                <input type="text" id="sr_subtitle" name="sr_subtitle[]" class="validate"
+                                                    value="<?php echo $this->ci->m_vendors->getSubtitle($serv->id,$result->id) ?>" >
+                                                <label for="sr_subtitle">Subtitle </label>
+                                                <p><span class="error"><?php echo form_error('sr_subtitle'); ?></span></p>
+                                            </div>
+                                            <div class="col s12 m4">
+                                            <div class="form-group">
+                                                <div class="" id="edt-image">
+                                                    <div class="image view view-first">
+                                                        <img class="city-edit-image"
+                                                            src="<?php echo $this->config->item('web_url').$serv->image ?>"
+                                                            alt="image">
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                                </div>
+                                            </div><br>
 
-                                    </div>
+                                        <?php } ?>
+                                                        
+
+                                        <div class="col s12 input-field">
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable " type="submit">Submit
+                                                <i class="fas fa-paper-plane right"></i>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+
+                        
                         <div class="card scrollspy" id="about">
                             <div class="card-content">
                                 <div class="form-container">
