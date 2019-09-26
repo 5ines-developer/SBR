@@ -95,22 +95,22 @@
                         <h6>Quick Links</h6>
                         <div class="line"></div>
                         <ul>
-                            <a href="" ><li class="hov">About Us</li></a>
+                            <a href="<?php echo base_url('about-us') ?>" ><li class="hov">About Us</li></a>
                             <a href="<?php echo base_url('contact-us') ?>" ><li class="hov">Contact Us</li></a>
                             <a href="<?php echo base_url('privacy-policy') ?>" ><li class="hov">Privacy Policy</li></a>
                             <a href="<?php echo base_url('terms-conditions') ?>" ><li class="hov">Terms & Conditions</li></a>
-                            <a href="" ><li class="hov">Testimonial</li></a>
-                            <a href="" ><li class="hov">wedding Destination</li></a>
-                            <a href="" ><li class="hov">Vendor Reviews</li></a>
-                            <a href="" ><li class="hov">E-Invite</li></a>
-                            <a href="" ><li class="hov">Feedback / Complaints</li></a>
-                            <a href="" ><li class="hov">Sitemap</li></a>
+                            <a href="#" ><li class="hov">Testimonial</li></a>
+                            <a href="#" ><li class="hov">wedding Destination</li></a>
+                            <a href="#" ><li class="hov">Vendor Reviews</li></a>
+                            <a href="#" ><li class="hov">E-Invite</li></a>
+                            <a href="#" ><li class="hov">Feedback / Complaints</li></a>
+                            <a href="#" ><li class="hov">Sitemap</li></a>
                         </ul>
                     </div>
                 </div>
                 <div class="col l5">
                     <div class="list-foot vl">
-                        <h6>Vender Categories</h6>
+                        <h6>Vendor Categories</h6>
                         <div class="line"></div>
                         <ul>
                             <?php $this->load->model('m_home');

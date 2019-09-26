@@ -226,7 +226,7 @@ class Vendors extends CI_Controller {
 
       $url = 'detail/'.str_replace(' ', '-', strtolower($value->category)).'/'.str_replace(' ', '-', strtolower($value->name)).'/'.$vendor_id;
 
-        // $data['output']  =  $this->m_vendors->addenquiry($insert);
+        $data['output']  =  $this->m_vendors->addenquiry($insert);
         $data['result']  =  $insert;
         $data['value']    =   $value;
 
@@ -236,8 +236,8 @@ class Vendors extends CI_Controller {
 
           $output1 = $this->send_user($data);
           $output2 = $this->send_admin($data);
-          // $output3 = $this->sms_vendor($data);
-          // $output3 = $this->sms_vendor($data);
+          $output3 = $this->sms_vendor($data);
+          $output3 = $this->sms_vendor($data);
             if (!empty($output1)  && !empty($output2)) {
                 $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
                 redirect($url,'refresh');
@@ -256,12 +256,13 @@ class Vendors extends CI_Controller {
     // Account details
       $apiKey = '8S0m34R7e/w-NcuxRR7aW74h1IPGSb8Ml0j7TEQEhy';
     // Message details
-      $numbers = $data['value']->phone;
-      // $numbers = '8951411732';
+      // $numbers = $data['value']->phone;
+      $numbers = '8951411732';
       $sender = 'BARATI';
       $message = rawurlencode('Do ut enim culpa adipisicing id esse sed ut sunt incididunt officia esse adipisicing dolor adipisicing ea et mollit aliquip cillum tempor labore labore qui commodo dolor.');
       // Prepare data for POST request
       $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
+     
       // Send the POST request with cURL
       $ch = curl_init('https://api.textlocal.in/send/');
       curl_setopt($ch, CURLOPT_POST, true);
@@ -271,7 +272,7 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      // echo $response;
+      // echo $response;exit;
       return $response;
  
   }
@@ -296,7 +297,7 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      // echo $response;
+      echo $response;
       return $response;
  
   }
