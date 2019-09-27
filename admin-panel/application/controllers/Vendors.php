@@ -55,7 +55,7 @@ class Vendors extends CI_Controller {
             } else {
                 // echo "ok";exit();
                 $upload_data = $this->upload->data();
-                // $config['image_library'] = 'gd2';
+                $config['image_library'] = 'gd2';
                 // $config['source_image'] = $upload_data['full_path'];
                 // $config['create_thumb'] = true;
                 // $config['maintain_ratio'] = true;
@@ -67,21 +67,33 @@ class Vendors extends CI_Controller {
                 $file_name = $upload_data['file_name'];
                 $imgpath = 'vendors-profile/'.$file_name;
 
+                $config['image_library']    = 'gd2';
+                $config['source_image']     = $upload_data['full_path'];
+                $config['wm_type']          = 'overlay';
+                $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
+                $config['wm_x_transp']      = '4';
+                $config['wm_y_transp']      = '4';
+                $config['width']            = '50';
+                $config['height']           = '50';
+                $config['padding']          = '50';
+                $config['wm_opacity']       = '40';
+                $config['wm_vrt_alignment'] = 'middle';
+                $config['wm_hor_alignment'] = 'center';
 
-                $config['source_image'] = $upload_data['full_path'];
-                $config['wm_text'] = 'Shaadibaraati.com';
-                $config['wm_type'] = 'text';
-                $config['wm_font_path'] = './system/fonts/texb.ttf';
-                $config['wm_font_size'] = '16';
-                $config['wm_font_color'] = 'ffffff';
-                $config['wm_vrt_alignment'] = 'bottom';
-                $config['wm_hor_alignment'] = 'left';
-                $config['wm_hor_offset'] = '40';
-                $config['wm_padding'] = '-20';
+                
+                
+
                 $this->image_lib->initialize($config);
-                $this->image_lib->watermark();           
+                if (!$this->image_lib->watermark()) {
+                    $response['wm_errors'] = $this->image_lib->display_errors();
+                    $response['wm_status'] = 'error';
+                } else {
+                    $response['wm_status'] = 'success';
+                }
+
             }
         }
+
 
         $name 		= $this->input->post('name');
         $email 		= $this->input->post('email');
@@ -307,6 +319,7 @@ class Vendors extends CI_Controller {
                     'thumb_image'   => $file_name, 
                     'vendor_id'     => $id,
                 );
+
                 $output = $this->m_vendors->insert_portfolio($insert);
             }
         }
@@ -331,20 +344,37 @@ class Vendors extends CI_Controller {
         $this->load->library('upload');
         $this->load->library('image_lib');
 
-            $config['source_image'] = $upload_data['file_path'].'/'.$thumbnail;
-            $config['wm_text'] = 'Shaadibaraati.com';
-            $config['wm_type'] = 'text';
-            $config['wm_font_path'] = './system/fonts/texb.ttf';
-            $config['wm_font_size'] = '16';
-            $config['wm_font_color'] = 'ffffff';
-            $config['wm_vrt_alignment'] = 'bottom';
-            $config['wm_hor_alignment'] = 'left';
-            $config['wm_hor_offset'] = '60';
-            $config['wm_vrt_offset'] = '0';
-            $config['wm_padding'] = '-20';
+            // $config['source_image'] = $upload_data['file_path'].'/'.$thumbnail;
+            // $config['wm_text'] = 'Shaadibaraati.com';
+            // $config['wm_type'] = 'text';
+            // $config['wm_font_path'] = './system/fonts/texb.ttf';
+            // $config['wm_font_size'] = '16';
+            // $config['wm_font_color'] = 'ffffff';
+            // $config['wm_vrt_alignment'] = 'bottom';
+            // $config['wm_hor_alignment'] = 'left';
+            // $config['wm_hor_offset'] = '60';
+            // $config['wm_vrt_offset'] = '0';
+            // $config['wm_padding'] = '-20';
+
+
+            $config['image_library']    = 'gd2';
+            $config['source_image']     = $upload_data['full_path'];
+            $config['wm_type']          = 'overlay';
+            $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
+            $config['wm_x_transp']      = '4';
+            $config['wm_y_transp']      = '4';
+            $config['width']            = '50';
+            $config['height']           = '50';
+            $config['padding']          = '50';
+            $config['wm_opacity']       = '40';
+            $config['wm_vrt_alignment'] = 'middle';
+            $config['wm_hor_alignment'] = 'center';
+
+            
 
             $this->image_lib->initialize($config);
             $this->image_lib->watermark();
+
     }
 
 
