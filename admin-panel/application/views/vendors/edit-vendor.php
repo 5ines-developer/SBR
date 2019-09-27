@@ -110,6 +110,11 @@ border: 1px dotted;
     color: red;
 font-size: 18px;
 }
+.i-img{
+    width: 100px !important;
+height: auto;
+max-height: 95px;
+}
 
     </style>
 </head>
@@ -292,7 +297,7 @@ font-size: 18px;
                                             <div class="form-group">
                                                 <div class="" id="edt-image">
                                                     <div class="image view view-first">
-                                                        <img class="city-edit-image"
+                                                        <img class="city-edit-image i-img"
                                                             src="<?php echo $this->config->item('web_url').$serv->image ?>"
                                                             alt="image">
                                                     </div>
