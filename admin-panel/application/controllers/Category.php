@@ -359,24 +359,30 @@ class Category extends CI_Controller {
         }
 
         $output1 = $this->m_category->update_category($update,$id);
-
-
         $i_title =  $this->input->post('i_title');
 
         $serviceid = $this->input->post('serviceid');
-        $files3 = $_FILES;
-
+        $files3 = $_FILES;  
         
-        $filesCount3 = count($_FILES['i_image']['name']); 
-            for ($i = 0; $i < $filesCount3; $i++) {
-                
+        foreach ($_FILES['i_image']['name'] as $key => $value) {
 
-            if (!empty($filesCount3)) {
-                $_FILES['i_image']['name']     = $files3['i_image']['name'][$i];
-                $_FILES['i_image']['type']     = $files3['i_image']['type'][$i];
-                $_FILES['i_image']['tmp_name'] = $files3['i_image']['tmp_name'][$i];
-                $_FILES['i_image']['error']    = $files3['i_image']['error'][$i];
-                $_FILES['i_image']['size']     = $files3['i_image']['size'][$i];
+            if (!empty($value)) {
+                $index[] = $value;
+            }
+        }
+
+        $filesCount3 = count($i_title); 
+
+            for ($i = 0; $i < $filesCount3; $i++) {
+
+                if (!empty($_FILES['i_image']['name'][$i])) {
+
+
+                $_FILES['i_image']['name']     = $files['i_image']['name'][$i];
+                $_FILES['i_image']['type']     = $files['i_image']['type'][$i];
+                $_FILES['i_image']['tmp_name'] = $files['i_image']['tmp_name'][$i];
+                $_FILES['i_image']['error']    = $files['i_image']['error'][$i];
+                $_FILES['i_image']['size']     = $files['i_image']['size'][$i];
 
                 $config['upload_path']   = '../vendors-service/';
                 $config['allowed_types'] = 'jpg|png|jpeg';
@@ -397,20 +403,27 @@ class Category extends CI_Controller {
                     $i_file = $upload_data['file_name'];
                     $i_path = 'vendors-service/'.$i_file;
 
-                    if (!empty($_FILES['i_image']['name'][$i])) {
-                        $information = array('service' => $i_title[$i] ,'image' => $i_path,'category_uniq'=>$cat_uniq);
-                        if (!empty($serviceid)) {
-                            $information['i_uniq'] = $serviceid[$i];
-                        }else{
-                            $information['i_uniq'] = random_string('alnum',10);;
-                        }                        
-                        $output = $this->m_category->new_service($information);
-                    }
+
                  }
             }
+
+
+            if ((!empty($i_title[$i])) || (!empty($i_path[$i]))) {
+                $information = array('service' => $i_title[$i] , 'category_uniq'=>$cat_uniq);
+
+                if (!empty($_FILES['i_image']['name'][$i])) {
+                    $information['image'] = $i_path;
+                }
+
+
+                if (!empty($serviceid[$i])) {
+                    $information['i_uniq'] = $serviceid[$i];
+                }else{
+                    $information['i_uniq'] = random_string('alnum',10);;
+                }                        
+                $output = $this->m_category->new_service($information);
+            }
         }
-
-
 
         if(!empty($output) || !empty($output1) )
 			{

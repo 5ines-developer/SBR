@@ -184,7 +184,7 @@ border-radius: 4px;}
 
                                         <div class="row m0 marqaddnext">
                                             <div class="input-field col s12 l6">                                                
-                                                <input type="text" id="i_title" name="i_title1[]" class="validate"
+                                                <input type="text" id="i_title" name="i_title[]" class="validate"
                                                     value="<?php echo (!empty($value->service)?$value->service:'') ?>" >
                                                 <label for="i_title">Title <span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('category'); ?></span></p>
@@ -198,7 +198,7 @@ border-radius: 4px;}
                                                     <i class="far fa-edit left m0 "
                                                         style="font-size: 16px;color: #fff;"></i>
                                                     <!-- <span class="">Add Image</span> -->
-                                                    <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" image-index="<?php echo $key ?>" class="imagecls" id="profileimg<?php echo $key ?>">
+                                                    <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif"  image-index="<?php echo $key ?>" class="imagecls" id="profileimg<?php echo $key ?>" value="<?php echo substr($value->image, 16, 40);  ?>">
                                                 </div>
                                                 <div class="file-path-wrapper" style="display:none;">
                                                     <input class="file-path validate" type="text">

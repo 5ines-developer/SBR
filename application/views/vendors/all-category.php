@@ -50,7 +50,8 @@ $this->load->model('m_search');
         }
         .card-icon img{
         position: absolute;
-        top: 4px;
+filter: invert(1);
+top: -3px;
         }
         .card .card-title{
         padding-left: 37px;
