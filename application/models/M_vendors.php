@@ -254,7 +254,7 @@ class M_vendors extends CI_Model
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
         $this->db->join('category cat', 'cat.id = v.category', 'left');
-        $this->db->limit(5);
+        $this->db->limit(4);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->result();
@@ -275,13 +275,6 @@ class M_vendors extends CI_Model
         }else{
             return base_url().'assets/img/result_banner.jpg';
         }
-
-
-        
-        echo "<pre>";
-        print_r ($result);
-        echo "</pre>";
-        
         
         
     }

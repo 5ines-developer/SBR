@@ -879,7 +879,7 @@ $this->load->model('m_search');
 
 
 
-                            <?php foreach ($value->similar as $sim => $simi) { 
+                            <?php  foreach ($value->similar as $sim => $simi) { 
                                 
                                 ?>
                             <div class="col s6 m4 l3">

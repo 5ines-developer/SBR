@@ -2715,6 +2715,7 @@ height: 50px;
 
 .navbar-fixed {
     height: 75px;
+    z-index: 999999;
 }
 
 nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {

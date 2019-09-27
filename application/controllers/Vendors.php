@@ -237,7 +237,7 @@ class Vendors extends CI_Controller {
           $output1 = $this->send_user($data);
           $output2 = $this->send_admin($data);
           $output3 = $this->sms_vendor($data);
-          $output3 = $this->sms_vendor($data);
+          $output4 = $this->sms_user($data);
             if (!empty($output1)  && !empty($output2)) {
                 $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
                 redirect($url,'refresh');
@@ -253,13 +253,27 @@ class Vendors extends CI_Controller {
 
   public function sms_vendor($data = '')
   {
+ 
+    
     // Account details
-      $apiKey = '8S0m34R7e/w-NcuxRR7aW74h1IPGSb8Ml0j7TEQEhy';
+      $apiKey = '8S0m34R7e/w-AiCcLwLyGzcOjYuqcZeUSg37L75c64';
+
     // Message details
-      // $numbers = $data['value']->phone;
-      $numbers = '8951411732';
+      $numbers = $data['value']->phone;
       $sender = 'BARATI';
-      $message = rawurlencode('Do ut enim culpa adipisicing id esse sed ut sunt incididunt officia esse adipisicing dolor adipisicing ea et mollit aliquip cillum tempor labore labore qui commodo dolor.');
+      $message = rawurlencode('Dear Vendor,
+ 
+      Hurry!!!!!
+      '.$data['result']['user_name'].' is looking for '.$data['value']->category.' services.
+      Mob:  '.$data['result']['user_phone'].'
+      Event Date: '.$data['result']['fn_date'].'
+      Budget : Not Decided
+      Location : '.$data['value']->city.'
+       
+      With Love
+      Shaadibaraati.com
+      1800419945');
+
       // Prepare data for POST request
       $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
      
@@ -272,20 +286,33 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      // echo $response;exit;
       return $response;
  
   }
 
   public function sms_user($data = '')
   {
+ 
     // Account details
-      $apiKey = '8S0m34R7e/w-NcuxRR7aW74h1IPGSb8Ml0j7TEQEhy';
+    $apiKey = '8S0m34R7e/w-AiCcLwLyGzcOjYuqcZeUSg37L75c64';
     // Message details
-      $numbers = $data['value']->phone;
+      $numbers = $data['result']['user_phone'];
       // $numbers = '8951411732';
       $sender = 'BARATI';
-      $message = rawurlencode('Do ut enim culpa adipisicing id esse sed ut sunt incididunt officia esse adipisicing dolor adipisicing ea et mollit aliquip cillum tempor labore labore qui commodo dolor.');
+      $message = rawurlencode('Dear '.$data['result']['user_name'].'
+ 
+     
+      your Enquiry for '.$data['value']->category.' services has been sucessfully submitted to our team, our team will contact yo soon.
+      vendor:  '.$data['value']->name.'
+      Mob:  '.$data['value']->phone.'
+      Category : '.$data['value']->category.'
+      Location : '.$data['value']->city.'
+       
+      With Love
+      Shaadibaraati.com
+      1800419945');
+
+      
       // Prepare data for POST request
       $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
       // Send the POST request with cURL
@@ -297,7 +324,6 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      echo $response;
       return $response;
  
   }
