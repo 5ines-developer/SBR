@@ -280,16 +280,19 @@ max-height: 95px;
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         
                                         <?php foreach ($service as $ser => $serv) { ?>
+                                        
                                             <div class="row m0" id="info-form">
                                             <div class="input-field col s12 l4">                                                
-                                                <input type="text" id="serv" name="serv[]" class="validate"
+                                                <input type="hidden" id="serv" name="serv[]" class="validate"
                                                     value="<?php echo (!empty($serv->id)?$serv->id:'') ?>" >
+                                                <input type="text" readonly value="<?php echo (!empty($serv->service)?$serv->service:'') ?>">
+
                                                 <label for="serv">Title </label>
                                                 <p><span class="error"><?php echo form_error('serv'); ?></span></p>
                                             </div>
                                             <div class="input-field col s12 l4">                                                
                                                 <input type="text" id="sr_subtitle" name="sr_subtitle[]" class="validate"
-                                                    value="<?php echo $this->ci->m_vendors->getSubtitle($serv->id,$result->id) ?>" >
+                                                    value="<?php echo $this->ci->m_vendors->getSubtitle($serv->id, $result->id) ?>" >
                                                 <label for="sr_subtitle">Subtitle </label>
                                                 <p><span class="error"><?php echo form_error('sr_subtitle'); ?></span></p>
                                             </div>
@@ -502,9 +505,7 @@ max-height: 95px;
 
                                         </div>
                                         <div class="col s12">
-                                            <?php
-                                                                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
-                                                                        ?>
+                                            <?php echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : '' ?>
                                             <?php ?>
                                         </div>
                                         <input type="hidden" name="vendor_id"

@@ -200,7 +200,7 @@ class Vendors extends CI_Controller {
         $data['result']     = $this->m_vendors->detail($id);
         $data['category']   = $this->m_vendors->get_category();
         $data['city']       = $this->m_vendors->get_city();
-        $data['service']    = $this->m_vendors->get_service();
+        $data['service']    = $this->m_vendors->get_service($data['result']->category);
         $data['vendor_info']= $this->m_vendors->vendor_info($id);
         $data['faq']        = $this->m_vendors->faqget($id);
         $data['port']       = $this->m_vendors->get_portfolio($id);

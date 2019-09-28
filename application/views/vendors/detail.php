@@ -367,12 +367,11 @@ $this->load->model('m_search');
                                 </div>
                                 <div class="row m0">
 
-                                    <?php if ($value->service) {
-                                            foreach ($value->service as $servic => $ser) { ?>
+                                    <?php if ($value->service) { foreach ($value->service as $servic => $ser) { ?>
 
                                     <div class="col s6 m4 l2">
                                         <div class="service-box center-align">
-                                            <img height="40px" class="responsive-img"
+                                            <img style="height:40px" class="responsive-img"
                                                 src="<?php echo (!empty($ser->image))?base_url().$ser->image:''; ?>"
                                                 alt="">
                                             <p class="sb-title m0">

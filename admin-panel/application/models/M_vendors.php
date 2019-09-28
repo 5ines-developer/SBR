@@ -236,9 +236,11 @@ class M_vendors extends CI_Model {
     * url : vendors/add-video
     * @param : id
     */
-	public function get_service()
+	public function get_service($id = null)
 	{
-		return $this->db->get('information_service')->result();
+		$uqid = $this->db->select('uniq')->where('id',$id)->get('category')->row();
+		
+		return $this->db->where('category_uniq', $uqid->uniq)->get('information_service')->result();
 	}
 
 	public function getSubtitle($servId='',$vendorId='')
