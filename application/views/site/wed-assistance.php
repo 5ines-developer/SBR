@@ -226,7 +226,48 @@
             });
         });
     </script>
+<script>
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            email: '',
+            emailError: '',
+           
+        },
 
+        methods: {
+            // mobile number check on database
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+            checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
+            }
+        },
+    });
+
+
+    </script>
 </body>
 
 </html>

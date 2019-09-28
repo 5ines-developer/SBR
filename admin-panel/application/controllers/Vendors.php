@@ -500,10 +500,9 @@ class Vendors extends CI_Controller {
                     'asw' => $ans[$key],
                     'vendor_id' => $id,
                 );
+
                 $this->m_vendors->faq_insert($data);
-                
             }
-            
         }
         // vendor_faq
         $this->session->set_flashdata('success', 'FAQ added Successfully');

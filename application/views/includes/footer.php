@@ -104,7 +104,7 @@
                             <a href="#" ><li class="hov">Vendor Reviews</li></a>
                             <a href="#" ><li class="hov">E-Invite</li></a>
                             <a href="#" ><li class="hov">Feedback / Complaints</li></a>
-                            <a href="#" ><li class="hov">Sitemap</li></a>
+                            <a href="<?php echo base_url('') ?>site-map" ><li class="hov">Sitemap</li></a>
                         </ul>
                     </div>
                 </div>

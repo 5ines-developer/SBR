@@ -13,7 +13,7 @@
 </head>
 
 <body >
-   
+   <div id="demo">
 
         <?php $this->load->view('includes/header.php'); ?>
 
@@ -89,14 +89,13 @@
  
 
         <?php $this->load->view('includes/footer'); ?>
-   
+   </div>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-
-
-      <script>
+    <script>
     var demo = new Vue({
         el: '#demo',
         data: {
@@ -136,9 +135,6 @@
         },
     });
 
-
-
-    
     </script>
     
 </body>

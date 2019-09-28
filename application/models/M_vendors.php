@@ -212,7 +212,8 @@ class M_vendors extends CI_Model
     //  add faq
     public function faq($id)
     {
-        $this->db->where('vendor_id', $id);
+        $this->db->where('vendor_id', $id)->order_by('id', 'asc');
+        
         return $this->db->get('vendor_faq')->result();
         
     }

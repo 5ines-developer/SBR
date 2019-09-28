@@ -339,7 +339,7 @@ class M_vendors extends CI_Model {
 	// faq get
 	public function faqget($id)
 	{
-		return $this->db->where('vendor_id',$id )->get('vendor_faq')->result();
+		return $this->db->where('vendor_id',$id )->order_by('id', 'asc')->get('vendor_faq')->result();
 		
 	}
 
