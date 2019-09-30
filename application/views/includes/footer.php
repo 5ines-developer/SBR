@@ -49,9 +49,9 @@
                                 </div>
 
                                 <div class="bottom-button">
-                                    <a class="b1">Submit Wedding</a>
-                                    <a class="b2">Register as Vendor</a>
-                                    <a class="b3">Pay Now</a>
+                                    <a href="" class="b1">Submit Wedding</a>
+                                    <a href="<?php echo base_url('vendor-register') ?>" class="b2">Register as Vendor</a>
+                                    <a href="https://pages.razorpay.com/pl_Ckj0SFClrYvOzF/view" class="b3">Pay Now</a>
 
                                 </div>
                             </div>

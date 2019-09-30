@@ -184,15 +184,25 @@ $this->load->model('m_search');
                         <!-- tabs -->
                         <div class="tab-links">
                             <ul class="tabs z-depth-1">
+                            <?php if (!empty($value->detail)) { ?>
                                 <li class="tab "><a href="#about-vendor" class="active">About <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
+                            <?php } ?>
+                            <?php if (!empty($value->service) || !empty($value->faq)) { ?>
                                 <li class="tab"><a href="#vendor-services">Services</a></li>
+                            <?php }?>
+                            <?php if (!empty($value->detail)) { ?>
                                 <li class="tab"><a href="#vendor-gallery">Gallery</a></li>
+                            <?php }?>
+                            <?php if (!empty($value->detail)) { ?>
                                 <li class="tab"><a href="#vendor-rating">Reviews</a></li>
+                            <?php }?>
                             </ul>
                         </div>
 
                         <!-- about vendor -->
-                        <div class="about-vendor" id="about-vendor">
+
+                        <?php if (!empty($value->detail)) { ?>
+                            <div class="about-vendor" id="about-vendor">
                             <div class="card">
                                 <div class="card-container">
                                     <div class="row m0">
@@ -207,6 +217,8 @@ $this->load->model('m_search');
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
+                        
                         <!-- end about vendor -->
 
                    
@@ -330,7 +342,7 @@ $this->load->model('m_search');
                                             <div class="row m0">
                                                 <div class="input-field col s12">
                                                     <textarea id="wed_detail" class="materialize-textarea" required name="wed_detail"></textarea>
-                                                    <label for="wed_detail">Details about my wedding</label>
+                                                    <label for="wed_detail">Details about your wedding</label>
                                                 </div>
                                             </div>
 
