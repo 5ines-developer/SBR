@@ -99,10 +99,10 @@
             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
             <li><a href="#">BLOG</a></li>
             <?php if ($this->session->userdata('shdid') !='') { ?>
-                    <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a><span class="l-d">|</span></li>
+                    <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a></li>
                     <li class="br-lo"><a href="<?php echo base_url('logout') ?>">Logout</a></li>
             <?php }else{ ?>
-                    <li class="br-lo"><a href="<?php echo base_url('login') ?>">SIGN IN </a><span class="l-d">|</span></li>
+                    <li class="br-lo"><a href="<?php echo base_url('login') ?>">SIGN IN </a></li>
                     <li class="br-lo"><a href="<?php echo base_url('register') ?>">SIGN UP</a></li>
             <?php } ?>
         </ul>

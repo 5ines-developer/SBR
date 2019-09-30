@@ -202,12 +202,8 @@ $this->load->model('m_search');
                                 <?php if (!empty($value->service) || !empty($value->faq)) { ?>
                                 <li class="tab"><a href="#vendor-services">Services</a></li>
                                 <?php }?>
-                                <?php if (!empty($value->detail)) { ?>
-                                <li class="tab"><a href="#vendor-gallery">Gallery</a></li>
-                                <?php }?>
-                                <?php if (!empty($value->detail)) { ?>
+                                <li v-if="imgs.length > 0" class="tab"><a href="#vendor-gallery">Gallery</a></li>
                                 <li class="tab"><a href="#vendor-rating">Reviews</a></li>
-                                <?php }?>
                             </ul>
                         </div>
 
@@ -452,7 +448,7 @@ $this->load->model('m_search');
                     <!-- end Servicess -->
 
                     <!-- gallery -->
-                    <div id="vendor-gallery">
+                    <div id="vendor-gallery" v-if="imgs.length > 0">
                         <div class="card">
                             <div class="card-container">
                                 <div class="row m0">
@@ -489,6 +485,7 @@ $this->load->model('m_search');
 
 
                     <!-- video section -->
+                    <?php if (!empty($value->video)) { ?>
                     <div id="vendor-video">
                         <div class="card">
                             <div class="card-container">
@@ -542,9 +539,15 @@ $this->load->model('m_search');
 
                                 </div>
                             </div>
-                            <div id="vendor-rating"></div>
+                            
+                           
                         </div>
                     </div>
+
+                    <?php } ?>
+                    <div id="vendor-rating"></div>
+
+                   
                     <!-- end video section -->
 
                     <!-- rating and review -->
@@ -984,8 +987,8 @@ $this->load->model('m_search');
                                                     <p class=" r-crd-category"><?php echo $simi->category ?></p>
                                                 </div>
                                                 <div class="col s12 m6 hide-on-small-only">
-                                                    <p class="m0 r-crd-ratings right"> <span class="c-badge green"><i
-                                                                class="material-icons">star</i> 5</span></p>
+                                                    <p class="m0 r-crd-ratings right"> <?php echo $this->ci->m_search->countReview($value->id).'Reviews' ?><span class="c-badge green"><i
+                                                                class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($value->id) ?></span></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1064,25 +1067,13 @@ $this->load->model('m_search');
             // edite Review
             editRating() {
 
-                this.useriview.professionalism = '<?php echo  (!empty($proffesional)) ? '
-                1 ' : '
-                ' ?>';
-                this.useriview.qualityofWork = '<?php echo   (!empty($quality)) ? '
-                1 ' : '
-                ' ?>';
-                this.useriview.onTimeService = '<?php echo   (!empty($service)) ? '
-                1 ' : '
-                ' ?>';
-                this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? '
-                1 ' : '
-                ' ?>';
-                this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? '
-                ' : '
-                ' ?>';
-                this.useriview.review = '<?php echo  (!empty($usreview))?$usreview:'
-                '; ?>';
-                this.ar = '<?php echo  (!empty($ustrate))?$ustrate:'
-                '; ?>';
+                this.useriview.professionalism = '<?php echo  (!empty($proffesional))?'1':''?>';
+                this.useriview.qualityofWork = '<?php echo   (!empty($quality)) ? ' 1 ' : ' ' ?>';
+                this.useriview.onTimeService = '<?php echo   (!empty($service)) ? ' 1 ' : ' ' ?>';
+                this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? ' 1 ' : ' ' ?>';
+                this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? ' ' : ' ' ?>';
+                this.useriview.review = '<?php echo  (!empty($usreview))?$usreview:' '; ?>';
+                this.ar = '<?php echo  (!empty($ustrate))?$ustrate:' '; ?>';
                 this.$refs.tsarea.focus()
             },
             // email check on database

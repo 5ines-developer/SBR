@@ -64,23 +64,22 @@ top: -3px;
         .back-image {
     width: 100%;
 }
-
-       @media only screen and (max-width: 567px) {
-        .back-image{
-
-            height: 120px;
-        }
-        .card .card-title {
-    padding-left: 0;
-    display: block;
-    line-height: 18px;
-    font-size: 13px;
-    font-weight: 400;
-    margin-left: 0;
+.allcat{
+    background: rgba(0, 0, 0, 0.6) url('https://www.magicorbits.com/Contents/images/6.jpg') !important;
 }
 
 
-            
+
+
+       @media only screen and (max-width: 567px) { 
+           .back-image{ height: 120px; } 
+           .card .card-title { padding-left: 0; display: block; line-height: 18px; font-size: 13px; font-weight: 400; margin-left: 0; } 
+           .cat-space{
+    margin: 8px 0 0 0;
+}
+.cat-spacea{
+    padding: 0 8px 0 0 !important;
+}
         }
         </style>
     </head>
@@ -90,7 +89,7 @@ top: -3px;
             <?php $this->load->view('includes/header.php'); ?>
             <!-- end header -->
             <!-- body  -->
-            <section class="result-head">
+            <section class="result-head allcat">
                 <div class="container center-align">
                     <div class="row m0">
                         <div class="col s12 m8 push-m2">
@@ -121,10 +120,10 @@ top: -3px;
                                 
                                 <div class="row m0">
                                     <?php foreach ($category as $key => $value) { ?>
-                                    <div class="col l3 s6 m4">
+                                    <div class="col l3 s6 m4 cat-spacea">
                                         <a href="<?php echo base_url().'vendors/all/'.urlencode(strtolower(str_replace(" ","-",$value->category))) ?>" >
                                         
-                                        <div class="card hoverable">
+                                        <div class="card hoverable cat-space">
                                             <div class="card-image1 ">
                                                 <img src="<?php echo base_url().$value->image ?>" class="back-image">
                                                 <div class="overlay">
