@@ -41,7 +41,7 @@
 
                     <div class="row">
                                 <div class="col 12 m6">
-                                    <p class="h5-para black-text m0">Free Quote Request</p>
+                                    <p class="h5-para black-text m0">Enquiries</p>
                                 </div>
                             </div>
 
@@ -55,18 +55,12 @@
                         <div>
                            <div class="col l12 m12 s12">
                               <div class="">
+                                 <p class="h5-para-p2">Newsletter Subscribers</p>
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">
-                                          <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Name</th>
-                                          <th id="b" class="h5-para-p2" width="100px">Email</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Phone</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Service</th>
-                                          <th id="c" class="h5-para-p2" width="120px">City</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Budget</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Function Date</th>
-                                          <th id="g" class="h5-para-p2" width="62px">Action</th>
+                                          <th id="a" class="h5-para-p2" width="80px">Sl No.</th>
+                                          <th id="b" class="h5-para-p2" width="80px">Email</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -78,20 +72,8 @@
                                       foreach ($result as $key => $value) { $count += 1;
                                       ?>
                                       <tr>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->firstname))?$value->firstname.$value->lastname:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->service))?$value->service:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->budget))?$value->budget:'---'  ?></a></td>
-                                            <td><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
-                                            <td class="action-btn  center-align">
-                                              <!-- view user -->
-                                                <a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
-                                              <!-- view user -->
-                                            </td>
-                                          
+                                            <td ><a><?php echo (!empty($result))?$count:'---'  ?></a></td>
+                                            <td ><a><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                         </tr>
                                       
                                     <?php } } ?>

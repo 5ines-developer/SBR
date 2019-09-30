@@ -41,6 +41,13 @@ class Enquiries extends CI_Controller {
         $this->load->view('enquiry/view-free', $data, FALSE);
     }
 
+    public function newsletter($id = null)
+    {
+        $data['title']  = 'Newsletter - Shaadibaraati';
+		$data['result']  = $this->m_enquiry->newsletter();
+		$this->load->view('enquiry/newsletter', $data, FALSE);
+    }
+
 
 
 }

@@ -25,6 +25,13 @@ class M_enquiry extends CI_Model {
 		return $this->db->where('id', $id)->get('quoterequest')->row();
 	}
 
+	public function newsletter($value='')
+	{
+		return $this->db->order_by('id', 'desc')->get('newsletter')->result();
+	}
+
+	
+
 	
 
 	
