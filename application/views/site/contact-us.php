@@ -113,9 +113,7 @@
                                                         <i class="material-icons">location_on</i>
                                                     </div>
                                                     <div class="col l11 s11">
-                                                        <p class="m0">Lorem ipsum dolor sit amet, consectetuer
-                                                            adipiscing
-                                                            elit.Aenen</p>
+                                                        <p class="m0">32/1, Kundan Complex, 2nd Floor, Ulsoor, Bangalore 560008 Karnataka India</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -127,8 +125,10 @@
                                                         <i class="material-icons">mail</i>
                                                     </div>
                                                     <div class="col l11 s11">
-                                                        <p class="m0">
-                                                            support@shaadibaraati.com<br>info@shaadhibaraati.com</p>
+
+                                                    <a class="m0 white-text" href="mailto:info@shaadibaraati.com">info@shaadibaraati.com</a><br>
+                                                    <a class="m0 white-text" href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,7 +140,7 @@
                                                         <i class="material-icons">phone</i>
                                                     </div>
                                                     <div class="col l11 s11s">
-                                                        <p class="m0">Toll Free : 18004199456</p>
+                                                        <a class="m0 white-text" href="tel:18004199456">Toll Free: 1800 4199 456</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,40 +162,29 @@
                         <ul class="collapsible">
                             <li class="active">
                                 <div class="collapsible-header" style="font-weight: 600;">Vendors</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat. .</span>
+                                <div class="collapsible-body"><span>If you are a registered vendor or a business looking to promote your brand on our portal, please send in your queries at <a href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></span>
 
                                 </div>
                             </li>
                             <li>
                                 <div class="collapsible-header" style="font-weight: 600;">Marketing Collaborations</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat. </span></div>
+                                <div class="collapsible-body"><span>For brand collaborations - sponsored content, social media activation etc., please write <a href="mailto:info@shaadibaraati.com">info@shaadibaraati.com</a></span></div>
                             </li>
                             <li>
                                 <div class="collapsible-header" style="font-weight: 600;">Wedding Submissions</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat. </span></div>
+                                <div class="collapsible-body"><span>Shaadi Baraati features wedding across cultures, styles and budgets, blogs. To submit your wedding, kindly email us 20-30 photos at <a href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></span> 
+
+​</span></div>
                             </li>
                             <li>
                                 <div class="collapsible-header" style="font-weight: 600;">Careers</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat. </span></div>
+                                <div class="collapsible-body"><span>We are a team of passionate young minds looking to reinvent the wedding industry. Please check our careers page for current openings and email us at <a href="mailto:hr@shaadibaraati.com">hr@shaadibaraati.com</a>
+
+​</span></div>
                             </li>
                             <li>
-                                <div class="collapsible-header" style="font-weight: 600;">Customer</div>
-                                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                        commodo consequat. </span></div>
+                                <div class="collapsible-header" style="font-weight: 600;">Customers</div>
+                                <div class="collapsible-body"><span>We love to hear from our precious users. For any feedback or queries simply write in to  <a href="mailto:info@shaadibaraati.com">info@shaadibaraati.com</a></span></div>
                             </li>
                         </ul>
 

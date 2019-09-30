@@ -41,6 +41,14 @@ height: 30px;
         left: 12px;
 
     }
+    .tit{
+    	white-space: nowrap !important;
+overflow: visible !important;
+text-overflow: unset !important;
+    }
+    .r-crd-price{
+        line-height: 22px;
+    }
     </style>
 </head>
 
@@ -383,14 +391,20 @@ height: 30px;
                                             </div>
                                             <div class="card-content">
                                                 <div class="row m0">
-                                                    <div class="col s12 m6">
-                                                        <p class="m0 r-crd-title">
+                                                    <div class="col s12 m12">
+                                                        <p class="m0 r-crd-title tit">
                                                             <?php echo (!empty($value->name))?$value->name:'' ?></p>
-                                                        <p class="m0 r-crd-location">
+                                                        
+                                                    </div>
+                                                    <div class="col s12 m5">
+
+                                                    <p class="m0 r-crd-location">
                                                             <?php echo (!empty($value->city))?$value->city:'' ?></p>
                                                     </div>
-                                                    <div class="col s12 m6">
-                                                        <p class="m0 r-crd-price">&#8377; <?php
+
+                                                    <div class="col s12 m7">
+                                                        
+                                                        <p class="m0 r-crd-price"><?php
                                                     $amount = (!empty($value->price))?$value->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
@@ -412,7 +426,7 @@ height: 30px;
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo $thecash; echo (!empty($value->price_for))?$value->price_for:'Per day'; ?> </p>
+                                                    echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($value->price_for))?'&nbsp'.$value->price_for:' Per day'; ?> </p>
                                                     </div>
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">

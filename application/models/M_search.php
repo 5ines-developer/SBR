@@ -12,7 +12,7 @@ class M_search extends CI_Model {
         if (!empty($city) && $city !='All') { $this->db->where('cty.city', $city); }
         if (!empty($category) && $category !='all category') {$this->db->where('cat.category', $category); }
         $this->db->where('v.is_active', '1');
-        $this->db->select('v.name,v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq');
+        $this->db->select('v.name,v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
         $this->db->join('category cat', 'cat.id = v.category', 'left');

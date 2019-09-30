@@ -18,6 +18,9 @@ html {
 .m0 {
     margin: 0px;
 }
+.mt0 {
+    margin-top: 0px;
+}
 
 .header-ul a {
     color: black;
@@ -2494,6 +2497,10 @@ a.viewmore:hover {
 
 
 /* about us */
+
+.about-img {
+    margin-top: 43px;
+}
 
 .tj {
     text-align: justify;

@@ -72,6 +72,20 @@ $this->load->model('m_search');
     .favcol i {
         color: #fff !important;
     }
+    .tit{
+    	white-space: nowrap !important;
+overflow: visible !important;
+text-overflow: unset !important;
+    }
+
+    .r-crd-price{
+        line-height: 22px;
+    }
+    .simil-crd{
+        border-radius: 0 0 2px 2px;
+        padding: 12px !important;
+height: 98px;
+    }
     </style>
 </head>
 
@@ -268,7 +282,7 @@ $this->load->model('m_search');
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo $thecash;  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
+                                                    echo (!empty($thecash))?'&#8377;'.$thecash:'';  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
                                                 </li>
                                             </ul>
 
@@ -949,16 +963,21 @@ $this->load->model('m_search');
                                             <img
                                                 src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
                                         </div>
-                                        <div class="card-content">
+                                        <div class="card-content simil-crd">
                                             <div class="row m0">
                                                 <div class="col s12 m6">
-                                                    <p class="m0 r-crd-title">
+                                                    <p class="m0 r-crd-title tit">
                                                         <?php echo (!empty($simi->name))?$simi->name:'' ?></p>
+                                                </div>
+                                            </div>
+                                            <div class="row m0">
+                                                <div class="col s12 m5">
                                                     <p class="m0 r-crd-location">
                                                         <?php echo (!empty($simi->city))?$simi->city:'' ?></p>
                                                 </div>
-                                                <div class="col s12 m6">
-                                                    <p class="m0 r-crd-price">&#8377; <?php
+
+                                                <div class="col s12 m7">
+                                                    <p class="m0 r-crd-price"><?php
                                                     $amount = (!empty($simi->price))?$simi->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
@@ -980,14 +999,14 @@ $this->load->model('m_search');
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo $thecash; echo $thecash; ?> Per day</p>
+                                                    echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($value->price_for))?'&nbsp'.$value->price_for:' Per day'; ?></p>
                                                 </div>
                                                 <div class="cdivider hide-on-small-only"></div>
                                                 <div class="col s12 m6 hide-on-small-only">
                                                     <p class=" r-crd-category"><?php echo $simi->category ?></p>
                                                 </div>
                                                 <div class="col s12 m6 hide-on-small-only">
-                                                    <p class="m0 r-crd-ratings right"> <?php echo $this->ci->m_search->countReview($value->id).'Reviews' ?><span class="c-badge green"><i
+                                                    <p class="m0 r-crd-ratings right"> <?php echo $this->ci->m_search->countReview($value->id).' Reviews' ?><span class="c-badge green"><i
                                                                 class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($value->id) ?></span></p>
                                                 </div>
                                             </div>

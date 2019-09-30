@@ -9,7 +9,7 @@ class M_vendors extends CI_Model
      **/
     public function getVendors($uniqid='')
     {
-        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
+        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.price_for,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->where('v.is_active', '1');
         $this->db->where('v.uniq', $uniqid);
         $this->db->from('vendor v');
@@ -248,7 +248,7 @@ class M_vendors extends CI_Model
     public function similarVendors($city='',$category='',$id='')
     {        
         $this->db->where('v.id !=', $id);
-        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
+        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.address,v.price_for,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->where('v.city', $city);
         $this->db->where('v.category', $category); 
         $this->db->where('v.is_active', '1');
