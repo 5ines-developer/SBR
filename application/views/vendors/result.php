@@ -422,7 +422,7 @@ height: 30px;
                                                         <p class="m0 r-crd-ratings">
                                                             <?php echo $this->ci->m_search->countReview($value->id) ?>
                                                             reviews <span class="c-badge green"><i
-                                                                    class="material-icons">star</i> 5.0</span></p>
+                                                                    class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($value->id) ?> </span></p>
                                                     </div>
                                                 </div>
                                             </div>

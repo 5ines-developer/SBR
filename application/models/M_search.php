@@ -55,6 +55,20 @@ class M_search extends CI_Model {
         }
     }
 
+    public function avgrating($id = '')
+    {      
+        $this->db->select_avg('rating');
+        $this->db->where('vendor_id', $id);  
+        $query = $this->db->get('vendor_review');
+        foreach ($query->result() as $key => $value) {
+        if (!empty($value->rating)) {
+            return $value->rating;
+        }else{
+            return 0;
+        }
+        }
+    }
+
 
 
     //search autocompletee
