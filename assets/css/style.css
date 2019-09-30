@@ -3031,3 +3031,13 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     .h-wd-item-content { position: relative; margin-top: 50px; width: 107%; background-color: #ffdee4; float: right; right: -30vw; box-shadow: 1px 1px 4px -3px gray; }
     .hwd-conetnt { padding: 50px 10px; }
 }
+/* home we assistance  */
+.h-wed-slider .slick-dots {
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.h-wed-slider .slick-dots li {
+	display: inline-block;
+}

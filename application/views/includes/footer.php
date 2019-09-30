@@ -99,11 +99,11 @@
                             <a href="<?php echo base_url('contact-us') ?>" ><li class="hov">Contact Us</li></a>
                             <a href="<?php echo base_url('privacy-policy') ?>" ><li class="hov">Privacy Policy</li></a>
                             <a href="<?php echo base_url('terms-conditions') ?>" ><li class="hov">Terms & Conditions</li></a>
-                            <a href="#" ><li class="hov">Testimonial</li></a>
-                            <a href="#" ><li class="hov">wedding Destination</li></a>
-                            <a href="#" ><li class="hov">Vendor Reviews</li></a>
-                            <a href="#" ><li class="hov">E-Invite</li></a>
-                            <a href="#" ><li class="hov">Feedback / Complaints</li></a>
+                            <!-- <a href="#" ><li class="hov">Testimonial</li></a> -->
+                            <!-- <a href="#" ><li class="hov">wedding Destination</li></a> -->
+                            <!-- <a href="#" ><li class="hov">Vendor Reviews</li></a> -->
+                            <!-- <a href="#" ><li class="hov">E-Invite</li></a> -->
+                            <!-- <a href="#" ><li class="hov">Feedback / Complaints</li></a> -->
                             <a href="<?php echo base_url('') ?>site-map" ><li class="hov">Sitemap</li></a>
                         </ul>
                     </div>

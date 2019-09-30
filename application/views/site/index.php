@@ -204,8 +204,9 @@
                             <div class="row m0" >
                                 <div class="col s12 m7 l7 push-l5 push-m5 redsahde">
                                     <div class="hwd-conetnt">
-                                        <div class="wdheading">Hello<br> Wed Planner</div>
+                                        <div class="wdheading">Hello Wed Planner</div>
                                         <p>Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
+                                        <br><br>
                                         <div class="btbtn">
                                             <a class="bokmore-btn">Book Now</a>
                                         </div>
@@ -219,7 +220,7 @@
                             <div class="row m0" >
                                 <div class="col s12 m7 l7 push-l5 push-m5 redsahde">
                                     <div class="hwd-conetnt">
-                                        <div class="wdheading">Assisted <br> Wed Planner</div>
+                                        <div class="wdheading">Assisted  Wed Planner</div>
                                         <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
                                         <div class="btbtn">
                                             <a class="bokmore-btn">Book Now</a>
@@ -233,7 +234,7 @@
                             <div class="row m0" >
                                 <div class="col s12 m7 l7 push-l5 push-m5 redsahde">
                                     <div class="hwd-conetnt">
-                                        <div class="wdheading">Premium<br> Wed Planner</div>
+                                        <div class="wdheading">Premium Wed Planner</div>
                                         <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
                                         <div class="btbtn">
                                             <a class="bokmore-btn">Book Now</a>
@@ -318,7 +319,7 @@
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
                                         <h6 class="white-text">Mehndi</h6>
-                                        <p class="m0">Aenean commodo ligula eget dolor. Aenean massa.</p>
+                                        <p class="m0">Add a Personal touch to your Mehendi Ceremony E-Invites.</p>
                                     </div>
                                 </div>
                             </a>
@@ -330,7 +331,7 @@
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
                                         <h6 class="white-text">Engagement</h6>
-                                        <p class="m0">Aenean commodo ligula eget dolor. Aenean massa.</p>
+                                        <p class="m0">Announce you Engagement with Exquisite Customized E -Invites.</p>
                                     </div>
                                 </div>
                             </a>
@@ -342,7 +343,7 @@
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
                                         <h6 class="white-text">Wedding</h6>
-                                        <p class="m0">Aenean commodo ligula eget dolor. Aenean massa.</p>
+                                        <p class="m0">Brag about your wedding hassle free with our personalized E-Invites.</p>
                                     </div>
                                 </div>
                             </a>
@@ -354,7 +355,7 @@
                                         class="img-responsive icn-li" width="100%" alt="">
                                     <div class="title-einvite">
                                         <h6 class="white-text">Reception</h6>
-                                        <p class="m0">Aenean commodo ligula eget dolor. Aenean massa.</p>
+                                        <p class="m0">Indulged your loved once to a Lavish reception by sending them E-Invites.</p>
                                     </div>
                                 </div>
                             </a>
@@ -447,9 +448,7 @@
                     <div class="vender-detail">
                         <h4>Happy Couple's</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                        <p>Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-                            dis
-                            parturient montes, nascetur ridiculus mus. </p>
+                        <p>What our Happy Couple's says. </p>
                     </div>
                 </div>
             </div>
@@ -641,10 +640,38 @@
     $('.h-wed-slider').slick({
         infinite: true,
         slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToScroll:1,
         autoplay: true,
         autoplaySpeed: 3000,
         arrows: false,
+        dots: true,
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    dots: false,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: false,
+                }
+            }
+        ]
+        
     });
 
     // real-wedding
