@@ -113,7 +113,11 @@ $route['vendors/video_delete/(:any)/(:any)']  = 	'vendors/video_delete/$1/$2';
 $route['enquiries']			=	'enquiries/index'; //add vendor
 $route['enquiries/view/(:any)']	=	'enquiries/view/$1'; //add vendor
 $route['enquiries/delete/(:any)']	=	'enquiries/delete/$1'; //add vendor
+$route['free-quote']			    =	'enquiries/freequote'; //add vendor
+$route['free-quote/view/(:any)']	=	'enquiries/quoteview/$1'; //add vendor
+
 
 //vendor enquiry
 $route['vendor-enquiry']			=	'vendorenquiry/index'; //add vendor
+
 

@@ -49,7 +49,7 @@
                                 </div>
 
                                 <div class="bottom-button">
-                                    <a href="#modalf" class="b1 modal-trigger">Submit Wedding</a>
+                                    <a href="#modalf" class="b1 modal-trigger">Get Free Quote</a>
                                     <a href="<?php echo base_url('vendor-register') ?>" class="b2">Register as Vendor</a>
                                     <a href="https://pages.razorpay.com/pl_Ckj0SFClrYvOzF/view" class="b3">Pay Now</a>
 
@@ -146,47 +146,92 @@
 
     <div id="modalf" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
+      <h6>Get a Quote - 40% Discount on Wedding Vendors
+Please Fill The Correct Detail For Quotation !</h6>
       <div class="row">
-    <form class="col s12">
-      <div class="row">
+    <form class="col s12" action="<?php echo base_url('home/getquote') ?>" method="post">
+      <div class="row m0">
         <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+          <input id="qfname" type="text" name="qfname" class="validate" required>
+          <label for="qfname">First Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+          <input id="qlname" type="text" name="qlname" class="validate">
+          <label for="qlname">Last Name</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
+      <div class="row m0">
+        <div class="input-field col s6">
+          <input id="qemail" type="text" name="qemail" class="validate" required>
+          <label for="qemail">Email</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="qphone" type="text"  name="qphone" class="validate" required>
+          <label for="qphone">Phone</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+      <div class="row m0">
+      <div class="input-field col s6">
+            <select required name="qservice">
+                <option value="" selected>service</option>
+                <option value="wedding venue">Wedding Venue</option>
+                <option value="wedding planner">Wedding Planner</option>
+                <option value="wedding catering">Wedding Catering</option>
+                <option value="Flower Decoration">Flower Decoration</option>
+                <option value="Photography">photography</option>
+                <option value="makeup artist">Makeup Artist</option>
+                <option value="balloon decorators">Balloon Decorators</option>
+                <option value="wedding band">Wedding Band</option>
+            </select>
+        </div>
+        <div class="input-field col s6">
+          <input id="qdate" type="text" name="qdate" class="validate datepicker" required>
+          <label for="qdate">Event Date</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+      <div class="row m0">
+      <div class="input-field col s6">
+      <select required name="qcity">
+                <option value="" selected>Budget</option>
+                <option value="bangalore">Bangalore</option>
+                <option value="hyderabad">Hyderabad</option>
+                <option value="chennai">Chennai</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="kolkata">Kolkata</option>
+                <option value="kerala">Kerala</option>
+                <option value="indore">Indore</option>
+                <option value="lucknow">Lucknow</option>
+                <option value="patna">Patna</option>
+                <option value="nagpur">Nagpur</option>
+            </select>
+        </div>
+        <div class="input-field col s6">
+            <select required name="qbudget">
+                <option value="" selected>Budget</option>
+                <option value="Below 50k">Below 50k</option>
+                <option value="Upto 1 Lakh">Upto 1 Lakh</option>
+                <option value="1lakh - 5lakh">1 Lakh - 5 Lakh</option>
+                <option value="5lakh - 10lakh">5 Lakh - 10 Lakh</option>
+                <option value="10lakh - 20lakh">10 Lakh - 20 Lakh</option>
+                <option value="25lakh - 50lakh">25 Lakh - 50 Lakh</option>
+                <option value="Above 50 lakh">Above 50 Lakh</option> 
+            </select>
+      <input type="hidden" name="quiniq" value="<?php echo random_string('alnum',10) ?>">
+
         </div>
       </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          </div>
-        </div>
-      </div>
+      <div class="col l12 s12"> 
+          <div class="d-input"> 
+          <div class="input-field"> 
+              <textarea id="textarea1" class="materialize-textarea " placeholder="Textarea" name="qmessage" >How can we help you today?</textarea> 
+            </div> </div> </div>
+      <div class="col l4 m4 s4">
+        <button type="submit" class="btn-find-get">Get Start</button>
+    </div>
+
+      
+      
     </form>
   </div>
     </div>

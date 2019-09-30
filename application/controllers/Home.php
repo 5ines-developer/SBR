@@ -147,6 +147,58 @@ class Home extends CI_Controller {
         $this->load->view('site/wed-assistance',$data);
     }
 
+
+    public function getquote($id = null)
+    {
+        $qfname     =   $this->input->post('qfname');
+        $qlname     =   $this->input->post('qlname');
+        $qemail     =   $this->input->post('qemail');
+        $qphone     =   $this->input->post('qphone');
+        $qservice   =   $this->input->post('qservice');
+        $qdate      =   $this->input->post('qdate');
+        $qcity      =   $this->input->post('qcity');
+        $qbudget    =   $this->input->post('qbudget');
+        $qmessage   =   $this->input->post('qmessage');
+        $quiniq   =   $this->input->post('quiniq');
+
+
+        $insert = array(
+          'firstname'    =>  $qfname , 
+          'lastname'   =>  $qlname , 
+          'email'   =>  $qemail , 
+          'phone'   =>  $qphone , 
+          'service' =>  $qservice ,
+          'date'    =>  $qdate,
+          'city'    =>  $qcity,
+          'budget'  =>  $qbudget,
+          'message' =>  $qmessage,
+          'uniq' =>  $quiniq,
+        );
+        $data['result'] = $insert;
+        $data['output']  =  $this->m_home->quoterequest($insert);
+        if (!empty($data['output'])) {
+            $this->load->config('email');
+            $this->load->library('email');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/getquote', $data, true);
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to('prathwi@5ine.in');
+            $this->email->subject('Free Quote request');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will reach you soon.');
+                redirect(base_url(),'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                redirect(base_url(),'refresh');
+            }
+        }else{
+              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+              redirect(base_url(),'refresh');
+        }
+    }
+
 }
 
 /* End of file Controllername.php */

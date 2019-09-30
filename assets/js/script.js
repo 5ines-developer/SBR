@@ -24,5 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // modal
     var model = document.querySelectorAll('.modal');
     var modelinstances = M.Modal.init(model);
+
+    var date = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(date, {
+      format: 'yyyy-mm-dd',});
   });
 

@@ -81,6 +81,24 @@ class M_home extends CI_Model
         }
     }
 
+
+    public function quoterequest($insert='')
+    {
+        $this->db->where('uniq', $insert['uniq']);
+        $query = $this->db->get('quoterequest');
+        if ($query->num_rows() > 0) {
+            $this->db->where('uniq',$insert['uniq']);
+            $this->db->update('quoterequest', $insert);
+            if ($this->db->affected_rows() > 0) {
+               return true;
+            }else{
+                return false;
+            }
+        }else{
+            return $this->db->insert('quoterequest', $insert);
+        }
+    }
+
 }
 
 /* End of file ModelName.php */

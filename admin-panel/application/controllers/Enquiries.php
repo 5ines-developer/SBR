@@ -27,6 +27,20 @@ class Enquiries extends CI_Controller {
         $this->load->view('enquiry/view-enquiry', $data, FALSE);
     }
 
+    public function freequote($id = null)
+    {
+        $data['title']  = 'Free quote - Shaadibaraati';
+		$data['result']  = $this->m_enquiry->getfreequote();
+		$this->load->view('enquiry/freequote', $data, FALSE);
+    }
+
+    public function quoteview($id='')
+    {
+        $data['result']  = $this->m_enquiry->quoteview($id);
+        $data['title']   = 'Enquiry - Shaadibaraati';
+        $this->load->view('enquiry/view-free', $data, FALSE);
+    }
+
 
 
 }

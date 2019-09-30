@@ -14,6 +14,21 @@ class M_enquiry extends CI_Model {
 		return $this->db->where('id', $id)->get('contact')->row();
 	}
 
+		//get enquiries
+	public function getfreequote($value='')
+	{
+		return $this->db->order_by('id', 'desc')->get('quoterequest')->result();
+	}
+
+	public function quoteview($id='')
+	{
+		return $this->db->where('id', $id)->get('quoterequest')->row();
+	}
+
+	
+
+	
+
 	
 
 }

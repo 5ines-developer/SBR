@@ -3048,3 +3048,10 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 .h-wed-slider .slick-dots li {
 	display: inline-block;
 }
+#modalf {
+    max-height: 100%;
+}
+.select-wrapper input.select-dropdown {
+    border-bottom: 1px solid #9e9e9e !important;
+    width: 100%;
+}
