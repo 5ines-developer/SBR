@@ -103,7 +103,9 @@ class Vendors extends CI_Controller {
         $city       = $this->input->post('city');
         $edit       = $this->input->post('edit');
         $uniq 		= $this->input->post('uniq');
+        $price_for 		= $this->input->post('price_for');
 
+        
         $insert =  array(
         	'name' 			=>	$name , 
         	'phone' 		=>	$phone , 
@@ -113,7 +115,8 @@ class Vendors extends CI_Controller {
         	'is_active' 	=>	'1' ,
         	'uniq'			=> 	$uniq,
             'city'          =>  $city,
-        	'price'			=> 	$price
+            'price'			=> 	$price,
+            'price_for'     =>  $price_for
         );
 
         if (file_exists($_FILES['vimage']['tmp_name'])) {

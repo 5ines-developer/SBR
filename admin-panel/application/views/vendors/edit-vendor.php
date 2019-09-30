@@ -74,6 +74,7 @@ background-color: #fff;
     .portfolio-img {
     position: relative;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .portfolio-img:hover .port-delete {
@@ -202,6 +203,13 @@ max-height: 95px;
                                             </div>
                                         </div>
                                         <div class="row m0">
+                                        <div class="input-field col s12 l6">
+                                                <input type="text" id="price_for" name="price_for" class="validate" required
+                                                    value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
+                                                <label for="price">Price Per<span
+                                                        class="red-text">*</span></label>
+                                                <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
+                                                </div>
                                             <div class="file-field input-field col s12 l6">
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
@@ -216,33 +224,16 @@ max-height: 95px;
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
                                                         size:</span> 512kb <span class="red-text">*</span></span>
                                             </div>
-                                            <div class="input-field col s12 l6">
-                                                <select name="category">
-                                                    <option value="">Choose a category</option>
-                                                    <?php
-                                                                if (!empty($category)) {
-                                                                foreach ($category as $key => $value) { ?>
-                                                    <option value="<?php echo $value->id ?>"
-                                                        <?php echo $value->id == $result->category?"selected":''; ?>>
-                                                        <?php echo $value->category ?></option>
-                                                    <?php } } ?>
-                                                </select>
+                                            
+                                        </div>
+                                        <div class="row m0">
+                                        <div class="input-field col s12 l6">
+                                                <select name="category"> <option value="">Choose a category</option> <?php if (!empty($category)) { foreach ($category as $key => $value) { ?> <option value="<?php echo $value->id ?>"                           <?php echo $value->id == $result->category?"selected":''; ?>> <?php echo $value->category ?></option> <?php } } ?> </select>
                                                 <label>Category</label>
                                                 <p><span class="error"><?php echo form_error('category'); ?></span></p>
                                             </div>
-                                        </div>
-                                        <div class="row m0">
                                             <div class="input-field col s12 l6">
-                                                <select name="city">
-                                                    <option value="">Choose a City</option>
-                                                    <?php
-                                                                if (!empty($city)) {
-                                                                foreach ($city as $key => $value) { ?>
-                                                    <option value="<?php echo $value->id ?>"
-                                                        <?php echo $value->id == $result->city?"selected":''; ?>>
-                                                        <?php echo $value->city ?></option>
-                                                    <?php } } ?>
-                                                </select>
+                                                <select name="city"> <option value="">Choose a City</option> <?php if (!empty($city)) { foreach ($city as $key => $value) { ?> <option value="<?php echo $value->id ?>" <?php echo $value->id == $result->city?"selected":''; ?>> <?php echo $value->city ?></option> <?php } } ?> </select>
                                                 <label>City</label>
                                                 <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                             </div>

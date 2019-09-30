@@ -62,6 +62,13 @@
                         </div>
                       </div>
                       <div class="row m0">
+                      <div class="input-field col s12 l6">
+                                                <input type="text" id="price_for" name="price_for" class="validate" required
+                                                    value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
+                                                <label for="price">Price Per<span
+                                                        class="red-text">*</span></label>
+                                                <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
+                                                </div>
 
                         <div class="file-field input-field col s12 l6">
                           <div class="btn btn-small black-text grey lighten-3">
@@ -74,7 +81,11 @@
                           </div>
                           <span class="helper-text"><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  <span class="red-text">*</span></span>
                         </div>
-                        <div class="input-field col s12 l6">
+                        
+                      </div>
+
+                      <div class="row m0">
+                      <div class="input-field col s12 l6">
                               <select name="category" required="">
                                 <option value="" >Choose a category</option>
                                 <?php
@@ -86,9 +97,6 @@
                               <label>Category</label>
                                <p><span class="error"><?php echo form_error('category'); ?></span></p>
                         </div>
-                      </div>
-
-                      <div class="row m0">
                         <div class="input-field col s12 l6">
                               <select name="city" required="">
                                 <option value="" >Choose a City</option>

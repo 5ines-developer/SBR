@@ -15,37 +15,47 @@ $this->load->model('m_search');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <style>
-        .fixed-action-btn {
-            position: relative;
-            right: 0;
-            bottom: 0;
-        }
-        .check-group p{
-            float: left;
-            margin-right: 10px;
-        }
-        .favcol{
-            border-color: #d0021b;
-            background: #d0021b !important;
-            box-shadow: 0 0 2px #9f0202 !important;
-        }
-        .favcol i{
-            color: #fff !important;
-        }
-        [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::before, [type="radio"].with-gap:checked + span::after {
-                border: 2px solid #d50000;
-        }
-        [type="radio"]:checked + span::after, [type="radio"].with-gap:checked + span::after {
-            background-color: #d50000;
-        }
     .fixed-action-btn {
         position: relative;
         right: 0;
         bottom: 0;
     }
+
+    .check-group p {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .favcol {
+        border-color: #d0021b;
+        background: #d0021b !important;
+        box-shadow: 0 0 2px #9f0202 !important;
+    }
+
+    .favcol i {
+        color: #fff !important;
+    }
+
+    [type="radio"]:checked+span::after,
+    [type="radio"].with-gap:checked+span::before,
+    [type="radio"].with-gap:checked+span::after {
+        border: 2px solid #d50000;
+    }
+
+    [type="radio"]:checked+span::after,
+    [type="radio"].with-gap:checked+span::after {
+        background-color: #d50000;
+    }
+
+    .fixed-action-btn {
+        position: relative;
+        right: 0;
+        bottom: 0;
+    }
+
     html {
-  scroll-behavior: smooth;
-}
+        scroll-behavior: smooth;
+    }
 
 
     .check-group p {
@@ -121,7 +131,8 @@ $this->load->model('m_search');
                                                 </div>
 
                                                 <div class="btn-group">
-                                                    <a class="btn-floating  waves-effect waves-red transparent z-depth-0" href="#vendor-rating"><i class="fas fa-star tiny"></i></a>
+                                                    <a class="btn-floating  waves-effect waves-red transparent z-depth-0"
+                                                        href="#vendor-rating"><i class="fas fa-star tiny"></i></a>
                                                     <span>
 
                                                         <?php if (!empty($value->review)) {
@@ -184,25 +195,26 @@ $this->load->model('m_search');
                         <!-- tabs -->
                         <div class="tab-links">
                             <ul class="tabs z-depth-1">
-                            <?php if (!empty($value->detail)) { ?>
-                                <li class="tab "><a href="#about-vendor" class="active">About <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
-                            <?php } ?>
-                            <?php if (!empty($value->service) || !empty($value->faq)) { ?>
+                                <?php if (!empty($value->detail)) { ?>
+                                <li class="tab "><a href="#about-vendor" class="active">About
+                                        <?php echo (!empty($value->name))?$value->name:''; ?></a></li>
+                                <?php } ?>
+                                <?php if (!empty($value->service) || !empty($value->faq)) { ?>
                                 <li class="tab"><a href="#vendor-services">Services</a></li>
-                            <?php }?>
-                            <?php if (!empty($value->detail)) { ?>
+                                <?php }?>
+                                <?php if (!empty($value->detail)) { ?>
                                 <li class="tab"><a href="#vendor-gallery">Gallery</a></li>
-                            <?php }?>
-                            <?php if (!empty($value->detail)) { ?>
+                                <?php }?>
+                                <?php if (!empty($value->detail)) { ?>
                                 <li class="tab"><a href="#vendor-rating">Reviews</a></li>
-                            <?php }?>
+                                <?php }?>
                             </ul>
                         </div>
 
                         <!-- about vendor -->
 
                         <?php if (!empty($value->detail)) { ?>
-                            <div class="about-vendor" id="about-vendor">
+                        <div class="about-vendor" id="about-vendor">
                             <div class="card">
                                 <div class="card-container">
                                     <div class="row m0">
@@ -218,10 +230,10 @@ $this->load->model('m_search');
                             </div>
                         </div>
                         <?php } ?>
-                        
+
                         <!-- end about vendor -->
 
-                   
+
 
 
                     </div><!-- left -->
@@ -279,77 +291,92 @@ $this->load->model('m_search');
 
                                        
                                          ?>
-                                        <form class="row m0" action="<?php echo base_url()?>enquire-vendor" method="post">
+                                        <form class="row m0" action="<?php echo base_url()?>enquire-vendor"
+                                            method="post">
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="name" type="text" class="validate" name="e_name" <?php echo (!empty($user->su_name))?'readonly':''; ?> value="<?php echo (!empty($user->su_name))?$user->su_name:''; ?>" required>
+                                                    <input id="name" type="text" class="validate" name="e_name"
+                                                        <?php echo (!empty($user->su_name))?'readonly':''; ?>
+                                                        value="<?php echo (!empty($user->su_name))?$user->su_name:''; ?>"
+                                                        required>
                                                     <label for="name">Name</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <input id="email" type="text" class="validate" name="e_email" <?php echo (!empty($user->su_email))?'readonly':''; ?> value="<?php echo (!empty($user->su_email))?$user->su_email:''; ?>" required>
+                                                    <input id="email" type="text" class="validate" name="e_email"
+                                                        <?php echo (!empty($user->su_email))?'readonly':''; ?>
+                                                        value="<?php echo (!empty($user->su_email))?$user->su_email:''; ?>"
+                                                        required>
                                                     <label for="email">Email</label>
                                                 </div>
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s6">
-                                                    <input  id="phone" type="text" class="validate" name="e_mobile" <?php echo (!empty($user->su_phone))?'readonly':''; ?> value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>" required>
+                                                    <input id="phone" type="text" class="validate" name="e_mobile"
+                                                        <?php echo (!empty($user->su_phone))?'readonly':''; ?>
+                                                        value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>"
+                                                        required>
                                                     <label for="phone">Mobile Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <input id="date" type="text" class="validate datepicker" name="fn_date">
+                                                    <input id="date" type="text" class="validate datepicker"
+                                                        name="fn_date">
                                                     <label for="date">Function Date</label>
                                                 </div>
                                             </div>
 
-                                            <?php if ($value->category == 'wedding venues' || $value->category == 'Wedding Venues') { ?> 
-                                                <div class="row m0">
-                                                    <div class="input-field col s6">
-                                                        <input  id="guest" type="text" class="validate" name="guest_no">
-                                                        <label for="guest">Number of Guest</label>
-                                                    </div>
-                                                    <div class="input-field col s6">
-                                                        <input id="rooms" type="text" class="validate" name="rooms">
-                                                        <label for="rooms">No of rooms</label>
-                                                    </div>
+                                            <?php if ($value->category == 'wedding venues' || $value->category == 'Wedding Venues') { ?>
+                                            <div class="row m0">
+                                                <div class="input-field col s6">
+                                                    <input id="guest" type="text" class="validate" name="guest_no">
+                                                    <label for="guest">Number of Guest</label>
                                                 </div>
-                                                <div class="row m0">
-                                                    <p>Function Type</p>
-                                                    <p>
-                                                        <label>
-                                                            <input class="with-gap" name="fn_type" type="radio" checked value="1"/>
-                                                            <span>Pre-Wedding</span>
-                                                        </label>
-                                                        <label>
-                                                            <input class="with-gap" name="fn_type" type="radio" value="2" />
-                                                            <span>Wedding</span>
-                                                        </label>
-                                                    </p>
+                                                <div class="input-field col s6">
+                                                    <input id="rooms" type="text" class="validate" name="rooms">
+                                                    <label for="rooms">No of rooms</label>
                                                 </div>
-                                                <div class="row m0">
-                                                    <p>Function Time</p>
-                                                    <p>
-                                                        <label>
-                                                            <input class="with-gap" name="fn_time" type="radio" checked value="1" />
-                                                            <span>Evening</span>
-                                                        </label>
-                                                        <label>
-                                                            <input class="with-gap" name="fn_time" type="radio"  value="2"/>
-                                                            <span>Day</span>
-                                                        </label>
-                                                    </p>
-                                                </div>
+                                            </div>
+                                            <div class="row m0">
+                                                <p>Function Type</p>
+                                                <p>
+                                                    <label>
+                                                        <input class="with-gap" name="fn_type" type="radio" checked
+                                                            value="1" />
+                                                        <span>Pre-Wedding</span>
+                                                    </label>
+                                                    <label>
+                                                        <input class="with-gap" name="fn_type" type="radio" value="2" />
+                                                        <span>Wedding</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                            <div class="row m0">
+                                                <p>Function Time</p>
+                                                <p>
+                                                    <label>
+                                                        <input class="with-gap" name="fn_time" type="radio" checked
+                                                            value="1" />
+                                                        <span>Evening</span>
+                                                    </label>
+                                                    <label>
+                                                        <input class="with-gap" name="fn_time" type="radio" value="2" />
+                                                        <span>Day</span>
+                                                    </label>
+                                                </p>
+                                            </div>
                                             <?php } ?>
                                             <div class="row m0">
                                                 <div class="input-field col s12">
-                                                    <textarea id="wed_detail" class="materialize-textarea" required name="wed_detail"></textarea>
+                                                    <textarea id="wed_detail" class="materialize-textarea" required
+                                                        name="wed_detail"></textarea>
                                                     <label for="wed_detail">Details about your wedding</label>
                                                 </div>
                                             </div>
 
                                             <input type="hidden" name="vendor_id" value="<?php echo $value->uniq ?>">
-                                            <input type="hidden" name="uniq" value="<?php echo random_string('alnum',20); ?>">
+                                            <input type="hidden" name="uniq"
+                                                value="<?php echo random_string('alnum',20); ?>">
 
-                                            
+
 
 
                                             <div class="input-field">
@@ -360,8 +387,9 @@ $this->load->model('m_search');
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?php echo (!empty($value->offer['image']))?base_url($value->offer['image']):''  ?>" class="responsive-img" alt="">
-                             <div id="vendor-services"></div>                       
+                            <img src="<?php echo (!empty($value->offer['image']))?base_url($value->offer['image']):''  ?>"
+                                class="responsive-img" alt="">
+                            <div id="vendor-services"></div>
                         </div>
 
                     </div><!-- right -->
@@ -440,7 +468,8 @@ $this->load->model('m_search');
                                             <div @click="() => showImg(index)" v-if="index < 11">
                                                 <img :src="src" class="">
                                             </div>
-                                            <div v-else-if="index == 11 && imgs.length < 13" @click="loadMore" class="load-more-pick">
+                                            <div v-else-if="index == 11 && imgs.length < 13" @click="loadMore"
+                                                class="load-more-pick">
                                                 <span class="morecount">+ {{ count }} more</span>
                                                 <img :src="src" class="">
                                             </div>
@@ -471,7 +500,7 @@ $this->load->model('m_search');
                                     </div>
                                     <div class="clearfix"></div>
 
-                                    
+
 
                                     <?php 
                                     $totalrate = 1;
@@ -479,7 +508,8 @@ $this->load->model('m_search');
                                     
                                     if (!empty($value->video)) {
                                         foreach ($value->video as $vid => $vids) { ?>
-                                    <div v-if="videocount >= <?php echo $vid +  $totalrate ?>" class="col s12 m6 l4 mb15">
+                                    <div v-if="videocount >= <?php echo $vid +  $totalrate ?>"
+                                        class="col s12 m6 l4 mb15">
                                         <?php //youtube
                                         if ($vids->type == '1') { ?>
                                         <iframe width="100%" height="200"
@@ -499,14 +529,16 @@ $this->load->model('m_search');
 
                                     <div class="center-align">
 
-                                    <button @click="morevideo" v-if="<?php echo $vid + 1 ?> > 3 && videocount < 4" class="waves-effect waves-light btn red plr30 accent-4 white-text">View More</button>
+                                        <button @click="morevideo" v-if="<?php echo $vid + 1 ?> > 3 && videocount < 4"
+                                            class="waves-effect waves-light btn red plr30 accent-4 white-text">View
+                                            More</button>
 
 
                                     </div>
 
 
 
-                                    
+
 
                                 </div>
                             </div>
@@ -516,7 +548,7 @@ $this->load->model('m_search');
                     <!-- end video section -->
 
                     <!-- rating and review -->
-                    <div  >
+                    <div>
                         <div class="card">
                             <div class="card-container">
                                 <div class="row m0">
@@ -526,7 +558,8 @@ $this->load->model('m_search');
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <form action="<?php echo base_url('review/submit') ?>" method="post" ref="reviewForm"  @submit.prevent="checkForm">
+                                    <form action="<?php echo base_url('review/submit') ?>" method="post"
+                                        ref="reviewForm" @submit.prevent="checkForm">
                                         <div class="col s12 mt20">
                                             <div class="left rateus"> Rate us : </div>
                                             <star-rating v-model="ar" :star-size="20"></star-rating>
@@ -538,14 +571,16 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_proffesional" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" v-model="useriview.professionalism" />
+                                                            @change="onFocus" value="1"
+                                                            v-model="useriview.professionalism" />
                                                         <span>Professionalism</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                     <label>
                                                         <input name="rev_quality" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" v-model="useriview.qualityofWork" />
+                                                            @change="onFocus" value="1"
+                                                            v-model="useriview.qualityofWork" />
                                                         <span>Quality of Work</span>
                                                     </label>
                                                 </p>
@@ -553,7 +588,8 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_service" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" v-model="useriview.onTimeService" />
+                                                            @change="onFocus" value="1"
+                                                            v-model="useriview.onTimeService" />
                                                         <span>On Time Service</span>
                                                     </label>
                                                 </p>
@@ -561,7 +597,8 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_money" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1"  v-model="useriview.valueOfMoney"/>
+                                                            @change="onFocus" value="1"
+                                                            v-model="useriview.valueOfMoney" />
                                                         <span>Value for Money</span>
                                                     </label>
                                                 </p>
@@ -569,7 +606,8 @@ $this->load->model('m_search');
                                                 <p>
                                                     <label>
                                                         <input name="rev_experience" class="filled-in" type="checkbox"
-                                                            @change="onFocus" value="1" v-model="useriview.highlyExperiencw" />
+                                                            @change="onFocus" value="1"
+                                                            v-model="useriview.highlyExperiencw" />
                                                         <span>Highly Experienced</span>
                                                     </label>
                                                 </p>
@@ -577,12 +615,13 @@ $this->load->model('m_search');
 
                                             <div class="row m0">
                                                 <div class="input-field col l7 s12">
-                                                    <textarea ref="tsarea" id="textarea1" name="rev_description" v-on:focus="onFocus"
-                                                        class="materialize-textarea" required="">{{useriview.review}}</textarea>
+                                                    <textarea ref="tsarea" id="textarea1" name="rev_description"
+                                                        v-on:focus="onFocus" class="materialize-textarea"
+                                                        required="">{{useriview.review}}</textarea>
                                                     <label for="textarea1">Write Review</label>
                                                 </div>
                                             </div>
-                                           
+
 
                                             <input type="hidden" value="" name="rev_rating" v-model="rev_rating">
                                             <input type="hidden" value="<?php echo $value->id ?>" name="rev_vendor">
@@ -628,7 +667,8 @@ $this->load->model('m_search');
                                                     <div class="rating">
                                                         <div class="title">
                                                             Rating Distribution
-                                                            <?php echo (!empty($value->review))?count($value->review):''; ?> reviews
+                                                            <?php echo (!empty($value->review))?count($value->review):''; ?>
+                                                            reviews
                                                         </div>
 
                                                         <div class="score">
@@ -754,13 +794,13 @@ $this->load->model('m_search');
                                                             </li>
                                                         </ul>
                                                     </div><!-- /.rating -->
-                                                    
+
                                                 </div><!-- /.col-md-6 -->
 
                                                 <div class="col m7">
                                                     <ul class="review-list">
 
-                                                           
+
                                                         <?php 
                                                         $totalrate = 1;
                                                         $ustags = '';
@@ -808,11 +848,11 @@ $this->load->model('m_search');
                                                                     if($this->session->userdata('shdid') != $revsw->user_id)
                                                                     {
                                                         ?>
-                                                            <li v-if="reviewcount >=  <?php echo $revs +  $totalrate ?>">
-                                                                <div class="review-metadata">
+                                                        <li v-if="reviewcount >=  <?php echo $revs +  $totalrate ?>">
+                                                            <div class="review-metadata">
 
-                                                                    <div class="queue">
-                                                                        <?php 
+                                                                <div class="queue">
+                                                                    <?php 
                                                                         for ($i = 0; $i < 5; $i++) {
                                                                         if ($i < $revsw->rating) {
                                                                             $startCheck = ' ratingStar';
@@ -822,33 +862,36 @@ $this->load->model('m_search');
                                                                             echo ' <i class="fa fa-star avg-start ' . $startCheck . '" aria-hidden="true"></i>';
                                                                         }
                                                                     ?>
-                                                                    </div>
-                                                                    <div class="name">
-                                                                        <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?>
-                                                                        : <span>
-                                                                            <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span>
-                                                                    </div>
-                                                                </div><!-- /.review-metadata -->
-                                                                <div class="review-content">
-                                                                    <div class="ntg">
+                                                                </div>
+                                                                <div class="name">
+                                                                    <?php echo (!empty($revsw->user_name))?$revsw->user_name:'---'; ?>
+                                                                    : <span>
+                                                                        <?php echo (!empty($revsw->added_date))?date("M d, Y ", strtotime($revsw->added_date)):'---'; ?></span>
+                                                                </div>
+                                                            </div><!-- /.review-metadata -->
+                                                            <div class="review-content">
+                                                                <div class="ntg">
                                                                     <span
-                                                                            class=""><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span>
-                                                                    </div>
-                                                                    <p>
-                                                                        <?php echo $revsw->review; ?>
-                                                                    </p>
-                                                                </div><!-- /.review-content -->
-                                                            </li>
+                                                                        class=""><?php echo (!empty($revsw->proffesional))?'Professionalism &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->quality))?'Quality of Work &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->money))?'  Value For Money &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->service))?'  On Time Service &nbsp;&nbsp;':''; ?><?php echo (!empty($revsw->experience))?'  Higly Experienced &nbsp;&nbsp;':''; ?></span>
+                                                                </div>
+                                                                <p>
+                                                                    <?php echo $revsw->review; ?>
+                                                                </p>
+                                                            </div><!-- /.review-content -->
+                                                        </li>
                                                         <?php   } }  }?>
 
 
 
 
-                                                      
-                                                        
-                                                        
+
+
+
                                                     </ul><!-- /.review-list -->
-                                                    <button @click="morereview" v-if="<?php echo $revs + 1 ?> > 3 && reviewcount < 4" class="waves-effect waves-light btn red plr30 accent-4 white-text">View More</button>
+                                                    <button @click="morereview"
+                                                        v-if="<?php echo $revs + 1 ?> > 3 && reviewcount < 4"
+                                                        class="waves-effect waves-light btn red plr30 accent-4 white-text">View
+                                                        More</button>
                                                 </div><!-- /.col-md-12 -->
                                             </div>
 
@@ -874,44 +917,45 @@ $this->load->model('m_search');
         <section style="background: #fff; padding: 30px 0;">
             <div class="container-fluide">
                 <div class="row">
-                 <div class="col 12 m6">
-                    <h4 class="m0">Similar Vendors</h4>
+                    <div class="col 12 m6">
+                        <h4 class="m0">Similar Vendors</h4>
+                    </div>
+                    <div class="col 12 m6 right-align">
+                        <?php if(count($value->similar) > 4){ ?>
+                        <a href="<?php echo base_url('vendors/'.urlencode(str_replace(" ","-",strtolower($value->city))).'/'.urlencode(str_replace(" ","-",strtolower($value->category)))) ?>"
+                            class="similar-more"> View All</a>
+                        <?php } ?>
+                    </div>
                 </div>
-                <div class="col 12 m6 right-align">
-                    <?php if(count($value->similar) > 4){ ?>
-                        <a href="<?php echo base_url('vendors/'.urlencode(str_replace(" ","-",strtolower($value->city))).'/'.urlencode(str_replace(" ","-",strtolower($value->category)))) ?>" class="similar-more"> View All</a>
-                    <?php } ?>
-                </div>
-                </div>
-            
 
-            <div class="col s12 m12 l12">
-                        <div class="row  result-item-box">
+
+                <div class="col s12 m12 l12">
+                    <div class="row  result-item-box">
 
 
 
-                            <?php  foreach ($value->similar as $sim => $simi) { 
+                        <?php  foreach ($value->similar as $sim => $simi) { 
                                 
                                 ?>
-                            <div class="col s6 m4 l3">
-                                <div class="result-items hoverable">
-                                    <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.str_replace(" ","-",strtolower($simi->name)).'/'.$simi->uniq)?>"
-                                            target="_blank">
-                                            <div class="card-image">
-                                                <img
-                                                    src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
-                                            </div>
-                                            <div class="card-content">
-                                                <div class="row m0">
-                                                    <div class="col s12 m6">
-                                                        <p class="m0 r-crd-title">
-                                                            <?php echo (!empty($simi->name))?$simi->name:'' ?></p>
-                                                        <p class="m0 r-crd-location">
-                                                            <?php echo (!empty($simi->city))?$simi->city:'' ?></p>
-                                                    </div>
-                                                    <div class="col s12 m6">
-                                                        <p class="m0 r-crd-price">&#8377; <?php
+                        <div class="col s6 m4 l3">
+                            <div class="result-items hoverable">
+                                <div class="card z-depth-0">
+                                    <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.str_replace(" ","-",strtolower($simi->name)).'/'.$simi->uniq)?>"
+                                        target="_blank">
+                                        <div class="card-image">
+                                            <img
+                                                src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="row m0">
+                                                <div class="col s12 m6">
+                                                    <p class="m0 r-crd-title">
+                                                        <?php echo (!empty($simi->name))?$simi->name:'' ?></p>
+                                                    <p class="m0 r-crd-location">
+                                                        <?php echo (!empty($simi->city))?$simi->city:'' ?></p>
+                                                </div>
+                                                <div class="col s12 m6">
+                                                    <p class="m0 r-crd-price">&#8377; <?php
                                                     $amount = (!empty($simi->price))?$simi->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
@@ -934,36 +978,37 @@ $this->load->model('m_search');
                                                     $thecash = $num;
                                                     }
                                                     echo $thecash; ?> Per day</p>
-                                                    </div>
-                                                    <div class="cdivider hide-on-small-only"></div>
-                                                    <div class="col s12 m6 hide-on-small-only">
-                                                        <p class=" r-crd-category"><?php echo $simi->category ?></p>
-                                                    </div>
-                                                    <div class="col s12 m6 hide-on-small-only">
-                                                        <p class="m0 r-crd-ratings right"> <span class="c-badge green"><i class="material-icons">star</i> 5</span></p>
-                                                    </div>
+                                                </div>
+                                                <div class="cdivider hide-on-small-only"></div>
+                                                <div class="col s12 m6 hide-on-small-only">
+                                                    <p class=" r-crd-category"><?php echo $simi->category ?></p>
+                                                </div>
+                                                <div class="col s12 m6 hide-on-small-only">
+                                                    <p class="m0 r-crd-ratings right"> <span class="c-badge green"><i
+                                                                class="material-icons">star</i> 5</span></p>
                                                 </div>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                            <?php   } } ?>
                         </div>
+                        <?php   } } ?>
                     </div>
-                    </div>
+                </div>
+            </div>
 
         </section>
 
-        
+
 
         <?php } } ?>
 
 
 
-   
 
-    <?php $this->load->view('includes/footer'); ?>
+
+        <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
@@ -975,7 +1020,7 @@ $this->load->model('m_search');
 
 
     <script>
-    <?php $this->load-> view('includes/message'); ?>
+    <?php $this->load->view('includes/message'); ?>
     </script>
 
     <script>
@@ -992,40 +1037,52 @@ $this->load->model('m_search');
             imgs: [],
             email: '',
             emailError: '',
-            count:'',
+            count: '',
             reviewcount: 3,
             videocount: 3,
-            useriview :{
-                professionalism : false,
-                qualityofWork : false,
+            useriview: {
+                professionalism: false,
+                qualityofWork: false,
                 onTimeService: false,
-                valueOfMoney:false,
-                highlyExperiencw:false,
-                review:'',
+                valueOfMoney: false,
+                highlyExperiencw: false,
+                review: '',
             },
         },
 
-        
+
 
         methods: {
             // more review view
-            morereview(){
+            morereview() {
                 this.reviewcount = 1000;
             },
             // more review view
-            morevideo(){
+            morevideo() {
                 this.videocount = 1000;
             },
             // edite Review
-            editRating(){
-                
-                this.useriview.professionalism = '<?php echo  (!empty($proffesional)) ? '1' : '' ?>';
-                this.useriview.qualityofWork = '<?php echo   (!empty($quality)) ? '1' : '' ?>';
-                this.useriview.onTimeService = '<?php echo   (!empty($service)) ? '1' : '' ?>';
-                this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? '1' : '' ?>';
-                this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? '' : '' ?>';
-                this.useriview.review = '<?php echo  (!empty($usreview))?$usreview:''; ?>';
-                this.ar = '<?php echo  (!empty($ustrate))?$ustrate:''; ?>';
+            editRating() {
+
+                this.useriview.professionalism = '<?php echo  (!empty($proffesional)) ? '
+                1 ' : '
+                ' ?>';
+                this.useriview.qualityofWork = '<?php echo   (!empty($quality)) ? '
+                1 ' : '
+                ' ?>';
+                this.useriview.onTimeService = '<?php echo   (!empty($service)) ? '
+                1 ' : '
+                ' ?>';
+                this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? '
+                1 ' : '
+                ' ?>';
+                this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? '
+                ' : '
+                ' ?>';
+                this.useriview.review = '<?php echo  (!empty($usreview))?$usreview:'
+                '; ?>';
+                this.ar = '<?php echo  (!empty($ustrate))?$ustrate:'
+                '; ?>';
                 this.$refs.tsarea.focus()
             },
             // email check on database
@@ -1047,7 +1104,7 @@ $this->load->model('m_search');
                         }
                     })
             },
-             checkForm() {
+            checkForm() {
                 if (this.emailError == '') {
 
 
@@ -1102,21 +1159,21 @@ $this->load->model('m_search');
 
             },
 
-            checkForm(){
-                   if((this.ar <= '3')){                        
-                        if(confirm('Do you really want to review this vendor with '+ this.ar + ' rating')){
-                            this.$refs.reviewForm.submit()
-                        }                
-                    }else{
+            checkForm() {
+                if ((this.ar <= '3')) {
+                    if (confirm('Do you really want to review this vendor with ' + this.ar + ' rating')) {
                         this.$refs.reviewForm.submit()
-                   }
-                },
+                    }
+                } else {
+                    this.$refs.reviewForm.submit()
+                }
+            },
 
             getCount: function() {
                 const formData = new FormData();
                 formData.append('vndr_id', this.$refs.myTestField.value);
                 axios.post('<?php echo base_url() ?>details/gallery-count', formData)
-                .then(response => {
+                    .then(response => {
                         if (response.data != '') {
                             this.count = response.data;
                         }
@@ -1198,10 +1255,10 @@ $this->load->model('m_search');
         });
 
 
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {
-        format:'yyyy-mm-dd',
-    });
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, {
+            format: 'yyyy-mm-dd',
+        });
 
         var scrolls = document.querySelectorAll('.scrollspy');
         var instances = M.ScrollSpy.init(scrolls);
