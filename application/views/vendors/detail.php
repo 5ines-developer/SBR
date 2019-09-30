@@ -268,7 +268,7 @@ $this->load->model('m_search');
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo $thecash; ?> per day</span>
+                                                    echo $thecash;  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
                                                 </li>
                                             </ul>
 
@@ -626,7 +626,7 @@ $this->load->model('m_search');
                                             </div>
 
 
-                                            <input type="hidden" value="" name="rev_rating" v-model="rev_rating">
+                                            <input type="hidden" value="" name="rev_rating" v-model="ar">
                                             <input type="hidden" value="<?php echo $value->id ?>" name="rev_vendor">
                                             <input type="hidden" value="<?php echo $value->uniq ?>" name="vendoruniq">
                                             <button
@@ -980,7 +980,7 @@ $this->load->model('m_search');
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo $thecash; ?> Per day</p>
+                                                    echo $thecash; echo $thecash; ?> Per day</p>
                                                 </div>
                                                 <div class="cdivider hide-on-small-only"></div>
                                                 <div class="col s12 m6 hide-on-small-only">
@@ -1180,7 +1180,7 @@ $this->load->model('m_search');
                 axios.post('<?php echo base_url() ?>review/session-check')
                     .then(response => {
                         if (response.data == '') {
-                            window.location.href = "<?php echo base_url('login') ?>";;
+                            window.location.href = "<?php echo base_url('login') ?>";
                         }
                         this.rev_rating = this.ar;
                     })

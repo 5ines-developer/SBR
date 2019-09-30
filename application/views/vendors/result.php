@@ -412,7 +412,7 @@ height: 30px;
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo $thecash; ?> Per day</p>
+                                                    echo $thecash; echo (!empty($value->price_for))?$value->price_for:'Per day'; ?> </p>
                                                     </div>
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">
