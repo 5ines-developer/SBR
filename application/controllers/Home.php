@@ -146,8 +146,18 @@ class Home extends CI_Controller {
         $data['title']  = 'ShaadiBaraati | Wed assistance';
         $this->load->view('site/wed-assistance',$data);
     }
+    public function feedback()
+    {
+        $data['title']  = 'ShaadiBaraati | Feedback';
+        $this->load->view('site/feedback',$data);
+    }
 
-
+    public function testimonial()
+    {
+        $data['title']  = 'ShaadiBaraati | Testimonial';
+        $this->load->view('site/testimonial',$data);
+    }
+    
     public function getquote($id = null)
     {
         $qfname     =   $this->input->post('qfname');
