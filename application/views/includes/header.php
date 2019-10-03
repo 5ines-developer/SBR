@@ -13,7 +13,7 @@
                             <!-- <li><a href="#">E-INVITE</a></li> -->
                             <li><a href="#">REAL WEDDING</a></li>
                             <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
-                            <li><a href="#">BLOG</a></li>
+                            <li><a href="<?php echo base_url() ?>blog">BLOG</a></li>
                             <?php if ($this->session->userdata('shdid') !='') { ?>
                                 <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a><span class="l-d">|</span></li>
                                 <li class="br-lo"><a href="<?php echo base_url('logout') ?>">Logout</a></li>
@@ -94,10 +94,10 @@
         <ul class="sidenav" id="mobile-demo">
             <li><a href="<?php echo base_url()?>">HOME</a></li>
             <li><a href="<?php echo base_url('categories')?>">VENDORS</a></li>
-            <li><a href="#">WED ASSISTANCE</a></li>
+            <!-- <li><a href="#">WED ASSISTANCE</a></li> -->
             <!-- <li><a href="#">E-INVITE</a></li> -->
             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
-            <li><a href="#">BLOG</a></li>
+            <li><a href="<?php echo base_url() ?>blog">BLOG</a></li>
             <?php if ($this->session->userdata('shdid') !='') { ?>
                     <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a></li>
                     <li class="br-lo"><a href="<?php echo base_url('logout') ?>">Logout</a></li>

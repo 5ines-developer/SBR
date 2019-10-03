@@ -481,6 +481,7 @@ h6 {
     height: 44px;
     padding: 0px 50px;
     cursor: pointer;
+    width: 100%;
 }
 
 .socil-icon {
@@ -509,7 +510,7 @@ h6 {
     text-align: center;
     border-radius: 35px;
     width: 50%;
-    margin: 21px 0 0 0;
+    margin: auto;
     border: 1px solid #e1e1e1;
 }
 
@@ -2815,13 +2816,30 @@ input:not([type]):focus {
 }
 
 .wed-bottom img {
-    width: 50px;
-    height: 50px;
+    height: 35px;
 }
 
 .wed-bottom-inner {
+
     width: calc(100% / 3);
     text-align: center;
+    border: 1px dashed #d0021b;
+    margin-left: 1px;
+    padding: 5px 0;
+    transition: .3s;
+    background: #fff;
+    cursor: pointer;
+
+
+}
+.wed-bottom-inner:hover{transform: scale(1.05)}
+.wed-bottom-inner span {
+
+    color: #333;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 600;
+
 }
 
 .wed-bottom-inner span {
@@ -3213,7 +3231,7 @@ nav a.sidenav-trigger i {
 }
 
 .pricing-palden .pricing-price {
-    font-size: 2em;
+    font-size: 1.4em;
     font-weight: bold;
     padding: 0;
     color: #fff;
@@ -3244,6 +3262,7 @@ nav a.sidenav-trigger i {
 	padding: 0 13px 0 34px;
 	position: relative;
 }
+.modal   .datepicker-modal{width: 75%;}
 
 .pricing-palden .pricing-feature {
     padding: 7px 0px;
@@ -3407,3 +3426,11 @@ nav a.sidenav-trigger i {
 
 /* new changes */
 .select-dropdown{max-height: 300px}
+.touch-email .helper-text{min-height: 0px}
+.contatct-item p{margin: 0px}
+.contatct-item p i.material-icons{font-size: 2em}
+.contatct-item p a{color:#d0021b;}
+.contatct-item p a:hover{color: #333; font-size: 15px;}
+.contatct-item { padding: 25px 0 10px 0; margin-bottom: 0; text-align: center }
+.footerbutton a { border: 1px dashed #d0021b; cursor: pointer; font-size: 14px; color: #3e3e3e; display: block; text-align: center; padding: 5px 0px; }
+.footerbutton a:hover { background-color: #d0021b; color: #fff; }
