@@ -117,10 +117,10 @@
                             <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
                             <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A;	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
                             </svg>
-                            <div class='pricing-price'><span class='pricing-currency'></span>Free
-                            
+                            <div class='pricing-price'><span class='pricing-currency'></span>
+                            Hello Wed Planner
                             </div>
-                            <h3 class='pricing-title'>Hello Wed Planner</h3>
+                            <h3 class='pricing-title'>Free</h3>
                         </div>
                         <ul class='pricing-feature-list'>
                             <li class='pricing-feature'>Online Support.</li>
@@ -133,7 +133,7 @@
                             <li class='pricing-feature'>Free Service</li>
                             <li class='pricing-feature'> Get accurate quotes </li>
                         </ul>
-                        <button class='pricing-action'>Choose plan</button>
+                        <button class='pricing-action'>Free</button>
                     </div>
 
                     <div class='pricing-item pricing__item--featured'>
@@ -144,10 +144,10 @@
                             <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
                             <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A;	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
                             </svg>
-                            <div class='pricing-price'><span class='pricing-currency'>₹</span>999 + 
-                            <span class='pricing-period'> Taxes</span>
+                            <div class='pricing-price'><span class='pricing-currency'></span> Assisted Wed Planner  
+                            <span class='pricing-period'> </span>
                             </div>
-                            <h3 class='pricing-title'>Enterprise</h3>
+                            <h3 class='pricing-title'>₹ 999 + Taxes</h3>
                         </div>
                         <ul class='pricing-feature-list'>
                             <li class='pricing-feature'>Online Support.</li>
@@ -161,7 +161,7 @@
                             <li class='pricing-feature'>Get accurate quotes </li>
                             <li class='pricing-feature'> One-time nominal fee starting @ ₹999 + Taxes </li>
                         </ul>
-                        <button class='pricing-action'>Choose plan</button>
+                      <a href="https://rzp.io/l/stBAenC" class='pricing-action' target="_blank">Pay Now</a>
                     </div>
 
                     <div class='pricing-item '>
@@ -172,10 +172,10 @@
                             <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
                             <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A;	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
                             </svg>
-                            <div class='pricing-price'><span class='pricing-currency'>₹</span>9999 +
-                            <span class='pricing-period'> Taxes</span>
+                            <div class='pricing-price'><span class='pricing-currency'></span>Premium Wed Planner
+                            <span class='pricing-period'></span>
                             </div>
-                            <h3 class='pricing-title'>Freelance</h3>
+                            <h3 class='pricing-title'>₹ 9999 + Taxes</h3>
                         </div>
                         <ul class='pricing-feature-list'>
                             <li class='pricing-feature'>Online Support</li>
@@ -192,7 +192,7 @@
                             <li class='pricing-feature'>One-time nominal fee starting @ ₹9999 + Taxes</li>
                             
                         </ul>
-                        <button class='pricing-action'>Choose plan</button>
+                        <a href="https://rzp.io/l/5L0fPSy" target="_blank" class='pricing-action'>Pay Now</a>
                     </div>
                 </div>
             </div>
