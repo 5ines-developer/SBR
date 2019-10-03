@@ -35,7 +35,7 @@
               <div class="card">
                 <div class="card-content">
                   <div class="form-container">
-                    <form action="<?php echo base_url() ?>vendors/insert" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
+                    <form action="<?php echo base_url() ?>vendors/insert" method="post"  id="vendor-form" enctype="multipart/form-data">
                       
                       <div class="row m0">
                         <div class="input-field col s6 l6">

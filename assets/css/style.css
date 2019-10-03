@@ -3406,3 +3406,6 @@ nav a.sidenav-trigger i {
     border-bottom: 1px solid #9e9e9e !important;
     width: 100%;
 }
+
+/* new changes */
+.select-dropdown{max-height: 300px}

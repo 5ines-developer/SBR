@@ -1508,9 +1508,12 @@ table tr .td-a {
     border-radius: 50%;
 }
 
-.card-content form {
-    overflow: hidden;
+.card-content form:after {
+    display: block;
+    content: "";
+    clear: both;
 }
+.select-dropdown{max-height: 320px}
 
 @media (max-width: 600px) {
     .profile-card {
