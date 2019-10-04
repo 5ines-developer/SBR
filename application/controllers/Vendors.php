@@ -232,23 +232,23 @@ class Vendors extends CI_Controller {
 
         
 
-        if (!empty($data['output'])  && !empty($vendors)) {
+        // if (!empty($data['output'])  && !empty($vendors)) {
 
-          $output1 = $this->send_user($data);
-          $output2 = $this->send_admin($data);
+          // $output1 = $this->send_user($data);
+          // $output2 = $this->send_admin($data);
           $output3 = $this->sms_vendor($data);
-          $output4 = $this->sms_user($data);
-            if (!empty($output1)  && !empty($output2)) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
-                redirect($url,'refresh');
-            } else {
-                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
-                redirect($url,'refresh');
-            }
-        }else{
-              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
-              redirect($url,'refresh');
-        } 
+          // $output4 = $this->sms_user($data);
+            // if (!empty($output1)  && !empty($output2)) {
+            //     $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
+            //     redirect($url,'refresh');
+            // } else {
+            //     $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+            //     redirect($url,'refresh');
+            // }
+        // }else{
+        //       $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+        //       redirect($url,'refresh');
+        // } 
   }
 
   public function sms_vendor($data = '')
@@ -256,10 +256,11 @@ class Vendors extends CI_Controller {
  
     
     // Account details
-      $apiKey = '8S0m34R7e/w-AiCcLwLyGzcOjYuqcZeUSg37L75c64';
+      $apiKey = '8S0m34R7e/w-pIGEre2EoIYBNS4z2Jz1Cl7eqxUUVw';
 
     // Message details
-      $numbers = $data['value']->phone;
+      // $numbers = $data['value']->phone;
+      $numbers = '8951411732';
       $sender = 'BARATI';
       $message = rawurlencode('Dear Vendor,
  
@@ -286,7 +287,8 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      return $response;
+      print_r($response);exit();
+      // return $response;
  
   }
 
@@ -294,10 +296,10 @@ class Vendors extends CI_Controller {
   {
  
     // Account details
-    $apiKey = '8S0m34R7e/w-AiCcLwLyGzcOjYuqcZeUSg37L75c64';
+    $apiKey = '8S0m34R7e/w-pIGEre2EoIYBNS4z2Jz1Cl7eqxUUVw';
     // Message details
-      $numbers = $data['result']['user_phone'];
-      // $numbers = '8951411732';
+      // $numbers = $data['result']['user_phone'];
+      $numbers = '8951411732';
       $sender = 'BARATI';
       $message = rawurlencode('Dear '.$data['result']['user_name'].'
  
@@ -324,9 +326,11 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      return $response;
+      print_r($response);exit();
+      // return $response;
  
   }
+
 
 
 

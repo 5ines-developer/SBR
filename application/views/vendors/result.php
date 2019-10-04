@@ -383,7 +383,7 @@ text-overflow: unset !important;
                             <div class="col s6 m4 l3" v-for="item in ">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>"
+                                        <a href="<?php echo base_url('detail/'.urlencode(str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category'))).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
                                                 <img
@@ -583,9 +583,9 @@ text-overflow: unset !important;
             var cat = categoryval.toLowerCase();
 
             if (city == '') {
-                var finalUrl = '<?php echo base_url()?>vendors/all/' + cat.replace(" ", "-", );
+                var finalUrl = '<?php echo base_url()?>vendors/all/' + encodeURI(cat.replace(" ", "-", ));
             } else {
-                var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat
+                var finalUrl = '<?php echo base_url()?>vendors/' + encodeURI(city.replace(" ", "-", )) + '/' + encodeURI(cat)
                     .replace(" ", "-", );
             }
             var url = finalUrl.replace(" ", "-", );

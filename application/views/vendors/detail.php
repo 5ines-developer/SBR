@@ -406,7 +406,7 @@ height: 98px;
 
                     <div class="clearfix"></div>
                     <!-- Servicess -->
-                    <?php if(!empty($value->service) || !empty($value->faq)){ ?>
+                    <?php if(!empty($value->service)){ ?>
                     <div id="">
                         <div class="card">
                             <div class="card-container">
@@ -433,6 +433,7 @@ height: 98px;
                                     <?php  } } ?>
 
                                     <div class="clearfix"></div>
+                                    <?php if (!empty($value->faq)) { ?>
 
                                     <div class="col s12">
                                         <div class="vs-info-container">
@@ -453,6 +454,7 @@ height: 98px;
                                             </transition>
                                         </div>
                                     </div>
+                                                    <?php }  ?>
                                 </div>
                             </div>
                         </div>
@@ -957,7 +959,7 @@ height: 98px;
                         <div class="col s6 m4 l3">
                             <div class="result-items hoverable">
                                 <div class="card z-depth-0">
-                                    <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.str_replace(" ","-",strtolower($simi->name)).'/'.$simi->uniq)?>"
+                                    <a href="<?php echo base_url('detail/'.urlencode(str_replace(" ","-",strtolower($simi->category))).'/'.urlencode(str_replace(" ","-",strtolower($simi->name))).'/'.$simi->uniq)?>"
                                         target="_blank">
                                         <div class="card-image">
                                             <img
