@@ -21,34 +21,7 @@ $this->load->model('m_vendors');
     .preloader{
         display:none;
     }
-    .preloader-wrapper.big {
 
-width: 30px;
-height: 30px;
-
-}
-    .previsible {
-
-        top: 110px;
-        text-align: center;
-        display:block;
-        position: absolute;
-        width: 100%;
-        height: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 9999;
-        cursor: pointer;
-        left: 12px;
-
-    }
-    .tit{
-    	white-space: nowrap !important;
-overflow: visible !important;
-text-overflow: unset !important;
-    }
-    .r-crd-price{
-        line-height: 22px;
-    }
     </style>
 </head>
 
@@ -379,15 +352,20 @@ text-overflow: unset !important;
 
 
                             <?php if (!empty($vendors)) {
-                                foreach ($vendors as $key => $value) { ?>
+                              
+                                $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
+                                foreach ($vendors as $key => $value) { 
+                                    $lable_class = strtolower(str_replace(' ', '-', $value->package));
+                                    
+                                ?>
                             <div class="col s6 m4 l3" v-for="item in ">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
                                         <a href="<?php echo base_url('detail/'.urlencode(str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category'))).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
-                                                <img
-                                                    src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:'' ?>">
+                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $value->package ?></span>
+                                                <img src="<?php echo (!empty($value->profile_file))? base_url().$value->profile_file:'' ?>">
                                             </div>
                                             <div class="card-content">
                                                 <div class="row m0">

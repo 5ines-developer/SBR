@@ -12,7 +12,13 @@ class M_search extends CI_Model {
         if (!empty($city) && $city !='All') { $this->db->where('cty.city', $city); }
         if (!empty($category) && $category !='all category') {$this->db->where('cat.category', $category); }
         $this->db->where('v.is_active', '1');
-        $this->db->select('v.name,v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
+        $this->db->select('v.name,v.package, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
+        // $this->db->select('v.package');
+        $this->db->protect_identifiers = FALSE;
+            $this->db->order_by('FIELD ( v.package, "Wed Elite", "Wed Leader", "Wed Assisted", "Wed Gold", "Wed Premium", "Wed Featured", "Free Listing", "")');
+        $this->db->protect_identifiers = TRUE;
+
+
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
         $this->db->join('category cat', 'cat.id = v.category', 'left');
@@ -23,6 +29,49 @@ class M_search extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    // sort data
+    public function sortresult($data = null)
+    {
+        // $sordatedata = 
+        $count = 0; $wedElite = array(); $wedLeader = array(); $wedAssisted = array(); $wedGold = array(); $wedPremium = array(); $wedFeatured = array();
+        foreach ($data as $key => $value) {
+            switch ($value->package) {
+                case 'Wed Elite':
+                    $wedElite[] = $value;
+                    break;
+
+                case 'Wed Leader':
+                    $wedLeader[] = $value;
+                    break;
+
+                case 'Wed Assisted':
+                    $wedAssisted[] = $value;
+                    break;
+
+                case 'Wed Gold':
+                    $wedGold[] = $value;
+                    break;
+
+                case 'Wed Premium':
+                    $wedPremium[] = $value;
+                    break;
+
+                case 'Wed Featured':
+                    $wedFeatured[] = $value;
+                    break;
+
+                default:
+                    $wedfree[] = $value;
+                    break;
+            }
+
+            $count += 1;
+        }
+        
+       return  $newArray = array_merge($wedElite, $wedLeader, $wedAssisted,  $wedGold,  $wedPremium, $wedFeatured,  $wedfree);
+
     }
 
     //get total rows count for pagination
