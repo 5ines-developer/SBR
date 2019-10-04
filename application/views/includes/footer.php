@@ -160,7 +160,7 @@
             </div>
         </div>
         <div class="coptext">
-            <p> © <?php echo date('Y'); ?> Shaadi baraati, All rights reserved. Developed by <a href="https://www.5ines.com/">5ine</a></p>
+            <p>© Shaadibaraati.com <?php echo date('Y'); ?>. All right reserved by Baraati Media & Entertainment Pvt Ltd   <a href="<?php echo base_url('terms-conditions') ?>">Terms & Conditions</a>  <a href="<?php echo base_url('privacy-policy') ?>" >Privacy Policy</a></p>
         </div>
     </section>
 
@@ -193,15 +193,10 @@ Please Fill The Correct Detail For Quotation !</h6>
       <div class="row m0">
       <div class="input-field col s6">
             <select required name="qservice">
-                <option value="" selected>service</option>
-                <option value="wedding venue">Wedding Venue</option>
-                <option value="wedding planner">Wedding Planner</option>
-                <option value="wedding catering">Wedding Catering</option>
-                <option value="Flower Decoration">Flower Decoration</option>
-                <option value="Photography">photography</option>
-                <option value="makeup artist">Makeup Artist</option>
-                <option value="balloon decorators">Balloon Decorators</option>
-                <option value="wedding band">Wedding Band</option>
+                <option value="" selected>Select Services</option>
+                <?php foreach (vendor_category() as $key => $cts) { ?>
+                    <option value="<?php echo $cts->category ?>"><?php echo $cts->category ?></option>
+                <?php } ?>
             </select>
         </div>
         <div class="input-field col s6">
@@ -212,18 +207,10 @@ Please Fill The Correct Detail For Quotation !</h6>
       <div class="row m0">
       <div class="input-field col s6">
       <select required name="qcity">
-                <option value="" selected>City</option>
-                <option value="bangalore">Bangalore</option>
-                <option value="hyderabad">Hyderabad</option>
-                <option value="chennai">Chennai</option>
-                <option value="delhi">Delhi</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="kolkata">Kolkata</option>
-                <option value="kerala">Kerala</option>
-                <option value="indore">Indore</option>
-                <option value="lucknow">Lucknow</option>
-                <option value="patna">Patna</option>
-                <option value="nagpur">Nagpur</option>
+                <option value="" selected>Select City</option>
+                <?php foreach (cities() as $key => $city) { ?>
+                    <option value="<?php echo $city->city ?>"><?php echo $city->city ?></option>
+                <?php } ?>
             </select>
         </div>
         <div class="input-field col s6">

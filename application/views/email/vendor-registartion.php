@@ -242,16 +242,45 @@
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-color:#EFEFEF;border-style:solid;border-width:0px;border-radius:3px;background-color:#FFFFFF;padding-bottom: 30px;padding-left: 30px;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff"> 
                     
                      <tr style="border-collapse:collapse;"> 
-                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Vendor Name</th> 
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['su_name']))?': &nbsp;'.$result['su_name']:''; ?></td> 
+                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Brand name</th> 
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['bname']))?': &nbsp;'.$result['bname']:''; ?></td> 
                      </tr> 
                      <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Email</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['su_email']))?': &nbsp;'.$result['su_email']:''; ?></td> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Contact Person</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['cperson']))?': &nbsp;'.$result['cperson']:''; ?></td> 
                      </tr> 
                      <tr style="border-collapse:collapse;"> 
                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Phone</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['su_phone']))?': &nbsp;'.$result['su_phone']:''; ?></td> 
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['phone']))?': &nbsp;'.$result['phone']:''; ?></td> 
+                     </tr> 
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Email</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['email']))?': &nbsp;'.$result['email']:''; ?></td> 
+                     </tr> 
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Service</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['servie']))?': &nbsp;'.$result['servie']:''; ?></td> 
+                     </tr> 
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">City</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['city']))?': &nbsp;'.$result['city']:''; ?></td> 
+                     </tr> 
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Web url</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['weburl']))?': &nbsp;'.$result['weburl']:''; ?></td> 
+                     </tr> 
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Pin Code</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['pin']))?': &nbsp;'.$result['pin']:''; ?></td> 
+                     </tr> 
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Address</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['address']))?': &nbsp;'.$result['address']:''; ?></td> 
+                     </tr> 
+
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Company Descrition</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['des']))?': &nbsp;'.$result['des']:''; ?></td> 
                      </tr> 
 
                    </table> </td> 

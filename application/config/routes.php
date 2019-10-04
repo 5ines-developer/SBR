@@ -121,7 +121,7 @@ $route['testimonial']   				= 'home/testimonial';
 
 //vendor register
 $route['vendor-register'] 		        = 'authentication/vendorRegister';
-$route['vendor-register/send'] 		        = 'authentication/vendorsend';
+$route['vendor-register/send'] 		    = 'authentication/vendorsend';
 
 
 

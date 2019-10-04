@@ -85,7 +85,7 @@ html {
     padding: 0px 10px;
 }
 
-.if-fill,
+.if-fill
 .select-dropdown.dropdown-trigger {
     border: none !important;
     padding: 0px 10px !important;
@@ -2817,58 +2817,18 @@ input:not([type]):focus {
 
 .wed-bottom img {
     height: 35px;
+    float: left;
 }
 
-.wed-bottom-inner {
-
-    width: calc(100% / 3);
-    text-align: center;
-    border: 1px dashed #d0021b;
-    margin-left: 1px;
-    padding: 5px 0;
-    transition: .3s;
-    background: #fff;
-    cursor: pointer;
-
-
-}
+.wed-bottom-inner { width: calc(100% / 3); border: 1px dashed #d0021b; padding: 5px 30px; transition: .3s; background: #fff; cursor: pointer; }
 .wed-bottom-inner:hover{transform: scale(1.05)}
-.wed-bottom-inner span {
-
-    color: #333;
-    font-size: 13px;
-    line-height: 13px;
-    font-weight: 600;
-
-}
-
-.wed-bottom-inner span {
-    width: 100%;
-    display: block;
-}
-
+.wed-bottom-inner span { color: #333; font-size: 13px; line-height: 35px; font-weight: 600; margin-left: 15px; }
+.wed-bottom-inner span {display: inline; }
 .bottom-button .b2,
-.bottom-button .b3 {
-    margin-left: 12px;
-}
-
-.bottom-button a {
-    border: 1px dashed #d0021b;
-    height: 47px;
-    padding: 8px 50px;
-    cursor: pointer;
-    font-size: 14px;
-    color: #3e3e3e;
-}
-
-.bottom-button a:hover {
-    background-color: #d0021b;
-    color: #fff;
-}
-
-.navbar-fixed {
-    height: 75px;
-}
+.bottom-button .b3 { margin-left: 12px; }
+.bottom-button a { border: 1px dashed #d0021b; height: 47px; padding: 8px 50px; cursor: pointer; font-size: 14px; color: #3e3e3e; }
+.bottom-button a:hover { background-color: #d0021b; color: #fff; }
+.navbar-fixed { height: 75px; }
 
 nav,
 nav .nav-wrapper i,
@@ -3419,10 +3379,10 @@ nav a.sidenav-trigger i {
     max-height: 100%;
 }
 
-.select-wrapper input.select-dropdown {
+/* .select-wrapper input.select-dropdown {
     border-bottom: 1px solid #9e9e9e !important;
     width: 100%;
-}
+} */
 
 /* new changes */
 .select-dropdown{max-height: 300px}
@@ -3434,3 +3394,7 @@ nav a.sidenav-trigger i {
 .contatct-item { padding: 25px 0 10px 0; margin-bottom: 0; text-align: center }
 .footerbutton a { border: 1px dashed #d0021b; cursor: pointer; font-size: 14px; color: #3e3e3e; display: block; text-align: center; padding: 5px 0px; }
 .footerbutton a:hover { background-color: #d0021b; color: #fff; }
+
+.vendor-register { padding-bottom: 140px;;background-image: url('../img/vend-reg.webp'); background-blend-mode: overlay; background-color: #00000082; background-size: cover; }
+.vendor-register  .banner-up h5{margin-bottom: 25px}
+.vend-reg-form { background: white; border: 1px solid #f0f0f0; padding: 20px 35px; margin-top: -100px; }

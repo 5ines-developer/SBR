@@ -362,23 +362,27 @@ class Authentication extends CI_Controller {
 
     public function vendorsend($var = null)
     {
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric',array('required'      => 'You have not provided %s.', 'numeric'       =>  'Invalid Phone number') );
-        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email', array('required'      => 'You have not provided %s.', 'is_unique'     => 'This %s already exists.') );
+        $this->form_validation->set_rules('bname', 'Brand name', 'required');
+        // $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric',array('required'      => 'You have not provided %s.', 'numeric'       =>  'Invalid Phone number') );
+        // $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email', array('required'      => 'You have not provided %s.', 'is_unique'     => 'This %s already exists.') );
         if ($this->form_validation->run() == false) {
         	$error = validation_errors();
             $this->session->set_flashdata('error', $error);
         	redirect('vendor-register','refresh');
         }else{
 
-            $name 		= $this->input->post('name');
-        	$phone 		= $this->input->post('phone');
-        	$email 		= $this->input->post('email');
-
-            $insert = array(
-        		'su_name' 		=> $name,
-        		'su_email' 		=> $email,
-        		'su_phone' 		=> $phone,
+                $email = 'shahirkm@5ine.in';
+                $insert = array(
+                    'bname'     => $this->input->post('bname'),
+                    'cperson'   => $this->input->post('cperson'),
+                    'email'     => $this->input->post('email'),
+                    'phone'     => $this->input->post('phone'),
+                    'weburl'    => $this->input->post('weburl'),
+                    'pin'       => $this->input->post('pin'),
+                    'address'   => $this->input->post('address'),
+                    'des'       => $this->input->post('des'),
+                    'city'      => $this->input->post('city'),
+                    'servie'    => $this->input->post('service'),
                  );
 
                  $this->load->config('email');
@@ -391,16 +395,16 @@ class Authentication extends CI_Controller {
                  $this->email->to($email);
                  $this->email->subject('Vendor registartion'); 
                  $this->email->message($msg);
-                  if($this->email->send())  
-                 {
-                    $this->session->set_flashdata('success', 'Your request has been successfully submitted to our team, our team get back to you soon!');
-                    redirect('vendor-register','refresh');
-                 } 
-                 else
-                 {
-                    $this->session->set_flashdata('error', 'Something went wromg please try again later!');
-                    redirect('vendor-register','refresh');
-                 }
+                if($this->email->send())  
+                {
+                   $this->session->set_flashdata('success', 'Your request has been successfully submitted to our team, our team get back to you soon!');
+                   redirect('vendor-register','refresh');
+                } 
+                else
+                {
+                   $this->session->set_flashdata('error', 'Something went wromg please try again later!');
+                   redirect('vendor-register','refresh');
+                }
 
 
         }

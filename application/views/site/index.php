@@ -567,7 +567,7 @@
                     </a>
                 </div>
             </div>
-            <center><button class="btn-cate">View All </button></center>
+            <center><a class="btn-cate" href="<?php echo base_url() ?>blog">View All </a></center>
         </div>
     </section>
 
