@@ -188,7 +188,23 @@ max-height: 95px;
                                                 <label for="phone">Phone No.<span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('phone'); ?></span></p>
                                             </div>
+
                                             <div class="input-field col s12 l6">
+                                              <select name="package" required>
+                                                <option <?php echo ($result->package == 'Wed Elite') ?"selected":''; ?> value="Wed Elite" >Wed Elite</option>
+                                                <option <?php echo ($result->package == 'Wed Leader') ?"selected":''; ?> value="Wed Leader">Wed Leader</option>
+                                                <option <?php echo ($result->package == 'Wed Assisted') ?"selected":''; ?> value="Wed Assisted">Wed Assisted</option>
+                                                <option <?php echo ($result->package == 'Wed Gold') ?"selected":''; ?> value="Wed Gold">Wed Gold</option>
+                                                <option <?php echo ($result->package == 'Wed Premium') ?"selected":''; ?> value="Wed Premium">Wed Premium</option>
+                                                <option <?php echo ($result->package == 'Wed Featured') ?"selected":''; ?> value="Wed Featured">Wed Featured</option>
+                                                <option <?php echo ($result->package == 'Free Listing') ?"selected":''; ?> value="Free Listing">Free Listing</option>
+                                              </select>
+                                              <label>Packages</label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row m0">
+                                        <div class="input-field col s12 l6">
                                                 <input type="text" id="price" name="price" class="validate" required
                                                     value="<?php echo (!empty($result->price)?$result->price:'') ?>">
                                                 <label for="price">Starting Price <span
@@ -201,8 +217,6 @@ max-height: 95px;
                                                     value="<?php echo (!empty($result->uniq)?$result->uniq:random_string('alnum',10)) ?>"
                                                     name="uniq">
                                             </div>
-                                        </div>
-                                        <div class="row m0">
                                         <div class="input-field col s12 l6">
                                                 <input type="text" id="price_for" name="price_for" class="validate" required
                                                     value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
@@ -210,20 +224,7 @@ max-height: 95px;
                                                         class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
                                                 </div>
-                                            <div class="file-field input-field col s12 l6">
-                                                <div class="btn btn-small black-text grey lighten-3">
-                                                    <i class="far fa-image left  "></i>
-                                                    <span class="">Profile Image</span>
-                                                    <input type="file" name="vimage" accept=".png, .jpg, .jpeg, .gif"
-                                                        <?php echo (!empty($result)?'':'required') ?>>
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text">
-                                                </div>
-                                                <span class="helper-text"><b>Note</b>: Please select only image file
-                                                    (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
-                                                        size:</span> 512kb <span class="red-text">*</span></span>
-                                            </div>
+                                            
                                             
                                         </div>
                                         <div class="row m0">
@@ -237,6 +238,28 @@ max-height: 95px;
                                                 <label>City</label>
                                                 <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                             </div>
+                                        </div>
+                                        <div class="row m0">
+                                            <div class="file-field input-field col s12 l12">
+                                                <div class="btn btn-small black-text grey lighten-3">
+                                                    <i class="far fa-image left  "></i>
+                                                    <span class="">Profile Image</span>
+                                                    <input type="file" name="vimage" accept=".png, .jpg, .jpeg, .gif"
+                                                        <?php echo (!empty($result)?'':'required') ?>>
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text">
+                                                </div>
+                                                <span class="helper-text"><b>Note</b>: Please select only image file
+                                                    (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
+                                                        size:</span> 512kb <span class="red-text">*</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="row m0">
+                                          <div class="input-field col s12 ">
+                                            <textarea id="textarea1" name="address" class="materialize-textarea"><?php echo (!empty($result->address)?$result->address:'') ?></textarea>
+                                            <label for="textarea1">Address</label>
+                                          </div>
                                         </div>
                                         <div class="col s12">
                                             <?php

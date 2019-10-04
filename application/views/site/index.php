@@ -31,8 +31,7 @@
                                                 <option value="" selected>City</option>
                                                 <?php if (!empty($city)) {
                                                     foreach ($city as $citys => $cities) { ?>
-                                                <option value="<?php echo $cities->city ?>">
-                                                    <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
+                                                <option value="<?php echo $cities->city ?>"> <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                                 <?php   } } ?>
                                             </select>
                                         </div>
@@ -43,9 +42,7 @@
                                                 <option value="" selected>Category</option>
                                                 <?php if (!empty($category)) {
                                                     foreach ($category as $categorys => $categories) { ?>
-                                                <option value="<?php echo $categories->category ?>">
-                                                    <?php echo (!empty($categories->category))?$categories->category:''; ?>
-                                                </option>
+                                                <option value="<?php echo $categories->category ?>"> <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                                 <?php   } } ?>
                                             </select>
                                         </div>

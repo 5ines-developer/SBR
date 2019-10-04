@@ -116,7 +116,9 @@ class Vendors extends CI_Controller {
         	'uniq'			=> 	$uniq,
             'city'          =>  $city,
             'price'			=> 	$price,
-            'price_for'     =>  $price_for
+            'price_for'     =>  $price_for,
+            'package'       =>  $this->input->post('package'),
+            'address'       =>  $this->input->post('address'),
         );
 
         if (file_exists($_FILES['vimage']['tmp_name'])) {
