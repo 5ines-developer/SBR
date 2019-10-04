@@ -337,7 +337,7 @@ class M_vendors extends CI_Model {
     }
 
 	// faq get
-	public function faqget($id)
+	public function vendor_faq($id)
 	{
 		return $this->db->where('vendor_id',$id )->order_by('id', 'asc')->get('vendor_faq')->result();
 		
@@ -392,6 +392,15 @@ class M_vendors extends CI_Model {
 	{
 		return $this->db->where('vendor_id', $id)->get('vendor_offer')->row_array();
 	}
+
+	public function get_faq($id = null)
+	{
+		$uqid = $this->db->select('uniq')->where('id',$id)->get('category')->row();
+		
+		return $this->db->where('category_id', $uqid->uniq)->get('faq')->result();
+	}
+
+	
 
 	
 

@@ -543,39 +543,20 @@ max-height: 95px;
                                     <div class="row m0">
                                             <p class="bold  black-text col  mb10 h6">FAQ's</p>
                                     </div>
-                                    <div class="hide">
-                                        <div class="row m0 faqform" id="faqform">
-                                            <div class="col s12 m8 input-field">
-                                                <textarea name="quation[]" class="materialize-textarea"></textarea>
-                                                <label for="textarea1">Question</label>
-                                            </div>
-                                            <div class="col s12 m8 input-field">
-                                                <textarea name="asw[]" class="materialize-textarea"></textarea>
-                                                <label for="textarea1">Answers</label>
-                                            </div>
-                                            <div class="col s12 m4">
-                                                <button class="btn blue addfaq waves-effect waves-light hoverable" type="button">Add  <i class="material-icons right">add</i></button>
-                                                <button class="btn red closefaq waves-effect waves-light hoverable"  type="button">Close  <i class="material-icons right">close</i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <form action="<?php echo base_url() ?>vendors/faq_insert" method="post" id="">
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         
-                                        <?php foreach ($faq as $key => $faaqval) { ?>
+                                        <?php foreach ($vendor_faq as $vendor_faq => $faaqval) { 
+                                        ?>
                                             <div class="row m0 faqform" id="faqform">
                                                 <div class="col s12 m8 input-field">
-                                                    <textarea name="quation[]" class="materialize-textarea"><?php echo $faaqval->quotation  ?></textarea>
+                                                    <textarea readonly name="quation[]" class="materialize-textarea"><?php echo $faaqval->question  ?></textarea>
                                                     <label for="textarea1">Question</label>
                                                 </div>
+                                                <input type="text" id="fa_id" name="fa_id[]" class="validate" value="<?php echo (!empty($faaqval->id)?$faaqval->id:'') ?>" >
                                                 <div class="col s12 m8 input-field">
-                                                    <textarea name="asw[]" class="materialize-textarea"><?php echo $faaqval->asw  ?></textarea>
+                                                    <textarea name="asw[]" class="materialize-textarea"><?php echo $faaqval->answer  ?></textarea>
                                                     <label for="textarea1">Answers</label>
-                                                </div>
-                                                <div class="col s12 m4">
-                                                    <button class="btn blue addfaq waves-effect waves-light hoverable" type="button">Add  <i class="material-icons right">add</i></button>
-                                                    <button class="btn red closefaq waves-effect waves-light hoverable"  type="button">Close  <i class="material-icons right">close</i></button>
                                                 </div>
                                             </div>
                                         

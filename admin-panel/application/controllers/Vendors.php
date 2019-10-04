@@ -61,8 +61,7 @@ class Vendors extends CI_Controller {
                 // $config['maintain_ratio'] = true;
                 // $config['height'] = 250;
 
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
+                // $this->image_lib->resize();
 
                 $file_name = $upload_data['file_name'];
                 $imgpath = 'vendors-profile/'.$file_name;
@@ -81,8 +80,7 @@ class Vendors extends CI_Controller {
                 $config['wm_hor_alignment'] = 'center';
 
                 
-                
-
+                $this->load->library('image_lib', $config);
                 $this->image_lib->initialize($config);
                 if (!$this->image_lib->watermark()) {
                     $response['wm_errors'] = $this->image_lib->display_errors();
@@ -207,7 +205,8 @@ class Vendors extends CI_Controller {
         $data['city']       = $this->m_vendors->get_city();
         $data['service']    = $this->m_vendors->get_service($data['result']->category);
         $data['vendor_info']= $this->m_vendors->vendor_info($id);
-        $data['faq']        = $this->m_vendors->faqget($id);
+        $data['faq']        = $this->m_vendors->vendor_faq($id);
+        $data['vendor_faq'] = $this->m_vendors->get_faq($data['result']->category);
         $data['port']       = $this->m_vendors->get_portfolio($id);
         $data['video']      = $this->m_vendors->get_video($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
@@ -497,6 +496,8 @@ class Vendors extends CI_Controller {
         $ans = $this->input->post('asw');
         $posts = $this->input->post();
         $id =  $this->input->post('id');
+        $fa_id =  $this->input->post('fa_id');
+
         $this->m_vendors->delfaq($id);
         foreach ($ans as $key => $value) {
             if(!empty($ans[$key]) && !empty($qtn[$key])){
@@ -504,6 +505,7 @@ class Vendors extends CI_Controller {
                     'quotation' => $qtn[$key], 
                     'asw' => $ans[$key],
                     'vendor_id' => $id,
+                    'fq_id' => $fa_id[$key]
                 );
 
                 $this->m_vendors->faq_insert($data);
