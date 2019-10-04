@@ -1764,3 +1764,15 @@ table tr .td-a {
     width: 100px;
     height: 100px;
 }
+
+#marqueeplus1 {
+    background-color: #1b5e20;
+    padding: 4px 7px;
+    color: #fff;
+    cursor: pointer;
+}
+.marqaddnext1 {
+    background-color: #f4f4f4;
+    border-radius: 4px;
+}
+

@@ -187,6 +187,9 @@ class Category extends CI_Controller {
                  }
             }
         }
+
+        $this->faq($this->input->post('quest'),$this->input->post('answ'),$this->input->post('category_id'));
+
 			if(!empty($output) && !empty($output1) )
 			{
 				$this->session->set_flashdata('success', 'category Added Successfully');
@@ -195,6 +198,17 @@ class Category extends CI_Controller {
 				$this->session->set_flashdata('error', 'Something went wrong please try again!');
 				redirect('category/add','refresh');
 			}
+        }
+
+        public function faq($question = '',$answer='',$id='')
+        {
+            
+            $this->m_category->deleteFaq($id);
+            for ($i=0; $i <count($question) ; $i++) { 
+                $this->m_category->faq($question[$i],$answer[$i],$id);
+            }
+            return  true;
+            
         }
         
 
@@ -250,6 +264,7 @@ class Category extends CI_Controller {
     {
         $data['result']  = $this->m_category->single_category($id);
         $data['service'] = $this->m_category->getInfo($data['result']->uniq);
+        $data['faq'] = $this->m_category->getfaq($data['result']->uniq);
         $data['title']   = $data['result']->category.' - Shaadibaraati';
         $this->load->view('category/edit-category', $data, FALSE);
     }
@@ -425,7 +440,9 @@ class Category extends CI_Controller {
             }
         }
 
-        if(!empty($output) || !empty($output1) )
+        $output2 = $this->faq($this->input->post('quest'),$this->input->post('answ'),$this->input->post('cat_uniq'));
+
+        if(!empty($output) || !empty($output1) || !empty($output2) )
 			{
 				$this->session->set_flashdata('success', 'Category Updated Successfully');
 				redirect('category/manage','refresh');
@@ -433,9 +450,17 @@ class Category extends CI_Controller {
 				$this->session->set_flashdata('error', 'Something went wrong please try again!');
 				redirect('category/edit/'.$id,'refresh');
 			}
-		}
+        }
 
 
+
+        public function delfaq($id = null)
+        {
+            $id = $this->input->get('id');
+            $output = $this->m_category->delfaq($id);
+            echo $output;
+            
+        }
 
 
 

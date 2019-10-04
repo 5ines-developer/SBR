@@ -25,7 +25,6 @@
     .marqaddnext {
 
 background-color: #f4f4f4;
-margin-bottom: 10px !important;
 border-radius: 4px;}
     </style>
 </head>
@@ -237,6 +236,54 @@ border-radius: 4px;}
                                                 <div class="col l2">
                                                     <a id="marqueeplus" class="marqueeplus "><i class="fa fa-plus" aria-hidden="true"></i> </a>
                                                 </div>
+                                            </div><br><br>
+
+
+
+                                            <div class="row m0">
+                                                <p class="bold  black-text col  mb10 h6">FAQ's</p>
+                                            </div>
+
+
+                                            <?php if (!empty($faq)) {
+                                               foreach ($faq as $key1 => $value1) { ?>
+
+                                        <div class="row m0 marqaddnext">
+                                            <div class="input-field col s12 l5">                                                
+                                                <input type="text" id="quest" name="quest[]" class="validate"
+                                                    value="<?php echo (!empty($value1->question)?$value1->question:'') ?>" >
+                                                <label for="quest">Question <span class="red-text">*</span></label>
+                                                <p><span class="error"><?php echo form_error('quest'); ?></span></p>
+                                            </div>
+                                            <div class="input-field col s12 l5">                                                
+                                                <input type="text" id="answ" name="answ[]" class="validate"
+                                                    value="<?php echo (!empty($value1->answer)?$value1->answer:'') ?>" >
+                                                <label for="answ">Answer <span class="red-text">*</span></label>
+                                                <p><span class="error"><?php echo form_error('answ'); ?></span></p>
+                                            </div><br>
+                                            <div class="col l2">
+                                            <a id="marqueeplus1" class="marqueeplus1 remov" value="<?php echo $value1->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                        <?php  } } ?>
+
+                                            <div class="row m0 marqaddnext" id="marqaddnext1">
+                                                <div class="input-field col s12 l5">
+                                                  <input type="text" id="quest" name="quest[]" class="validate" required value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
+                                                  <label for="quest">Question <span class="red-text">*</span></label>
+                                                  <p><span class="error"><?php echo form_error('quest'); ?></span></p>
+                                                </div>
+                                                <div class="input-field col s12 l5">
+                                                  <input type="text" id="answ" name="answ[]" class="validate" value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
+                                                  <label for="answ">Answer </label>
+                                                  <p><span class="error"><?php echo form_error('answ'); ?></span></p>
+                                                </div><br>
+                                                <div class="col l2">
+                                                    <a id="marqueeplus1" class="marqueeplus1"><i class="fa fa-plus" aria-hidden="true"></i> </a>
+                                                </div>
                                             </div>
 
 
@@ -315,6 +362,20 @@ border-radius: 4px;}
                 $(this).closest('div.row').remove();
             });
         });
+
+        $(function() {
+            $('#marqueeplus1').on('click', function(e) {
+                e.preventDefault();
+                $('<div class="row m0 marqaddnext1"> <div class="input-field col s12 l5"> <input type="text" id="quest" name="quest[]" class="validate" required > <label for="quest">Question <span class="red-text">*</span></label> <p> <span class="error"><?php echo form_error('quest'); ?></span></p> </div> <div class="input-field col s12 l5"> <input type="text" id="answ" name="answ[]" class="validate" value="<?php echo (!empty($setting)?$setting['name']:'') ?>"> <label for="answ">Answer </label> <p><span class="error"><?php echo form_error('answ'); ?></span></p> </div><br> <div class="col l2"> <a id="brandplus" class="marqueeplus1 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
+                    .append().insertBefore('#marqaddnext1');
+
+            });
+            $(document).on('click', '.marqueeplus1.remov', function(e) {
+                e.preventDefault();
+                $(this).closest('div.row').remove();
+            });
+        });
+
     });
     </script>
 
@@ -329,6 +390,30 @@ $(document).ready(function() {
         } else {
             $.ajax({
                 url: "<?php echo base_url();?>category/deleteInfo",
+                type: "get",
+                data: {
+                    "id": id,
+                },
+                success: function(data) {
+                    if (!empty(data)) {
+                        alert('ok');
+                    } else {
+                        alert('not ok')
+                    }
+                }
+            });
+        }
+
+    });
+
+        $('.marqueeplus1.remov').on('click', function(e) {
+        e.preventDefault();
+        var id = $(this).attr('value');
+        if (!confirm("Are you sure you want to delete this item?")) {
+            return false;
+        } else {
+            $.ajax({
+                url: "<?php echo base_url();?>category/delfaq",
                 type: "get",
                 data: {
                     "id": id,

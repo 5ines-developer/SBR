@@ -103,6 +103,11 @@ class M_category extends CI_Model {
 	
 	}
 
+	public function getfaq($id = null)
+	{
+		return $this->db->where('category_id', $id)->get('faq', 6)->result();
+	}
+
 	public function deleteInfo($id = null)
 	{
 		$this->db->where('id', $id);
@@ -113,6 +118,34 @@ class M_category extends CI_Model {
 			return false;
 		}
 	
+	}
+
+	public function faq($question='',$answer='',$id='')
+	{
+		return $this->db->insert('faq', array('question'=>$question,'answer'=>$answer,'category_id'=>$id));
+	}
+
+	public function deleteFaq($id = null)
+	{
+		$this->db->where('category_id', $id);
+		$this->db->delete('faq');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	public function delfaq($id = null)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('faq');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 
 	

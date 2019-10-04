@@ -28,6 +28,8 @@ $(document).ready(function(){
       $("#dropdown4").css({'display':'block'});
     });
 
+    $('.collapsible').collapsible();
+
   
 
 });
