@@ -226,7 +226,7 @@ class Home extends CI_Controller {
         );
 
         if($this->m_home->testimonial_post($data)){
-            $this->session->set_flashdata('success', 'Your feedback has been submitted.');
+            $this->session->set_flashdata('success', 'Your testimonial has been submitted.');
             redirect('testimonial','refresh');
             
         }else{
@@ -235,9 +235,29 @@ class Home extends CI_Controller {
         }
         
     }
+    
 
-
-
+    public function feedback_post($var = null)
+    {
+        $data = array(
+            'fname'     => $this->input->post('fname', true), 
+            'lname'     => $this->input->post('lname', true), 
+            'email'     => $this->input->post('email', true), 
+            'phone'     => $this->input->post('phone', true), 
+            'rating'    => $this->input->post('rate', true),
+            'feedback'  => $this->input->post('feedback', true), 
+        );
+           
+        if($this->m_home->feedback_post($data)){
+            $this->session->set_flashdata('success', 'Your feedback has been submitted.');
+            redirect('feedback');
+            
+        }else{
+            $this->session->set_flashdata('error', 'Server Error, please try again later.');
+            redirect('feedback');
+        }
+        
+    }
 
 }
 

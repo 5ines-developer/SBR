@@ -27,22 +27,23 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <div class="col l12">
-                            <div class="feedback-form">
+                        <div class="col l10 push-l1">
+                            <div class="feedback-form z-depth-2">
                                 <h4>Give Us Your Feedback</h4>
                                 <div class="form-feed-list">
-                                    <form action="">
+                                    <form action="<?php echo base_url('feedback-post') ?>" method="post">
                                         <div class="row">
                                         <div class="col l12 m12 s12">
                                                 <div class="feedback-input padd10">
                                                 <div class="left">Rate us : </div>
                                                  <star-rating v-model="ar" :star-size="20" class="feed-star"></star-rating>
+                                                 <input type="hidden" name="rate" :value="ar">
                                                 </div>
                                             </div>
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <input id="fn" type="text" class="validate" required="">
+                                                        <input id="fn" type="text" name="fname" class="validate" required="">
                                                         <label for="fn">First Name</label>
                                                     </div>
                                                 </div>
@@ -50,7 +51,7 @@
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <input id="ln" type="text" class="validate" required="">
+                                                        <input id="ln" name="lname" type="text" class="validate" required="">
                                                         <label for="ln">Last Name</label>
                                                     </div>
                                                 </div>
@@ -58,7 +59,7 @@
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <input id="email" type="text" class="validate" required="">
+                                                        <input id="email" name="email" type="text" class="validate" required="">
                                                         <label for="email">Email</label>
                                                     </div>
                                                 </div>
@@ -66,7 +67,7 @@
                                              <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <input id="phone" type="text" class="validate" required="">
+                                                        <input id="phone" name="phone" type="text" class="validate" required="">
                                                         <label for="phone">Phone</label>
                                                     </div>
                                                 </div>
@@ -74,7 +75,7 @@
                                             <div class="col l12 m12 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <textarea id="textarea1" class="materialize-textarea hh-height" ></textarea>
+                                                        <textarea id="textarea1" name="feedback" requred class="materialize-textarea hh-height" ></textarea>
                                                         <label for="textarea1">Write your feedback here</label>
                                                     </div>
                                                 </div>
@@ -114,43 +115,17 @@
     var app = new Vue({
         el: '#app',
         data: {
-            isShow: true,
-            visible: false,
-            favcol: false,
-            vndr_id: '',
             rev_rating: '',
             ar: '1',
-            imgs: [],
             email: '',
             emailError: '',
-            count: '',
-            reviewcount: 3,
-            videocount: 3,
-            useriview: {
-                professionalism: false,
-                qualityofWork: false,
-                onTimeService: false,
-                valueOfMoney: false,
-                highlyExperiencw: false,
-                review: '',
-            },
+           
         },
 
 
 
         methods: {
 
-            editRating() {
-
-                this.useriview.professionalism = '<?php echo  (!empty($proffesional))?'1':''?>';
-                this.useriview.qualityofWork = '<?php echo   (!empty($quality)) ? ' 1 ' : ' ' ?>';
-                this.useriview.onTimeService = '<?php echo   (!empty($service)) ? ' 1 ' : ' ' ?>';
-                this.useriview.valueOfMoney = '<?php echo   (!empty($money)) ? ' 1 ' : ' ' ?>';
-                this.useriview.highlyExperiencw = '<?php echo   (!empty($experience)) ? ' ' : ' ' ?>';
-                this.useriview.review = '<?php echo  (!empty($usreview))?$usreview:' '; ?>';
-                this.ar = '<?php echo  (!empty($ustrate))?$ustrate:' '; ?>';
-                this.$refs.tsarea.focus()
-            },
             // email check on database
             emailCheck() {
                 this.emailError = '';
@@ -173,17 +148,10 @@
             checkForm() {
                 if (this.emailError == '') {
 
-
                     this.$refs.form.submit()
-                } else {}
+                } 
             },
-            showImg(index) {
-                this.index = index
-                this.visible = true
-            },
-            handleHide() {
-                this.visible = false
-            },
+            
             // rating
             setRating: function(rating) {
                 this.rating = "You have Selected: " + rating + " stars";

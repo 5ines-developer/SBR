@@ -99,7 +99,7 @@ class M_home extends CI_Model
         }
     }
 
-    // post feed back
+    // post testimonial
     public function testimonial_post($data)
     {
         $this->db->insert('feedback', $data);
@@ -110,10 +110,21 @@ class M_home extends CI_Model
         }     
     }
 
-    // get feedback
+    // get testimonial
     public function getTestimonial()
     {
         return $this->db->where('status', '1')->get('feedback')->result();
+    }
+
+    // add feedback
+    public function feedback_post($data)
+    {
+        $this->db->insert('user_feedback', $data);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }     
     }
 }
 

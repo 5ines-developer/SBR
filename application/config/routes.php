@@ -119,6 +119,10 @@ $route['wed-assistance']   				= 'home/wed_assistance';
 $route['feedback']   				    = 'home/feedback';
 $route['testimonial']   				= 'home/testimonial';
 $route['testimonial-post']              = 'home/testimonial_post';
+$route['feedback-post']                 = 'home/feedback_post';
+
+
+
 
 //vendor register
 $route['vendor-register'] 		        = 'authentication/vendorRegister';
