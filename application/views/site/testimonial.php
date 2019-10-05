@@ -128,7 +128,7 @@
                                             <div class="col l12 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <textarea id="textarea1" name="feedback" class="materialize-textarea " ></textarea>
+                                                        <textarea required id="textarea1" name="feedback" class="materialize-textarea " ></textarea>
                                                         <label for="textarea1">Write your feedback here</label>
                                                     </div>
                                                 </div>
@@ -147,31 +147,13 @@
                     <div class="row">
                         <div class="col l12 m12 s12">
                             <div class="testimonial-full">
-                                <div class="tes-reviews">
-                                    <h5>Mrs.Bhardwaj</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor </p>
-                                    <p>Rate Our Services : <span style="color:red;">Excellent</span></p>
-                                </div>
-                                <div class="tes-reviews">
-                                    <h5>Mrs.Bhardwaj</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor </p>
-                                    <p>Rate Our Services : <span style="color:red;">Excellent</span></p>
-                                </div>
-                                <div class="tes-reviews">
-                                    <h5>Mrs.Bhardwaj</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor </p>
-                                    <p>Rate Our Services : <span style="color:red;">Excellent</span></p>
-                                </div>
-                                <div class="tes-reviews">
-                                    <h5>Mrs.Bhardwaj</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor </p>
-                                    <p>Rate Our Services : <span style="color:red;">Excellent</span></p>
-                                </div>
-                                <div class="tes-reviews">
-                                    <h5>Mrs.Bhardwaj</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor </p>
-                                    <p>Rate Our Services : <span style="color:red;">Excellent</span></p>
-                                </div>
+                                <?php foreach ($result as $key => $value) { ?>
+                                    <div class="tes-reviews">
+                                        <h5><?php echo $value->fname .' '. $value->lname ?></h5>
+                                        <p><?php echo $value->feedback ?></p>
+                                        <p>Rate Our Services : <span style="color:red;"><?php echo $value->service ?></span></p>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

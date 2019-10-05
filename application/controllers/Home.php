@@ -155,6 +155,7 @@ class Home extends CI_Controller {
     public function testimonial()
     {
         $data['title']  = 'ShaadiBaraati | Testimonial';
+        $data['result'] = $this->m_home->getTestimonial();
         $this->load->view('site/testimonial',$data);
     }
     

@@ -107,11 +107,14 @@ class M_home extends CI_Model
             return true;
         }else{
             return false;
-        }
-        
-        
+        }     
     }
 
+    // get feedback
+    public function getTestimonial()
+    {
+        return $this->db->where('status', '1')->get('feedback')->result();
+    }
 }
 
 /* End of file ModelName.php */
