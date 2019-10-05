@@ -260,7 +260,7 @@ height: 98px;
                                             <ul>
                                                 <li>
                                                     <span class="bbx-name">Starting Price</span>
-                                                    <span class="bbx-rate">- &#8377; <?php
+                                                    <span class="bbx-rate">-  <?php
                                                     $amount = (!empty($value->price))?$value->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
@@ -282,7 +282,7 @@ height: 98px;
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo (!empty($thecash))?'&#8377;'.$thecash:'';  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
+                                                    echo (!empty($thecash))?'&#8377; '.$thecash:'';  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
                                                 </li>
                                             </ul>
 
