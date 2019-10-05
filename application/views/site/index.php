@@ -514,51 +514,21 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col l4 m4 s12">
-                    <a href="">
-                        <div class="blog-detail">
-                            <img src="<?php echo base_url() ?>assets/img/vender/wp6.jpg" alt=""
+            
+            <div class="row" id="blog">
+            
+                <div class="col l4 m4 s12" v-for="item in datas">
+               
+                    <a :href="item.link" class="">
+                        <div class="blog-detail hoverable">
+                            <div class="blog-img-box">
+                                <img :src="item.better_featured_image.media_details.sizes.medium.source_url" alt=""
                                 class="img-responsive blog-img">
-                            <div class="blog-li">
-                                <h6 class="black-text">15 BRILLIANT WEDDING</h6>
-                                <P class="date-blog cr">3 JUN 2018</P>
-                                <P class="black-text">Aenean commodo ligula eget dolor. Aenean natoque penatibus et
-                                    magnis
-                                    dis parturient montesmassa. Cum sociis natoque penatibus et magnis
-                                    dis parturient montes, nascetur ridiculus mus. </P>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col l4 m4 s12">
-                    <a href="">
-                        <div class="blog-detail">
-                            <img src="<?php echo base_url() ?>assets/img/vender/wp3.jpg" alt=""
-                                class="img-responsive blog-img">
+                            
                             <div class="blog-li">
-                                <h6 class="black-text">15 BRILLIANT WEDDING</h6>
-                                <P class="date-blog cr">3 JUN 2018</P>
-                                <P class="black-text">Aenean commodo ligula eget dolor. Aenean natoque penatibus et
-                                    magnis
-                                    dis parturient montesmassa. Cum sociis natoque penatibus et magnis
-                                    dis parturient montes, nascetur ridiculus mus. </P>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col l4 m4 s12">
-                    <a href="">
-                        <div class="blog-detail">
-                            <img src="<?php echo base_url() ?>assets/img/vender/wp.jpg" alt=""
-                                class="img-responsive blog-img">
-                            <div class="blog-li">
-                                <h6 class="black-text">15 BRILLIANT WEDDING</h6>
-                                <P class="date-blog cr">3 JUN 2018</P>
-                                <P class="black-text">Aenean commodo ligula eget dolor. Aenean natoque penatibus et
-                                    magnis
-                                    dis parturient montesmassa. Cum sociis natoque penatibus et magnis
-                                    dis parturient montes, nascetur ridiculus mus. </P>
+                                <h6 class="black-text truncate">{{item.title.rendered}}</h6>
+                                <P class="black-text" v-html="item.excerpt.rendered"></P>
                             </div>
                         </div>
                     </a>
@@ -586,138 +556,143 @@
     <script>
     
 
-    // top-cities
-    $('.top-citys').slick({
-        slidesToShow: 5,
-        slidesToScroll: 5,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        arrows: false,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
+        // top-cities
+        $('.top-citys').slick({
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: false,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        dots: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        dots: false,
+                    }
                 }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    dots: false,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    dots: false,
-                }
-            }
-        ]
-    });
-    // testimonial
-    $('.testimonial-wedd').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        nextArrow: '<span class="next"><i class="Tiny material-icons ll">chevron_left</i></span>',
-        prevArrow: '<span class="prev"><i class="Tiny material-icons rr">chevron_right</i></span>',
-        arrows: true,
-    });
+            ]
+        });
+        // testimonial
+        $('.testimonial-wedd').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            nextArrow: '<span class="next"><i class="Tiny material-icons ll">chevron_left</i></span>',
+            prevArrow: '<span class="prev"><i class="Tiny material-icons rr">chevron_right</i></span>',
+            arrows: true,
+        });
 
-    // wed assistence 
-    $('.h-wed-slider').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll:1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        arrows: false,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
+        // wed assistence 
+        $('.h-wed-slider').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll:1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            arrows: false,
+            dots: true,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        dots: false,
+                    }
                 }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: false,
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: false,
-                }
-            }
-        ]
-        
-    });
+            ]
+            
+        });
 
-    // real-wedding
-    $('.wedding-list').slick({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 3,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        nextArrow: false,
-        prevArrow: false,
-        dots: false,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
+        // real-wedding
+        $('.wedding-list').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            nextArrow: false,
+            prevArrow: false,
+            dots: false,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
                 }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+            ]
 
-    });
+        });
     </script>
     <script>
+
+   
+
+
     var demo = new Vue({
         el: '#demo',
         data: {
             email: '',
-            emailError: '',
+            emailError: '', 
            
         },
+       
 
         methods: {
-            // mobile number check on database
+            
             // email check on database
             emailCheck() {
                 this.emailError = '';
@@ -746,6 +721,27 @@
             }
         },
     });
+
+    var blog = new Vue({
+        el : '#blog',
+        data:{
+            datas: '',
+        },
+        mounted(){
+            this.blogFetch()
+        },
+        methods: {
+            // blog fetch
+            blogFetch(){
+            axios.get('https://www.baraati.in/blog/wp-json/wp/v2/posts?per_page=3&orderby=date&order=desc')
+                .then(response => {
+                    this.datas = response.data; 
+                    console.log(this.datas);
+                })
+            },
+        }
+    })
+
 
 
 

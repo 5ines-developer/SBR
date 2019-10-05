@@ -3419,3 +3419,8 @@ nav a.sidenav-trigger i {
 .wed-featured:after{border-top-color: #8c8c8c; border-bottom-color: #8c8c8c}
 .free-listing{display: none}
 #search-form .select-dropdown.dropdown-trigger{padding: 0 0 0 6px !important}
+.blog-img-box {
+    height: 202px;
+    overflow: hidden;
+    border-radius: 0 0px 10px 10px;
+}
