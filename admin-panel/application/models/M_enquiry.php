@@ -30,7 +30,28 @@ class M_enquiry extends CI_Model {
 		return $this->db->order_by('id', 'desc')->get('newsletter')->result();
 	}
 
-	
+	public function testimonial($id)
+	{
+		if(!empty($id)){
+			$this->db->where('id', $id);
+		}
+		return $this->db->order_by('status', 'desc')->get('feedback')->result();
+	}
+
+	// testimonila status update
+	public function testimonial_status($id, $data)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('feedback', $data);
+		if($this->db->affected_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
+		
+		
+		
+	}
 
 	
 

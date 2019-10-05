@@ -110,12 +110,16 @@ $route['vendors/video_delete/(:any)/(:any)']  = 	'vendors/video_delete/$1/$2';
 
 
 //enquiry
-$route['enquiries']			=	'enquiries/index'; //add vendor
-$route['enquiries/view/(:any)']	=	'enquiries/view/$1'; //add vendor
+$route['enquiries']			        =	'enquiries/index'; //add vendor
+$route['enquiries/view/(:any)']	    =	'enquiries/view/$1'; //add vendor
 $route['enquiries/delete/(:any)']	=	'enquiries/delete/$1'; //add vendor
 $route['free-quote']			    =	'enquiries/freequote'; //add vendor
 $route['free-quote/view/(:any)']	=	'enquiries/quoteview/$1'; //add vendor
-$route['newsletter-subcribers']			    =	'enquiries/newsletter'; //add vendor
+$route['newsletter-subcribers']	    =	'enquiries/newsletter'; //add vendor
+
+$route['testimonial']	            =	'enquiries/testimonial'; 
+$route['testimonial/(:any)']	    =	'enquiries/testimonial/$1'; 
+$route['testimonial-status/(:any)']	=	'enquiries/testimonial_status/$1'; 
 
 
 

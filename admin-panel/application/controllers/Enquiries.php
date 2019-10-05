@@ -48,6 +48,35 @@ class Enquiries extends CI_Controller {
 		$this->load->view('enquiry/newsletter', $data, FALSE);
     }
 
+    public function testimonial($id = '')
+    {
+        $data['title']  = 'Testimonila - Shaadibaraati';
+        $data['result']  = $this->m_enquiry->testimonial($id);
+        if(!empty($id)){
+            $this->load->view('enquiry/testimonial-detail', $data, FALSE);
+        }else{
+            $this->load->view('enquiry/testimonial', $data, FALSE);
+        }
+    }
+
+    // testimonila status update
+    public function testimonial_status($id = null)
+    {
+        $upt = $this->input->get('q');
+        if($upt == 'approve'){
+            $data = array('status' => '1');
+        }else{
+            $data = array('status' => '2');
+        }
+        if($this->m_enquiry->testimonial_status($id, $data)){
+            $this->session->set_flashdata('success', 'Status update successfully');
+            redirect('testimonial/'.$id);
+        }else{
+            $this->session->set_flashdata('error', 'Some error occred');
+            redirect('testimonial/'.$id);
+        }
+    }
+
 
 
 }
