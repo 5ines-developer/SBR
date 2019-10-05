@@ -1955,7 +1955,7 @@ r-crd-category {
 
 .col5s img {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .col5s div {
