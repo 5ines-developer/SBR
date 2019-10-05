@@ -361,7 +361,7 @@ $this->load->model('m_vendors');
                             <div class="col s6 m4 l3" v-for="item in ">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.urlencode(str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category'))).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq)?>"
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
                                                 <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $value->package ?></span>
@@ -561,10 +561,9 @@ $this->load->model('m_vendors');
             var cat = categoryval.toLowerCase();
 
             if (city == '') {
-                var finalUrl = '<?php echo base_url()?>vendors/all/' + encodeURI(cat.replace(" ", "-", ));
+                var finalUrl = '<?php echo base_url()?>vendors/all/' + cat.replace(" ", "-", );
             } else {
-                var finalUrl = '<?php echo base_url()?>vendors/' + encodeURI(city.replace(" ", "-", )) + '/' + encodeURI(cat)
-                    .replace(" ", "-", );
+                var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat.replace(" ", "-", );
             }
             var url = finalUrl.replace(" ", "-", );
 

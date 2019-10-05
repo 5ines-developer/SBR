@@ -260,7 +260,7 @@ height: 98px;
                                             <ul>
                                                 <li>
                                                     <span class="bbx-name">Starting Price</span>
-                                                    <span class="bbx-rate">- &#8377; <?php
+                                                    <span class="bbx-rate">- <?php
                                                     $amount = (!empty($value->price))?$value->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
@@ -282,7 +282,7 @@ height: 98px;
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo (!empty($thecash))?'&#8377;'.$thecash:'';  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
+                                                    echo (!empty($thecash))?'&#8377; '.$thecash:'';  echo (!empty($value->price_for))?'&nbsp;'.$value->price_for:' Per day'; ?> </span>
                                                 </li>
                                             </ul>
 
@@ -941,7 +941,7 @@ height: 98px;
                     </div>
                     <div class="col 12 m6 right-align">
                         <?php if(count($value->similar) > 4){ ?>
-                        <a href="<?php echo base_url('vendors/'.urlencode(str_replace(" ","-",strtolower($value->city))).'/'.urlencode(str_replace(" ","-",strtolower($value->category)))) ?>"
+                        <a href="<?php echo base_url('vendors/'.str_replace(" ","-",strtolower($value->city)).'/'.str_replace(" ","-",strtolower($value->category))) ?>"
                             class="similar-more"> View All</a>
                         <?php } ?>
                     </div>
@@ -959,7 +959,7 @@ height: 98px;
                         <div class="col s6 m4 l3">
                             <div class="result-items hoverable">
                                 <div class="card z-depth-0">
-                                    <a href="<?php echo base_url('detail/'.urlencode(str_replace(" ","-",strtolower($simi->category))).'/'.urlencode(str_replace(" ","-",strtolower($simi->name))).'/'.$simi->uniq)?>"
+                                    <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.urlencode(str_replace(" ","-",strtolower($simi->name))).'/'.$simi->uniq)?>"
                                         target="_blank">
                                         <div class="card-image">
                                             <img
