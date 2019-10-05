@@ -120,6 +120,8 @@ $route['newsletter-subcribers']	    =	'enquiries/newsletter'; //add vendor
 $route['testimonial']	            =	'enquiries/testimonial'; 
 $route['testimonial/(:any)']	    =	'enquiries/testimonial/$1'; 
 $route['testimonial-status/(:any)']	=	'enquiries/testimonial_status/$1'; 
+$route['feedback']	                =	'enquiries/feedback'; 
+$route['feedback/(:any)']	        =	'enquiries/feedback/$1'; 
 
 
 

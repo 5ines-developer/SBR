@@ -19,6 +19,12 @@ class preload
         return  $this->ci->m_preload->testimonial();
     }
 
+    public function feedback()
+    {
+        return  $this->ci->m_preload->feedback();
+    }
+
+
 }
 
 /* End of file LibraryName.php */

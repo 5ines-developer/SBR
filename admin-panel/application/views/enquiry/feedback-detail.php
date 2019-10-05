@@ -33,17 +33,8 @@
                            
                             <div class="card scrollspy" id="personal-detail">
                             <div class="card-content">
-                                <p class="bold mb10 h6 left">Testimonial</p>
-                                <div class="right">
-                                    
-                                    <?php   if($result['0']->status == 1){
-                                            echo '<a class="waves-effect waves-light red btn-small" href="'.base_url().'testimonial-status/'.$result['0']->id.'?q=reject">Reject</a>';
-                                    } else{
-                                        echo '<a class="waves-effect waves-light green btn-small" href="'.base_url().'testimonial-status/'.$result['0']->id.'?q=approve">Approve</a>';
-                                    }
-                                    ?>
-                                    
-                                </div>
+                                <p class="bold mb10 h6 ">Feedback</p>
+                                
                                 <table>
                                     <tbody>
                                         <tr>
@@ -62,40 +53,13 @@
                                         <th class="w205">Phone</th>
                                         <td ><a href="tel:<?php echo (!empty($result['0']->phone))?$result['0']->phone:'---'  ?>" ><?php echo (!empty($result['0']->phone))?$result['0']->phone:'---'  ?></a></td>
                                     </tr>
+                                    
                                     <tr>
-                                        <th class="w205">Status</th>
-                                        <td >
-                                            <?php
-                                               if($result['0']->status == 1){
-                                                  echo '<span class="new badge green" data-badge-caption="Approved"></span>';
-                                               }elseif($result['0']->status == 2){
-                                                  echo '<span class="new badge red" data-badge-caption="Rejected"></span>';
-                                               }else{
-                                                  echo '<span class="new badge yellow darken-4" data-badge-caption="Pending"></span>';
-                                               }
-                                            ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="w205">Good At</th>
-                                        <td><?php echo (!empty($result['0']->best))?$result['0']->best:'---'  ?></td>
+                                        <th class="w205">Ratings</th>
+                                        <td><?php echo (!empty($result['0']->rating))?$result['0']->rating:'---'  ?></td>
                                     </tr>
 
-                                    <tr>
-                                        <th class="w205">How can we improve</th>
-                                        <td><?php echo (!empty($result['0']->improve))?$result['0']->improve:'---'; ?></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="w205">Rate Our Service</th>
-                                        <td><?php echo (!empty($result['0']->service))?$result['0']->service:'---'; ?></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th class="w205">Recommend to friends</th>
-                                        <td><?php echo (!empty($result['0']->recomend))?$result['0']->recomend:'---'; ?></td>
-                                    </tr>
-
+                                   
                                     <tr>
                                         <th class="w205">Feed Back</th>
                                         <td><?php echo (!empty($result['0']->feedback))?$result['0']->feedback:'---'; ?></td>

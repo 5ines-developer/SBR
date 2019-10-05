@@ -47,14 +47,24 @@ class M_enquiry extends CI_Model {
 			return true;
 		}else{
 			return false;
+		}	
+	}
+
+	public function feedback($id)
+	{
+		if(!empty($id)){
+			$this->updateStatus($id);
+			$this->db->where('id', $id);
 		}
-		
-		
-		
+		return $this->db->order_by('status', 'desc')->get('user_feedback')->result();
 	}
 
 	
-
+	function updateStatus($id = null)
+	{
+		$this->db->where('id', $id);
+		$this->db->update('user_feedback',  array('status' => '1' ));
+	}
 	
 
 	

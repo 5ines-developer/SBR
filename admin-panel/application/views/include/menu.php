@@ -18,8 +18,16 @@
           <?php if($this->ci->preload->testimonial() > 0){
             echo '<span class="new badge">'. $this->ci->preload->testimonial() .'</span> ';
           } ?>
-            
-          </a></li>
+          </a>
+        </li>
+
+        <li class="<?php echo $this->uri->segment(1) == 'feedback'?'active':'' ?>">
+          <a href="<?php echo base_url('feedback') ?>"><i class="fas fa-comment-slash li-icon"></i>Feedback 
+          <?php if($this->ci->preload->feedback() > 0){
+            echo '<span class="new badge">'. $this->ci->preload->feedback() .'</span> ';
+          } ?>
+          </a>
+        </li>
         
       </ul>
    </div>

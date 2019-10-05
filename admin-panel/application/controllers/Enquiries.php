@@ -77,7 +77,17 @@ class Enquiries extends CI_Controller {
         }
     }
 
-
+    // Feedback
+    public function feedback($id = null)
+    {
+        $data['title']  = 'Testimonila - Shaadibaraati';
+        $data['result']  = $this->m_enquiry->feedback($id);
+        if(!empty($id)){
+            $this->load->view('enquiry/feedback-detail', $data, FALSE);
+        }else{
+            $this->load->view('enquiry/feedback', $data, FALSE);
+        }
+    }
 
 }
 
