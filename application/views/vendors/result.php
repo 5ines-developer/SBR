@@ -99,7 +99,7 @@ $this->load->model('m_vendors');
 
 
 
-                            <div class="row m0">
+                            <div class="row m0" class="serch-select">
                                 <div class="col s12 m6 ">
                                     <select name="ct" class="white select-search" id="sel-cato">
                                         <option value="">All Categories</option>

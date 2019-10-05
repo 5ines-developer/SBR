@@ -260,7 +260,11 @@ height: 98px;
                                             <ul>
                                                 <li>
                                                     <span class="bbx-name">Starting Price</span>
+<<<<<<< HEAD
                                                     <span class="bbx-rate">- <?php
+=======
+                                                    <span class="bbx-rate">-  <?php
+>>>>>>> 11f9a2eba12aa0034923f1be08ebb0f0a308fa06
                                                     $amount = (!empty($value->price))?$value->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';

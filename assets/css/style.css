@@ -3405,19 +3405,17 @@ nav a.sidenav-trigger i {
 .preloader-wrapper.big { width: 30px; height: 30px; }
 .previsible { top: 110px; text-align: center; display:block; position: absolute; width: 100%; height: auto; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; cursor: pointer; left: 12px; }
 .r-crd-price{ line-height: 22px; }
-.wed-elite{background-color:#c81e44;}
+.wed-elite{background-color:#d0021be0;}
 .wed-leader{background-color:#e86482;}
 .wed-assisted{background-color:#c34a23;}
 .wed-gold{background-color:#e48668;}
 .wed-premium{background-color:#cc9d80;} 
 .wed-featured{background-color:#8c8c8c;}
-
-
 .wed-elite:after{border-top-color: #d0021be0; border-bottom-color: #d0021be0}
 .wed-leader:after{border-top-color: #e86482; border-bottom-color: #e86482}
 .wed-assisted:after{border-top-color: #c34a23; border-bottom-color: #c34a23}
 .wed-gold:after{border-top-color: #e48668; border-bottom-color: #e48668}
 .wed-premium:after{border-top-color: #cc9d80; border-bottom-color: #cc9d80}
 .wed-featured:after{border-top-color: #8c8c8c; border-bottom-color: #8c8c8c}
-
 .free-listing{display: none}
+#search-form .select-dropdown.dropdown-trigger{padding: 0 0 0 6px !important}

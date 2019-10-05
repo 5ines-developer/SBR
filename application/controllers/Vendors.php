@@ -260,20 +260,22 @@ class Vendors extends CI_Controller {
 
     // Message details
       // $numbers = $data['value']->phone;
-      $numbers = '8951411732';
+      $numbers = '8904848277';
       $sender = 'BARATI';
-      $message = rawurlencode('Dear Vendor,
- 
-      Hurry!!!!!
-      '.$data['result']['user_name'].' is looking for '.$data['value']->category.' services.
-      Mob:  '.$data['result']['user_phone'].'
-      Event Date: '.$data['result']['fn_date'].'
-      Budget : Not Decided
-      Location : '.$data['value']->city.'
-       
-      With Love
-      Shaadibaraati.com
-      1800419945');
+      $message = '';
+
+      $message .='Dear Vendor,%n';
+      $message .= ' Hurry!!! %n '; 
+      $message .= $sender. ' is looking for %n ' ;
+      $message .= $sender .' %n';
+      $message .= 'Mob:'. $sender .' %n';
+      $message .= ' Event Date: ' .$sender .' %n';
+      $message .= 'Budget: '. $sender .' %n';
+      $message .= ' Location: '. $sender .' %n';
+      $message .= ' Remarks: ' . $sender .' %n %n';
+      $message .= ' With Love%n';
+      $message .= 'Shaadibaraati.com %n';
+      $message .= ' 18004199456';
 
       // Prepare data for POST request
       $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
