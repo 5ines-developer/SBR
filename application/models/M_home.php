@@ -99,6 +99,19 @@ class M_home extends CI_Model
         }
     }
 
+    // post feed back
+    public function testimonial_post($data)
+    {
+        $this->db->insert('feedback', $data);
+        if($this->db->affected_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+        
+        
+    }
+
 }
 
 /* End of file ModelName.php */

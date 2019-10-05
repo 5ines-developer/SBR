@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shaadi Baraati</title>
+    <title>Shaadi Baraati | Testimonial</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
@@ -27,24 +27,24 @@
             <section>
                 <div class="container">
                     <div class="row">
-                        <div class="col l12">
-                            <div class="feedback-form">
+                        <div class="col l10 push-l1">
+                            <div class="feedback-form z-depth-2">
                                 <h4>Write a Testimonial</h4>
                                 <div class="form-testimonial-list">
-                                    <form action="">
+                                    <form action="<?php echo base_url('testimonial-post')?>" method="post">
                                         <div class="row">
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="fn" type="text" class="validate" required="">
-                                                        <label for="fn">First Name</label>
+                                                        <input id="fn" name="fname" type="text" class="validate" required="">
+                                                        <label for="fn">First Name <span class="red-text">*</span></label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="ln" type="text" class="validate" required="">
+                                                        <input id="ln" type="text" class="validate" name="lname">
                                                         <label for="ln">Last Name</label>
                                                     </div>
                                                 </div>
@@ -52,7 +52,7 @@
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="email" type="text" class="validate" required="">
+                                                        <input id="email" type="text" class="validate" name="email">
                                                         <label for="email">Email</label>
                                                     </div>
                                                 </div>
@@ -60,15 +60,15 @@
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="phone" type="text" class="validate" required="">
-                                                        <label for="phone">Phone</label>
+                                                        <input id="phone" type="text" class="validate" name="phone" required="">
+                                                        <label for="phone">Phone <span class="red-text">*</span></label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="best" type="text" class="validate" required="">
+                                                        <input id="best" type="text" class="validate" name="best">
                                                         <label for="best">What did you like best ?</label>
                                                     </div>
                                                 </div>
@@ -76,30 +76,30 @@
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="inprove" type="text" class="validate" required="">
+                                                        <input id="improve" type="text" class="validate" name="improve">
                                                         <label for="improve">How can we improve ?</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
-                                                  <label for="phone" class="black-text h-rate">Rate Our Service *</label>
+                                                  <label for="phone" class="black-text h-rate">Rate Our Service <span class="red-text">*</span></label>
                                                     <div class="input-field if-feed">
                                                         <p>
                                                     <label class="ratio-all">
-                                                        <input value="Excellent" class="with-gap" name="group2" type="radio"  checked />
+                                                        <input value="Excellent" class="with-gap" name="service" type="radio"  checked />
                                                         <span class="ration-rr">Excellent</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                     <label class="ratio-all">
-                                                        <input value="Good"      class="with-gap" name="group2"     type="radio"  />
+                                                        <input value="Good"      class="with-gap" name="service"     type="radio"  />
                                                         <span class="ration-rr">Good</span>
                                                     </label>
                                                 </p>
                                                 <p >
                                                     <label class="ratio-all">
-                                                        <input value="Disappointing" class="with-gap" name="group2" type="radio"  />
+                                                        <input value="Disappointing" class="with-gap" name="service" type="radio"  />
                                                         <span class="ration-rr">Disappointing</span>
                                                     </label>
                                                 </p>
@@ -112,23 +112,23 @@
                                                     <div class="input-field if-feed">
                                                         <p>
                                                     <label class="ratio-all">
-                                                        <input value="Yes" class="with-gap" name="group3" type="radio"  checked />
+                                                        <input value="Yes" class="with-gap" name="recomend" type="radio"  checked />
                                                         <span class="ration-rr">Yes</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                  <label class="ratio-all">
-                                                        <input value="Yes"class="with-gap" name="group3"     type="radio"  />
+                                                        <input value="Yes" class="with-gap" name="recomend"     type="radio"  />
                                                         <span class="ration-rr">No</span>
                                                     </label>
                                                 </p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div><br />
                                             <div class="col l12 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <textarea id="textarea1" class="materialize-textarea hh-height" ></textarea>
+                                                        <textarea id="textarea1" name="feedback" class="materialize-textarea " ></textarea>
                                                         <label for="textarea1">Write your feedback here</label>
                                                     </div>
                                                 </div>

@@ -209,6 +209,35 @@ class Home extends CI_Controller {
         }
     }
 
+    // testimonila post 
+    public function testimonial_post($var = null)
+    {
+        $data = array(
+            'fname'     => $this->input->post('fname', true), 
+            'lname'     => $this->input->post('lname', true), 
+            'email'     => $this->input->post('email', true), 
+            'phone'     => $this->input->post('phone', true), 
+            'best'      => $this->input->post('best', true), 
+            'improve'   => $this->input->post('improve', true), 
+            'service'   => $this->input->post('service', true), 
+            'recomend'  => $this->input->post('recomend', true), 
+            'feedback'  => $this->input->post('feedback', true), 
+        );
+
+        if($this->m_home->testimonial_post($data)){
+            $this->session->set_flashdata('success', 'Your feedback has been submitted.');
+            redirect('testimonial','refresh');
+            
+        }else{
+            $this->session->set_flashdata('error', 'Server Error, please try again later.');
+            redirect('testimonial','refresh');
+        }
+        
+    }
+
+
+
+
 }
 
 /* End of file Controllername.php */

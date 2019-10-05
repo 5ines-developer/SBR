@@ -118,11 +118,11 @@ $route['site-map']   				    = 'home/site_map';
 $route['wed-assistance']   				= 'home/wed_assistance';
 $route['feedback']   				    = 'home/feedback';
 $route['testimonial']   				= 'home/testimonial';
+$route['testimonial-post']              = 'home/testimonial_post';
 
 //vendor register
 $route['vendor-register'] 		        = 'authentication/vendorRegister';
 $route['vendor-register/send'] 		    = 'authentication/vendorsend';
-
 
 
 
