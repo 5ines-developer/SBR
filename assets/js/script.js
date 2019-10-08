@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
       hover: true
     } );
 
-  // selcet
-    var slect = document.querySelectorAll('select');
-    var slectinstances = M.FormSelect.init(slect);
+  // // selcet
+  //   var slect = document.querySelectorAll('select');
+  //   var slectinstances = M.FormSelect.init(slect);
 
   // nav drwaver
     var sidenav = document.querySelectorAll('.sidenav');

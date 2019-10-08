@@ -1428,37 +1428,26 @@ ul.detail li span {
     padding: 40px 0;
 }
 
-.result-head input[type="search"] {
+#search-vend {
     border: 1px solid #fff;
     padding-left: 10px;
     padding-right: 10px;
-    color: #fff;
-    width: 112%;
+    background: #fff;
     position: relative;
-    left: -47px;
+    width:calc(100% - 20px);
+    border-radius: 4px;
+    margin-bottom: 0px
 }
+#searchble-container{
+    padding: 10px 10px 20px;
+}
+.mb10{margin-bottom: 10px}
 
 .result-head input[type="search"]:focus {
-    border-color: #2962ff !important;
     box-shadow: none !important;
-    border-bottom-color: #2962ff !important;
-    border-bottom: 1px;
-    color: #fff
+    border-bottom-color: #d0051a !important;
 }
 
-.result-head input[type="search"]::-webkit-input-placeholder {
-    /* Edge */
-    color: #fff;
-}
-
-.result-head input[type="search"]:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #fff;
-}
-
-.result-head input[type="search"]::placeholder {
-    color: #fff;
-}
 
 .result-head .select-wrapper input.select-dropdown {
     background-color: #fff
@@ -1745,25 +1734,23 @@ r-crd-category {
 }
 
 .sg-box {
-    visibility: visible;
-    opacity: 0;
-    z-index: 0;
-    transition: 0.05s;
-    padding: 15px;
-    vertical-align: middle;
-    width: 100%;
-    background: #fff;
-    max-height: 400px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0;
-    box-shadow: 0px 4px 5px #8080801f;
-    border-radius: 4px 4px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    display: block;
-    margin-left: 12px;
+	visibility: visible;
+	opacity: 0;
+	z-index: 0;
+	transition: 0.05s;
+	padding: 15px;
+	width: calc(100% - 19px);
+	background: #fff;
+	max-height: 400px;
+	position: absolute;
+	margin: 0;
+	box-shadow: 0px 4px 5px #8080801f;
+	border-radius: 0 0 4px 4px;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	display: block;
+	top: 40px;
+	border-top: 1px solid #eaeaea;
 }
 
 .visible {
@@ -3421,3 +3408,5 @@ nav a.sidenav-trigger i {
 #search-form .select-dropdown.dropdown-trigger{padding: 0 0 0 6px !important}
 .blog-img-box { max-height: 202px; overflow: hidden; border-radius: 0 0px 10px 10px; }
 .input-field.if-feed::after { display: block; clear: both; content: ""; }
+.ss-main .ss-single-selected { border:transparent !important; height: 42px !important;}
+.ss-main .ss-content .ss-list .ss-option.ss-highlighted, .ss-main .ss-content .ss-list .ss-option:hover { background-color: #d0021b; }

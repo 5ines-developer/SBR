@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+    
+
 </head>
 
 <body>
@@ -52,6 +55,7 @@
                                             <button type="submit" class="btn-find">Get Start</button>
                                         </div>
                                     </div>
+                                
                                 </div>
                             </div>
                         </form>
@@ -522,7 +526,7 @@
                     <a :href="item.link" class="">
                         <div class="blog-detail hoverable">
                             <div class="blog-img-box">
-                                <img :src="item.better_featured_image.media_details.sizes.medium.source_url" alt=""
+                                <img v-if="item.better_featured_image != null" :src="item.better_featured_image.media_details.sizes.medium.source_url" alt=""
                                 class="img-responsive blog-img">
                             </div>
                             
@@ -547,15 +551,17 @@
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-
+ 
 
     <script>
     <?php $this->load->view('includes/message'); ?>
     </script>
     <script>
-    
-
+        
+          new SlimSelect({ select: '.input-field select'});
+          new SlimSelect({ select: '.input-field select#sel-cato'});
         // top-cities
         $('.top-citys').slick({
             slidesToShow: 5,
@@ -680,7 +686,6 @@
     <script>
 
    
-
 
     var demo = new Vue({
         el: '#demo',
