@@ -2466,8 +2466,8 @@ a.viewmore:hover {
     position: relative;
     top: 3px;
     margin-right: 7px;
-    filter: invert(10%) sepia(1) saturate(100) hue-rotate(340deg);
-    -webkit-filter: invert(10%) sepia(1) saturate(100) hue-rotate(340deg);
+    filter: invert(9%) sepia(1) saturate(100) hue-rotate(371deg);;
+    -webkit-filter: invert(9%) sepia(1) saturate(100) hue-rotate(371deg);;
 }
 
 .tcheading {
@@ -3379,8 +3379,9 @@ nav a.sidenav-trigger i {
 .contatct-item p a{color:#d0021b;}
 .contatct-item p a:hover{color: #333; font-size: 15px;}
 .contatct-item { padding: 25px 0 10px 0; margin-bottom: 0; text-align: center }
-.footerbutton a { border: 1px dashed #d0021b; cursor: pointer; font-size: 14px; color: #3e3e3e; display: block; text-align: center; padding: 5px 0px; }
-.footerbutton a:hover { background-color: #d0021b; color: #fff; }
+.footerbutton a, .borderd-btn { border: 1px dashed #d0021b; cursor: pointer; font-size: 14px; color: #3e3e3e; display: block; text-align: center; padding: 5px 0px; }
+.footerbutton a:hover, .borderd-btn:hover { background-color: #d0021b; color: #fff; }
+.borderd-btn{display: inline; padding: 5px 20px; line-height: 51px;}
 
 .vendor-register { padding-bottom: 140px;;background-image: url('../img/vend-reg.webp'); background-blend-mode: overlay; background-color: #00000082; background-size: cover; }
 .vendor-register  .banner-up h5{margin-bottom: 25px}
@@ -3410,3 +3411,8 @@ nav a.sidenav-trigger i {
 .input-field.if-feed::after { display: block; clear: both; content: ""; }
 .ss-main .ss-single-selected { border:transparent !important; height: 42px !important;}
 .ss-main .ss-content .ss-list .ss-option.ss-highlighted, .ss-main .ss-content .ss-list .ss-option:hover { background-color: #d0021b; }
+
+.cat-row-heding img{width:35px; margin-right: 7px; filter: invert(9%) sepia(1) saturate(100) hue-rotate(371deg); -webkit-filter: invert(9%) sepia(1) saturate(100) hue-rotate(371deg); position: relative; top: 8px;}
+.cat-row-heding h4 { margin: 0 0px 15px 0; color: #555; font-size: 18px; font-weight: 600; }
+.cat-row-heding:after{clear: both;content: ''; display: block;}
+.cat-row-heding a i{top: 7px; position: relative;}

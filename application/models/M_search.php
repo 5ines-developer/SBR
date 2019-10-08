@@ -170,7 +170,30 @@ class M_search extends CI_Model {
        
     }
 
+    public function catviseresult()
+    {
+      $result = vendor_category();
+      foreach ($result as $key => $value) {
+        $value->vendors = $this->getVendors($value->id);
+      }
+      return  $result;
+    }
 
+    // get vendors
+    public function getVendors($id = null)
+    {
+        $this->db->select('v.name,v.package, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
+        $this->db->where('v.category', $id);
+        
+        $this->db->protect_identifiers = FALSE;
+            $this->db->order_by('FIELD ( v.package, "Wed Elite", "Wed Leader", "Wed Assisted", "Wed Gold", "Wed Premium", "Wed Featured", "Free Listing", "")');
+        $this->db->protect_identifiers = TRUE;
+
+        $this->db->from('vendor v');
+        $this->db->join('city cty', 'cty.id = v.city', 'left');
+        $this->db->limit(4);
+        return $this->db->get()->result();
+    }
 
 }
 

@@ -23,54 +23,61 @@ class Search extends CI_Controller {
 	{
 		$key = $this->input->post('key');
 		if (empty($city)) {
+			
         	$city = 'all'; 
         }
         if (empty($category)) {
         	$category = 'all-category'; 
-        }
-		$per_page = 16;
+		}
 		$data['title']      = 'Vendors - ShaadiBaraati';
-        $rows = $this->m_search->rowsCount(ucfirst($city),str_replace("-"," ",$category));
-		$data['vendors']    = $this->m_search->getSearch(ucfirst($city),str_replace("-"," ",$category),$per_page,$page);
+		if($city == 'all' && $category == 'all-category'){
+			$data['vendors'] = $this->m_search->catviseresult();
+			$this->load->view('vendors/category', $data, FALSE);
+		}else{
+			$per_page = 16;
+			
+			$rows = $this->m_search->rowsCount(ucfirst($city),str_replace("-"," ",$category));
+			$data['vendors']    = $this->m_search->getSearch(ucfirst($city),str_replace("-"," ",$category),$per_page,$page);
 
-        $config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
-		$config['total_rows'] = (!empty($rows)? count($rows) : '0');
-		$config['per_page'] = 16;
-		$config['reuse_query_string'] = TRUE;
-		$config['num_links'] = 2;
+			$config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
+			$config['total_rows'] = (!empty($rows)? count($rows) : '0');
+			$config['per_page'] = 16;
+			$config['reuse_query_string'] = TRUE;
+			$config['num_links'] = 2;
 
-		$config['full_tag_open'] = '<div class="right"><ul class="pagination">';
-		$config['full_tag_close'] = '</ul></div>';
+			$config['full_tag_open'] = '<div class="right"><ul class="pagination">';
+			$config['full_tag_close'] = '</ul></div>';
 
-		$config['num_tag_open']     = '<li ><span class="waves-effect">';
-        $config['num_tag_close']    = '</span></li>';
+			$config['num_tag_open']     = '<li ><span class="waves-effect">';
+			$config['num_tag_close']    = '</span></li>';
 
-        $config['cur_tag_open']     = '<li class="active"><a class="waves-effect">';
-        $config['cur_tag_close']    = '</a></li>';
+			$config['cur_tag_open']     = '<li class="active"><a class="waves-effect">';
+			$config['cur_tag_close']    = '</a></li>';
 
-        $config['next_tag_open']    = '<li class="next"> <a href="#" title=""> ';
-        $config['next_tag_close']   = '</a></li>';
-        $config['next_link']        = '<i class="material-icons">chevron_right</i>';
+			$config['next_tag_open']    = '<li class="next"> <a href="#" title=""> ';
+			$config['next_tag_close']   = '</a></li>';
+			$config['next_link']        = '<i class="material-icons">chevron_right</i>';
 
-        $config['prev_tag_open']    = '<li class="prev"> <a href="#" title=""> ';
-        $config['prev_tag_close']   = '</a></li>';
-        $config['prev_link']        = '<i class="material-icons">chevron_left</i>';
+			$config['prev_tag_open']    = '<li class="prev"> <a href="#" title=""> ';
+			$config['prev_tag_close']   = '</a></li>';
+			$config['prev_link']        = '<i class="material-icons">chevron_left</i>';
 
-		$config['first_tag_open']   = '<li class=""><span class="">';
-        $config['first_tag_close']  = '</span></li>';
-        $config['first_link']        = FALSE;
+			$config['first_tag_open']   = '<li class=""><span class="">';
+			$config['first_tag_close']  = '</span></li>';
+			$config['first_link']        = FALSE;
 
-        $config['last_tag_open']    = '<li class=""><span class="">';
-        $config['last_tag_close']   = '</span></li>';
-        $config['last_link']        = FALSE;
+			$config['last_tag_open']    = '<li class=""><span class="">';
+			$config['last_tag_close']   = '</span></li>';
+			$config['last_link']        = FALSE;
 
-		$this->pagination->initialize($config);
-		$data['pagelink'] 	= $this->pagination->create_links();
+			$this->pagination->initialize($config);
+			$data['pagelink'] 	= $this->pagination->create_links();
 
-		$data['city']       = $this->m_home->getCity();
-        $data['category']   = $this->m_home->getCategory();
-        
-		$this->load->view('vendors/result', $data, FALSE);
+			// $data['city']       = $this->m_home->getCity();
+			// $data['category']   = $this->m_home->getCategory();
+		
+			$this->load->view('vendors/result', $data, FALSE);
+		}
 	}
 
 
