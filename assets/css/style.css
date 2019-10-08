@@ -2770,6 +2770,70 @@ input:not([type]):focus {
     padding: 10px 0px;
 }
 
+
+/* career-detail */
+
+.career-detail-list h5 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.respon-det li {
+    list-style: square !important;
+    color: #d0021b;
+    padding-bottom: 9px;
+}
+
+.li-sp {
+    color: black;
+}
+
+.respon-det ul {
+    padding: 5px 15px;
+    margin: 0;
+}
+
+.respon-det h6 {
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.respon-det {
+    padding-top: 10px;
+}
+
+.apply-email {
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+.career-form {
+    border: 1px solid #f4f4f4;
+    padding: 30px;
+    margin-top: 35px;
+}
+
+.career-form h4 {
+    font-size: 16px;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.hh-file {
+    background: #d0021b;
+}
+
+.if-file {
+    font-size: 13px !important;
+}
+
+.if-feed .select-dropdown {
+    font-size: 13px !important;
+}
+
 @media(max-width:767px) {
     .mj-sitemap {
         position: relative;
@@ -2802,6 +2866,13 @@ input:not([type]):focus {
     /* career */
     .care-detail {
         padding: 20px 10px;
+    }
+    /* career-detail */
+    .apply-email {
+        font-size: 14px;
+        font-weight: 600;
+        padding-top: 10px;
+        line-height: 25px;
     }
 }
 

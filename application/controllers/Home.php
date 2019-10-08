@@ -158,11 +158,11 @@ class Home extends CI_Controller {
         $this->load->view('site/career',$data);
     }
 
-    // public function career_detail()
-    // {
-    //     $data['title']  = 'ShaadiBaraati | Career Detail';
-    //     $this->load->view('site/career-detail',$data);
-    // }
+    public function career_detail()
+    {
+        $data['title']  = 'ShaadiBaraati | Career Detail';
+        $this->load->view('site/career-detail',$data);
+    }
     public function testimonial()
     {
         $data['title']  = 'ShaadiBaraati | Testimonial';
