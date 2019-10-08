@@ -28,7 +28,7 @@
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                             <div class="form-search">
                                 <div class="container">
-                                    <div class="col l4 s4 mp">
+                                    <div class="col  s6 m4 mp">
                                         <div class="input-field if-fil">
                                             <select class="" name="q" id="sel-city">
                                                 <option value="" selected>City</option>
@@ -39,7 +39,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col l6 s5 mp">
+                                    <div class="col  m6 s6 mp">
                                         <div class="input-field  if-fil-sel">
                                             <select name="ct" class="" id="sel-cato">
                                                 <option value="" selected>Category</option>
@@ -50,7 +50,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col l2 s3 mp">
+                                    <div class="col  m2 s12 mp">
                                         <div class="input-field ">
                                             <button type="submit" class="btn-find">Get Start</button>
                                         </div>
@@ -310,17 +310,20 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row m0">
                 <div class="vender-list">
-                    <div class="row">
+                    <div class="row m0">
                         <div class="col l3 s6 p10">
                             <a href="">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei1.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
-                                    <div class="title-einvite">
-                                        <h6 class="white-text">Mehndi</h6>
-                                        <p class="m0">Add a Personal touch to your Mehendi Ceremony E-Invites.</p>
+                                    <div class="title-einvite valign-wrapper">
+                                        <div>
+                                            <h6 class="white-text">Mehndi</h6>
+                                            <p class="m0">Add a Personal touch to your Mehendi Ceremony E-Invites.</p>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </a>
@@ -330,9 +333,11 @@
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei2.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
-                                    <div class="title-einvite">
-                                        <h6 class="white-text">Engagement</h6>
-                                        <p class="m0">Announce you Engagement with Exquisite Customized E -Invites.</p>
+                                    <div class="title-einvite valign-wrapper">
+                                        <div>
+                                            <h6 class="white-text">Engagement</h6>
+                                            <p class="m0">Announce you Engagement with Exquisite Customized E -Invites.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -342,9 +347,11 @@
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei3.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
-                                    <div class="title-einvite">
-                                        <h6 class="white-text">Wedding</h6>
-                                        <p class="m0">Brag about your wedding hassle free with our personalized E-Invites.</p>
+                                    <div class="title-einvite valign-wrapper">
+                                        <div>
+                                            <h6 class="white-text">Wedding</h6>
+                                            <p class="m0">Brag about your wedding hassle free with our personalized E-Invites.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -354,9 +361,11 @@
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei4.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
-                                    <div class="title-einvite">
-                                        <h6 class="white-text">Reception</h6>
-                                        <p class="m0">Indulged your loved once to a Lavish reception by sending them E-Invites.</p>
+                                    <div class="title-einvite valign-wrapper">
+                                        <div>
+                                            <h6 class="white-text">Reception</h6>
+                                            <p class="m0">Indulged your loved once to a Lavish reception by sending them E-Invites.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -521,7 +530,7 @@
             
             <div class="row" id="blog">
             
-                <div class="col l4 m4 s12" v-for="item in datas">
+                <div class="col l4 m6 s12" v-for="item in datas">
                
                     <a :href="item.link" class="">
                         <div class="blog-detail hoverable">
