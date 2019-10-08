@@ -3897,8 +3897,9 @@ nav a.sidenav-trigger i {
 .blog-img-box {
     max-height: 202px;
     overflow: hidden;
-    border-radius: 0 0px 10px 10px;
+    border-radius: 10px 10px;
 }
+
 
 .input-field.if-feed::after {
     display: block;
