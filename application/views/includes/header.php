@@ -8,7 +8,7 @@
                     <div class="right hide-on-med-and-down header-ul ">
                         <ul >
                             <li><a href="<?php echo base_url()?>">HOME</a></li>
-                            <li><a class="dropdown-trigger" href="<?php echo base_url('categories')?>" data-target="vendordropdown" >VENDORS</a></li>
+                            <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown" >VENDORS</a></li>
                             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
                             <!-- <li><a href="#">E-INVITE</a></li> -->
                             <li><a href="#">REAL WEDDING</a></li>
@@ -93,7 +93,7 @@
 
         <ul class="sidenav" id="mobile-demo">
             <li><a href="<?php echo base_url()?>">HOME</a></li>
-            <li><a href="<?php echo base_url('categories')?>">VENDORS</a></li>
+            <li><a href="<?php echo base_url('vendors')?>">VENDORS</a></li>
             <!-- <li><a href="#">WED ASSISTANCE</a></li> -->
             <!-- <li><a href="#">E-INVITE</a></li> -->
             <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>

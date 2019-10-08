@@ -346,43 +346,54 @@ $this->load->model('m_vendors');
                     <!-- end left menu -->
 
                     <div class="col s12 m12 l12">
+                        <?php 
+                            $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
+                            foreach ($vendors as $key => $value) { 
+                                if(!empty($value->vendors)){     
+                            $clink = strtolower(str_replace(" ","-",$value->category));
+                        ?>
                         <div class="row  result-item-box">
-
-
-
-                            <?php if (!empty($vendors)) {
-                              
-                                $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
-                                foreach ($vendors as $key => $value) { 
-                                    $lable_class = strtolower(str_replace(' ', '-', $value->package));
-                                    
-                                ?>
-                            <div class="col s6 m4 l3" >
+                            <div class="cat-row-heding">
+                                <div class="col s6">
+                                    <a href="<?php echo base_url().'vendors/all/'.$clink ?>">
+                                        <h4><?php echo '<img src="'.base_url().$value->icon.'" class="responsive-img" alt="'.$value->category.'">'.$value->category ?></h4>
+                                    </a>
+                                </div>
+                                <div class="col s6 right-align">
+                                    <a href="<?php echo base_url().'vendors/all/'.$clink ?>" class="borderd-btn">View All <i class="material-icons">arrow_forward</i></a>
+                                </div>
+                            </div>
+                            
+                            <div class="clearfix"></div>
+                            <?php foreach ($value->vendors as $vkey => $vendr) { 
+                                $lable_class = strtolower(str_replace(' ', '-', $vendr->package));    
+                            ?>
+                                <div class="col s6 m4 l3" >
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq)?>"
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","-",strtolower($vendr->name))).'/'.$vendr->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
-                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $value->package ?></span>
-                                                <img src="<?php echo (!empty($value->profile_file))? base_url().$value->profile_file:'' ?>">
+                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $vendr->package ?></span>
+                                                <img src="<?php echo (!empty($vendr->profile_file))? base_url().$vendr->profile_file:'' ?>">
                                             </div>
                                             <div class="card-content">
                                                 <div class="row m0">
                                                     <div class="col s12 m12">
                                                         <p class="m0 r-crd-title tit">
-                                                            <?php echo (!empty($value->name))?$value->name:'' ?></p>
+                                                            <?php echo (!empty($vendr->name))?$vendr->name:'' ?></p>
                                                         
                                                     </div>
                                                     <div class="col s12 m5">
 
                                                     <p class="m0 r-crd-location">
-                                                            <?php echo (!empty($value->city))?$value->city:'' ?></p>
+                                                            <?php echo (!empty($vendr->city))?$vendr->city:'' ?></p>
                                                     </div>
 
                                                     <div class="col s12 m7">
                                                         
                                                         <p class="m0 r-crd-price"><?php
-                                                    $amount = (!empty($value->price))?$value->price:'';
+                                                    $amount = (!empty($vendr->price))?$vendr->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
                                                     if(strlen($num)>3){
@@ -403,7 +414,7 @@ $this->load->model('m_vendors');
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($value->price_for))?'&nbsp'.$value->price_for:' Per day'; ?> </p>
+                                                    echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($vendr->price_for))?'&nbsp'.$vendr->price_for:' Per day'; ?> </p>
                                                     </div>
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">
@@ -411,9 +422,9 @@ $this->load->model('m_vendors');
                                                     </div>
                                                     <div class="col s12 m6 hide-on-small-only">
                                                         <p class="m0 r-crd-ratings">
-                                                            <?php echo $this->ci->m_search->countReview($value->id) ?>
+                                                            <?php echo $this->ci->m_search->countReview($vendr->id) ?>
                                                             reviews <span class="c-badge green"><i
-                                                                    class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($value->id) ?> </span></p>
+                                                                    class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($vendr->id) ?> </span></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -421,15 +432,10 @@ $this->load->model('m_vendors');
                                     </div>
                                 </div>
                             </div>
-                            <?php   } } ?>
+                            <?php } ?>
                         </div>
-                        <div class="row m0">
-                            <div class="col s12">
-                                <?php echo (!empty($pagelink))?$pagelink: '' ?>
-                            </div>
-                        </div>
+                        <?php } }?>
                     </div>
-
                 </div>
             </div>
         </section>
