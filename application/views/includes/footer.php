@@ -66,17 +66,17 @@
                                 </div>
 
                                 <div class="row contatct-item">
-                                    <div class="col s12 m4">
+                                    <div class="col s6 m4">
                                         <p> <i class="material-icons">mail</i> </p>
                                         <p>Mail</p>
                                         <p><a href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></p>
                                     </div>
-                                    <div class="col s12 m4">
+                                    <div class="col s6 m4">
                                         <p> <i class="material-icons">call</i> </p>
                                         <p>Toll Free</p>
                                         <p><a href="tel:18004199456">1800 4199 456</a></p>
                                     </div>
-                                    <div class="col s12 m4">
+                                    <div class="col s12 m4 smslayout">
                                         <p> <i class="material-icons">sms</i> </p>
                                         <p>For Details TYPE <b>"BARAATI"</b> space your name and send it to 567678080</p>
                                     </div>
