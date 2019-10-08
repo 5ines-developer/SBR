@@ -120,8 +120,8 @@ $route['feedback']   				    = 'home/feedback';
 $route['testimonial']   				= 'home/testimonial';
 $route['testimonial-post']              = 'home/testimonial_post';
 $route['feedback-post']                 = 'home/feedback_post';
-
-
+$route['career']                        = 'home/career';
+$route['career-detail']                 = 'home/career_detail';
 
 
 //vendor register
