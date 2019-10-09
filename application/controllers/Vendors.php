@@ -143,18 +143,18 @@ class Vendors extends CI_Controller {
       }else{
         
         $insert = array(
-          'proffesional'  => $proffesional, 
-          'quality'       => $quality, 
-          'service'       => $service, 
-          'money'         => $money, 
-          'experience'    => $experience, 
-          'review'        => $description, 
-          'vendor_id'     => $vendorid,
-          'user_id'       => $user->su_id,
-          'user_name'     => $user->su_name,
-          'user_email'    => $user->su_email,
-          'rating'        => $rating,
-          'status'        =>  '1'
+          'proffesional' => $proffesional, 
+          'quality'      => $quality, 
+          'service'      => $service, 
+          'money'        => $money, 
+          'experience'   => $experience, 
+          'review'       => $description, 
+          'vendor_id'    => $vendorid,
+          'user_id'      => $user->su_id,
+          'user_name'    => $user->su_name,
+          'user_email'   => $user->su_email,
+          'rating'       => $rating,
+          'status'       =>  '1'
         );
 
           if($this->m_vendors->addReview($insert)){
@@ -211,20 +211,20 @@ class Vendors extends CI_Controller {
         foreach ($vendors as $key => $value) { }
 
         $insert = array(
-          'user_name'   =>  $name , 
-          'user_email'  =>  $email , 
-          'user_phone'  =>  $mobile , 
-          'vendor_id'   =>  $vendor_id , 
-          'fn_date'     =>  $fnDate , 
-          'fn_type'     =>  $fnType , 
-          'fn_time'     =>  $fnTime , 
-          'guest_no'    =>  $guestNo , 
-          'wed_detail'  =>  $WedDetail , 
-          'category'    =>  $value->category , 
-          'uniq'        =>  $uniq
+          'user_name'  =>  $name , 
+          'user_email' =>  $email , 
+          'user_phone' =>  $mobile , 
+          'vendor_id'  =>  $vendor_id , 
+          'fn_date'    =>  $fnDate , 
+          'fn_type'    =>  $fnType , 
+          'fn_time'    =>  $fnTime , 
+          'guest_no'   =>  $guestNo , 
+          'wed_detail' =>  $WedDetail , 
+          'category'   =>  $value->category , 
+          'uniq'       =>  $uniq
         );
 
-      $url = 'detail/'.str_replace(' ', '-', strtolower($value->category)).'/'.str_replace(' ', '-', strtolower($value->name)).'/'.$vendor_id;
+      $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.str_replace('', '-', strtolower($value->name)).'/'.$vendor_id;
 
         $data['output']  =  $this->m_vendors->addenquiry($insert);
         $data['result']  =  $insert;
@@ -264,21 +264,21 @@ class Vendors extends CI_Controller {
       $sender = 'BARATI';
       $message = '';
 
-      $message .='Dear Vendor,%n';
-      $message .= ' Hurry!!! %n '; 
-      $message .= $sender. ' is looking for %n ' ;
-      $message .= $sender .' %n';
-      $message .= 'Mob:'. $sender .' %n';
-      $message .= ' Event Date: ' .$sender .' %n';
-      $message .= 'Budget: '. $sender .' %n';
-      $message .= ' Location: '. $sender .' %n';
-      $message .= ' Remarks: ' . $sender .' %n %n';
-      $message .= ' With Love%n';
-      $message .= 'Shaadibaraati.com %n';
-      $message .= ' 18004199456';
+      $message .='Dear Vendor, ';
+      $message .= 'Hurry!!!   '; 
+      $message .= $sender. 'is looking for   ';
+      $message .= $sender .' ';
+      $message .= 'Mob:'. $sender .' ';
+      $message .= 'Event Date: '.$sender .' ';
+      $message .= 'Budget: '. $sender .' ';
+      $message .= 'Location: '. $sender .' ';
+      $message .= 'Remarks: '. $sender .'   ';
+      $message .= 'With Love ';
+      $message .= 'Shaadibaraati.com  ';
+      $message .= '18004199456';
 
       // Prepare data for POST request
-      $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
+      $data = array('apikey'=> $apiKey, 'numbers'=> $numbers, "sender" => $sender, "message" => $message);
      
       // Send the POST request with cURL
       $ch = curl_init('https://api.textlocal.in/send/');
@@ -301,25 +301,13 @@ class Vendors extends CI_Controller {
     $apiKey = '8S0m34R7e/w-pIGEre2EoIYBNS4z2Jz1Cl7eqxUUVw';
     // Message details
       // $numbers = $data['result']['user_phone'];
-      $numbers = '8951411732';
-      $sender = 'BARATI';
-      $message = rawurlencode('Dear '.$data['result']['user_name'].'
- 
-     
-      your Enquiry for '.$data['value']->category.' services has been sucessfully submitted to our team, our team will contact yo soon.
-      vendor:  '.$data['value']->name.'
-      Mob:  '.$data['value']->phone.'
-      Category : '.$data['value']->category.'
-      Location : '.$data['value']->city.'
-       
-      With Love
-      Shaadibaraati.com
-      1800419945');
+      $numbers = '8904848277';
+      $sender =  urlencode('BARATI');
+      $message = rawurlencode('Dear Vendor, Hurry!!! '.$Name.'is looking for '.$Name.'Mob: '.$Name.'Event Date: '.$Name.'Budget: '.$Name.'Location: '.$Name.'Remarks: '.$Name.'With Love Shaadibaraati.com 18004199456');
+      $numbers = implode(',', $numbers);
 
-      
-      // Prepare data for POST request
-      $data = array('apikey' => $apiKey, 'numbers' => $numbers, "sender" => $sender, "message" => $message);
-      // Send the POST request with cURL
+      $data = array('apikey'=> $apiKey, 'numbers'=> $numbers, "sender" => $sender, "message" => $message);
+
       $ch = curl_init('https://api.textlocal.in/send/');
       curl_setopt($ch, CURLOPT_POST, true);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -328,7 +316,13 @@ class Vendors extends CI_Controller {
       curl_close($ch);
       
       // Process your response here
-      print_r($response);exit();
+      print_r($response);
+
+
+      
+
+      
+      exit();
       // return $response;
  
   }
