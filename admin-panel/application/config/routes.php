@@ -124,6 +124,15 @@ $route['feedback']	                =	'enquiries/feedback';
 $route['feedback/(:any)']	        =	'enquiries/feedback/$1'; 
 
 
+$route['career']	                =	'career'; 
+$route['career/add']	            =	'career/add'; 
+$route['career/edit/(:any)']	    =	'career/edit/$1'; 
+$route['career/detail/(:any)']	    =	'career/detail/$1'; 
+$route['career/delete/(:any)']	    =	'career/delete/$1'; 
+$route['career/status/(:any)']	    =	'career/status/$1'; 
+
+
+
 
 
 //vendor enquiry
