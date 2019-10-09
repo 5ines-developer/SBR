@@ -342,9 +342,12 @@ class Vendors extends CI_Controller {
       $this->load->library('email');
       $from = $this->config->item('smtp_user');
       $msg = $this->load->view('email/vendor-enquiry', $data, true);
+
+     
+
       $this->email->set_newline("\r\n");
       $this->email->from($from, 'ShaadiBaraati');
-      $this->email->to('prathwi@5ine.in');
+      $this->email->to($data['result']['user_email']);
       $this->email->subject('Vendor enquiry request-'.$data['value']->name);
       $this->email->message($msg);
       if ($this->email->send()) {
@@ -359,11 +362,16 @@ class Vendors extends CI_Controller {
       
       $this->load->config('email');
       $this->load->library('email');
+
+      $to = $this->config->item('vr_to');
+      $cc = $this->config->item('vr_cc');
+
       $from = $this->config->item('smtp_user');
       $msg = $this->load->view('email/vendorEnquiry-user', $data, true);
       $this->email->set_newline("\r\n");
       $this->email->from($from, 'ShaadiBaraati');
-      $this->email->to('prathwi@5ine.in');
+      $this->email->to($to);
+      $this->email->cc($cc);
       // $this->email->to($data['result']['user_email']);
       $this->email->subject('Vendor enquiry request-'.$data['value']->name);
       $this->email->message($msg);

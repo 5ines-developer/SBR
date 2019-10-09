@@ -371,7 +371,7 @@ class Authentication extends CI_Controller {
         	redirect('vendor-register','refresh');
         }else{
 
-                $email = 'shahirkm@5ine.in';
+                
                 $insert = array(
                     'bname'     => $this->input->post('bname'),
                     'cperson'   => $this->input->post('cperson'),
@@ -384,20 +384,24 @@ class Authentication extends CI_Controller {
                     'city'      => $this->input->post('city'),
                     'servie'    => $this->input->post('service'),
                  );
-
+                 
                  $this->load->config('email');
                  $this->load->library('email');
+
+                 $to = $this->config->item('vr_to');
+                 $cc = $this->config->item('vr_cc');
                  $from = $this->config->item('smtp_user');
                  $data['result'] = $insert;
                  $msg = $this->load->view('email/vendor-registartion', $data, true);
                  $this->email->set_newline("\r\n");
                  $this->email->from($from , 'ShaadiBaraati');
-                 $this->email->to($email);
-                 $this->email->subject('Vendor registartion'); 
+                 $this->email->to($to);
+                 $this->email->cc($cc);
+                 $this->email->subject('Vendor registration'); 
                  $this->email->message($msg);
                 if($this->email->send())  
                 {
-                   $this->session->set_flashdata('success', 'Your request has been successfully submitted to our team, our team get back to you soon!');
+                   $this->session->set_flashdata('success', 'Your request has been successfully submitted to our team. <br/> our team get back to you soon!');
                    redirect('vendor-register','refresh');
                 } 
                 else

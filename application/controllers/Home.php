@@ -97,22 +97,27 @@ class Home extends CI_Controller {
         if (!empty($data['output'])) {
             $this->load->config('email');
             $this->load->library('email');
+            
+            $to = $this->config->item('vr_to');
+            $cc = $this->config->item('vr_cc');
+
             $from = $this->config->item('smtp_user');
             $msg = $this->load->view('email/enquiry', $data, true);
             $this->email->set_newline("\r\n");
             $this->email->from($from, 'ShaadiBaraati');
-            $this->email->to('prathwi@5ine.in');
+            $this->email->to($to);
+            $this->email->cc($cc);
             $this->email->subject('Enquiry Form');
             $this->email->message($msg);
             if ($this->email->send()) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, <br />Our team will contact you soon.');
                 redirect('contact-us','refresh');
             } else {
-                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
                 redirect('contact-us','refresh');
             }
         }else{
-              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+              $this->session->set_flashdata('error', 'Unable to submit your request, <br />Please try again later!');
               redirect('contact-us','refresh');
         }
     }
@@ -201,22 +206,26 @@ class Home extends CI_Controller {
         if (!empty($data['output'])) {
             $this->load->config('email');
             $this->load->library('email');
+
+            $to = $this->config->item('vr_to');
+            $cc = $this->config->item('vr_cc');
             $from = $this->config->item('smtp_user');
             $msg = $this->load->view('email/getquote', $data, true);
             $this->email->set_newline("\r\n");
             $this->email->from($from, 'ShaadiBaraati');
-            $this->email->to('prathwi@5ine.in');
+            $this->email->to($to);
+            $this->email->cc($cc);
             $this->email->subject('Free Quote request');
             $this->email->message($msg);
             if ($this->email->send()) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will reach you soon.');
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, br /> Our team will reach you soon.');
                 redirect(base_url(),'refresh');
             } else {
-                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                $this->session->set_flashdata('error', 'Unable to submit your request,<br /> Please try again later!');
                 redirect(base_url(),'refresh');
             }
         }else{
-              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+              $this->session->set_flashdata('error', 'Unable to submit your request,<br /> Please try again later!');
               redirect(base_url(),'refresh');
         }
     }

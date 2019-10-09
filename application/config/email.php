@@ -9,5 +9,9 @@ $config['mailtype'] = 'html';
 $config['charset'] = 'iso-8859-1';
 $config['wordwrap'] = TRUE;
 
+// vendor registration 
+$config['vr_to'] = 'info@shaadibaraati.com';
+$config['vr_cc'] = 'pargat.singh27@gmail.com';
+
 
 
