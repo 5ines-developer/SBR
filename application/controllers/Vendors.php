@@ -26,12 +26,10 @@ class Vendors extends CI_Controller {
            $value->review      = $this->m_vendors->getReview($value->id);
            $value->userReview  = $this->m_vendors->getuserReview($value->id);
            $value->fav         = $this->m_vendors->getFavourite($value->id);
-           $value->faq         = $this->m_vendors->faq($value->id);
+           $value->faq         = $this->m_vendors->faq($value->catId);
            $value->offer       = $this->m_vendors->offer($value->id);
            $value->similar     = $this->m_vendors->similarVendors($value->cityId,$value->catId,$value->id);
         }
-
-
         $data['vendor'] = $output;
         $data['title']  = $value->name.'- ShaadiBaraati';
         $this->load->view('vendors/detail', $data, FALSE);

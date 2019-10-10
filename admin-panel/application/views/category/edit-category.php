@@ -262,7 +262,7 @@ border-radius: 4px;}
                                                 <p><span class="error"><?php echo form_error('answ'); ?></span></p>
                                             </div><br>
                                             <div class="col l2">
-                                            <a id="marqueeplus1" class="marqueeplus1 remov" value="<?php echo $value1->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <a  class="marqueeplus1 remov" value="<?php echo $value1->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
 
@@ -272,7 +272,7 @@ border-radius: 4px;}
 
                                             <div class="row m0 marqaddnext" id="marqaddnext1">
                                                 <div class="input-field col s12 l5">
-                                                  <input type="text" id="quest" name="quest[]" class="validate" required value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
+                                                  <input type="text" id="quest" name="quest[]" class="validate" value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
                                                   <label for="quest">Question <span class="red-text">*</span></label>
                                                   <p><span class="error"><?php echo form_error('quest'); ?></span></p>
                                                 </div>

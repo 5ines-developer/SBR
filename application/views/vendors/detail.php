@@ -1,5 +1,6 @@
 <?php  $this->ci =& get_instance();
 $this->load->model('m_search'); 
+$this->load->model('m_vendors'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -444,10 +445,13 @@ height: 98px;
                                             </div>
                                             <transition name="slide">
                                                 <div class="vs-contentbox" v-if="isShow">
-                                                    <?php  foreach ($value->faq as $key => $faqs) {  ?>
+                                                    <?php  foreach ($value->faq as $key => $faqs) {  
+                                                        $faans = $this->ci->m_vendors->faans($faqs->id,$value->id);
+                                                        if(!empty($faans)){ $ans =$faans; }else{ $ans = $faqs->answer; }
+                                                        ?>
                                                     <div class="vs-ic-content">
-                                                        <p class="vs-qtn"><?php echo $faqs->quotation ?></p>
-                                                        <p class="vs-aws"><?php echo $faqs->asw ?></p>
+                                                        <p class="vs-qtn"><?php echo $faqs->question ?></p>
+                                                        <p class="vs-aws"><?php echo $ans ?></p>
                                                     </div>
                                                     <?php } ?>
                                                 </div>

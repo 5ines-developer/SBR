@@ -105,7 +105,7 @@ class M_category extends CI_Model {
 
 	public function getfaq($id = null)
 	{
-		return $this->db->where('category_id', $id)->get('faq', 6)->result();
+		return $this->db->where('category_id', $id)->get('faq')->result();
 	}
 
 	public function deleteInfo($id = null)

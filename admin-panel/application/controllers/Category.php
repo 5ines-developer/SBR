@@ -202,7 +202,7 @@ class Category extends CI_Controller {
 
         public function faq($question = '',$answer='',$id='')
         {
-            
+
             $this->m_category->deleteFaq($id);
             for ($i=0; $i <count($question) ; $i++) { 
                 $this->m_category->faq($question[$i],$answer[$i],$id);
@@ -441,6 +441,10 @@ class Category extends CI_Controller {
         }
 
         $output2 = $this->faq($this->input->post('quest'),$this->input->post('answ'),$this->input->post('cat_uniq'));
+
+
+
+        
 
         if(!empty($output) || !empty($output1) || !empty($output2) )
 			{

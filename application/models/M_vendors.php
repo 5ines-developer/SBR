@@ -212,9 +212,9 @@ class M_vendors extends CI_Model
     //  add faq
     public function faq($id)
     {
-        $this->db->where('vendor_id', $id)->order_by('id', 'asc');
-        
-        return $this->db->get('vendor_faq')->result();
+        $uqid = $this->db->select('uniq')->where('id',$id)->get('category')->row('uniq');
+        $this->db->where('category_id', $uqid)->order_by('id', 'asc');        
+        return $this->db->get('faq')->result();
         
     }
 
@@ -278,6 +278,17 @@ class M_vendors extends CI_Model
         }
         
         
+    }
+
+    public function faans($fid ='',$vid='')
+    {
+        
+        $this->db->select('asw');
+        $this->db->where('vendor_id', $vid);
+        $this->db->where('fq_id', $fid);
+        return $this->db->get('vendor_faq')->row('asw');
+       
+       
     }
     
 

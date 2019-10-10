@@ -547,15 +547,22 @@ max-height: 95px;
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         
                                         <?php foreach ($vendor_faq as $vendor_faq => $faaqval) { 
+                                            $fqanw = $this->ci->m_vendors->fansw($faaqval->id);
+                                            
+                                            if (!empty($fqanw)) {
+                                                $ans = $fqanw;                                                
+                                            }else{
+                                                $ans = $faaqval->answer; 
+                                            }
                                         ?>
                                             <div class="row m0 faqform" id="faqform">
                                                 <div class="col s12 m8 input-field">
                                                     <textarea readonly name="quation[]" class="materialize-textarea"><?php echo $faaqval->question  ?></textarea>
                                                     <label for="textarea1">Question</label>
                                                 </div>
-                                                <input type="text" id="fa_id" name="fa_id[]" class="validate" value="<?php echo (!empty($faaqval->id)?$faaqval->id:'') ?>" >
+                                                <input type="hidden" id="fa_id" name="fa_id[]" class="validate" value="<?php echo (!empty($faaqval->id)?$faaqval->id:'') ?>" >
                                                 <div class="col s12 m8 input-field">
-                                                    <textarea name="asw[]" class="materialize-textarea"><?php echo $faaqval->answer  ?></textarea>
+                                                    <textarea name="asw[]" class="materialize-textarea"><?php echo $ans  ?></textarea>
                                                     <label for="textarea1">Answers</label>
                                                 </div>
                                             </div>
