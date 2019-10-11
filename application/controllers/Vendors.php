@@ -230,98 +230,106 @@ class Vendors extends CI_Controller {
 
         
 
-        // if (!empty($data['output'])  && !empty($vendors)) {
+        if (!empty($data['output'])  && !empty($vendors)) {
 
-          // $output1 = $this->send_user($data);
-          // $output2 = $this->send_admin($data);
+          $output1 = $this->send_user($data);
+          $output2 = $this->send_admin($data);
           $output3 = $this->sms_vendor($data);
-          // $output4 = $this->sms_user($data);
-            // if (!empty($output1)  && !empty($output2)) {
-            //     $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
-            //     redirect($url,'refresh');
-            // } else {
-            //     $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
-            //     redirect($url,'refresh');
-            // }
-        // }else{
-        //       $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
-        //       redirect($url,'refresh');
-        // } 
+          $output4 = $this->sms_user($data);
+            if (!empty($output1)  && !empty($output2)) {
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
+                redirect($url,'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                redirect($url,'refresh');
+            }
+        }else{
+              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+              redirect($url,'refresh');
+        } 
+
   }
 
   public function sms_vendor($data = '')
   {
+
+    $Name     = $data['result']['user_name'];
+    $category = $data['value']->category;
+    $phone    = $data['result']['user_phone'];
+    $fn_date  = $data['result']['fn_date'];
+    $budget   = 'not decided';
+    $location = $data['value']->city;
+    $number   = $data['value']->phone;
  
+    $curl = curl_init();
+    $post_fields = array();
+    $post_fields["method"] = "sendMessage";
+    $post_fields["send_to"] = '91'.$number.'';
+    $post_fields["msg"]  = 'Dear Vendor,
+
+    Hurry!!!!!
+    '.$Name.'is looking for  '.$category.' services.
+    Mob:  '.$phone.'
+    Event Date:  '.$fn_date.'
+    Budget :  '.$budget.'
+    Location :  '.$location.'
     
-    // Account details
-      $apiKey = '8S0m34R7e/w-pIGEre2EoIYBNS4z2Jz1Cl7eqxUUVw';
+    With Love
+    Shaadibaraati.com
+    18004199456';
 
-    // Message details
-      // $numbers = $data['value']->phone;
-      $numbers = '8904848277';
-      $sender = 'BARATI';
-      $message = '';
-
-      $message .='Dear Vendor, ';
-      $message .= 'Hurry!!!   '; 
-      $message .= $sender. 'is looking for   ';
-      $message .= $sender .' ';
-      $message .= 'Mob:'. $sender .' ';
-      $message .= 'Event Date: '.$sender .' ';
-      $message .= 'Budget: '. $sender .' ';
-      $message .= 'Location: '. $sender .' ';
-      $message .= 'Remarks: '. $sender .'   ';
-      $message .= 'With Love ';
-      $message .= 'Shaadibaraati.com  ';
-      $message .= '18004199456';
-
-      // Prepare data for POST request
-      $data = array('apikey'=> $apiKey, 'numbers'=> $numbers, "sender" => $sender, "message" => $message);
-     
-      // Send the POST request with cURL
-      $ch = curl_init('https://api.textlocal.in/send/');
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      $response = curl_exec($ch);
-      curl_close($ch);
-      
-      // Process your response here
-      print_r($response);exit();
-      // return $response;
+        
+    $post_fields["msg_type"] = "TEXT";
+    $post_fields["userid"] = "2000187670";
+    $post_fields["password"] = "Sidhu@9787";
+    $post_fields["auth_scheme"] = "PLAIN";
+    $post_fields["format"] = "JSON";
+    curl_setopt_array($curl, array(CURLOPT_URL => "http://enterprise.smsgupshup.com/GatewayAPI/rest",CURLOPT_RETURNTRANSFER => true,CURLOPT_ENCODING => "",CURLOPT_MAXREDIRS => 10,CURLOPT_TIMEOUT => 30,CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,CURLOPT_CUSTOMREQUEST => "POST",CURLOPT_POSTFIELDS => $post_fields));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } 
+    else 
+    {
+      echo $response;
+    }
  
   }
 
   public function sms_user($data = '')
-  {
+  {  
+    $Name = $data['value']->name;
+    $phone    = $data['value']->phone; 
+    $email = $data['value']->email;
+    $number   = $data['result']['user_phone'];
  
-    // Account details
-    $apiKey = '8S0m34R7e/w-pIGEre2EoIYBNS4z2Jz1Cl7eqxUUVw';
-    // Message details
-      // $numbers = $data['result']['user_phone'];
-      $numbers = '8904848277';
-      $sender =  urlencode('BARATI');
-      $message = rawurlencode('Dear Vendor, Hurry!!! '.$Name.'is looking for '.$Name.'Mob: '.$Name.'Event Date: '.$Name.'Budget: '.$Name.'Location: '.$Name.'Remarks: '.$Name.'With Love Shaadibaraati.com 18004199456');
-      $numbers = implode(',', $numbers);
-
-      $data = array('apikey'=> $apiKey, 'numbers'=> $numbers, "sender" => $sender, "message" => $message);
-
-      $ch = curl_init('https://api.textlocal.in/send/');
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      $response = curl_exec($ch);
-      curl_close($ch);
-      
-      // Process your response here
-      print_r($response);
-
-
-      
-
-      
-      exit();
-      // return $response;
+    $curl = curl_init();
+    $post_fields = array();
+    $post_fields["method"] = "sendMessage";
+    $post_fields["send_to"] = '91'.$number.'';
+    $post_fields["msg"]  ='Vendor Details
+    Company name '.$Name.'
+    Mob: '.$phone.'
+    Email: '.$email.'
+    www.shaadibaraati.com(1800-4199-456)';        
+    $post_fields["msg_type"] = "TEXT";
+    $post_fields["userid"] = "2000187670";
+    $post_fields["password"] = "Sidhu@9787";
+    $post_fields["auth_scheme"] = "PLAIN";
+    $post_fields["format"] = "JSON";
+    curl_setopt_array($curl, array(CURLOPT_URL => "http://enterprise.smsgupshup.com/GatewayAPI/rest",CURLOPT_RETURNTRANSFER => true,CURLOPT_ENCODING => "",CURLOPT_MAXREDIRS => 10,CURLOPT_TIMEOUT => 30,CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,CURLOPT_CUSTOMREQUEST => "POST",CURLOPT_POSTFIELDS => $post_fields));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    if ($err) {
+      echo "cURL Error #:" . $err;
+    } 
+    else 
+    {
+      echo $response;
+    }
  
   }
 

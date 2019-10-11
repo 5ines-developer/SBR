@@ -331,7 +331,7 @@ height: 98px;
                                                 <div class="input-field col s6">
                                                     <input id="date" type="text" class="validate datepicker"
                                                         name="fn_date">
-                                                    <label for="date">Function Date</label>
+                                                    <label for="date">Event Date</label>
                                                 </div>
                                             </div>
 
