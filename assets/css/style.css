@@ -2745,9 +2745,16 @@ input:not([type]):focus {
 }
 
 .respon-det li {
-    list-style: square !important;
-    color: #d0021b;
     padding-bottom: 9px;
+}
+.respon-det li:before{
+    content: '';
+    height: 5px;
+    width: 5px;
+    background: #d0021b;
+    position: absolute;
+    margin-left: -13px;
+    margin-top: 8px;
 }
 
 .li-sp {

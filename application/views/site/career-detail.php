@@ -30,60 +30,48 @@
                         <div class="row">
                             <div class="col l12 m12 s12">
                                 <div class="career-detail-list">
-                                    <h5>Key Account Manager</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                                    </p>
-                                    <p><span style="color:#d0021b">Qualification </span>: Graduate and above</p>
-                                    <p><span style="color:#d0021b">Experience </span>: 1 year and above</p>
-                                    <p><span style="color:#d0021b">Language </span>: Kannada / English / Hindi</p>
+                                    <h5><?php echo $jobs['0']->title ?></h5>
+                                    <?php echo(!empty($jobs['0']->title))? '<p>'.$jobs['0']->title.'</p>' : '' ?>
+
+                                    <?php echo(!empty($jobs['0']->qualification))? '<p><span style="color:#d0021b">Qualification </span>: '.$jobs['0']->qualification.'</p>' : '' ?>
+                                    <?php echo(!empty($jobs['0']->experience))? '<p><span style="color:#d0021b">Experience </span>: '.$jobs['0']->experience.'</p>' : '' ?>
+                                    <?php echo(!empty($jobs['0']->language))? '<p><span style="color:#d0021b">Language </span>: '.$jobs['0']->language.'</p>' : '' ?>
                                 </div>
                                 <div class="respon-det">
-                                    <h6>Responsibilitiesities</h6>
-                                    <ul>
-                                        <li><span class='li-sp'>Lead & execute new business initiatives within Shaadi Baraati right from product idealization to on ground execution</span></li>
-                                        <li><span class='li-sp'>Be responsible for developing new strategies for new launches</span></li>
-                                        <li><span class='li-sp'>Develop channel, content & communication plan with marketing team</span></li>
-                                        <li><span class='li-sp'>Conceptualize and launch offerings for niche target segments</span></li>
-                                        <li><span class='li-sp'>0-1 years of experience</span></li>
-                                        <li><span class='li-sp'>Strong verbal and written communication skills</span></li>
-                                        <li><span class='li-sp'>Provide ideas & Leadership skill</span></li>
-                                        <li><span class='li-sp'>Generate Revenue & Build relationship with vendors.</span></li>
-                                    </ul>
-                                    <h6>Key Roles</h6>
-                                    <ul>
-                                        <li><span class='li-sp'>Research & Sales Planning</span></li>
-                                        <li><span class='li-sp'>Relationship & Client Management</span></li>
-                                        <li><span class='li-sp'>Strategy & Thought Leadership</span></li>
-                                        <li><span class='li-sp'>Inside sales as well as meetings to liaison with prospective clients</span></li>
-                                    </ul>
-                                    <p class="locati">Location : Bangalore / Delhi / Hydrabad</p>
+                                    <?php echo(!empty($jobs['0']->responsiblity))? '<h6>Responsiblity</h6>'.$jobs['0']->responsiblity.'' : '' ?>
+
+                                    <?php echo(!empty($jobs['0']->key_role))? '<h6>Key Roles</h6>'.$jobs['0']->key_role.'' : '' ?>
+
+                                    <?php echo(!empty($jobs['0']->location))? '<p class="locati">Location : '.$jobs['0']->location.' </p>' : '' ?>
+                                    
                                     <h5 class="apply-email">To apply any of above mentioned position, mail us at hr@shaadibaraati.com with your full resume </h5>
                                 </div>
-                                <div class="career-form">
+                                <div class="career-form z-depth-2">
                                     <h4>Submit Your Details</h4>
-                                    <form>
+                                    <form action="<?php echo base_url('appaly/').$jobs['0']->id ?>" method="post" enctype="multipart/form-data">
                                         <div class="row">
-                                            <div class="col l4 s12 m4">
+                                            <div class="col  s12 m6">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="fn" name="fname" type="text" class="validate" required="">
+                                                        <input id="fn" name="name" type="text" class="validate" required="">
                                                         <label for="fn">Name <span class="red-text">*</span></label>
+                                                        <input type="hidden" name="position" value="<?php echo $jobs['0']->title ?>">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col l4 s12 m4">
+                                            <div class="col s12 m6">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="fn" name="email" type="text" class="validate" required="">
-                                                        <label for="fn">Email <span class="red-text">*</span></label>
+                                                        <input id="em" name="email" type="text" class="validate" required="">
+                                                        <label for="em">Email <span class="red-text">*</span></label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col l4 s12 m4">
+                                            <div class="col  s12 m6">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="fn" name="phone" type="text" class="validate" required="">
-                                                        <label for="fn">Phone<span class="red-text">*</span></label>
+                                                        <input id="pn" name="phone" type="text" class="validate" required="">
+                                                        <label for="pn">Phone<span class="red-text">*</span></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -92,34 +80,23 @@
                                                     <div class="file-field input-field">
                                                         <div class="btn hh-file">
                                                             <span>File</span>
-                                                            <input type="file">
+                                                            <input type="file" required name="file" accept=".doc,.docx,.pdf" >
                                                         </div>
                                                         <div class="file-path-wrapper">
-                                                            <input class="file-path validate if-file" type="text" placeholder="Upload Your Resume">
+                                                            <input class="file-path validate if-file" required type="text" placeholder="Upload Your Resume">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col l6 s12 m6">
-                                                <div class="feedback-input">
-                                                    <div class="input-field if-feed ">
-                                                        <select>
-                                                            <option value="" disabled selected>Position</option>
-                                                            <option value="1">Option 1</option>
-                                                            <option value="2">Option 2</option>
-                                                            <option value="3">Option 3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="col l12 s12 m12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <textarea id="textarea1" name="feedback" requred class="materialize-textarea hh-height"></textarea>
+                                                        <textarea id="textarea1" name="msg" requred class="materialize-textarea"></textarea>
                                                         <label for="textarea1">Type your message here....</label>
                                                     </div>
                                                 </div>
-                                                <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                                                <button class="waves-effect waves-light btn red plr30 accent-4 white-text" type="submit">Submit</button>
                                             </div>
                                             
                                         </div>
@@ -134,11 +111,9 @@
             <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
-    <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
+    
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
-    <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
 
@@ -153,6 +128,47 @@
             var sel = document.querySelectorAll('select');
             var instances = M.FormSelect.init(sel);
         });
+
+
+        var app = new Vue({
+        el: '#app',
+        data: {
+            email: '',
+            emailError: '', 
+           
+        },
+       
+
+        methods: {
+            
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+            checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
+            }
+        },
+    });
     </script>
 </body>
 

@@ -157,10 +157,17 @@ class Home extends CI_Controller {
         $this->load->view('site/feedback',$data);
     }
 
-    public function career()
+    public function career($id)
     {
         $data['title']  = 'ShaadiBaraati | Career';
-        $this->load->view('site/career',$data);
+        if(!empty($id)){
+            $data['jobs'] = $this->m_home->jobs($id);
+            $this->load->view('site/career-detail',$data);
+        }else{
+            $data['jobs'] = $this->m_home->jobs();
+            $this->load->view('site/career',$data);
+        }
+        
     }
 
     public function career_detail()
@@ -278,6 +285,41 @@ class Home extends CI_Controller {
         }
         
     }
+
+
+    // career
+	public function application($id)
+	{
+		
+			$config = array(
+				'upload_path' => "./resume/",
+				'allowed_types' => 'doc|docx|pdf|DOC|DOCX|PDF',
+				'overwrite' => TRUE,
+				'encrypt_name' => TRUE
+				
+			);
+			$this->load->library('upload', $config);
+			if(!is_dir($config['upload_path'])) mkdir($config['upload_path'], 0777, TRUE);
+			$this->upload->do_upload('file');
+			$path 	=  'resume/'.$this->upload->data('file_name');									
+			$data = array(
+				'name' 	=> $this->input->post('name', true), 
+				'email' => $this->input->post('email', true), 
+				'position' 	=> $this->input->post('position', true), 
+				'phone' 	=> $this->input->post('phone', true), 
+				'msg' 	=> $this->input->post('msg', true), 
+				'file' 	=> $path, 
+			);
+
+			if($this->m_home->application($data)){
+				$this->session->set_flashdata('success', 'Job Successfully submited <br> Our Hr Department Contact you soon');
+				redirect('career/'.$id);
+			}else{
+				$this->session->set_flashdata('error', 'Server error occured. Please try agin later');
+				redirect('career/'.$id);
+			}
+		
+	}
 
 }
 

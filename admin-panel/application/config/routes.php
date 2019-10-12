@@ -130,7 +130,7 @@ $route['career/edit/(:any)']	    =	'career/edit/$1';
 $route['career/detail/(:any)']	    =	'career/detail/$1'; 
 $route['career/delete/(:any)']	    =	'career/delete/$1'; 
 $route['career/status/(:any)']	    =	'career/status/$1'; 
-
+$route['career/applications']	    =	'career/applications'; 
 
 
 

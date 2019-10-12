@@ -52,6 +52,12 @@ class M_career extends CI_Model {
         }
     }
 
+    // applications
+    public function applications()
+    {
+        return $this->db->order_by('status', 'desc')->get('application')->result();
+    }
+
     
 
 

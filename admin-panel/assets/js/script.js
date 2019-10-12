@@ -30,7 +30,13 @@ $(document).ready(function(){
 
     $('.collapsible').collapsible();
 
-  
+    $('.droup-link .droup-link-item').click(function(){
+      $('.droupmenu').slideToggle();
+    });
+
+    if($('.droup-link').hasClass('active')){
+      $('.droupmenu').show();
+    }
 
 });
 

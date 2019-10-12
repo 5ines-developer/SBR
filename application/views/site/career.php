@@ -37,38 +37,19 @@
                     </div>
                     <div class="career-top">
                         <div class="row">
-                            <div class="col l6 m6 s12">
-                            <a href=""><div class="care-detail">
-                            <h3>Key Account Manager</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                            <p><span style="color:red">Experience </span>: 1 Year and above</p>
-                            </div>
-                            </a>
-                            </div>
-                            <div class="col l6 m6 s12">
-                            <a href=""><div class="care-detail">
-                            <h3>Tele Marketing</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                            <p><span style="color:red">Experience </span>: 1 Year and above</p>
-                            </div>
-                            </a>
-                            </div>
-                            <div class="col l6 m6 s12">
-                            <a href=""><div class="care-detail">
-                            <h3>Sales Manager</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                            <p><span style="color:red">Experience </span>: 1 Year and above</p>
-                            </div>
-                            </a>
-                            </div>
-                            <div class="col l6 m6 s12">
-                            <a href=""><div class="care-detail">
-                            <h3>Key Account Manager</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                            <p><span style="color:red">Experience </span>: 1 Year and above</p>
-                            </div>
-                            </a>
-                            </div>
+                            <?php if(!empty($jobs)){ 
+                                foreach ($jobs as $key => $value) {  
+                            ?>
+                                <div class="col l6 m6 s12">
+                                    <a href="<?php echo base_url('application/').$value->id ?>">
+                                        <div class="care-detail">
+                                            <h3><?php echo $value->title ?></h3>
+                                            <p><?php echo mb_strimwidth($value->des, 0, 110, "..."); ?></p>
+                                            <p><span style="color:red">Experience </span>: <?php echo $value->experience ?></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php } }?>
                         </div>
                     </div>
                 </div>
@@ -77,11 +58,9 @@
             <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
-    <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
+    
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
-    <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
 
@@ -93,6 +72,46 @@
             var elems = document.querySelectorAll('.collapsible');
             var instances = M.Collapsible.init(elems);
         });
+
+        var app = new Vue({
+        el: '#app',
+        data: {
+            email: '',
+            emailError: '', 
+           
+        },
+       
+
+        methods: {
+            
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+            checkForm() {
+                if (this.emailError == '') {
+
+
+                    this.$refs.form.submit()
+                } else {}
+            }
+        },
+    });
     </script>
 </body>
 
