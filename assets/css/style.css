@@ -2933,6 +2933,18 @@ input:not([type]):focus {
 /* changes 23-09-2019 */
 
 @media(max-width:567px) {
+
+    #citymodel{
+        width: 100%;
+    }
+    .citylist li {
+        width: calc((100% - 36px) / 3);
+    }
+    .morecitylink li {
+        width: calc((100% - 36px) / 3);
+    }
+
+    
     .top-city-sl.city-more {
         height: 120px;
     }
