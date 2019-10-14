@@ -571,6 +571,7 @@
         
           new SlimSelect({ select: '.input-field select'});
           new SlimSelect({ select: '.input-field select#sel-cato'});
+          
         // top-cities
         $('.top-citys').slick({
             slidesToShow: 5,
@@ -747,7 +748,7 @@
         methods: {
             // blog fetch
             blogFetch(){
-            axios.get('https://www.baraati.in/blog/wp-json/wp/v2/posts?per_page=3&orderby=date&order=desc')
+            axios.get('<?php echo base_url() ?>blog/wp-json/wp/v2/posts?per_page=3&orderby=date&order=desc')
                 .then(response => {
                     this.datas = response.data; 
                     console.log(this.datas);

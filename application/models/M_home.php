@@ -126,6 +126,28 @@ class M_home extends CI_Model
             return false;
         }     
     }
+
+    // career fetch
+    public function jobs($id = null)
+    {
+        if(!empty($id)){
+            $this->db->where('id', $id);
+        }
+        return $this->db->where('status', '1')->get('career_post')->result();
+    }
+
+
+    // career application
+	public function application($data = null)
+	{
+		$this->db->insert('application', $data);
+		if($this->db->affected_rows() > 0){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
 }
 
 /* End of file ModelName.php */

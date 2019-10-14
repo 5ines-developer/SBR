@@ -125,6 +125,7 @@
                             <!-- <a href="#" ><li class="hov">E-Invite</li></a> -->
                             <a href="<?php echo base_url() ?>feedback" ><li class="hov">Feedback / Complaints</li></a>
                             <a href="<?php echo base_url() ?>site-map" ><li class="hov">Sitemap</li></a>
+                            <a href="<?php echo base_url() ?>career" ><li class="hov">Career</li></a>
                         </ul>
                     </div>
                 </div>

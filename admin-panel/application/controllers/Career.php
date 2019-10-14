@@ -113,8 +113,17 @@ class Career extends CI_Controller {
         }else{
             $this->session->set_flashdata('error', 'Some error occured please try again');
             redirect('career/','refresh');
-        }
+     }
     }
+
+    // applications
+    public function applications()
+    {   
+        $data['title'] = 'applications';
+        $data['application'] = $this->m_career->applications();
+        $this->load->view('career/applications', $data);
+    }
+   
 
 }
 

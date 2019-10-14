@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } );
 
   // // selcet
-  //   var slect = document.querySelectorAll('select');
-  //   var slectinstances = M.FormSelect.init(slect);
+    var slect = document.querySelectorAll('select[name=qservice]');
+    var slectinstances = M.FormSelect.init(slect);
 
   // nav drwaver
     var sidenav = document.querySelectorAll('.sidenav');

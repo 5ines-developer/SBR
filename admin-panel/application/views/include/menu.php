@@ -29,13 +29,12 @@
           </a>
         </li>
 
-        <li class="<?php echo $this->uri->segment(1) == 'career'?'active':'' ?>">
-          <a href="<?php echo base_url('career') ?>"><i class="fas fa-user-tie li-icon"></i>Career 
-          <?php if($this->ci->preload->testimonial() > 0){
-            echo '<span class="new badge">'. $this->ci->preload->testimonial() .'</span> ';
-          } ?>
-          </a>
-        </li>
+        <li class="droup-link <?php echo $this->uri->segment(1) == 'career'?'active':'' ?>"><a class="droup-link-item"><i class="fas fa-user-tie li-icon"></i>Career</a>
+            <ul class="droupmenu">
+              <li class="<?php echo $this->uri->segment(1) == 'career'?'active':'' ?>"><a href="<?php echo base_url('career') ?>">Jobs</a></li>
+              <li class="<?php echo $this->uri->segment(2) == 'applications'?'active':'' ?>"><a href="<?php echo base_url('career/applications') ?>">Applications</a></li>
+            </ul>
+      </li>
         
       </ul>
    </div>

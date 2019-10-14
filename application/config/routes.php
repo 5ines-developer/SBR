@@ -121,12 +121,18 @@ $route['testimonial']   				= 'home/testimonial';
 $route['testimonial-post']              = 'home/testimonial_post';
 $route['feedback-post']                 = 'home/feedback_post';
 $route['career']                        = 'home/career';
-$route['career-detail']                 = 'home/career_detail';
-
+$route['career/(:any)']                 = 'home/career/$1';
+$route['appaly/(:any)']            = 'home/application/$1';
 
 //vendor register
 $route['vendor-register'] 		        = 'authentication/vendorRegister';
+$route['vendor-login'] 		            = 'authentication/vendorlogin';
 $route['vendor-register/send'] 		    = 'authentication/vendorsend';
+
+
+$route['vendor/register'] 		    = 'vendor/index';
+$route['vendor/login'] 		        = 'vendor/login';
+
 
 
 
