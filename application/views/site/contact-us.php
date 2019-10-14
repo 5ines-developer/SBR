@@ -10,6 +10,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+    <style>
+    .padd-li {
+        padding: 12px 0px;
+    }
+</style>
 </head>
 
 <body >
@@ -88,7 +93,7 @@
                                             </div>
                                             <div class="col l12 s12">
                                              <div class="d-input">
-                                                <div class="g-recaptcha" data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div>
+                                                <div class="g-recaptcha" data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div>
                                             </div>
                                             <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div>
                                             </div>
@@ -109,12 +114,26 @@
                                         <div class="col l12 s12">
                                             <div class="padd-li">
                                                 <div class="row m0">
-                                                        <div class="col l1 s1">
-                                                        <i class="material-icons">location_on</i>
-                                                    </div>
-                                                    <div class="col l11 s11">
-                                                        <p class="m0">32/1, Kundan Complex, 2nd Floor, Ulsoor, Bangalore 560008 Karnataka India</p>
-                                                    </div>
+                                                        <div class="col l1 s1 p10">
+                                                            <i class="material-icons">location_on</i>
+                                                        </div>
+                                                        <div class="col l11 s11 p10">
+                                                            <p class="m0">Corporate Office 32/1, Kundan Complex, 2nd Floor, Ulsoor, Bangalore 560008 Karnataka India</p>
+                                                        </div>
+
+                                                        <div class="col l1 s1 p10">
+                                                            <i class="material-icons">location_on</i>
+                                                        </div>
+                                                        <div class="col l11 s11 p10">
+                                                            <p class="m0">Branch Office Delhi Plot No-A, 61, 1st Floor, A Block, Sector 16, Noida, Uttar Pradesh 201301 India</p>
+                                                        </div>
+                                                        <div class="col l1 s1 p10">
+                                                            <i class="material-icons">location_on</i>
+                                                        </div>
+                                                        <div class="col l11 s11 p10">
+                                                            <p class="m0">Branch Office Indore Office No. 307 , 3rd Floor  Royal Ratan Building Near Ahinsha Tower MG Road Indore -  452001</p>
+                                                        </div>
+
                                                 </div>
                                             </div>
                                         </div>

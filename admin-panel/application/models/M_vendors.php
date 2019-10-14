@@ -400,15 +400,12 @@ class M_vendors extends CI_Model {
 		return $this->db->where('category_id', $uqid->uniq)->get('faq')->result();
 	}
 
-	public function fansw($id = null)
+	public function fansw($id = null,$vid='')
 	{
-		
 		$this->db->select('asw');
 		$this->db->where('fq_id', $id);
-		return $this->db->get('vendor_faq')->row('asw');
-		
-		
-		
+		$this->db->where('vendor_id', $vid);
+		return $this->db->get('vendor_faq')->row('asw');	
 	}
 
 	

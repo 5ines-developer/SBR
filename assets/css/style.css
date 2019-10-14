@@ -18,6 +18,9 @@ html {
 .m0 {
     margin: 0px;
 }
+.p10{
+    padding: 10px !important;
+}
 
 .mt0 {
     margin-top: 0px;
@@ -2378,7 +2381,7 @@ a.viewmore:hover {
 .bor-bot {
     border: 1px solid white;
     color: white;
-    padding: 35px;
+    padding: 2px 2px;
 }
 
 .address-detail {

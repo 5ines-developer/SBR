@@ -546,8 +546,9 @@ max-height: 95px;
                                     <form action="<?php echo base_url() ?>vendors/faq_insert" method="post" id="">
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         
-                                        <?php foreach ($vendor_faq as $vendor_faq => $faaqval) { 
-                                            $fqanw = $this->ci->m_vendors->fansw($faaqval->id);
+                                        <?php foreach ($vendor_faq as $vendor_faq => $faaqval) {
+ 
+                                            $fqanw = $this->ci->m_vendors->fansw($faaqval->id,$result->id);
                                             
                                             if (!empty($fqanw)) {
                                                 $ans = $fqanw;                                                
