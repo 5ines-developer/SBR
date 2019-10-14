@@ -936,7 +936,7 @@ height: 98px;
                 </div>
             </div>
         </section>
-        <?php   if (!empty($value->similar)) { ?>
+        <?php  if (!empty($value->similar)) { ?>
         <section style="background: #fff; padding: 30px 0;">
             <div class="container-fluide">
                 <div class="row">
@@ -957,8 +957,12 @@ height: 98px;
 
 
 
-                        <?php  foreach ($value->similar as $sim => $simi) { 
-                                
+                        <?php   
+
+                    $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
+                        
+                        foreach ($value->similar as $sim => $simi) { 
+                             $lable_class = strtolower(str_replace(' ', '-', $simi->package));
                                 ?>
                         <div class="col s6 m4 l3">
                             <div class="result-items hoverable">
@@ -966,8 +970,8 @@ height: 98px;
                                     <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.urlencode(str_replace(" ","-",strtolower($simi->name))).'/'.$simi->uniq)?>"
                                         target="_blank">
                                         <div class="card-image">
-                                            <img
-                                                src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
+                                        <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $simi->package ?></span>
+                                            <img src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
                                         </div>
                                         <div class="card-content simil-crd">
                                             <div class="row m0">
@@ -1012,7 +1016,7 @@ height: 98px;
                                                     <p class=" r-crd-category"><?php echo $simi->category ?></p>
                                                 </div>
                                                 <div class="col s12 m6 hide-on-small-only">
-                                                    <p class="m0 r-crd-ratings right"> <?php echo $this->ci->m_search->countReview($value->id).' Reviews' ?><span class="c-badge green"><i
+                                                    <p class="m0 r-crd-ratings right"> <?php echo $this->ci->m_search->countReview($value->id).' Reviews' ?> <span class="c-badge green"><i
                                                                 class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($value->id) ?></span></p>
                                                 </div>
                                             </div>
@@ -1021,7 +1025,7 @@ height: 98px;
                                 </div>
                             </div>
                         </div>
-                        <?php   } } ?>
+                        <?php  if ($sim == 3) break; }   } ?>
                     </div>
                 </div>
             </div>

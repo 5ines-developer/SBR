@@ -39,7 +39,7 @@
                                 <div class="wdas-item-content ">
                                     <p class="wdatitle">Hello Wed Planner</p>
                                     <p>Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
-                                    <a class="btn-cate">Book Now</a>
+                                    <a href="#modalf" class="btn-cate modal-trigger">Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                                 <div class="wdas-item-content ">
                                     <p class="wdatitle">Assisted Wed Planner</p>
                                     <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact..</p>
-                                    <a class="btn-cate">Book Now</a>
+                                    <a href="#modalf" class="btn-cate modal-trigger">Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                                 <div class="wdas-item-content ">
                                     <p class="wdatitle">Premium Wed Planner</p>
                                     <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
-                                    <a class="btn-cate">Book Now</a>
+                                    <a href="#modalf"  class="btn-cate modal-trigger">Book Now</a>
                                 </div>
                             </div>
                         </div>

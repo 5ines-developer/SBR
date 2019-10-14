@@ -246,16 +246,21 @@ class M_vendors extends CI_Model
     }
 
     public function similarVendors($city='',$category='',$id='')
-    {        
+    {    
+
         $this->db->where('v.id !=', $id);
-        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.address,v.price_for,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
+        $this->db->select('v.package,v.id,v.name,v.phone,v.email,v.price,v.address,v.price_for,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->where('v.city', $city);
         $this->db->where('v.category', $category); 
         $this->db->where('v.is_active', '1');
+
+        $this->db->protect_identifiers = FALSE;
+            $this->db->order_by('FIELD ( v.package, "Wed Elite", "Wed Leader", "Wed Assisted", "Wed Gold", "Wed Premium", "Wed Featured", "Free Listing", "")');
+        $this->db->protect_identifiers = TRUE;
+
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
         $this->db->join('category cat', 'cat.id = v.category', 'left');
-        $this->db->limit(4);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             return $query->result();
