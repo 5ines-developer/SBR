@@ -126,7 +126,13 @@ $route['appaly/(:any)']            = 'home/application/$1';
 
 //vendor register
 $route['vendor-register'] 		        = 'authentication/vendorRegister';
+$route['vendor-login'] 		            = 'authentication/vendorlogin';
 $route['vendor-register/send'] 		    = 'authentication/vendorsend';
+
+
+$route['vendor/register'] 		    = 'vendor/index';
+$route['vendor/login'] 		        = 'vendor/login';
+
 
 
 
