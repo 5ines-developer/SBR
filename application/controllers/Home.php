@@ -288,7 +288,7 @@ class Home extends CI_Controller {
 
 
     // career
-	public function application($id)
+	public function application($id=null)
 	{
 		
 			$config = array(

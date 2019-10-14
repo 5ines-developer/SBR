@@ -41,7 +41,7 @@
                                 foreach ($jobs as $key => $value) {  
                             ?>
                                 <div class="col l6 m6 s12">
-                                    <a href="<?php echo base_url('application/').$value->id ?>">
+                                    <a href="<?php echo base_url('career/').$value->id ?>">
                                         <div class="care-detail">
                                             <h3><?php echo $value->title ?></h3>
                                             <p><?php echo mb_strimwidth($value->des, 0, 110, "..."); ?></p>

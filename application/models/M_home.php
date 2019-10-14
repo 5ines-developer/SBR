@@ -128,7 +128,7 @@ class M_home extends CI_Model
     }
 
     // career fetch
-    public function jobs($id)
+    public function jobs($id = null)
     {
         if(!empty($id)){
             $this->db->where('id', $id);
