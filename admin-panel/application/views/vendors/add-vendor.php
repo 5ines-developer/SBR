@@ -10,6 +10,7 @@
     <link href="<?php echo base_url()?>assets/fonts/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/croppie.css">
     <!-- bar -->
     <style>
     .ck-editor__editable {
@@ -128,7 +129,7 @@
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                     <span class="">Profile Image</span>
-                                                    <input type="file" name="vimage" accept=".png, .jpg, .jpeg, .gif"
+                                                    <input type="file" name="vimage" id="upload" accept=".png, .jpg, .jpeg, .gif"
                                                         required>
                                                 </div>
                                                 <div class="file-path-wrapper">
@@ -138,7 +139,11 @@
                                                     (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
                                                         size:</span> 512kb <span class="red-text">*</span></span>
                                             </div>
+
+                                            <div id="upload-demo" style="padding: 0;"></div>
                                       </div>
+                                      <input name="fimagecheck" class="fimagecheck" type="hidden" value="">
+                                      <input name="vimage" class="ipimg" type="hidden" value="">
 
                                         <div class="row">
                                           <div class="input-field col s12 ">
@@ -156,7 +161,7 @@
 
                                         <div class="col s12 center mtb20">
                                             <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
+                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result"
                                                 type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
                                             </button>
@@ -177,6 +182,7 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
     <script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/croppie.js"></script>
     <script>
     <?php $this->load-> view('include/message.php'); ?>
     </script>
@@ -219,6 +225,64 @@
                 package: "Please Select the Package",
             }
         });
+
+
+        $uploadCrop = $('#upload-demo').croppie({
+            enableExif: true,
+            viewport: {
+                width: 700,
+                height: 500,
+                type: 'box'
+            },
+            boundary: {
+                width: 750,
+                height: 550
+            }
+        });
+
+        $('#upload').on('change', function() {
+            $('.fimagecheck').val($('.fimagecheck').val() + '1');
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $uploadCrop.croppie('bind', {
+                    url: e.target.result
+                }).then(function() {
+                    console.log('jQuery bind complete');
+                });
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
+
+        $('.upload-result').on('click', function(ev) {
+          ev.preventDefault();
+          ;
+
+          $(".loder-box").css("display", "flex");
+
+            $uploadCrop.croppie('result', {
+                type: 'canvas',
+                size: 'viewport',
+                format : 'jpeg',
+                quality: 1
+
+
+            }).then(function(resp) {
+              var alt = $("#alt").val()
+              if (alt == '') {
+                    alert('Image title is required');
+
+                } else {
+                  $('.ipimg').val(resp);
+                  $('#vendor-form').submit();
+                }
+            });
+            
+
+
+        });
+
+
     });
     </script>
 
