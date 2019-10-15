@@ -25,9 +25,13 @@ class Vendor extends CI_Controller {
 
     public function login($var = null)
     {
-<<<<<<< HEAD
-        $data['title'] = 'Vendor Login | Shaadibaraati';
-        $this->load->view('vendor-auth/vendor-login',$data);
+        
+        if ($this->session->userdata('shvid') == '') {
+			$data['title'] = 'Vendor Registration | Shaadibaraati';
+            $this->load->view('vendor-auth/vendor-login',$data);
+		}else{
+			redirect('vendor/profile');
+        }  
     }
 
     public function profile($var = null)
@@ -35,14 +39,7 @@ class Vendor extends CI_Controller {
         $data['title'] = 'Vendor Profile | Shaadibaraati';
         $this->load->view('vendor-auth/vendor-profile',$data);
     }
-=======
-        if ($this->session->userdata('shvid') == '') {
-			$data['title'] = 'Vendor Registration | Shaadibaraati';
-            $this->load->view('vendor-auth/vendor-login',$data);
-		}else{
-			redirect('vendor/profile');
-        }          
-    }
+                
 
     	/**
      * user registration-> mobile number check exist
@@ -92,7 +89,6 @@ class Vendor extends CI_Controller {
 		echo  $output;
     }
 
->>>>>>> 5e75d31547757f9c4201d6db82e2f14daab0d706
     
     
     

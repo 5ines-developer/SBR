@@ -129,7 +129,6 @@ $route['vendor-register'] 		        = 'authentication/vendorRegister';
 $route['vendor-login'] 		            = 'authentication/vendorlogin';
 $route['vendor-register/send'] 		    = 'authentication/vendorsend';
 
-<<<<<<< HEAD
 // vendor
 $route['vendor/register'] 		        = 'vendor/index';
 $route['vendor/login'] 		            = 'vendor/login';
@@ -137,7 +136,6 @@ $route['vendor/profile'] 		        = 'vendor/profile';
 
 
 
-=======
 //vendor module
 //authentication
 $route['vendor/register'] 		    = 'vendor/index';
@@ -147,7 +145,6 @@ $route['vendor/login-check'] 		= 'vendor/check_login';
 $route['vendor/forgot-password'] 	= 'vendor/forgot_password';
 $route['vendor/forgot-password-set/(:any)'] 	= 'vendor/add_pass/$1';
 $route['vendor/password-update'] 	= 'vendor/update_pass';
->>>>>>> 5e75d31547757f9c4201d6db82e2f14daab0d706
 
 
 
