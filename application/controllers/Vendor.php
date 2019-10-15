@@ -20,8 +20,14 @@ class Vendor extends CI_Controller {
 
     public function login($var = null)
     {
-        $data['title'] = 'Vendor Registration | Shaadibaraati';
+        $data['title'] = 'Vendor Login | Shaadibaraati';
         $this->load->view('vendor-auth/vendor-login',$data);
+    }
+
+    public function profile($var = null)
+    {
+        $data['title'] = 'Vendor Profile | Shaadibaraati';
+        $this->load->view('vendor-auth/vendor-profile',$data);
     }
     
 }

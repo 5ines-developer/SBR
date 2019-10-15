@@ -7,7 +7,9 @@ $this->load->model('m_vendors');
 <html>
 
 <head>
-    <title><?php echo $title ?></title>
+    <title>
+        <?php echo $title ?>
+    </title>
     <meta charset="UTF-8">
     <meta name="description" content="Free Web tutorials">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
@@ -20,104 +22,105 @@ $this->load->model('m_vendors');
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/croppie.css">
     <!-- bar -->
     <style>
-    .ck-editor__editable {
-        min-height: 300px;
-    }
-
-    .currencyinput {
-        border: 1px inset #ccc;
-    }
-
-    .currencyinput input {
-        border: 0;
-    }
-
-    .input-field .prefix~input,
-    .input-field .prefix~label {
-        margin-left: 10rem;
-    }
-
-    .input-field .prefix {
-        font-size: 1rem;
-    }
-
-    #youtube-link,
-    #fb-link {
-        display: none;
-    }
-    .faqform{
-        padding: 30px !important;
-        border-bottom: 1px dotted #cecece;
-    }
-    .faqform:last-child{
-        padding:0px;
-        border-bottom: 0px dotted #cecece;
-
-    }
-    .faqform .addfaq{
-        visibility: hidden;
-    }
-
-    .faqform:last-child .addfaq{
-        visibility: visible;
-    }
-
-    .faqform:last-child .closefaq{
-        visibility: hidden;
-    }
-    .stcky-nav{
-        position: sticky;
-top: 65px;
-z-index: 9999;
-background-color: #fff;
-    }
-
-    .portfolio-img {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.portfolio-img:hover .port-delete {
-    top: 0;
-}
-.port-delete{
-    position: absolute;
-text-align: center;
-width: 100%;
-background: rgba(0,0,0,0.4);
-height: 100%;
-line-height: 100px;
-}
-.port-delete i{
-color: red;
-font-size: 18px;
-}
-.vid-delete{
-    position: relative;
-
-text-align: center;
-
-width: 100%;
-
-background: #fff;
-
-padding: 4px;
-
-top: -5px;
-
-border: 1px dotted;
-}
-.vid-delete i{
-    color: red;
-font-size: 18px;
-}
-.i-img{
-    width: 100px !important;
-height: auto;
-max-height: 95px;
-}
-
+        .ck-editor__editable {
+            min-height: 300px;
+        }
+        
+        .currencyinput {
+            border: 1px inset #ccc;
+        }
+        
+        .currencyinput input {
+            border: 0;
+        }
+        
+        .input-field .prefix~input,
+        .input-field .prefix~label {
+            margin-left: 10rem;
+        }
+        
+        .input-field .prefix {
+            font-size: 1rem;
+        }
+        
+        #youtube-link,
+        #fb-link {
+            display: none;
+        }
+        
+        .faqform {
+            padding: 30px !important;
+            border-bottom: 1px dotted #cecece;
+        }
+        
+        .faqform:last-child {
+            padding: 0px;
+            border-bottom: 0px dotted #cecece;
+        }
+        
+        .faqform .addfaq {
+            visibility: hidden;
+        }
+        
+        .faqform:last-child .addfaq {
+            visibility: visible;
+        }
+        
+        .faqform:last-child .closefaq {
+            visibility: hidden;
+        }
+        
+        .stcky-nav {
+            position: sticky;
+            top: 65px;
+            z-index: 9999;
+            background-color: #fff;
+        }
+        
+        .portfolio-img {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-img:hover .port-delete {
+            top: 0;
+        }
+        
+        .port-delete {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            height: 100%;
+            line-height: 100px;
+        }
+        
+        .port-delete i {
+            color: red;
+            font-size: 18px;
+        }
+        
+        .vid-delete {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            background: #fff;
+            padding: 4px;
+            top: -5px;
+            border: 1px dotted;
+        }
+        
+        .vid-delete i {
+            color: red;
+            font-size: 18px;
+        }
+        
+        .i-img {
+            width: 100px !important;
+            height: auto;
+            max-height: 95px;
+        }
     </style>
 </head>
 
@@ -141,57 +144,51 @@ max-height: 95px;
                                 <p class="h5-para black-text  m0">Update Vendor</p>
                             </div>
                             <div class="col 12 m6 right-align">
-                                <a href="<?php echo base_url('vendors/view/'.$result->id)  ?>"
-                                    class="waves-effect waves-light btn green darken-4 white-text hoverable ">view
+                                <a href="<?php echo base_url('vendors/view/'.$result->id)  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable ">view
                                     Vendor</a>
                             </div>
                         </div>
 
                         <div class="tab-buttons show-on-large hide-on-med-and-down stcky-nav z-depth-1">
-                                <ul class="tabs1 transparent">
-                                    <li class="tab1 col s2"><a href="#personal-detail" class="active">Profile</a></li>
-                                    <li class="tab1 col s2"><a href="#information" class="">Information & Service</a></li>
-                                    <li class="tab1 col s1"><a href="#about" class="">About</a></li>
-                                    <li class="tab1 col s2"><a href="#portfolio" class="">Portfolio</a></li>
-                                    <li class="tab1 col s2"><a href="#video" class="">Video Links</a></li>
-                                    <li class="tab1 col s1"><a href="#faq" class="">FAQ's</a></li>
-                                    <li class="tab1 col s2"><a href="#offer" class="">Offers</a></li>
-                                </ul>
-                            </div>
+                            <ul class="tabs1 transparent">
+                                <li class="tab1 col s2"><a href="#personal-detail" class="active">Profile</a></li>
+                                <li class="tab1 col s2"><a href="#information" class="">Information & Service</a></li>
+                                <li class="tab1 col s1"><a href="#about" class="">About</a></li>
+                                <li class="tab1 col s2"><a href="#portfolio" class="">Portfolio</a></li>
+                                <li class="tab1 col s2"><a href="#video" class="">Video Links</a></li>
+                                <li class="tab1 col s1"><a href="#faq" class="">FAQ's</a></li>
+                                <li class="tab1 col s2"><a href="#offer" class="">Offers</a></li>
+                            </ul>
+                        </div>
 
                         <div class="card scrollspy" id="personal-detail">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/insert" method="post"
-                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
-                                        enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/insert" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Profile</p>
                                         </div>
                                         <div class="row m0">
                                             <div class="input-field col s6 l6">
-                                                <input type="text" id="name" name="name" class="validate" required
-                                                    value="<?php echo (!empty($result->name)?$result->name:'') ?>">
+                                                <input type="text" id="name" name="name" class="validate" required value="<?php echo (!empty($result->name)?$result->name:'') ?>">
                                                 <label for="name">Name <span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('name'); ?></span></p>
                                             </div>
                                             <div class="input-field col s6 l6">
-                                                <input type="text" id="email" name="email" class="validate" required
-                                                    value="<?php echo (!empty($result->email)?$result->email:'') ?>">
+                                                <input type="text" id="email" name="email" class="validate" required value="<?php echo (!empty($result->email)?$result->email:'') ?>">
                                                 <label for="email">Email <span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('email'); ?></span></p>
                                             </div>
                                         </div>
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
-                                                <input type="text" id="phone" name="phone" class="validate" required
-                                                    value="<?php echo (!empty($result->phone)?$result->phone:'') ?>">
+                                                <input type="text" id="phone" name="phone" class="validate" required value="<?php echo (!empty($result->phone)?$result->phone:'') ?>">
                                                 <label for="phone">Phone No.<span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('phone'); ?></span></p>
                                             </div>
 
                                             <div class="input-field col s12 l6">
-                                              <select name="package" required>
+                                                <select name="package" required>
                                                 <option <?php echo ($result->package == 'Wed Elite') ?"selected":''; ?> value="Wed Elite" >Wed Elite</option>
                                                 <option <?php echo ($result->package == 'Wed Leader') ?"selected":''; ?> value="Wed Leader">Wed Leader</option>
                                                 <option <?php echo ($result->package == 'Wed Assisted') ?"selected":''; ?> value="Wed Assisted">Wed Assisted</option>
@@ -200,36 +197,32 @@ max-height: 95px;
                                                 <option <?php echo ($result->package == 'Wed Featured') ?"selected":''; ?> value="Wed Featured">Wed Featured</option>
                                                 <option <?php echo ($result->package == 'Free Listing') ?"selected":''; ?> value="Free Listing">Free Listing</option>
                                               </select>
-                                              <label>Packages</label>
+                                                <label>Packages</label>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="row m0">
-                                        <div class="input-field col s12 l6">
-                                                <input type="text" id="price" name="price" class="validate" required
-                                                    value="<?php echo (!empty($result->price)?$result->price:'') ?>">
+                                            <div class="input-field col s12 l6">
+                                                <input type="text" id="price" name="price" class="validate" required value="<?php echo (!empty($result->price)?$result->price:'') ?>">
                                                 <label for="price">Starting Price <span
                                                         class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price'); ?></span></p>
                                                 <?php if (!empty($result)) { ?>
                                                 <input type="hidden" value="1" name="edit">
                                                 <?php } ?>
-                                                <input type="hidden"
-                                                    value="<?php echo (!empty($result->uniq)?$result->uniq:random_string('alnum',10)) ?>"
-                                                    name="uniq">
+                                                <input type="hidden" value="<?php echo (!empty($result->uniq)?$result->uniq:random_string('alnum',10)) ?>" name="uniq">
                                             </div>
-                                        <div class="input-field col s12 l6">
-                                                <input type="text" id="price_for" name="price_for" class="validate" required
-                                                    value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
+                                            <div class="input-field col s12 l6">
+                                                <input type="text" id="price_for" name="price_for" class="validate" required value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
                                                 <label for="price">Price Per<span
                                                         class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
-                                                </div>
-                                            
-                                            
+                                            </div>
+
+
                                         </div>
                                         <div class="row m0">
-                                        <div class="input-field col s12 l6">
+                                            <div class="input-field col s12 l6">
                                                 <select name="category"> <option value="">Choose a category</option> <?php if (!empty($category)) { foreach ($category as $key => $value) { ?> <option value="<?php echo $value->id ?>"                           <?php echo $value->id == $result->category?"selected":''; ?>> <?php echo $value->category ?></option> <?php } } ?> </select>
                                                 <label>Category</label>
                                                 <p><span class="error"><?php echo form_error('category'); ?></span></p>
@@ -245,8 +238,7 @@ max-height: 95px;
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                     <span class="">Profile Image</span>
-                                                    <input type="file" name="vimage" id="upload" accept=".png, .jpg, .jpeg, .gif"
-                                                        <?php echo (!empty($result)?'':'required') ?>>
+                                                    <input type="file" name="vimage" id="upload" accept=".png, .jpg, .jpeg, .gif" <?php echo (!empty($result)? '': 'required') ?>>
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                     <input class="file-path validate" type="text">
@@ -258,24 +250,22 @@ max-height: 95px;
                                             <div id="upload-demo" style="padding: 0;"></div>
                                         </div>
                                         <div class="row m0">
-                                          <div class="input-field col s12 ">
-                                            <textarea id="textarea1" name="address" class="materialize-textarea"><?php echo (!empty($result->address)?$result->address:'') ?></textarea>
-                                            <label for="textarea1">Address</label>
-                                          </div>
+                                            <div class="input-field col s12 ">
+                                                <textarea id="textarea1" name="address" class="materialize-textarea"><?php echo (!empty($result->address)?$result->address:'') ?></textarea>
+                                                <label for="textarea1">Address</label>
+                                            </div>
                                         </div>
                                         <div class="col s12">
                                             <?php
                                                         echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
                                                         ?>
-                                            <?php ?>
+                                                <?php ?>
                                         </div>
                                         <input type="hidden" name="vendor_id" value="<?php echo random_string('alnum',10) ?>">
                                         <input name="fimagecheck" class="fimagecheck" type="hidden" value="">
                                         <input name="vimage" class="ipimg" type="hidden" value="">
                                         <div class="col s12 center mtb20">
-                                            <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result"
-                                                type="submit">Submit
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result" type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
                                             </button>
                                             <br>
@@ -289,45 +279,41 @@ max-height: 95px;
                             <div class="card-content">
                                 <div class="form-container">
                                     <div class="row m0">
-                                            <p class="bold  black-text col  mb10 h6">Information and Service</p>
+                                        <p class="bold  black-text col  mb10 h6">Information and Service</p>
                                     </div>
-                                    
+
 
                                     <form action="<?php echo base_url() ?>vendors/service" method="post" id="">
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
-                                        
+
                                         <?php foreach ($service as $ser => $serv) { ?>
-                                        
-                                            <div class="row m0" id="info-form">
-                                            <div class="input-field col s12 l4">                                                
-                                                <input type="hidden" id="serv" name="serv[]" class="validate"
-                                                    value="<?php echo (!empty($serv->id)?$serv->id:'') ?>" >
+
+                                        <div class="row m0" id="info-form">
+                                            <div class="input-field col s12 l4">
+                                                <input type="hidden" id="serv" name="serv[]" class="validate" value="<?php echo (!empty($serv->id)?$serv->id:'') ?>">
                                                 <input type="text" readonly value="<?php echo (!empty($serv->service)?$serv->service:'') ?>">
 
                                                 <label for="serv">Title </label>
                                                 <p><span class="error"><?php echo form_error('serv'); ?></span></p>
                                             </div>
-                                            <div class="input-field col s12 l4">                                                
-                                                <input type="text" id="sr_subtitle" name="sr_subtitle[]" class="validate"
-                                                    value="<?php echo $this->ci->m_vendors->getSubtitle($serv->id, $result->id) ?>" >
+                                            <div class="input-field col s12 l4">
+                                                <input type="text" id="sr_subtitle" name="sr_subtitle[]" class="validate" value="<?php echo $this->ci->m_vendors->getSubtitle($serv->id, $result->id) ?>">
                                                 <label for="sr_subtitle">Subtitle </label>
                                                 <p><span class="error"><?php echo form_error('sr_subtitle'); ?></span></p>
                                             </div>
                                             <div class="col s12 m4">
-                                            <div class="form-group">
-                                                <div class="" id="edt-image">
-                                                    <div class="image view view-first">
-                                                        <img class="city-edit-image i-img"
-                                                            src="<?php echo $this->config->item('web_url').$serv->image ?>"
-                                                            alt="image">
+                                                <div class="form-group">
+                                                    <div class="" id="edt-image">
+                                                        <div class="image view view-first">
+                                                            <img class="city-edit-image i-img" src="<?php echo $this->config->item('web_url').$serv->image ?>" alt="image">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                                </div>
-                                            </div><br>
+                                        </div><br>
 
                                         <?php } ?>
-                                                        
+
 
                                         <div class="col s12 input-field">
                                             <button class="btn waves-effect waves-light green darken-4 hoverable " type="submit">Submit
@@ -339,13 +325,11 @@ max-height: 95px;
                             </div>
                         </div>
 
-                        
+
                         <div class="card scrollspy" id="about">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/insert_about" method="post"
-                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-about"
-                                        enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/insert_about" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-about" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">About Vendor</p>
                                         </div>
@@ -359,20 +343,18 @@ max-height: 95px;
                                                 <textarea name="about" id="description" style="display:none"></textarea>
                                                 <p><span class="error"><?php echo form_error('about'); ?></span></p>
                                             </div>
-                                        </div>                                       
-                                        
-                                        
+                                        </div>
+
+
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         <div class="col s12">
                                             <?php
                                                                 echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
                                                                 ?>
-                                            <?php ?>
+                                                <?php ?>
                                         </div>
                                         <div class="col s12 center mtb20">
-                                            <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
-                                                type="submit">Submit
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
                                             </button>
                                             <br>
@@ -384,35 +366,32 @@ max-height: 95px;
                         <div class="card scrollspy" id="portfolio">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/portfolio_insert" method="post"
-                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
-                                        enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/portfolio_insert" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Portfolio Images</p>
                                         </div>
 
                                         <div class="row">
 
-                                        <?php if (!empty($port)) {
+                                            <?php if (!empty($port)) {
                                 foreach ($port as $key => $value) { ?>
-                                        <div class="col s12 l3 m6 ">
-                                            <div class="portfolio-img">
-                                            <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="<?php echo $this->config->item('web_url').'/vendor-portfolio/'.$value->thumb_image ?>" style="cursor: pointer;">
-                                            <div class="port-delete">
-                                                <a href="<?php echo base_url('vendors/gallery_delete/').$value->id.'/'.$result->id ?>">
-                                            <i class="fas fa-trash"></i></a>
-                                            </div>
+                                            <div class="col s12 l3 m6 ">
+                                                <div class="portfolio-img">
+                                                    <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="<?php echo $this->config->item('web_url').'/vendor-portfolio/'.$value->thumb_image ?>" style="cursor: pointer;">
+                                                    <div class="port-delete">
+                                                        <a href="<?php echo base_url('vendors/gallery_delete/').$value->id.'/'.$result->id ?>">
+                                                            <i class="fas fa-trash"></i></a>
+                                                    </div>
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <?php } } ?>
+                                            <?php } } ?>
                                         </div>
 
                                         <div class="row m0">
                                             <div class="file-field input-field col s12 l12">
                                                 <div class="input-images"></div>
-                                                <span class="helper-text" data-error="wrong"
-                                                    data-success="right"><b>Note</b>: Please select only image file (eg:
+                                                <span class="helper-text" data-error="wrong" data-success="right"><b>Note</b>: Please select only image file (eg:
                                                     .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
                                                         size:</span> 512kb <span class="red-text">*</span></span>
                                             </div>
@@ -422,14 +401,11 @@ max-height: 95px;
                                             <?php
                                                                         echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
                                                                         ?>
-                                            <?php ?>
+                                                <?php ?>
                                         </div>
-                                        <input type="hidden" name="vendor_id"
-                                            value="<?php echo random_string('alnum',10) ?>">
+                                        <input type="hidden" name="vendor_id" value="<?php echo random_string('alnum',10) ?>">
                                         <div class="col s12 center mtb20">
-                                            <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
-                                                type="submit">Submit
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
                                             </button>
                                             <br>
@@ -441,46 +417,40 @@ max-height: 95px;
                         <div class="card scrollspy" id="video">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/add-video" method="post"
-                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
-                                        enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/add-video" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Video Links</p>
                                         </div>
 
                                         <div class="row m0">
-                                        
-                                        <?php //youtube
+
+                                            <?php //youtube
                                         if (!empty($video)) {
                                             foreach ($video as $vide => $vids) {
                                         if ($vids->type == '1') {                                             
                                             ?>
                                             <div class="col s12 l3 m6 ">
-                                       <div class="portfolio-img"> 
-                                        <iframe width="100%" height="200"   src="https://www.youtube.com/embed/<?php echo $vids->link ?>"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen></iframe>
-                                            <div class="vid-delete">
-                                                <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>">
-                                            <i class="fas fa-trash"></i></a>
-                                        </div>
-                                        </div> 
-                                        </div>
-                                        <?php }else if ($vids->type == '2'){  ?>
-                                            <div class="col s12 l3 m6 ">
-                                             <div class="portfolio-img"> 
-                                            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476"
-                                            width="auto" height="200" style="border:none;overflow:auto" scrolling="no"
-                                            frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
-                                            <div class="vid-delete">
-                                                <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>"><i class="fas fa-trash"></i></a>
+                                                <div class="portfolio-img">
+                                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/<?php echo $vids->link ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="vid-delete">
+                                                        <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>">
+                                                            <i class="fas fa-trash"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div> 
-                                        </div>
+                                            <?php }else if ($vids->type == '2'){  ?>
+                                            <div class="col s12 l3 m6 ">
+                                                <div class="portfolio-img">
+                                                    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
+                                                        allowTransparency="true" allowFullScreen="true"></iframe>
+                                                    <div class="vid-delete">
+                                                        <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>"><i class="fas fa-trash"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
 
 
-                                        <?php } } } ?>
+                                            <?php } } } ?>
                                         </div>
 
 
@@ -498,8 +468,7 @@ max-height: 95px;
                                         </div>
                                         <div class="row m0" id="youtube-link">
                                             <div class="input-field col s12 l8">
-                                                <input type="text" name="vd_link" id="autocomplete-input"
-                                                    class="autocomplete">
+                                                <input type="text" name="vd_link" id="autocomplete-input" class="autocomplete">
                                                 <p style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
                                                 </p>
                                                 <label for="autocomplete-input">Link<span
@@ -510,10 +479,8 @@ max-height: 95px;
                                         <div class="row m0" id="fb-link">
 
                                             <div class="input-field col s12 l8">
-                                                <input type="text" name="vdfb_link" id="autocomplete-input1"
-                                                    class="autocomplete">
-                                                <p style="font-size: 12px;">Eg : https://www.facebook.com/<span
-                                                        style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
+                                                <input type="text" name="vdfb_link" id="autocomplete-input1" class="autocomplete">
+                                                <p style="font-size: 12px;">Eg : https://www.facebook.com/<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
                                                 </p>
                                                 <label for="autocomplete-input1">Link<span
                                                         class="red-text">*</span></label>
@@ -525,12 +492,9 @@ max-height: 95px;
                                             <?php echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : '' ?>
                                             <?php ?>
                                         </div>
-                                        <input type="hidden" name="vendor_id"
-                                            value="<?php echo random_string('alnum',10) ?>">
+                                        <input type="hidden" name="vendor_id" value="<?php echo random_string('alnum',10) ?>">
                                         <div class="col s12 center mtb20">
-                                            <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
-                                                type="submit">Submit
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
                                             </button>
                                             <br>
@@ -544,11 +508,11 @@ max-height: 95px;
                             <div class="card-content">
                                 <div class="form-container">
                                     <div class="row m0">
-                                            <p class="bold  black-text col  mb10 h6">FAQ's</p>
+                                        <p class="bold  black-text col  mb10 h6">FAQ's</p>
                                     </div>
                                     <form action="<?php echo base_url() ?>vendors/faq_insert" method="post" id="">
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
-                                        
+
                                         <?php foreach ($vendor_faq as $vendor_faq => $faaqval) {
  
                                             $fqanw = $this->ci->m_vendors->fansw($faaqval->id,$result->id);
@@ -559,23 +523,23 @@ max-height: 95px;
                                                 $ans = $faaqval->answer; 
                                             }
                                         ?>
-                                            <div class="row m0 faqform" id="faqform">
-                                                <div class="col s12 m8 input-field">
-                                                    <textarea readonly name="quation[]" class="materialize-textarea"><?php echo $faaqval->question  ?></textarea>
-                                                    <label for="textarea1">Question</label>
-                                                </div>
-                                                <input type="hidden" id="fa_id" name="fa_id[]" class="validate" value="<?php echo (!empty($faaqval->id)?$faaqval->id:'') ?>" >
-                                                <div class="col s12 m8 input-field">
-                                                    <textarea name="asw[]" class="materialize-textarea"><?php echo $ans  ?></textarea>
-                                                    <label for="textarea1">Answers</label>
-                                                </div>
+                                        <div class="row m0 faqform" id="faqform">
+                                            <div class="col s12 m8 input-field">
+                                                <textarea readonly name="quation[]" class="materialize-textarea"><?php echo $faaqval->question  ?></textarea>
+                                                <label for="textarea1">Question</label>
                                             </div>
-                                        
+                                            <input type="hidden" id="fa_id" name="fa_id[]" class="validate" value="<?php echo (!empty($faaqval->id)?$faaqval->id:'') ?>">
+                                            <div class="col s12 m8 input-field">
+                                                <textarea name="asw[]" class="materialize-textarea"><?php echo $ans  ?></textarea>
+                                                <label for="textarea1">Answers</label>
+                                            </div>
+                                        </div>
+
 
                                         <?php } ?>
-                                                        
 
-                                        <div id="faq-form-box"></div>                  
+
+                                        <div id="faq-form-box"></div>
                                         <div class="col s12 input-field">
                                             <button class="btn waves-effect waves-light green darken-4 hoverable " type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
@@ -590,21 +554,18 @@ max-height: 95px;
                         <div class="card scrollspy" id="offer">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/offer_insert" method="post"
-                                        style="overflow-y: auto;overflow-x: hidden;" id="vendor-form"
-                                        enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/offer_insert" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Offer Image</p>
                                         </div>
-                                        
-                                        
+
+
                                         <div class="row m0">
                                             <div class="file-field input-field col s12 l6">
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                     <span class="">Add Image</span>
-                                                    <input type="file" name="offimage" accept=".png, .jpg, .jpeg, .gif"
-                                                        <?php echo (!empty($result)?'':'required') ?>>
+                                                    <input type="file" name="offimage" accept=".png, .jpg, .jpeg, .gif" <?php echo (!empty($result)? '': 'required') ?>>
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                     <input class="file-path validate" type="text">
@@ -618,13 +579,11 @@ max-height: 95px;
                                             <?php
                                                         echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
                                                         ?>
-                                            <?php ?>
+                                                <?php ?>
                                         </div>
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         <div class="col s12 center mtb20">
-                                            <button
-                                                class="btn waves-effect waves-light green darken-4 hoverable btn-large"
-                                                type="submit">Submit
+                                            <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
                                             </button>
                                             <br>
@@ -634,7 +593,8 @@ max-height: 95px;
                             </div>
                         </div>
 
-                    </div><!-- cad end -->
+                    </div>
+                    <!-- cad end -->
 
 
 
@@ -652,181 +612,180 @@ max-height: 95px;
     <script src="<?php echo base_url() ?>assets/js/image-uploader.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/croppie.js"></script>
     <script>
-    <?php $this->load->view('include/message.php'); ?>
+        <?php $this->load->view('include/message.php'); ?>
     </script>
     <script>
-       
         $(document).ready(function() {
-        
-            
-           
-        
+
+
+
+
         });
-        $(function(){
-            function cloneform(){
+        $(function() {
+            function cloneform() {
                 $("#faqform").clone().appendTo("#faq-form-box");
             }
 
-            
+
             cloneform();
 
-            $(document).on('click', '.addfaq', function(){
+            $(document).on('click', '.addfaq', function() {
                 cloneform();
             });
 
-            $(document).on('click', '.closefaq', function(){
+            $(document).on('click', '.closefaq', function() {
                 $(this).closest('#faqform').remove()
             });
         });
     </script>
 
     <script>
-    $(document).ready(function() {
-        $('select').formSelect();
-        // $('.materialboxed').materialbox();
-        $('.input-images').imageUploader();
-        $('#vendor-about').submit(function() {
-            var text = $('#editor').html();
-            $('#description').val(text);
-            var text1 = $('#editor1').html();
-            $('#specific').val(text1);
-            var text2 = $('#editor2').html();
-            $('#policy').val(text2);
-        });
-        $('input.autocomplete').autocomplete({
-            data: {
-                "Apple": null,
-                "Microsoft": null,
-                "Google": 'https://placehold.it/250x250'
-            },
-        });
-        $("#vendor-form").validate({
-            rules: {
-                about: {
-                    required: true,
+        $(document).ready(function() {
+            $('select').formSelect();
+            // $('.materialboxed').materialbox();
+            $('.input-images').imageUploader();
+            $('#vendor-about').submit(function() {
+                var text = $('#editor').html();
+                $('#description').val(text);
+                var text1 = $('#editor1').html();
+                $('#specific').val(text1);
+                var text2 = $('#editor2').html();
+                $('#policy').val(text2);
+            });
+            $('input.autocomplete').autocomplete({
+                data: {
+                    "Apple": null,
+                    "Microsoft": null,
+                    "Google": 'https://placehold.it/250x250'
                 },
-                email: {
-                    required: true,
+            });
+            $("#vendor-form").validate({
+                rules: {
+                    about: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                    },
+                    phone: {
+                        required: true,
+                    },
+                    category: {
+                        required: true,
+                    },
+                    city: {
+                        required: true,
+                    },
                 },
-                phone: {
-                    required: true,
-                },
-                category: {
-                    required: true,
-                },
-                city: {
-                    required: true,
-                },
-            },
-            messages: {
-                about: "Please enter a vendor Name",
-                email: "Please enter a vendor Email",
-                phone: "Please enter a vendor Phone Number",
-                category: "Please Select the Category",
-                city: "Please Select the City",
-            }
-        });
-        
-        $uploadCrop = $('#upload-demo').croppie({
-            enableExif: true,
-            viewport: {
-                width: 700,
-                height: 500,
-                type: 'box'
-            },
-            boundary: {
-                width: 750,
-                height: 550
-            }
-        });
-
-        $('#upload').on('change', function() {
-            $('.fimagecheck').val($('.fimagecheck').val() + '1');
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                }).then(function() {
-                    console.log('jQuery bind complete');
-                });
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-
-
-        $('.upload-result').on('click', function(ev) {
-          ev.preventDefault();
-          $(".loder-box").css("display", "flex");
-            $uploadCrop.croppie('result', {
-                type: 'canvas',
-                size: 'viewport',
-                format : 'jpeg',
-                quality: 1
-            }).then(function(resp) {
-              var alt = $("#alt").val()
-              if (alt == '') {
-                    alert('Image title is required');
-                } else {
-                  $('.ipimg').val(resp);
-                  $('#vendor-form').submit();
+                messages: {
+                    about: "Please enter a vendor Name",
+                    email: "Please enter a vendor Email",
+                    phone: "Please enter a vendor Phone Number",
+                    category: "Please Select the Category",
+                    city: "Please Select the City",
                 }
             });
-            
+
+            $uploadCrop = $('#upload-demo').croppie({
+                enableExif: true,
+                viewport: {
+                    width: 700,
+                    height: 500,
+                    type: 'box'
+                },
+                boundary: {
+                    width: 750,
+                    height: 550
+                }
+            });
+
+            $('#upload').on('change', function() {
+                $('.fimagecheck').val($('.fimagecheck').val() + '1');
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $uploadCrop.croppie('bind', {
+                        url: e.target.result
+                    }).then(function() {
+                        console.log('jQuery bind complete');
+                    });
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
+
+
+            $('.upload-result').on('click', function(ev) {
+                ev.preventDefault();
+                $(".loder-box").css("display", "flex");
+                $uploadCrop.croppie('result', {
+                    type: 'canvas',
+                    size: 'viewport',
+                    format: 'jpeg',
+                    quality: 1
+                }).then(function(resp) {
+                    var alt = $("#alt").val()
+                    if (alt == '') {
+                        alert('Image title is required');
+                    } else {
+                        $('.ipimg').val(resp);
+                        $('#vendor-form').submit();
+                    }
+                });
+
+
+
+            });
 
 
         });
-
-
-    });
     </script>
     <script>
-    DecoupledEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            const toolbarContainer = document.querySelector('#toolbar-container');
-            toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        DecoupledEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container');
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
     <script>
-    DecoupledEditor
-        .create(document.querySelector('#editor1'))
-        .then(editor => {
-            const toolbarContainer = document.querySelector('#toolbar-container1');
-            toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        DecoupledEditor
+            .create(document.querySelector('#editor1'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container1');
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
     <script>
-    DecoupledEditor
-        .create(document.querySelector('#editor2'))
-        .then(editor => {
-            const toolbarContainer = document.querySelector('#toolbar-container2');
-            toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        DecoupledEditor
+            .create(document.querySelector('#editor2'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container2');
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
     <script>
-    $(document).ready(function() {
-        $('.modal').modal();
-        $('.scrollspy').scrollSpy();
-        $("#vd_category").change(function() {
-            var cat = $(this).children("option:selected").val();
-            if (cat == '2') {
-                $("#fb-link").css("display", "block");
-                $("#youtube-link").css("display", "none");
-            } else if (cat == '1') {
-                $("#youtube-link").css("display", "block");
-                $("#fb-link").css("display", "none");
-            }
+        $(document).ready(function() {
+            $('.modal').modal();
+            $('.scrollspy').scrollSpy();
+            $("#vd_category").change(function() {
+                var cat = $(this).children("option:selected").val();
+                if (cat == '2') {
+                    $("#fb-link").css("display", "block");
+                    $("#youtube-link").css("display", "none");
+                } else if (cat == '1') {
+                    $("#youtube-link").css("display", "block");
+                    $("#fb-link").css("display", "none");
+                }
+            });
         });
-    });
     </script>
 </body>
 
