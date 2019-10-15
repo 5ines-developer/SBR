@@ -177,7 +177,6 @@ class Authentication extends CI_Controller {
     	$this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]');
         if ($this->form_validation->run() == FALSE){
-            redirect('login','refresh');
             $error = validation_errors();
         	$this->session->set_flashdata('error',$error);
         	redirect('login','refresh');
@@ -232,9 +231,10 @@ class Authentication extends CI_Controller {
     	if($this->session->userdata('shdid') == ''){ 
     		$this->form_validation->set_rules('email', 'Email', 'required');
     		if ($this->form_validation->run() == FALSE){
-	            redirect('login','refresh');
 	            $error = validation_errors();
 	        	$this->session->set_flashdata('error',$error);
+                redirect('login','refresh');
+                
 	        }else{
 
 	        	 $email = $this->input->post('email');

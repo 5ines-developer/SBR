@@ -234,7 +234,7 @@ class M_vendors extends CI_Model
 
     public function allcities()
     {
-        $this->db->select('icon, city, status');
+        $this->db->select('icon, city, status,id');
         $this->db->order_by('city', 'asc');
         return $this->db->get('city')->result();
     }

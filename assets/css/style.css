@@ -2897,6 +2897,7 @@ input:not([type]):focus {
     background-size: cover;
     background-blend-mode: color;
     padding: 101px 0px;
+    min-height: calc(100vh - 75px);
 }
 
 .vend-btn:hover {

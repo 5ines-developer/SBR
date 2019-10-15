@@ -25,7 +25,7 @@
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" alt="" class="img-responsive">
                         <p>Change your Shaadi Baraati account password</p>
                         <div class="form-forgot">
-                            <form action="<?php echo base_url() ?>vendor/password-update" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo base_url() ?>forgot-password/update" method="post" enctype="multipart/form-data">
                                 <div class="d-input">
                                     <div class="input-field">
                                         <label for="femail">Email Address</label>
