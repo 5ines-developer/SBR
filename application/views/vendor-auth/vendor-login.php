@@ -17,7 +17,7 @@
         <?php $this->load->view('includes/header.php'); ?>
         <!-- end header -->
         <section class="vendor-sig">
-            <div class="container">
+            <div class="container" v-bind:class="{'hide-card': forgotpassword}">
                 <div class="vendor-reg">
                     <div class="row">
                         <div class="col l6 m6 s12">
@@ -35,25 +35,26 @@
                                     <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="form-vendor-reg">
-                                    <form action="#" method="post" enctype="">
+                                <form action="<?php echo base_url('vendor/login-check') ?>" method="post" enctype="multipart/form-data">
                                         <div class="form-input-vendor-login">
                                             <div class="row">
                                                 <div class="col l12 m12 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0 pb">
-                                                            <input id="name" type="text" class="validate  in-l" placeholder="Enter Your Name" name="vendorname" required="">
+                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" @change="emailCheck" placeholder="Enter Your email" name="email" required="">
+                                                            <span class="helper-text red-text" >{{ emailError }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m12 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0 pb">
-                                                            <input id="passsword" type="text" class="validate  in-l" placeholder="Enter Your Password" name="vendorpass" required="">
+                                                            <input id="passsword" type="password" class="validate  in-l" placeholder="Enter Your Password" name="password" required="">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m12 s12">
-                                                    <p class="m0 tl"><a class="fp">Forgot Password ?</a></p>
+                                                    <p class="m0 tl"><a class="fp" @click="forgotpassword = !forgotpassword">Forgot Password ?</a></p>
                                                 </div>
                                             </div>
                                             <button class="sub-reg z-depth-1 tl" type="submit" value="Submit">Submit</button>
@@ -65,6 +66,52 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="container" v-bind:class="{'hide-card': !forgotpassword}">
+                <div class="vendor-reg">
+                    <div class="row">
+                        <div class="col l6 m6 s12">
+                            <div class="vendor-cont vcl">
+                                <h4>"Grow your Businedd With Shaadi Baraathi"</h4>
+                                <p>Sign In to acess your Dashboard</p>
+                                <p>If You Don't have an Account ?</p>
+                                <a href="http://localhost/shaadibaraati/vendor/registration"><button class="vend-btn">Sign Up</button></a>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s12">
+                            <div class="vend-background">
+                                <div class="head-tile">
+                                    <h6>Vendor Sign in</h6>
+                                    <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                                </div>
+                                <div class="form-vendor-reg">
+                                <form ref="form"  @submit.prevent="checkForm" action="<?php echo base_url('vendor/forgot-password') ?>" method="post" enctype="multipart/form-data">
+                                        <div class="form-input-vendor-login">
+                                            <div class="row">
+                                                <div class="col l12 m12 s12">
+                                                    <div class="d-input">
+                                                        <div class="input-field m0 pb">
+                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" @change="emailCheck" placeholder="Enter Your email" name="email" required="">
+                                                            <span class="helper-text red-text" >{{ emailError }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col l12 m12 s12">
+                                                    <p class="m0 tl"><a href="#!" class="fp" @click="forgotpassword = !forgotpassword">Nevermind,
+                                                I remember my password</a></p>
+                                                </div>
+                                            </div>
+                                            <button class="sub-reg z-depth-1 tl" type="submit" value="Submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
     <!-- script -->
@@ -85,6 +132,56 @@
             var instances = M.Sidenav.init(sidenav);
 
         });
+    </script>
+     <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                email: '',
+                num: '',
+                passw: '',
+                copassw: '',
+                forgotpassword: false,
+                emailError:''
+            },
+
+
+            methods: {
+                
+
+                // email check on database
+                emailCheck(){
+
+                    this.emailError = '';
+                    const formData = new FormData();
+                        formData.append('email', this.email);
+                        axios.post('<?php echo base_url() ?>vendor/emailcheck1', formData)
+                      .then(response => {
+                        if(response.data == ''){
+                            this.emailError = 'Account doesnot exist with this email id!';
+                        }else{
+                            this.emailError = '';
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+
+                
+                checkForm(){
+                   if((this.emailError == '')){
+                        this.$refs.form.submit()
+                   }else{
+                   }
+                }
+            },
+
+        });
+
     </script>
 </body>
 
