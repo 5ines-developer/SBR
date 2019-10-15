@@ -24,7 +24,7 @@
                                 <h4>"Grow your Businedd With Shaadi Baraathi"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>Already have an Account ?</p>
-                               <a href="http://localhost/shaadibaraati/vendor/login"><button class="vend-btn">Sign In</button></a>
+                                <a href="http://localhost/shaadibaraati/vendor/login"><button class="vend-btn">Sign In</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">
@@ -45,16 +45,26 @@
                                                     </div>
                                                 </div>
                                                 <div class="col l6 m6 s12">
-                                                    <div class="d-input">
+                                                    <div class="d-input sele-ty">
                                                         <div class="input-field m0">
-                                                            <input id="city" type="text" class="validate  in-l" placeholder="City" name="city" required="">
+                                                            <select id="citys" name="sel_city" class="form-control js-example-tags" required="required">
+                                                                        <option value="" disabled selected >City</option>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="3">3</option>
+                                                           =</select>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m6 s12">
-                                                    <div class="d-input">
+                                                    <div class="d-input sele-ty">
                                                         <div class="input-field m0">
-                                                            <input id="vtype" type="text" class="validate  in-l" placeholder="Vendor Type" name="vtype" required="">
+                                                            <select id="vendor-type" name="vendor_type" class="form-control js-example-tags" required="required">
+                                                                <option value="" disabled selected >Vendor Type</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,6 +113,7 @@
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script>
         <?php $this->load->view('includes/message'); ?>
     </script>

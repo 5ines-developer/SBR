@@ -18,7 +18,8 @@ html {
 .m0 {
     margin: 0px;
 }
-.p10{
+
+.p10 {
     padding: 10px !important;
 }
 
@@ -2748,7 +2749,8 @@ input:not([type]):focus {
 .respon-det li {
     padding-bottom: 9px;
 }
-.respon-det li:before{
+
+.respon-det li:before {
     content: '';
     height: 5px;
     width: 5px;
@@ -2929,12 +2931,15 @@ input:not([type]):focus {
     padding: 6% 0px;
 }
 
+.sele-ty .select-dropdown.dropdown-trigger {
+    font-size: 13px !important;
+}
+
 
 /* changes 23-09-2019 */
 
 @media(max-width:567px) {
-
-    #citymodel{
+    #citymodel {
         width: 100%;
     }
     .citylist li {
@@ -2943,8 +2948,6 @@ input:not([type]):focus {
     .morecitylink li {
         width: calc((100% - 36px) / 3);
     }
-
-    
     .top-city-sl.city-more {
         height: 120px;
     }
