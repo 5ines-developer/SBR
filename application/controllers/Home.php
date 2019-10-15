@@ -157,7 +157,7 @@ class Home extends CI_Controller {
         $this->load->view('site/feedback',$data);
     }
 
-    public function career($id)
+    public function career($id = null)
     {
         $data['title']  = 'ShaadiBaraati | Career';
         if(!empty($id)){
