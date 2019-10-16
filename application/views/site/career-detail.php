@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col l12 s12">
                         <div class="banner-up ">
-                            <h5 class="white-text">CAREER DETAIL</h5>
+                            <h5 class="white-text">CURRENT OPENINGS</h5>
                         </div>
                     </div>
                 </div>
@@ -36,6 +36,7 @@
                                     <?php echo(!empty($jobs['0']->qualification))? '<p><span style="color:#d0021b">Qualification </span>: '.$jobs['0']->qualification.'</p>' : '' ?>
                                     <?php echo(!empty($jobs['0']->experience))? '<p><span style="color:#d0021b">Experience </span>: '.$jobs['0']->experience.'</p>' : '' ?>
                                     <?php echo(!empty($jobs['0']->language))? '<p><span style="color:#d0021b">Language </span>: '.$jobs['0']->language.'</p>' : '' ?>
+                                    <?php echo(!empty($jobs['0']->openings))? '<p><span style="color:#d0021b">Openings </span>: '.$jobs['0']->openings.'</p>' : '' ?>
                                 </div>
                                 <div class="respon-det">
                                     <?php echo(!empty($jobs['0']->responsiblity))? '<h6>Responsiblity</h6>'.$jobs['0']->responsiblity.'' : '' ?>
@@ -43,6 +44,8 @@
                                     <?php echo(!empty($jobs['0']->key_role))? '<h6>Key Roles</h6>'.$jobs['0']->key_role.'' : '' ?>
 
                                     <?php echo(!empty($jobs['0']->location))? '<p class="locati">Location : '.$jobs['0']->location.' </p>' : '' ?>
+
+
                                     
                                     <h5 class="apply-email">To apply any of above mentioned position, mail us at hr@shaadibaraati.com with your full resume </h5>
                                 </div>

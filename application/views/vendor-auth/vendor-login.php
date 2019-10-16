@@ -25,7 +25,7 @@
                                 <h4>"Grow your Businedd With Shaadi Baraathi"</h4>
                                 <p>Sign In to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
-                                <a href="http://localhost/shaadibaraati/vendor/registration"><button class="vend-btn">Sign Up</button></a>
+                                <a href="<?php echo base_url() ?>/vendor/register"><button class="vend-btn">Sign Up</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">
@@ -73,10 +73,10 @@
                     <div class="row">
                         <div class="col l6 m6 s12">
                             <div class="vendor-cont vcl">
-                                <h4>"Grow your Businedd With Shaadi Baraathi"</h4>
+                                <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign In to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
-                                <a href="http://localhost/shaadibaraati/vendor/registration"><button class="vend-btn">Sign Up</button></a>
+                                <a href="<?php echo base_url() ?>/vendor/register"><button class="vend-btn">Sign Up</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">

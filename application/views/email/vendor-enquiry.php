@@ -253,6 +253,17 @@
                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Phone</th>
                       <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_phone']))?': &nbsp;'.$result['user_phone']:''; ?></td> 
                      </tr> 
+
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Location</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['location']))?': &nbsp;'.$result['location']:''; ?></td> 
+                     </tr> 
+
+                     <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Budget</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['budget']))?': &nbsp;'.$result['budget']:''; ?></td> 
+                     </tr> 
+
                      <tr style="border-collapse:collapse;"> 
                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Function Date</th>
                       <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['fn_date']))?': &nbsp;'.$result['fn_date']:''; ?></td> 

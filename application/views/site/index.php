@@ -203,7 +203,7 @@
 
                         <div class="hwed-item hwd1">
                             <div class="row m0" >
-                                <div class="col s12 m7 l7 push-l5 push-m5 redsahde">
+                                <div class="col s12 m7 l7 push-l5 push-m5" style="background: #3c10109e;">
                                     <div class="hwd-conetnt">
                                         <div class="wdheading">Hello Wed Planner</div>
                                         <p>Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
@@ -219,7 +219,7 @@
 
                         <div class="hwed-item hwd2">
                             <div class="row m0" >
-                                <div class="col s12 m7 l7 push-l5 push-m5 redsahde">
+                                <div class="col s12 m7 l7 push-l5 push-m5" style="background: #3c10109e;">
                                     <div class="hwd-conetnt">
                                         <div class="wdheading">Assisted  Wed Planner</div>
                                         <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
@@ -233,7 +233,7 @@
                            
                         <div class="hwed-item hwd3">
                             <div class="row m0" >
-                                <div class="col s12 m7 l7 push-l5 push-m5 redsahde">
+                                <div class="col s12 m7 l7 push-l5 push-m5" style="background: #3c10109e;">
                                     <div class="hwd-conetnt">
                                         <div class="wdheading">Premium Wed Planner</div>
                                         <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>

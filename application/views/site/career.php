@@ -46,6 +46,7 @@
                                             <h3><?php echo $value->title ?></h3>
                                             <p><?php echo mb_strimwidth($value->des, 0, 110, "..."); ?></p>
                                             <p><span style="color:red">Experience </span>: <?php echo $value->experience ?></p>
+                                            <p><span style="color:red">Openings </span>: <?php echo $value->openings ?></p>
                                         </div>
                                     </a>
                                 </div>

@@ -45,14 +45,14 @@
                                 <div class="d-input">
                                     <div class="input-field">
                                         <input id="number" type="text" class="validate  in-l" v-model="phone"
-                                            placeholder="Mobile No" @change="mobileCheck" required="" name="phone">
+                                            placeholder="Mobile No" v-on:keyup="mobileCheck" required="" name="phone">
                                             <span class="helper-text red-text" >{{ phoneError }}</span>
                                     </div>
                                 </div>
                                 <div class="d-input">
                                     <div class="input-field">
                                         <input id="email" type="email" class="validate  in-l"
-                                            placeholder="Email Address" v-model="email" @change="emailCheck" required="" name="email">
+                                            placeholder="Email Address" v-model="email" v-on:keyup="emailCheck" required="" name="email">
                                             <span class="helper-text red-text" >{{ emailError }}</span>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="d-input">
                                     <div class="input-field">
                                         <input id="co_password" type="password" class="validate  in-l"
-                                            placeholder="Confirm Password" @change="checkCpsw" v-model="copassw"  required="" name="cnpassword">
+                                            placeholder="Confirm Password" v-on:keyup="checkCpsw" v-model="copassw"  required="" name="cnpassword">
                                          <span class="helper-text red-text">{{ cpswerror }}</span>
 
                                     </div>

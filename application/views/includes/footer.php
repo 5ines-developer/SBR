@@ -110,7 +110,85 @@
     <section class="sec-footer">
         <div class="container-fluide">
             <div class="row">
-                <div class="col l2">
+                
+                <div class="col l3">
+                    <div class="list-foot vl">
+                        <h6>Bangalore</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php $this->load->model('m_home');
+                           $category = $this->m_home->getCategory();
+
+                           if (!empty($category)) {
+                            foreach ($category as $key => $value) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Bangalore' ?></a></li>
+                           <?php } } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col l3">
+                    <div class="list-foot vl">
+                        <h6>Delhi</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php $this->load->model('m_home');
+                           $category = $this->m_home->getCategory();
+
+                           if (!empty($category)) {
+                            foreach ($category as $key => $value) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/delhi/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Delhi' ?></a></li>
+                           <?php } } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col l3">
+                    <div class="list-foot vl">
+                        <h6>Indore</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php $this->load->model('m_home');
+                           $category = $this->m_home->getCategory();
+
+                           if (!empty($category)) {
+                            foreach ($category as $key => $value) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/indore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Indore' ?></a></li>
+                           <?php } } ?>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="col l3">
+                    <div class="list-foot vl">
+                        <h6>Kolkata</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php $this->load->model('m_home');
+                           $category = $this->m_home->getCategory();
+
+                           if (!empty($category)) {
+                            foreach ($category as $key => $value) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/kolkata/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Kolkata' ?></a></li>
+                           <?php } } ?>
+                        </ul>
+                    </div>
+                </div> 
+                <div class="col l3">
+                    <div class="list-foot vl">
+                        <h6>Hyderabad</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php $this->load->model('m_home');
+                           $category = $this->m_home->getCategory();
+
+                           if (!empty($category)) {
+                            foreach ($category as $key => $value) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/hyderabad/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Hyderabad' ?></a></li>
+                           <?php } } ?>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="col l3">
                     <div class="list-foot">
                         <h6>Quick Links</h6>
                         <div class="line"></div>
@@ -126,35 +204,6 @@
                             <a href="<?php echo base_url() ?>feedback" ><li class="hov">Feedback / Complaints</li></a>
                             <a href="<?php echo base_url() ?>site-map" ><li class="hov">Sitemap</li></a>
                             <a href="<?php echo base_url() ?>career" ><li class="hov">Career</li></a>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col l5">
-                    <div class="list-foot vl">
-                        <h6>Vendor Categories</h6>
-                        <div class="line"></div>
-                        <ul>
-                            <?php $this->load->model('m_home');
-                           $category = $this->m_home->getCategory();
-
-                           if (!empty($category)) {
-                            foreach ($category as $key => $value) { ?>
-                            <li><a class="hov-a" href="<?php echo base_url('vendors/all/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category ?></a></li>
-                           <?php } } ?>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col l5">
-                    <div class="list-foot vc">
-                        <h6>Vendor Cities</h6>
-                        <div class="line"></div>
-                        <ul>
-                        <?php $this->load->model('m_home');
-                           $city = $this->m_home->getCity();
-                            if (!empty($city)) {
-                                foreach ($city as $key1 => $value1) { ?>
-                                <li><a class="hov-a" href="<?php echo base_url('vendors/').$value1->city?>"><?php echo $value1->city ?></a></li>
-                               <?php } } ?>
                         </ul>
                     </div>
                 </div>

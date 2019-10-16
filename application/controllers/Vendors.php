@@ -203,6 +203,11 @@ class Vendors extends CI_Controller {
         $WedDetail  =   $this->input->post('wed_detail');
         $vendor_id  =   $this->input->post('vendor_id');
         $uniq       =   $this->input->post('uniq');
+        $location   =   $this->input->post('location');
+        $budget     =   $this->input->post('budget');
+
+
+
 
         $vendors = $this->m_vendors->getVendors($vendor_id);
 
@@ -219,7 +224,9 @@ class Vendors extends CI_Controller {
           'guest_no'   =>  $guestNo , 
           'wed_detail' =>  $WedDetail , 
           'category'   =>  $value->category , 
-          'uniq'       =>  $uniq
+          'uniq'       =>  $uniq,
+          'location'   =>  $location,
+          'budget'      =>  $budget
         );
 
       $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.str_replace('', '-', strtolower($value->name)).'/'.$vendor_id;
@@ -252,13 +259,12 @@ class Vendors extends CI_Controller {
 
   public function sms_vendor($data = '')
   {
-
     $Name     = $data['result']['user_name'];
     $category = $data['value']->category;
     $phone    = $data['result']['user_phone'];
     $fn_date  = $data['result']['fn_date'];
-    $budget   = 'not decided';
-    $location = $data['value']->city;
+    $budget   = $data['result']['budget'];
+    $location = $data['result']['location'];
     $number   = $data['value']->phone;
  
     $curl = curl_init();
@@ -284,22 +290,23 @@ class Vendors extends CI_Controller {
     $post_fields["password"] = "Sidhu@9787";
     $post_fields["auth_scheme"] = "PLAIN";
     $post_fields["format"] = "JSON";
+
     curl_setopt_array($curl, array(CURLOPT_URL => "http://enterprise.smsgupshup.com/GatewayAPI/rest",CURLOPT_RETURNTRANSFER => true,CURLOPT_ENCODING => "",CURLOPT_MAXREDIRS => 10,CURLOPT_TIMEOUT => 30,CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,CURLOPT_CUSTOMREQUEST => "POST",CURLOPT_POSTFIELDS => $post_fields));
     $response = curl_exec($curl);
     $err = curl_error($curl);
     curl_close($curl);
     if ($err) {
-      echo "cURL Error #:" . $err;
+       "cURL Error #:" . $err;
     } 
     else 
     {
-      echo $response;
+       $response;
     }
  
   }
 
   public function sms_user($data = '')
-  {  
+  { 
     $Name = $data['value']->name;
     $phone    = $data['value']->phone; 
     $email = $data['value']->email;
@@ -309,26 +316,30 @@ class Vendors extends CI_Controller {
     $post_fields = array();
     $post_fields["method"] = "sendMessage";
     $post_fields["send_to"] = '91'.$number.'';
-    $post_fields["msg"]  ='Vendor Details
-    Company name '.$Name.'
-    Mob: '.$phone.'
-    Email: '.$email.'
-    www.shaadibaraati.com(1800-4199-456)';        
+     $post_fields["msg"]  ='Vendor Details:
+Company Name: '.$Name.'
+Mob: '.$phone.'
+Email: '.$email.'
+
+With Love
+Shaadi Baraati
+18004199456';
     $post_fields["msg_type"] = "TEXT";
     $post_fields["userid"] = "2000187670";
     $post_fields["password"] = "Sidhu@9787";
     $post_fields["auth_scheme"] = "PLAIN";
     $post_fields["format"] = "JSON";
+   
     curl_setopt_array($curl, array(CURLOPT_URL => "http://enterprise.smsgupshup.com/GatewayAPI/rest",CURLOPT_RETURNTRANSFER => true,CURLOPT_ENCODING => "",CURLOPT_MAXREDIRS => 10,CURLOPT_TIMEOUT => 30,CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,CURLOPT_CUSTOMREQUEST => "POST",CURLOPT_POSTFIELDS => $post_fields));
     $response = curl_exec($curl);
     $err = curl_error($curl);
     curl_close($curl);
     if ($err) {
-      echo "cURL Error #:" . $err;
+       "cURL Error #:" . $err;
     } 
     else 
     {
-      echo $response;
+       $response;
     }
  
   }
@@ -338,13 +349,11 @@ class Vendors extends CI_Controller {
 
     public function send_user($data='')
     {
+
       $this->load->config('email');
       $this->load->library('email');
       $from = $this->config->item('smtp_user');
-      $msg = $this->load->view('email/vendor-enquiry', $data, true);
-
-     
-
+      $msg = $this->load->view('email/vendorEnquiry-user', $data, true);
       $this->email->set_newline("\r\n");
       $this->email->from($from, 'ShaadiBaraati');
       $this->email->to($data['result']['user_email']);
@@ -359,7 +368,7 @@ class Vendors extends CI_Controller {
 
     public function send_admin($data='')
     {
-      
+
       $this->load->config('email');
       $this->load->library('email');
 
@@ -367,7 +376,7 @@ class Vendors extends CI_Controller {
       $cc = $this->config->item('vr_cc');
 
       $from = $this->config->item('smtp_user');
-      $msg = $this->load->view('email/vendorEnquiry-user', $data, true);
+      $msg = $this->load->view('email/vendor-enquiry', $data, true);
       $this->email->set_newline("\r\n");
       $this->email->from($from, 'ShaadiBaraati');
       $this->email->to($to);

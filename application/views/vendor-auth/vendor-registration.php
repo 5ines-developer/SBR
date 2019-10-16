@@ -8,6 +8,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+    <style>
+        .input-field .helper-text {
+            min-height: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +26,7 @@
                     <div class="row">
                         <div class="col l6 m6 s12">
                             <div class="vendor-cont">
-                                <h4>"Grow your Businedd With Shaadi Baraathi"</h4>
+                                <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>Already have an Account ?</p>
                                 <a href="<?php echo base_url() ?>/vendor/login"><button class="vend-btn">Sign In</button></a>
@@ -36,14 +41,15 @@
                                     <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="form-vendor-reg">
-                                    <form action="<?php echo base_url('vendor/register-insert') ?>" method="post" enctype="multipart/form-data">
+                                    <form action="<?php echo base_url('vendor/register-insert') ?>" ref="form"  @submit.prevent="checkForm" method="post" enctype="multipart/form-data">
                                         <div class="form-input-vendor-reg">
                                             <div class="row">
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0">
-                                                            <input id="brandname" type="text" class="validate  in-l" @change="brandCheck"  v-model="brand" placeholder="Brand Name" name="name" required="required">
+                                                            <input id="brandname" type="text" class="validate  in-l" v-on:keyup="brandCheck"  v-model="brand" placeholder="Brand Name" name="name" required="required">
                                                             <span class="helper-text red-text" >{{ brandError }}</span>
+                                                            <span class="helper-text red-text" ><?php echo form_error('name'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -56,6 +62,7 @@
                                                             <option value="<?php echo $cities->id ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                                             <?php   } } ?>
                                                            </select>
+                                                           <span class="helper-text red-text" ><?php echo form_error('city'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,22 +78,25 @@
                                                                     <option value="<?php echo $categories->id ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                                             <?php   } }?>
                                                              </select>
+                                                             <span class="helper-text red-text" ><?php echo form_error('category'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0">
-                                                            <input id="email" type="email" class="validate  in-l" @change="emailCheck" v-model="email" placeholder="Email" name="email" required="">
+                                                            <input id="email" type="email" class="validate  in-l" v-on:keyup="emailCheck" v-model="email" placeholder="Email" name="email" required="">
                                                             <span class="helper-text red-text" >{{ emailError }}</span>
+                                                            <span class="helper-text red-text" ><?php echo form_error('email'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0">
-                                                            <input id="phone" type="text" class="validate  in-l" v-model="phone" @change="mobileCheck" placeholder="Mobile No" name="phone" required="">
+                                                            <input id="phone" type="text" class="validate  in-l" v-model="phone" v-on:keyup="mobileCheck" placeholder="Mobile No" name="phone" required="">
                                                             <span class="helper-text red-text" >{{ phoneError }}</span>
+                                                            <span class="helper-text red-text" ><?php echo form_error('phone'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -94,17 +104,25 @@
                                                     <div class="d-input">
                                                         <div class="input-field m0">
                                                             <input id="password" type="password" class="validate  in-l" v-model="passw" placeholder="Password" name="password" required="">
+                                                            <span class="helper-text red-text" ><?php echo form_error('password'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0">
-                                                            <input id="confpassword" type="password" class="validate  in-l" v-model="copassw" @change="checkCpsw" placeholder="Confirm Password" name="cpassword" required="">
+                                                            <input id="confpassword" type="password" class="validate  in-l" v-model="copassw" v-on:keyup="checkCpsw" placeholder="Confirm Password" name="cpassword" required="">
                                                             <span class="helper-text red-text">{{ cpswerror }}</span>
+                                                            <span class="helper-text red-text" ><?php echo form_error('cpassword'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col s12 center">
+                                            <?php 
+                                                 echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : '' 
+                                                 ?>
+                                            <?php ?>
                                             </div>
                                             <button class="sub-reg z-depth-1" type="submit" value="Submit">Submit</button>
                                         </div>
@@ -166,7 +184,7 @@
                         if(response.data == '1'){
                             this.phoneError = 'This Phone number already exist!';
                         }else if(response.data == '2'){
-                            this.emailError = 'This Phone number already exist with shaadibaraati user!';
+                            this.phoneError = 'This Phone number already exist with shaadibaraati user!';
                         }{
                             this.phoneError = '';
                         }

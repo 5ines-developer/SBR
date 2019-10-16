@@ -125,25 +125,19 @@
                                         </div>
 
                                       <div class="row m0">
-                                      <div class="file-field input-field col s12 l12 rl">
-                                                <div class="btn btn-small black-text grey lighten-3">
+                                      <div class="file-field input-field col s12 l6">
+                                                    <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
-                                                    <span class="">Profile Image</span>
-                                                    <input type="file" name="vimage" id="upload" accept=".png, .jpg, .jpeg, .gif"
-                                                        required>
+                                                        <span class="">Add Image</span>
+                                                        <input type="file" name="vimage" accept=".png, .jpg, .jpeg, .gif" required>
+                                                    </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text">
+                                                    </div>
+                                                    <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
-                                                <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text">
-                                                </div>
-                                                <span class="helper-text"><b>Note</b>: Please select only image file
-                                                    (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
-                                                        size:</span> 512kb <span class="red-text">*</span></span>
-                                            </div>
 
-                                            <div id="upload-demo" style="padding: 0;"></div>
                                       </div>
-                                      <input name="fimagecheck" class="fimagecheck" type="hidden" value="">
-                                      <input name="vimage" class="ipimg" type="hidden" value="">
 
                                         <div class="row">
                                           <div class="input-field col s12 ">
@@ -227,60 +221,11 @@
         });
 
 
-        $uploadCrop = $('#upload-demo').croppie({
-            enableExif: true,
-            viewport: {
-                width: 700,
-                height: 500,
-                type: 'box'
-            },
-            boundary: {
-                width: 750,
-                height: 550
-            }
-        });
+       
 
-        $('#upload').on('change', function() {
-            $('.fimagecheck').val($('.fimagecheck').val() + '1');
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                }).then(function() {
-                    console.log('jQuery bind complete');
-                });
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
+        
 
 
-        $('.upload-result').on('click', function(ev) {
-          ev.preventDefault();
-          ;
-
-          $(".loder-box").css("display", "flex");
-
-            $uploadCrop.croppie('result', {
-                type: 'canvas',
-                size: 'viewport',
-                format : 'jpeg',
-                quality: 1
-
-
-            }).then(function(resp) {
-              var alt = $("#alt").val()
-              if (alt == '') {
-                    alert('Image title is required');
-
-                } else {
-                  $('.ipimg').val(resp);
-                  $('#vendor-form').submit();
-                }
-            });
-            
-
-
-        });
 
 
     });

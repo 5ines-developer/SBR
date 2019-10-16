@@ -522,10 +522,10 @@ h6 {
     line-height: 27px;
 }
 
-.vl ul {
+/* .vl ul {
     column-count: 2;
 }
-
+ */
 .vc ul {
     column-count: 3;
     column-fill: balance;
@@ -2719,7 +2719,6 @@ input:not([type]):focus {
     border: 1px solid #ececec;
     padding: 40px;
     margin-bottom: 20px;
-    text-align: center;
     cursor: pointer;
     color: black;
 }

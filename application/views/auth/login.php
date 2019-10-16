@@ -76,7 +76,7 @@
                                     <div class="d-input">
                                         <div class="input-field">
                                             <label for="femail">Enter your email id</label>
-                                            <input id="femail" type="email"  class="validate  in-l" required="" name="email" v-model="email" @change="emailCheck">
+                                            <input id="femail" type="email"  class="validate  in-l" required="" name="email" v-model="email" v-on:keyup="emailCheck">
                                             <span class="helper-text red-text" >{{ emailError }}</span>
                                         </div>
                                     </div>

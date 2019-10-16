@@ -241,11 +241,11 @@ max-height: 95px;
                                             </div>
                                         </div>
                                         <div class="row m0">
-                                            <div class="file-field input-field col s12 l12">
+                                            <div class="file-field input-field col s12 l6">
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                     <span class="">Profile Image</span>
-                                                    <input type="file" name="vimage" id="upload" accept=".png, .jpg, .jpeg, .gif"
+                                                    <input type="file" name="vimage" accept=".png, .jpg, .jpeg, .gif"
                                                         <?php echo (!empty($result)?'':'required') ?>>
                                                 </div>
                                                 <div class="file-path-wrapper">
@@ -255,7 +255,6 @@ max-height: 95px;
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
                                                         size:</span> 512kb <span class="red-text">*</span></span>
                                             </div>
-                                            <div id="upload-demo" style="padding: 0;"></div>
                                         </div>
                                         <div class="row m0">
                                           <div class="input-field col s12 ">
@@ -727,54 +726,7 @@ max-height: 95px;
             }
         });
         
-        $uploadCrop = $('#upload-demo').croppie({
-            enableExif: true,
-            viewport: {
-                width: 700,
-                height: 500,
-                type: 'box'
-            },
-            boundary: {
-                width: 750,
-                height: 550
-            }
-        });
 
-        $('#upload').on('change', function() {
-            $('.fimagecheck').val($('.fimagecheck').val() + '1');
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                }).then(function() {
-                    console.log('jQuery bind complete');
-                });
-            }
-            reader.readAsDataURL(this.files[0]);
-        });
-
-
-        $('.upload-result').on('click', function(ev) {
-          ev.preventDefault();
-          $(".loder-box").css("display", "flex");
-            $uploadCrop.croppie('result', {
-                type: 'canvas',
-                size: 'viewport',
-                format : 'jpeg',
-                quality: 1
-            }).then(function(resp) {
-              var alt = $("#alt").val()
-              if (alt == '') {
-                    alert('Image title is required');
-                } else {
-                  $('.ipimg').val(resp);
-                  $('#vendor-form').submit();
-                }
-            });
-            
-
-
-        });
 
 
     });

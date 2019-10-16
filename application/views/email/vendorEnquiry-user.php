@@ -240,23 +240,6 @@
                  <tr style="border-collapse:collapse;"> 
                   <td width="560" valign="top" align="center" style="padding:0;Margin:0;"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-color:#EFEFEF;border-style:solid;border-width:0px;border-radius:3px;background-color:#FFFFFF;padding-bottom: 30px;padding-left: 30px;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff"> 
-                    
-                                          <tr style="border-collapse:collapse;"> 
-                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">User</th> 
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_name']))?': &nbsp;'.$result['user_name']:''; ?></td> 
-                     </tr> 
-                     <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Email</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_email']))?': &nbsp;'.$result['user_email']:''; ?></td> 
-                     </tr> 
-                     <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Phone</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_phone']))?': &nbsp;'.$result['user_phone']:''; ?></td> 
-                     </tr> 
-                     <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Function Date</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['fn_date']))?': &nbsp;'.$result['fn_date']:''; ?></td> 
-                     </tr>
                      <tr style="border-collapse:collapse;"> 
                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Vendor Name</th>
                       <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($value->name))?': &nbsp;'.$value->name:''; ?></td> 
@@ -281,20 +264,6 @@
                       <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['fn_time']) == '1')?': &nbsp;'.'Evening':'Day'; ?></td> 
                     </tr>
                     <?php } ?>
-
-                    <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Description</th>
-                      <td align="center" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;text-align: justify;"><?php echo (!empty($result['wed_detail']))?': &nbsp;'.$result['wed_detail']:''; ?></td> 
-                     </tr>
-                     
-                     
-                     
-                     
-                    
-
-
-
-
                    </table> </td> 
                  </tr> 
                </table>

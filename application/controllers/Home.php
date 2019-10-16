@@ -167,6 +167,7 @@ class Home extends CI_Controller {
             $data['jobs'] = $this->m_home->jobs();
             $this->load->view('site/career',$data);
         }
+
         
     }
 

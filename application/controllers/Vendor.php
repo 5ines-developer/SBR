@@ -101,7 +101,7 @@ class Vendor extends CI_Controller {
             array('required'      => 'You have not provided %s.', 'matches'       => 'Your password and confirm password is not matching') ); 
         if ($this->form_validation->run() == false) {
         	$error = validation_errors();
-            $this->session->set_flashdata('error', $error);
+            $this->session->set_flashdata('formerror', $error);
         	redirect('vendor/register','refresh');
         }else{
         	$name 		= $this->input->post('name');

@@ -87,6 +87,21 @@ text-overflow: unset !important;
         padding: 12px !important;
 height: 98px;
     }
+    #date{
+        width: calc(100% - 0rem);
+        margin-left: 0rem;
+    }
+    .prefix{
+        font-size: 23px !important;
+        top: 13px !important;
+    }
+    #date + label{
+       margin-left: 24px; 
+    }
+    .banner-container {
+    max-height: 500px;
+    overflow: hidden;
+}
     </style>
 </head>
 
@@ -329,9 +344,19 @@ height: 98px;
                                                     <label for="phone">Mobile Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <input id="date" type="text" class="validate datepicker"
+                                                    <i class="material-icons dp48 prefix">date_range</i><input id="date" type="text" class="validate datepicker"
                                                         name="fn_date">
                                                     <label for="date">Event Date</label>
+                                                </div>
+                                            </div>
+                                            <div class="row m0">
+                                                <div class="input-field col s6">
+                                                    <input id="location" type="text" class="validate" name="location"> 
+                                                    <label for="location">Location</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <input id="budget" type="text" class="validate" name="budget"> 
+                                                    <label for="budget">Budget</label>
                                                 </div>
                                             </div>
 

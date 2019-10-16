@@ -235,17 +235,13 @@
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 15px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:1.2;padding-top:15px;padding-right:10px;padding-bottom:15px;padding-left:10px;">
 <div style="font-size: 12px; line-height: 1.2; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #555555; mso-line-height-alt: 14px;">
-<p style="font-size: 16px; line-height: 1.2; mso-line-height-alt: 19px; margin: 0;"><span style="font-size: 16px;">To finish signing up please click below Button</span></p>
+<p style="font-size: 16px; line-height: 1.2; mso-line-height-alt: 19px; margin: 0;"><span style="font-size: 16px;">To finish signing up please click below Link</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
 <div align="left" class="button-container" style="padding-top:5px;padding-right:10px;padding-bottom:35px;padding-left:10px;">
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 5px; padding-right: 10px; padding-bottom: 35px; padding-left: 10px" align="left"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:31.5pt; width:165pt; v-text-anchor:middle;" arcsize="120%" stroke="false" fillcolor="#FFD500"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#132F40; font-family:Arial, sans-serif; font-size:15px"><![endif]-->
-  <a href="<?php echo base_url().'vendor/email_verification?regid='.$regid ?>">
-<div style="text-decoration: none; display: inline-block; color: #FFF; background-color: #d0021b; border-radius: 50px; -webkit-border-radius: 50px; -moz-border-radius: 50px; width: auto; width: auto; border-top: 1px solid #d0021b; border-right: 1px solid #d0021b; border-bottom: 1px solid #d0021b; border-left: 1px solid #d0021b; padding-top: 5px; padding-bottom: 5px; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; text-align: center; mso-border-alt: none; word-break: keep-all;"><span style="padding-left:20px;padding-right:20px;font-size:15px;display:inline-block;">
-<span style="font-size: 16px; line-height: 2; mso-line-height-alt: 32px;"><span style="font-size: 15px; line-height: 30px;"><strong><span style="line-height: 30px; font-size: 15px;">ACTIVATE MY ACCOUNT &gt;</span></strong></span></span>
-</span></div>
-</a>
+  <a href="<?php echo base_url().'vendor/email_verification?regid='.$regid ?>" >ACTIVATE MY ACCOUNT &gt;</a>
 <!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
 </div>
 <!--[if (!mso)&(!IE)]><!-->
