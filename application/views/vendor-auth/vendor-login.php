@@ -22,8 +22,8 @@
                     <div class="row">
                         <div class="col l6 m6 s12">
                             <div class="vendor-cont vcl">
-                                <h4>"Grow your Businedd With Shaadi Baraathi"</h4>
-                                <p>Sign In to acess your Dashboard</p>
+                                <h4>"Grow your Business With Shaadi Baraati"</h4>
+                                <p>Sign Up to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
                                 <a href="http://localhost/shaadibaraati/vendor/registration"><button class="vend-btn">Sign Up</button></a>
                             </div>
@@ -115,6 +115,7 @@
         </section>
     </div>
     <!-- script -->
+    <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
