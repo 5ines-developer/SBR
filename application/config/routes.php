@@ -129,6 +129,13 @@ $route['vendor-register'] 		        = 'authentication/vendorRegister';
 $route['vendor-login'] 		            = 'authentication/vendorlogin';
 $route['vendor-register/send'] 		    = 'authentication/vendorsend';
 
+// vendor
+$route['vendor/register'] 		        = 'vendor/index';
+$route['vendor/login'] 		            = 'vendor/login';
+$route['vendor/profile'] 		        = 'vendor/profile';
+
+
+
 //vendor module
 //authentication
 $route['vendor/register'] 		    = 'vendor/index';

@@ -25,13 +25,21 @@ class Vendor extends CI_Controller {
 
     public function login($var = null)
     {
+        
         if ($this->session->userdata('shvid') == '') {
 			$data['title'] = 'Vendor Registration | Shaadibaraati';
             $this->load->view('vendor-auth/vendor-login',$data);
 		}else{
 			redirect('vendor/profile');
-        }          
+        }  
     }
+
+    public function profile($var = null)
+    {
+        $data['title'] = 'Vendor Profile | Shaadibaraati';
+        $this->load->view('vendor-auth/vendor-profile',$data);
+    }
+                
 
     	/**
      * user registration-> mobile number check exist

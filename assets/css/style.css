@@ -2936,6 +2936,160 @@ input:not([type]):focus {
 }
 
 
+/* vendor-profile */
+
+.vendor-dash-list {
+    padding: 30px 0px;
+    margin: 0;
+}
+
+.vendor-dash-list a {
+    color: black;
+}
+
+.vendor-dash-list li a:hover {
+    background: #d0021b;
+    color: white;
+    cursor: pointer;
+}
+
+.vendor-dash-list li a {
+    padding: 5px 12px;
+    font-size: 15px;
+    color: #333;
+    line-height: 40px;
+    display: block;
+}
+
+.vender-icon {
+    font-size: 20px;
+    top: 4px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.b-sho {
+    box-shadow: 0px 0px 10px 0px #e8e8e8;
+}
+
+.vendor-head {
+    padding: 15px 25px;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.vendor-inputs {
+    padding: 15px 25px;
+}
+
+.helper-text-vender {
+    font-size: 13px;
+    color: #555;
+}
+
+.notes {
+    font-size: 13px;
+}
+
+.hh-file:hover {
+    background: #ca061e;
+}
+
+.banner-ioc {
+    position: relative;
+    top: -3px;
+}
+
+.vendor-head1 {
+    padding: 15px 25px;
+    border-top: 1px solid #e6e2e2;
+    border-bottom: 1px solid #e6e2e2;
+}
+
+.vendor-head1 h6 {
+    margin: 0;
+}
+
+.vendor-head h6 {
+    margin: 0;
+}
+
+.port-delete {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    line-height: 100px;
+}
+
+.portfolio-img {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.portfolio-img:hover .port-delete {
+    top: 0;
+}
+
+.port-delete i {
+    color: #ff001f;
+    font-size: 20px;
+    line-height: 5.5;
+}
+
+.input-images {
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.vid-delete {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    background: #eee;
+    padding: 4px;
+    top: -5px;
+}
+
+.vid-delete i {
+    color: #d0021b;
+    font-size: 20px;
+}
+
+#youtube-link,
+#fb-link {
+    display: none;
+}
+
+.infor-service.i-img {
+    border: 1px solid gray;
+    width: 50px;
+    height: 50px;
+}
+
+.image-information {
+    padding-top: 8px;
+}
+
+.p0 {
+    padding: 0px;
+}
+
+.mb0 {
+    margin-bottom: 0px;
+}
+
+.faq-ser {
+    border-bottom: 1px dashed #ddd;
+    margin-bottom: 10px;
+}
+
+.vendor-detail-inputs {
+    padding-bottom: 10px;
+}
+
+
 /* changes 23-09-2019 */
 
 @media(max-width:567px) {
@@ -3098,6 +3252,20 @@ nav a.sidenav-trigger i {
     /* vendor-login */
     .form-input-vendor-login {
         padding: 20px 5px;
+    }
+    /* vendor-profile*/
+    .port-delete i {
+        color: #ff001f;
+        font-size: 15px;
+        position: relative;
+        bottom: 13px;
+    }
+    .vendor-head {
+        margin-top: 10px;
+    }
+    .input-images {
+        margin-bottom: 15px;
+        font-size: 14px;
     }
 }
 
