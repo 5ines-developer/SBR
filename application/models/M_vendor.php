@@ -96,11 +96,17 @@ class M_vendor extends CI_Model {
 
             function can_login($email, $password)  
             {  
-               $this->db->where('email', $email);  
+               $this->db->where('email', $email);
+               $this->db->group_start();
                $this->db->where('is_active', '3');  
-               $this->db->or_where('is_active', '1');  
+               $this->db->or_where('is_active', '1'); 
+               
+               $this->db->group_end();
+            
+               
                // $this->db->where('password', $password);
                 $result = $this->getUsers($password);
+                
         
                 if (!empty($result)) {
                   return $result;
