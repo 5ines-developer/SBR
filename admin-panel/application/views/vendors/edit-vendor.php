@@ -697,22 +697,6 @@ $this->load->model('m_vendors');
                     height: 500,
                     type: 'box'
                 },
-<<<<<<< HEAD
-            },
-            messages: {
-                about: "Please enter a vendor Name",
-                email: "Please enter a vendor Email",
-                phone: "Please enter a vendor Phone Number",
-                category: "Please Select the Category",
-                city: "Please Select the City",
-            }
-        });
-        
-
-
-
-    });
-=======
                 boundary: {
                     width: 750,
                     height: 550
@@ -757,7 +741,6 @@ $this->load->model('m_vendors');
 
 
         });
->>>>>>> 00c31fa7affdd23f746d7b87b6d272b6abdb6f5f
     </script>
     <script>
         DecoupledEditor
