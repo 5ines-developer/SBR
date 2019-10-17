@@ -4586,3 +4586,8 @@ nav a.sidenav-trigger i {
     color: white;
     cursor: pointer;
 }
+.ck-editor__editable {
+    min-height: 200px !important;
+    border: 1px solid #c4c4c4 !important;
+    border-radius: 0px 0px 3px 3px !important;
+}

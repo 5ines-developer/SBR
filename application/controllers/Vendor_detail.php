@@ -11,16 +11,14 @@ class Vendor_detail extends CI_Controller {
 		$this->load->model('m_vendorDetail');
 		$this->load->library('form_validation');
 		$this->load->library('bcrypt');
+
+		$this->uniq = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('uniq');
 	}
 
 	public function index()
 	{
 		$data['title'] = 'Vendor Profile | Shaadibaraati';
-		$uniqid = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row();
-        $output = $this->m_vendorDetail->getVendors($uniqid->uniq);
-        echo "<pre>";
-        print_r ($output);
-        echo "</pre>";exit();
+        $output = $this->m_vendorDetail->getVendors($this->uniq);
         if (!empty($output )) {
 	        foreach ($output as $key => $value) {
 	           $value->service     = $this->m_vendorDetail->getService($value->id);
@@ -30,7 +28,6 @@ class Vendor_detail extends CI_Controller {
 	           $value->fav         = $this->m_vendorDetail->getFavourite($value->id);
 	           $value->faq         = $this->m_vendorDetail->faq($value->catId);
 	           $value->offer       = $this->m_vendorDetail->offer($value->id);
-	           $value->similar     = $this->m_vendorDetail->similarVendors($value->cityId,$value->catId,$value->id);
 	        }
 	        $data['title']  = $value->name.'- ShaadiBaraati';
         }
@@ -38,6 +35,48 @@ class Vendor_detail extends CI_Controller {
         $this->load->view('vendor-auth/vendor-profile',$data);
 	}
 
+
+	public function addprice($value='')
+	{
+		$price = $this->input->post('price');
+		$output = $this->m_vendorDetail->insertPrice($price,$this->uniq);
+		echo $output;
+	}
+
+	public function getPrice($value='')
+	{
+		$output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('price');
+		echo $output;
+	}
+
+	public function pricePer($value='')
+	{
+		$per = $this->input->post('per');
+		$output = $this->m_vendorDetail->pricePer($per,$this->uniq);
+		echo $output;
+	}
+
+	public function getPer($value='')
+	{
+		$output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('price_for');
+		echo $output;
+	}
+
+	public function address($value='')
+	{
+		$vaddress = $this->input->post('vaddress');
+		$output = $this->m_vendorDetail->address($vaddress,$this->uniq);
+		echo $output;
+	}
+
+	public function getAddress($value='')
+	{
+		$output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('address');
+		echo $output;
+	}
+
+
+	
 }
 
 /* End of file Vendor-detail.php */

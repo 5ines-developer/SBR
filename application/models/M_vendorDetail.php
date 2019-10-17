@@ -120,6 +120,37 @@ class M_vendorDetail extends CI_Model {
         
     }
 
+    public function insertPrice($price,$uniq)
+    {
+    	$this->db->where('uniq', $uniq)->update('vendor',array('price' =>$price));
+    	if ($this->db->affected_rows() > 0) {
+    		return $price;
+    	}else{
+    		return false;
+    	}
+    }
+
+    public function pricePer($per='',$uniq='')
+    {
+    	$this->db->where('uniq', $uniq)->update('vendor',array('price_for' =>$per));
+    	if ($this->db->affected_rows() > 0) {
+    		return $per;
+    	}else{
+    		return false;
+    	}
+    }
+
+    public function address($vaddress,$uniq)
+    {
+    	$this->db->where('uniq', $uniq)->update('vendor',array('address' =>$vaddress));
+    	if ($this->db->affected_rows() > 0) {
+    		return $vaddress;
+    	}else{
+    		return false;
+    	}
+    }
+
+    
 
 
 
