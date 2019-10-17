@@ -18,7 +18,12 @@ class Vendor_detail extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Vendor Profile | Shaadibaraati';
+<<<<<<< HEAD
         $output = $this->m_vendorDetail->getVendors($this->uniq);
+=======
+		$uniqid = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row();
+        $output = $this->m_vendorDetail->getVendors($uniqid->uniq);
+>>>>>>> 846609716a51f43d8ba955135d7ce31c6fde102d
         if (!empty($output )) {
 	        foreach ($output as $key => $value) {
 	           $value->service     = $this->m_vendorDetail->getService($value->id);
@@ -26,7 +31,7 @@ class Vendor_detail extends CI_Controller {
 	           $value->review      = $this->m_vendorDetail->getReview($value->id);
 	           $value->userReview  = $this->m_vendorDetail->getuserReview($value->id);
 	           $value->fav         = $this->m_vendorDetail->getFavourite($value->id);
-	           $value->faq         = $this->m_vendorDetail->faq($value->catId);
+	        //    $value->faq         = $this->m_vendorDetail->faq($value->catId);
 	           $value->offer       = $this->m_vendorDetail->offer($value->id);
 	        }
 	        $data['title']  = $value->name.'- ShaadiBaraati';

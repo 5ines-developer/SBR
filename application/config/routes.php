@@ -133,6 +133,8 @@ $route['vendor-register/send'] 		    = 'authentication/vendorsend';
 $route['vendor/register'] 		        = 'vendor/index';
 $route['vendor/login'] 		            = 'vendor/login';
 $route['vendor/profile'] 		        = 'vendor/profile';
+$route['vendor/changepassword'] 	    = 'vendor/changepassword';
+
 
 
 

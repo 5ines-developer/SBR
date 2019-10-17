@@ -522,10 +522,12 @@ h6 {
     line-height: 27px;
 }
 
+
 /* .vl ul {
     column-count: 2;
 }
  */
+
 .vc ul {
     column-count: 3;
     column-fill: balance;
@@ -3087,6 +3089,24 @@ input:not([type]):focus {
 
 .vendor-detail-inputs {
     padding-bottom: 10px;
+}
+
+
+/* change-pass */
+
+.wid-50 {
+    width: 50%;
+}
+
+.vendor-img i {
+    background: #f2f2f2;
+    width: 45px !important;
+    height: 45px !important;
+    text-align: center;
+    top: 16px;
+    position: relative;
+    line-height: 45px !important;
+    border-radius: 25px;
 }
 
 
