@@ -9,6 +9,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+        <style>
+        .helper-text.red-text {
+    min-height: 0 !important;
+    text-align: left !important;
+}
+    </style>
 </head>
 
 <body>
@@ -41,7 +47,7 @@
                                                 <div class="col l12 m12 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0 pb">
-                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" @change="emailCheck" placeholder="Enter Your email" name="email" required="">
+                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" v-on:keyup="emailCheck" placeholder="Enter Your email" name="email" required="">
                                                             <span class="helper-text red-text" >{{ emailError }}</span>
                                                         </div>
                                                     </div>
@@ -92,7 +98,7 @@
                                                 <div class="col l12 m12 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0 pb">
-                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" @change="emailCheck" placeholder="Enter Your email" name="email" required="">
+                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" v-on:keyup="emailCheck" placeholder="Enter Your email" name="email" required="">
                                                             <span class="helper-text red-text" >{{ emailError }}</span>
                                                         </div>
                                                     </div>

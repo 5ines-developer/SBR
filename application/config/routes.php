@@ -146,7 +146,9 @@ $route['vendor/forgot-password'] 	= 'vendor/forgot_password';
 $route['vendor/forgot-password-set/(:any)'] 	= 'vendor/add_pass/$1';
 $route['vendor/password-update'] 	= 'vendor/update_pass';
 
+//vendor detail
 
+$route['vendor/profile'] 		    = 'Vendor_detail/index';
 
 
 

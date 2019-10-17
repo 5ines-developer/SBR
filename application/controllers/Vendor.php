@@ -34,13 +34,6 @@ class Vendor extends CI_Controller {
         }  
     }
 
-    public function profile($var = null)
-    {
-        $data['title'] = 'Vendor Profile | Shaadibaraati';
-        $this->load->view('vendor-auth/vendor-profile',$data);
-    }
-                
-
     	/**
      * user registration-> mobile number check exist
      * url : register
@@ -74,7 +67,6 @@ class Vendor extends CI_Controller {
 	{
 		$email = $this->input->post('email');
         $output = $this->m_vendor->email_check($email);
-       
 		echo  $output;
     }
 
@@ -119,7 +111,8 @@ class Vendor extends CI_Controller {
         	$phone 		= $this->input->post('phone');
         	$password 	= $this->input->post('password');
         	$hash 		= $this->bcrypt->hash_password($password);
-        	$refid      = random_string('alnum','20');
+            $refid      = random_string('alnum','20');
+        	$uniq      = random_string('alnum','10');
 
         	$insert = array(
         		'name' 		=> $name,
@@ -129,6 +122,7 @@ class Vendor extends CI_Controller {
                 'reference_id'=> $refid,
                 'city'      => $city,
                 'category'  => $category,
+                'uniq'      => $uniq 
                  );
             $data['output'] = $this->m_vendor->register($insert);          
         	if (!empty($data['output'])) {
@@ -308,7 +302,7 @@ class Vendor extends CI_Controller {
     {
         $data['title'] = 'Forgot password - Shaadi Baraati';
         $data['id'] = $id;
-        $this->load->view('auth/reset-pass', $data);
+        $this->load->view('vendor-auth/reset-pass', $data);
     }
 
 
@@ -320,7 +314,7 @@ class Vendor extends CI_Controller {
         $this->form_validation->set_rules('cpsw', 'Confirm Password', 'required|matches[npsw]');
         if ($this->form_validation->run() == false) {
             $error = validation_errors();
-            $this->session->set_flashdata('error', $error);
+            $this->session->set_flashdata('formerror', $error);
             redirect('vendor/forgot-password-set/' . $forgotid, 'refresh');
         } else {
             $email = $this->input->post('femail');
@@ -361,7 +355,4 @@ class Vendor extends CI_Controller {
                 return TRUE;
             }
     }
-
-
-
 }

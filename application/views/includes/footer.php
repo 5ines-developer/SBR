@@ -186,6 +186,35 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col l3">
+                    <div class="list-foot">
+                        <h6>Vendor Categories</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php $this->load->model('m_home');
+                           $category = $this->m_home->getCategory();
+
+                           if (!empty($category)) {
+                            foreach ($category as $key => $value) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/all/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category ?></a></li>
+                           <?php } } ?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col l3">
+                    <div class="list-foot">
+                        <h6>Vendor Cities</h6>
+                        <div class="line"></div>
+                        <ul>
+                        <?php $this->load->model('m_home');
+                           $city = $this->m_home->getCity();
+                            if (!empty($city)) {
+                                foreach ($city as $key1 => $value1) { ?>
+                                <li><a class="hov-a" href="<?php echo base_url('vendors/').$value1->city?>"><?php echo $value1->city ?></a></li>
+                               <?php } } ?>
+                        </ul>
+                    </div>
+                </div>
 
                 
                 <div class="col l3">

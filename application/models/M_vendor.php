@@ -83,7 +83,7 @@ class M_vendor extends CI_Model {
                 $result = $this->db->get('vendor');
                 if($result->num_rows() > 0){
                     $this->db->where('reference_id', $regid);
-                    $this->db->update('vendor', array('reference_id' => $newRegid, 'is_active' => '2', 'updated_date' => date('Y-m-d H:i:s')));
+                    $this->db->update('vendor', array('reference_id' => $newRegid, 'is_active' => '3', 'updated_date' => date('Y-m-d H:i:s')));
                     if($this->db->affected_rows() > 0){
                     return true;
                     }else{
@@ -97,7 +97,8 @@ class M_vendor extends CI_Model {
             function can_login($email, $password)  
             {  
                $this->db->where('email', $email);  
-               $this->db->where('is_active', '2');  
+               $this->db->where('is_active', '3');  
+               $this->db->or_where('is_active', '1');  
                // $this->db->where('password', $password);
                 $result = $this->getUsers($password);
         

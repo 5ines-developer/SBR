@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Shaadi Baraati</title>
+    <title><?php echo $title ?></title>
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,27 +16,13 @@
         <!-- header -->
         <?php $this->load->view('includes/header.php'); ?>
         <!-- end header -->
-        <section class="sec">
+        <?php if (!empty($vendor)) {
+           foreach ($vendor as $key => $value) { ?>
+          
+         <section class="sec">
             <div class="container-fluide">
                 <div class="row">
-                    <div class="col l3 m4 s12">
-                        <div class="left-vendor-menu b-sho">
-                            <ul class="vendor-dash-list">
-                                <li class="">
-                                    <a><i class=" material-icons vender-icon">person</i> Business Profile</a>
-                                </li>
-                                <li>
-                                    <a><i class=" material-icons vender-icon">insert_drive_file</i> Leads</a>
-                                </li>
-                                <li>
-                                    <a><i class=" material-icons vender-icon">rate_review</i> Reviews</a>
-                                </li>
-                                <li>
-                                    <a><i class=" material-icons vender-icon">local_offer</i> Buy Packages</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php $this->load->view('includes/vendor-sidebar.php'); ?>
                     <div class="col l9 m9 s12">
                         <div class="vendor-detail-inputs b-sho">
                             <div class="vendor-head">
@@ -44,50 +30,50 @@
                             </div>
                             <div class="vendor-inputs">
                                 <div class="row">
-                                    <div class="col l5 m5 s12">
+                                    <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="cname" type="text" class="validate">
+                                            <input id="cname" type="text" class="validate" readonly="" value="<?php echo (!empty($value->name))?$value->name:''; ?>">
                                             <label for="cname">Company Name</label>
                                         </div>
                                     </div>
-                                    <div class="col l5 m5 s12">
+                                    <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="email" type="email" class="validate">
+                                            <input id="email" type="email" class="validate" readonly="" value="<?php echo (!empty($value->email))?$value->email:''; ?>">
                                             <label for="email">Email</label>
                                         </div>
                                     </div>
-                                    <div class="col l5 m5 s12">
+                                    <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="phone" type="text" class="validate">
+                                            <input id="phone" type="text" class="validate" value="<?php echo (!empty($value->phone))?$value->phone:''; ?>">
                                             <label for="phone">Phone No</label>
                                         </div>
                                     </div>
-                                    <div class="col l5 m5 s12">
+                                    <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="city" type="text" class="validate">
+                                            <input id="city" type="text" class="validate" readonly="" value="<?php echo (!empty($value->city))?$value->city:''; ?>">
                                             <label for="city">City</label>
                                         </div>
                                     </div>
-                                    <div class="col l5 m5 s12">
+                                    <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="price" type="text" class="validate">
+                                            <input id="price" type="text" class="validate" value="<?php echo (!empty($value->price))?$value->price:''; ?>">
                                             <label for="price">Price</label>
                                         </div>
                                     </div>
-                                    <div class="col l5 m5 s12">
+                                    <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="price-per" type="text" class="validate">
+                                            <input id="price-per" type="text" class="validate" value="<?php echo (!empty($value->price_for))?$value->price_for:''; ?>">
                                             <label for="price-per">Price Per</label>
                                         </div>
-                                    </div>
-                                    <div class="col l10 m5 s12">
+                                    </div> 
+                                    <div class="col l12 m5 s12">
                                         <div class="input-field">
-                                            <input id="address" type="text" class="validate">
-                                            <label for="address">Address <span
-                                                class="red-text">*</span></label>
+                                            <textarea id="vaddress" class="materialize-textarea" ><?php echo (!empty($value->address))?$value->address:''; ?></textarea>
+                                            <label for="vaddress">Address <span class="red-text">*</span></label>
                                         </div>
                                     </div>
-                                    <div class="col l10 m5 s12">
+                                                                      
+                                    <div class="col l6 m5 s12">
                                         <div class="file-field input-field">
                                             <div class="btn hh-file">
                                                 <span class="banner-ioc"><i class=" material-icons vender-icon">perm_media</i>Banner Image</span>
@@ -100,8 +86,15 @@
                                         <span class="helper-text-vender"><b class="notes">Note</b>: Please select only image file
                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                 size:</b> 512kb <span class="red-text">*</span></span>
-
                                     </div>
+
+                                    <div class="col l6 m5 s12">
+                                        <div class="input-field">
+                                            <input id="category" type="text" class="validate" readonly="" value="<?php echo (!empty($value->address))?$value->address:''; ?>">
+                                            <label for="category">Category</label>
+                                        </div>
+                                    </div> 
+
                                 </div>
                             </div>
                             <div class="list-profile">
@@ -111,7 +104,7 @@
                                 <div class="vendor-inputs">
                                     <div class="row">
                                         <div class="col l12 m5 s12">
-                                            <textarea name="about" id="editor"></textarea>
+                                            <textarea name="about" id="editor"><?php echo (!empty($value->detail))?$value->detail:''; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -423,6 +416,7 @@
                 </div>
             </div>
         </section>
+        <?php  } } ?>
     </div>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>

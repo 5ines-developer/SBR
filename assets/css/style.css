@@ -4580,3 +4580,9 @@ nav a.sidenav-trigger i {
     top: 7px;
     position: relative;
 }
+
+.vendor-dash-list li .active {
+    background: #d0021b;
+    color: white;
+    cursor: pointer;
+}
