@@ -18,6 +18,7 @@ class Vendor_detail extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Vendor Profile | Shaadibaraati';
+		
         $output = $this->m_vendorDetail->getVendors($this->uniq);
         if (!empty($output )) {
 	        foreach ($output as $key => $value) {
