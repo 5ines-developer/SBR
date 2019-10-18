@@ -3368,6 +3368,9 @@ nav a.sidenav-trigger i {
         min-width: 130px !important;
         font-size: 11px;
     }
+    .wid-50 {
+        width: 100%;
+    }
     #dynamic_paginate {
         margin-bottom: 20px;
     }
