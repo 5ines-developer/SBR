@@ -134,6 +134,8 @@ $route['vendor/register'] 		        = 'vendor/index';
 $route['vendor/login'] 		            = 'vendor/login';
 $route['vendor/profile'] 		        = 'vendor/profile';
 $route['vendor/changepassword'] 	    = 'vendor/changepassword';
+$route['vendor/leads'] 	                = 'vendor/leads';
+
 
 
 

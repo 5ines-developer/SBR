@@ -3110,6 +3110,79 @@ input:not([type]):focus {
 }
 
 
+/* vender- leads */
+
+.table-css .dt-buttons .dt-button {
+    padding: 3px 15px;
+    border: 1px solid #d0021b;
+    background: #d0021b;
+    color: #fff;
+    font-size: 14px;
+}
+
+.table-css .dt-buttons .dt-button:hover {
+    padding: 3px 15px;
+    border: 1px solid #a80014;
+    background: #fff;
+    color: #d0021b;
+    font-size: 14px;
+}
+
+.table-css .dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right;
+}
+
+#dynamic_filter input {
+    width: 75%;
+    height: 26px;
+}
+
+.dt-buttons {
+    margin-bottom: 15px;
+}
+
+#dynamic_filter {
+    margin-bottom: 15px;
+}
+
+#dynamic {
+    border: 1px solid #dbdbdb;
+}
+
+#dynamic_next {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+#dynamic_previous {
+    font-size: 13px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#dynamic_info {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+#dynamic_previous:hover {
+    color: #d0021b !important;
+}
+
+#dynamic_next:hover {
+    color: #d0021b !important;
+}
+
+.dt-button.buttons-copy.buttons-html5:focus {
+    padding: 3px 15px;
+    border: 1px solid #a80014;
+    background: #fff;
+    color: #d0021b;
+    font-size: 14px;
+}
+
+
 /* changes 23-09-2019 */
 
 @media(max-width:567px) {
@@ -3286,6 +3359,24 @@ nav a.sidenav-trigger i {
     .input-images {
         margin-bottom: 15px;
         font-size: 14px;
+    }
+    /* vender-leads */
+    .leads-list {
+        overflow-x: auto;
+    }
+    .h5-para-p2 {
+        min-width: 130px !important;
+        font-size: 11px;
+    }
+    #dynamic_paginate {
+        margin-bottom: 20px;
+    }
+    .table-css .dt-buttons .dt-button {
+        float: left;
+    }
+    .table-css .dataTables_wrapper .dataTables_filter {
+        float: left;
+        text-align: left;
     }
 }
 
@@ -4606,6 +4697,7 @@ nav a.sidenav-trigger i {
     color: white;
     cursor: pointer;
 }
+
 .ck-editor__editable {
     min-height: 200px !important;
     border: 1px solid #c4c4c4 !important;

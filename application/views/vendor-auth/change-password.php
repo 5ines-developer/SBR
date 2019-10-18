@@ -38,15 +38,15 @@
                                         </div>
                                         <div class="col l12 m5 s12">
                                             <div class="input-field">
-                                                <input id="newpassword" type="password" class="validate" v-model="newpassw"  name="newpassword" required="">
+                                                <input id="newpassword" type="password" class="validate" v-model="newpassw" name="newpassword" required="">
                                                 <label for="newpassword">New Password<span class="red-text">*</span></label>
                                             </div>
                                         </div>
                                         <div class="col l12 m5 s12">
                                             <div class="input-field">
-                                                <input id="confpassword" type="password" class="validate  in-l" v-model="copassw" v-on:keyup="checkCpsw"  name="cpassword" required="">
+                                                <input id="confpassword" type="password" class="validate  in-l" v-model="copassw" v-on:keyup="checkCpsw" name="cpassword" required="">
                                                 <span class="helper-text red-text">{{ cpswerror }}</span>
-                                            
+
                                                 <label for="confpassword">Confirm Password<span class="red-text">*</span></label>
                                             </div>
                                         </div>

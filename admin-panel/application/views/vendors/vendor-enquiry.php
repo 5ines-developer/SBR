@@ -44,12 +44,6 @@
                                     <p class="h5-para black-text m0">Vendor Enquiries</p>
                                 </div>
                             </div>
-
-                     
-                     <!-- end dash -->
-                     
-
-                     <!-- chart-table -->
                      <!-- shorting -->
                      <div class="shorting-table">
                         <div>

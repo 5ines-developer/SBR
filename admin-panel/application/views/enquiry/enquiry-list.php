@@ -118,9 +118,7 @@
       <script type="text/javascript" src="<?php echo base_url()?>assets/dataTable/button/js/vfs_fonts.js"></script>
        <script>
   <?php $this->load->view('include/message.php'); ?>
-    
   </script>
-
       <script>
           $(document).ready( function () {
               $('table').DataTable({
