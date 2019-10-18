@@ -150,6 +150,30 @@ class M_vendorDetail extends CI_Model {
     	}
     }
 
+    	/**
+	*Change pasword -> Update New password
+	* @url : change-password
+	*/
+	public function changepass($id,$npass)
+	{
+		$this->db->where('id', $id);
+		$query = $this->db->get('vendor');
+		if($query->num_rows() > 0)
+		{
+			$this->db->where('id', $id);
+			$this->db->update('vendor',  array('password' =>$npass));
+			if ($this->db->affected_rows() > 0)
+			{
+				return true;
+			}else{
+
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
     
 
 

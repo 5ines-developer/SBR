@@ -11,7 +11,7 @@ class Vendor_detail extends CI_Controller {
 		$this->load->model('m_vendorDetail');
 		$this->load->library('form_validation');
 		$this->load->library('bcrypt');
-
+		$this->userId = $this->session->userdata('shvid');
 		$this->uniq = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('uniq');
 	}
 
@@ -75,6 +75,69 @@ class Vendor_detail extends CI_Controller {
 		$output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('address');
 		echo $output;
 	}
+
+	public function ban_upload($var = null)
+	{
+		
+
+		$banner = $this->input->post('banner');
+		
+		echo "<pre>";
+		print_r ($banner);
+		echo "</pre>";
+		
+	}
+
+
+	public function changePassword($var = null)
+    {
+		if ($this->session->userdata('shvid') != '') {
+			$data['title'] = 'Change password | Shaadibaraati';
+			$this->load->view('vendor-auth/change-password',$data);
+		}else{
+			$this->session->set_flashdata('error', 'Please login and try again'); 			
+			redirect('vendor/login');
+		}        
+	}
+	
+	    /**
+     *Change pasword -> Update New password
+     * @url : update/change-password
+     * @param : new password,confirm password,userid
+     */
+    public function password_validation()
+    {
+        $this->form_validation->set_rules('curtpassword', 'Current Password', 'callback_passwordcheck');
+        $this->form_validation->set_rules('newpassword', 'New Password', 'required');
+        $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|matches[newpassword]');
+        if ($this->form_validation->run() == false) {
+            $error = validation_errors();
+            $this->session->set_flashdata('formerror', $error);
+            redirect('vendor/change-password');
+        } else {
+			$password = $this->input->post('newpassword');
+			$hash  = $this->bcrypt->hash_password($password);
+			
+            if ($this->m_vendorDetail->changepass($this->userId, $hash)) {
+                $this->session->set_flashdata('success', 'Password updated Successfully');
+                redirect('vendor/change-password');
+            } else {
+                $this->session->set_flashdata('error', 'unable to update your password, New password is matching with the current password!');
+                redirect('vendor/change-password');
+            }
+        }
+	}
+	
+	public function passwordcheck($password)
+    {
+		$result = $this->db->where('id', $this->userId)->get('vendor')->row();
+		if ($this->bcrypt->check_password($password, $result->password)) {
+			return true;
+		}else{
+			$this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
+			return false;
+		}
+    }
 
 
 	

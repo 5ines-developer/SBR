@@ -23,12 +23,7 @@ class Vendor extends CI_Controller {
         
     }
 
-    public function changepassword($var = null)
-    {
-			$data['title'] = 'Change password | Shaadibaraati';
-            $this->load->view('vendor-auth/change-password',$data);
-        
-    }
+
     public function leads($var = null)
     {
 			$data['title'] = 'Leads | Shaadibaraati';

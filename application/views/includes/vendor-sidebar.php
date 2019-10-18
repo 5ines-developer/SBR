@@ -8,7 +8,7 @@
                 <a  href="<?php echo base_url('vendor/leads') ?>" class="<?php echo ($this->uri->segment(2) =='leads' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">insert_drive_file</i> Leads</a>
             </li>
             <li>
-                <a  href="<?php echo base_url('vendor/changepassword') ?>" class="<?php echo ($this->uri->segment(2) =='changepassword' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">vpn_key</i> Change Password</a>
+                <a  href="<?php echo base_url('vendor/change-password') ?>" class="<?php echo ($this->uri->segment(2) =='change-password' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">vpn_key</i> Change Password</a>
             </li>
             <li>
                 <a  href="#" class="<?php echo ($this->uri->segment(2) =='review' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">rate_review</i> Reviews</a>

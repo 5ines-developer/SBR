@@ -27,7 +27,7 @@
                             <div class="vendor-head">
                                 <h6>Change Password</h6>
                             </div>
-                            <form action="" method="post">
+                            <form action="<?php echo base_url('vendor/update-password') ?>" method="post">
                                 <div class="vendor-inputs wid-50">
                                     <div class="row">
                                         <div class="col l12 m5 s12">
@@ -49,6 +49,13 @@
 
                                                 <label for="confpassword">Confirm Password<span class="red-text">*</span></label>
                                             </div>
+                                        </div>
+
+                                        <div class="col s12">
+                                              <?php 
+                                                   echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : '' 
+                                                   ?>
+                                              <?php ?>
                                         </div>
                                     </div>
                                     <button class="sub-reg z-depth-1" type="submit" value="Submit">Submit</button>

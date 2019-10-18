@@ -76,19 +76,21 @@
                                     </div>
                                                                       
                                     <div class="col l6 m5 s12">
+                                    <form id="upload-form" enctype="multipart/form-data" method="post" accept-charset="utf-8" v-on:submit.prevent="upload">
                                         <div class="file-field input-field">
                                             <div class="btn hh-file">
                                                 <span class="banner-ioc"><i class=" material-icons vender-icon">perm_media</i>Banner Image</span>
-                                                <input type="file">
+                                                <input type="file" id="banner" ref="file" >
                                             </div>
                                             <div class="file-path-wrapper">
-                                                <input class="file-path validate if-file" type="text" placeholder="Upload Your Image">
+                                                <input class="file-path validate if-file" type="text" placeholder="Upload Your Image"  id="banner">
                                             </div>
                                         </div>
                                         <span class="helper-text-vender"><b class="notes">Note</b>: Please select only image file
                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                 size:</b> 512kb <span class="red-text">*</span></span>
                                     </div>
+                                    </form>
 
                                     <div class="col l6 m5 s12">
                                         <div class="input-field">
@@ -466,12 +468,12 @@
     </script>
 
     <script>
-         $(function() {
-            ('#vendor-about').submit(function() {
-                var text = $('#editor').html();
-                $('#description').val(text);
-            });
-         });
+        //  $(function() {
+        //     ('#vendor-about').submit(function() {
+        //         var text = $('#editor').html();
+        //         $('#description').val(text);
+        //     });
+        //  });
         $(document).ready(function() {
             $('.modal').modal();
             $('.scrollspy').scrollSpy();
@@ -502,6 +504,8 @@
                 height:'',
                 vabout :'',
                 aboutError:'',
+                file:'',
+                bannerError:'',
 
 
 
@@ -566,7 +570,7 @@
                       })
                 },
                 about(){
-                    console.log(this.vabout)
+                    
                     this.aboutError = '';
                     const formData = new FormData();
                         formData.append('vabout', this.vabout);
@@ -576,6 +580,25 @@
                             this.aboutError = 'Something went wrong, please try again!';
                         }else{
                             this.vabout = response.data;
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+                upload(){
+                        this.bannerError = '';
+                        this.file = this.$refs.file.files[0];                    
+                        const formData = new FormData();
+                        formData.append('banner', this.file_data);
+                        axios.post('<?php echo base_url() ?>vendor_detail/ban_upload', formData)
+                      .then(response => {
+                        if(response.data == ''){
+                            this.bannerError = 'Something went wrong, please try again!';
+                        }else{
+                            this.banner = response.data;
                         }
                       })
                       .catch(error => {
