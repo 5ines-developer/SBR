@@ -12,7 +12,7 @@ class Vendors extends CI_Controller {
     }
 
 
-    /**
+    /**k
      * Vendors -> add Vendors
      * load view page
      * url : vendors/add
@@ -62,8 +62,8 @@ class Vendors extends CI_Controller {
                 // $config['maintain_ratio'] = true;
                 // $config['height'] = 250;
 
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
+                // $this->load->library('image_lib', $config);
+                // $this->image_lib->resize();
 
                 $file_name = $upload_data['file_name'];
                 $imgpath = 'vendors-profile/'.$file_name;

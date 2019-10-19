@@ -150,6 +150,17 @@ class M_vendorDetail extends CI_Model {
     	}
     }
 
+
+    public function banner($banner='',$img='',$uniq='')
+    {
+        $this->db->where('uniq', $uniq)->update('vendor',array('profile_file' =>$banner,'img'=>$img));
+        if ($this->db->affected_rows() > 0) {
+            return $banner;
+        }else{
+            return false;
+        }
+    }
+
     	/**
 	*Change pasword -> Update New password
 	* @url : change-password
@@ -173,6 +184,11 @@ class M_vendorDetail extends CI_Model {
 			return false;
 		}
 	}
+
+    public function profileImg($id='')
+    {
+        return $this->db->where('id', $id)->get('vendor')->row('profile_file');
+    }
 
     
 

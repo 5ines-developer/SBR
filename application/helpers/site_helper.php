@@ -24,6 +24,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     }
 
+       if(!function_exists('profile')) {
+        function profile() {
+            $ci = get_instance();
+
+            $ci->load->model('M_vendorDetail');
+            $profile =  $ci->M_vendorDetail->profileImg($ci->session->userdata('shvid'));
+            return $profile;
+        }
+        }
+
 
 
 

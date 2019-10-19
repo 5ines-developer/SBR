@@ -4706,3 +4706,13 @@ nav a.sidenav-trigger i {
     border: 1px solid #c4c4c4 !important;
     border-radius: 0px 0px 3px 3px !important;
 }
+.profle-img{
+    line-height: 60px !important;
+}
+.profle-img img{ 
+position: relative;
+top: 10px;
+border-radius: 50%;
+height: 50px;
+width: 50px;
+}

@@ -18,7 +18,9 @@
                             <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
                             <li><a href="<?php echo base_url() ?>blog">BLOG</a></li>
                             <?php  if ($this->session->userdata('shvid') !='') { ?>
-                                <li class="br-lo vendor-img"><a href="<?php echo base_url('vendor/profile') ?>"><i class=" material-icons">person</i></a><span class="l-d">|</span></li>
+                                <li class="br-lo vendor-img"><a href="<?php echo base_url('vendor/profile') ?>" class="profle-img">
+                                    <img src="<?php echo base_url().profile() ?>" alt="">
+                                    </a></li>
                                 <li class="br-lo"><a href="<?php echo base_url('vendor/logout') ?>">Logout</a></li>
                             <?php }else if ($this->session->userdata('shdid') !='') { ?>
                                 <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a><span class="l-d">|</span></li>

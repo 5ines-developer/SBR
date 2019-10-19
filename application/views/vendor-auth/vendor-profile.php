@@ -76,11 +76,10 @@
                                     </div>
                                                                       
                                     <div class="col l6 m5 s12">
-                                    <form id="upload-form" enctype="multipart/form-data" method="post" accept-charset="utf-8" v-on:submit.prevent="upload">
                                         <div class="file-field input-field">
                                             <div class="btn hh-file">
                                                 <span class="banner-ioc"><i class=" material-icons vender-icon">perm_media</i>Banner Image</span>
-                                                <input type="file" id="banner" ref="file" >
+                                                <input type="file" id="banner"  id="file" ref="file" v-on:change="upload()" >
                                             </div>
                                             <div class="file-path-wrapper">
                                                 <input class="file-path validate if-file" type="text" placeholder="Upload Your Image"  id="banner">
@@ -90,7 +89,6 @@
                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                 size:</b> 512kb <span class="red-text">*</span></span>
                                     </div>
-                                    </form>
 
                                     <div class="col l6 m5 s12">
                                         <div class="input-field">
@@ -117,9 +115,11 @@
                             </div>
                             <!-- Portfolio  -->
                             <div class="list-profile">
-                                <div class="vendor-head1">
-                                    <h6>Portfolio</h6>
+                                <div class="vendor-head1 ">
+                                            <h6>Portfolio</h6>
+                                            
                                 </div>
+                                
                                 <div class="vendor-inputs">
                                     <div class="row m0">
                                         <div class="col l3 m3 s6">
@@ -162,7 +162,7 @@
                                     <div class="row m0">
                                         <div class="col col l12 m10 s12">
                                             <div class="file-field input-field mm-drop">
-                                                <div class="input-images pad10"></div>
+                                                <div class="input-images pad10" id="file" ref="image" v-on:change="portfolio()"></div>
                                                 <span class="helper-text-vender "><b class="notes">Note</b>: Please select only image file
                                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                                 size:</b> 512kb <span class="red-text">*</span></span>
@@ -403,7 +403,7 @@
                                                 <div class="file-field input-field">
                                                     <div class="btn hh-file">
                                                         <span class="banner-ioc"><i class=" material-icons vender-icon">perm_media</i>Add Image</span>
-                                                        <input type="file">
+                                                        <input type="file" id="file1" ref="file" v-on:change="offerload()">
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate if-file" type="text" placeholder="Upload Your Image">
@@ -487,6 +487,48 @@
                     $("#fb-link").css("display", "none");
                 }
             });
+
+
+
+             // portfolio add
+        // $('.image-uploader input').on('change', function(event) {
+        //     event.preventDefault();
+
+        //         var values = $('input[name="images[]"]') .map(function()
+        //         {
+        //           return $(this).val();
+        //         }).get();
+
+        //         alert(values.length)
+
+        //     $.ajax({
+        //         url: "<?php echo base_url();?>verify-credentials",
+        //         type: "Post",
+        //         dataType: "html",
+        //         // data: DataString,
+        //         success: function(data) {
+        //             if (data == 'wrong password') {
+        //                 $("#paswrd-error>span").remove();
+        //                 $("#paswrd-error").append("<span>Wrong password</span>");
+        //             } else if (data != 'wrong password' && data != 'error' && data != '') {
+        //                 $('.smartcode').modal('close');;
+        //                 $("#" + btnid).after("<div class ='code-displayed'> " + data +
+        //                     " <input type='hidden' name='cop_cod' value=" + data +
+        //                     " class='code-cop'> <span> <button class='clip-btn'><i class='material-icons dp48'>content_copy</i></button></span> </div>"
+        //                     );
+
+        //                 $("#" + btnid).remove();
+        //                 $('.modal-overlay').css('display', 'none');
+        //             } else if (data == 'error') {
+        //                 $("#paswrd-error>span").remove();
+        //                 $("#paswrd-error").append(
+        //                     "<span>Unable to process your request please try again, please enter the valid credentials</span>"
+        //                 );
+        //             }
+        //         }
+        //     });
+        // });
+
         });
     </script>
         
@@ -506,6 +548,8 @@
                 aboutError:'',
                 file:'',
                 bannerError:'',
+                offerError:'',
+                offer:'',
 
 
 
@@ -590,15 +634,46 @@
                 },
                 upload(){
                         this.bannerError = '';
-                        this.file = this.$refs.file.files[0];                    
+                        this.file = this.$refs.file.files[0];    
                         const formData = new FormData();
-                        formData.append('banner', this.file_data);
-                        axios.post('<?php echo base_url() ?>vendor_detail/ban_upload', formData)
-                      .then(response => {
+                        formData.append('banner', this.file);
+                        axios.post('<?php echo base_url() ?>vendor_detail/ban_upload', 
+                        formData,
+                        { 
+                            headers: {
+                            'Content-Type': 'multipart/form-data'
+                            } 
+                        }
+                        ).then(response => {
                         if(response.data == ''){
                             this.bannerError = 'Something went wrong, please try again!';
                         }else{
                             this.banner = response.data;
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+                 offerload(){
+                        this.offerError = '';
+                        this.file = this.$refs.file.files[0];    
+                        const formData = new FormData();
+                        formData.append('offer', this.file);
+                        axios.post('<?php echo base_url() ?>vendor_detail/offer', 
+                        formData,
+                        { 
+                            headers: {
+                            'Content-Type': 'multipart/form-data'
+                            } 
+                        }
+                        ).then(response => {
+                        if(response.data == ''){
+                            this.offerError = 'Something went wrong, please try again!';
+                        }else{
+                            this.offer = response.data;
                         }
                       })
                       .catch(error => {
@@ -658,13 +733,7 @@
             this.getPrice();
             this.getPer();
             this.getAddress();
-            
-
- 
-        }
-
-
-
+        },
         });
     </script>
 </body>

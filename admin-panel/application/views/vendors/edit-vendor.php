@@ -238,12 +238,8 @@ $this->load->model('m_vendors');
                                                 <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                     <span class="">Profile Image</span>
-<<<<<<< HEAD
                                                     <input type="file" name="vimage" accept=".png, .jpg, .jpeg, .gif"
                                                         <?php echo (!empty($result)?'':'required') ?>>
-=======
-                                                    <input type="file" name="vimage" id="upload" accept=".png, .jpg, .jpeg, .gif" <?php echo (!empty($result)? '': 'required') ?>>
->>>>>>> 00c31fa7affdd23f746d7b87b6d272b6abdb6f5f
                                                 </div>
                                                 <div class="file-path-wrapper">
                                                     <input class="file-path validate" type="text">
