@@ -23,7 +23,6 @@ class Vendor extends CI_Controller {
         
     }
 
-
     public function leads($var = null)
     {
 			$data['title'] = 'Leads | Shaadibaraati';
@@ -31,6 +30,18 @@ class Vendor extends CI_Controller {
         
     }
 
+    public function packages($var = null)
+    {
+			$data['title'] = 'Packages | Shaadibaraati';
+            $this->load->view('vendor-auth/packages',$data);
+        
+    }
+    public function reviews($var = null)
+    {
+			$data['title'] = 'Reviews | Shaadibaraati';
+            $this->load->view('vendor-auth/reviews',$data);
+        
+    }
     public function login($var = null)
     {
         

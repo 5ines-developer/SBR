@@ -131,8 +131,8 @@ $route['vendor-register/send'] 		    = 'authentication/vendorsend';
 
 // vendor
 $route['vendor/leads'] 	                = 'vendor/leads';
-
-
+$route['vendor/packages'] 	            = 'vendor/packages';
+$route['vendor/reviews'] 	            = 'vendor/reviews';
 
 
 
