@@ -2217,6 +2217,7 @@ r-crd-category {
 
 #vendordropdown {
     column-count: 2;
+    max-height: max-content;
 }
 
 #vendordropdown li a {
@@ -2224,12 +2225,13 @@ r-crd-category {
     font-weight: 600;
     font-size: 14px;
     padding: 9px 15px;
-    line-height: 25px;
+    line-height: 30px;
 }
 
 #vendordropdown li {
-    min-height: 43px;
-    line-height: 43px;
+    /* min-height: 43px; */
+    /* line-height: 43px; */
+    display: inline-block;
 }
 
 #vendordropdown li a img {

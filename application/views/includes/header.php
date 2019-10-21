@@ -44,14 +44,14 @@
                 // id, icon, uniq, category
                 $count = count(vendor_category());
                 $clink = strtolower(str_replace(" ","-",$cvalue->category));
-                if($count % 2 == 1){ $num = $count - 1; }else{ $num = $count; }
-                if($key < $num){
+                if($count % 2 == 1){  }else{ $num = $count; }
+                
                     echo '<li>
 
                     <a href="'.base_url().'vendors/all/'.$clink.'">
                         <img src="'.base_url().$cvalue->icon.'" alt="'.$cvalue->category.'" />'.$cvalue->category.'</a>
                     </li>';
-                }
+                
                 
             } ?>
             <!-- <li><a href=""></a></li> -->

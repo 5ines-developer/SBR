@@ -118,20 +118,20 @@
                                                             <i class="material-icons">location_on</i>
                                                         </div>
                                                         <div class="col l11 s11 p10">
-                                                            <p class="m0">Corporate Office 32/1, Kundan Complex, 2nd Floor, Ulsoor, Bangalore 560008 Karnataka India</p>
+                                                            <p class="m0"><b>Corporate Office - </b>32/1, Kundan Complex, 2nd Floor, Ulsoor, Bangalore 560008 Karnataka India</p>
                                                         </div>
 
                                                         <div class="col l1 s1 p10">
                                                             <i class="material-icons">location_on</i>
                                                         </div>
                                                         <div class="col l11 s11 p10">
-                                                            <p class="m0">Branch Office Delhi Plot No-A, 61, 1st Floor, A Block, Sector 16, Noida, Uttar Pradesh 201301 India</p>
+                                                            <p class="m0"><b>Branch Office - </b> Delhi Plot No-A, 61, 1st Floor, A Block, Sector 16, Noida, Uttar Pradesh 201301 India</p>
                                                         </div>
                                                         <div class="col l1 s1 p10">
                                                             <i class="material-icons">location_on</i>
                                                         </div>
                                                         <div class="col l11 s11 p10">
-                                                            <p class="m0">Branch Office Indore Office No. 307 , 3rd Floor  Royal Ratan Building Near Ahinsha Tower MG Road Indore -  452001</p>
+                                                            <p class="m0"><b>Branch Office -</b> Indore Office No. 307 , 3rd Floor  Royal Ratan Building Near Ahinsha Tower MG Road Indore -  452001</p>
                                                         </div>
 
                                                 </div>

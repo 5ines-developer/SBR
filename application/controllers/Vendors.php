@@ -261,12 +261,14 @@ class Vendors extends CI_Controller {
 
   public function sms_vendor($data = '')
   {
+ 
     $Name     = $data['result']['user_name'];
     $category = $data['value']->category;
     $phone    = $data['result']['user_phone'];
     $fn_date  = $data['result']['fn_date'];
     $budget   = $data['result']['budget'];
     $location = $data['result']['location'];
+    $remarks = $data['result']['wed_detail'];
     $number   = $data['value']->phone;
  
     $curl = curl_init();
@@ -302,13 +304,14 @@ class Vendors extends CI_Controller {
     } 
     else 
     {
-       $response;
+      $response;
     }
  
   }
 
   public function sms_user($data = '')
   { 
+
     $Name = $data['value']->name;
     $phone    = $data['value']->phone; 
     $email = $data['value']->email;
