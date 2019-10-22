@@ -206,6 +206,14 @@ public function offer($output = null)
     	echo $output;
 	}
 
+	public function packages($var = null)
+    {
+			$data['title'] = 'Packages | Shaadibaraati';
+			$data['value'] = $this->m_vendorDetail->getProfile($this->uniq);
+            $this->load->view('vendor-auth/packages',$data);
+        
+    }
+
 
 
 
