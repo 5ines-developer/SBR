@@ -9,6 +9,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/image-uploader.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+    <style>
+        .sub-reg.z-depth-1 {
+    margin: 15px 0 5px 21px;
+}
+    </style>
 </head>
 
 <body>
@@ -107,8 +112,8 @@
                                     <div class="row">
                                         <div class="col l12 m5 s12">
                                             <div id="toolbar-container"></div>
-                                                <div @ready="about"  v-model="vabout" id="editor"> {{ aboutError }}</div> 
-                                                <textarea  @change="about"  v-model="vabout" name="about" id="description" style="display:none"></textarea>
+                                                <div id="editor"> </div> 
+                                                <textarea name="about" id="description" cols="30" rows="10" style="display: none;"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -117,38 +122,10 @@
                             <div class="list-profile">
                                 <div class="vendor-head1 ">
                                             <h6>Portfolio</h6>
-                                            
                                 </div>
-                                
                                 <div class="vendor-inputs">
                                     <div class="row m0">
-                                        <div class="col l3 m3 s6">
-                                            <div class="portfolio-img">
-                                                <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="../assets/img/vendor-img1.jpg" style="cursor: pointer;">
-                                                <div class="port-delete">
-                                                    <a href="">
-                                                        <i class="large material-icons">delete</i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col l3 m3 s6">
-                                            <div class="portfolio-img">
-                                                <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="../assets/img/vendor-img1.jpg" style="cursor: pointer;">
-                                                <div class="port-delete">
-                                                    <a href="">
-                                                        <i class="large material-icons">delete</i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col l3 m3 s6">
-                                            <div class="portfolio-img">
-                                                <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="../assets/img/vendor-img1.jpg" style="cursor: pointer;">
-                                                <div class="port-delete">
-                                                    <a href="">
-                                                        <i class="large material-icons">delete</i></a>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="col l3 m3 s6">
                                             <div class="portfolio-img">
                                                 <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="../assets/img/vendor-img1.jpg" style="cursor: pointer;">
@@ -159,17 +136,24 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <form action="<?php echo  base_url()?>vendor_detail/portfolio" method="post" enctype="multipart/form-data">
                                     <div class="row m0">
                                         <div class="col col l12 m10 s12">
                                             <div class="file-field input-field mm-drop">
-                                                <div class="input-images pad10" id="file" ref="image" v-on:change="portfolio()"></div>
+                                                <div class="input-images pad10" id="file" ></div>
                                                 <span class="helper-text-vender "><b class="notes">Note</b>: Please select only image file
                                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                                 size:</b> 512kb <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row ">
+                                        <button class="sub-reg z-depth-1" type="submit" value="Submit">Submit</button>
+                                    </div>
+                                    </form>
                                 </div>
+
+                                
                             </div>
                             <!-- Video -->
                             <div class="list-profile">
@@ -199,39 +183,29 @@
                                     <div class="row">
                                         <div class="col col l8 m10 s12">
                                             <div class="input-field sele-ty">
-                                                <select name="vd_category" required="" id="vd_category">
+                                                <select name="vd_category" required="" id="vd_category" v-model="vcategory">
                                                             <option value="">Select Your Video category</option>
                                                             <option value="1">Youtube</option>
                                                             <option value="2">Facebook</option>
                                                         </select>
                                                 <p><span class="error"></span></p>
-                                                <input type="hidden" value="" name="id">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div id="youtube-link">
+                                        <div >
                                             <div class="input-field col s12 l8">
-                                                <input type="text" name="vd_link" id="autocomplete-input" class="autocomplete">
-                                                <p style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
+                                                <input type="text" name="vd_link" id="autocomplete-input"  @change="videoAdd" class="autocomplete" v-model="vlink">
+                                                <p id="youtube-link" style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
+                                                </p>
+                                                <p id="fb-link" style="font-size: 12px;">Eg : https://www.facebook.com/<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
                                                 </p>
                                                 <label for="autocomplete-input">Link<span class="red-text">*</span></label>
                                                 <p><span class="error"></span></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row m0">
-                                        <div id="fb-link">
-                                            <div class="input-field col s12 l8">
-                                                <input type="text" name="vdfb_link" id="autocomplete-input1" class="autocomplete">
-                                                <p style="font-size: 12px;">Eg : https://www.facebook.com/<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
-                                                </p>
-                                                <label for="autocomplete-input1">Link<span
-                                                        class="red-text">*</span></label>
-                                                <p><span class="error"></span></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <!-- Information & Services -->
@@ -328,61 +302,21 @@
                                 <div class="vendor-head1">
                                     <h6>FAQ</h6>
                                 </div>
-                                <div class="vendor-inputs">
+                                <?php if (!empty($value->faq)) {
+                                    foreach ($value->faq as $faq1 => $faq2) { ?>
+                                        <div class="vendor-inputs">
                                     <div class="faq-ser">
                                         <div class="row mb0">
-                                            <div class="col l5 m3 s12">
+                                            <div class="col l7 m3 s12">
                                                 <div class="input-field ">
-                                                    <input type="hidden" id="info" name="title_info" class="validate" value="">
-                                                    <input type="text" readonly value="">
+                                                    <input type="text" id="info" name="title_info" class="validate" readonly value="<?php echo (!empty($faq2->question))?$faq2->question:''; ?>">
                                                     <label for="serv">Question</label>
                                                     <p><span class="error"></span></p>
                                                 </div>
                                             </div>
                                             <div class="col l5 m3 s12">
                                                 <div class="input-field ">
-                                                    <input type="hidden" id="info" name="sub_title" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Answer</label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-ser">
-                                        <div class="row mb0">
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="title_info" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Question</label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="sub_title" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Answer</label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="faq-ser">
-                                        <div class="row mb0">
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="title_info" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Question</label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="sub_title" class="validate" value="">
-                                                    <input type="text" readonly value="">
+                                                    <input type="text" id="info" name="sub_title" class="validate" value="<?php echo (!empty($faq2->answer))?$faq2->answer:''; ?>">
                                                     <label for="serv">Answer</label>
                                                     <p><span class="error"></span></p>
                                                 </div>
@@ -390,6 +324,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                   <?php }
+                                } ?>
+                                
                             </div>
                             <!-- Offer Image-->
                             <div class="list-profile">
@@ -468,12 +405,6 @@
     </script>
 
     <script>
-        //  $(function() {
-        //     ('#vendor-about').submit(function() {
-        //         var text = $('#editor').html();
-        //         $('#description').val(text);
-        //     });
-        //  });
         $(document).ready(function() {
             $('.modal').modal();
             $('.scrollspy').scrollSpy();
@@ -488,47 +419,20 @@
                 }
             });
 
+        // update details
+        $("#editor").on('keyup', function(event) {
+            event.preventDefault();
+            var node = $(this).text();
 
-
-             // portfolio add
-        // $('.image-uploader input').on('change', function(event) {
-        //     event.preventDefault();
-
-        //         var values = $('input[name="images[]"]') .map(function()
-        //         {
-        //           return $(this).val();
-        //         }).get();
-
-        //         alert(values.length)
-
-        //     $.ajax({
-        //         url: "<?php echo base_url();?>verify-credentials",
-        //         type: "Post",
-        //         dataType: "html",
-        //         // data: DataString,
-        //         success: function(data) {
-        //             if (data == 'wrong password') {
-        //                 $("#paswrd-error>span").remove();
-        //                 $("#paswrd-error").append("<span>Wrong password</span>");
-        //             } else if (data != 'wrong password' && data != 'error' && data != '') {
-        //                 $('.smartcode').modal('close');;
-        //                 $("#" + btnid).after("<div class ='code-displayed'> " + data +
-        //                     " <input type='hidden' name='cop_cod' value=" + data +
-        //                     " class='code-cop'> <span> <button class='clip-btn'><i class='material-icons dp48'>content_copy</i></button></span> </div>"
-        //                     );
-
-        //                 $("#" + btnid).remove();
-        //                 $('.modal-overlay').css('display', 'none');
-        //             } else if (data == 'error') {
-        //                 $("#paswrd-error>span").remove();
-        //                 $("#paswrd-error").append(
-        //                     "<span>Unable to process your request please try again, please enter the valid credentials</span>"
-        //                 );
-        //             }
-        //         }
-        //     });
-        // });
-
+            $.ajax({
+                url: "<?php echo base_url();?>vendor_detail/about",
+                type: "get",
+                dataType: "html",
+                data: {'about' : node},
+                success: function(data) {
+                }
+            });
+        });
         });
     </script>
         
@@ -544,12 +448,14 @@
                 vaddress:'',
                 addressError:'',
                 height:'',
-                vabout :'',
-                aboutError:'',
                 file:'',
                 bannerError:'',
                 offerError:'',
                 offer:'',
+                about:'',
+                aboutError:'',
+                vcategory:'',
+                vlink:'',
 
 
 
@@ -613,25 +519,7 @@
                         }
                       })
                 },
-                about(){
-                    
-                    this.aboutError = '';
-                    const formData = new FormData();
-                        formData.append('vabout', this.vabout);
-                        axios.post('<?php echo base_url() ?>vendor_detail/about', formData)
-                      .then(response => {
-                        if(response.data == ''){
-                            this.aboutError = 'Something went wrong, please try again!';
-                        }else{
-                            this.vabout = response.data;
-                        }
-                      })
-                      .catch(error => {
-                        if (error.response) {
-                            this.errormsg = error.response.data.error;
-                        }
-                      })
-                },
+                
                 upload(){
                         this.bannerError = '';
                         this.file = this.$refs.file.files[0];    
@@ -681,7 +569,28 @@
                             this.errormsg = error.response.data.error;
                         }
                       })
+                },videoAdd(){
+                        this.addressError = '';
+                        const formData = new FormData();
+                        formData.append('category', this.vcategory);
+                        formData.append('link', this.vlink);
+                        axios.post('<?php echo base_url() ?>vendor_detail/videoadd', formData)
+                      .then(response => {
+                        if(response.data == ''){
+                            this.addressError = 'Something went wrong, please try again!';
+                        }else{
+                            this.vaddress = response.data;
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
                 },
+
+
+
 
                 
 

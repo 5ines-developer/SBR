@@ -13,6 +13,7 @@ class Vendor_detail extends CI_Controller {
 		$this->load->library('bcrypt');
 		$this->userId = $this->session->userdata('shvid');
 		$this->uniq = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('uniq');
+		$this->id = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('id');
 	}
 
 	public function index()
@@ -27,12 +28,15 @@ class Vendor_detail extends CI_Controller {
 	           $value->review      = $this->m_vendorDetail->getReview($value->id);
 	           $value->userReview  = $this->m_vendorDetail->getuserReview($value->id);
 	           $value->fav         = $this->m_vendorDetail->getFavourite($value->id);
-	        //    $value->faq         = $this->m_vendorDetail->faq($value->catId);
+	           $value->faq         = $this->m_vendorDetail->faq($value->catId);
 	           $value->offer       = $this->m_vendorDetail->offer($value->id);
 	        }
 	        $data['title']  = $value->name.'- ShaadiBaraati';
         }
         $data['vendor'] = $output;
+        echo "<pre>";
+	        print_r ($output);
+	        echo "</pre>";
         $this->load->view('vendor-auth/vendor-profile',$data);
 	}
 
@@ -199,13 +203,135 @@ public function offer($output = null)
 	        	$upload_data = $this->upload->data();
 	            $file_name = $upload_data['file_name'];
 	            $imgpath = 'offer-image/'.$file_name;
+
+	            $insert =  array(
+                    'image'       =>  $imgpath , 
+                    'vendor_id'   =>  $this->userId , 
+                );
 	                
-	        $output = $this->m_vendorDetail->banner($imgpath,$file_name,$this->uniq);
+	        $output = $this->m_vendorDetail->offer_image($insert);
 
     	}
     	echo $output;
 	}
 
+	public function about($value='')
+	{
+		$about = $this->input->get('about');
+		$output = $this->m_vendorDetail->insertAbout($about,$this->uniq);
+		echo $output;
+	}
+
+
+	public function portfolio($value='')
+	{
+		
+        $this->load->library('upload');
+        $this->load->library('image_lib');
+
+        $files = $_FILES;
+        $id = $this->input->post('id');
+        $filesCount = count($_FILES['images']['name']);
+        if (!empty($filesCount)) {
+        for ($i = 0; $i < $filesCount; $i++) {
+            $_FILES['images']['name']     = $files['images']['name'][$i];
+            $_FILES['images']['type']     = $files['images']['type'][$i];
+            $_FILES['images']['tmp_name'] = $files['images']['tmp_name'][$i];
+            $_FILES['images']['error']    = $files['images']['error'][$i];
+            $_FILES['images']['size']     = $files['images']['size'][$i];
+            
+            $config['upload_path']   = 'vendor-portfolio/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_width']     = 0;
+            $config['encrypt_name']  = TRUE;
+            
+            $this->load->library('upload');
+            $this->upload->initialize($config);
+            if (!is_dir($config['upload_path']))
+                mkdir($config['upload_path'], 0777, TRUE);
+            
+            if (!$this->upload->do_upload('images')) {
+               $error =  $this->upload->display_errors();
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                redirect('vendor/profile');
+            } else {
+                
+                $upload_data = $this->upload->data();
+                $image[] = $upload_data['file_name'];
+                
+                $width  = 700;
+                $height = 400;
+
+                $file_name = $upload_data['file_name'];
+                $imgpath = 'vendor-portfolio/'.$file_name;
+                
+                // $thumbnail = $this->thumbnail($upload_data, $width, $height);
+                $watermark = $this->watermark($upload_data,$file_name);
+                $insert = array (
+                    'path'          => $imgpath,
+                    'image'         => $file_name,
+                    'thumb_image'   => $file_name, 
+                    'vendor_id'     => $this->id,
+                );
+
+                $output = $this->m_vendorDetail->insert_portfolio($insert);
+            }
+        }
+
+            if(!empty($output))
+            {
+                $this->session->set_flashdata('success', 'Vendor portfolio added Successfully');
+                redirect('vendor/profile','refresh');
+            }else{
+                $this->session->set_flashdata('error', 'Something went wrong please try again!');
+                 redirect('vendor/profile','refresh');
+            }
+        }else{
+            $this->session->set_flashdata('error', 'Something went wrong please try again!');
+           redirect('vendor/profile','refresh');
+        }
+	}
+
+
+	public function watermark($upload_data = " ",$thumbnail)
+    {     
+        $this->load->library('upload');
+        $this->load->library('image_lib');
+
+            $config['image_library']    = 'gd2';
+            $config['source_image']     = $upload_data['full_path'];
+            $config['wm_type']          = 'overlay';
+            $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
+            $config['wm_x_transp']      = '4';
+            $config['wm_y_transp']      = '4';
+            $config['width']            = '50';
+            $config['height']           = '50';
+            $config['padding']          = '50';
+            $config['wm_opacity']       = '40';
+            $config['wm_vrt_alignment'] = 'middle';
+            $config['wm_hor_alignment'] = 'center';
+            $this->image_lib->initialize($config);
+            $this->image_lib->watermark();
+
+    }
+
+
+     public function videoadd($value='')
+    {
+            $vd_category    = $this->input->post('category');
+            $link        	= $this->input->post('link');
+
+            
+
+            $insert = array(
+                'type'      => $vd_category, 
+                'link'      => $link, 
+                'vendor_id' => $this->id,
+            );
+
+            $output = $this->m_vendorDetail->add_video($insert);
+            echo $output;
+    }
 
 
 

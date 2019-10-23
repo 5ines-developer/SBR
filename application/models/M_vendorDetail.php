@@ -190,8 +190,55 @@ class M_vendorDetail extends CI_Model {
         return $this->db->where('id', $id)->get('vendor')->row('profile_file');
     }
 
-    
+    public function offer_image($insert='')
+    {
+        $this->db->where('vendor_id', $insert['vendor_id']);
+        $query = $this->db->get('vendor_offer');
+        if ($query->num_rows() > 0) {
+            $this->db->where('vendor_id', $insert['vendor_id']);
+            $this->db->update('vendor_offer', $insert);
+            if ($this->db->affected_rows() > 0) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return $this->db->insert('vendor_offer', $insert);
+        }
+    }
 
+
+    public function insertAbout($about,$uniq)
+    {
+        $this->db->where('uniq', $uniq)->update('vendor',array('detail' =>$about));
+        if ($this->db->affected_rows() > 0) {
+            return $about;
+        }else{
+            return false;
+        }
+    }
+
+
+    public function insert_portfolio($insert)
+    {
+        $this->db->insert('vendor_portfolio',$insert);
+        $insert_id = $this->db->insert_id();
+        return  $insert_id;
+    }
+
+    public function add_video($insert='')
+    {
+        $this->db->where('vendor_id', $insert['vendor_id']);
+        $query = $this->db->get('vendor_video')->result();
+        if (count($query) < 6 ) {
+            return $this->db->insert('vendor_video', $insert);
+        }else{
+            return false;
+        }
+    }
+
+
+    
 
 
 }

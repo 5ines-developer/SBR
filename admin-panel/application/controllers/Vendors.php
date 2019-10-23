@@ -347,19 +347,6 @@ class Vendors extends CI_Controller {
         $this->load->library('upload');
         $this->load->library('image_lib');
 
-            // $config['source_image'] = $upload_data['file_path'].'/'.$thumbnail;
-            // $config['wm_text'] = 'Shaadibaraati.com';
-            // $config['wm_type'] = 'text';
-            // $config['wm_font_path'] = './system/fonts/texb.ttf';
-            // $config['wm_font_size'] = '16';
-            // $config['wm_font_color'] = 'ffffff';
-            // $config['wm_vrt_alignment'] = 'bottom';
-            // $config['wm_hor_alignment'] = 'left';
-            // $config['wm_hor_offset'] = '60';
-            // $config['wm_vrt_offset'] = '0';
-            // $config['wm_padding'] = '-20';
-
-
             $config['image_library']    = 'gd2';
             $config['source_image']     = $upload_data['full_path'];
             $config['wm_type']          = 'overlay';
