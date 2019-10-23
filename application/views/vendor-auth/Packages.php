@@ -172,7 +172,7 @@
         <div id="modal1" class="modal">
             <div class="modal-content">
                 <div class="buy-form">
-                    <form action="">
+                    <form action="#" method="post">
                         <div class="row">
                             <div class="inpu-pack  pt">
                                 <div class="col l12 s12">
@@ -184,7 +184,7 @@
                                 <div class="col l6 s12">
                                     <div class="d-input  pt">
                                         <div class="input-field m0 pb">
-                                            <input id="packname" type="text" class="validate  in-l" v-model="packname" name="packname" required="">
+                                            <input id="packname" type="text" class="validate  in-l" readonly="" value="<?php echo (!empty($value->name))?$value->name:''; ?>"  name="packname" required="">
                                             <label for="packname">Name</label>
                                             <!-- <span class="helper-text red-text">{{ emailError }}</span> -->
                                         </div>
@@ -193,7 +193,7 @@
                                 <div class="col l6 s12">
                                     <div class="d-input  pt">
                                         <div class="input-field m0 pb">
-                                            <input id="packemail" type="email" class="validate  in-l" v-model="packemail" name="packemail" required="">
+                                            <input id="packemail" type="email" class="validate  in-l" readonly="" value="<?php echo (!empty($value->email))?$value->email:''; ?>" name="packemail" required="">
                                             <label for="ackemail">Email</label>
                                             <!-- <span class="helper-text red-text">{{ emailError }}</span> -->
                                         </div>
@@ -202,7 +202,7 @@
                                 <div class="col l6 s12">
                                     <div class="d-input  pt">
                                         <div class="input-field m0 pb">
-                                            <input id="packvender" type="email" class="validate  in-l" v-model="packdvendor" name="packvendor" required="">
+                                            <input id="packvender" type="text" class="validate  in-l" v-model="packvendor" name="packvendor">
                                             <label for="packvender">Vendor Type</label>
                                             <!-- <span class="helper-text red-text">{{ emailError }}</span> -->
                                         </div>
@@ -211,7 +211,7 @@
                                 <div class="col l6 s12">
                                     <div class="d-input  pt">
                                         <div class="input-field m0 pb">
-                                            <input id="packphone" type="email" class="validate  in-l" v-model="packphone" name="packphone" required="">
+                                            <input id="packphone" type="text" class="validate  in-l" readonly="" value="<?php echo (!empty($value->phone))?$value->phone:''; ?>" name="packphone">
                                             <label for="packphone">Phone</label>
                                             <!-- <span class="helper-text red-text">{{ emailError }}</span> -->
                                         </div>
@@ -220,8 +220,8 @@
                                 <div class="col l12 s12">
                                     <div class="feedback-input  pt">
                                         <div class="input-field if-feed">
-                                            <textarea required id="textarea1" name="feedback" class="materialize-textarea "></textarea>
-                                            <label for="textarea1">Write your feedback here</label>
+                                            <textarea required id="textarea1" name="packdesc" class="materialize-textarea "></textarea>
+                                            <label for="textarea1">Description</label>
                                         </div>
                                     </div>
                                 </div>
@@ -233,9 +233,6 @@
                     </form>
                 </div>
             </div>
-            <!-- <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-                            </div> -->
         </div>
 
         </div>
@@ -248,6 +245,32 @@
         <!-- data table -->
         <script>
             <?php $this->load->view('includes/message'); ?>
+        </script>
+        <script>
+            var demo = new Vue({
+                el: '#app',
+                data: {
+                    packname: '',
+                    packemail: '',
+                    packvendor: '',
+                    packphone: '',
+                },
+                // methods: {
+                //     checkform() {
+                //         if (this.packemail && this.packphone) {
+                //             return true;
+                //         }
+                //         this.errors = [];
+
+                //         if (!this.packemail) {
+                //             this.errors.push('Enter a correct Email')
+                //         }
+                //         if (!this.packphone) {
+                //             this.errors.push('Enter a correct phone')
+                //         }
+                //     }
+                // },
+            })
         </script>
 </body>
 

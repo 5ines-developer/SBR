@@ -11,10 +11,10 @@
                 <a  href="<?php echo base_url('vendor/change-password') ?>" class="<?php echo ($this->uri->segment(2) =='change-password' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">vpn_key</i> Change Password</a>
             </li>
             <li>
-                <a  href="#" class="<?php echo ($this->uri->segment(2) =='reviews' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">rate_review</i> Reviews</a>
+                <a  href="<?php echo base_url('vendor/reviews') ?>" class="<?php echo ($this->uri->segment(2) =='reviews' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">rate_review</i> Reviews</a>
             </li>
             <li>
-                <a  href="#" class="<?php echo ($this->uri->segment(2) =='packages' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">local_offer</i> Buy Packages</a>
+                <a  href="<?php echo base_url('vendor/packages') ?>" class="<?php echo ($this->uri->segment(2) =='packages' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">local_offer</i> Buy Packages</a>
             </li>
         </ul>
     </div>

@@ -215,6 +215,7 @@ public function offer($output = null)
     	echo $output;
 	}
 
+<<<<<<< HEAD
 	public function about($value='')
 	{
 		$about = $this->input->get('about');
@@ -332,6 +333,16 @@ public function offer($output = null)
             $output = $this->m_vendorDetail->add_video($insert);
             echo $output;
     }
+=======
+	public function packages($var = null)
+    {
+			$data['title'] = 'Packages | Shaadibaraati';
+			$data['value'] = $this->m_vendorDetail->getProfile($this->uniq);
+            $this->load->view('vendor-auth/packages',$data);
+        
+    }
+
+>>>>>>> 412aa1a1c581ce15f8a7834273d5285eba30911e
 
 
 
