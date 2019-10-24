@@ -292,7 +292,6 @@ $this->load->model('m_vendors');
                                             <div class="input-field col s12 l4">
                                                 <input type="hidden" id="serv" name="serv[]" class="validate" value="<?php echo (!empty($serv->id)?$serv->id:'') ?>">
                                                 <input type="text" readonly value="<?php echo (!empty($serv->service)?$serv->service:'') ?>">
-
                                                 <label for="serv">Title </label>
                                                 <p><span class="error"><?php echo form_error('serv'); ?></span></p>
                                             </div>

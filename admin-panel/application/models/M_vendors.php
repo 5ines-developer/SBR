@@ -239,7 +239,6 @@ class M_vendors extends CI_Model {
 	public function get_service($id = null)
 	{
 		$uqid = $this->db->select('uniq')->where('id',$id)->get('category')->row();
-		
 		return $this->db->where('category_uniq', $uqid->uniq)->get('information_service')->result();
 	}
 

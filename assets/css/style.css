@@ -3030,7 +3030,19 @@ input:not([type]):focus {
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
+    min-height: 100px;
+    max-height: 100px;
 }
+
+.portfolio-img.vd{
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    min-height: 250px;
+    max-height: 250px;
+}
+
+
 
 .portfolio-img:hover .port-delete {
     top: 0;

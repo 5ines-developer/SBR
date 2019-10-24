@@ -1,3 +1,7 @@
+<?php 
+$this->ci =& get_instance();
+$this->load->model('m_vendorDetail');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -112,7 +116,7 @@
                                     <div class="row">
                                         <div class="col l12 m5 s12">
                                             <div id="toolbar-container"></div>
-                                                <div id="editor"> </div> 
+                                                <div id="editor"> <?php echo (!empty($value->detail)?$value->detail:'') ?></div> 
                                                 <textarea name="about" id="description" cols="30" rows="10" style="display: none;"></textarea>
                                         </div>
                                     </div>
@@ -125,16 +129,19 @@
                                 </div>
                                 <div class="vendor-inputs">
                                     <div class="row m0">
-
-                                        <div class="col l3 m3 s6">
+                                        <?php if ($value->gallery) {
+                                            foreach ($value->gallery as $gal => $gals) { ?>
+                                                <div class="col l3 m3 s6">
                                             <div class="portfolio-img">
-                                                <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="../assets/img/vendor-img1.jpg" style="cursor: pointer;">
+                                                <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="<?php echo base_url().$gals->path ?>" style="cursor: pointer;">
                                                 <div class="port-delete">
-                                                    <a href="">
+                                                    <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('vendor_detail/gallery_delete/').$gals->id ?>">
                                                         <i class="large material-icons">delete</i></a>
                                                 </div>
                                             </div>
                                         </div>
+                                         <?php   } } ?>
+                                        
                                     </div>
                                     <form action="<?php echo  base_url()?>vendor_detail/portfolio" method="post" enctype="multipart/form-data">
                                     <div class="row m0">
@@ -162,23 +169,39 @@
                                 </div>
                                 <div class="vendor-inputs">
                                     <div class="row">
-                                        <div class="col l4 m3 s12">
-                                            <div class="portfolio-img">
-                                                <iframe width="100%" src="https://www.youtube.com/embed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                        <?php //youtube
+                                        if (!empty($value->video)) {
+                                            foreach ($value->video as $vide => $vids) {
+                                        if ($vids->type == '1') {?>
+
+                                            <div class="col l4 m3 s12">
+                                            <div class="portfolio-img vd">
+                                                <iframe width="100%" src="https://www.youtube.com/embed/<?php echo $vids->link ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen height="200"></iframe>
                                                 <div class="vid-delete">
-                                                    <a href=""><i class="material-icons">delete</i></a>
+                                                    <a onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendor_detail/video_delete/').$vids->id?>"><i class="material-icons">delete</i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col l4 m3 s12">
-                                            <div class="portfolio-img">
-                                                <iframe width="100%" src="https://www.youtube.com/embed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <?php }else if ($vids->type == '2'){  ?>
+
+                                            <div class="col l4 m3 s12">
+                                            <div class="portfolio-img vd">
+                                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
+                                                        allowTransparency="true" allowFullScreen="true"></iframe>
                                                 <div class="vid-delete">
-                                                    <a href="">
+                                                    <a onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendor_detail/video_delete/').$vids->id ?>">
                                                         <i class=" material-icons">delete</i></a>
                                                 </div>
                                             </div>
                                         </div>
+
+                                            <?php } } } ?>
+
+
+
+                                        
+                                        
                                     </div>
                                     <div class="row">
                                         <div class="col col l8 m10 s12">
@@ -214,87 +237,36 @@
                                     <h6>Information & Services</h6>
                                 </div>
                                 <div class="vendor-inputs">
-                                    <div class="infor-ser">
+                                    <?php if ($value->service) {
+                                        foreach ($value->service as $ser => $serv) { ?>
+                                        <div class="infor-ser">
                                         <div class="row">
                                             <div class="col l1 m3 s2 ">
                                                 <div class="" id="edt-image">
                                                     <div class="image-information">
-                                                        <img class="infor-service i-img" src="../assets/img/information-icon.png" alt="image">
+                                                        <img class="infor-service i-img" src="<?php echo (!empty($serv->image)?base_url().$serv->image:'') ?>" alt="image">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col l5 m3 s12">
                                                 <div class="input-field ">
-                                                    <input type="hidden" id="info" name="title_info" class="validate" value="">
-                                                    <input type="text" readonly value="">
+                                                    <input type="text" readonly name="title_info" value="<?php echo (!empty($serv->service)?$serv->service:'') ?>">
                                                     <label for="serv">Title </label>
                                                     <p><span class="error"></span></p>
                                                 </div>
                                             </div>
                                             <div class="col l5 m3 s12">
                                                 <div class="input-field ">
-                                                    <input type="hidden" id="info" name="sub_title" class="validate" value="">
-                                                    <input type="text" readonly value="">
+                                                    <input type="hidden" class="servid" value="<?php echo (!empty($serv->id)?$serv->id:'') ?>">
+                                                    <input type="text" value="<?php echo $this->ci->m_vendorDetail->getSubtitle($serv->id, $this->session->userdata('shvid')) ?>" class="serv">
                                                     <label for="serv">Subtitle</label>
                                                     <p><span class="error"></span></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="infor-ser">
-                                        <div class="row">
-                                            <div class="col l1 m3 s2 ">
-                                                <div class="" id="edt-image">
-                                                    <div class="image-information">
-                                                        <img class="infor-service i-img" src="../assets/img/information-icon.png" alt="image">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="title_info" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Title </label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="sub_title" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Subtitle</label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="infor-ser">
-                                        <div class="row">
-                                            <div class="col l1 m3 s2 ">
-                                                <div class="" id="edt-image">
-                                                    <div class="image-information">
-                                                        <img class="infor-service i-img" src="../assets/img/information-icon.png" alt="image">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="title_info" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Title </label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                            <div class="col l5 m3 s12">
-                                                <div class="input-field ">
-                                                    <input type="hidden" id="info" name="sub_title" class="validate" value="">
-                                                    <input type="text" readonly value="">
-                                                    <label for="serv">Subtitle</label>
-                                                    <p><span class="error"></span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php } } ?>
+                                    
                                 </div>
                             </div>
                             <!-- FAQ -->
@@ -309,14 +281,31 @@
                                         <div class="row mb0">
                                             <div class="col l7 m3 s12">
                                                 <div class="input-field ">
-                                                    <input type="text" id="info" name="title_info" class="validate" readonly value="<?php echo (!empty($faq2->question))?$faq2->question:''; ?>">
+                                                    <input type="text" id="info" name="title_info" class="validate" readonly value="<?php echo (!empty($faq2->question))?$faq2->question:''; ?>" >
                                                     <label for="serv">Question</label>
                                                     <p><span class="error"></span></p>
                                                 </div>
-                                            </div>
+                                            </div>                                            
                                             <div class="col l5 m3 s12">
                                                 <div class="input-field ">
-                                                    <input type="text" id="info" name="sub_title" class="validate" value="<?php echo (!empty($faq2->answer))?$faq2->answer:''; ?>">
+                                                    <input type="hidden" name="faid" value="<?php echo (!empty($faq2->id))?$faq2->id:''; ?>" class="faid">
+
+                                                <?php 
+                                                $ans1 = $this->ci->m_vendorDetail->getAnswer($this->session->userdata('shvid'),$faq2->id);
+
+                                                $ans2 = (!empty($faq2->answer))?$faq2->answer:'';
+
+                                                if (!empty($ans1)) {
+                                                    $ans = $ans1;
+                                                }else{
+                                                    $ans = $ans2;
+                                                }
+                                                ?>
+
+                                                    <input type="text" id="info" name="sub_title" class="validate faansw" value="<?php echo $ans ?>">
+
+                                                    <input type="hidden" value="<?php echo (!empty($faq2->question))?$faq2->question:''; ?>" class="faqs">
+                                                    
                                                     <label for="serv">Answer</label>
                                                     <p><span class="error"></span></p>
                                                 </div>
@@ -350,6 +339,20 @@
                                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                                 size:</b> 512kb <span class="red-text">*</span></span>
                                             </div>
+
+                                            <?php if ($value->offer) { ?>
+                                            
+                                                <div class="col l3 m3 s6">
+                                            <div class="portfolio-img">
+                                                <img class="materialboxed z-depth-1" width="200" style="max-width:100%" src="<?php echo base_url().$value->offer->image ?>" style="cursor: pointer;">
+                                                <div class="port-delete">
+                                                    <a onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendor_detail/offer_delete/').$value->offer->id ?>">
+                                                        <i class="large material-icons">delete</i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <?php   }  ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -433,6 +436,45 @@
                 }
             });
         });
+
+
+         // faq add
+        $(".faansw").on('change', function(event) {
+            event.preventDefault();
+            var answ = $(this).val();
+            var faid =  $(this).prevAll('.faid').val();
+            var faqs =  $(this).next('.faqs').val();
+
+
+            $.ajax({
+                url: "<?php echo base_url();?>vendor_detail/faqAdd",
+                type: "get",
+                dataType: "html",
+                data: {'answ' : answ,'faid' : faid,'faqs' : faqs},
+                success: function(data) {
+                }
+            });
+        });
+
+        $(".serv").on('change', function(event) {
+            event.preventDefault();
+            var answ = $(this).val();
+            var servid =  $(this).prevAll('.servid').val();
+
+            $.ajax({
+                url: "<?php echo base_url();?>vendor_detail/serviceAdd",
+                type: "get",
+                dataType: "html",
+                data: {'answ' : answ,'servid' : servid},
+                success: function(data) {
+                }
+            });
+        });
+
+
+        
+
+
         });
     </script>
         
@@ -456,7 +498,7 @@
                 aboutError:'',
                 vcategory:'',
                 vlink:'',
-
+                
 
 
                 

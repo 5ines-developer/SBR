@@ -18,13 +18,13 @@ class Vendor_detail extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Vendor Profile | Shaadibaraati';
-		
+		$data['title'] = 'Vendor Profile | Shaadibaraati';		
         $output = $this->m_vendorDetail->getVendors($this->uniq);
         if (!empty($output )) {
 	        foreach ($output as $key => $value) {
-	           $value->service     = $this->m_vendorDetail->getService($value->id);
-	           $value->video       = $this->m_vendorDetail->getVideo($value->id);
+	           $value->service     = $this->m_vendorDetail->getService($value->catId);
+               $value->video       = $this->m_vendorDetail->getVideo($value->id);
+	           $value->gallery     = $this->m_vendorDetail->get_portfolio($this->id);
 	           $value->review      = $this->m_vendorDetail->getReview($value->id);
 	           $value->userReview  = $this->m_vendorDetail->getuserReview($value->id);
 	           $value->fav         = $this->m_vendorDetail->getFavourite($value->id);
@@ -34,9 +34,6 @@ class Vendor_detail extends CI_Controller {
 	        $data['title']  = $value->name.'- ShaadiBaraati';
         }
         $data['vendor'] = $output;
-        echo "<pre>";
-	        print_r ($output);
-	        echo "</pre>";
         $this->load->view('vendor-auth/vendor-profile',$data);
 	}
 
@@ -215,7 +212,6 @@ public function offer($output = null)
     	echo $output;
 	}
 
-<<<<<<< HEAD
 	public function about($value='')
 	{
 		$about = $this->input->get('about');
@@ -317,13 +313,10 @@ public function offer($output = null)
     }
 
 
-     public function videoadd($value='')
+    public function videoadd($value='')
     {
             $vd_category    = $this->input->post('category');
             $link        	= $this->input->post('link');
-
-            
-
             $insert = array(
                 'type'      => $vd_category, 
                 'link'      => $link, 
@@ -333,7 +326,8 @@ public function offer($output = null)
             $output = $this->m_vendorDetail->add_video($insert);
             echo $output;
     }
-=======
+
+
 	public function packages($var = null)
     {
 			$data['title'] = 'Packages | Shaadibaraati';
@@ -342,7 +336,73 @@ public function offer($output = null)
         
     }
 
->>>>>>> 412aa1a1c581ce15f8a7834273d5285eba30911e
+
+    public function faqAdd()
+    {
+        $qtn    = $this->input->get('faqs');
+        $ans    = $this->input->get('answ');
+        $faid   = $this->input->get('faid');
+        $insert = array(
+            'quotation' => $qtn, 
+            'asw'       => $ans, 
+            'vendor_id' => $this->id,
+            'fq_id'     => $faid, 
+        );
+        $output = $this->m_vendorDetail->faq_insert($insert);
+        echo $output;
+    }
+
+    public function serviceAdd($value='')
+    {
+        $service    = $this->input->get('servid');
+        $subtitle   = $this->input->get('answ');
+         $insert = array(
+            'vendor_id'         => $this->id,
+            'information_id'    => $service, 
+            'subtitle'          => $subtitle, 
+        );
+        $output = $this->m_vendorDetail->serviceAdd($insert);
+        echo $output;
+    }
+
+    public function gallery_delete($id = '',$vendor='')
+    {
+        // send to model
+        if($this->m_vendorDetail->gallery_delete($id)){
+            $this->session->set_flashdata('success', 'portfolio Deleted Successfully');
+            redirect('vendor/profile','refresh'); // if you are redirect to list of the data add controller name here
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+            redirect('vendor/profile','refresh');  // if you are redirect to list of the data add controller name here
+        }
+    }
+
+
+    public function video_delete($id = '',$vendor='')
+    {
+                 // send to model
+        if($this->m_vendorDetail->video_delete($id)){
+            $this->session->set_flashdata('success', 'Video Deleted Successfully');
+            redirect('vendor/profile','refresh'); // if you are redirect to list of the data add controller name here
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+            redirect('vendor/profile','refresh'); // if you are redirect to list of the data add controller name here
+        }
+    }
+
+    public function offer_delete($id = '',$vendor='')
+    {
+        // send to model
+        if($this->m_vendorDetail->offer_delete($id)){
+            $this->session->set_flashdata('success', 'Offer image Deleted Successfully');
+            redirect('vendor/profile','refresh'); // if you are redirect to list of the data add controller name here
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+            redirect('vendor/profile','refresh'); // if you are redirect to list of the data add controller name here
+        }
+    }
+
+    
 
 
 

@@ -26,16 +26,15 @@ class M_vendorDetail extends CI_Model {
         }
     }
 
-    /*
-     *vendor detail-> get services
-    **/
-    public function getService($id='')
+    /**
+    * Vendors -> add new information service 
+    * url : vendors/add-video
+    * @param : id
+    */
+    public function getService($id = null)
     {
-       $this->db->where('vi.vendor_id', $id);
-       $this->db->from('vendor_infoservice vi');
-       $this->db->join('information_service in', 'in.id = vi.information_id', 'left');
-       $this->db->limit(6);
-       return $this->db->get()->result();
+        $uqid = $this->db->select('uniq')->where('id',$id)->get('category')->row();
+        return $this->db->where('category_uniq', $uqid->uniq)->get('information_service')->result();
     }
 
     /*
@@ -92,7 +91,7 @@ class M_vendorDetail extends CI_Model {
     public function offer($id='')
     {
         $this->db->where('vendor_id', $id);
-        return $this->db->get('vendor_offer')->row_array();
+        return $this->db->get('vendor_offer')->row();
     }
 
     public function similarVendors($city='',$category='',$id='')
@@ -190,7 +189,6 @@ class M_vendorDetail extends CI_Model {
         return $this->db->where('id', $id)->get('vendor')->row('profile_file');
     }
 
-<<<<<<< HEAD
     public function offer_image($insert='')
     {
         $this->db->where('vendor_id', $insert['vendor_id']);
@@ -219,7 +217,6 @@ class M_vendorDetail extends CI_Model {
         }
     }
 
-=======
     public function getProfile($id = null)
     {
         $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.price_for,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
@@ -240,7 +237,6 @@ class M_vendorDetail extends CI_Model {
     }
 
     
->>>>>>> 412aa1a1c581ce15f8a7834273d5285eba30911e
 
     public function insert_portfolio($insert)
     {
@@ -255,6 +251,75 @@ class M_vendorDetail extends CI_Model {
         $query = $this->db->get('vendor_video')->result();
         if (count($query) < 6 ) {
             return $this->db->insert('vendor_video', $insert);
+        }else{
+            return false;
+        }
+    }
+
+    public function faq_insert($insert='')
+    {
+        $query = $this->db->where('fq_id', $insert['fq_id'])->where('vendor_id', $insert['vendor_id'])->get('vendor_faq');
+        if ($query->num_rows() > 0) {
+            return $this->db->where('fq_id', $insert['fq_id'])->where('vendor_id', $insert['vendor_id'])->update('vendor_faq', $insert);
+        }else{
+            return $this->db->insert('vendor_faq', $insert);
+        }
+    }
+
+    public function getAnswer($vid='',$fid='')
+    {
+        return $this->db->where('vendor_id', $vid)->where('fq_id', $fid)->get('vendor_faq')->row('asw');
+    }
+
+    public function getSubtitle($servId='',$vendorId='')
+    {
+        return $this->db->where('vendor_id', $vendorId)->where('information_id', $servId)->get('vendor_infoservice')->row('subtitle');
+    }
+
+    public function serviceAdd($insert='')
+    {
+        $query = $this->db->where('information_id', $insert['information_id'])->where('vendor_id', $insert['vendor_id'])->get('vendor_infoservice');
+        if ($query->num_rows() > 0) {
+            return $this->db->where('information_id', $insert['information_id'])->where('vendor_id', $insert['vendor_id'])->update('vendor_infoservice', $insert);
+        }else{
+            return $this->db->insert('vendor_infoservice', $insert);
+        }
+    }
+
+    public function get_portfolio($id='')
+    {
+        return $this->db->where('vendor_id', $id)->get('vendor_portfolio')->result();
+        
+    }
+
+    public function gallery_delete($id = '')
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('vendor_portfolio');
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function video_delete($id = '')
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('vendor_video');
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function offer_delete($id = '')
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('vendor_offer');
+        if ($this->db->affected_rows() > 0) {
+            return true;
         }else{
             return false;
         }
