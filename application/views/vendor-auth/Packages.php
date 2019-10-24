@@ -37,7 +37,7 @@
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Elite</h5>
+                                                    <h5>Wed Elite</h5>
                                                     <p>Package Cost 12 Months</p>
                                                     <h6>₹ 1,50,000</h6>
                                                 </div>
@@ -46,13 +46,13 @@
                                                     <li>List Position : <span>Top 2</span></li>
                                                     <li>Banner : <span>Yes</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Elite').'') ?>" onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Leader</h5>
+                                                    <h5>Wed Leader</h5>
                                                     <p>Package Cost 12 Months</p>
                                                     <h6>₹ 1,00,000</h6>
                                                 </div>
@@ -61,13 +61,13 @@
                                                     <li>List Position : <span>Top 5</span></li>
                                                     <li>Banner : <span>Yes</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Leader').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Assisted</h5>
+                                                    <h5>Wed Assisted</h5>
                                                     <p>Package Cost 12 Months</p>
                                                     <h6>₹ 75,000</h6>
                                                 </div>
@@ -76,13 +76,13 @@
                                                     <li>List Position : <span>Top 10</span></li>
                                                     <li>Banner : <span>Yes</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Assisted').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Gold</h5>
+                                                    <h5>Wed Gold</h5>
                                                     <p>Package Cost 12 Months</p>
                                                     <h6>₹ 50,000</h6>
                                                 </div>
@@ -91,13 +91,13 @@
                                                     <li>List Position : <span>After Wed Assisted</span></li>
                                                     <li>Banner : <span>Yes</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                               <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Gold').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Premium </h5>
+                                                    <h5>Wed Premium </h5>
                                                     <p>Package Cost 12 Months</p>
                                                     <h6>₹ 30,000</h6>
                                                 </div>
@@ -106,13 +106,13 @@
                                                     <li>List Position : <span>After Wed Gold</span></li>
                                                     <li>Banner : <span>N0</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Premium').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Featured </h5>
+                                                    <h5>Wed Featured </h5>
                                                     <p>Package Cost 12 Months</p>
                                                     <h6>₹ 15,000</h6>
                                                 </div>
@@ -121,7 +121,7 @@
                                                     <li>List Position : <span>After Wed  Premium</span></li>
                                                     <li>Banner : <span>N0</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Featured').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Catergory Banner</h5>
+                                                    <h5>Wed Catergory Banner</h5>
                                                     <p>Vendor Page</p>
                                                 </div>
                                                 <ul class="detail-li">
@@ -142,13 +142,13 @@
                                                     <li>Limit : <span>10</span></li>
                                                     <li>Tenure : <span>1 Year</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Catergory Banner').'') ?>"   onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Web Catergory Middle</h5>
+                                                    <h5>Wed Catergory Middle</h5>
                                                     <p>Vendor Page</p>
                                                 </div>
                                                 <ul class="detail-li">
@@ -157,7 +157,7 @@
                                                     <li>Limit : <span>N0</span></li>
                                                     <li>Tenure : <span>1 Year</span></li>
                                                 </ul>
-                                                <button class="buy-pack modal-trigger" data-target="modal1">BUY NOW</button>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Catergory Middle').'') ?>" onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
                                     </div>

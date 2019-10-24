@@ -15,6 +15,11 @@ class M_preload extends CI_Model {
         return $this->db->where('status', '2')->get('user_feedback')->num_rows();
     }
 
+    public function bypackage()
+    {
+    	return $this->db->where('status', '0')->get('v_buypackage')->num_rows();
+    }
+
 }
 
 /* End of file m_preload.php */

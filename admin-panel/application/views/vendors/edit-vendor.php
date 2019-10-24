@@ -646,10 +646,7 @@ $this->load->model('m_vendors');
             $('#vendor-about').submit(function() {
                 var text = $('#editor').html();
                 $('#description').val(text);
-                var text1 = $('#editor1').html();
-                $('#specific').val(text1);
-                var text2 = $('#editor2').html();
-                $('#policy').val(text2);
+                
             });
             $('input.autocomplete').autocomplete({
                 data: {
@@ -698,41 +695,10 @@ $this->load->model('m_vendors');
                 }
             });
 
-            $('#upload').on('change', function() {
-                $('.fimagecheck').val($('.fimagecheck').val() + '1');
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $uploadCrop.croppie('bind', {
-                        url: e.target.result
-                    }).then(function() {
-                        console.log('jQuery bind complete');
-                    });
-                }
-                reader.readAsDataURL(this.files[0]);
-            });
+            
 
 
-            $('.upload-result').on('click', function(ev) {
-                ev.preventDefault();
-                $(".loder-box").css("display", "flex");
-                $uploadCrop.croppie('result', {
-                    type: 'canvas',
-                    size: 'viewport',
-                    format: 'jpeg',
-                    quality: 1
-                }).then(function(resp) {
-                    var alt = $("#alt").val()
-                    if (alt == '') {
-                        alert('Image title is required');
-                    } else {
-                        $('.ipimg').val(resp);
-                        $('#vendor-form').submit();
-                    }
-                });
-
-
-
-            });
+           
 
 
         });
@@ -742,28 +708,6 @@ $this->load->model('m_vendors');
             .create(document.querySelector('#editor'))
             .then(editor => {
                 const toolbarContainer = document.querySelector('#toolbar-container');
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
-        DecoupledEditor
-            .create(document.querySelector('#editor1'))
-            .then(editor => {
-                const toolbarContainer = document.querySelector('#toolbar-container1');
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
-        DecoupledEditor
-            .create(document.querySelector('#editor2'))
-            .then(editor => {
-                const toolbarContainer = document.querySelector('#toolbar-container2');
                 toolbarContainer.appendChild(editor.ui.view.toolbar.element);
             })
             .catch(error => {

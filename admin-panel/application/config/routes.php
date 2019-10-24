@@ -132,10 +132,13 @@ $route['career/delete/(:any)']	    =	'career/delete/$1';
 $route['career/status/(:any)']	    =	'career/status/$1'; 
 $route['career/applications']	    =	'career/applications'; 
 
-
-
-
 //vendor enquiry
-$route['vendor-enquiry']			=	'vendorenquiry/index'; //add vendor
+$route['vendor-enquiry']			=	'vendorenquiry/index'; 
+$route['vendor-package']			=	'vendorenquiry/packageGet'; 
+$route['vendor-package/view/(:any)']=	'vendorenquiry/viewPackage/$1'; 
+
+
+
+
 
 

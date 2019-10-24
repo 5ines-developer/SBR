@@ -329,7 +329,7 @@ $this->load->model('m_vendorDetail');
                                                 <div class="file-field input-field">
                                                     <div class="btn hh-file">
                                                         <span class="banner-ioc"><i class=" material-icons vender-icon">perm_media</i>Add Image</span>
-                                                        <input type="file" id="file1" ref="file" v-on:change="offerload()">
+                                                        <input type="file" id="file1" ref="file1" v-on:change="offerload()">
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input class="file-path validate if-file" type="text" placeholder="Upload Your Image">
@@ -498,6 +498,7 @@ $this->load->model('m_vendorDetail');
                 aboutError:'',
                 vcategory:'',
                 vlink:'',
+                file1:''
                 
 
 
@@ -564,7 +565,7 @@ $this->load->model('m_vendorDetail');
                 
                 upload(){
                         this.bannerError = '';
-                        this.file = this.$refs.file.files[0];    
+                        this.file = this.$refs.file.files[0];
                         const formData = new FormData();
                         formData.append('banner', this.file);
                         axios.post('<?php echo base_url() ?>vendor_detail/ban_upload', 
@@ -589,9 +590,9 @@ $this->load->model('m_vendorDetail');
                 },
                  offerload(){
                         this.offerError = '';
-                        this.file = this.$refs.file.files[0];    
+                        this.file1 = this.$refs.file1.files[0];    
                         const formData = new FormData();
-                        formData.append('offer', this.file);
+                        formData.append('offer', this.file1);
                         axios.post('<?php echo base_url() ?>vendor_detail/offer', 
                         formData,
                         { 

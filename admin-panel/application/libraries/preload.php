@@ -24,6 +24,11 @@ class preload
         return  $this->ci->m_preload->feedback();
     }
 
+    public function bypackage()
+    {
+        return  $this->ci->m_preload->bypackage();
+    }
+
 
 }
 

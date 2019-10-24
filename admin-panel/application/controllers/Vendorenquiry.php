@@ -16,8 +16,25 @@ class Vendorenquiry extends CI_Controller {
     {
         $data['title'] = 'Vendor Enquiry - shaadibaraati';
         $data['result'] = $this->m_venquiry->vendor_enquiry();        
-        $this->load->view('vendors/vendor-enquiry', $data);     
-        
+        $this->load->view('vendors/vendor-enquiry', $data);
+    }
+
+    //buy package request
+    public function packageGet($value='')
+    {
+        $data['title'] = 'Vendor Packages - shaadibaraati';
+        $data['result'] = $this->m_venquiry->packageGet();
+        echo "<pre>";
+        print_r ($data);
+        echo "</pre>";
+        $this->load->view('vendors/package-request', $data);
+    }
+
+    public function viewPackage($id='')
+    {
+        $data['title'] = 'Vendor Packages - shaadibaraati';
+        $data['result'] = $this->m_venquiry->singlePackage($id);
+         $this->load->view('vendors/package-view', $data);
     }
 
 }

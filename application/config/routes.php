@@ -138,19 +138,22 @@ $route['vendor/reviews'] 	            = 'vendor/reviews';
 
 //vendor module
 //authentication
-$route['vendor/register'] 		    = 'vendor/index';
-$route['vendor/register-insert'] 	= 'vendor/register_insert';
+$route['vendor/register'] 		    		= 'vendor/index';
+$route['vendor/register-insert'] 			= 'vendor/register_insert';
 //vendor login
-$route['vendor/login'] 		        = 'vendor/login';
-$route['vendor/login-check'] 		= 'vendor/check_login';
-$route['vendor/forgot-password'] 	= 'vendor/forgot_password';
-$route['vendor/forgot-password-set/(:any)'] 	= 'vendor/add_pass/$1';
-$route['vendor/password-update'] 	= 'vendor/update_pass';
+$route['vendor/login'] 		        		= 'vendor/login';
+$route['vendor/login-check'] 				= 'vendor/check_login';
+$route['vendor/forgot-password'] 			= 'vendor/forgot_password';
+$route['vendor/forgot-password-set/(:any)'] = 'vendor/add_pass/$1';
+$route['vendor/password-update'] 			= 'vendor/update_pass';
 //vendor detail
-$route['vendor/profile'] 		    = 'Vendor_detail/index';
+$route['vendor/profile'] 		    		= 'Vendor_detail/index';
 //change password
-$route['vendor/change-password'] 	= 'Vendor_detail/changePassword';
-$route['vendor/update-password'] 	= 'Vendor_detail/password_validation';
+$route['vendor/change-password'] 			= 'Vendor_detail/changePassword';
+$route['vendor/update-password'] 			= 'Vendor_detail/password_validation';
+//package
+$route['vendor/package'] 					= 'Vendor_package/index';
+$route['vendor/buy-package'] 				= 'Vendor_package/buyPackage';
 
 
 

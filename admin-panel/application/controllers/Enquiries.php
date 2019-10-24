@@ -50,7 +50,7 @@ class Enquiries extends CI_Controller {
 
     public function testimonial($id = '')
     {
-        $data['title']  = 'Testimonila - Shaadibaraati';
+        $data['title']  = 'Testimonials - Shaadibaraati';
         $data['result']  = $this->m_enquiry->testimonial($id);
         if(!empty($id)){
             $this->load->view('enquiry/testimonial-detail', $data, FALSE);

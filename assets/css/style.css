@@ -3082,6 +3082,8 @@ input:not([type]):focus {
     border: 1px solid gray;
     width: 50px;
     height: 50px;
+padding: 5px;
+border-radius: 4px;
 }
 
 .image-information {
@@ -3209,6 +3211,7 @@ input:not([type]):focus {
     border: 1px solid #f4f4f4;
     text-align: center;
     margin-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 .title-pack {
@@ -3276,6 +3279,7 @@ input:not([type]):focus {
     border: 1px solid #717171;
     margin-bottom: 30px;
     cursor: pointer;
+    color: #000;
 }
 
 

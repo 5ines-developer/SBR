@@ -11,9 +11,8 @@ class Vendor_detail extends CI_Controller {
 		$this->load->model('m_vendorDetail');
 		$this->load->library('form_validation');
 		$this->load->library('bcrypt');
-		$this->userId = $this->session->userdata('shvid');
+		$this->id = $this->session->userdata('shvid');
 		$this->uniq = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('uniq');
-		$this->id = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('id');
 	}
 
 	public function index()
@@ -69,7 +68,7 @@ class Vendor_detail extends CI_Controller {
 			$password = $this->input->post('newpassword');
 			$hash  = $this->bcrypt->hash_password($password);
 			
-            if ($this->m_vendorDetail->changepass($this->userId, $hash)) {
+            if ($this->m_vendorDetail->changepass($this->id, $hash)) {
                 $this->session->set_flashdata('success', 'Password updated Successfully');
                 redirect('vendor/change-password');
             } else {
@@ -81,7 +80,7 @@ class Vendor_detail extends CI_Controller {
 	
 	public function passwordcheck($password)
     {
-		$result = $this->db->where('id', $this->userId)->get('vendor')->row();
+		$result = $this->db->where('id', $this->id)->get('vendor')->row();
 		if ($this->bcrypt->check_password($password, $result->password)) {
 			return true;
 		}else{
@@ -136,7 +135,6 @@ class Vendor_detail extends CI_Controller {
         $this->load->library('upload');
         $this->load->library('image_lib');
 		$files = $_FILES;
-        $filesCount = count($_FILES['banner']['name']);
 
         if (file_exists($_FILES['banner']['tmp_name'])) {
             $config['upload_path'] = 'vendors-profile/';
@@ -203,7 +201,7 @@ public function offer($output = null)
 
 	            $insert =  array(
                     'image'       =>  $imgpath , 
-                    'vendor_id'   =>  $this->userId , 
+                    'vendor_id'   =>  $this->id , 
                 );
 	                
 	        $output = $this->m_vendorDetail->offer_image($insert);
@@ -328,13 +326,7 @@ public function offer($output = null)
     }
 
 
-	public function packages($var = null)
-    {
-			$data['title'] = 'Packages | Shaadibaraati';
-			$data['value'] = $this->m_vendorDetail->getProfile($this->uniq);
-            $this->load->view('vendor-auth/packages',$data);
-        
-    }
+
 
 
     public function faqAdd()

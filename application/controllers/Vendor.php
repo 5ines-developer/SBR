@@ -25,21 +25,14 @@ class Vendor extends CI_Controller {
 
     public function leads($var = null)
     {
-			$data['title'] = 'Leads | Shaadibaraati';
-            $this->load->view('vendor-auth/vendor-leads',$data);
-        
+		$data['title'] = 'Leads | Shaadibaraati';
+        $this->load->view('vendor-auth/vendor-leads',$data);
     }
 
-    public function packages($var = null)
-    {
-			$data['title'] = 'Packages | Shaadibaraati';
-            $this->load->view('vendor-auth/packages',$data);
-        
-    }
     public function reviews($var = null)
     {
-			$data['title'] = 'Reviews | Shaadibaraati';
-            $this->load->view('vendor-auth/reviews',$data);
+		$data['title'] = 'Reviews | Shaadibaraati';
+        $this->load->view('vendor-auth/reviews',$data);
         
     }
     public function login($var = null)
