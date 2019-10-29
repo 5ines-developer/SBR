@@ -31,6 +31,15 @@ $this->load->model('m_vendorDetail');
          <section class="sec">
             <div class="container-fluide">
                 <div class="row">
+
+                    <div class=" col l12 m12 s12 pend-box">
+                        <span class="white-text"><b>Note:Your Profile is under verification process, admin approval is pending.</b></span>
+                        
+                    </div>
+
+                    
+
+
                     <?php $this->load->view('includes/vendor-sidebar.php'); ?>
                     <div class="col l9 m9 s12">
                         <div class="vendor-detail-inputs b-sho">

@@ -32,18 +32,17 @@
                             </div>
                             <div class="vendor-inputs">
                                 <div class="table-css">
-                                    <p class="h5-para-p2">Leads List</p>
+                                    <p class="h5-para-p2">Enquiries</p>
                                     <div class="leads-list ">
                                         <table id="dynamic" class="striped">
                                             <thead>
                                                 <tr class="tt">
-                                                    <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
-                                                    <th id="a" class="h5-para-p2" width="130px">Name</th>
-                                                    <th id="b" class="h5-para-p2" width="100px">Email</th>
-                                                    <th id="c" class="h5-para-p2" width="120px">Phone</th>
-                                                    <th id="c" class="h5-para-p2" width="120px">Event Date</th>
-                                                    <th id="c" class="h5-para-p2" width="120px">Detail</th>
-                                                    <th id="g" class="h5-para-p2" width="62px">Action</th>
+                                                    <th>Sl No.</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Enquired On</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -54,21 +53,19 @@
                                               $count= 0;
                                               foreach ($result as $key => $value) { $count += 1;                                        
                                               ?>
-                                                    <tr>
+                                                    <tr class="lead-tr">
                                                         <td>
-                                                            <a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>">
+                                                            <a href="<?php echo base_url('vendor/leads/'.$value->id.'') ?>">
                                                                 <?php echo (!empty($result))?$count:'---'  ?>
                                                             </a>
                                                         </td>
-                                                        <td><a class="text-ext" href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></a>asdasd</td>
-                                                        <td><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a></td>
-                                                        <td><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
-                                                        <td><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
-                                                        <td><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->cat))?$value->cat:'---'  ?></a></td>
-                                                        <td><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
+                                                        <td><a class="text-ext" href="<?php echo base_url('vendor/leads/'.$value->id.'') ?>"><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></a></td>
+                                                        <td><a href="<?php echo base_url('vendor/leads/'.$value->id.'') ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a></td>
+                                                        <td><a href="<?php echo base_url('vendor/leads/'.$value->id.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
+                                                        <td><a href="<?php echo base_url('vendor/leads/'.$value->id.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
                                                         <td class="action-btn  center-align">
                                                             <!-- view user -->
-                                                            <a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>" class="blue hoverable"><i class="fas fa-eye "></i></i></a>
+                                                            <a href="<?php echo base_url('vendor/leads/'.$value->id.'') ?>" class=" lead-view hoverable"><i class="material-icons dp48 white-text">remove_red_eye</i></a>
                                                             <!-- view user -->
                                                         </td>
 

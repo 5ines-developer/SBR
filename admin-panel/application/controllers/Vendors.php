@@ -7,12 +7,12 @@ class Vendors extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
+        if ($this->session->userdata('sha_id') == '') { $this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_vendors');
     }
 
 
-    /**k
+    /**
      * Vendors -> add Vendors
      * load view page
      * url : vendors/add

@@ -24,9 +24,6 @@ class Vendorenquiry extends CI_Controller {
     {
         $data['title'] = 'Vendor Packages - shaadibaraati';
         $data['result'] = $this->m_venquiry->packageGet();
-        echo "<pre>";
-        print_r ($data);
-        echo "</pre>";
         $this->load->view('vendors/package-request', $data);
     }
 

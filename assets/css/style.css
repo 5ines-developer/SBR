@@ -3341,7 +3341,6 @@ border-radius: 4px;
     overflow: hidden;
     width: 50px;
     white-space: nowrap;
-    height: 15px;
 }
 
 .close-op {
@@ -4934,3 +4933,29 @@ nav a.sidenav-trigger i {
     height: 50px;
     width: 50px;
 }
+
+.rev-name{
+    min-width: 75px;
+    max-width: 75px;
+    text-overflow: ellipsis; 
+}
+.lead-tr td{text-align: center; }
+.lead-tr td a{text-decoration: none; color: black; font-size: 13px; }
+.lead-view{background-color: #325cbf; padding: 5px; line-height: 23px; border-radius: 3px;}
+.lead-view i{position: relative; top: 7px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {background: linear-gradient(to bottom, #d0021b 0%, #d0021b 100%) !important; }
+.vendor-detail-inputs.b-sho::after {
+
+    content: "";
+    clear: both;
+    display: block;
+
+}
+.pend-box {background: #d22121; color: white; display: inline-block; padding: 7px 7px !important; margin: 6px 6px 12px 9px;
+}
+        .helper-text.red-text {
+    min-height: 0 !important;
+    text-align: left !important;
+    position: absolute;
+}
+    

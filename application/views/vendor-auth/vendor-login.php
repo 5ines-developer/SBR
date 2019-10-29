@@ -9,12 +9,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-        <style>
-        .helper-text.red-text {
-    min-height: 0 !important;
-    text-align: left !important;
-}
-    </style>
+
 </head>
 
 <body>
@@ -31,7 +26,7 @@
                                 <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
-                                <a href="<?php echo base_url() ?>/vendor/register"><button class="vend-btn">Sign Up</button></a>
+                                <a href="<?php echo base_url('vendor/register') ?>"><button class="vend-btn">Sign Up</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">

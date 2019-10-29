@@ -16,7 +16,6 @@ class M_vendors extends CI_Model {
 		$this->db->join('category cat', 'cat.id = ven.category', 'left');
 		$this->db->order_by('ven.id', 'desc');
 		return $this->db->get()->result();
-
 	}
 
 

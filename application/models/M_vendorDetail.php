@@ -308,6 +308,31 @@ class M_vendorDetail extends CI_Model {
         }
     }
 
+    public function reviewsGet($vid='',$limit='',$page='')
+    {
+        if (!empty($limit) && $limit <= 250) {
+            $this->db->limit($limit, $page);
+        }
+        $this->db->where('vr.vendor_id', $vid)->select('u.su_name,u.su_email,vr.review,vr.rating,vr.added_date')->from('vendor_review vr')->join('user u', 'u.su_id = vr.user_id', 'left');
+        return $this->db->get()->result();
+    }
+
+
+    public function rowsCount($vid='',$limit='')
+    {
+        $this->db->where('vr.vendor_id', $vid)->select('u.su_name,u.su_email,vr.review,vr.rating,vr.added_date')->from('vendor_review vr')->join('user u', 'u.su_id = vr.user_id', 'left');
+        return $this->db->get()->result();
+    }
+
+
+    public function enquiryGet($uniq='',$id='')
+    {
+        if (!empty($id)) {
+           $this->db->where('id', $id);
+        }
+        return $this->db->where('vendor_id', $uniq)->get('vendor_enquiry')->result();
+    }
+
 
     
 

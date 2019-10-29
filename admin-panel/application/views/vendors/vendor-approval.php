@@ -16,7 +16,6 @@
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
-      
       </style>
    </head>
    <body>
@@ -88,12 +87,12 @@
                                             <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
                                             <td><?php echo (!empty($value->regdate))?date("M d, Y ", strtotime($value->regdate)):'---'; ?></td>
-
                                             <td class="status"> 
-                                              <?php
+                                              <?php 
+
                                               if (!empty($value->status) && $value->status =='1') { ?>
                                                 <span class='white-text green lighten-1'>Active</span>
-                                             <?php }else if (empty($value->status) && $value->status =='0'){ ?>
+                                             <?php }else if (!empty($value->status) && $value->status =='0'){ ?>
                                                <span class='white-text blue'>Pending</span>
                                              <?php }else if (!empty($value->status) && $value->status =='2') { ?>
                                               <span class='white-text red'>Blocked</span>
@@ -101,8 +100,6 @@
                                               <span class='white-text orange lighten-1'>Approval Pending</span>
                                              <?php } ?>
                                             </td>
-
-                                            
 
                                             <td class="action-btn  center-align">
                                               <!-- view vendors -->

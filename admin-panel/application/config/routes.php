@@ -107,6 +107,10 @@ $route['vendor-review/delete/(:any)/(:any)']  = 	'vendors/reviewdelete/$1/$2';
 $route['vendors/gallery_delete/(:any)/(:any)']  = 	'vendors/gallery_delete/$1/$2';
 $route['vendors/video_delete/(:any)/(:any)']  = 	'vendors/video_delete/$1/$2';
 
+//vendors approval
+$route['vendor/approval']			        =	'vendors_approval/index';
+$route['vendor/approval/(:any)']			=	'vendors_approval/index/$1';
+$route['vendor/reject/(:any)']				=	'vendors_approval/reject/$1';
 
 
 //enquiry
@@ -136,6 +140,7 @@ $route['career/applications']	    =	'career/applications';
 $route['vendor-enquiry']			=	'vendorenquiry/index'; 
 $route['vendor-package']			=	'vendorenquiry/packageGet'; 
 $route['vendor-package/view/(:any)']=	'vendorenquiry/viewPackage/$1'; 
+
 
 
 

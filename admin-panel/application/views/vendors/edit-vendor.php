@@ -117,7 +117,7 @@ $this->load->model('m_vendors');
         }
         
         .i-img {
-            width: 100px !important;
+            width: 50px !important;
             height: auto;
             max-height: 95px;
         }
@@ -144,8 +144,34 @@ $this->load->model('m_vendors');
                                 <p class="h5-para black-text  m0">Update Vendor</p>
                             </div>
                             <div class="col 12 m6 right-align">
-                                <a href="<?php echo base_url('vendors/view/'.$result->id)  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable ">view
+                                <a href="<?php echo base_url('vendors/view/'.$result->id)  ?>" class="waves-effect waves-light btn blue darken-4 white-text hoverable ">view
                                     Vendor</a>
+                                    <?php if ($result->is_active == '3') { ?>
+                                       <a onclick="return confirm('Are you sure you want to Approve this vendor?');" href="<?php echo base_url('vendor/approval/'.$result->id)  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable ">Approve Vendor</a>
+
+                                       <a onclick="return confirm('Are you sure you want to Reject this vendor?');" href="<?php echo base_url('vendor/reject/'.$result->id)  ?>" class="waves-effect waves-light btn red darken-4 white-text hoverable ">Reject Vendor</a>
+                                    <?php } ?>
+
+                                <?php
+                                if ((!empty($result->is_active)) && $result->is_active == '1') { ?>
+                                <a href="<?php echo base_url('users/block/'.$result->id.'') ?>"
+                                    class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"
+                                id="block">Block</a>
+                                <?php }elseif ((!empty($result->is_active)) && $result->is_active == '2') { ?>
+                                <a href="<?php echo base_url('users/unblock/'.$result->id.'') ?>"
+                                    class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"
+                                id="unblock">Unblock</a>
+                                <?php } ?>
+                                <a href="<?php echo base_url('users/block/'.$result->id.'') ?>"
+                                                            class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"
+                                                            id="block" style="display: none">Block</a>
+                                                        <a href="<?php echo base_url('users/unblock/'.$result->id.'') ?>"
+                                                            class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"
+                                                            id="unblock" style="display: none">Unblock</a>
+                                                        <input type="hidden" name="userid" id="userid"
+                                                            value="<?php echo $result->id ?>">
+
+                                
                             </div>
                         </div>
 
@@ -728,6 +754,57 @@ $this->load->model('m_vendors');
                     $("#fb-link").css("display", "none");
                 }
             });
+
+            $("#block").on('click', function(event) {
+            event.preventDefault();
+            var id = $("input[name='userid']").val();
+            loder(true);
+            $.ajax({
+                url: "<?php echo base_url();?>vendors/block_vendor",
+                type: "get",
+                dataType: "html",
+                data: {
+                    'id': id,
+                    'status': '2'
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#unblock').css('display', ' inline-block ');
+                    $('#block').css('display', 'none');
+                    loder(false);
+                }
+            });
+        });
+        //unbloack user
+        $("#unblock").on('click', function(event) {
+            event.preventDefault();
+            var id = $("input[name='userid']").val();
+            loder(true);
+            $.ajax({
+                url: "<?php echo base_url();?>vendors/block_vendor",
+                type: "get",
+                dataType: "html",
+                data: {
+                    'id': id,
+                    'status': '1'
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#block').css('display', ' inline-block ');
+                    $('#unblock').css('display', 'none');
+                    loder(false);
+                }
+            });
+        });
+        //page loader
+        function loder(status) {
+            if (status == true) {
+                $('.preloader-verfy').css('display', 'block');
+            } else {
+                $('.preloader-verfy').css('display', 'none');
+            }
+        }
+
         });
     </script>
 </body>

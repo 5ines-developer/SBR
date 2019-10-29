@@ -52,7 +52,7 @@
                                 </center>
                                 <div class="ss-h">
                                     <p class="p-arg-login">If You Have an Account ?<a href="<?php echo base_url('register') ?>" class="cr sr-ang">Sign Up</a></p>
-                                    <p class="p-arg-login">Are You a Vendor ?<a href="<?php echo base_url('vendor-register') ?>" class="cr si-vender">Sign Up</a></p>
+                                    <p class="p-arg-login">Are You a Vendor ?<a href="<?php echo base_url('vendor/login') ?>" class="cr si-vender">Sign In</a></p>
                                 </div>
                                 
                             </form>

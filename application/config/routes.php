@@ -132,7 +132,6 @@ $route['vendor-register/send'] 		    = 'authentication/vendorsend';
 // vendor
 $route['vendor/leads'] 	                = 'vendor/leads';
 $route['vendor/packages'] 	            = 'vendor/packages';
-$route['vendor/reviews'] 	            = 'vendor/reviews';
 
 
 
@@ -154,6 +153,15 @@ $route['vendor/update-password'] 			= 'Vendor_detail/password_validation';
 //package
 $route['vendor/package'] 					= 'Vendor_package/index';
 $route['vendor/buy-package'] 				= 'Vendor_package/buyPackage';
+//reviews
+$route['vendor/reviews'] 	            	= 'Vendor_detail/reviews';
+$route['vendor/reviews/(:any)'] 	        = 'Vendor_detail/reviews/$1';
+$route['vendor/reviews/(:any)/(:any)'] 	    = 'Vendor_detail/reviews/$1/$2';
+//leads
+$route['vendor/leads'] 	            		= 'Vendor_detail/leads';
+$route['vendor/leads/(:any)'] 	            = 'Vendor_detail/leads/$1';
+
+
 
 
 

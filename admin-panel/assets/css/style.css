@@ -1792,3 +1792,4 @@ div.tagsinput div { display:block; float: left; }
 }
 .droupmenu li.active a {background:#edecec !important; color:green}
 .droupmenu{display: none;}
+.status span{padding: 5px; border-radius: 2px; }

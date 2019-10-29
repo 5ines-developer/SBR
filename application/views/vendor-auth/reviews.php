@@ -30,10 +30,11 @@
                             <div class="vendor-head-review">
                                 <div class="review-short">
                                     <select class="browser-default" id="short">
-                                                    <option value="0" selected>10</option>
-                                                    <option value="1">50</option>
-                                                    <option value="2">150</option>
-                                                    <option value="3">250</option>
+                                                    <option value="10" <?php  echo $this->uri->segment(3)=='10'?'selected':''; ?> >10</option>
+                                                    <option value="50"  <?php echo $this->uri->segment(3)=='50'?'selected':''; ?> >50</option>
+                                                    <option value="150" <?php echo $this->uri->segment(3)=='150'?'selected':''; ?> >150</option>
+                                                    <option value="250" <?php echo $this->uri->segment(3)=='250'?'selected':''; ?> >250</option>
+                                                    <option value="251" <?php echo $this->uri->segment(3)>'250'?'selected':''; ?> >250 +</option>
                                         </select>
                                 </div>
                                 <h6>Review</h6>
@@ -41,39 +42,30 @@
                             <div class="vendor-inputs">
                                 <div class="review-short-list">
                                     <div class="vender-v-review">
-                                        <div class="vendor-review-list">
+                                        <?php if (!empty($result)) {  
+                                            foreach ($result as $key => $value) { ?>
+                                                <div class="vendor-review-list">
                                             <ul>
-                                                <li><i class="material-icons">person</i> Joseph Vijay</li>
-                                                <li class="text-rsc"><i class="material-icons">email</i> vijay@gamil.com</li>
-                                                <li><i class="material-icons">date_range</i> 21-10-2019</li>
-                                                <li class="green v-rev white-text"><i class="material-icons revi-i">star</i>5</li>
+                                                <li class="rev-name truncate"><i class="material-icons">person</i> <?php echo (!empty($value->su_name))?$value->su_name:''; ?></li>
+                                                <li class="text-rsc"><i class="material-icons">email</i> <?php echo (!empty($value->su_email))?$value->su_email:''; ?></li>
+                                                <li><i class="material-icons">date_range</i> <?php echo (!empty($value->added_date))?date('d M, Y',strtotime($value->added_date)):''; ?></li>
+                                                <li class="green v-rev white-text"><i class="material-icons revi-i">star</i><?php echo (!empty($value->rating))?$value->rating:''; ?></li>
                                             </ul>
-                                            <p class="p-rev">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                                                ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                            <p class="p-rev"><?php echo (!empty($value->review))?$value->review:''; ?></p>
                                         </div>
-                                        <div class="vendor-review-list">
-                                            <ul>
-                                                <li><i class="material-icons">person</i> Joseph Vijay</li>
-                                                <li class="text-rsc"><i class="material-icons">email</i> vijay@gamil.com</li>
-                                                <li><i class="material-icons">date_range</i> 21-10-2019</li>
-                                                <li class="green v-rev white-text"><i class="material-icons revi-i">star</i>5</li>
-                                            </ul>
-                                            <p class="p-rev">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                                                ultricies nec, pellentesque eu, pretium quis, sem.</p>
-                                        </div>
-                                        <div class="vendor-review-list">
-                                            <ul>
-                                                <li><i class="material-icons">person</i> Joseph Vijay</li>
-                                                <li class="text-rsc"><i class="material-icons">email</i> vijay@gamil.com</li>
-                                                <li><i class="material-icons">date_range</i> 21-10-2019</li>
-                                                <li class="green v-rev white-text"><i class="material-icons revi-i">star</i>5</li>
-                                            </ul>
-                                            <p class="p-rev">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                                                ultricies nec, pellentesque eu, pretium quis, sem.</p>
-                                        </div>
+                                        <?php } } ?>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row m0">
+                                <div class="col s12">
+                                    <?php echo (!empty($pagelink))?$pagelink: '' ?>
+                                </div>
+                        </div>
+
                         </div>
                     </div>
                 </div>
@@ -89,6 +81,14 @@
         <!-- data table -->
         <script>
             <?php $this->load->view('includes/message'); ?>
+
+            $(document).ready(function(){
+                $('#short').on('change',function(event) {
+                   var lim = $(this).val();
+                   window.location.replace("<?php echo base_url('vendor/reviews/') ?>"+lim);
+
+                });
+            });
         </script>
 
 </body>

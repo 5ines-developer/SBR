@@ -17,9 +17,9 @@
                             <li><a href="#">REAL WEDDING</a></li>
                             <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
                             <li><a href="<?php echo base_url() ?>blog">BLOG</a></li>
-                            <?php  if ($this->session->userdata('shvid') !='') { ?>
+                            <?php  if ($this->session->userdata('shvid') !='') {  ?>
                                 <li class="br-lo vendor-img"><a href="<?php echo base_url('vendor/profile') ?>" class="profle-img">
-                                    <img src="<?php echo base_url().profile() ?>" alt="">
+                                    <?php echo (!empty(profile()))?'<img src="'.base_url().profile().'">':'<i class="material-icons dp48">person_pin</i>'; ?>
                                     </a></li>
                                 <li class="br-lo"><a href="<?php echo base_url('vendor/logout') ?>">Logout</a></li>
                             <?php }else if ($this->session->userdata('shdid') !='') { ?>

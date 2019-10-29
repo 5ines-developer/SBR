@@ -196,7 +196,7 @@ class Vendors extends CI_Controller {
   {
         $name       =   $this->input->post('e_name');
         $email      =   $this->input->post('e_email');
-        $mobile      =   $this->input->post('e_mobile');
+        $mobile     =   $this->input->post('e_mobile');
         $fnDate     =   $this->input->post('fn_date');
         $guestNo    =   $this->input->post('guest_no');
         $rooms      =   $this->input->post('rooms');

@@ -11,6 +11,7 @@ class Vendor_detail extends CI_Controller {
 		$this->load->model('m_vendorDetail');
 		$this->load->library('form_validation');
 		$this->load->library('bcrypt');
+        $this->load->library('pagination');
 		$this->id = $this->session->userdata('shvid');
 		$this->uniq = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('uniq');
 	}
@@ -391,6 +392,72 @@ public function offer($output = null)
         }else{
             $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
             redirect('vendor/profile','refresh'); // if you are redirect to list of the data add controller name here
+        }
+    }
+
+
+    public function reviews($limit='',$page='')
+    {
+
+        // $limit = $this->input->get('limit');
+        if (!empty($limit)) {
+            $li = $limit;
+        }else{
+            $li = '10';
+        }
+        $data['title']  = 'Vendor Review | Shaadibaraati';
+
+            $rows = $this->m_vendorDetail->rowsCount($this->id,$li);
+            $data['result'] = $this->m_vendorDetail->reviewsGet($this->id,$li,$page);
+            $config['base_url'] = base_url().'vendor/reviews/'.$li;
+            $config['total_rows'] = (!empty($rows)? count($rows) : '0');
+            $config['per_page'] = $li;
+            $config['reuse_query_string'] = TRUE;
+            $config['num_links'] = 2;
+
+            $config['full_tag_open'] = '<div class="right"><ul class="pagination">';
+            $config['full_tag_close'] = '</ul></div>';
+
+            $config['num_tag_open']     = '<li ><span class="waves-effect">';
+            $config['num_tag_close']    = '</span></li>';
+
+            $config['cur_tag_open']     = '<li class="active"><a class="waves-effect">';
+            $config['cur_tag_close']    = '</a></li>';
+
+            $config['next_tag_open']    = '<li class="next"> <a href="#" title=""> ';
+            $config['next_tag_close']   = '</a></li>';
+            $config['next_link']        = '<i class="material-icons">chevron_right</i>';
+
+            $config['prev_tag_open']    = '<li class="prev"> <a href="#" title=""> ';
+            $config['prev_tag_close']   = '</a></li>';
+            $config['prev_link']        = '<i class="material-icons">chevron_left</i>';
+
+            $config['first_tag_open']   = '<li class=""><span class="">';
+            $config['first_tag_close']  = '</span></li>';
+            $config['first_link']        = FALSE;
+
+            $config['last_tag_open']    = '<li class=""><span class="">';
+            $config['last_tag_close']   = '</span></li>';
+            $config['last_link']        = FALSE;
+
+            $this->pagination->initialize($config);
+            $data['pagelink']   = $this->pagination->create_links();
+
+        
+        $this->load->view('vendor-auth/reviews',$data);
+    }
+
+    public function leads($id = null)
+    {
+
+        if (!empty($id)) {
+           $data['title'] = 'Leads | Shaadibaraati';
+           $data['result'] = $this->m_vendorDetail->enquiryGet($this->uniq,$id);
+           $this->load->view('vendor-auth/v_leads',$data);
+        }else{
+            $data['title'] = 'Leads | Shaadibaraati';
+            $data['result'] = $this->m_vendorDetail->enquiryGet($this->uniq);
+            $this->load->view('vendor-auth/vendor-leads',$data);
         }
     }
 

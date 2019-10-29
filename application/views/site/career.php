@@ -31,7 +31,8 @@
                       <div class="vender-detail">
                             <h4>Current Opening</h4>
                             <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+                            <p>There Are Jobs – Then there are careers. The chances to do kind of work that’s adds up to something meaningful. The opportunity to challenge yourself and learn new skills. The Stage to being surrounded by smart, ambitious, motivated people. That’s the kind of working environment you can expect from Shaadi Baraati. Sound appealing?
+Come Join us.</p>
                         </div>
                         </div>
                     </div>

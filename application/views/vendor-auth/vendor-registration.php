@@ -8,11 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-    <style>
-        .input-field .helper-text {
-            min-height: 0;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -29,7 +25,7 @@
                                 <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>Already have an Account ?</p>
-                                <a href="<?php echo base_url() ?>/vendor/login"><button class="vend-btn">Sign In</button></a>
+                                <a href="<?php echo base_url('vendor/login') ?>"><button class="vend-btn">Sign In</button></a>
                             </div>
                             
                         </div>
