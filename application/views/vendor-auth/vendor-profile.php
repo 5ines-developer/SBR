@@ -14,9 +14,11 @@ $this->load->model('m_vendorDetail');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/image-uploader.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <style>
-        .sub-reg.z-depth-1 {
-    margin: 15px 0 5px 21px;
-}
+        .sub-reg.z-depth-1 {margin: 15px 0 5px 21px; } 
+        #emailmodal {width: 35%; } 
+        #phonemodal {width: 35%; } 
+
+
     </style>
 </head>
 
@@ -26,16 +28,20 @@ $this->load->model('m_vendorDetail');
         <?php $this->load->view('includes/header.php'); ?>
         <!-- end header -->
         <?php if (!empty($vendor)) {
-           foreach ($vendor as $key => $value) { ?>
+           foreach ($vendor as $key => $value) {?>
           
          <section class="sec">
             <div class="container-fluide">
                 <div class="row">
 
-                    <div class=" col l12 m12 s12 pend-box">
+                    <?php if ($value->is_active == '3') { ?>
+                       <div class=" col l12 m12 s12 pend-box">
                         <span class="white-text"><b>Note:Your Profile is under verification process, admin approval is pending.</b></span>
                         
                     </div>
+                    <?php } ?>
+
+                    
 
                     
 
@@ -56,14 +62,16 @@ $this->load->model('m_vendorDetail');
                                     </div>
                                     <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="email" type="email" class="validate" readonly="" value="<?php echo (!empty($value->email))?$value->email:''; ?>">
+                                            <input id="email" type="email" class="validate"  @change="emailCheck" v-model="email">
                                             <label for="email">Email</label>
+                                            <span class="helper-text red-text" >{{ emailError }}</span>
                                         </div>
                                     </div>
                                     <div class="col l6 m5 s12">
                                         <div class="input-field">
-                                            <input id="phone" type="text" class="validate" readonly="" value="<?php echo (!empty($value->phone))?$value->phone:''; ?>">
+                                            <input id="phone" type="text" class="validate" @change="phoneCheck" v-model="phone">
                                             <label for="phone">Phone No</label>
+                                            <span class="helper-text red-text" >{{ phoneError }}</span>
                                         </div>
                                     </div>
                                     <div class="col l6 m5 s12">
@@ -372,6 +380,36 @@ $this->load->model('m_vendorDetail');
             </div>
         </section>
         <?php  } } ?>
+
+
+          <div id="emailmodal" class="modal">
+            <div class="modal-content">
+              <h4>Verify Email</h4>
+              <p>Please enter the OTP which has been sent to your mail</p>
+               <div class="col l7 m3 s12">
+                    <div class="input-field ">
+                        <input type="text" id="otp" name="otp" class="validate" @change="emailOtp" v-model="eotp" >
+                        <label for="otp">OTP</label>
+                         <span class="helper-text red-text" >{{ eotpError }}</span>
+                    </div>
+               </div>
+            </div>
+          </div>
+
+          <div id="phonemodal" class="modal">
+            <div class="modal-content">
+              <h4>Verify Phone</h4>
+              <p>Please enter the OTP which has been sent to your Phone</p>
+               <div class="col l7 m3 s12">
+                    <div class="input-field ">
+                        <input type="text" id="potp" name="potp" class="validate" @change="phoneOtp" v-model="potp" >
+                        <label for="potp">OTP</label>
+                         <span class="helper-text red-text" >{{ potpError }}</span>
+                    </div>
+               </div>
+            </div>
+          </div>
+
     </div>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
@@ -507,11 +545,16 @@ $this->load->model('m_vendorDetail');
                 aboutError:'',
                 vcategory:'',
                 vlink:'',
-                file1:''
-                
-
-
-                
+                file1:'',
+                email:'',
+                emailError:'',
+                eotp:'',
+                emailOtp:'',
+                phoneError :'',
+                potp :'',
+                phone :'',
+                eotpError:'',
+                potpError:'',
             },
 
             methods: {
@@ -639,7 +682,113 @@ $this->load->model('m_vendorDetail');
                             this.errormsg = error.response.data.error;
                         }
                       })
+                }, // email check on database
+                emailCheck(){
+
+                        this.emailError = '';
+                        const formData = new FormData();
+                        formData.append('email', this.email);
+                        axios.post('<?php echo base_url() ?>vendor_detail/emailcheck', formData)
+                      .then(response => {
+                        if(response.data == '1'){
+                            this.emailError = 'This email id is already exist!';
+                        }else if(response.data == '2'){
+                            this.emailError = 'This email id is already exist with shaadibaraati user!';
+                        }else if(response.data == '3'){
+                            this.emailError = 'Something went wrong, Try again Later!';
+                        }else{
+                                var Modalelem = document.querySelector('#emailmodal');
+                                var instance = M.Modal.init(Modalelem,{ dismissible: false
+
+                                });
+                                instance.open();
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
                 },
+                 emailOtp(){
+
+                        this.eotpError = '';
+                        const formData = new FormData();
+                        formData.append('eotp', this.eotp);
+                        formData.append('email', this.email);
+                        axios.post('<?php echo base_url() ?>vendor_detail/eotpVerify', formData)
+                      .then(response => {
+                        if(response.data == '1'){
+                            this.potpError = 'Invalid OTP, Please try again later!';
+                        }else{
+                                this.phone = response.data;
+                                var Modalelem = document.querySelector('#emailmodal');
+                                var instance = M.Modal.init(Modalelem,{ dismissible: true
+
+                                });
+                                instance.close();
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+                phoneCheck(){
+
+                        this.phoneError = '';
+                        const formData = new FormData();
+                        formData.append('phone', this.phone);
+                        axios.post('<?php echo base_url() ?>vendor_detail/phone_check', formData)
+                      .then(response => {
+                        if(response.data == '1'){
+                            this.phoneError = 'This Phone number is already exist!';
+                        }else if(response.data == '2'){
+                            this.phoneError = 'This Phone number is already exist with shaadibaraati user!';
+                        }else if(response.data == '3'){
+                            this.phoneError = 'Something went wrong, Try again Later!';
+                        }else{
+                                var Modalelem = document.querySelector('#phonemodal');
+                                var instance = M.Modal.init(Modalelem,{ dismissible: false
+
+                                });
+                                instance.open();
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+                phoneOtp (){
+                    this.phoneError = '';
+                        const formData = new FormData();
+                        formData.append('phone', this.phone);
+                        formData.append('potp', this.potp);
+                        axios.post('<?php echo base_url() ?>vendor_detail/potpVerify', formData)
+                      .then(response => {
+                            if(response.data == '1'){
+                                this.eotpError = 'Invalid OTP, Please try again later!';
+                            }else{
+                                    this.email = response.data;
+                                    var Modalelem = document.querySelector('#phonemodal');
+                                    var instance = M.Modal.init(Modalelem,{ dismissible: true
+
+                                    });
+                                    instance.close();
+                            }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+
+
+                
 
 
 

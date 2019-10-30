@@ -9,7 +9,7 @@ class M_vendorDetail extends CI_Model {
     public function getVendors($uniqid='')
     {
 
-        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.price_for,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
+        $this->db->select('v.id,v.is_active,v.name,v.phone,v.email,v.price,v.price_for,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->group_start();
         	$this->db->where('v.is_active', '3');
         	$this->db->or_where('v.is_active', '1');
@@ -25,6 +25,60 @@ class M_vendorDetail extends CI_Model {
             return false;
         }
     }
+
+        //vue js phone check exist or not
+    public function phone_check($phone='')
+    {
+        $this->db->where('phone', $phone);
+        $result = $this->db->get('vendor');
+           if($result->num_rows() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function phone_user($email = null)
+    {
+    $this->db->where('su_phone', $email);
+    $result = $this->db->get('user');
+       if($result->num_rows() > 0){
+        return 2;
+    }else{
+        return false;
+    }
+    }
+
+
+       //vue js phone check exist or not
+       public function email_check($email='')
+       {
+           $this->db->where('email', $email);
+           $result = $this->db->get('vendor');
+              if($result->num_rows() > 0){
+               return true;
+           }else{
+               return false;
+           }
+       }
+
+
+       public function email_user($email = null)
+       {
+        $this->db->where('su_email', $email);
+        $result = $this->db->get('user');
+           if($result->num_rows() > 0){
+            return 2;
+        }else{
+            return false;
+        }
+       }
+
+
+       public function addOtp($email='',$otp='')
+       {
+           return $this->db->where('email', $email)->update('vendor', array('reference_id' => $otp));
+       }
 
     /**
     * Vendors -> add new information service 

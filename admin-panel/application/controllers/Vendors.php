@@ -281,6 +281,14 @@ class Vendors extends CI_Controller {
         $files = $_FILES;
         $id = $this->input->post('id');
         $filesCount = count($_FILES['images']['name']);
+
+        if ($filesCount > 30) {
+            $this->session->set_flashdata('error', 'Maximum you can add 30 files!');
+            redirect('vendors/edit/'.$id);
+        }
+
+
+
         if (!empty($filesCount)) {
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['images']['name']     = $files['images']['name'][$i];

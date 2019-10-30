@@ -14,6 +14,7 @@ class Vendor_detail extends CI_Controller {
         $this->load->library('pagination');
 		$this->id = $this->session->userdata('shvid');
 		$this->uniq = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('uniq');
+        $this->email = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('email');
 	}
 
 	public function index()
@@ -36,6 +37,162 @@ class Vendor_detail extends CI_Controller {
         $data['vendor'] = $output;
         $this->load->view('vendor-auth/vendor-profile',$data);
 	}
+
+
+    
+    /**
+     * vendor registration-> email check exist
+     * url : register
+    **/
+    public function emailcheck($value='')
+    {
+
+        $email = $this->input->post('email');
+        $output = $this->m_vendorDetail->email_check($email);
+        if (empty($output)) {
+            $result = $this->m_vendorDetail->email_user($email);
+            $output = $result;
+        }
+
+
+        if (empty($output)) {
+            $otp = random_string('numeric','6');
+           if ($this->m_vendorDetail->addOtp($this->email,$otp)) {
+                if($this->otp_email($this->email,$otp))
+                {
+                   $output = '';
+                }else{
+                    $output = 3;
+                }
+            } else{
+                $output = 3;
+            }
+        }
+
+        echo $output;
+
+    }
+
+    /**
+     * vendor profile update-> email otp
+    **/
+    public function otp_email($email='',$otp='')
+    {
+        $data['otp'] = $otp;
+        $this->load->config('email');
+        $this->load->library('email');
+        $from = $this->config->item('smtp_user');
+        $msg = $this->load->view('email/v_otpVerify', $data, true);
+        $this->email->set_newline("\r\n");
+        $this->email->from($from , 'ShaadiBaraati');
+        $this->email->to($email);
+        $this->email->subject('Verification Code'); 
+        $this->email->message($msg);
+        if($this->email->send())  
+        {
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    public function eotpVerify($value='')
+    {
+        $email = $this->input->post('email');
+        $otp = $this->input->post('otp');
+        $this->db->where('email', $this->email)->update('vendor',array('email' => $email,'reference_id'=>$otp));
+        if ($this->db->affected_rows() > 0) {
+            echo $email;
+        }else{
+            echo false;
+        }
+    }
+
+    /**
+     * user registration-> mobile number check exist
+     * url : register
+    **/
+    public function phone_check($value='')
+    {
+        $phone = $this->input->post('phone');
+        $output = $this->m_vendorDetail->phone_check($phone);
+        if (empty($output)) {
+            $output = $this->m_vendorDetail->phone_user($phone);
+        }
+
+        if (empty($output)) {
+            $otp = random_string('numeric','6');
+           if ($this->m_vendorDetail->addOtp($this->email,$otp)) {
+                if($this->otp_sms($otp))
+                {
+                   $output = '';
+                }else{
+                    $output = 3;
+                }
+            } else{
+                $output = 3;
+            }
+        }
+
+        echo $output;
+    }
+
+    public function otp_sms($otp='')
+    {
+        $phone = $this->db->where('id',$this->session->userdata('shvid'))->get('vendor')->row('phone');
+
+            $curl = curl_init();
+            $post_fields = array();
+            $post_fields["method"] = "sendMessage";
+            $post_fields["send_to"] = '91'.$phone.'';
+            $post_fields["msg"]  = 'Dear Vendor
+
+Your OTP is '.$otp.' . Use this OTP to update Mobile number/Email Id.
+
+With Love
+Shaadibaraati.com
+1800 4199 456';
+
+                
+            $post_fields["msg_type"] = "TEXT";
+            $post_fields["userid"] = "2000187670";
+            $post_fields["password"] = "Sidhu@9787";
+            $post_fields["auth_scheme"] = "PLAIN";
+            $post_fields["format"] = "JSON";
+
+            curl_setopt_array($curl, array(CURLOPT_URL => "http://enterprise.smsgupshup.com/GatewayAPI/rest",CURLOPT_RETURNTRANSFER => true,CURLOPT_ENCODING => "",CURLOPT_MAXREDIRS => 10,CURLOPT_TIMEOUT => 30,CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,CURLOPT_CUSTOMREQUEST => "POST",CURLOPT_POSTFIELDS => $post_fields));
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+            if ($err) {
+               echo "cURL Error #:" . $err;
+               return false;
+            } 
+            else 
+            {
+                return true;
+              echo $response; exit;
+            }
+    }
+
+    public function potpVerify($value='')
+    {
+        $phone = $this->input->post('phone');
+        $otp = $this->input->post('otp');
+        $this->db->where('id', $this->id)->update('vendor',array('phone' => $phone,'reference_id'=>$otp));
+        if ($this->db->affected_rows() > 0) {
+            echo $phone;
+        }else{
+            echo false;
+        }
+    }
+
+
+
+
 
 
 	public function changePassword($var = null)
