@@ -32,6 +32,8 @@ class Vendors extends CI_Controller {
     **/
 	public function insert_vendors($value='')
 	{
+        
+        $vid = $this->input->post('vid');
 
         $this->load->library('upload');
         $this->load->library('image_lib');
@@ -40,6 +42,7 @@ class Vendors extends CI_Controller {
         if (file_exists($_FILES['vimage']['tmp_name'])) {
             $config['upload_path'] = '../vendors-profile/';
             $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
+            $config['max_size'] = '2048';
             $config['max_width'] = 0;
             $config['encrypt_name'] = true;
             $this->load->library('upload');
@@ -52,7 +55,13 @@ class Vendors extends CI_Controller {
                 $error = array('error' => $this->upload->display_errors());
                 // print_r($error);exit();
                 $this->session->set_flashdata('error', $this->upload->display_errors());
-                redirect('vendors/add');
+
+                if (!empty($vid)) {
+                    redirect('vendors/edit'.$vid);
+                }else{
+                    redirect('vendors/add');
+                }
+                
             } else {
                 // echo "ok";exit();
                 $upload_data = $this->upload->data();
@@ -133,10 +142,14 @@ class Vendors extends CI_Controller {
         if(!empty($output))
 		{
 			$this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
-			redirect('vendors/edit/'.$output,'refresh');
+			redirect('vendors/edit/'.$vid,'refresh');
 		}else{
 			$this->session->set_flashdata('error', 'Something went wrong please try again!');
-			redirect('vendors/add','refresh'); 
+			if (!empty($vid)) {
+                redirect('vendors/edit'.$vid);
+            }else{
+                redirect('vendors/add');
+            }
 		}
 	}
 
@@ -301,6 +314,7 @@ class Vendors extends CI_Controller {
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_width']     = 0;
             $config['encrypt_name']  = TRUE;
+            $config['max_size'] = '2048';
             
             $this->load->library('upload');
             $this->upload->initialize($config);
@@ -545,10 +559,11 @@ class Vendors extends CI_Controller {
         $id = $this->input->post('id');
 
                 $files = $_FILES;
-                    $config['upload_path'] = '../offer-image/';
-                    $config['allowed_types'] = 'jpg|png|jpeg|gif';
-                    $config['max_width'] = 0;
-                    $config['encrypt_name'] = true;
+                    $config['upload_path']      = '../offer-image/';
+                    $config['allowed_types']    = 'jpg|png|jpeg|gif';
+                    $config['max_width']        = 0;
+                    $config['max_size']         = '2048';
+                    $config['encrypt_name']     = true;
                     $this->load->library('upload');
                     $this->upload->initialize($config);
                     if (!is_dir($config['upload_path'])) {

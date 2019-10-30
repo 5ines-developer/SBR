@@ -8,17 +8,17 @@
             <i class="fas fa-bars black-text"></i>
             </a>
             <ul class="right hide-on-med-and-down">
-               <li><i class="far fa-flag font-col dropdown-trigger hide-ref2" data-target='dropdown4'></i><i class="fas fa-circle yellow-text point"></i></li>
+               <!-- <li><i class="far fa-flag font-col dropdown-trigger hide-ref2" data-target='dropdown4'></i><i class="fas fa-circle yellow-text point"></i></li>
                <ul id='dropdown4' class='dropdown-content'>
                   <li ><a href="#!">One</a></li>
                   <li><a href="#!">Two</a></li>
-               </ul>
-               <li>
+               </ul> -->
+               <!-- <li>
                   <i class="far fa-bell font-col dropdown-trigger hide-ref" data-target='dropdown3'></i><i class="fas fa-circle red-text point1"></i>
                </li>
                <ul id='dropdown3' class='dropdown-content'>
                   <li><a href="#!" class="black-text">test</a></li>
-               </ul>
+               </ul> -->
                <li class="dropdown-trigger hide-ref1" data-target='dropdown2'>
                   <img src="<?php echo base_url()?>assets/img/user.png" class="responsive-img droup-img "  alt="">
                   <i class="fas fa-caret-down font-col1" ></i>

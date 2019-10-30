@@ -272,7 +272,7 @@ $this->load->model('m_vendors');
                                                 </div>
                                                 <span class="helper-text"><b>Note</b>: Please select only image file
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
-                                                        size:</span> 512kb <span class="red-text">*</span></span>
+                                                        size:</span> 2MB <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                         <div class="row m0">
@@ -288,8 +288,9 @@ $this->load->model('m_vendors');
                                                 <?php ?>
                                         </div>
                                         <input type="hidden" name="vendor_id" value="<?php echo random_string('alnum',10) ?>">
-                                        <input name="fimagecheck" class="fimagecheck" type="hidden" value="">
-                                        <input name="vimage" class="ipimg" type="hidden" value="">
+                                        <input name="vid"  type="hidden" value="<?php echo $this->uri->segment(3)
+                                         ?>">
+                                        
                                         <div class="col s12 center mtb20">
                                             <button class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result" type="submit">Submit
                                                 <i class="fas fa-paper-plane right"></i>
@@ -418,7 +419,7 @@ $this->load->model('m_vendors');
                                                 <div class="input-images"></div>
                                                 <span class="helper-text" data-error="wrong" data-success="right"><b>Note</b>: Please select only image file (eg:
                                                     .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
-                                                        size:</span> 512kb <span class="red-text">*</span></span>
+                                                        size:</span> 2MB <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
@@ -597,7 +598,7 @@ $this->load->model('m_vendors');
                                                 </div>
                                                 <span class="helper-text"><b>Note</b>: Please select only image file
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
-                                                        size:</span> 512kb <span class="red-text">*</span></span>
+                                                        size:</span> 2MB <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                         <div class="col s12">
