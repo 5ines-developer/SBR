@@ -144,6 +144,16 @@ $route['vendor-enquiry']			=	'vendorenquiry/index';
 $route['vendor-package']			=	'vendorenquiry/packageGet'; 
 $route['vendor-package/view/(:any)']=	'vendorenquiry/viewPackage/$1'; 
 
+//employee
+$route['employees']			        =	'Adminusers/index'; 
+$route['employees/add']			    =	'Adminusers/add'; 
+$route['employees/insert']			=	'Adminusers/insert';
+$route['employees/edit/(:any)']		=	'Adminusers/edit/$1';
+$route['employees/update']			=	'Adminusers/update';
+
+
+
+
 
 
 

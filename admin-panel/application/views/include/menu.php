@@ -46,8 +46,12 @@
             </ul>
       </li>
 
-      <li class="<?php echo $this->uri->segment(1) == 'cache'?'active':'' ?>"><a href="<?php echo base_url('cache') ?>"><i class="far fa-check-circle li-icon"></i>Cache</a></li>
+      <!-- <li class="<?php echo $this->uri->segment(1) == 'cache'?'active':'' ?>"><a href="<?php echo base_url('cache') ?>"><i class="far fa-check-circle li-icon"></i>Cache</a></li> -->
+
+      <li class="<?php echo $this->uri->segment(1) == 'employees'?'active':'' ?>"><a href="<?php echo base_url('employees') ?>"><i class="fas fa-users-cog li-icon"></i>Employees</a></li>
         
+      
+
       </ul>
    </div>
 </div>
