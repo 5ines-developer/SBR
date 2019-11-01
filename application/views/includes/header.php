@@ -2,8 +2,19 @@
 <div class="logo-brand">
 <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive" alt=""></a>
 </div>
+
 <div class="navbar-fixed">
+
+
         <nav class="z-depth-1 navbar-fixed">
+                <div class="top-bars white">
+                <div class="right hide-on-med-and-down header-ul ">
+                    
+                <a href="<?php echo base_url('vendor/login') ?>"> ARE YOU A VENDOR ? </a>
+                </div>
+                
+            </div>
+
             <div class="nav-wrapper white">
                 <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive brand-logo" alt=""></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i

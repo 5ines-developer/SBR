@@ -179,5 +179,3 @@ $route['vendor/leads/(:any)'] 	            = 'Vendor_detail/leads/$1';
 
 
 
-
-

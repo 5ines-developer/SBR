@@ -65,6 +65,9 @@ $route['update-password']   	= 'authentication/update_pass'; 		//forgot password
 //change password
 $route['change-password']   	= 'account/index'; 						//forgot password email click
 $route['password/change']   	= 'account/password_validation'; 		//forgot password email click
+$route['cache']   	= 'account/cachedetail'; 		//forgot password email click
+
+
 //account settings
 $route['profile']   			= 'account/accntsttngs'; 	
 $route['profile/update']   		= 'account/updateacnt'; 

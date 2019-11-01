@@ -322,6 +322,13 @@ class Home extends CI_Controller {
 		
 	}
 
+    
+    public function delete_file_cache() 
+    { 
+        unlink(base_url().'application/cache');
+        redirect(base_url().'admin-panel','refresh');
+    }
+
 }
 
 /* End of file Controllername.php */

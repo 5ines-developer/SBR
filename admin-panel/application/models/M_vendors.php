@@ -8,9 +8,15 @@ class M_vendors extends CI_Model {
      * get Vendors details from database
      * url : vendors/manage
     **/
-	public function get_vendors($value='')
+	public function get_vendors($id='',$filter)
 	{
-		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,');
+		if (!empty($filter) && $filter =='free') {
+			$this->db->where('package', 'Free Listing');
+		}elseif (!empty($filter)) {
+			$this->db->where('package !=', 'Free Listing');
+		}
+
+		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,ven.package');
 		$this->db->from('vendor ven');
 		$this->db->join('city cty', 'cty.id = ven.city', 'left');
 		$this->db->join('category cat', 'cat.id = ven.category', 'left');
@@ -88,17 +94,29 @@ class M_vendors extends CI_Model {
     **/
 	public function insert_vendor($insert)
 	{
-		$this->db->where('uniq', $insert['uniq']);
-		$query = $this->db->get('vendor')->row_array();
-		if ($query > 0) {
-			$this->db->where('uniq', $insert['uniq']);
-			 $this->db->update('vendor', $insert);
-			return  $query['id'];
+		$this->db->group_start();
+			$this->db->where('email', $insert['email']);
+			$this->db->or_where('phone', $insert['phone']);
+		$this->db->group_end();
+		$error = $this->db->get('vendor')->result();
+		if (!empty($error)) {
+			return 2;
 		}else{
-			$this->db->insert('vendor',$insert);
-			$insert_id = $this->db->insert_id();
-	  		return  $insert_id;
+			$this->db->where('uniq', $insert['uniq']);
+			$query = $this->db->get('vendor')->row_array();
+			if ($query > 0) {
+				$this->db->where('uniq', $insert['uniq']);
+				 $this->db->update('vendor', $insert);
+				return  $query['id'];
+			}else{
+				$this->db->insert('vendor',$insert);
+				$insert_id = $this->db->insert_id();
+		  		return  $insert_id;
+			}
+
 		}
+		
+			
     }
 
     /**

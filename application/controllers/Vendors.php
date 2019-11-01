@@ -120,7 +120,7 @@ class Vendors extends CI_Controller {
     public function review_submit($value='')
     {
 
-      $proffesional = $this->input->post('rev_proffesional');
+      $proffesional   = $this->input->post('rev_proffesional');
         $quality      = $this->input->post('rev_quality');
         $service      = $this->input->post('rev_service');
         $money        = $this->input->post('rev_money');

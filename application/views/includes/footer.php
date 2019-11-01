@@ -210,7 +210,7 @@
                            $city = $this->m_home->getCity();
                             if (!empty($city)) {
                                 foreach ($city as $key1 => $value1) { ?>
-                                <li><a class="hov-a" href="<?php echo base_url('vendors/').$value1->city?>"><?php echo $value1->city ?></a></li>
+                                <li><a class="hov-a" href="<?php echo base_url('vendors/').str_replace(" ","-",strtolower($value1->city)) ?>"><?php echo $value1->city ?></a></li>
                                <?php } } ?>
                         </ul>
                     </div>

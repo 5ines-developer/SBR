@@ -109,4 +109,14 @@ class Account extends CI_Controller {
     }
 
 
+    public function cachedetail()
+    {
+        $data['title'] = 'Cache - Smart Link';
+        $this->load->view('account/cache', $data, FALSE);
+    }
+
+
+
+
+
 }

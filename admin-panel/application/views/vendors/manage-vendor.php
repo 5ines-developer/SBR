@@ -40,13 +40,22 @@
                   <div class="main-bar">
 
                      <div class="row">
-                                <div class="col 12 m6">
-                                    <p class="h5-para black-text m0">Vendors</p>
-                                </div>
-                                <div class="col 12 m6 right-align">
-                                    <a href="<?php echo base_url('vendors/add')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable "><i class="fas fa-plus left"></i> ADD Vendors</a>
-                                </div>
+                        <div class="col l8 m6">
+                            <div class="row">
+                              <div class="col l4 m6">
+                                <p class="h5-para black-text m0">Vendors</p>
+                              </div>
+                                <a href="<?php echo base_url('vendors/manage')  ?>" class="waves-effect waves-light btn green  white-text hoverable ">All</a>
+                                <a href="<?php echo base_url('vendors/manage?f=paid')  ?>" class="waves-effect waves-light btn orange white-text hoverable ">Paid</a>
+                                <a href="<?php echo base_url('vendors/manage?f=free')  ?>" class="waves-effect waves-light btn blue  white-text hoverable ">Free</a>
+                              
+                              
                             </div>
+                         </div>
+                        <div class="col l4 m6 right-align">
+                          <a href="<?php echo base_url('vendors/add')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable "><i class="fas fa-plus left"></i> ADD Vendors</a>
+                        </div>
+                      </div>
                      
                      <!-- end dash -->
                      
@@ -59,6 +68,7 @@
                               <div class="">
                                  <p class="h5-para-p2">Manage Vendors</p>
                                 <table id="dynamic" class="striped">
+
                                     <thead>
                                        <tr class="tt">
                                           <th id="a" class="h5-para-p2" width="130px">Name</th>
@@ -66,6 +76,7 @@
                                           <th id="c" class="h5-para-p2" width="120px">Phone</th>
                                           <th id="c" class="h5-para-p2" width="120px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Package</th>
                                           <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
                                           <th id="f" class="h5-para-p2" width="100px">Status</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
@@ -87,6 +98,7 @@
                                             <td ><a href="tel:<?php echo (!empty($value->phone))?$value->phone:'---'  ?>" ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
                                             <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->package))?$value->package:'---'  ?></td>
                                             <td><?php echo (!empty($value->regdate))?date("M d, Y ", strtotime($value->regdate)):'---'; ?></td>
 
                                             <td class="status"> 

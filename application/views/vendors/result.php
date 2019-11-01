@@ -102,7 +102,8 @@ $this->load->model('m_vendors');
                                     <div class="col s12 m6 ">
                                         <select name="ct" class="select-search" id="sel-cato">
                                             <option value="">All Categories</option>
-                                            <?php if (!empty(vendor_category())) {
+                                            <?php
+                                            if (!empty(vendor_category())) {
                                                         foreach (vendor_category() as $categorys => $categories) { ?>
                                             <option <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?> value="<?php echo $categories->category ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                             <?php   } } ?>
@@ -112,7 +113,7 @@ $this->load->model('m_vendors');
                                         <select name="q" id="sel-city">
                                             <option value="">All Cities</option>
                                             <?php if (!empty(cities())) {foreach (cities() as $citys => $cities) { ?>
-                                            <option <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
+                                            <option <?php echo (strtolower(str_replace("-"," ",$this->uri->segment(2))) == strtolower($cities->city))?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                             <?php   } } ?>
                                         </select>
                                     </div>
@@ -122,7 +123,8 @@ $this->load->model('m_vendors');
                 </div>
             </div>
         </section>
-        
+
+
 
 <?php if (empty($vendors)) { ?>
             <section class="no-result">

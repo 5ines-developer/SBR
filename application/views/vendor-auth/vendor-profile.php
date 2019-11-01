@@ -63,14 +63,14 @@ $this->load->model('m_vendorDetail');
                                     <div class="col l6 m5 s12">
                                         <div class="input-field">
                                             <input id="email" type="email" class="validate"  @change="emailCheck" v-model="email">
-                                            <label for="email">Email</label>
+                                            <label :class="{ active: active }" for="email">Email</label>
                                             <span class="helper-text red-text" >{{ emailError }}</span>
                                         </div>
                                     </div>
                                     <div class="col l6 m5 s12">
                                         <div class="input-field">
                                             <input id="phone" type="text" class="validate" @change="phoneCheck" v-model="phone">
-                                            <label for="phone">Phone No</label>
+                                            <label :class="{ active: active }" for="phone">Phone No</label>
                                             <span class="helper-text red-text" >{{ phoneError }}</span>
                                         </div>
                                     </div>
@@ -823,6 +823,34 @@ $this->load->model('m_vendorDetail');
                         }
                       })
                 },
+                getPhone(){
+                        axios.post('<?php echo base_url() ?>vendor_detail/getPhone')
+                      .then(response => {
+                        if(response.data != ''){
+                            this.phone    = response.data;
+                            this.active = true;
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+                getEmail(){
+                        axios.post('<?php echo base_url() ?>vendor_detail/getEmail')
+                      .then(response => {
+                        if(response.data != ''){
+                            this.email    = response.data;
+                            this.active = true;
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
                 getAddress(){
                         axios.post('<?php echo base_url() ?>vendor_detail/getAddress')
                       .then(response => {
@@ -843,6 +871,8 @@ $this->load->model('m_vendorDetail');
             this.getPrice();
             this.getPer();
             this.getAddress();
+            this.getEmail();
+            this.getPhone();
         },
         });
     </script>

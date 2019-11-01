@@ -46,7 +46,8 @@ html {
 
 .brand-logo {
     width: 318px;
-    margin-top: 3px;
+    /* margin-top: 3px; */
+    margin-top: -25px;
 }
 
 .lec-search {
@@ -2213,6 +2214,7 @@ r-crd-category {
 
 .tollfree a {
     height: 64px;
+    height: 48px;
 }
 
 #vendordropdown {
@@ -3446,7 +3448,8 @@ border-radius: 4px;
 }
 
 .navbar-fixed {
-    height: 75px;
+    /* height: 75px; */
+    height: 50px;
 }
 
 nav,
@@ -3454,6 +3457,7 @@ nav .nav-wrapper i,
 nav a.sidenav-trigger,
 nav a.sidenav-trigger i {
     line-height: 75px;
+    line-height: 40px;
 }
 
 .similar-more {
@@ -4958,4 +4962,14 @@ nav a.sidenav-trigger i {
     text-align: left !important;
     position: absolute;
 }
-    
+.top-bars {
+    min-height: 35px;
+    line-height: 33px;
+    height: 30px;
+}
+.top-bars a {
+    padding: 10px 10px;
+}
+.top-bars a:hover {
+    background-color: rgba(0,0,0,0.1);
+}

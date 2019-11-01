@@ -173,8 +173,9 @@ Shaadibaraati.com
             } 
             else 
             {
-                return true;
-              echo $response; exit;
+                
+              echo $response; 
+              return true;
             }
     }
 
@@ -260,6 +261,16 @@ Shaadibaraati.com
 		$output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('price');
 		echo $output;
 	}
+    public function getEmail($value='')
+    {
+        $output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('email');
+        echo $output;
+    }
+    public function getPhone($value='')
+    {
+        $output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('phone');
+        echo $output;
+    }
 
 	public function pricePer($value='')
 	{

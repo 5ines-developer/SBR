@@ -36,8 +36,8 @@ class Search extends CI_Controller {
 		}else{
 			$per_page = 16;
 			
-			$rows = $this->m_search->rowsCount(ucfirst($city),str_replace("-"," ",$category));
-			$data['vendors']    = $this->m_search->getSearch(ucfirst($city),str_replace("-"," ",$category),$per_page,$page);
+			$rows = $this->m_search->rowsCount(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category));
+			$data['vendors']    = $this->m_search->getSearch(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category),$per_page,$page);
 
 			$config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
 			$config['total_rows'] = (!empty($rows)? count($rows) : '0');

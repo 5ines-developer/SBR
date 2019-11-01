@@ -32,126 +32,137 @@ class Vendors extends CI_Controller {
     **/
 	public function insert_vendors($value='')
 	{
-        
         $vid = $this->input->post('vid');
-
-        $this->load->library('upload');
-        $this->load->library('image_lib');
-        $files = $_FILES;
-        $filesCount = count($_FILES['vimage']['name']);
-        if (file_exists($_FILES['vimage']['tmp_name'])) {
-            $config['upload_path'] = '../vendors-profile/';
-            $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
-            $config['max_size'] = '2048';
-            $config['max_width'] = 0;
-            $config['encrypt_name'] = true;
-            $this->load->library('upload');
-            $this->upload->initialize($config);
-            if (!is_dir($config['upload_path'])) {
-                mkdir($config['upload_path'], 0777, true);
-            }
-
-            if (!$this->upload->do_upload('vimage')) {
-                $error = array('error' => $this->upload->display_errors());
-                // print_r($error);exit();
-                $this->session->set_flashdata('error', $this->upload->display_errors());
-
-                if (!empty($vid)) {
-                    redirect('vendors/edit'.$vid);
-                }else{
-                    redirect('vendors/add');
-                }
-                
-            } else {
-                // echo "ok";exit();
-                $upload_data = $this->upload->data();
-                $config['image_library'] = 'gd2';
-                // $config['source_image'] = $upload_data['full_path'];
-                // $config['create_thumb'] = true;
-                // $config['maintain_ratio'] = true;
-                // $config['height'] = 250;
-
-                // $this->load->library('image_lib', $config);
-                // $this->image_lib->resize();
-
-                $file_name = $upload_data['file_name'];
-                $imgpath = 'vendors-profile/'.$file_name;
-
-                $config['image_library']    = 'gd2';
-                $config['source_image']     = $upload_data['full_path'];
-                $config['wm_type']          = 'overlay';
-                $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
-                $config['wm_x_transp']      = '4';
-                $config['wm_y_transp']      = '4';
-                $config['width']            = '50';
-                $config['height']           = '50';
-                $config['padding']          = '50';
-                $config['wm_opacity']       = '40';
-                $config['wm_vrt_alignment'] = 'middle';
-                $config['wm_hor_alignment'] = 'center';
-                $this->image_lib->initialize($config);
-                if (!$this->image_lib->watermark()) {
-                    $response['wm_errors'] = $this->image_lib->display_errors();
-                    $response['wm_status'] = 'error';
-                } else {
-                    $response['wm_status'] = 'success';
-                }
-            }
-        }
-
-       
-
-        $name 		= $this->input->post('name');
-        $email 		= $this->input->post('email');
-        $phone 		= $this->input->post('phone');
-        $price 		= $this->input->post('price');
-        $category 	= $this->input->post('category');
-        $city       = $this->input->post('city');
-        $edit       = $this->input->post('edit');
-        $uniq 		= $this->input->post('uniq');
-        $price_for 	= $this->input->post('price_for');
-
+        $email = $this->input->post('email');
+        $phone = $this->input->post('phone');
         
-        $insert =  array(
-        	'name' 			=>	$name , 
-        	'phone' 		=>	$phone , 
-        	'email' 		=>	$email , 
-        	'category' 		=>	$category , 
-        	'reference_id' 	=>	random_string('alnum','20') , 
-        	'is_active' 	=>	'1' ,
-        	'uniq'			=> 	$uniq,
-            'city'          =>  $city,
-            'price'			=> 	$price,
-            'price_for'     =>  $price_for,
-            'package'       =>  $this->input->post('package'),
-            'address'       =>  $this->input->post('address'),
-        );
-
-          if (!empty($imgpath)) {
-            $insert['profile_file'] =  $imgpath; 
-            $insert['img']          = $file_name;
-        }
-
-        if (!empty($edit)) {
-           $e = 'Updated';
-        }else{
-            $e = 'Added';
-        }
-
-        $output = $this->m_vendors->insert_vendor($insert);
-        if(!empty($output))
-		{
-			$this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
-			redirect('vendors/edit/'.$vid,'refresh');
-		}else{
-			$this->session->set_flashdata('error', 'Something went wrong please try again!');
-			if (!empty($vid)) {
-                redirect('vendors/edit'.$vid);
+        $this->db->where('email', $email); if (!empty($vid)) { $this->db->where('id !=', $vid); } $vemail = $this->db->get('vendor')->row('email');
+        if (!empty($vemail)) 
+        {
+            $this->session->set_flashdata('error', 'Email id already exist! , please try again with different one');
+            if (!empty($vid)) {
+                redirect('vendors/edit/'.$vid);
             }else{
                 redirect('vendors/add');
             }
-		}
-	}
+        }
+
+        $this->db->where('phone', $phone); if (!empty($vid)) { $this->db->where('id !=', $vid); } $vphone = $this->db->get('vendor')->row('phone');
+        if (!empty($vphone)) {
+            $this->session->set_flashdata('error', 'Phone number already exist! , please try again with different one');
+            if (!empty($vid)) {
+                redirect('vendors/edit/'.$vid);
+            }else{
+                redirect('vendors/add');
+            }
+        }
+
+        if (empty($vphone) && empty($vemail)) {
+                $this->load->library('upload');
+                $this->load->library('image_lib');
+                $files = $_FILES;
+                $filesCount = count($_FILES['vimage']['name']);
+                if (file_exists($_FILES['vimage']['tmp_name'])) {
+                    $config['upload_path'] = '../vendors-profile/';
+                    $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
+                    $config['max_size'] = '2048';
+                    $config['max_width'] = 0;
+                    $config['encrypt_name'] = true;
+                    $this->load->library('upload');
+                    $this->upload->initialize($config);
+                    if (!is_dir($config['upload_path'])) {
+                        mkdir($config['upload_path'], 0777, true);
+                    }
+
+                    if (!$this->upload->do_upload('vimage')) {
+                        $error = array('error' => $this->upload->display_errors());
+                        // print_r($error);exit();
+                        $this->session->set_flashdata('error', $this->upload->display_errors());
+
+                        if (!empty($vid)) {
+                            redirect('vendors/edit/'.$vid);
+                        }else{
+                            redirect('vendors/add');
+                        }
+                        
+                    } else {
+                        $upload_data = $this->upload->data();
+                        $config['image_library'] = 'gd2';
+                        $file_name = $upload_data['file_name'];
+                        $imgpath = 'vendors-profile/'.$file_name;
+                        $config['image_library']    = 'gd2';
+                        $config['source_image']     = $upload_data['full_path'];
+                        $config['wm_type']          = 'overlay';
+                        $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
+                        $config['wm_x_transp']      = '4';
+                        $config['wm_y_transp']      = '4';
+                        $config['width']            = '50';
+                        $config['height']           = '50';
+                        $config['padding']          = '50';
+                        $config['wm_opacity']       = '40';
+                        $config['wm_vrt_alignment'] = 'middle';
+                        $config['wm_hor_alignment'] = 'center';
+                        $this->image_lib->initialize($config);
+                        if (!$this->image_lib->watermark()) {
+                            $response['wm_errors'] = $this->image_lib->display_errors();
+                            $response['wm_status'] = 'error';
+                        } else {
+                            $response['wm_status'] = 'success';
+                        }
+                    }
+                }
+
+                $name       = $this->input->post('name');
+                $email      = $this->input->post('email');
+                $phone      = $this->input->post('phone');
+                $price      = $this->input->post('price');
+                $category   = $this->input->post('category');
+                $city       = $this->input->post('city');
+                $edit       = $this->input->post('edit');
+                $uniq       = $this->input->post('uniq');
+                $price_for  = $this->input->post('price_for');
+
+                        $insert =  array(
+                            'name'          =>  $name , 
+                            'phone'         =>  $phone , 
+                            'email'         =>  $email , 
+                            'category'      =>  $category , 
+                            'reference_id'  =>  random_string('alnum','20') , 
+                            'is_active'     =>  '1' ,
+                            'uniq'          =>  $uniq,
+                            'city'          =>  $city,
+                            'price'         =>  $price,
+                            'price_for'     =>  $price_for,
+                            'package'       =>  $this->input->post('package'),
+                            'address'       =>  $this->input->post('address'),
+                        );
+
+                        if (!empty($imgpath)) {
+                            $insert['profile_file'] =  $imgpath; 
+                            $insert['img']          = $file_name;
+                        }
+
+                        if (!empty($edit)) {
+                           $e = 'Updated';
+                        }else{
+                            $e = 'Added';
+                        }
+
+                        $output = $this->m_vendors->insert_vendor($insert);
+                        if(!empty($output))
+                        {
+                            $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
+                            redirect('vendors/edit/'.$output,'refresh');
+                        }else{
+                            $this->session->set_flashdata('error', 'Something went wrong please try again!');
+                            if (!empty($vid)) {
+                                redirect('vendors/edit/'.$vid);
+                            }else{
+                                redirect('vendors/add');
+                            }
+                        }
+        } 
+    }
 
 
     /**
@@ -161,7 +172,8 @@ class Vendors extends CI_Controller {
     **/
     public function manage_vendors($id='')
     {
-        $data['result']  = $this->m_vendors->get_vendors($id);
+        $filter = $this->input->get('f');
+        $data['result']  = $this->m_vendors->get_vendors($id,$filter);
         $data['title']   = 'Vendors - Shaadibaraati';
         $this->load->view('vendors/manage-vendor', $data, FALSE);
     }
