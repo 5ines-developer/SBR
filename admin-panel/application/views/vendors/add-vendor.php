@@ -52,16 +52,13 @@
 
                                         <div class="row m0">
                                             <div class="input-field col s6 l6">
-                                                <input type="text" id="name" name="name" class="validate" required
-                                                    value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
+                                                <input type="text" id="name" name="name" class="validate" required > 
                                                 <label for="name">Name <span class="red-text">*</span></label>
-                                                <p><span class="error"><?php echo form_error('name'); ?></span></p>
                                             </div>
                                             <div class="input-field col s6 l6">
                                                 <input type="text" id="email" name="email" class="validate" required
                                                     value="<?php echo (!empty($setting)?$setting['email']:'') ?>">
                                                 <label for="email">Email <span class="red-text">*</span></label>
-                                                <p><span class="error"><?php echo form_error('email'); ?></span></p>
                                             </div>
                                         </div>
                                         <div class="row m0">
@@ -69,17 +66,15 @@
                                                 <input type="text" id="phone" name="phone" class="validate" required
                                                     value="<?php echo (!empty($setting)?$setting['phone']:'') ?>">
                                                 <label for="phone">Phone No.<span class="red-text">*</span></label>
-                                                <p><span class="error"><?php echo form_error('phone'); ?></span></p>
                                             </div>
                                             <div class="input-field col s12 l6">
                                               <select name="package" required>
-                                                <option value="Wed Elite">Wed Elite</option>
-                                                <option value="Wed Leader">Wed Leader</option>
-                                                <option value="Wed Assisted">Wed Assisted</option>
-                                                <option value="Wed Gold">Wed Gold</option>
-                                                <option value="Wed Premium">Wed Premium</option>
-                                                <option value="Wed Featured">Wed Featured</option>
-                                                <option value="Free Listing">Free Listing</option>
+                                                <?php if (!empty($package)) {
+                                                    foreach ($package as $pack => $packg) { ?>
+                                                         <option value="<?php echo (!empty($packg))?$packg->id:''; ?>"><?php echo (!empty($title))?$packg->title:''; ?></option>
+                                                   <?php }
+                                                } ?>
+                                                
                                               </select>
                                               <label>Packages</label>
                                             </div>
@@ -122,6 +117,12 @@
                                                 <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                             </div>
 
+                                        </div>
+                                        <div class="row m0">
+                                            <div class="input-field col s12 l6">
+                                                <input type="text" id="discount" name="discount" class="validate" value="<?php echo (!empty($result->discount)?$result->discount:'') ?>">
+                                                <label for="price">Discount in %</label>
+                                            </div>
                                         </div>
 
                                       <div class="row m0">

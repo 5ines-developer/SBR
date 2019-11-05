@@ -9,6 +9,21 @@ class User extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_user');
+
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();
+        $acces = array();
+        $acces = explode (",", $accs->menu);
+        
+        if (in_array("1", $acces))
+        {
+            $this->access = true;
+
+        }else{
+            $this->access = null;
+        }
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+     
     }
 
     /**
@@ -18,9 +33,10 @@ class User extends CI_Controller {
     **/
 	public function index()
 	{
-		$data['title']  = 'Users - Shaadibaraati';
-		$data['result']  = $this->m_user->getusers();
-		$this->load->view('users/manage-users', $data, FALSE);
+        $data['title']  = 'Users - Shaadibaraati';
+        $data['result']  = $this->m_user->getusers();
+        $this->load->view('users/manage-users', $data, FALSE);
+        
 	}
 
 
@@ -32,6 +48,7 @@ class User extends CI_Controller {
     */
     public function delete_user($id='')
     {
+
         // send to model
         if($this->m_user->delete_user($id)){
             $this->session->set_flashdata('success', 'User Deleted Successfully');

@@ -9,6 +9,7 @@ class Account extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_account');
+        $this->id = $this->session->userdata('sha_id');
     }
 
     /**
@@ -45,8 +46,9 @@ class Account extends CI_Controller {
         } else {
             $crpassword = $this->input->post('crpassword');
             $password = $this->input->post('password');
+            $hash       = $this->bcrypt->hash_password($password);
             $admin = $this->session->userdata('sha_id');
-            if ($this->m_account->changepass($admin, $password, $crpassword)) {
+            if ($this->m_account->changepass($admin, $hash, $crpassword)) {
                 $this->session->set_flashdata('success', 'Password updated Successfully');
                 redirect('change-password', 'refresh');
             } else {
@@ -58,15 +60,15 @@ class Account extends CI_Controller {
 
     public function passwordcheck($password)
     {
-        $this->db->where('id', $this->session->userdata('sha_id'));
-        $this->db->where('password', $password);
-        $result = $this->db->get('admin');
-        if ($result->num_rows() > 0) {
+
+        $result = $this->db->where('id', $this->id)->get('admin')->row();
+        if ($this->bcrypt->check_password($password, $result->password)) {
             return true;
-        } else {
+        }else{
             $this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
             return false;
         }
+
     }
 
     /**

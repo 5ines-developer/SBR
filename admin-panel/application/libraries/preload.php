@@ -29,6 +29,10 @@ class preload
         return  $this->ci->m_preload->bypackage();
     }
 
+    public function access()
+    {
+        return  $this->ci->m_preload->getaccess();
+    }
 
 }
 

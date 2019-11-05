@@ -11,7 +11,6 @@ class M_account extends CI_Model {
 	{
 
 		$this->db->where('id', $admin);
-		$this->db->where('password', $cpass);
 		$query = $this->db->get('admin');
 		if($query->num_rows() > 0)
 		{

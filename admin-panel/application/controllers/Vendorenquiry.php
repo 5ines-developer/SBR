@@ -9,29 +9,56 @@ class Vendorenquiry extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_venquiry');
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();        
+        $this->acces = explode (",", $accs->menu);
     }
     
     //get vendor enquiry
     public function index()
     {
-        $data['title'] = 'Vendor Enquiry - shaadibaraati';
-        $data['result'] = $this->m_venquiry->vendor_enquiry();        
-        $this->load->view('vendors/vendor-enquiry', $data);
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("14", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
+            $data['title'] = 'Vendor Enquiry - shaadibaraati';
+            $data['result'] = $this->m_venquiry->vendor_enquiry();        
+            $this->load->view('vendors/vendor-enquiry', $data);
+        }
     }
 
     //buy package request
     public function packageGet($value='')
     {
-        $data['title'] = 'Vendor Packages - shaadibaraati';
-        $data['result'] = $this->m_venquiry->packageGet();
-        $this->load->view('vendors/package-request', $data);
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("7", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
+            $data['title'] = 'Vendor Packages - shaadibaraati';
+            $data['result'] = $this->m_venquiry->packageGet();
+            $this->load->view('vendors/package-request', $data);
+        }        
     }
 
     public function viewPackage($id='')
     {
-        $data['title'] = 'Vendor Packages - shaadibaraati';
-        $data['result'] = $this->m_venquiry->singlePackage($id);
-         $this->load->view('vendors/package-view', $data);
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("7", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
+            $data['title'] = 'Vendor Packages - shaadibaraati';
+            $data['result'] = $this->m_venquiry->singlePackage($id);
+            $this->load->view('vendors/package-view', $data);
+        }
     }
 
 }

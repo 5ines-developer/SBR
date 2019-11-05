@@ -35,8 +35,37 @@
                 <?php $this->load->view('include/menu.php'); ?>
               </div>
 
-                        <div class="col m12 s12 l9">
-                            <p class="h5-para black-text ">Edit admin user - <?php echo (!empty($result->name))?$result->name:''; ?></p>
+                        <div class="col m12 s12 l9 left-align">
+                          <?php $this->load->view('include/pre-loader'); ?>
+                          <div class="row m0">
+                            <div class="col 12 m6">
+                              <p class="h5-para black-text ">Edit admin user - <?php echo (!empty($result->name))?$result->name:''; ?></p>
+                            </div>
+                            <div class="col 12 m6 right-align">
+                            <?php
+                                if ($result->is_active == '1') { ?>
+                                  <a href=""
+                                    class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"
+                                id="unblock">Unblock</a>                              
+                                
+                                <?php }elseif ($result->is_active == '2') { ?>
+
+                                  <a href=""
+                                    class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"
+                                id="block">Block</a>
+                                
+                                <?php } ?>
+                              
+
+                              <a href=""class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"id="block" style="display: none">Block</a> 
+                              <a href=""class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"id="unblock" style="display: none">Unblock</a> 
+                              <input type="hidden" name="userid" id="userid" value="<?php echo $result->id ?>">
+                              </div>
+                            
+                          </div>
+
+                            
+
 
                             <div class="card">
                                 <div class="card-content">
@@ -192,6 +221,60 @@
             $('#manager_col').css('display','none');
           }
         })
+
+
+         $("#block").on('click', function(event) {
+            event.preventDefault();
+            var id = $("input[name='userid']").val();
+            loder(true);
+            $.ajax({
+                url: "<?php echo base_url();?>adminusers/block",
+                type: "get",
+                dataType: "html",
+                data: {
+                    'id': id,
+                    'status': '2'
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#unblock').css('display', ' inline-block ');
+                    $('#block').css('display', 'none');
+                    loder(false);
+                }
+            });
+        });
+
+
+         $("#unblock").on('click', function(event) {
+            event.preventDefault();
+            var id = $("input[name='userid']").val();
+            loder(true);
+            $.ajax({
+                url: "<?php echo base_url();?>adminusers/block",
+                type: "get",
+                dataType: "html",
+                data: {
+                    'id': id,
+                    'status': '1'
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#block').css('display', ' inline-block ');
+                    $('#unblock').css('display', 'none');
+                    loder(false);
+                }
+            });
+        });
+
+         //page loader
+        function loder(status) {
+            if (status == true) {
+                $('.preloader-verfy').css('display', 'block');
+            } else {
+                $('.preloader-verfy').css('display', 'none');
+            }
+        }
+
 
     });
     </script>

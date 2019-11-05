@@ -215,13 +215,14 @@ $this->load->model('m_vendors');
 
                                             <div class="input-field col s12 l6">
                                                 <select name="package" required>
-                                                <option <?php echo ($result->package == 'Wed Elite') ?"selected":''; ?> value="Wed Elite" >Wed Elite</option>
-                                                <option <?php echo ($result->package == 'Wed Leader') ?"selected":''; ?> value="Wed Leader">Wed Leader</option>
-                                                <option <?php echo ($result->package == 'Wed Assisted') ?"selected":''; ?> value="Wed Assisted">Wed Assisted</option>
-                                                <option <?php echo ($result->package == 'Wed Gold') ?"selected":''; ?> value="Wed Gold">Wed Gold</option>
-                                                <option <?php echo ($result->package == 'Wed Premium') ?"selected":''; ?> value="Wed Premium">Wed Premium</option>
-                                                <option <?php echo ($result->package == 'Wed Featured') ?"selected":''; ?> value="Wed Featured">Wed Featured</option>
-                                                <option <?php echo ($result->package == 'Free Listing') ?"selected":''; ?> value="Free Listing">Free Listing</option>
+
+                                                    <?php if (!empty($package)) {
+                                                    foreach ($package as $pack => $packg) { ?>
+                                                         <option value="<?php echo (!empty($packg))?$packg->id:''; ?>" <?php if($packg->id == $result->package ){ echo 'selected';  } ?>><?php echo (!empty($title))?$packg->title:''; ?></option>
+                                                   <?php }
+                                                } ?>
+
+                                                
                                               </select>
                                                 <label>Packages</label>
                                             </div>
@@ -229,7 +230,7 @@ $this->load->model('m_vendors');
                                         </div>
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
-                                                <input type="text" id="price" name="price" class="validate" required value="<?php echo (!empty($result->price)?$result->price:'') ?>">
+                                                <input type="text" id="price" name="price" class="validate" value="<?php echo (!empty($result->price)?$result->price:'') ?>">
                                                 <label for="price">Starting Price <span
                                                         class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price'); ?></span></p>
@@ -239,9 +240,8 @@ $this->load->model('m_vendors');
                                                 <input type="hidden" value="<?php echo (!empty($result->uniq)?$result->uniq:random_string('alnum',10)) ?>" name="uniq">
                                             </div>
                                             <div class="input-field col s12 l6">
-                                                <input type="text" id="price_for" name="price_for" class="validate" required value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
-                                                <label for="price">Price Per<span
-                                                        class="red-text">*</span></label>
+                                                <input type="text" id="price_for" name="price_for" class="validate" value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
+                                                <label for="price">Price Per<span                                                        class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
                                             </div>
 
@@ -259,6 +259,14 @@ $this->load->model('m_vendors');
                                                 <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                             </div>
                                         </div>
+                                        <div class="row m0">
+                                            <div class="input-field col s12 l6">
+                                                <input type="text" id="discount" name="discount" class="validate" value="<?php echo (!empty($result->discount)?$result->discount:'') ?>">
+                                                <label for="price">Discount<span                                                        class="red-text">*</span></label>
+                                            </div>
+                                        </div>
+
+
                                         <div class="row m0">
                                             <div class="file-field input-field col s12 l6">
                                                 <div class="btn btn-small black-text grey lighten-3">

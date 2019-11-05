@@ -9,6 +9,25 @@ class Vendors extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('sha_id') == '') { $this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_vendors');
+
+        $this->aid = $this->session->userdata('sha_id');
+        $this->type = $this->session->userdata('sha_type');
+
+
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();
+        $acces = array();
+        $acces = explode (",", $accs->menu);
+        
+        if (in_array("14", $acces))
+        {
+            $this->access = true;
+
+        }else{
+            $this->access = null;
+        }
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+
     }
 
 
@@ -19,9 +38,10 @@ class Vendors extends CI_Controller {
     **/
 	public function index()
 	{
-		$data['title']  = 'vendors - Shaadibaraati';
+		$data['title']    = 'vendors - Shaadibaraati';
 		$data['category'] = $this->m_vendors->get_category();
-		$data['city'] 	  = $this->m_vendors->get_city();
+        $data['city']     = $this->m_vendors->get_city();
+		$data['package']  = $this->m_vendors->getPackage();
 		$this->load->view('vendors/add-vendor', $data, FALSE);
 	}
 
@@ -121,6 +141,8 @@ class Vendors extends CI_Controller {
                 $edit       = $this->input->post('edit');
                 $uniq       = $this->input->post('uniq');
                 $price_for  = $this->input->post('price_for');
+                $discount   = $this->input->post('discount');
+
 
                         $insert =  array(
                             'name'          =>  $name , 
@@ -135,6 +157,7 @@ class Vendors extends CI_Controller {
                             'price_for'     =>  $price_for,
                             'package'       =>  $this->input->post('package'),
                             'address'       =>  $this->input->post('address'),
+                            'discount'       =>  $discount,
                         );
 
                         if (!empty($imgpath)) {
@@ -151,8 +174,17 @@ class Vendors extends CI_Controller {
                         $output = $this->m_vendors->insert_vendor($insert);
                         if(!empty($output))
                         {
+                        if ($this->type != '1') {
+                            $this->dicountCheck($insert);
+                        }
+                            
                             $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
-                            redirect('vendors/edit/'.$output,'refresh');
+                            if (!empty($vid)) {
+                                redirect('vendors/edit/'.$vid);
+                            }else{
+                                redirect('vendors/edit/'.$output,'refresh');
+                            }
+                            
                         }else{
                             $this->session->set_flashdata('error', 'Something went wrong please try again!');
                             if (!empty($vid)) {
@@ -162,6 +194,31 @@ class Vendors extends CI_Controller {
                             }
                         }
         } 
+    }
+
+
+    public function dicountCheck($insert='')
+    {
+        if(!empty($insert['discount'])){ 
+           $disc = $this->db->where('id', $this->aid)->get('admin')->row();           
+           if ($insert['discount'] <= $disc->discount ) {
+                return $this->db->where('uniq', $insert['uniq'])->update('vendor',array('discount_status' => '1'));
+           }else{
+                if ($this->type != '2') { 
+                    $manager = $this->db->where('id', $disc->manager)->get('admin')->row();
+                    if ($insert['discount'] <= $manager->discount ) {
+                        $this->discountMail($manager,$insert);
+                    }else{                        
+                        $this->discountAdmin($insert);
+                    }
+                    
+                }else{
+
+                }
+           }
+       }
+
+
     }
 
 
@@ -233,6 +290,7 @@ class Vendors extends CI_Controller {
         $data['vendor_faq'] = $this->m_vendors->get_faq($data['result']->category);
         $data['port']       = $this->m_vendors->get_portfolio($id);
         $data['video']      = $this->m_vendors->get_video($id);
+        $data['package']  = $this->m_vendors->getPackage();
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $this->load->view('vendors/edit-vendor', $data, FALSE);
     }

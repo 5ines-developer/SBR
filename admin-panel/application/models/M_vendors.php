@@ -94,14 +94,8 @@ class M_vendors extends CI_Model {
     **/
 	public function insert_vendor($insert)
 	{
-		$this->db->group_start();
-			$this->db->where('email', $insert['email']);
-			$this->db->or_where('phone', $insert['phone']);
-		$this->db->group_end();
-		$error = $this->db->get('vendor')->result();
-		if (!empty($error)) {
-			return 2;
-		}else{
+
+		
 			$this->db->where('uniq', $insert['uniq']);
 			$query = $this->db->get('vendor')->row_array();
 			if ($query > 0) {
@@ -114,7 +108,6 @@ class M_vendors extends CI_Model {
 		  		return  $insert_id;
 			}
 
-		}
 		
 			
     }
@@ -422,6 +415,11 @@ class M_vendors extends CI_Model {
 		$this->db->where('fq_id', $id);
 		$this->db->where('vendor_id', $vid);
 		return $this->db->get('vendor_faq')->row('asw');	
+	}
+
+	public function getPackage($value='')
+	{
+		return $this->db->get('package')->result();
 	}
 
 	

@@ -8,6 +8,10 @@ class M_adminusers extends CI_Model {
      * **/ 
     public function getEmployees($var = null)
     {
+        if ($this->session->userdata('sha_type') == '2') {
+            $this->db->where('manager', $this->session->userdata('sha_id'));
+        }
+        $this->db->where('id !=', $this->session->userdata('sha_id'));
         return $this->db->where('admin_type !=', '1')->get('admin')->result();        
     }
 
@@ -57,6 +61,55 @@ class M_adminusers extends CI_Model {
         }else{
             return $this->db->insert('admin',$update);
         } 
+    }
+
+    public function delete($id='')
+    {
+        return $this->db->where('id', $id)->delete('admin');
+    }
+
+    public function block($id='',$status='')
+    {
+        $this->db->where('id', $id);
+        $this->db->set('is_active', $status);
+        $this->db->update('admin');
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+        //  account activation
+    public function activateAccount($regid='', $newRegid='',$regmail='')
+    {
+        $this->db->where('reference_d', $regid);
+        $this->db->where('email', $regmail);
+        $result = $this->db->get('admin');
+        if($result->num_rows() > 0){
+            $this->db->where('reference_d', $regid);
+            $this->db->where('email', $regmail);
+            $this->db->update('admin', array('reference_d' => $newRegid, 'is_active' => '1', 'updated_date' => date('Y-m-d H:i:s')));
+            if($this->db->affected_rows() > 0){
+            return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public function setPassword($datas, $remail,$id)
+    {
+        $this->db->where('reference_d', $id);
+        $this->db->where('email', $remail);
+        $this->db->update('admin', $datas);
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

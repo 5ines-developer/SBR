@@ -4927,12 +4927,12 @@ nav a.sidenav-trigger i {
 }
 
 .profle-img {
-    line-height: 60px !important;
+    line-height: 0px !important;
 }
 
 .profle-img img {
     position: relative;
-    top: 10px;
+    top: 0px;
     border-radius: 50%;
     height: 50px;
     width: 50px;

@@ -150,6 +150,12 @@ $route['employees/add']			    =	'Adminusers/add';
 $route['employees/insert']			=	'Adminusers/insert';
 $route['employees/edit/(:any)']		=	'Adminusers/edit/$1';
 $route['employees/update']			=	'Adminusers/update';
+$route['employees/delete/(:any)']	=	'Adminusers/delete/$1';
+$route['employees/verify']			=	'Adminusers/verify';
+$route['employees/add-password/(:any)/(:any)']	=	'Adminusers/add_pass/$1/$2';
+$route['employees/update-password']	=	'Adminusers/update_pass';
+
+
 
 
 

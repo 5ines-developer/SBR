@@ -20,6 +20,12 @@ class M_preload extends CI_Model {
     	return $this->db->where('status', '0')->get('v_buypackage')->num_rows();
     }
 
+    public function getaccess()
+    {
+        $aid =  $this->session->userdata('sha_id');
+        return $this->db->where('id',$aid)->get('admin')->row();
+    }
+
 }
 
 /* End of file m_preload.php */

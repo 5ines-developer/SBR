@@ -10,16 +10,21 @@ class M_authentication extends CI_Model {
 		function can_login($email, $password)  
 	      {  
         
-           $this->db->where('password', $password); 
            $this->db->group_start(); 
             $this->db->where('name', $email);  
             $this->db->or_where('email', $email); 
            $this->db->group_end();
-           $query = $this->db->get('admin');
+           $query = $this->db->get('admin')->row_array();
+           
            //SELECT * FROM users WHERE username = '$username' AND password = '$password'  
-           if($query->num_rows() > 0)  
+           if(!empty($query))  
            {  
-                return $query->row_array();  
+                if($this->bcrypt->check_password($password, $query['password']))
+                {
+                  return $query;
+                } else{
+                  return false;
+                }
            } else{
             return false;
            }

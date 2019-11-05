@@ -49,7 +49,7 @@
                                 <?php ?>
                                 </div>
                                 <div class="input-field col s12 l12">
-                                    <button type="submit" class="waves-effect white-text waves-light btn green hoverable darken-4" style="width:100%">Button</button>
+                                    <button type="submit" class="waves-effect white-text waves-light btn green hoverable darken-4" style="width:100%">Submit</button>
                                 </div>
                                   
                                 </form>

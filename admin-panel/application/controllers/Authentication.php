@@ -8,6 +8,7 @@ class Authentication extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('m_authentication');
+        $this->ci =& get_instance();
     }
 
     /**
@@ -47,9 +48,10 @@ class Authentication extends CI_Controller {
                 if (!empty($data['login']['id'])) {
                     $id = $data['login']['id'];
                     $email = $data['login']['email'];
+                    $admin_type = $data['login']['admin_type'];
                 }
 
-                $session_data = array('sha_id' => $id, 'sha_name' => $email);
+                $session_data = array('sha_id' => $id, 'sha_name' => $email,'sha_type' => $admin_type);
                 $this->session->set_userdata($session_data);
                 redirect('dashboard');
             } else {
@@ -127,7 +129,7 @@ class Authentication extends CI_Controller {
             $this->email->message('click here to set  a new password <a href="' . base_url() . 'set-password/' . $forgotid . '">Reset Password</a>');
 
             if ($this->email->send()) {
-                $this->session->set_flashdata('success', 'Please confirm your registered email address');
+                $this->session->set_flashdata('success', 'Please check your email to rest the password');
                 redirect('login');
             } else {
                 $this->session->set_flashdata('error', 'Please try again');
@@ -169,8 +171,9 @@ class Authentication extends CI_Controller {
         } else {
             $email = $this->input->post('remail');
             $newpass = $this->input->post('password');
+            $hash       = $this->bcrypt->hash_password($newpass);
 
-            if ($this->m_authentication->addforgtpass($email, $newpass, $forgotid)) {
+            if ($this->m_authentication->addforgtpass($email, $hash, $forgotid)) {
                 $this->session->set_flashdata('success', 'Password updated Successfully');
                 redirect('login', 'refresh');
             } else {

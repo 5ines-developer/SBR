@@ -7,13 +7,16 @@
 
 
         <nav class="z-depth-1 navbar-fixed">
+            
                 <div class="top-bars white">
-                <div class="right hide-on-med-and-down header-ul ">
-                    
-                <a href="<?php echo base_url('vendor/login') ?>"> ARE YOU A VENDOR ? </a>
+                <div class="right hide-on-med-and-down header-ul "> 
+                <?php  if ($this->session->userdata('shvid') =='') {  ?>                   
+                    <a href="<?php echo base_url('vendor/login') ?>"> ARE YOU A VENDOR ? </a>
+                    <?php } ?>
                 </div>
                 
             </div>
+        
 
             <div class="nav-wrapper white">
                 <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive brand-logo" alt=""></a>
