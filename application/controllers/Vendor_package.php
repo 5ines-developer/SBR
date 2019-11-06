@@ -15,21 +15,31 @@ class Vendor_package extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Packages | Shaadibaraati';
-		$data['value'] = $this->m_vnpackage->getProfile($this->uniq);
+		$data['title'] 	= 'Packages | Shaadibaraati';
+		$data['value'] 	= $this->m_vnpackage->getProfile($this->uniq);
+		$data['result'] = $this->m_vnpackage->getPackage();
+		$data['banner'] = $this->m_vnpackage->getBanner();
         $this->load->view('vendor-auth/packages',$data);
 	}
 
 
 	public function buyPackage($value='')
 	{
-		$package = $this->input->get('p');
+		$id 	= $this->input->get('p');
+		$type 	= $this->input->get('t');
+
+		if ($type == 'package') {
+			$data['result'] = $this->m_vnpackage->getPackage($id);
+		}else{
+			$data['result'] = $this->m_vnpackage->getBanner($id);
+		}
 		$data['value'] = $this->m_vnpackage->getProfile($this->uniq);
 		$insert = array(
-			'package' 	=> $package, 
+			'package' 	=> $data['result']->id, 
 			'vendor_id' => $this->id, 
+			'type'		=> $type
 		);
-		$data['package'] = $package;
+		$data['package'] = $data['result']->title;
 
 		if($this->m_vnpackage->buyPackage($insert))
 		{

@@ -17,6 +17,8 @@
         <li class="<?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a href="<?php echo base_url('category/manage') ?>"><i class="fas fa-th-list li-icon"></i>Category</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'vendors'?'active':'' ?>"><a href="<?php echo base_url('vendors/manage') ?>"><i class="fas fa-handshake li-icon"></i>Vendors</a></li>
 
+        <li class="<?php echo $this->uri->segment(1) == 'vendors-discount'?'active':'' ?>"><a href="<?php echo base_url('vendors-discount') ?>"><i class="fas fa-tags li-icon"></i>Discount Request</a></li>
+
         <li class="<?php echo $this->uri->segment(1) == 'vendor'?'active':'' && $this->uri->segment(2) == 'approval'?'active':'' ?>"><a href="<?php echo base_url('vendor/approval') ?>"><i class="far fa-check-circle li-icon"></i>Vendors Approval</a></li>
 
 
@@ -24,6 +26,8 @@
         <li class="<?php echo $this->uri->segment(1) == 'vendor-enquiry'?'active':'' ?>"><a href="<?php echo base_url('vendor-enquiry') ?>"><i class="fas fa-comment li-icon"></i>Vendor Enquiry</a></li>
 
         <li class="<?php echo $this->uri->segment(1) == 'package'?'active':'' ?>"><a href="<?php echo base_url('package') ?>"><i class="fas fa-ribbon li-icon"></i>Package</a></li>
+
+        <li class="<?php echo $this->uri->segment(1) == 'banner-package'?'active':'' ?>"><a href="<?php echo base_url('banner-package') ?>"><i class="fas fa-ribbon li-icon"></i>Banner Package</a></li>
         
         <li class="<?php echo $this->uri->segment(1) == 'vendor-package'?'active':'' ?>"><a href="<?php echo base_url('vendor-package') ?>"><i class="fas fa-comments-dollar li-icon"></i>Package Request 
           <?php if($this->ci->preload->bypackage() > 0){
@@ -142,6 +146,12 @@
          if ($value == '14') { ?>
           <li class="<?php echo $this->uri->segment(1) == 'vendors'?'active':'' ?>"><a href="<?php echo base_url('vendors/manage') ?>"><i class="fas fa-handshake li-icon"></i>Vendors</a></li>
         <?php } }?>
+
+        <li class="<?php echo $this->uri->segment(1) == 'vendors-discount'?'active':'' ?>"><a href="<?php echo base_url('vendors-discount') ?>"><i class="fas fa-tags li-icon"></i>Discount Request
+        <?php if($this->ci->preload->disccount() > 0){
+            echo '<span class="new badge">'. $this->ci->preload->disccount() .'</span> ';
+          } ?></a></li>
+
 
 
       </ul>

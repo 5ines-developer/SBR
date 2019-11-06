@@ -255,7 +255,7 @@ class M_vendors extends CI_Model
         $this->db->where('v.is_active', '1');
 
         $this->db->protect_identifiers = FALSE;
-            $this->db->order_by('FIELD ( v.package, "Wed Elite", "Wed Leader", "Wed Assisted", "Wed Gold", "Wed Premium", "Wed Featured", "Free Listing", "")');
+             $this->db->order_by('FIELD ( v.package, "3", "4", "5", "6", "7", "8", "0", "")');
         $this->db->protect_identifiers = TRUE;
 
         $this->db->from('vendor v');

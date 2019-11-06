@@ -422,6 +422,23 @@ class M_vendors extends CI_Model {
 		return $this->db->get('package')->result();
 	}
 
+	public function getCategory($id='')
+	{
+		return $this->db->where('id',$id)->get('category')->row('category');
+	}
+
+	public function getCity($id='')
+	{
+		return $this->db->where('id',$id)->get('city')->row('city');
+	}
+
+	public function packageName($id='')
+	{
+		return $this->db->where('id',$id)->get('package')->row('title');
+	}
+
+
+
 	
 
 	

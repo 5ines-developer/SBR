@@ -366,7 +366,11 @@ $this->load->model('m_vendors');
                             
                             <div class="clearfix"></div>
                             <?php foreach ($value->vendors as $vkey => $vendr) { 
-                                $lable_class = strtolower(str_replace(' ', '-', $vendr->package));    
+                                $pack = $this->ci->m_search->packageName($vendr->package);
+                                    if (empty($pack)) {
+                                        $pack = 'Free Listing';
+                                    }
+                                    $lable_class = strtolower(str_replace(' ', '-', $pack)); 
                             ?>
                                 <div class="col s6 m4 l3" >
                                 <div class="result-items hoverable">
@@ -374,7 +378,7 @@ $this->load->model('m_vendors');
                                         <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","-",strtolower($vendr->name))).'/'.$vendr->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
-                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $vendr->package ?></span>
+                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                                                 <img src="<?php echo (!empty($vendr->profile_file))? base_url().$vendr->profile_file:'' ?>">
                                             </div>
                                             <div class="card-content">

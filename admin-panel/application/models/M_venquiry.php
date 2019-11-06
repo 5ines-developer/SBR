@@ -15,7 +15,7 @@ class M_venquiry extends CI_Model {
 
     public function packageGet($value='')
     {
-    	$this->db->select('ve.*,v.*,ve.id as ids');
+    	$this->db->select('ve.*,v.*,ve.id as ids,ve.package as pack');
         $this->db->order_by('ve.id', 'desc');        
         $this->db->from('v_buypackage ve');
         $this->db->join('vendor v', 'v.id = ve.vendor_id', 'left');        
@@ -28,7 +28,7 @@ class M_venquiry extends CI_Model {
     	$this->update_status($id);
 
     	$this->db->where('ve.id', $id);
-    	$this->db->select('ve.*,v.*,ve.id as ids');
+    	$this->db->select('ve.*,v.*,ve.id as ids,ve.package as pack');
         $this->db->order_by('ve.id', 'desc');        
         $this->db->from('v_buypackage ve');
         $this->db->join('vendor v', 'v.id = ve.vendor_id', 'left');        
@@ -48,6 +48,15 @@ class M_venquiry extends CI_Model {
     public function categoryName($id='')
     {
     	return $this->db->where('id', $id)->get('category')->row('category');
+    }
+
+    public function package($pckge='',$type='')
+    {
+       if ($type == 'package') {
+          return $this->db->where('id', $pckge)->get('package')->row('title');
+       }else{
+            return $this->db->where('id', $pckge)->get('banner_package')->row('title');
+       }
     }
 
 

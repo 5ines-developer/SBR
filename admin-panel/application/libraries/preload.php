@@ -34,6 +34,11 @@ class preload
         return  $this->ci->m_preload->getaccess();
     }
 
+    public function disccount($value='')
+    {
+        return $this->ci->m_preload->getDisccount();
+    }
+
 }
 
 /* End of file LibraryName.php */

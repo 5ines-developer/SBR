@@ -26,6 +26,20 @@ class M_preload extends CI_Model {
         return $this->db->where('id',$aid)->get('admin')->row();
     }
 
+    public function getDisccount()
+    {
+        if ($this->session->userdata('sha_type') == '2' ) {
+            $addedby = $this->db->select('id')->where('manager',$this->session->userdata('sha_id'))->get('admin')->result();
+            foreach ($addedby as $key ) {
+                $val[] = $key->id;
+            }
+            $this->db->group_start();
+                $this->db->where_in('added_by',$val);
+            $this->db->group_end();
+        }
+        return $this->db->where('discount_status', '0')->get('vendor')->num_rows();
+    }
+
 }
 
 /* End of file m_preload.php */

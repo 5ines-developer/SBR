@@ -214,7 +214,8 @@ $this->load->model('m_vendors');
                                             </div>
 
                                             <div class="input-field col s12 l6">
-                                                <select name="package" required>
+                                                <select name="package">
+                                                    <option value="0">Choose Package</option>
 
                                                     <?php if (!empty($package)) {
                                                     foreach ($package as $pack => $packg) { ?>
@@ -282,6 +283,15 @@ $this->load->model('m_vendors');
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
                                                         size:</span> 2MB <span class="red-text">*</span></span>
                                             </div>
+
+                                             <?php if (!empty($result->profile_file)) {?> 
+                                                <div class="col s12 l3 m6 ">
+                                                <div class="portfolio-img">
+                                                    <img class="materialboxed z-depth-1" width="100" style="max-width:100%" src="<?php echo $this->config->item('web_url').'/'.$result->profile_file ?>" style="cursor: pointer;">
+                                                </div>
+                                            </div>
+                                            <?php }  ?>
+
                                         </div>
                                         <div class="row m0">
                                             <div class="input-field col s12 ">
@@ -298,6 +308,7 @@ $this->load->model('m_vendors');
                                         <input type="hidden" name="vendor_id" value="<?php echo random_string('alnum',10) ?>">
                                         <input name="vid"  type="hidden" value="<?php echo $this->uri->segment(3)
                                          ?>">
+                                         <input type="hidden" name="dissatus" id="dissatus" >
                                         
                                         <div class="col s12 center mtb20">
                                             <button class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result" type="submit">Submit
@@ -751,6 +762,11 @@ $this->load->model('m_vendors');
     </script>
     <script>
         $(document).ready(function() {
+
+            $(document).on('keyup','#discount',function(){
+            $('#dissatus').val('1');
+        });
+            
             $('.modal').modal();
             $('.scrollspy').scrollSpy();
             $("#vd_category").change(function() {

@@ -186,13 +186,18 @@ class M_search extends CI_Model {
         $this->db->where('v.category', $id);
         
         $this->db->protect_identifiers = FALSE;
-            $this->db->order_by('FIELD ( v.package, "Wed Elite", "Wed Leader", "Wed Assisted", "Wed Gold", "Wed Premium", "Wed Featured", "Free Listing", "")');
+            $this->db->order_by('FIELD ( v.package, "3", "4", "5", "6", "7", "8", "0", "")');
         $this->db->protect_identifiers = TRUE;
 
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
         $this->db->limit(4);
         return $this->db->get()->result();
+    }
+
+    public function packageName($id='')
+    {
+       return $this->db->where('id', $id)->get('package')->row('title');
     }
 
 }

@@ -142,6 +142,8 @@ class Vendors extends CI_Controller {
                 $uniq       = $this->input->post('uniq');
                 $price_for  = $this->input->post('price_for');
                 $discount   = $this->input->post('discount');
+                $dissatus   = $this->input->post('dissatus');
+
 
 
                         $insert =  array(
@@ -157,26 +159,33 @@ class Vendors extends CI_Controller {
                             'price_for'     =>  $price_for,
                             'package'       =>  $this->input->post('package'),
                             'address'       =>  $this->input->post('address'),
-                            'discount'       =>  $discount,
+                            'discount'      =>  $discount,
                         );
 
                         if (!empty($imgpath)) {
                             $insert['profile_file'] =  $imgpath; 
                             $insert['img']          = $file_name;
                         }
+                        if (!empty($dissatus)) {
+                            $insert['discount_status'] = '1';
+                        }
 
                         if (!empty($edit)) {
                            $e = 'Updated';
                         }else{
+                           $insert['added_by'] = $this->session->userdata('sha_id');
                             $e = 'Added';
                         }
+
+
 
                         $output = $this->m_vendors->insert_vendor($insert);
                         if(!empty($output))
                         {
-                        if ($this->type != '1') {
-                            $this->dicountCheck($insert);
-                        }
+                            $insert['out'] = $output;
+                            if ($this->type != '1' && (!empty($dissatus))) {
+                                $this->dicountCheck($insert);
+                            }
                             
                             $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
                             if (!empty($vid)) {
@@ -199,27 +208,78 @@ class Vendors extends CI_Controller {
 
     public function dicountCheck($insert='')
     {
-        if(!empty($insert['discount'])){ 
-           $disc = $this->db->where('id', $this->aid)->get('admin')->row();           
+        if(!empty($insert['discount'])){
+           $disc = $this->db->where('id', $this->aid)->get('admin')->row(); 
            if ($insert['discount'] <= $disc->discount ) {
                 return $this->db->where('uniq', $insert['uniq'])->update('vendor',array('discount_status' => '1'));
            }else{
-                if ($this->type != '2') { 
                     $manager = $this->db->where('id', $disc->manager)->get('admin')->row();
+                if ($this->type != '2') { 
                     if ($insert['discount'] <= $manager->discount ) {
-                        $this->discountMail($manager,$insert);
+                        $this->discountMail($manager,$insert,$disc);
                     }else{                        
-                        $this->discountAdmin($insert);
+                        $this->discountAdmin($manager,$insert,$disc);
                     }
                     
                 }else{
-
+                    $this->discountAdmin($manager,$insert,$disc);
                 }
            }
        }
-
-
     }
+
+
+    public function discountMail($manager='',$insert='',$disc)
+    {
+            $data['result']     = $insert;
+            $data['emp']        = $disc;
+            $data['manager']    = $manager;
+            $this->load->config('email');
+            $this->load->library('email');
+            $to = $this->config->item('vr_to');
+            $cc = $this->config->item('vr_cc');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/discount', $data, true);            
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to($manager->email);
+            $this->email->subject('Vendor Discount Request');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Manager, Manager will verify and approve your request ');
+                redirect('vendors/edit/'.$insert['out'],'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+               redirect('vendors/edit/'.$insert['out'],'refresh');
+            }
+    }
+
+    public function discountAdmin($manager='',$insert='',$disc)
+    {
+            $data['result']     = $insert;
+            $data['emp']        = $disc;
+            $data['manager']    = $manager;
+            $this->load->config('email');
+            $this->load->library('email');
+            $to = $this->config->item('vr_to');
+            $cc = $this->config->item('vr_cc');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/discount-admin', $data, true); 
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to($to);
+            $this->email->cc($cc);
+            $this->email->subject('Vendor Discount Request');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Admin, admin will verify and approve your request ');
+                redirect('vendors/edit/'.$insert['out'],'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+                redirect('vendors/edit/'.$insert['out'],'refresh');
+            }
+    }
+
 
 
     /**

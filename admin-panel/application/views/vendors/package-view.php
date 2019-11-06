@@ -57,8 +57,12 @@ $this->load->model('m_venquiry');
                                         <td ><a href="tel:<?php echo (!empty($result->phone))?$result->phone:'---'  ?>" ><?php echo (!empty($result->phone))?$result->phone:'---'  ?></a></td>
                                     </tr>
                                     <tr>
+                                        <th class="w205">Type</th>
+                                        <td ><a  ><?php echo (!empty($result->type))?$result->type:'---'  ?></a></td>
+                                    </tr>
+                                     <tr>
                                         <th class="w205">Package</th>
-                                        <td ><a  ><?php echo (!empty($result->package))?$result->package:'---'  ?></a></td>
+                                        <td ><a  ><?php echo $this->ci->m_venquiry->package($result->pack,$result->type);  ?></a></td>
                                     </tr>
 
                                     <tr>

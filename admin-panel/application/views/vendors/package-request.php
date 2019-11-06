@@ -60,6 +60,7 @@ $this->load->model('m_venquiry');
                                        <tr class="tt">
                                           <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
                                           <th id="a" class="h5-para-p2" width="130px">Vendor Name</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Type</th>
                                           <th id="c" class="h5-para-p2" width="120px">Package</th>
                                           <th id="b" class="h5-para-p2" width="100px">Email</th>
                                           <th id="c" class="h5-para-p2" width="120px">Phone</th>
@@ -80,7 +81,15 @@ $this->load->model('m_venquiry');
                                       <tr>
                                             <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>"><?php echo (!empty($value->package))?$value->package:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->type))?$value->type:'---'  ?></a></td>
+
+                                            <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>">
+                                              <?php echo $this->ci->m_venquiry->package($value->pack,$value->type);  ?>
+                                                
+
+                                              </a></td>
+
+
                                             <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>"><?php echo $this->ci->m_venquiry->cityName($value->city);  ?></a></td>

@@ -155,8 +155,18 @@ $route['employees/verify']			=	'Adminusers/verify';
 $route['employees/add-password/(:any)/(:any)']	=	'Adminusers/add_pass/$1/$2';
 $route['employees/update-password']	=	'Adminusers/update_pass';
 
+//vendor discount request
+$route['vendors-discount']			=	'vendor_discount/index'; 
+$route['vendors-discount/approve/(:any)']	=	'vendor_discount/approve/$1'; 
+$route['vendors-discount/reject/(:any)']	=	'vendor_discount/reject/$1'; 
 
-
+//banner pacjkage
+$route['banner-package']			        =	'Banner_pacakge/index';
+$route['banner-package/add']			    =	'Banner_pacakge/add';
+$route['banner-package/insert']			    =	'Banner_pacakge/insert';
+$route['banner-package/edit/(:any)']		=	'Banner_pacakge/edit/$1';
+$route['banner-package/update']			    =	'Banner_pacakge/update';
+$route['banner-package/delete/(:any)']		=	'Banner_pacakge/delete/$1';
 
 
 

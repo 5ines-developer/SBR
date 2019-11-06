@@ -34,132 +34,57 @@
                                 <h6 class="pack-head">Package Sheet for Year 2018-2019 - Pan India Per City</h6>
                                 <div class="pack-detail">
                                     <div class="row">
-                                        <div class="col l4 m6 s12">
+
+                                        <?php if (!empty($result)) {
+                                           foreach ($result as $key => $value) { ?>
+
+                                            <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Wed Elite</h5>
-                                                    <p>Package Cost 12 Months</p>
-                                                    <h6>₹ 1,50,000</h6>
+                                                    <h5><?php echo (!empty($value->title))?ucwords($value->title):''; ?></h5>
+                                                    <p>Package Cost <?php echo (!empty($value->price_per))?$value->price_per:''; ?></p>
+                                                    <h6><?php echo (!empty($value->price))?'₹ '.$value->price:''; ?></h6>
                                                 </div>
                                                 <ul class="detail-li">
-                                                    <li>Minimum Lead Count : <span>200+</span></li>
-                                                    <li>List Position : <span>Top 2</span></li>
-                                                    <li>Banner : <span>Yes</span></li>
+                                                    <li>Minimum Lead Count : <span><?php echo (!empty($value->leads))?$value->leads:''; ?></span></li>
+                                                    <li>List Position : <span><?php echo (!empty($value->list_position))?$value->list_position:''; ?></span></li>
+                                                    <li>Banner : <span><?php if(!empty($value->banner)){ echo 'Yes'; }else{ echo 'No'; } ?></span></li>
                                                 </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Elite').'') ?>" onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.$value->id.'&t=package') ?>" onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
-                                        <div class="col l4 m6 s12">
-                                            <div class="package-list">
-                                                <div class="title-pack">
-                                                    <h5>Wed Leader</h5>
-                                                    <p>Package Cost 12 Months</p>
-                                                    <h6>₹ 1,00,000</h6>
-                                                </div>
-                                                <ul class="detail-li">
-                                                    <li>Minimum Lead Count : <span>150+</span></li>
-                                                    <li>List Position : <span>Top 5</span></li>
-                                                    <li>Banner : <span>Yes</span></li>
-                                                </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Leader').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
-                                            </div>
-                                        </div>
-                                        <div class="col l4 m6 s12">
-                                            <div class="package-list">
-                                                <div class="title-pack">
-                                                    <h5>Wed Assisted</h5>
-                                                    <p>Package Cost 12 Months</p>
-                                                    <h6>₹ 75,000</h6>
-                                                </div>
-                                                <ul class="detail-li">
-                                                    <li>Minimum Lead Count : <span>100+</span></li>
-                                                    <li>List Position : <span>Top 10</span></li>
-                                                    <li>Banner : <span>Yes</span></li>
-                                                </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Assisted').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
-                                            </div>
-                                        </div>
-                                        <div class="col l4 m6 s12">
-                                            <div class="package-list">
-                                                <div class="title-pack">
-                                                    <h5>Wed Gold</h5>
-                                                    <p>Package Cost 12 Months</p>
-                                                    <h6>₹ 50,000</h6>
-                                                </div>
-                                                <ul class="detail-li">
-                                                    <li>Minimum Lead Count : <span>80+</span></li>
-                                                    <li>List Position : <span>After Wed Assisted</span></li>
-                                                    <li>Banner : <span>Yes</span></li>
-                                                </ul>
-                                               <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Gold').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
-                                            </div>
-                                        </div>
-                                        <div class="col l4 m6 s12">
-                                            <div class="package-list">
-                                                <div class="title-pack">
-                                                    <h5>Wed Premium </h5>
-                                                    <p>Package Cost 12 Months</p>
-                                                    <h6>₹ 30,000</h6>
-                                                </div>
-                                                <ul class="detail-li">
-                                                    <li>Minimum Lead Count : <span>60+</span></li>
-                                                    <li>List Position : <span>After Wed Gold</span></li>
-                                                    <li>Banner : <span>N0</span></li>
-                                                </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Premium').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
-                                            </div>
-                                        </div>
-                                        <div class="col l4 m6 s12">
-                                            <div class="package-list">
-                                                <div class="title-pack">
-                                                    <h5>Wed Featured </h5>
-                                                    <p>Package Cost 12 Months</p>
-                                                    <h6>₹ 15,000</h6>
-                                                </div>
-                                                <ul class="detail-li">
-                                                    <li>Minimum Lead Count : <span>30+</span></li>
-                                                    <li>List Position : <span>After Wed  Premium</span></li>
-                                                    <li>Banner : <span>N0</span></li>
-                                                </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Featured').'') ?>"  onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
-                                            </div>
-                                        </div>
+                                         <?php  } } ?> 
+                                         
+                                        
+                                        
+                                        
+                                        
+                                       
                                     </div>
                                 </div>
                                 <!-- Banner price -->
                                 <h6 class="pack-head">Banner Price</h6>
                                 <div class="pack-detail">
                                     <div class="row">
+                                        <?php if (!empty($banner)) {
+                                           foreach ($banner as $bann => $banne) { ?>
                                         <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
-                                                    <h5>Wed Catergory Banner</h5>
-                                                    <p>Vendor Page</p>
+                                                    <h5><?php echo (!empty($banne->title))?ucwords($banne->title):''; ?></h5>
+                                                    <p><?php echo (!empty($banne->page))?ucwords($banne->page):''; ?></p>
                                                 </div>
                                                 <ul class="detail-li">
-                                                    <li>12 Month Pack : <span>25000</span></li>
-                                                    <li>6 Month Pack : <span>15000</span></li>
-                                                    <li>Limit : <span>10</span></li>
-                                                    <li>Tenure : <span>1 Year</span></li>
+                                                    <li>12 Month Pack : <span><?php echo (!empty($banne->pack1))?$banne->pack1:''; ?></span></li>
+                                                    <li>6 Month Pack : <span><?php echo (!empty($banne->pack2))?$banne->pack2:''; ?></span></li>
+                                                    <li>Limit : <span><?php echo (!empty($banne->p_limit))?$banne->p_limit:''; ?></span></li>
+                                                    <li>Tenure : <span><?php echo (!empty($banne->tenure))?$banne->tenure:''; ?></span></li>
                                                 </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Catergory Banner').'') ?>"   onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
+                                                <a href="<?php echo base_url('vendor/buy-package?p='.$banne->id.'&t=banner') ?>"   onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
-                                        <div class="col l4 m6 s12">
-                                            <div class="package-list">
-                                                <div class="title-pack">
-                                                    <h5>Wed Catergory Middle</h5>
-                                                    <p>Vendor Page</p>
-                                                </div>
-                                                <ul class="detail-li">
-                                                    <li>12 Month Pack : <span>10000</span></li>
-                                                    <li>6 Month Pack : <span>5000</span></li>
-                                                    <li>Limit : <span>N0</span></li>
-                                                    <li>Tenure : <span>1 Year</span></li>
-                                                </ul>
-                                                <a href="<?php echo base_url('vendor/buy-package?p='.urlencode('Wed Catergory Middle').'') ?>" onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
-                                            </div>
-                                        </div>
+                                    <?php } } ?>
+                                        
                                     </div>
                                 </div>
                             </div>

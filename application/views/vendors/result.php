@@ -356,7 +356,11 @@ $this->load->model('m_vendors');
                               
                                 $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
                                 foreach ($vendors as $key => $value) { 
-                                    $lable_class = strtolower(str_replace(' ', '-', $value->package));
+                                    $pack = $this->ci->m_search->packageName($value->package);
+                                    if (empty($pack)) {
+                                        $pack = 'Free Listing';
+                                    }
+                                    $lable_class = strtolower(str_replace(' ', '-', $pack));
                                     
                                 ?>
                             <div class="col s6 m4 l3" >
@@ -365,7 +369,7 @@ $this->load->model('m_vendors');
                                         <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq)?>"
                                             target="_blank">
                                             <div class="card-image">
-                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $value->package ?></span>
+                                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                                                 <img src="<?php echo (!empty($value->profile_file))? base_url().$value->profile_file:'' ?>">
                                             </div>
                                             <div class="card-content">

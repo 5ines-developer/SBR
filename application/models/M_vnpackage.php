@@ -28,6 +28,25 @@ class M_vnpackage extends CI_Model {
     	return $this->db->insert('v_buypackage', $insert);
     }
 
+    public function getPackage($id='')
+    {
+    	if (!empty($id)) {
+    		return $this->db->where('id', $id)->get('package')->row();
+    	}else{
+    		return $this->db->order_by('id', 'asc')->get('package')->result();
+    	}
+    	
+    }
+
+    public function getBanner($id='')
+    {
+    	if (!empty($id)) {
+    		return $this->db->where('id', $id)->get('banner_package')->row();
+    	}else{
+    		return $this->db->order_by('id', 'asc')->get('banner_package')->result();
+    	}
+    }
+
 }
 
 /* End of file M_vnpackage.php */

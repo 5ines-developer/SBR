@@ -68,7 +68,8 @@
                                                 <label for="phone">Phone No.<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12 l6">
-                                              <select name="package" required>
+                                              <select name="package">
+                                                <option value="0">Choose Package</option>
                                                 <?php if (!empty($package)) {
                                                     foreach ($package as $pack => $packg) { ?>
                                                          <option value="<?php echo (!empty($packg))?$packg->id:''; ?>"><?php echo (!empty($title))?$packg->title:''; ?></option>
@@ -82,14 +83,13 @@
                                         </div>
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
-                                                <input type="text" id="price" name="price" class="validate" required
+                                                <input type="text" id="price" name="price" class="validate" 
                                                     value="<?php echo (!empty($setting)?$setting['price']:'') ?>">
                                                 <label for="price">Sarting Price <span class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('price'); ?></span></p>
                                             </div>
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="price_for" name="price_for" class="validate"
-                                                    required
                                                     value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
                                                 <label for="price_for">Price Per<span class="red-text"> *</span></label>
                                                 <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
@@ -121,7 +121,7 @@
                                         <div class="row m0">
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="discount" name="discount" class="validate" value="<?php echo (!empty($result->discount)?$result->discount:'') ?>">
-                                                <label for="price">Discount in %</label>
+                                                <label for="discount">Discount in %</label>
                                             </div>
                                         </div>
 
@@ -146,6 +146,7 @@
                                             <label for="textarea1">Address</label>
                                           </div>
                                         </div>
+                                        <input type="hidden" name="dissatus" id="dissatus" >
 
 
                                         <div class="col s12">
@@ -220,6 +221,11 @@
                 package: "Please Select the Package",
             }
         });
+
+        $(document).on('keyup','#discount',function(){
+            $('#dissatus').val('1');
+        });
+
 
 
        

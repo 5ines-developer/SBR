@@ -987,7 +987,11 @@ height: 98px;
                     $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
                         
                         foreach ($value->similar as $sim => $simi) { 
-                             $lable_class = strtolower(str_replace(' ', '-', $simi->package));
+                             $pack = $this->ci->m_search->packageName($simi->package);
+                                    if (empty($pack)) {
+                                        $pack = 'Free Listing';
+                                    }
+                                    $lable_class = strtolower(str_replace(' ', '-', $pack)); 
                                 ?>
                         <div class="col s6 m4 l3">
                             <div class="result-items hoverable">
@@ -995,7 +999,7 @@ height: 98px;
                                     <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($simi->category)).'/'.urlencode(str_replace(" ","-",strtolower($simi->name))).'/'.$simi->uniq)?>"
                                         target="_blank">
                                         <div class="card-image">
-                                        <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $simi->package ?></span>
+                                        <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                                             <img src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
                                         </div>
                                         <div class="card-content simil-crd">

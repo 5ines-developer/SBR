@@ -129,11 +129,6 @@ $route['vendor-register'] 		        = 'authentication/vendorRegister';
 $route['vendor-login'] 		            = 'authentication/vendorlogin';
 $route['vendor-register/send'] 		    = 'authentication/vendorsend';
 
-// vendor
-$route['vendor/leads'] 	                = 'vendor/leads';
-$route['vendor/packages'] 	            = 'vendor/packages';
-
-
 
 //vendor module
 //authentication
