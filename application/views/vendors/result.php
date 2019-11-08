@@ -350,6 +350,7 @@ $this->load->model('m_vendors');
                     <div class="col s12 m12 l12">
                         <div class="row  result-item-box">
 
+                            
 
 
                             <?php if (!empty($vendors)) {
@@ -357,7 +358,7 @@ $this->load->model('m_vendors');
                                 $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
                                 foreach ($vendors as $key => $value) { 
                                     $pack = $this->ci->m_search->packageName($value->package);
-                                    if (empty($pack)) {
+                                    if (empty($pack) || empty($value->discount_status)) {
                                         $pack = 'Free Listing';
                                     }
                                     $lable_class = strtolower(str_replace(' ', '-', $pack));

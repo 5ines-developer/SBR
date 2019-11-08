@@ -5,11 +5,11 @@ class M_vendors extends CI_Model
 {
 
     /*
-     *Home-> get cities
+     *Home-> getVendors
      **/
     public function getVendors($uniqid='')
     {
-        $this->db->select('v.id,v.name,v.phone,v.email,v.price,v.price_for,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
+        $this->db->select('v.id,v.name,v.discount_status,v.phone,v.email,v.price,v.price_for,v.address,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->where('v.is_active', '1');
         $this->db->where('v.uniq', $uniqid);
         $this->db->from('vendor v');
@@ -107,14 +107,31 @@ class M_vendors extends CI_Model
             $this->db->where('vendor_id', $insert['vendor_id']);
     		$this->db->update('vendor_review', $insert);
     		if ($this->db->affected_rows() > 0) {
+                    $this->getRate($insert['vendor_id']);
     			return true;
     		}else{
     			return false;
     		}
     	}else{
-        	return $this->db->insert('vendor_review', $insert);
+        	$this->db->insert('vendor_review', $insert);
+            if ($this->db->affected_rows() > 0) {
+                    $this->getRate($insert['vendor_id']);
+                return true;
+            }else{
+                return false;
+            }
     	}
     }
+
+
+    public function getRate($id='')
+    {
+        $rat = $this->db->select_avg('rating')->where('vendor_id',$id)->get('vendor_review')->row('rating');
+
+        $this->db->where('id', $id);
+        return $this->db->update('vendor', array('rating' => $rat));
+    }
+
 
     //get review details
     public function getReview($id='')
@@ -249,13 +266,15 @@ class M_vendors extends CI_Model
     {    
 
         $this->db->where('v.id !=', $id);
-        $this->db->select('v.package,v.id,v.name,v.phone,v.email,v.price,v.address,v.price_for,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
+        $this->db->select('v.package,v.discount_status,v.id,v.name,v.phone,v.email,v.price,v.address,v.price_for,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId');
         $this->db->where('v.city', $city);
         $this->db->where('v.category', $category); 
         $this->db->where('v.is_active', '1');
 
         $this->db->protect_identifiers = FALSE;
-             $this->db->order_by('FIELD ( v.package, "3", "4", "5", "6", "7", "8", "0", "")');
+            $this->db->order_by('v.discount_status', 'desc');
+            $this->db->order_by('FIELD ( v.package, "3", "4", "5", "6", "7", "8", "0", "")');
+            $this->db->order_by('v.rating', 'desc');
         $this->db->protect_identifiers = TRUE;
 
         $this->db->from('vendor v');

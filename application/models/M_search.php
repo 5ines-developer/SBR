@@ -12,10 +12,12 @@ class M_search extends CI_Model {
         if (!empty($city) && $city !='All') { $this->db->where('cty.city', $city); }
         if (!empty($category) && $category !='all category') {$this->db->where('cat.category', $category); }
         $this->db->where('v.is_active', '1');
-        $this->db->select('v.name,v.package, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
+        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
         // $this->db->select('v.package');
         $this->db->protect_identifiers = FALSE;
-            $this->db->order_by('FIELD ( v.package, "Wed Elite", "Wed Leader", "Wed Assisted", "Wed Gold", "Wed Premium", "Wed Featured", "Free Listing", "")');
+            $this->db->order_by('v.discount_status', 'desc');
+            $this->db->order_by('FIELD ( v.package, "3", "4", "5", "6", "7", "8", "0", "")');
+            $this->db->order_by('v.rating', 'desc');
         $this->db->protect_identifiers = TRUE;
 
 
@@ -111,7 +113,7 @@ class M_search extends CI_Model {
         $query = $this->db->get('vendor_review');
         foreach ($query->result() as $key => $value) {
         if (!empty($value->rating)) {
-            return $value->rating;
+            return round($value->rating);
         }else{
             return 0;
         }
@@ -182,18 +184,21 @@ class M_search extends CI_Model {
     // get vendors
     public function getVendors($id = null)
     {
-        $this->db->select('v.name,v.package, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
+        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,'); 
         $this->db->where('v.category', $id);
-        
         $this->db->protect_identifiers = FALSE;
+            $this->db->order_by('v.discount_status', 'desc');
             $this->db->order_by('FIELD ( v.package, "3", "4", "5", "6", "7", "8", "0", "")');
+            $this->db->order_by('v.rating', 'desc');
         $this->db->protect_identifiers = TRUE;
-
         $this->db->from('vendor v');
         $this->db->join('city cty', 'cty.id = v.city', 'left');
+        $this->db->join('vendor_review vr', 'vr.vendor_id = v.id', 'left');
         $this->db->limit(4);
         return $this->db->get()->result();
     }
+
+
 
     public function packageName($id='')
     {

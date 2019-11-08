@@ -139,7 +139,7 @@ class Vendors extends CI_Controller {
       if ($this->form_validation->run() == false) {
             $error = validation_errors();
             $this->session->set_flashdata('error', $error);
-            redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
+            redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq,'refresh');
       }else{
         
         $insert = array(
@@ -159,11 +159,10 @@ class Vendors extends CI_Controller {
 
           if($this->m_vendors->addReview($insert)){
                $this->session->set_flashdata('success', 'Review added Successfully');
-               redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
           }else{
                     $this->session->set_flashdata('error', 'Something went wrong please try again later!');
-              redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
           }
+          redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq,'refresh');
     }
 
   }
@@ -231,7 +230,7 @@ class Vendors extends CI_Controller {
           'budget'      =>  $budget
         );
 
-      $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.str_replace('', '-', strtolower($value->name)).'/'.$vendor_id;
+      $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.urlencode(str_replace('', '-', strtolower($value->name))).'/'.$vendor_id;
 
         $data['output']  =  $this->m_vendors->addenquiry($insert);
         $data['result']  =  $insert;

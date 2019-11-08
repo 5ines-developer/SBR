@@ -28,6 +28,7 @@ class Vendors extends CI_Controller {
         }
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
 
+
     }
 
 
@@ -226,6 +227,29 @@ class Vendors extends CI_Controller {
                 }
            }
        }
+    }
+
+
+    public function proposal($value='')
+    {
+        $this->load->view('vendors/proposals');
+    }
+
+    public function convertpdf($value='')
+    {
+
+        // echo $_SERVER["DOCUMENT_ROOT"];
+        
+        $this->load->view('vendors/proposals');
+            // Get output html
+        $html = $this->output->get_output();
+        
+        $this->load->library('pdf');
+        $this->pdf->loadHtml($html);
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->render();
+        // Output the generated PDF (1 = download and 0 = preview)
+        $this->pdf->stream("welcome.pdf", array("Attachment"=>0));
     }
 
 

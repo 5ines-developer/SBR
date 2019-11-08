@@ -988,7 +988,7 @@ height: 98px;
                         
                         foreach ($value->similar as $sim => $simi) { 
                              $pack = $this->ci->m_search->packageName($simi->package);
-                                    if (empty($pack)) {
+                                    if (empty($pack) || empty($simi->discount_status)) {
                                         $pack = 'Free Listing';
                                     }
                                     $lable_class = strtolower(str_replace(' ', '-', $pack)); 

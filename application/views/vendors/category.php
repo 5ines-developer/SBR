@@ -367,7 +367,7 @@ $this->load->model('m_vendors');
                             <div class="clearfix"></div>
                             <?php foreach ($value->vendors as $vkey => $vendr) { 
                                 $pack = $this->ci->m_search->packageName($vendr->package);
-                                    if (empty($pack)) {
+                                    if ((empty($pack)) || (empty($vendr->discount_status))) {
                                         $pack = 'Free Listing';
                                     }
                                     $lable_class = strtolower(str_replace(' ', '-', $pack)); 
