@@ -157,6 +157,16 @@ class Enquiries extends CI_Controller {
         }
     }
 
+
+    public function lead_assign($value='')
+    {
+        $data['category']   = $this->m_enquiry->getCategory();
+        $data['city']       = $this->m_enquiry->getCity();
+        $data['vendors']    = $this->m_enquiry->getVendors();
+        
+       $this->load->view('enquiry/lead-assign', $data, FALSE);
+    }
+
 }
 
 /* End of file Enquiries.php */

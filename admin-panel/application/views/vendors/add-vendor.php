@@ -68,7 +68,7 @@
                                                 <label for="phone">Phone No.<span class="red-text">*</span></label>
                                             </div>
                                             <div class="input-field col s12 l6">
-                                              <select name="package">
+                                              <select name="package" class="packge">
                                                 <option value="0">Choose Package</option>
                                                 <?php if (!empty($package)) {
                                                     foreach ($package as $pack => $packg) { ?>
@@ -147,6 +147,7 @@
                                           </div>
                                         </div>
                                         <input type="hidden" name="dissatus" id="dissatus" >
+                                        <input type="hidden" name="pcchange" id="pcchange" >
 
 
                                         <div class="col s12">
@@ -226,6 +227,9 @@
             $('#dissatus').val('1');
         });
 
+        $(document).on('change','.packge',function(){
+            $('#pcchange').val('1');
+        });
 
 
        

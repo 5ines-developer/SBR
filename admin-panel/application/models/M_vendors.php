@@ -8,7 +8,7 @@ class M_vendors extends CI_Model {
      * get Vendors details from database
      * url : vendors/manage
     **/
-	public function get_vendors($id='',$filter)
+	public function get_vendors($id='',$filter='')
 	{
 		if (!empty($filter) && $filter =='free') {
 			$this->db->where('package', 'Free Listing');
@@ -32,11 +32,13 @@ class M_vendors extends CI_Model {
     **/
 	public function detail($id='')
 	{
+
 		$this->db->from('vendor');
 		$this->db->where('id', $id);
 		return $this->db->get()->row();
-		
 	}
+
+
 
 	/**
      * Vendors -> get Vendors enquiry
@@ -435,6 +437,54 @@ class M_vendors extends CI_Model {
 	public function packageName($id='')
 	{
 		return $this->db->where('id',$id)->get('package')->row('title');
+	}
+
+	// check and get the proposal details if  exist
+	public function saleExist($id='')
+	{
+		$this->db->where('ven.id', $id);
+		$this->db->select('ven.id as vid, ven.name as name ,ven.address, ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pc.title as package,sd.*');
+		$this->db->from('vendor ven');
+		$this->db->join('city cty', 'cty.id = ven.city', 'left');
+		$this->db->join('package pc', 'pc.id = ven.package', 'left');
+		$this->db->join('category cat', 'cat.id = ven.category', 'left');
+		$this->db->join('sales_doc sd', 'sd.vendor_id = ven.id', 'left');
+		$this->db->order_by('ven.id', 'desc');
+		return $this->db->get()->row();
+	}
+
+	public function insertProposal($insert='')
+	{
+		$query = $this->db->where('uniq', $insert['uniq'])->get('sales_doc');
+		if ($query->num_rows() > 0) {
+			if($this->db->where('uniq', $insert['uniq'])->update('sales_doc',$insert))
+			{
+
+				return $this->db->select('v.name, v.phone, v.email, v.price, v.price_for, v.address,  v.price,cat.category, cty.city, sd.*')
+				->where('sd.uniq',$insert['uniq'])
+				->from('vendor v')
+				->join('sales_doc sd', 'sd.vendor_id = v.id', 'left')
+				->join('category cat', 'cat.id = v.category', 'left')
+				->join('city cty', 'cty.id = v.city', 'left')
+				->get()->row();
+
+			}else{
+				return false;
+			}
+
+		}else{
+			if($this->db->insert('sales_doc', $insert))
+			{
+				return $this->db->select('v.name, v.phone, v.email, v.price, v.price_for, v.address, v.email, v.price, sd.customer_id, sd.*')
+				->where('sd.uniq',$insert['uniq'])
+				->from('vendor v')
+				->join('sales_doc sd', 'sd.vendor_id = v.id', 'left')
+				->join('category cat', 'cat.id = v.category', 'left')
+				->join('city cty', 'cty.id = v.city', 'left')
+				->get()->row();
+
+			}	
+		}
 	}
 
 

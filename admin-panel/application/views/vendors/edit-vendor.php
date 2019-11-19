@@ -214,7 +214,7 @@ $this->load->model('m_vendors');
                                             </div>
 
                                             <div class="input-field col s12 l6">
-                                                <select name="package">
+                                                <select name="package" class="packge">
                                                     <option value="0">Choose Package</option>
 
                                                     <?php if (!empty($package)) {
@@ -309,6 +309,7 @@ $this->load->model('m_vendors');
                                         <input name="vid"  type="hidden" value="<?php echo $this->uri->segment(3)
                                          ?>">
                                          <input type="hidden" name="dissatus" id="dissatus" >
+                                         <input type="hidden" name="pcchange" id="pcchange" >
                                         
                                         <div class="col s12 center mtb20">
                                             <button class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result" type="submit">Submit
@@ -763,9 +764,15 @@ $this->load->model('m_vendors');
     <script>
         $(document).ready(function() {
 
-            $(document).on('keyup','#discount',function(){
+            $(document).on('change','#discount',function(){
             $('#dissatus').val('1');
         });
+
+            $(document).on('change','.packge',function(){
+            $('#pcchange').val('1');
+        });
+
+            
             
             $('.modal').modal();
             $('.scrollspy').scrollSpy();

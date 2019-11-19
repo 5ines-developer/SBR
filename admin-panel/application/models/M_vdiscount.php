@@ -39,6 +39,17 @@ class M_vdiscount extends CI_Model {
 	{
 		return $this->db->select('email,name,phone,')->where('id', $id)->get('admin')->row();
 	}
+
+
+	public function invoiceInsert($insert='')
+	{
+		$query = $this->db->where('uniq_id', $insert['uniq_id'])->get('package_invoice');
+		if ($query->num_rows() > 0) {
+			return $this->db->where('uniq_id', $insert['uniq_id'])->get('package_invoice',$insert);
+		}else{
+			return $this->db->insert('package_invoice', $insert);
+		}
+	}
 	
 
 }
