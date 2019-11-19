@@ -160,13 +160,17 @@ $route['vendors-discount']			=	'vendor_discount/index';
 $route['vendors-discount/approve/(:any)']	=	'vendor_discount/approve/$1'; 
 $route['vendors-discount/reject/(:any)']	=	'vendor_discount/reject/$1'; 
 
-//banner pacjkage
+//banner package
 $route['banner-package']			        =	'Banner_pacakge/index';
 $route['banner-package/add']			    =	'Banner_pacakge/add';
 $route['banner-package/insert']			    =	'Banner_pacakge/insert';
 $route['banner-package/edit/(:any)']		=	'Banner_pacakge/edit/$1';
 $route['banner-package/update']			    =	'Banner_pacakge/update';
 $route['banner-package/delete/(:any)']		=	'Banner_pacakge/delete/$1';
+
+//leads management
+$route['leads/add']			        =	'Leads/index';
+$route['leads']			            =	'Leads/manage';
 
 
 

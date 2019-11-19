@@ -70,20 +70,9 @@ class M_enquiry extends CI_Model {
 
 
 
-	public function getCategory($value='')
-	{
-		return $this->db->select('category,id as catid')->get('vendor')->result();
-	}
 
-	public function getCity($value='')
-	{
-		return $this->db->select('city,id as cityId')->get('city')->result();
-	}
 
-	public function getVendors($value='')
-	{
-		return $this->db->select('name,id as vid')->get('vendor')->result();
-	}
+
 	
 
 	

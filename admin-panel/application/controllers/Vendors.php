@@ -168,6 +168,11 @@ class Vendors extends CI_Controller {
                         
                         if(!empty($output))
                         {
+                            if (!empty($pcchange)) {
+                                if (!empty($vid)) { $vn_id = $vid; }else{ $vn_id = $output; }
+                                $pack = array('vendor_id' => $vn_id , 'package_id' => $insert['package'] ,'updated_date' => date('y-m-d h:i:s'));
+                                $this->m_vendors->pack_insert($pack);
+                            }
                           
                             $insert['out']      = $output;
                             $insert['dissatus'] = $dissatus;
@@ -175,7 +180,7 @@ class Vendors extends CI_Controller {
                             $insert['edit']     = $edit;
 
                         /*******discount mail if vendor not eligible*********/
-                        if (($this->type != '1') && (!empty($dissatus))) {$this->dicountCheck($insert); }
+                        if (($this->type != '1') && (!empty($dissatus))) { $this->dicountCheck($insert); }
                             
                             $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
                             if (!empty($vid)) {
@@ -194,6 +199,7 @@ class Vendors extends CI_Controller {
                         }
         } 
     }
+
 
 
     public function dicountCheck($insert='')

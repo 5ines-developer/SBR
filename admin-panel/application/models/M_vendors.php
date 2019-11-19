@@ -488,6 +488,15 @@ class M_vendors extends CI_Model {
 	}
 
 
+	public function pack_insert($insert = null)
+	{	
+		
+		$this->db->where('vendor_id', $insert['vendor_id'])->delete('vendor_package');			
+		return $this->db->insert('vendor_package', $insert);	
+		
+	}
+
+
 
 	
 

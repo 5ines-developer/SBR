@@ -30,6 +30,8 @@
 
         <li class="<?php echo $this->uri->segment(1) == 'package'?'active':'' ?>"><a href="<?php echo base_url('package') ?>"><i class="fas fa-ribbon li-icon"></i>Package</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'banner-package'?'active':'' ?>"><a href="<?php echo base_url('banner-package') ?>"><i class="fas fa-ribbon li-icon"></i>Banner Package</a></li>
+        <div class="divider"></div>
+
         <li class="<?php echo $this->uri->segment(1) == 'vendor-package'?'active':'' ?>"><a href="<?php echo base_url('vendor-package') ?>"><i class="fas fa-comments-dollar li-icon"></i>Package Request 
           <?php if($this->ci->preload->bypackage() > 0){
             echo '<span class="new badge">'. $this->ci->preload->bypackage() .'</span> ';
@@ -38,6 +40,7 @@
           
 
 
+        <li class="<?php echo $this->uri->segment(1) == 'leads'?'active':'' ?>"><a href="<?php echo base_url('leads') ?>"><i class="fas fa-comments li-icon"></i>Lead Management</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'enquiries'?'active':'' ?>"><a href="<?php echo base_url('enquiries') ?>"><i class="fas fa-comments li-icon"></i>Enquiries</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'vendor-enquiry'?'active':'' ?>"><a href="<?php echo base_url('vendor-enquiry') ?>"><i class="fas fa-comment li-icon"></i>Vendor Enquiry</a></li>
 
