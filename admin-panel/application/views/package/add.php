@@ -69,7 +69,6 @@
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                     <select name="banner" required="">
-                                                        <option value="" >Banner Available</option>
                                                         <option value="1" >Yes</option>
                                                         <option value="" >No</option>
                                                         

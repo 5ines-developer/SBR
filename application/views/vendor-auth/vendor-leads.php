@@ -14,6 +14,7 @@
     <!-- data table -->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/dataTable/datatables.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/dataTable/button/css/buttons.dataTables.css">
+     <?php $this->load->view('includes/favicon.php');  ?>
 </head>
 
 <body class="#fafafa grey lighten-5">

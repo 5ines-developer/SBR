@@ -71,7 +71,6 @@
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                     <select name="banner" required="">
-                                                        <option value="" >Banner Available</option>
                                                         <option value="1" <?php if (!empty($result->leads)) { echo 'selected'; } ?> >Yes</option>
                                                         <option value="" <?php if (empty($result->leads)) { echo 'selected'; }  ?> >No</option>
                                                     </select>

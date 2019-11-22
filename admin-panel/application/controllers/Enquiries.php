@@ -21,7 +21,7 @@ class Enquiries extends CI_Controller {
 	{
         $acces = array();
         $acces = $this->acces;
-        if (in_array("5", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("13", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
             {  
                 redirect(base_url(),'refresh'); 
@@ -36,7 +36,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("5", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("13", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 
@@ -51,7 +51,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("8", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("15", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 
@@ -66,7 +66,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("8", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("15", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 
@@ -81,7 +81,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("9", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("16", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 
@@ -96,7 +96,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("10", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("17", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 
@@ -116,7 +116,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("10", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("17", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 
@@ -142,7 +142,7 @@ class Enquiries extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("11", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("18", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
                 redirect(base_url(),'refresh'); 

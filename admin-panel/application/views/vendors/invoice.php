@@ -87,7 +87,7 @@
       <table>
         <thead>
           <tr >
-              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo base_url ()?>/assets/img/logo.png" alt=""></th>
+              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo $_SERVER["DOCUMENT_ROOT"] ?>/shaadibaraati/assets/img/logo.png" alt=""></th>
           </tr>
         </thead>        
       </table>
@@ -128,23 +128,23 @@
         <tbody>
           <tr>
             <th class="col-befor">Client name </th>
-            <td><?php echo (!empty($result['name']))?$result['name']:''; ?></td>
+            <td><?php echo (!empty($result['c_name']))?$result['c_name']:''; ?></td>
           </tr>
           <tr>
             <th class="col-befor">Client Address</th>
-            <td><?php echo (!empty($result['phone']))?$result['phone']:''; ?></td>
+            <td><?php echo (!empty($result['c_address']))?$result['c_address']:''; ?></td>
           </tr>
             <tr>
             <th class="col-befor">GSTIN Number   </th>
-            <td><?php echo (!empty($result['gst_no']))?$result['gst_no']:''; ?></td>
+            <td><?php echo (!empty($result['c_gstin']))?$result['c_gstin']:''; ?></td>
           </tr>
           <tr>
             <th class="col-befor">Invoice No.    </th>
-            <td><?php echo (!empty($result['p_type']))?$result['p_type']:''; ?></td>
+            <td><?php echo (!empty($result['invoice_no']))?$result['invoice_no']:''; ?></td>
           </tr>
           <tr>
             <th class="col-befor">Invoice Date    </th>
-            <td><?php echo (!empty($result['p_type']))?$result['p_type']:''; ?></td>
+            <td><?php echo (!empty($result['in_date']))?$result['in_date']:''; ?></td>
           </tr>
           
         </tbody>
@@ -165,7 +165,7 @@
           <tr>
             <td><?php echo (!empty($result['package']))?$result['package']:''; ?></td>
             <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
-            <<td><?php echo (!empty($result['discount']))?$result['discount']:''; ?></td>
+            <td><?php echo (!empty($result['discount']))?$result['discount']:''; ?></td>
             <td><?php echo (!empty($result['cgst']))?$result['cgst']:''; ?></td>
             <td><?php echo (!empty($result['sgst']))?$result['sgst']:''; ?></td>
             <td><?php echo (!empty($result['igst']))?$result['igst']:''; ?></td>

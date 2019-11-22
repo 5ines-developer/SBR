@@ -16,7 +16,7 @@ class Career extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("12", $acces))
+        if (in_array("19", $acces))
         {
             $this->access = true;
 

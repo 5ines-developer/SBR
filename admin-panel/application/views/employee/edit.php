@@ -43,12 +43,12 @@
                             </div>
                             <div class="col 12 m6 right-align">
                             <?php
-                                if ($result->is_active == '1') { ?>
+                                if ($result->is_active == '2') { ?>
                                   <a href=""
                                     class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"
                                 id="unblock">Unblock</a>                              
                                 
-                                <?php }elseif ($result->is_active == '2') { ?>
+                                <?php }elseif ($result->is_active == '1') { ?>
 
                                   <a href=""
                                     class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"

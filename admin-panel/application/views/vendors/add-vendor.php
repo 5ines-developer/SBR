@@ -223,7 +223,7 @@
             }
         });
 
-        $(document).on('keyup','#discount',function(){
+        $(document).on('change','#discount',function(){
             $('#dissatus').val('1');
         });
 

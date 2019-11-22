@@ -13,6 +13,7 @@ $this->load->model('m_vendorDetail');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/image-uploader.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+     <?php $this->load->view('includes/favicon.php');  ?>
     <style>
         .sub-reg.z-depth-1 {margin: 15px 0 5px 21px; } 
         #emailmodal {width: 35%; } 

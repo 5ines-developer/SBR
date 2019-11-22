@@ -16,19 +16,19 @@ class Vendor_discount extends CI_Controller {
         $this->ci =& get_instance();
 
 
-        // $this->ci =& get_instance();
-        // $accs = $this->ci->preload->access();
-        // $acces = array();
-        // $acces = explode (",", $accs->menu);
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();
+        $acces = array();
+        $acces = explode (",", $accs->menu);
         
-        // if (in_array("14", $acces))
-        // {
-        //     $this->access = true;
+        if (in_array("8", $acces))
+        {
+            $this->access = true;
 
-        // }else{
-        //     $this->access = null;
-        // }
-        // if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+        }else{
+            $this->access = null;
+        }
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
 
     }
 
@@ -160,6 +160,7 @@ class Vendor_discount extends CI_Controller {
             'v_id'          => $this->input->post('v_id') 
         );
 
+
         // send to model
         if($this->m_vdiscount->invoiceInsert($insert)){
 
@@ -174,7 +175,7 @@ class Vendor_discount extends CI_Controller {
             $this->pdf->setPaper('A3', 'Potrait');
             $this->pdf->render();
             // Output the generated PDF (1 = download and 0 = preview)
-            // $this->pdf->stream("welcome.pdf", array("Attachment"=>1));
+            $this->pdf->stream("welcome.pdf", array("Attachment"=>1));
             $fileName = random_string('alnum',10);
             file_put_contents('pdf/invoice-'.$fileName.'.pdf',$this->pdf->output());
             $pdfFile = 'pdf/invoice-'.$fileName.'.pdf';

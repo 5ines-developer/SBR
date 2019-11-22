@@ -96,8 +96,8 @@
                                             <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
                                             <td ><a href="mailto:<?php echo (!empty($value->email))?$value->email:'---'  ?>" ><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                             <td ><a href="tel:<?php echo (!empty($value->phone))?$value->phone:'---'  ?>" ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
-                                            <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
+                                            <td ><?php echo $this->ci->m_vendors->getCity($value->city);  ?></td>
+                                            <td > <?php echo $this->ci->m_vendors->getCategory($value->category);  ?> </td> 
                                             <td ><?php echo $this->ci->m_vendors->packageName($value->package);  ?></td>
                                             <td><?php echo (!empty($value->registered_date))?date("M d, Y ", strtotime($value->registered_date)):'---'; ?></td>
 

@@ -19,7 +19,7 @@ class Vendors extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("14", $acces))
+        if (in_array("6", $acces))
         {
             $this->access = true;
 
@@ -159,7 +159,9 @@ class Vendors extends CI_Controller {
                         
 
                         if (!empty($imgpath)) {$insert['profile_file'] =  $imgpath; $insert['img'] = $file_name; } 
-                        if (!empty($dissatus)) {$insert['discount_status'] = '1'; }
+                         if (($this->type != '1') && (!empty($dissatus))){ 
+                            $insert['discount_status'] = '0'; 
+                        }
                         if (!empty($edit)) {$e = 'Updated'; }else{$insert['added_by'] = $this->session->userdata('sha_id'); $e = 'Added'; }
 
                         /*******insert vendor detail*********/
@@ -182,12 +184,12 @@ class Vendors extends CI_Controller {
                         /*******discount mail if vendor not eligible*********/
                         if (($this->type != '1') && (!empty($dissatus))) { $this->dicountCheck($insert); }
                             
-                            $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
-                            if (!empty($vid)) {
-                                redirect('vendors/edit/'.$vid);
-                            }else{
-                                redirect('vendors/edit/'.$output,'refresh');
-                            }
+                            // $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
+                            // if (!empty($vid)) {
+                            //     redirect('vendors/edit/'.$vid);
+                            // }else{
+                            //     redirect('vendors/edit/'.$output,'refresh');
+                            // }
                             
                         }else{
                             $this->session->set_flashdata('error', 'Something went wrong please try again!');
@@ -345,7 +347,7 @@ class Vendors extends CI_Controller {
             'amnt_words'        => $this->input->post('w_amount'),
             'uniq'              => $this->input->post('uniq_id'),
             'invoice_address'   => $this->input->post('i_address'),
-            'invoice_address'   => $this->input->post('package'),
+            'package'   => $this->input->post('package'),
         );
 
         if($data['result'] = $this->m_vendors->insertProposal($insert))

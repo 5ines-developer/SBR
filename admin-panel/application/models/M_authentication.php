@@ -9,7 +9,7 @@ class M_authentication extends CI_Model {
 	    **/ 
 		function can_login($email, $password)  
 	      {  
-        
+          $this->db->where('is_active', '1');
            $this->db->group_start(); 
             $this->db->where('name', $email);  
             $this->db->or_where('email', $email); 

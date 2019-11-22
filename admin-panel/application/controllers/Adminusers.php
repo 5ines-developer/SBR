@@ -17,7 +17,7 @@ class Adminusers extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("13", $acces))
+        if (in_array("5", $acces))
         {
             $this->access = true;
 
@@ -94,8 +94,6 @@ class Adminusers extends CI_Controller {
             );
             $result = $this->m_adminusers->insert($insert);
             if(!empty($result)){
-                $this->userEmail($insert);
-
                 if ($this->userEmail($insert)) {
                     $this->session->set_flashdata('success', 'Employee added Successfully');
                     redirect('employees');

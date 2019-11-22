@@ -42,8 +42,8 @@ class M_leads extends CI_Model {
     public function getLeads($var = null)
     {
         $this->db->select('lp.*,cty.city as cityName,cat.category as catName,vn.name as vendorName')
-        ->from('vendor vn')
-        ->join('leads_assign  lp', 'lp.vendor_id = vn.id ', 'left')
+        ->from('leads_assign lp')
+        ->join('vendor  vn', 'vn.id  = lp.vendor_id ', 'left')
 		->join('city cty', 'cty.id = lp.city', 'left')
 		->join('category cat', 'cat.id = lp.category', 'left');
         return $this->db->order_by('id', 'desc')->get()->result();  

@@ -15,7 +15,7 @@ class Vendors_approval extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("4", $acces))
+        if (in_array("7", $acces))
         {
             $this->access = true;
 

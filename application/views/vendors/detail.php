@@ -15,6 +15,7 @@ $this->load->model('m_vendors');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+     <?php $this->load->view('includes/favicon.php');  ?>
     <style>
     .fixed-action-btn {
         position: relative;
