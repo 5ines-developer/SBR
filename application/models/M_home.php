@@ -4,6 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_home extends CI_Model
 {
 
+    public function insertVisitor($ip='')
+    {
+        return $this->db->insert('visitors', array('ip_address' => $ip));
+    }
+
     /*
      *Home-> get cities
      **/

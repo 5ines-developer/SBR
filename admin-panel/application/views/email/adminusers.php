@@ -238,20 +238,11 @@
 <p style="font-size: 16px; line-height: 1.2; mso-line-height-alt: 19px; margin: 0;"><span style="font-size: 16px;">To finish signing up please click below Button</span></p>
 </div>
 </div>
-<!--[if mso]></td></tr></table><![endif]-->
-<div align="left" class="button-container" style="padding-top:5px;padding-right:10px;padding-bottom:35px;padding-left:10px;">
-<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-top: 5px; padding-right: 10px; padding-bottom: 35px; padding-left: 10px" align="left"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:31.5pt; width:165pt; v-text-anchor:middle;" arcsize="120%" stroke="false" fillcolor="#FFD500"><w:anchorlock/><v:textbox inset="0,0,0,0"><center style="color:#132F40; font-family:Arial, sans-serif; font-size:15px"><![endif]-->
-  <a style="background-color:
-#d0021b;
-padding: 7px 7px;
-color:
-#fff;
-border-radius: 3px;
-text-decoration: none;" href="<?php echo base_url().'employees/verify?rid='.$result['reference_d'].'&rmail='.$result['email'] ?>">
+
+  <a  href="<?php echo base_url().'employees/verify?rid='.$result['reference_d'].'&rmail='.$result['email'] ?>">
     ACTIVATE MY ACCOUNT &gt;
 </a>
-<!--[if mso]></center></v:textbox></v:roundrect></td></tr></table><![endif]-->
-</div>
+
 <!--[if (!mso)&(!IE)]><!-->
 </div>
 <!--<![endif]-->

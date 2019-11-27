@@ -347,7 +347,8 @@ class Vendors extends CI_Controller {
             'amnt_words'        => $this->input->post('w_amount'),
             'uniq'              => $this->input->post('uniq_id'),
             'invoice_address'   => $this->input->post('i_address'),
-            'package'   => $this->input->post('package'),
+            'package'           => $this->input->post('package'),
+            'added_by'          => $this->aid,
         );
 
         if($data['result'] = $this->m_vendors->insertProposal($insert))
@@ -862,6 +863,13 @@ class Vendors extends CI_Controller {
             }
         
 
+    }
+
+
+
+    public function prop($value='')
+    {
+        $this->load->view('vendors/prop');
     }
 
 

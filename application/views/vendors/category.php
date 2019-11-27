@@ -355,12 +355,12 @@ $this->load->model('m_vendors');
                         ?>
                         <div class="row  result-item-box">
                             <div class="cat-row-heding">
-                                <div class="col s6">
+                                <div class="col m6 s12">
                                     <a href="<?php echo base_url().'vendors/all/'.$clink ?>">
                                         <h4><?php echo '<img src="'.base_url().$value->icon.'" class="responsive-img" alt="'.$value->category.'">'.$value->category ?></h4>
                                     </a>
                                 </div>
-                                <div class="col s6 right-align">
+                                <div class="col m6 s6 right-align hide-on-small-only">
                                     <a href="<?php echo base_url().'vendors/all/'.$clink ?>" class="borderd-btn">View All <i class="material-icons">arrow_forward</i></a>
                                 </div>
                             </div>

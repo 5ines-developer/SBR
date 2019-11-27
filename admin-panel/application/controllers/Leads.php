@@ -41,14 +41,23 @@ class Leads extends CI_Controller {
         $category    = $this->input->get('category');
         $v_type      = $this->input->get('v_type');
         $data['vendors']    = $this->m_leads->getVendors($city,$category,$v_type); 
+
+        
         if (!empty($data['vendors'])) {
+             $ldsa ='';
            foreach ($data['vendors'] as $key => $value) {
+            if ((($value->vid !='')) && (!empty($value->leads))) {
+                $lds = $this->m_leads->getleadcount($value->vid,$value->lvn_name);
+                $ldsa = $lds.'/'.$value->leads;
+            }
+
+
             $output .=  '<p>
                     <label>
                     <input type="checkbox" class="filled-in" value="'.$value->vid.'" name="vendor[]"/>
                     <span>'.$value->name.'</span>
                     </label>
-                    &nbsp;&nbsp;&nbsp;<span> - '.($this->m_leads->getleadcount($value->vid,$value->lvn_name) .'/'.$value->leads).'</span>
+                    &nbsp;&nbsp;&nbsp;<span> - '.($ldsa).'</span>
                 </p>';               
            }           
         }

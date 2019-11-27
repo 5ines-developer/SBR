@@ -48,7 +48,7 @@
         
                
         <li class="<?php echo $this->uri->segment(1) == 'free-quote'?'active':'' ?>"><a href="<?php echo base_url('free-quote') ?>"><i class="fas fa-file-alt li-icon"></i>Free Quote Request</a></li>
-        <li class="<?php echo $this->uri->segment(1) == 'newsletter-subcribers'?'active':'' ?>"><a href="<?php echo base_url('newsletter-subcribers') ?>"><i class="fas fa-user-plus li-icon"></i>Newsletter Subcribers</a></li>
+        <li class="<?php echo $this->uri->segment(1) == 'newsletter-subcribers'?'active':'' ?>"><a href="<?php echo base_url('newsletter-subcribers') ?>"><i class="fas fa-user-plus li-icon"></i>Newsletter Subscribers</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'testimonial'?'active':'' ?>">
           <a href="<?php echo base_url('testimonial') ?>"><i class="far fa-comment-dots li-icon"></i>Testimonial 
           <?php if($this->ci->preload->testimonial() > 0){
@@ -75,6 +75,11 @@
       </li>
 
       <!-- <li class="<?php echo $this->uri->segment(1) == 'cache'?'active':'' ?>"><a href="<?php echo base_url('cache') ?>"><i class="far fa-check-circle li-icon"></i>Cache</a></li> -->
+      
+       <div class="divider"></div>
+      <li class="<?php echo $this->uri->segment(1) == 'sales-report'?'active':'' ?>"><a href="<?php echo base_url('sales-report') ?>"><i class="fas fa-chart-line li-icon"></i>Sales Report</a></li>
+      <li class="<?php echo $this->uri->segment(1) == 'leads-report'?'active':'' ?>"><a href="<?php echo base_url('leads-report') ?>"><i class="fas fa-chart-line li-icon"></i>Leads Report</a></li>
+      <li class="<?php echo $this->uri->segment(1) == 'visitors-report'?'active':'' ?>"><a href="<?php echo base_url('visitors-report') ?>"><i class="fas fa-chart-line li-icon"></i>Visitors Report</a></li>
 
         
       
@@ -124,7 +129,7 @@
            <li class="<?php echo $this->uri->segment(1) == 'free-quote'?'active':'' ?>"><a href="<?php echo base_url('free-quote') ?>"><i class="fas fa-file-alt li-icon"></i>Free Quote Request</a></li>
        <?php }
        if ($value == '16') { ?>
-           <li class="<?php echo $this->uri->segment(1) == 'newsletter-subcribers'?'active':'' ?>"><a href="<?php echo base_url('newsletter-subcribers') ?>"><i class="fas fa-user-plus li-icon"></i>Newsletter Subcribers</a></li>
+           <li class="<?php echo $this->uri->segment(1) == 'newsletter-subcribers'?'active':'' ?>"><a href="<?php echo base_url('newsletter-subcribers') ?>"><i class="fas fa-user-plus li-icon"></i>Newsletter Subscribers</a></li>
        <?php }
        if ($value == '17') { ?>
            <li class="<?php echo $this->uri->segment(1) == 'testimonial'?'active':'' ?>">

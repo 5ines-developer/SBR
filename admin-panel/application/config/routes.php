@@ -151,9 +151,9 @@ $route['employees/insert']			=	'Adminusers/insert';
 $route['employees/edit/(:any)']		=	'Adminusers/edit/$1';
 $route['employees/update']			=	'Adminusers/update';
 $route['employees/delete/(:any)']	=	'Adminusers/delete/$1';
-$route['employees/verify']			=	'Adminusers/verify';
-$route['employees/add-password/(:any)/(:any)']	=	'Adminusers/add_pass/$1/$2';
-$route['employees/update-password']	=	'Adminusers/update_pass';
+$route['employees/verify']			=	'Employe_auth/verify';
+$route['employees/add-password/(:any)/(:any)']	=	'Employe_auth/add_pass/$1/$2';
+$route['employees/update-password']	=	'Employe_auth/update_pass';
 
 //vendor discount request
 $route['vendors-discount']			=	'vendor_discount/index'; 
@@ -169,10 +169,13 @@ $route['banner-package/update']			    =	'Banner_pacakge/update';
 $route['banner-package/delete/(:any)']		=	'Banner_pacakge/delete/$1';
 
 //leads management
-$route['leads/add']			        =	'Leads/index';
-$route['leads']			            =	'Leads/manage';
+$route['leads/add']			        		=	'Leads/index';
+$route['leads']			            		=	'Leads/manage';
 
-
+//sale report
+$route['sales-report']			            =	'report/index';
+$route['leads-report']			            =	'report/leads';
+$route['visitors-report']			        =	'report/visitors';
 
 
 

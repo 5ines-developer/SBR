@@ -21,6 +21,7 @@ class Home extends CI_Controller {
         $data['title']      = 'ShaadiBaraati';
         $data['city']       = $this->m_home->getCity();
         $data['category']   = $this->m_home->getCategory();
+        $this->m_home->insertVisitor($this->input->ip_address());
 		$this->load->view('site/index', $data, FALSE);
     }
 

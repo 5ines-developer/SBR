@@ -46,8 +46,7 @@ html {
 
 .brand-logo {
     width: 318px;
-    /* margin-top: 3px; */
-    margin-top: -25px;
+    margin-top: 3px;
 }
 
 .lec-search {
@@ -2148,10 +2147,13 @@ r-crd-category {
         height: 85px;
     }
     .result-items .card-image {
-        height: auto;
+            height: 90px;
     }
     .result-items .card-image img {
         min-height: auto;
+    }
+    .ss-main .ss-single-selected {
+        margin-bottom: 10px;
     }
 }
 
@@ -3121,6 +3123,7 @@ border-radius: 4px;
     width: 45px !important;
     height: 45px !important;
     text-align: center;
+    top: 16px;
     position: relative;
     line-height: 45px !important;
     border-radius: 25px;
@@ -3447,8 +3450,7 @@ border-radius: 4px;
 }
 
 .navbar-fixed {
-    /* height: 75px; */
-    height: 50px;
+    height: 75px;
 }
 
 nav,
@@ -3456,7 +3458,6 @@ nav .nav-wrapper i,
 nav a.sidenav-trigger,
 nav a.sidenav-trigger i {
     line-height: 75px;
-    line-height: 40px;
 }
 
 .similar-more {
@@ -4926,12 +4927,12 @@ nav a.sidenav-trigger i {
 }
 
 .profle-img {
-    line-height: 0px !important;
+    line-height: 60px !important;
 }
 
 .profle-img img {
     position: relative;
-    top: 0px;
+    top: 10px;
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -4971,4 +4972,11 @@ nav a.sidenav-trigger i {
 }
 .top-bars a:hover {
     background-color: rgba(0,0,0,0.1);
+}
+
+.dropdown-content li a{
+    font-size: 14px;
+}
+.dropdown-content li > a > i {
+    margin: 0 14px 0 0;
 }

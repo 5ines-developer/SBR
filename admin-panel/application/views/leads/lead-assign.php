@@ -82,15 +82,6 @@
                                               </div>
                                             </div> 
                                             <div class="row m0">
-                                            <div class="input-field col s12 l6">
-                                                  <select id="v_type" name=v_type required>
-                                                    <option value="">Vendor Type</option>
-                                                    <option value="paid">Paid</option>
-                                                    <option value="free">Free</option>
-                                                    
-                                                  </select>
-                                                  <label for="v_type">Vendor Type</label>
-                                                </div>                                                 
                                                 <div class="input-field col s12 l6">
                                                   <select id="city"  name="city">
                                                     <option value="">Choose a city</option>
@@ -110,7 +101,16 @@
                                                     <?php  } } ?>                                                 
                                                   </select>
                                                   <label for="c_name">Category</label>
-                                                </div>                                                 
+                                                </div> 
+                                                <div class="input-field col s12 l6">
+                                                  <select id="v_type" name=v_type required>
+                                                    <option value="">Vendor Type</option>
+                                                    <option value="paid">Paid</option>
+                                                    <option value="free">Free</option>
+                                                    
+                                                  </select>
+                                                  <label for="v_type">Vendor Type</label>
+                                                </div>                                                
                                             </div><br>
                                             
                                             <div class="row m0">

@@ -7,16 +7,6 @@
 
 
         <nav class="z-depth-1 navbar-fixed">
-            
-                <div class="top-bars white">
-                <div class="right hide-on-med-and-down header-ul "> 
-                <?php  if ($this->session->userdata('shvid') =='') {  ?>                   
-                    <a href="<?php echo base_url('vendor/login') ?>"> ARE YOU A VENDOR ? </a>
-                    <?php } ?>
-                </div>
-                
-            </div>
-        
 
             <div class="nav-wrapper white">
                 <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive brand-logo" alt=""></a>
@@ -40,9 +30,19 @@
                                 <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a><span class="l-d">|</span></li>
                                 <li class="br-lo"><a href="<?php echo base_url('logout') ?>">Logout</a></li>
                             <?php }else{ ?>
-                            <li class="br-lo"><a href="<?php echo base_url('login') ?>">SIGN IN </a></li>
+                            <li class="br-lo"><a class="dropdown-trigger" href="#" data-target="dropdown1">SIGN IN </a></li>
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li class="br-lo"><a class="black-text" href="<?php echo base_url('login') ?>"><i class="material-icons dp48">person</i> Customer</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li class="br-lo"><a class="black-text" href="<?php echo base_url('vendor/login') ?>"><i class="material-icons dp48">enhanced_encryption</i>  Vendor</a></li>
+                            </ul>
                             <li><span class="black-text">|</span></li>
-                            <li class="br-lo"><a href="<?php echo base_url('register') ?>">SIGN UP</a></li>
+                            <li class="br-lo"><a class="dropdown-trigger" href="#" data-target="dropdown2">SIGN UP </a></li>
+                            <ul id='dropdown2' class='dropdown-content'>
+                                <li class="br-lo"><a class="black-text" href="<?php echo base_url('register') ?>"><i class="material-icons dp48">person</i> Customer</a></li>
+                                <li class="divider" tabindex="-1"></li>
+                                <li class="br-lo"><a class="black-text" href="<?php echo base_url('vendor/register') ?>"><i class="material-icons dp48">enhanced_encryption</i>  Vendor</a></li>
+                            </ul>
                             <li class="tollfree" ><a href="tel:18004199456" class="tooltipped"  data-position="bottom" data-tooltip="1800 4199 456"> <i class="material-icons">local_phone</i><span>Toll Free</span></a></li>
                             <?php } ?>
                             
@@ -125,8 +125,11 @@
                     <li class="br-lo"><a href="<?php echo base_url('profile') ?>">Profile </a></li>
                     <li class="br-lo"><a href="<?php echo base_url('logout') ?>">Logout</a></li>
             <?php }else{ ?>
-                    <li class="br-lo"><a href="<?php echo base_url('login') ?>">SIGN IN </a></li>
-                    <li class="br-lo"><a href="<?php echo base_url('register') ?>">SIGN UP</a></li>
+                    <li class="br-lo"><a href="<?php echo base_url('login') ?>">CUSTOMER SIGN IN </a></li>
+                    <li class="br-lo"><a href="<?php echo base_url('vendor/login') ?>">VENDOR SIGN IN </a></li>
+                    <li class="br-lo"><a href="<?php echo base_url('register') ?>">CUSTOMER SIGN UP</a></li>
+                    <li class="br-lo"><a href="<?php echo base_url('vendor/register') ?>">VENDOR SIGN UP </a></li>
+                    
             <?php } ?>
         </ul>
     </div>
