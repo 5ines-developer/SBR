@@ -76,6 +76,8 @@ class Authentication extends CI_Controller {
         	$name 		= $this->input->post('name');
         	$phone 		= $this->input->post('phone');
         	$email 		= $this->input->post('email');
+        	$live 		= $this->input->post('live');
+        	$iam 		= $this->input->post('iam');
         	$password 	= $this->input->post('password');
         	$hash 		= $this->bcrypt->hash_password($password);
         	$refid      = random_string('alnum','20');
@@ -85,7 +87,9 @@ class Authentication extends CI_Controller {
         		'su_email' 		=> $email,
         		'su_phone' 		=> $phone,
         		'su_password' 	=> $hash,
-        		'su_referenceid'=> $refid,
+                'su_referenceid'=> $refid,
+                'live'          => $live,
+                'iam'           => $iam
                  );
 
             $data['output'] = $this->m_authentication->register($insert);

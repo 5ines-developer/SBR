@@ -15,63 +15,77 @@
         <!-- header -->
         <?php $this->load->view('includes/header.php'); ?>
         <!-- end header -->
-        <section class="back-sig">
-            <div class="container-reg" v-bind:class="{'hide-card': forgotpassword}">
-                <div class="sign-reg">
-                    <div class="row m0">
-                        <div class="col xl7 l6 s12 m6 ">
-                            <div class="reg-li">
-                                <h6>LOGIN</h6>
-                                <img src="assets/img/saprator.png" class="img-responsive" alt="">
-                                <P>"Plan your wedding With Shaadi Baraati"</P>
-                            </div>
-                            <!-- <div class="social-reg">
-                                <a class="btn-floating btn-large waves-effect waves-light white pos-al"><img
-                                        src="assets/img/svg/google.svg" class="img-responsive g-icon" alt="">></a>
-                                <a class="btn-floating btn-large waves-effect waves-light white pos-al1"><i
-                                        class="fab fa-facebook-f  i-icon"></i></a>
-                            </div> -->
-                            <form action="<?php echo base_url('login/check') ?>" method="post" enctype="multipart/form-data">
-                                <div class="form-input-login">
-                                    <div class="d-input">
-                                        <div class="input-field">
-                                            <input id="email" type="email" class="validate  in-l"
-                                                placeholder="Email Address" v-model="email" name="email" required="">
-                                        </div>
-                                    </div>
-                                    <div class="d-input">
-                                        <div class="input-field">
-                                            <input id="password" type="password" class="validate  in-l" v-model="passw"
-                                                placeholder="Password" name="password" required="">
 
-                                        </div>
-                                    </div>
-                                    <p class="m0"><a class="fp" @click="forgotpassword = !forgotpassword">Forgot
-                                            Password ?</a></p>
-                                </div>
-                                <center> <button class="sub-reg z-depth-1" type="submit" value="Submit">Submit</button>
-                                </center>
-                                <div class="ss-h">
-                                    <p class="p-arg-login">If You Have an Account ?<a href="<?php echo base_url('register') ?>" class="cr sr-ang">Sign Up</a></p>
-                                </div>
-                                
-                            </form>
+        <section class="vendor-sig">
+            <div class="container" v-bind:class="{'hide-card': forgotpassword}">
+                <div class="vendor-reg">
+                    <div class="row">
+                        <div class="col l6 m6 s12">
+                            <div class="vendor-cont vcl">
+                                <h4>"Grow your Business With Shaadi Baraati"</h4>
+                                <p>Sign Up to acess your Dashboard</p>
+                                <p>If You Don't have an Account ?</p>
+                                <a href="<?php echo base_url('vendor/register') ?>"><button class="vend-btn">Sign Up</button></a>
+                            </div>
                         </div>
-                        <div class="col xl5 l6 s12  m6 p0">
-                            <div class="img-reg">
-                                <img src="assets/img/reg.png" class="img-responsive" width="100%" alt="">
+                        <div class="col l6 m6 s12">
+                            <div class="vend-background">
+                                <div class="head-tile">
+                                    <h6>Vendor Sign in</h6>
+                                    <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                                </div>
+                                <div class="form-vendor-reg">
+                                <form action="<?php echo base_url('vendor/login-check') ?>" method="post" enctype="multipart/form-data">
+                                        <div class="form-input-vendor-login">
+                                            <div class="row">
+                                                <div class="col l12 m12 s12">
+                                                    <div class="d-input">
+                                                        <div class="input-field m0 pb">
+                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" v-on:keyup="emailCheck" placeholder="Enter Your email" name="email" required="">
+                                                            <span class="helper-text red-text" >{{ emailError }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col l12 m12 s12">
+                                                    <div class="d-input">
+                                                        <div class="input-field m0 pb">
+                                                            <input id="passsword" type="password" class="validate  in-l" placeholder="Enter Your Password" name="password" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col l12 m12 s12">
+                                                    <p class="m0 tl"><a class="fp" @click="forgotpassword = !forgotpassword">Forgot Password ?</a></p>
+                                                </div>
+                                            </div>
+                                            <button class="sub-reg z-depth-1 tl" type="submit" value="Submit">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="frp-block" >
-                <div class="forgotpsw-contatiner" v-bind:class="{'hide-card': !forgotpassword}">
-                        <div class="reg-li" >
-                            <h6>Forgot Password</h6>
-                            <img src="assets/img/saprator.png" alt="" class="img-responsive">
-                            <p>Enter your email, and we'll send you instructions on how to reset your password.</p>
-                            <div class="form-forgot">
+
+
+            <div class="container" v-bind:class="{'hide-card': !forgotpassword}">
+                <div class="vendor-reg">
+                    <div class="row">
+                        <div class="col l6 m6 s12">
+                            <div class="vendor-cont vcl">
+                                <h4>"Grow your Business With Shaadi Baraati"</h4>
+                                <p>Sign In to acess your Dashboard</p>
+                                <p>If You Don't have an Account ?</p>
+                                <a href="<?php echo base_url() ?>/vendor/register"><button class="vend-btn">Sign Up</button></a>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s12">
+                            <div class="vend-background">
+                                <div class="head-tile">
+                                    <h6>Vendor Sign in</h6>
+                                    <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                                </div>
+                                <div class="form-vendor-reg">
                                 <form ref="form"  @submit.prevent="checkForm" action="<?php echo base_url('forgot-password') ?>" method="post" enctype="multipart/form-data">
                                     <div class="d-input">
                                         <div class="input-field">
@@ -91,13 +105,16 @@
                                         </div>
                                     </div>
                                 </form>
+                                </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
 
-
         </section>
+
+        
     </div>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
