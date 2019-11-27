@@ -38,7 +38,7 @@
                                     <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="form-vendor-reg">
-                                    <form action="<?php echo base_url('vendor/register-insert') ?>" ref="form"  @submit.prevent="checkForm" method="post" enctype="multipart/form-data">
+                                    <form id="vnregister" action="<?php echo base_url('vendor/register-insert') ?>" ref="form"  @submit.prevent="checkForm" method="post" enctype="multipart/form-data">
                                         <div class="form-input-vendor-reg">
                                             <div class="row">
                                                 <div class="col l12 m6 s12">
@@ -114,6 +114,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col l12 s12">
+                                                    <div class="d-input">
+                                                        <div class="g-recaptcha" data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div>
+                                                    </div>
+                                                    <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div>
+                                                </div>
                                             </div>
                                             <div class="col s12 center">
                                             <?php 
@@ -133,7 +139,7 @@
         </section>
     </div>
     <!-- script -->
-    <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
@@ -153,6 +159,7 @@
 
         });
     </script>
+
     <script>
         var demo = new Vue({
             el: '#app',
@@ -251,9 +258,11 @@
                 },
                 checkForm(){
                    if((this.cpswerror == '') && (this.phoneError == '') && (this.emailError =='')){
-
-                       
-                        this.$refs.form.submit()
+                        if (grecaptcha.getResponse() == '') {
+                            this.captcha = 'Captcha is required';
+                        }else{
+                            this.$refs.form.submit();
+                        }
                    }else{
                    }
                 }

@@ -93,10 +93,10 @@
                                                 </div>
                                             </div>
                                             <div class="col l12 s12">
-                                             <div class="d-input">
-                                                <div class="g-recaptcha" data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div>
-                                            </div>
-                                            <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div>
+                                                <div class="d-input">
+                                                    <div class="g-recaptcha" data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div>
+                                                </div>
+                                                <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div>
                                             </div>
 
 

@@ -26,7 +26,7 @@
                         <div class="reg-li">
                             <h6>SIGN UP</h6>
                             <img src="<?php echo base_url()?>assets/img/saprator.png" class="img-responsive" alt="">
-                            <P>"Grow your Business With Shaadi Baraati"</P>
+                            <P>"Plan your wedding With Shaadi Baraati"</P>
                         </div>
                         <!-- <div class="social-reg">
                             <a class="btn-floating btn-large waves-effect waves-light white pos-al"><img
@@ -72,12 +72,16 @@
 
                                     </div>
                                 </div>
+                                <div class="d-input">
+                                    <div class="input-field">
+                                       <div class="g-recaptcha" data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div> <span class="helper-text red-text">{{ captcha }}</span>
+                                    </div>
+                                </div>
                             </div>
                             <center> <button class="sub-reg z-depth-1"  type="submit" value="Submit">Submit</button>
                             </center>
                             <div class="ss-h">
                                 <p class="p-arg">If You Have an Account ?<a href="<?php echo base_url('login') ?>" class="cr sr-ang">Sign In</a></p>
-                                <p class="p-arg">Are You a Vendor ?<a href="<?php echo base_url('vendor/register') ?>" class="cr si-vender">Sign Up</a></p>
                             </div>
                             <!-- <div class="my-data">
                                 <p>{{ name }}</p>
@@ -99,6 +103,7 @@
     </section>
 
     <!-- script -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
@@ -119,6 +124,7 @@
         });
 
     </script>
+
     <script>
         var demo = new Vue({
             el: '#demo',
@@ -133,6 +139,7 @@
                 cpswerror: '',
                 nameError: '',
                 phoneError: '',
+                captcha:''
             },
 
             methods: {
@@ -189,8 +196,11 @@
                 checkForm(){
                    if((this.cpswerror == '') && (this.phoneError == '') && (this.emailError =='')){
 
-                       
-                        this.$refs.form.submit()
+                        if (grecaptcha.getResponse() == '') {
+                            this.captcha = 'Captcha is required';
+                        }else{
+                            this.$refs.form.submit();
+                        }
                    }else{
                    }
                 }
