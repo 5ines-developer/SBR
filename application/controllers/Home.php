@@ -183,6 +183,11 @@ class Home extends CI_Controller {
         $data['result'] = $this->m_home->getTestimonial();
         $this->load->view('site/testimonial',$data);
     }
+
+    public function freeQuote($var = null)
+    {   
+        $this->load->view('site/free-quote');        
+    }
     
     public function getquote($id = null)
     {
@@ -329,6 +334,9 @@ class Home extends CI_Controller {
         unlink(base_url().'application/cache');
         redirect(base_url().'admin-panel','refresh');
     }
+
+
+
 
 }
 

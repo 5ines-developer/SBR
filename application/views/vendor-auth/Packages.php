@@ -32,7 +32,7 @@
                                 <h6>Buy Package</h6>
                             </div>
                             <div class="vendor-inputs">
-                                <h6 class="pack-head">Package Sheet for Year 2018-2019 - Pan India Per City</h6>
+                                <h6 class="pack-head">Package Sheet for Year <?php echo date('Y').'-'.date('Y', strtotime('+1 year')); ?>  Pan India Per City</h6>
                                 <div class="pack-detail">
                                     <div class="row">
 

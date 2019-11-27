@@ -2321,7 +2321,7 @@ a.viewmore:hover {
 /***contact us***/
 
 .contact-back {
-    background: #00000087 url('../img/banner.jpg');
+    background: #00000087 url('../img/b1.jpg');
     background-blend-mode: color;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4979,4 +4979,91 @@ nav a.sidenav-trigger i {
 }
 .dropdown-content li > a > i {
     margin: 0 14px 0 0;
+}
+
+/* vendor detail page */
+.fixed-action-btn {
+    position: relative;
+    right: 0;
+    bottom: 0;
+}
+
+.check-group p {
+    float: left;
+    margin-right: 10px;
+}
+
+.favcol {
+    border-color: #d0021b;
+    background: #d0021b !important;
+    box-shadow: 0 0 2px #9f0202 !important;
+}
+
+.favcol i {
+    color: #fff !important;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::before,
+[type="radio"].with-gap:checked+span::after {
+    border: 2px solid #d50000;
+}
+
+[type="radio"]:checked+span::after,
+[type="radio"].with-gap:checked+span::after {
+    background-color: #d50000;
+}
+
+.fixed-action-btn {
+    position: relative;
+    right: 0;
+    bottom: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+.check-group p {
+    float: left;
+    margin-right: 10px;
+}
+
+.favcol {
+    border-color: #d0021b;
+    background: #d0021b !important;
+    box-shadow: 0 0 2px #9f0202 !important;
+}
+
+.favcol i {
+    color: #fff !important;
+}
+.tit{
+    white-space: nowrap !important;
+overflow: visible !important;
+text-overflow: unset !important;
+}
+
+.r-crd-price{
+    line-height: 22px;
+}
+.simil-crd{
+    border-radius: 0 0 2px 2px;
+    padding: 12px !important;
+height: 98px;
+}
+#date{
+    margin-left: 2rem;
+}
+.prefix{
+    font-size: 23px !important;
+    top: 13px !important;
+}
+#date + label{
+   margin-left: 24px; 
+}
+.banner-container {
+max-height: 500px;
+overflow: hidden;
 }

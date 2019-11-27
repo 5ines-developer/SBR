@@ -34,7 +34,7 @@ class Search extends CI_Controller {
 			$data['vendors'] = $this->m_search->catviseresult();
 			$this->load->view('vendors/category', $data, FALSE);
 		}else{
-			$per_page = 16;
+			$per_page = 24;
 			
 			$rows = $this->m_search->rowsCount(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$data['vendors']    = $this->m_search->getSearch(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category),$per_page,$page);
@@ -42,11 +42,11 @@ class Search extends CI_Controller {
 
 			$config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
 			$config['total_rows'] = (!empty($rows)? count($rows) : '0');
-			$config['per_page'] = 16;
+			$config['per_page'] = 24;
 			$config['reuse_query_string'] = TRUE;
-			$config['num_links'] = 2;
+			$config['num_links'] = 15;
 
-			$config['full_tag_open'] = '<div class="right"><ul class="pagination">';
+			$config['full_tag_open'] = '<div class="center-align"><ul class="pagination">';
 			$config['full_tag_close'] = '</ul></div>';
 
 			$config['num_tag_open']     = '<li ><span class="waves-effect">';

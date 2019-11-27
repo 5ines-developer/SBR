@@ -155,6 +155,9 @@ $route['vendor/reviews/(:any)/(:any)'] 	    = 'Vendor_detail/reviews/$1/$2';
 //leads
 $route['vendor/leads'] 	            		= 'Vendor_detail/leads';
 $route['vendor/leads/(:any)'] 	            = 'Vendor_detail/leads/$1';
+//freequote
+$route['free-quote'] 	            		= 'home/freeQuote';
+
 
 
 
