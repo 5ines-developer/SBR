@@ -218,7 +218,7 @@ class Vendors extends CI_Controller {
           'user_name'  =>  $name , 
           'user_email' =>  $email , 
           'user_phone' =>  $mobile , 
-          'vendor_id'  =>  $vendor_id , 
+          'vendor_id'  =>  $value->id, 
           'fn_date'    =>  $fnDate , 
           'fn_type'    =>  $fnType , 
           'fn_time'    =>  $fnTime , 
@@ -229,6 +229,12 @@ class Vendors extends CI_Controller {
           'location'   =>  $location,
           'budget'      =>  $budget
         );
+
+        
+        echo "<pre>";
+        print_r ($insert);
+        echo "</pre>";exit;
+        
 
       $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.urlencode(str_replace('', '-', strtolower($value->name))).'/'.$vendor_id;
 

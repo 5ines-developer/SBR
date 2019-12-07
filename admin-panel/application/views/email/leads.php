@@ -114,16 +114,16 @@
     }
   </style>
 </head>
-<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #eaeaea;">
+<body class="clean-body" style="margin: 0; padding: 0; -webkit-text-size-adjust: 100%; background-color: #fff;">
 <!--[if IE]><div class="ie-browser"><![endif]-->
-<table bgcolor="#B8CCE2" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fffc; width: 100%;" valign="top" width="100%">
+<table bgcolor="#B8CCE2" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="table-layout: fixed; vertical-align: top; min-width: 320px; Margin: 0 auto; border-spacing: 0; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #fff; width: 100%;" valign="top" width="100%">
 <tbody>
 <tr style="vertical-align: top;" valign="top">
 <td style="word-break: break-word; vertical-align: top;" valign="top">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#B8CCE2"><![endif]-->
-<div style="background-color:#eaeaea;">
-<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #eaeaea;">
-<div style="border-collapse: collapse;display: table;width: 100%;background-color:#eaeaea;">
+<div style="background-color:#fff;">
+<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #fff;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:#fff;">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
 <!--[if (mso)|(IE)]><td align="center" width="600" style="background-color:transparent;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
 <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
@@ -158,7 +158,7 @@
 </div>
 </div>
 </div>
-<div style="background-color:#eaeaea;">
+<div style="background-color:#fff;">
 <div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #FFFFFF;">
 <div style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:#FFFFFF"><![endif]-->
@@ -184,7 +184,7 @@
 </div>
 </div>
 </div>
-<div style="background-color:#eaeaea;">
+<div style="background-color:#fff;">
 <div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #FFFFFF;">
 <div style="border-collapse: collapse;display: table;width: 100%;background-color:#FFFFFF;">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:#FFFFFF"><![endif]-->
@@ -197,14 +197,14 @@
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#132F40;font-family:'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;">
 <div style="font-size: 12px; line-height: 1.2; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #132F40; mso-line-height-alt: 14px;">
-<p style="font-size: 22px; line-height: 1.2; mso-line-height-alt: 26px; margin: 0;"><span style="font-size: 22px;">Leads</span></p>
+<p style="font-size: 22px; line-height: 1.2; mso-line-height-alt: 26px; margin: 0;"><span style="font-size: 22px;">Vendor Enquiry Request!</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 30px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;line-height:1.5;padding-top:5px;padding-right:10px;padding-bottom:0px;padding-left:10px;">
 <div style="font-size: 12px; line-height: 1.5; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; color: #555555; mso-line-height-alt: 18px;">
-<p style="font-size: 14px; line-height: 1.5; mso-line-height-alt: 21px; margin: 0;">Shaadibaraati team has been assigned a new leads to you, have a great day!</p>
+<p style="font-size: 14px; line-height: 1.5; mso-line-height-alt: 21px; margin: 0;">New vendor enquiry has been Submitted from the user, Details are mentioned below.</p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -221,9 +221,9 @@
 </div>
 
 
-<div style="background-image:url('<?php echo base_url()?>assets/images/bg_password.gif');background-position:top center;background-repeat:no-repeat;background-color:#eaeaea;">
-<div class="block-grid no-stack" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #eaeaea;">
-<div style="border-collapse: collapse;display: table;width: 100%;background-color:#eaeaea;">
+<div style="background-image:url('<?php echo base_url()?>assets/images/bg_password.gif');background-position:top center;background-repeat:no-repeat;background-color:#fff;">
+<div class="block-grid no-stack" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #fff;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:#fff;">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-image:url('images/bg_password.gif');background-position:top center;background-repeat:no-repeat;background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
 <!--[if (mso)|(IE)]><td align="center" width="600" style="background-color:transparent;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 35px; padding-left: 35px; padding-top:15px; padding-bottom:2px;"><![endif]-->
 <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">
@@ -241,35 +241,41 @@
                   <td width="560" valign="top" align="center" style="padding:0;Margin:0;"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-color:#EFEFEF;border-style:solid;border-width:0px;border-radius:3px;background-color:#FFFFFF;padding-bottom: 30px;padding-left: 30px;" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff"> 
                     
-                     <tr style="border-collapse:collapse;"> 
-                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">User</th> 
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['name']))?': &nbsp;'.$result['name']:'---'; ?></td> 
+                                          <tr style="border-collapse:collapse;"> 
+                      <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">User</th> 
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_name']))?': &nbsp;'.$result['user_name']:''; ?></td> 
                      </tr> 
                      <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Email</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['email']))?': &nbsp;'.$result['email']:'---'; ?></td> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Email</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_email']))?': &nbsp;'.$result['user_email']:''; ?></td> 
                      </tr> 
                      <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Phone</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['phone']))?': &nbsp;'.$result['phone']:'---'; ?></td> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Phone</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['user_phone']))?': &nbsp;'.$result['user_phone']:''; ?></td> 
                      </tr> 
+
                      <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">City</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;width: 200px;"><?php echo (!empty($result['cit']))?': &nbsp;'.$result['cit']:'---'; ?></td> 
-                     </tr>
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Location</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['location']))?': &nbsp;'.$result['location']:''; ?></td> 
+                     </tr> 
+
                      <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Category</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;width: 200px;"><?php echo (!empty($result['categ']))?': &nbsp;'.$result['categ']:'---'; ?></td> 
-                     </tr>
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Budget</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['budget']))?': &nbsp;'.$result['budget']:''; ?></td> 
+                     </tr> 
+
                      <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Budget</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['budget']))?': &nbsp;'.$result['budget']:'---'; ?></td> 
-                     </tr>
-                     <tr style="border-collapse:collapse;"> 
-                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 100px;">Message</th>
-                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;width: 200px;"><?php echo (!empty($result['message']))?': &nbsp;'.$result['message']:''; ?></td> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Function Date</th>
+                      <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;"><?php echo (!empty($result['fn_date']))?': &nbsp;'.$result['fn_date']:''; ?></td> 
                      </tr>
                      
+                     
+                    
+
+                    <tr style="border-collapse:collapse;"> 
+                     <th align="left" style="Margin: 0; padding-left: 20px; padding-right: 10px; padding-top: 20px; padding-bottom: 0px; width: 150px;">Description</th>
+                      <td align="center" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:20px;padding-bottom:0px;text-align: justify;"><?php echo (!empty($result['wed_detail']))?': &nbsp;'.$result['wed_detail']:''; ?></td> 
+                     </tr>
                      
                      
                      
@@ -296,7 +302,7 @@
 
 
 
-<div style="background-color:#eaeaea;">
+<div style="background-color:#fff;">
 <div class="block-grid two-up no-stack" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #132f40;">
 <div style="border-collapse: collapse;display: table;width: 100%;background-color:#132f40;">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:#132f40"><![endif]-->
@@ -320,25 +326,15 @@
 </div>
 <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
 <!--[if (mso)|(IE)]></td><td align="center" width="300" style="background-color:#132f40;width:300px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
-<div class="col num6" style="max-width: 320px; min-width: 300px; display: table-cell; vertical-align: top; width: 300px;">
-<div style="width:100% !important;">
-<!--[if (!mso)&(!IE)]><!-->
-<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:5px; padding-bottom:5px; padding-right: 0px; padding-left: 0px;">
-<!--<![endif]-->
 
-<!--[if (!mso)&(!IE)]><!-->
-</div>
-<!--<![endif]-->
-</div>
-</div>
 <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
 <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
 </div>
 </div>
 </div>
-<div style="background-color:#eaeaea;">
-<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #eaeaea;">
-<div style="border-collapse: collapse;display: table;width: 100%;background-color:#eaeaea;">
+<div style="background-color:#fff;">
+<div class="block-grid" style="Margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #fff;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:#fff;">
 <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
 <!--[if (mso)|(IE)]><td align="center" width="600" style="background-color:transparent;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
 <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px;">

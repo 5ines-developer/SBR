@@ -47,10 +47,8 @@
 
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="form-container">
-                                      
+                                    <div class="form-container">                                      
                                         <form action="<?php echo base_url() ?>leads/lead_insert" method="post"  id="admin-form" enctype="multipart/form-data">
-
                                             <div class="row m0">
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="name" name="name" class="validate" required>
@@ -82,6 +80,10 @@
                                               </div>
                                             </div> 
                                             <div class="row m0">
+                                              <div class="input-field col s12 l6">
+                                                <input type="text" id="fndate" name="fndate" class="validate datepicker" >
+                                                <label for="fndate">fndate</label>
+                                              </div>
                                                 <div class="input-field col s12 l6">
                                                   <select id="city"  name="city">
                                                     <option value="">Choose a city</option>

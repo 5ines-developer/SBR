@@ -72,16 +72,16 @@
                                       foreach ($result as $key => $value) { $count += 1;                                        
                                       ?>
                                       <tr>
-                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->cat))?$value->cat:'---'  ?></a></td>
-                                            <td><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->cat))?$value->cat:'---'  ?></a></td>
+                                            <td><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
                                             <td class="action-btn  center-align">
                                               <!-- view user -->
-                                                <a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
+                                                <a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
                                               <!-- view user -->
                                             </td>
                                           

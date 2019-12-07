@@ -5090,3 +5090,16 @@ overflow: hidden;
 .to-innr a:hover{
     color: #d0021b !important;
 }
+.count-badge {
+
+    background-color: #fff;
+    float: right;
+    padding: 1px 20px 3px 20px;
+    height: 25px;
+    color: red;
+    position: relative;
+    line-height: 21px;
+    top: 8px;
+    font-weight: 600;
+
+}

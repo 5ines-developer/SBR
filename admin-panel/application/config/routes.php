@@ -140,9 +140,10 @@ $route['career/status/(:any)']	    =	'career/status/$1';
 $route['career/applications']	    =	'career/applications'; 
 
 //vendor enquiry
-$route['vendor-enquiry']			=	'vendorenquiry/index'; 
-$route['vendor-package']			=	'vendorenquiry/packageGet'; 
-$route['vendor-package/view/(:any)']=	'vendorenquiry/viewPackage/$1'; 
+$route['vendor-enquiry']			    =	'vendorenquiry/index'; 
+$route['vendor-enquiry/view/(:any)']	=	'vendorenquiry/detail/$1'; 
+$route['vendor-package']			    =	'vendorenquiry/packageGet'; 
+$route['vendor-package/view/(:any)']    =	'vendorenquiry/viewPackage/$1'; 
 
 //employee
 $route['employees']			        =	'Adminusers/index'; 

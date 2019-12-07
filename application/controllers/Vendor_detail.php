@@ -620,11 +620,12 @@ public function offer($output = null)
 
         if (!empty($id)) {
            $data['title'] = 'Leads | Shaadibaraati';
-           $data['result'] = $this->m_vendorDetail->enquiryGet($this->uniq,$id);
+           $this->db->where('id', $id)->update('vendor_enquiry',array('status'=>'1'));           
+           $data['result'] = $this->m_vendorDetail->enquiryGet($this->id,$id);
            $this->load->view('vendor-auth/v_leads',$data);
         }else{
             $data['title'] = 'Leads | Shaadibaraati';
-            $data['result'] = $this->m_vendorDetail->enquiryGet($this->uniq);
+            $data['result'] = $this->m_vendorDetail->enquiryGet($this->id);
             $this->load->view('vendor-auth/vendor-leads',$data);
         }
     }

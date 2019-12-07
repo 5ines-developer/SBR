@@ -446,7 +446,7 @@ class Vendors extends CI_Controller {
     public function detail($id='')
     {
         $data['result']     = $this->m_vendors->detail($id);
-        $data['enquiry']    = $this->m_vendors->vendorEnquiry($data['result']->uniq);
+        $data['enquiry']    = $this->m_vendors->vendorEnquiry($id);
         $data['port']       = $this->m_vendors->get_portfolio($id);
         $data['video']       = $this->m_vendors->get_video($id);
         $data['review']     = $this->m_vendors->vendor_review($id);

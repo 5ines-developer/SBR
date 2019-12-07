@@ -80,14 +80,14 @@
                                       foreach ($result as $key => $value) {
                                       ?>
                                       <tr>
-                                            <td ><?php echo (!empty($value->vendorName))?$value->vendorName:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->cityName))?$value->cityName:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->catName))?$value->catName:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->email))?$value->email:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->budget))?$value->budget:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->message))?$value->message:'---'  ?></td>                                          
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->location))?$value->location:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->budget))?$value->budget:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?></a></td>                                          
                                         </tr>
                                       
                                     <?php } } ?>

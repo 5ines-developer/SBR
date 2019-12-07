@@ -5,12 +5,12 @@ class M_leads extends CI_Model {
 
 
     
-	public function getCategory($value='')
+	public function getCategory($id='')
 	{
 		return $this->db->select('category,id as catid')->get('category')->result();
 	}
 
-	public function getCity($value='')
+	public function getCity($id='')
 	{
 		return $this->db->select('city,id as cityId')->get('city')->result();
 	}
@@ -22,15 +22,27 @@ class M_leads extends CI_Model {
 		if (!empty($city)) { $this->db->where('vn.city', $city); }
 		if (!empty($category)) { $this->db->where('vn.category', $category); }
 
-		if ($v_type =='free') {
+		if ($v_type =='') {
+			return  $this->db->group_by('vn.name')	
+			->from('vendor vn')
+			->select('vn.name,vn.id as vid,ve.vendor_id as lvn_id,ve.user_name as lvn_name')
+			->join('vendor_enquiry ve', 've.vendor_id = vn.id', 'left')			
+			->get('vendor vn')->result();
+		}else if ($v_type =='free') {
 			$nul = 0;
-			return $this->db->where('package',$nul)->select('vn.name,vn.id as vid')->get('vendor vn')->result();			
+			return $this->db->where('vn.package',$nul)
+			->group_by('vn.name')	
+			->from('vendor vn')
+			->select('vn.name,vn.id as vid,ve.vendor_id as lvn_id,ve.user_name as lvn_name')
+			->join('vendor_enquiry ve', 've.vendor_id = vn.id', 'left')			
+			->get()->result();			
+			
 		}else{
-            $this->db->select('vn.name,vn.id as vid,pac.*,vp.*,la.vendor_id as lvn_id,la.name as lvn_name')	
+            $this->db->select('vn.name,vn.id as vid,pac.*,vp.*,ve.vendor_id as lvn_id,ve.user_name as lvn_name')	
             ->group_by('vn.name')	
 			->from('vendor_package  vp')
 			->join('vendor vn', 'vn.id = vp.vendor_id', 'left')
-			->join('leads_assign la', 'la.vendor_id = vp.vendor_id', 'left')
+			->join('vendor_enquiry ve', 've.vendor_id = vp.vendor_id', 'left')
 			->join('package pac', 'pac.id = vp.package_id', 'left');
 			return $this->db->get()->result();
 		}	
@@ -38,24 +50,32 @@ class M_leads extends CI_Model {
     
     public function lead_insert($insert = null)
     {    
-        return $this->db->insert('leads_assign', $insert); 
+        return $this->db->insert('vendor_enquiry', $insert); 
     }
 
     public function getLeads($var = null)
     {
-        $this->db->select('lp.*,cty.city as cityName,cat.category as catName,vn.name as vendorName')
-        ->from('leads_assign lp')
-        ->join('vendor  vn', 'vn.id  = lp.vendor_id ', 'left')
-		->join('city cty', 'cty.id = lp.city', 'left')
-		->join('category cat', 'cat.id = lp.category', 'left');
-        return $this->db->order_by('id', 'desc')->get()->result();  
+        $this->db->select('ve.*,v.name,v.id,ve.id as ids');
+        $this->db->order_by('ve.id', 'asc');        
+        $this->db->from('vendor_enquiry ve');
+        $this->db->join('vendor v', 'v.id = ve.vendor_id', 'left');        
+        return $this->db->get()->result();    
     }
 
 
     public function getleadcount($vid = '',$name='')
     { 
-        return $this->db->where('vendor_id', $vid)->where('name',$name)->get('leads_assign')->num_rows();   
-    }
+        return $this->db->where('vendor_id', $vid)->get('vendor_enquiry')->num_rows();   
+	}
+	
+	public function vendorPhone($id = null)
+	{		
+		return $this->db->where('id', $id)->get('vendor')->row('phone');		
+	}
+
+
+
+
 
     
 

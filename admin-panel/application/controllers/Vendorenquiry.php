@@ -61,6 +61,14 @@ class Vendorenquiry extends CI_Controller {
         }
     }
 
+    
+    public function detail($id = null)
+    {
+        $data['result'] = $this->m_venquiry->detail($id); 
+        $this->load->view('leads/detail', $data, FALSE);
+        
+    }
+
 }
 
 /* End of file Controllername.php */

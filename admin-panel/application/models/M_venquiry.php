@@ -5,10 +5,10 @@ class M_venquiry extends CI_Model {
 
     public function vendor_enquiry($var = null)
     {
-        $this->db->select('ve.*,v.*,ve.category cat,v.id ids');
+        $this->db->select('ve.*,v.name,v.id,ve.id as ids');
         $this->db->order_by('ve.id', 'asc');        
         $this->db->from('vendor_enquiry ve');
-        $this->db->join('vendor v', 'v.uniq = ve.vendor_id', 'left');        
+        $this->db->join('vendor v', 'v.id = ve.vendor_id', 'left');        
         return $this->db->get()->result();  
     }
 
@@ -58,6 +58,18 @@ class M_venquiry extends CI_Model {
             return $this->db->where('id', $pckge)->get('banner_package')->row('title');
        }
     }
+
+    public function detail($id = null)
+	{
+		return $this->db->where('id', $id)->get('vendor_enquiry')->row();
+    }
+    
+    public function addedby($id = null)
+	{
+		return $this->db->where('id', $id)->get('admin')->row('name');
+		
+	}
+
 
 
     

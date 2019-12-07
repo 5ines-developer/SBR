@@ -1,4 +1,6 @@
-
+<?php $this->ci =& get_instance();
+$this->load->model('m_venquiry');
+ ?>
 <!DOCTYPE html>
 <html>
    <head>
@@ -31,7 +33,7 @@
                         <div class="col m12 s12 l9">
                             <?php $this->load->view('include/pre-loader'); ?>
                             <div class="row">
-                                <p class="h5-para black-text  m0">Enquiry - <?php echo (!empty($result->name))?$result->name:'---'  ?></p>
+                                <p class="h5-para black-text  m0">Enquiry - <?php echo (!empty($result->user_name))?$result->user_name:'---'  ?></p>
                                 <!-- <small><i>Hello, Comapny name. Check out what's happening!</i></small> -->
                             </div><!-- end row1 -->
 
@@ -40,30 +42,46 @@
                             <div class="card-content">
                                 <p class="bold mb10 h6">Details</p>
                                 <table>
-                                    <tbody><tr>
+                                    <tbody>
+                                    <tr>
                                         <th class="w205">Name</th>
-                                        <td><?php echo (!empty($result->name))?$result->name:'---'  ?></td>
+                                        <td><?php echo (!empty($result->user_name))?$result->user_name:'---'  ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="w205">Added By</th>
+                                        <td><?php echo  $this->m_venquiry->addedby($result->assigned);  ?></td>
                                     </tr>
                                     <tr>
                                         <th class="w205">Email</th>
-                                        <td ><a href="mailto:<?php echo (!empty($result->email))?$result->email:'---'  ?>" ><?php echo (!empty($result->email))?$result->email:'---'  ?></a></td>
+                                        <td ><a href="mailto:<?php echo (!empty($result->user_email))?$result->user_email:'---'  ?>" ><?php echo (!empty($result->user_email))?$result->user_email:'---'  ?></a></td>
                                     </tr>
                                     <tr>
                                         <th class="w205">Phone</th>
-                                        <td ><a href="tel:<?php echo (!empty($result->phone))?$result->phone:'---'  ?>" ><?php echo (!empty($result->phone))?$result->phone:'---'  ?></a></td>
+                                        <td ><a href="tel:<?php echo (!empty($result->user_phone))?$result->user_phone:'---'  ?>" ><?php echo (!empty($result->user_phone))?$result->user_phone:'---'  ?></a></td>
                                     </tr>
                                     <tr>
-                                        <th class="w205">Subject</th>
-                                        <td><?php echo (!empty($result->subject))?$result->subject:'---'  ?></td>
+                                        <th class="w205">Category</th>
+                                        <td><?php echo (!empty($result->category))?$result->category:'---'  ?></td>
                                     </tr>
-
+                                    <tr>
+                                        <th class="w205">City</th>
+                                        <td><?php echo (!empty($result->location))?$result->location:'---'  ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="w205">Budget</th>
+                                        <td><?php echo (!empty($result->budget))?$result->budget:'---'  ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="w205">Function Date</th>
+                                        <td><?php echo (!empty($result->fn_date))?$result->fn_date:'---'  ?></td>
+                                    </tr>
                                     <tr>
                                         <th class="w205"> Enquired date</th>
                                         <td><?php echo (!empty($result->date))?date("M d, Y ", strtotime($result->date)):'---'; ?></td>
                                     </tr>
                                     <tr>
                                         <th class="w205">Message</th>
-                                        <td><?php echo (!empty($result->message))?$result->message:'---'  ?></td>
+                                        <td><?php echo (!empty($result->wed_detail))?$result->wed_detail:'---'  ?></td>
                                     </tr>
                                 </tbody></table>
                             </div>

@@ -34,7 +34,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
         }
 
-
+        if(!function_exists('leads')) {
+            function leads() {
+                $ci = get_instance();
+    
+                $ci->load->model('M_vendorDetail');
+                $leads =  $ci->M_vendorDetail->leadscount($ci->session->userdata('shvid'));
+                return $leads;
+            }
+            }
 
 
 /* End of file LibraryName.php */

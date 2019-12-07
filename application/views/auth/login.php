@@ -35,7 +35,7 @@
                                     <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="form-vendor-reg">
-                                <form action="<?php echo base_url('vendor/login-check') ?>" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo base_url('login/check') ?>" method="post" enctype="multipart/form-data">
                                         <div class="form-input-vendor-login">
                                             <div class="row">
                                                 <div class="col l12 m12 s12">

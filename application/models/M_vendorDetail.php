@@ -379,12 +379,17 @@ class M_vendorDetail extends CI_Model {
     }
 
 
-    public function enquiryGet($uniq='',$id='')
+    public function enquiryGet($vid='',$id='')
     {
         if (!empty($id)) {
            $this->db->where('id', $id);
         }
-        return $this->db->where('vendor_id', $uniq)->get('vendor_enquiry')->result();
+        return $this->db->where('vendor_id', $vid)->get('vendor_enquiry')->result();
+    }
+
+    public function leadscount($vid = null)
+    {
+        return $this->db->where('vendor_id', $vid)->where('status', '0')->get('vendor_enquiry')->num_rows();
     }
 
 
