@@ -88,6 +88,44 @@ class User extends CI_Controller {
        echo $output;
     }
 
+    public function resend_link($var = null)
+    {
+        $id = $this->input->get('id');
+        $mail = $this->input->get('mail');
+        $refid = random_string('alnum',16);
+        if($this->m_user->resend_link($id,$refid))
+        {
+            $this->load->config('email');
+            $this->load->library('email');
+            $from = $this->config->item('smtp_user');
+            $data['regid'] = $refid;
+            $msg = $this->load->view('email/registration', $data, true);
+            $this->email->set_newline("\r\n");
+            $this->email->from($from , 'ShaadiBaraati');
+            $this->email->to($mail);
+            $this->email->subject('Registration verification'); 
+            $this->email->message($msg);
+            if($this->email->send())  
+            {  
+            
+                $this->session->set_flashdata('success', 'User activation link resent succesfully');
+            } 
+            else
+            {                
+                $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+               
+            }
+            redirect('users/view/'.$id,'refresh');
+
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+            redirect('users/view/'.$id,'refresh');
+        }
+
+        
+        
+    }
+
 
 
 

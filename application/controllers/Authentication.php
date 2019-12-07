@@ -99,7 +99,7 @@ class Authentication extends CI_Controller {
         	if (!empty($data['output'])) {
         		if($this->sendregister($email, $refid))
         		{
-        			$this->session->set_flashdata('success', 'Before you can login, you must active your account with the code sent to your email address.');
+        			$this->session->set_flashdata('success', 'Before you can login, you must active your account with the link sent to your email address.');
                     redirect('login','refresh');
         		}else{
         			$this->session->set_flashdata('error', 'Something went wrong please try again later');

@@ -91,6 +91,11 @@ class M_user extends CI_Model {
 			return false;
 		}
 	}
+
+	public function resend_link($id = null,$refid='')
+	{		
+		return $this->db->where('su_id', $id)->update('user',array('su_referenceid' => $refid));		
+	}
 	
 
 }

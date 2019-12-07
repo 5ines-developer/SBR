@@ -30,10 +30,21 @@
 
                         <div class="col m12 s12 l9">
                             <?php $this->load->view('include/pre-loader'); ?>
+
                             <div class="row">
+                                <div class="col 12 m6">
                                 <p class="h5-para black-text  m0">User Details - <?php echo (!empty($result->su_name))?$result->su_name:'---'  ?></p>
-                                <!-- <small><i>Hello, Comapny name. Check out what's happening!</i></small> -->
-                            </div><!-- end row1 -->
+                                </div>
+                                <div class="col 12 m6 right-align">
+                                <?php if ($result->su_is_active == '0') { ?>
+                                    <a href="<?php echo base_url('user/resend_link?id='.$result->su_id.'&mail='.$result->su_email.'')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable ">Resend Activation Link</a>
+                                <?php }
+                                
+                                ?>
+                                </div>
+                            </div>
+
+                            
 
                             <div class="row">
                                 <div class="col s12">
@@ -63,13 +74,14 @@
                                                         <div class="col s12 center m4 mt40">
                                                             <!-- user block and unblock -->
 
-                                                            <?php 
+                                                            <?php
 
-                                                            if ((!empty($result->su_is_active)) && $result->su_is_active == '1') { ?>
+                                                            if (($result->su_is_active == '1') || (empty($result->su_is_active))) { ?>
+
 
                                                                 <a href="<?php echo base_url('users/block/'.$result->su_id.'') ?>" class="waves-effect waves-light btn red hoverable white-text darken-4 plr40" id="block">Block</a>
 
-                                                            <?php }elseif ((!empty($result->su_is_active)) && $result->su_is_active == '2') { ?>
+                                                            <?php }elseif ($result->su_is_active == '2') {  ?>
 
                                                                <a href="<?php echo base_url('users/unblock/'.$result->su_id.'') ?>" class="waves-effect waves-light btn green hoverable white-text darken-4 plr40" id="unblock">Unblock</a>
 
@@ -205,6 +217,10 @@
         <script type="text/javascript" src="<?php echo base_url() ?>assets/dataTable/button/js/buttons.html5.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>assets/dataTable/button/js/pdfmake.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>assets/dataTable/button/js/vfs_fonts.js"></script>
+        <script>
+  <?php $this->load->view('include/message.php'); ?>
+    
+  </script>
         <script>
             $(document).ready( function () {
                 $('.modal').modal();
