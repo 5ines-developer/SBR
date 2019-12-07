@@ -40,7 +40,8 @@ class Leads extends CI_Controller {
         $city        = $this->input->get('city');
         $category    = $this->input->get('category');
         $v_type      = $this->input->get('v_type');
-        $data['vendors']    = $this->m_leads->getVendors($city,$category,$v_type); 
+        $search      = $this->input->get('search');
+        $data['vendors']    = $this->m_leads->getVendors($city,$category,$v_type,$search); 
 
         
         if (!empty($data['vendors'])) {
@@ -50,7 +51,6 @@ class Leads extends CI_Controller {
                 $lds = $this->m_leads->getleadcount($value->vid,$value->lvn_name);
                 $ldsa = $lds.'/'.$value->leads;
             }
-
 
             $output .=  '<p>
                     <label>

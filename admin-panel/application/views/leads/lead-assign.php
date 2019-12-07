@@ -110,8 +110,16 @@
                                                     
                                                   </select>
                                                   <label for="v_type">Vendor Type</label>
-                                                </div>                                                
+                                                </div>                                                                                              
                                             </div><br>
+
+                                            <div class="row m0">
+                                               <div class="input-field col s12 l6">
+                                                  <input type="text" id="svndr" name="svndr" class="validate" >
+                                                  <label for="svndr">Search Vendor</label>
+                                                  <p><span class="error"><?php echo form_error('svndr'); ?></span></p>
+                                                </div>  
+                                              </div><br>
                                             
                                             <div class="row m0">
                                             <p class="vend-p">Vendors</p>
@@ -163,17 +171,19 @@
 
 
         //lead assign get vendors
-        $(document).on('change','#city,#category,#v_type',function() {
+        $(document).on('keyup change','#svndr,#city,#category,#v_type',function() {
           var category  = $("#category").children("option:selected").val();
           var city      = $("#city").children("option:selected").val();
-          var v_type      = $("#v_type").children("option:selected").val();
+          var v_type    = $("#v_type").children("option:selected").val();
+          var search    = $('#svndr').val();
+
           loder(true);
           $.ajax({
               url:"<?php echo base_url() ?>leads/getvendors",
               type:"GET",
               dataType: "html",
               data:{
-                'city' : city,'category':category,'v_type' : v_type
+                'city' : city,'category':category,'v_type' : v_type,'search':search
               },
               success:function(data){
                 $('.vendor-col').html(data);

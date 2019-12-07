@@ -15,8 +15,10 @@ class M_leads extends CI_Model {
 		return $this->db->select('city,id as cityId')->get('city')->result();
 	}
 
-	public function getVendors($city='',$category='',$v_type='')
+	public function getVendors($city='',$category='',$v_type='',$search='')
 	{
+		if (!empty($search)) { $this->db->group_start()->like('vn.name', $search)->group_end(); }
+
 		if (!empty($city)) { $this->db->where('vn.city', $city); }
 		if (!empty($category)) { $this->db->where('vn.category', $category); }
 
