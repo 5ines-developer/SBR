@@ -22,16 +22,16 @@
                     <div class="row">
                         <div class="col l6 m6 s12">
                             <div class="vendor-cont vcl">
-                                <h4>"Grow your Business With Shaadi Baraati"</h4>
+                                <h4>"Plan your wedding With Shaadi Baraati"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
-                                <a href="<?php echo base_url('vendor/register') ?>"><button class="vend-btn">Sign Up</button></a>
+                                <a href="<?php echo base_url('register') ?>"><button class="vend-btn">Customer Sign Up</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">
                             <div class="vend-background">
                                 <div class="head-tile">
-                                    <h6>Vendor Sign in</h6>
+                                    <h6>Customer Sign in</h6>
                                     <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="form-vendor-reg">

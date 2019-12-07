@@ -98,7 +98,7 @@
                                             <td ><a href="tel:<?php echo (!empty($value->phone))?$value->phone:'---'  ?>" ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
                                             <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->package))?$value->package:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->title))?$value->title:'Free Listing'  ?></td>
                                             <td><?php echo (!empty($value->regdate))?date("M d, Y ", strtotime($value->regdate)):'---'; ?></td>
 
                                             <td class="status"> 

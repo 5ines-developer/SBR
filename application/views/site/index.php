@@ -202,20 +202,6 @@
                     <div class="h-wed-slider">
                         
 
-                        <div class="hwed-item hwd1">
-                            <div class="row m0" >
-                                <div class="col s12 m7 l7 push-l5 push-m5" style="background: #3c10109e;">
-                                    <div class="hwd-conetnt">
-                                        <div class="wdheading">Hello Wed Planner</div>
-                                        <p>Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
-                                        <br><br>
-                                        <div class="btbtn">
-                                            <a  href="#modalf" class="bokmore-btn modal-trigger">Book Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
                         <div class="hwed-item hwd2">

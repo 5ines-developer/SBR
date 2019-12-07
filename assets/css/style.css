@@ -746,6 +746,10 @@ h6 {
     position: relative;
 }
 
+.col-c2{
+    column-count: 2;
+}
+
 @media (max-width:600px) {
     .social-reg {
         position: relative;
@@ -1808,6 +1812,9 @@ r-crd-category {
     margin: 0px 0 0 -1px;
     position: relative;
     top: -1.5px;
+}
+.fixed-action-btn{
+    z-index: 0;
 }
 
 .btn-group span {
@@ -3653,7 +3660,7 @@ nav a.sidenav-trigger i {
 }
 
 .wdas-item-content {
-    background: #ffdee4;
+    background: #d0021b;
     padding: 50px;
     margin: 0 -10px;
 }
@@ -3686,13 +3693,14 @@ nav a.sidenav-trigger i {
     margin: 15px 0px 0px 0;
     font-size: 1.75rem;
     font-weight: 400;
-    color: rgb(54, 54, 54);
+    color: rgb(255, 255, 255);
 }
 
 .wdas-item-content p {
     font-size: 14px;
     line-height: 25px;
     margin-top: 15px;
+    color: #fff;
 }
 
 .wdas-item-content .btn-cate,
@@ -4164,22 +4172,7 @@ nav a.sidenav-trigger i {
     text-align: center
 }
 
-.footerbutton a,
-.borderd-btn {
-    border: 1px dashed #d0021b;
-    cursor: pointer;
-    font-size: 14px;
-    color: #3e3e3e;
-    display: block;
-    text-align: center;
-    padding: 5px 0px;
-}
 
-.footerbutton a:hover,
-.borderd-btn:hover {
-    background-color: #d0021b;
-    color: #fff;
-}
 
 .borderd-btn {
     display: inline;
@@ -4189,7 +4182,6 @@ nav a.sidenav-trigger i {
 
 .vendor-register {
     padding-bottom: 140px;
-    ;
     background-image: url('../img/vend-reg.webp');
     background-blend-mode: overlay;
     background-color: #00000082;
@@ -4514,24 +4506,10 @@ nav a.sidenav-trigger i {
     text-align: center
 }
 
-.footerbutton a {
-    border: 1px dashed #d0021b;
-    cursor: pointer;
-    font-size: 14px;
-    color: #3e3e3e;
-    display: block;
-    text-align: center;
-    padding: 5px 0px;
-}
 
-.footerbutton a:hover {
-    background-color: #d0021b;
-    color: #fff;
-}
 
 .vendor-register {
     padding-bottom: 140px;
-    ;
     background-image: url('../img/vend-reg.webp');
     background-blend-mode: overlay;
     background-color: #00000082;
@@ -4717,18 +4695,24 @@ nav a.sidenav-trigger i {
     margin-bottom: 0;
     text-align: center
 }
-
-.footerbutton a,
-.borderd-btn {
-    border: 1px dashed #d0021b;
-    cursor: pointer;
-    font-size: 14px;
-    color: #3e3e3e;
-    display: block;
+.footerbutton a{
+    cursor: pointer; 
+    font-size: 14px; 
+    color: #3e3e3e; 
+    display: block; 
     text-align: center;
-    padding: 5px 0px;
+    padding: 9px 0px;
+    border-radius: 2px; 
 }
-
+ .borderd-btn {
+    border: 1px dashed #d0021b;
+    cursor: pointer; 
+    font-size: 14px; 
+    color: #3e3e3e; 
+    display: block; 
+    text-align: center;
+     padding: 5px 0px; 
+ }
 .footerbutton a:hover,
 .borderd-btn:hover {
     background-color: #d0021b;
@@ -4741,9 +4725,21 @@ nav a.sidenav-trigger i {
     line-height: 51px;
 }
 
+.footerbutton .b1{
+    background-color: #4caf50;
+    color: #fff;
+}
+.footerbutton .b2{
+    background-color: #d0021b;
+    color: #fff;
+}
+.footerbutton .b3{
+    background-color: #5679c0;
+    color: #fff;
+}
+
 .vendor-register {
     padding-bottom: 140px;
-    ;
     background-image: url('../img/vend-reg.webp');
     background-blend-mode: overlay;
     background-color: #00000082;
@@ -5086,4 +5082,11 @@ overflow: hidden;
 }
 .radio-iam span{
     margin-right: 20px;
+}
+/******topbar***/
+.topbar1{ height:40px !important;background-color: #e3e3e3 !important; }
+.to-innr {width: 90%; margin: auto;line-height: 40px; }
+.to-innr a{ color: black; }
+.to-innr a:hover{
+    color: #d0021b !important;
 }

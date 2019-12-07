@@ -112,6 +112,11 @@ class M_adminusers extends CI_Model {
         }
     }
 
+    public function reset_pass($pass='',$eid='')
+    {
+        return $this->db->where('id', $eid)->update('admin',array('password' => $pass ));
+    }
+
 }
 
 /* End of file M_adminusers.php */

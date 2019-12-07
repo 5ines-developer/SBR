@@ -8,6 +8,32 @@
 
         <nav class="z-depth-1 navbar-fixed">
 
+            <div class="nav-wrapper white hide-on-med-and-down topbar1">
+                <div class="to-innr">
+                    <a href="<?php echo base_url('free-quote') ?>" target="_blank" class=" black-text" >&nbsp; Get a Free quote &nbsp;</a>
+                    <span class="black-text" >| </span>
+                    <span class="black-text">Toll Free: <a href="tel:18004199456">1800 4199 456</a></span>
+
+                        <ul class="right">
+                            <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
+                                        class="img-responisve socil-icon" alt=""> </a></li>
+                            <li><a href="https://www.twitter.com/shaadibaraati" taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
+                                        class="img-responisve socil-icon" alt=""></a></li>
+                            <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg"
+                                    taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
+                                        class="img-responisve socil-icon" alt=""></a></li>
+                            <li><a href="https://www.instagram.com/shaadibaraatiofficial/" taraget="_blank"><img
+                                        src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
+                                        class="img-responisve socil-icon" alt=""></a></li>
+                        </ul>
+                </div>
+
+                
+            </div>
+
             <div class="nav-wrapper white">
                 <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive brand-logo" alt=""></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i

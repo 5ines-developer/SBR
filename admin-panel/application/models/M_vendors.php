@@ -10,17 +10,19 @@ class M_vendors extends CI_Model {
     **/
 	public function get_vendors($id='',$filter='')
 	{
+		$null=0;
 		if (!empty($filter) && $filter =='free') {
-			$this->db->where('package', 'Free Listing');
+			$this->db->where('ven.package', $null);
 		}elseif (!empty($filter)) {
-			$this->db->where('package !=', 'Free Listing');
+			$this->db->where('ven.package !=', $null);
 		}
 
-		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,ven.package');
+		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package');
+		$this->db->order_by('ven.id', 'desc');
 		$this->db->from('vendor ven');
 		$this->db->join('city cty', 'cty.id = ven.city', 'left');
 		$this->db->join('category cat', 'cat.id = ven.category', 'left');
-		$this->db->order_by('ven.id', 'desc');
+		$this->db->join('package pac', 'pac.id = ven.package', 'left');
 		return $this->db->get()->result();
 	}
 

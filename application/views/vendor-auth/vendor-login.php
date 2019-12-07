@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-     <?php $this->load->view('includes/favicon.php');  ?>
 
 </head>
 
@@ -27,7 +26,7 @@
                                 <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
-                                <a href="<?php echo base_url('vendor/register') ?>"><button class="vend-btn">Sign Up</button></a>
+                                <a href="<?php echo base_url('vendor') ?>"><button class="vend-btn">Vendor Sign Up</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">
@@ -84,7 +83,7 @@
                         <div class="col l6 m6 s12">
                             <div class="vend-background">
                                 <div class="head-tile">
-                                    <h6>Vendor Sign in</h6>
+                                    <h6>Vendor Reset Password</h6>
                                     <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                                 </div>
                                 <div class="form-vendor-reg">
@@ -94,8 +93,8 @@
                                                 <div class="col l12 m12 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0 pb">
-                                                            <input id="email" type="email" class="validate  in-l"  v-model="email" v-on:keyup="emailCheck" placeholder="Enter Your email" name="email" required="">
-                                                            <span class="helper-text red-text" >{{ emailError }}</span>
+                                                            <input id="email" type="email" class="validate  in-l"  v-model="email1" v-on:keyup="emailCheck1" placeholder="Enter Your email" name="email" required="">
+                                                            <span class="helper-text red-text" >{{ emailError1 }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -146,7 +145,9 @@
                 passw: '',
                 copassw: '',
                 forgotpassword: false,
-                emailError:''
+                emailError:'',
+                email1: '',
+                emailError1:''
             },
 
 
@@ -165,6 +166,27 @@
                             this.emailError = 'Account doesnot exist with this email id!';
                         }else{
                             this.emailError = '';
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
+                // email check on database
+                emailCheck1(){
+
+
+                    this.emailError1 = '';
+                    const formData = new FormData();
+                        formData.append('email', this.email1);
+                        axios.post('<?php echo base_url() ?>vendor/emailcheck1', formData)
+                      .then(response => {
+                        if(response.data == ''){
+                            this.emailError1 = 'Account doesnot exist with this email id!';
+                        }else{
+                            this.emailError1 = '';
                         }
                       })
                       .catch(error => {

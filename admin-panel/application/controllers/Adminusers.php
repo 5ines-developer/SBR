@@ -215,6 +215,18 @@ class Adminusers extends CI_Controller {
        echo $output;
     }
 
+    public function reset_pass($value='')
+    {
+        $password   = $this->input->post('password');
+        $eid        = $this->input->post('eid');
+        if($this->m_adminusers->reset_pass($password,$eid)){
+            $this->session->set_flashdata('success', 'Employee password updated Successfully!');
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+        }
+        redirect('employees/edit/'.$eid,'refresh');
+    }
+
 
 
 

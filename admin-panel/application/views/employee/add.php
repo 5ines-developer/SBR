@@ -67,6 +67,9 @@
                                                     <option value="">Choose Employee Type</option>
                                                     <option value="2">Manager</option>
                                                     <option value="3">Executive</option>
+                                                    <option value="4">Area Sales Manager</option>
+                                                    <option value="5">Sales Manager</option>
+                                                    <option value="6">Tele Caller</option>
                                                   </select>
                                                   <label>Employee Type</label>
                                                 </div>
@@ -183,7 +186,7 @@
 
         $(document).on('change','#Ad_type',function(){
           var adtype = $(this).val();
-          if(adtype == '3'){
+          if(adtype != '2'){
             $('#manager_col').css('display','block');
           }else{
             $('#manager_col').css('display','none');

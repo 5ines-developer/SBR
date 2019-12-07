@@ -65,12 +65,12 @@
                                             </div>
                                             <div class="row m0">
                                                 <div class="input-field col s12 l6">
-                                                  <input type="email" id="email" name="email" class="validate" required>
+                                                  <input type="email" id="email" name="email" class="validate" >
                                                   <label for="email">Email</label>
                                                   <p><span class="error"><?php echo form_error('email'); ?></span></p>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="budget" name="budget" class="validate" required>
+                                                  <input type="text" id="budget" name="budget" class="validate" >
                                                   <label for="budget">Budget</label>
                                                   <p><span class="error"><?php echo form_error('budget'); ?></span></p>
                                                 </div>
@@ -103,7 +103,7 @@
                                                   <label for="c_name">Category</label>
                                                 </div> 
                                                 <div class="input-field col s12 l6">
-                                                  <select id="v_type" name=v_type required>
+                                                  <select id="v_type" name=v_type>
                                                     <option value="">Vendor Type</option>
                                                     <option value="paid">Paid</option>
                                                     <option value="free">Free</option>
@@ -176,7 +176,6 @@
                 'city' : city,'category':category,'v_type' : v_type
               },
               success:function(data){
-                console.log(data);
                 $('.vendor-col').html(data);
                 loder(false)
               },

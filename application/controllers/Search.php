@@ -33,7 +33,11 @@ class Search extends CI_Controller {
 		if($city == 'all' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult();
 			$this->load->view('vendors/category', $data, FALSE);
-		}else{
+		} else if($city != 'all' && $city !=''){
+			$data['vendors'] = $this->m_search->catviseresult($city);
+			$this->load->view('vendors/category', $data, FALSE);
+		}
+		else{
 			$per_page = 24;
 			
 			$rows = $this->m_search->rowsCount(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category));

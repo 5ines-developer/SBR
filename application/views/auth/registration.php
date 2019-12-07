@@ -25,10 +25,10 @@
                 <div class="row">
                     <div class="col l6 m6 s12">
                         <div class="vendor-cont">
-                            <h4>"Grow your Business With Shaadi Baraati"</h4>
+                            <h4>"Plan your wedding With Shaadi Baraati"</h4>
                             <p>Sign Up to acess your Dashboard</p>
                             <p>Already have an Account ?</p>
-                            <a href="<?php echo base_url('vendor/login') ?>"><button class="vend-btn">Sign
+                            <a href="<?php echo base_url('login') ?>"><button class="vend-btn">Customer Sign
                                     In</button></a>
                         </div>
 

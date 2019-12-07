@@ -26,7 +26,7 @@
                                 <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign Up to acess your Dashboard</p>
                                 <p>Already have an Account ?</p>
-                                <a href="<?php echo base_url('vendor/login') ?>"><button class="vend-btn">Sign In</button></a>
+                                <a href="<?php echo base_url('vendor/login') ?>"><button class="vend-btn">Vendor Sign In</button></a>
                             </div>
                             
                         </div>

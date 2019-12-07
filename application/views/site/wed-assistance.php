@@ -35,15 +35,7 @@
                 <div class="row">
                     <div class="col s12">
 
-                        <div class="wda-serviceitem">
-                            <div class="col s12 m6 l6 push-m6 push-l6">
-                                <div class="wdas-item-content ">
-                                    <p class="wdatitle">Hello Wed Planner</p>
-                                    <p>Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
-                                    <a href="#modalf" class="btn-cate modal-trigger">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="wda-serviceitem">
                             <div class="col s12 m6 l6">
@@ -110,7 +102,7 @@
                 <div class='pricing pricing-palden ' >
                     
 
-                    <div class='pricing-item '>
+                    <!-- <div class='pricing-item '>
                         <div class='pricing-deco'>
                             <svg class='pricing-deco-img' enable-background='new 0 0 300 100' height='100px' id='Layer_1' preserveAspectRatio='none' version='1.1' viewBox='0 0 300 100' width='300px' x='0px' xml:space='preserve' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
                             <path class='deco-layer deco-layer--1' d='M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729&#x000A;	c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z' fill='#FFFFFF' opacity='0.6'></path>
@@ -135,7 +127,7 @@
                             <li class='pricing-feature'> Get accurate quotes </li>
                         </ul>
                         <button class='pricing-action'>Free</button>
-                    </div>
+                    </div> -->
 
                     <div class='pricing-item pricing__item--featured'>
                         <div class='pricing-deco'>
