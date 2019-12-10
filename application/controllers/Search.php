@@ -33,7 +33,7 @@ class Search extends CI_Controller {
 		if($city == 'all' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult();
 			$this->load->view('vendors/category', $data, FALSE);
-		} else if($city != 'all' && $city !=''){
+		} else if($city != 'all' && $city !='' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult($city);
 			$this->load->view('vendors/category', $data, FALSE);
 		}
