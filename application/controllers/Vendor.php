@@ -126,8 +126,11 @@ class Vendor extends CI_Controller {
                 'category'  => $category,
                 'uniq'      => $uniq 
                  );
+
+
             $data['output'] = $this->m_vendor->register($insert);          
         	if (!empty($data['output'])) {
+            $this->sendregister($email, $refid);
         		if($this->sendregister($email, $refid))
         		{
         			$this->session->set_flashdata('success', 'Before you can login, you must active your <br> account with the link sent to your email address.');

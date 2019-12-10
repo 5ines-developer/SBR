@@ -214,6 +214,7 @@
             // email check on database
             emailCheck() {
 
+
                 this.emailError = '';
                 const formData = new FormData();
                 formData.append('email', this.email);

@@ -76,7 +76,7 @@
                                 <h4>"Grow your Business With Shaadi Baraati"</h4>
                                 <p>Sign In to acess your Dashboard</p>
                                 <p>If You Don't have an Account ?</p>
-                                <a href="<?php echo base_url() ?>/vendor/register"><button class="vend-btn">Sign Up</button></a>
+                                <a href="<?php echo base_url() ?>register"><button class="vend-btn">Sign Up</button></a>
                             </div>
                         </div>
                         <div class="col l6 m6 s12">

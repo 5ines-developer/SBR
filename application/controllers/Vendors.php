@@ -230,12 +230,6 @@ class Vendors extends CI_Controller {
           'budget'      =>  $budget
         );
 
-        
-        echo "<pre>";
-        print_r ($insert);
-        echo "</pre>";exit;
-        
-
       $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.urlencode(str_replace('', '-', strtolower($value->name))).'/'.$vendor_id;
 
         $data['output']  =  $this->m_vendors->addenquiry($insert);

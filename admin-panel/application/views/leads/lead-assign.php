@@ -82,7 +82,7 @@
                                             <div class="row m0">
                                               <div class="input-field col s12 l6">
                                                 <input type="text" id="fndate" name="fndate" class="validate datepicker" >
-                                                <label for="fndate">fndate</label>
+                                                <label for="fndate">Function Date</label>
                                               </div>
                                                 <div class="input-field col s12 l6">
                                                   <select id="city"  name="city">

@@ -87,7 +87,7 @@
                                                 <div class="d-input">
                                                     <div class="input-field">
                                                         <textarea id="textarea1" class="materialize-textarea con-us"
-                                                            placeholder="Textarea" name="message"></textarea>
+                                                            placeholder="Message" name="message"></textarea>
                                                         <!-- <label for="textarea1 white-text">Textarea</label> -->
                                                     </div>
                                                 </div>
@@ -229,50 +229,7 @@
         <?php $this->load->view('includes/message'); ?>
     </script>
 
-    <script>
-    var demo = new Vue({
-        el: '#app',
-        data: {
-            email: '',
-            emailError: '',
-           
-        },
-
-        methods: {
-            // mobile number check on database
-            // email check on database
-            emailCheck() {
-                this.emailError = '';
-                const formData = new FormData();
-                formData.append('email', this.email);
-                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
-                    .then(response => {
-                        if (response.data == '1') {
-                            this.emailError = 'You are already subscribed.';
-                        } else {
-                            this.emailError = '';
-                        }
-                    })
-                    .catch(error => {
-                        if (error.response) {
-                            this.errormsg = error.response.data.error;
-                        }
-                    })
-            },
-            checkForm() {
-                if (this.emailError == '') {
-
-
-                    this.$refs.form.submit()
-                } else {}
-            }
-        },
-    });
-
-
-
-    
-    </script>
+   
 <script>
     var demo = new Vue({
         el: '#demo',

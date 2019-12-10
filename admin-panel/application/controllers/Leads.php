@@ -79,7 +79,6 @@ class Leads extends CI_Controller {
         $category   = $this->input->post('category');
         $vendor     = $this->input->post('vendor');
         $fndate     = $this->input->post('fndate');
-        
 
         for($i=0; $i < count($vendor); $i++ ){
 
@@ -124,8 +123,7 @@ class Leads extends CI_Controller {
 
     public function mailSend($data = null)
     {
-        $to = 'prathwi@5ine.in';
-        // $to = $data['vemail'];
+        $to = $data['vemail'];
         $this->load->config('email');
         $this->load->library('email');
         $from = $this->config->item('smtp_user');
@@ -153,8 +151,7 @@ class Leads extends CI_Controller {
       $budget   = $data['result']['budget'];
       $location = $data['result']['location'];
       $remarks = $data['result']['wed_detail'];
-    //   $number   = $data['vphone'];
-      $number   = '8951411732';
+      $number   = $data['vphone'];
    
       $curl = curl_init();
       $post_fields = array();

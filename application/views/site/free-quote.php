@@ -54,8 +54,7 @@
                                             <select required name="qservice">
                                                 <option value="" selected>Select Services</option>
                                                 <?php foreach (vendor_category() as $key => $cts) { ?>
-                                                <option value="<?php echo $cts->category ?>">
-                                                    <?php echo $cts->category ?></option>
+                                                <option value="<?php echo $cts->category ?>"><?php echo $cts->category ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
