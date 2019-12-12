@@ -45,9 +45,9 @@
                               <div class="col l4 m6">
                                 <p class="h5-para black-text m0">Vendors</p>
                               </div>
-                                <a href="<?php echo base_url('vendors/manage')  ?>" class="waves-effect waves-light btn green  white-text hoverable ">All</a>
-                                <a href="<?php echo base_url('vendors/manage/?f=paid')  ?>" class="waves-effect waves-light btn orange white-text hoverable ">Paid</a>
-                                <a href="<?php echo base_url('vendors/manage/?f=free')  ?>" class="waves-effect waves-light btn blue  white-text hoverable ">Free</a>
+                                <a href="<?php echo base_url('vendors/my-vendors')  ?>" class="waves-effect waves-light btn green  white-text hoverable ">All</a>
+                                <a href="<?php echo base_url('vendors/my-vendors/?f=paid')  ?>" class="waves-effect waves-light btn orange white-text hoverable ">Paid</a>
+                                <a href="<?php echo base_url('vendors/my-vendors/?f=free')  ?>" class="waves-effect waves-light btn blue  white-text hoverable ">Free</a>
                               
                               
                             </div>
@@ -79,6 +79,7 @@
                                           <th id="c" class="h5-para-p2" width="120px">Package</th>
                                           <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
                                           <th id="f" class="h5-para-p2" width="100px">Status</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Upgrade</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
                                        </tr>
                                     </thead>
@@ -112,6 +113,14 @@
                                              <?php }else if (!empty($value->status) && $value->status =='3') { ?>
                                               <span class='white-text orange lighten-1'>Approval Pending</span>
                                              <?php } ?>
+                                            </td>
+
+                                            <td>
+                                              <?php
+                                                  if (empty($value->package)) { ?>
+                                              <a href="<?php echo base_url('vendors/upgrade/'.$value->id.'') ?>"  class="btn blue hoverable"><i class="fas fa-calendar-check"></i>
+                                              </a>
+                                            <?php } ?>
                                             </td>
 
                                             

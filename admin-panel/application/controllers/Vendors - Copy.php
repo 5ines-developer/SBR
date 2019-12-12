@@ -162,7 +162,7 @@ class Vendors extends CI_Controller {
                          if (($this->type != '1') && (!empty($dissatus))){ 
                             $insert['discount_status'] = '0'; 
                         }
-                        if (!empty($edit)) {$e = 'Updated'; }else{ $insert['added_by'] = $this->session->userdata('sha_id'); $e = 'Added'; }
+                        if (!empty($edit)) {$e = 'Updated'; }else{$insert['added_by'] = $this->session->userdata('sha_id'); $e = 'Added'; }
 
                         /*******insert vendor detail*********/
                         $output = $this->m_vendors->insert_vendor($insert);
@@ -170,12 +170,26 @@ class Vendors extends CI_Controller {
                         
                         if(!empty($output))
                         {
-                            $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
-                            if (!empty($vid)) {
-                                redirect('vendors/edit/'.$vid);
-                            }else{
-                                redirect('vendors/edit/'.$output,'refresh');
+                            if (!empty($pcchange)) {
+                                if (!empty($vid)) { $vn_id = $vid; }else{ $vn_id = $output; }
+                                $pack = array('vendor_id' => $vn_id , 'package_id' => $insert['package'] ,'updated_date' => date('y-m-d h:i:s'));
+                                $this->m_vendors->pack_insert($pack);
                             }
+                          
+                            $insert['out']      = $output;
+                            $insert['dissatus'] = $dissatus;
+                            $insert['pcchange'] = $pcchange;
+                            $insert['edit']     = $edit;
+
+                        /*******discount mail if vendor not eligible*********/
+                        if (($this->type != '1') && (!empty($dissatus))) { $this->dicountCheck($insert); }
+                            
+                            // $this->session->set_flashdata('success', 'Vendor '.$e.' Successfully');
+                            // if (!empty($vid)) {
+                            //     redirect('vendors/edit/'.$vid);
+                            // }else{
+                            //     redirect('vendors/edit/'.$output,'refresh');
+                            // }
                             
                         }else{
                             $this->session->set_flashdata('error', 'Something went wrong please try again!');
@@ -189,6 +203,205 @@ class Vendors extends CI_Controller {
     }
 
 
+
+    public function dicountCheck($insert='')
+    {
+
+        if(!empty($insert['discount'])){
+           $disc = $this->db->where('id', $this->aid)->get('admin')->row(); 
+           if ($insert['discount'] <= $disc->discount ) {
+                $this->db->where('uniq', $insert['uniq'])->update('vendor',array('discount_status' => '1'));
+                if (($this->type != '1') && ((!empty($insert['dissatus'])) || (!empty($insert['pcchange'])))  ) {
+                   redirect('vendors/proposal?id='.$insert['out'],'refresh');
+                }
+           }else{
+                    $manager = $this->db->where('id', $disc->manager)->get('admin')->row();
+                    if ($this->type != '2') { 
+                    if ($insert['discount'] <= $manager->discount ) {
+                        $this->discountMail($manager,$insert,$disc);
+                    }else{  
+                        $this->discountAdmin($manager,$insert,$disc);
+                    }
+                    
+                }else{
+                    $this->discountAdmin($manager,$insert,$disc);
+                }
+           }
+       }
+    }
+
+
+    public function discountMail($manager='',$insert='',$disc)
+    {
+            $data['result']     = $insert;
+            $data['emp']        = $disc;
+            $data['manager']    = $manager;
+            $this->load->config('email');
+            $this->load->library('email');
+            $to = $this->config->item($manager->email);
+            $cc = $this->config->item('vr_cc');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/discount', $data, true);            
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to('prathwi@5ine.in');
+            $this->email->subject('Vendor Discount Request');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Manager, Manager will verify and approve your request ');
+                    if (($this->type != '1') && ((!empty($insert['dissatus'])) || (!empty($insert['pcchange'])))  ) {
+                        redirect('vendors/proposal?id='.$insert['out'],'refresh');
+                    }
+                    else{
+                        redirect('vendors/edit/'.$insert['out'],'refresh');
+                    }
+            } else {
+                $this->session->set_flashdata('error', 'mail not send Unable to submit your request, <br /> Please try again later!');
+                 redirect('vendors/edit/'.$insert['out'],'refresh');
+            }
+
+           
+    }
+
+    public function discountAdmin($manager='',$insert='',$disc)
+    {
+            $data['result']     = $insert;
+            $data['emp']        = $disc;
+            $data['manager']    = $manager;
+            $this->load->config('email');
+            $this->load->library('email');
+            $to = $this->config->item('vr_to');
+            $cc = $this->config->item('vr_cc');
+            $from = $this->config->item('smtp_user');
+            $msg = $this->load->view('email/discount-admin', $data, true); 
+            $this->email->set_newline("\r\n");
+            $this->email->from($from, 'ShaadiBaraati');
+            $this->email->to('prathwi@5ine.in');
+            // $this->email->cc($cc);
+            $this->email->subject('Vendor Discount Request');
+            $this->email->message($msg);
+            if ($this->email->send()) {
+                $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Admin, admin will verify and approve your request ');
+                if (($this->type != '1') && ((!empty($insert['dissatus'])) || (!empty($insert['pcchange'])))  ) {
+                    redirect('vendors/proposal?id='.$insert['out'],'refresh');
+                }
+                else{
+                    if (!empty($insert['edit'])) {
+                        redirect('vendors/edit/'.$insert['out'],'refresh');
+                    }else{
+                        redirect('vendors/add');
+                    }
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+                if (!empty($insert['edit'])) {
+                    redirect('vendors/edit/'.$insert['out'],'refresh');
+                }else{
+                    redirect('vendors/add');
+                }
+            }
+
+
+            
+    }
+
+
+    public function proposal($value='')
+    {
+        $id = $this->input->get('id');
+        $data['result'] = $this->m_vendors->saleExist($id);
+        $this->load->view('vendors/send-proposals',$data);
+    }
+
+
+    public function convertpdf($value='')
+    {
+
+        $cid = 'SHAADI'.$this->input->post('v_id');
+
+        $insert = array(
+            'customer_id'       => $cid,
+            'gst_no'            => $this->input->post('gst_no'),
+            'p_date'            => $this->input->post('p_date'),
+            'p_type'            => $this->input->post('p_type'),
+            'cont_person'       => $this->input->post('c_person'),
+            'work_since'        => $this->input->post('w_since'),
+            'area_service'      => $this->input->post('a_service'),
+            'gender'            => $this->input->post('gender'),
+            'charges'           => $this->input->post('charge'),
+            'facility'          => $this->input->post('facility'),
+            'other_service'     => $this->input->post('o_service'),
+            'onsite_facility'   => $this->input->post('on_facility'),
+            'time_require'      => $this->input->post('t_require'),
+            'pay_mode'          => $this->input->post('p_mode'),
+            'website'           => $this->input->post('website'),
+            'duration'          => $this->input->post('duration'),
+            'amount'            => $this->input->post('amount'),
+            'net_amount'        => $this->input->post('nt_amnt'),
+            'gst_amount'        => $this->input->post('gst_amount'),
+            'tot_amount'        => $this->input->post('t_amnt'),
+            'ord_id'            => $this->input->post('ord_id'),
+            'o_date'            => $this->input->post('pay_date'),
+            'vendor_id'         => $this->input->post('v_id'),
+            'list_address'      => $this->input->post('li_address'),
+            'amnt_words'        => $this->input->post('w_amount'),
+            'uniq'              => $this->input->post('uniq_id'),
+            'invoice_address'   => $this->input->post('i_address'),
+            'package'           => $this->input->post('package'),
+            'added_by'          => $this->aid,
+        );
+
+        if($data['result'] = $this->m_vendors->insertProposal($insert))
+        {
+            $this->load->library('pdf');
+            // $this->load->view('vendors/proposals',$data);
+            // Get output html
+            $html = $this->output->get_output($this->load->view('vendors/proposals',$data));
+            $pdf = $this->pdf->loadHtml($html);
+            $this->pdf->setPaper('A3', 'Potrait');
+            $this->pdf->render();
+            // Output the generated PDF (1 = download and 0 = preview)
+            // $this->pdf->stream("welcome.pdf", array("Attachment"=>1));
+            $fileName = random_string('alnum',10);
+            file_put_contents('pdf/propsal-'.$fileName.'.pdf',$this->pdf->output());
+            $pdfFile = 'pdf/propsal-'.$fileName.'.pdf';
+            $this->send_sales($insert['vendor_id'],$pdfFile);
+        }
+        else{
+            $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+            redirect('vendors/edit/'.$this->input->post('v_id'),'refresh');
+        }
+
+
+
+    }
+
+    public function send_sales($insert='',$pdfFile='')
+    {
+
+        $disc = $this->db->where('id', $this->aid)->get('admin')->row();
+        $manager = $this->db->where('id', $disc->manager)->get('admin')->row('email');
+        $this->load->config('email');
+        $this->load->library('email');
+        $to = $this->config->item('vr_to');
+        $cc = $this->config->item('vr_cc');
+        $from = $this->config->item('smtp_user');
+        $this->email->set_newline("\r\n");
+        $this->email->from($from, 'ShaadiBaraati');
+        $this->email->to('prathwi@5ine.in');
+        // $this->email->cc($manager);
+        $this->email->subject('Vendor Package proposal');
+        $this->email->message('New Vendor Package proposal has been submitted , document attached');
+        $this->email->attach($_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/admin-panel/'.$pdfFile);
+        if ($this->email->send()) {
+            $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Admin, admin will verify and approve your request ');
+            redirect('vendors/edit/'.$insert,'refresh');
+        } else {
+            $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+                redirect('vendors/edit/'.$insert,'refresh');
+        }
+        
+    }
 
 
 
@@ -205,7 +418,6 @@ class Vendors extends CI_Controller {
         $filter = $this->input->get('f');
         $data['result']  = $this->m_vendors->get_vendors($id,$filter);
         $data['title']   = 'Vendors - Shaadibaraati';
-        $data['aid']   = $id;
         $this->load->view('vendors/manage-vendor', $data, FALSE);
     }
 

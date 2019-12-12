@@ -16,6 +16,10 @@
       <style type="text/css">
          .dash-list a .list-dashboard{transition: 0.5s}
          .dash-list a:hover .list-dashboard{transform: scale(1.1);background: #f3f3f3 !important}
+         .list-dashboard div.round.mat{
+         margin: auto;
+      }
+      
       
       </style>
    </head>
@@ -39,8 +43,8 @@
                <div class="col m12 s12 l9">
                   <div class="main-bar">
                      <p class="h5-para black-text  mtb-20">Dashboard</p>
-                     <div class="dash-list">
-
+                     <?php if($this->session->userdata('sha_type') =='1'){ ?>
+                        <div class="dash-list">
                         <div class="row ">
                            <div class="col l3 m6 s12">
                               <a href="<?php echo base_url('vendors/manage') ?>">
@@ -103,123 +107,56 @@
                               </a>
                            </div>
                         </div>
-
-
                      </div>
-                     <!-- end dash -->
-                     <!-- <div class="char-dashboard">
-                        <div class="row">
-                           <div class="col l8 m12 s12">
-                              <div class="chart-border"> -->
-                                 <!-- <div class="row">
-                                    <div class="col l12 m12 s12">
-                                       <div class="m0 border-button">
-                                            <a class="btn-flat waves-effect waves-light  btn-small">Day</a>
-                                            <a class="btn-flat waves-effect waves-light btn-small">Month</a>
-                                            <a class="btn-flat waves-effect waves-light active btn-small">Year</a>
-                                       </div>
+
+                     <?php }else{ ?>
+                        <div class="dash-list">
+                        <div class="row ">
+                           <div class="col l3 m6 s12">
+                              <a href="<?php echo base_url('vendors/add') ?>">
+                                 <div class="list-dashboard white z-depth-0">
+                                    <div class="round mat amber accent-4 center-align">
+                                       <i class="fas fa-user-plus white-text"></i>
                                     </div>
-                                 </div> -->
-                                 <!-- <canvas id="myChart" width="100%" height="60"></canvas> -->
+                                    <p class="para-p1 grey-text m0 center-align">Add Vendors</p>
+                                 </div>
+                              </a>
+                           </div>
+                           <div class="col l3 m6 s12">
+                             <a href="<?php echo base_url('vendors/my-vendors') ?>">
+                                 <div class="list-dashboard white z-depth-0">
+                                    <div class="round mat deep-purple lighten-1"><i class="fas fa-users  white-text"></i></div>
+                                    <p class="para-p1 grey-text m0 center-align">My Vendors</p>
+                                 </div>
+                              </a>
+                           </div>
+                           <div class="col l3 m6 s12">
+                              <a href="<?php echo base_url('vendors/manage') ?>">
+                                 <div class="list-dashboard white z-depth-0">
+                                    <div class="round mat light-green accent-4"><i class="fas fa-search white-text"></i></div>
+                                    <p class="para-p1 grey-text m0 center-align">Search Vendors</p>
+                                 </div>
+                              </a>
+                           </div>
+                           <div class="col l3 m6 s12">
+                              <a href="<?php echo base_url('vendors/new-proposal') ?>">
+                                 <div class="list-dashboard white z-depth-0">
+                                   <div class="round mat brown"><i class="far fa-eye white-text"></i></div>
+                                    <p class="para-p1 grey-text m0 center-align">View Proposal</p>
+                                 </div>
+                                 
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                     <?php }  ?>
+                     
+
+                     
+
+                     
                               </div>
                            </div>
-                           <!-- <div class="col m4 s12 l4">
-                           
-                              <div class="bar-line white">
-                                 <p class="h5-para-p1 ">Pending Employeer Approval</p>
-                                 <div class="row m0">
-                                    <div class="col s12">
-                                       <div class="list-height">
-                                          <div class="progress-bar-set">
-                                             <div class="title-bar">
-                                                <span>Active</span>
-                                             </div>
-                                             <div class="progress progress-app ">
-                                                <span class="determinate deter1" style="width: 30%"></span>
-                                             </div>
-                                             <div class="">
-                                                <span>30</span>
-                                             </div>
-                                          </div>
-
-                                          <div class="progress-bar-set">
-                                             <div class="title-bar">
-                                                <span>Pending</span>
-                                             </div>
-                                             <div class="progress progress-app ">
-                                                <span class="determinate deter2" style="width: 100%"></span>
-                                             </div>
-                                             <div class="">
-                                                <span>40</span>
-                                             </div>
-                                          </div>
-
-                                          <div class="progress-bar-set">
-                                             <div class="title-bar">
-                                                <span>Total</span>
-                                             </div>
-                                             <div class="progress progress-app ">
-                                                <span class="determinate deter3" style="width: 100%"></span>
-                                             </div>
-                                             <div class="">
-                                                <span>70</span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <br>
-                              
-                              <div class="bar-line white">
-                                 <p class="h5-para-p1 ">Candidate </p>
-                                 <div class="row m0" >
-                                    <div class="col s12">
-                                      
-                                       <div class="list-height">
-                                          <div class="progress-bar-set">
-                                             <div class="title-bar">
-                                                <span>Active</span>
-                                             </div>
-                                             <div class="progress progress-app ">
-                                                <span class="determinate deter1" style="width:10%"></span>
-                                             </div>
-                                             <div class="">
-                                                <span>10</span>
-                                             </div>
-                                          </div>
-
-                                          <div class="progress-bar-set">
-                                             <div class="title-bar">
-                                                <span>Pending</span>
-                                             </div>
-                                             <div class="progress progress-app ">
-                                                <span class="determinate deter2" style="width: 60%"></span>
-                                             </div>
-                                             <div class="">
-                                                <span>60</span>
-                                             </div>
-                                          </div>
-
-                                          <div class="progress-bar-set">
-                                             <div class="title-bar">
-                                                <span>Total</span>
-                                             </div>
-                                             <div class="progress progress-app ">
-                                                <span class="determinate deter3" style="width: 100%"></span>
-                                             </div>
-                                             <div class="">
-                                                <span>100</span>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div> -->
-                        <!-- </div>
-                     </div> -->
-
                      <!-- chart-table -->
                      <!-- shorting -->
                      <div class="shorting-table">

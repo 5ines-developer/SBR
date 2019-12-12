@@ -60,13 +60,12 @@
                                                     value="<?php echo (!empty($setting)?$setting['email']:'') ?>">
                                                 <label for="email">Email <span class="red-text">*</span></label>
                                             </div>
-                                        </div>
-                                        <div class="row m0">
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="phone" name="phone" class="validate" required
                                                     value="<?php echo (!empty($setting)?$setting['phone']:'') ?>">
                                                 <label for="phone">Phone No.<span class="red-text">*</span></label>
                                             </div>
+                                            <?php if($this->session->userdata('sha_type') =='1'){ ?>
                                             <div class="input-field col s12 l6">
                                               <select name="package" class="packge">
                                                 <option value="0">Choose Package</option>
@@ -79,9 +78,10 @@
                                               </select>
                                               <label>Packages</label>
                                             </div>
+                                            </div>
+                                        <?php } ?>
                                             
-                                        </div>
-                                        <div class="row m0">
+                                        
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="price" name="price" class="validate" 
                                                     value="<?php echo (!empty($setting)?$setting['price']:'') ?>">
@@ -94,12 +94,6 @@
                                                 <label for="price_for">Price Per<span class="red-text"> *</span></label>
                                                 <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
                                             </div>
-
-                                            
-
-                                        </div>
-
-                                        <div class="row m0">
                                             <div class="input-field col s12 l6">
                                                 <select name="category" required="">
                                                     <option value="">Choose a category</option>
@@ -116,17 +110,13 @@
                                                 <label>City</label>
                                                 <p><span class="error"><?php echo form_error('city'); ?></span></p>
                                             </div>
-
-                                        </div>
-                                        <div class="row m0">
+                                            <?php if($this->session->userdata('sha_type') =='1'){ ?>
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="discount" name="discount" class="validate" value="<?php echo (!empty($result->discount)?$result->discount:'') ?>">
                                                 <label for="discount">Discount in %</label>
                                             </div>
-                                        </div>
-
-                                      <div class="row m0">
-                                      <div class="file-field input-field col s12 l6">
+                                        <?php } ?>
+                                            <div class="file-field input-field col s12 l6">
                                                     <div class="btn btn-small black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Add Image</span>
@@ -137,10 +127,6 @@
                                                     </div>
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
-
-                                      </div>
-
-                                        <div class="row">
                                           <div class="input-field col s12 ">
                                             <textarea id="textarea1" name="address" class="materialize-textarea"></textarea>
                                             <label for="textarea1">Address</label>

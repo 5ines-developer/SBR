@@ -99,6 +99,7 @@ $route['category/update']		=	'category/update_category'; //update category
 $route['vendors/add']			=	'vendors/index'; //add vendor
 $route['vendors/insert']		=	'vendors/insert_vendors'; //insert vendors
 $route['vendors/manage']		=	'vendors/manage_vendors'; //manage vendors table
+$route['vendors/manage/(:any)']	=	'vendors/manage_vendors/$1'; //manage vendors table
 $route['vendors/view/(:any)']	=	'vendors/detail/$1'; //vendor detail
 $route['vendors/edit/(:any)']	=	'vendors/edit/$1'; //vendor edit
 $route['vendors/delete/(:any)']	=	'vendors/delete/$1'; //vendor edit
@@ -177,6 +178,16 @@ $route['leads']			            		=	'Leads/manage';
 $route['sales-report']			            =	'report/index';
 $route['leads-report']			            =	'report/leads';
 $route['visitors-report']			        =	'report/visitors';
+
+// vendors renewel - upgrade to paid
+$route['vendors/my-vendors']			    =	'vendors_upgrade/index';
+$route['vendors/upgrade/(:any)']			=	'vendors_upgrade/upgrade/$1';
+$route['vendors/upgrade-submit']			=	'vendors_upgrade/insertUpgrade';
+$route['vendors/new-proposal']			    =	'vendors_upgrade/newProposal';
+$route['vendors/view-proposal/(:any)']		=	'vendors_upgrade/view_proposal/$1';
+$route['vendors/approved-proposal']			=	'vendors_upgrade/approvedProposal';
+$route['vendors/rejected-proposal']			=	'vendors_upgrade/rejectedProposal';
+
 
 
 
