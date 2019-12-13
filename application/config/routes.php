@@ -122,7 +122,8 @@ $route['testimonial-post']              = 'home/testimonial_post';
 $route['feedback-post']                 = 'home/feedback_post';
 $route['career']                        = 'home/career';
 $route['career/(:any)']                 = 'home/career/$1';
-$route['appaly/(:any)']            = 'home/application/$1';
+$route['appaly/(:any)']                 = 'home/application/$1';
+$route['e-invite']   				    = 'home/e_invite';
 
 //vendor register
 $route['vendor-register'] 		        = 'authentication/vendorRegister';
@@ -158,8 +159,8 @@ $route['vendor/leads/(:any)'] 	            = 'Vendor_detail/leads/$1';
 //freequote
 $route['free-quote'] 	            		= 'home/freeQuote';
 
-
-
+// e-invite
+$route['e-dashboard']   				    = 'einvite/einvite_dashboard';
 
 
 
