@@ -43,7 +43,6 @@ class Authentication extends CI_Controller {
             $password = $this->input->post('password');
 
             $data['login'] = $this->m_authentication->can_login($username, $password);
-
             if (!empty($data['login'])) {
                 if (!empty($data['login']['id'])) {
                     $id = $data['login']['id'];
