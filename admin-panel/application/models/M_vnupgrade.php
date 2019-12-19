@@ -81,7 +81,8 @@ class M_vnupgrade extends CI_Model {
 			$this->db->where('uniq', $insert['uniq']);
 			return $this->db->update('renew_package', $insert);
 		}else{
-			return $this->db->insert('renew_package', $insert);
+			$this->db->insert('renew_package', $insert);
+			return $this->db->insert_id();
 		}
 		
 	}
@@ -91,6 +92,8 @@ class M_vnupgrade extends CI_Model {
 	{
 		return $this->db->where('rp.added_by', $added)
 		->where('rp.seen !=',1)
+		->where('rp.approved !=',1)
+		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
@@ -107,6 +110,8 @@ class M_vnupgrade extends CI_Model {
 	{
 		return $this->db->where('rp.added_by', $added)
 		->where('rp.status', '1')
+		->where('rp.approved',1)
+		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
@@ -122,6 +127,8 @@ class M_vnupgrade extends CI_Model {
 	{
 		return $this->db->where('rp.added_by', $added)
 		->where('rp.status', '2')
+		->where('rp.approved !=',1)
+		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
@@ -146,6 +153,48 @@ class M_vnupgrade extends CI_Model {
 		->join('package p', 'p.id = rp.package', 'left')
 		->order_by('rp.id','desc')
 		->get()->row_array();
+	}
+
+	public function allProposal($added = null)
+	{
+		return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
+		->from('renew_package rp')
+		->join('city cty', 'cty.id = rp.v_city', 'left')
+		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
+		->join('category cat', 'cat.id = rp.v_category', 'left')
+		->join('admin am', 'am.id = rp.added_by', 'left')
+		->join('package p', 'p.id = rp.package', 'left')
+		->order_by('rp.id','desc')
+		->get()->result();
+	}
+
+	public function clearedProposal($added = null)
+	{
+		return $this->db->where('rp.approved',1)
+		->where('rp.live !=',1)
+		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
+		->from('renew_package rp')
+		->join('city cty', 'cty.id = rp.v_city', 'left')
+		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
+		->join('category cat', 'cat.id = rp.v_category', 'left')
+		->join('admin am', 'am.id = rp.added_by', 'left')
+		->join('package p', 'p.id = rp.package', 'left')
+		->order_by('rp.id','desc')
+		->get()->result();
+	}
+
+	public function liveProposal($added='')
+	{
+		return $this->db->where('rp.live',1)
+		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
+		->from('renew_package rp')
+		->join('city cty', 'cty.id = rp.v_city', 'left')
+		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
+		->join('category cat', 'cat.id = rp.v_category', 'left')
+		->join('admin am', 'am.id = rp.added_by', 'left')
+		->join('package p', 'p.id = rp.package', 'left')
+		->order_by('rp.id','desc')
+		->get()->result();
 	}
 }
 

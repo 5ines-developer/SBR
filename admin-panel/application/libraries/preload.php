@@ -39,6 +39,34 @@ class preload
         return $this->ci->m_preload->getDisccount();
     }
 
+    public function newProposal($var = null)
+    {
+        return $this->ci->m_preload->newProposal();
+    }
+
+    public function approvedProposal($var = null)
+    {
+        return $this->ci->m_preload->approvedProposal();
+    }
+    public function rejectProposal($var = null)
+    {
+        return $this->ci->m_preload->rejectProposal();
+    }
+
+    public function allProposal($var = null)
+    {
+        return $this->ci->m_preload->allProposal();
+    }
+
+    public function payProposal($var = null)
+    {
+        return $this->ci->m_preload->payProposal();
+    }
+
+    public function liveProposal($var = null)
+    {
+        return $this->ci->m_preload->liveProposal();
+    }
 }
 
 /* End of file LibraryName.php */
