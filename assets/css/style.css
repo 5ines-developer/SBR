@@ -746,7 +746,7 @@ h6 {
     position: relative;
 }
 
-.col-c2{
+.col-c2 {
     column-count: 2;
 }
 
@@ -866,16 +866,15 @@ h6 {
         color: black;
         right: 8%;
     }
-
     /* customer register */
-    .radio-iam p{
+    .radio-iam p {
         float: left;
         margin-right: 0 !important;
     }
-    .radio-iam span{
+    .radio-iam span {
         margin-right: 0 !important;
     }
-    .rcaptcha-col{
+    .rcaptcha-col {
         padding: 0 !important;
     }
 }
@@ -1813,7 +1812,8 @@ r-crd-category {
     position: relative;
     top: -1.5px;
 }
-.fixed-action-btn{
+
+.fixed-action-btn {
     z-index: 0;
 }
 
@@ -2166,7 +2166,7 @@ r-crd-category {
         height: 85px;
     }
     .result-items .card-image {
-            height: 90px;
+        height: 90px;
     }
     .result-items .card-image img {
         min-height: auto;
@@ -3057,15 +3057,13 @@ input:not([type]):focus {
     max-height: 100px;
 }
 
-.portfolio-img.vd{
+.portfolio-img.vd {
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
     min-height: 250px;
     max-height: 250px;
 }
-
-
 
 .portfolio-img:hover .port-delete {
     top: 0;
@@ -3105,8 +3103,8 @@ input:not([type]):focus {
     border: 1px solid gray;
     width: 50px;
     height: 50px;
-padding: 5px;
-border-radius: 4px;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .image-information {
@@ -4172,8 +4170,6 @@ nav a.sidenav-trigger i {
     text-align: center
 }
 
-
-
 .borderd-btn {
     display: inline;
     padding: 5px 20px;
@@ -4506,8 +4502,6 @@ nav a.sidenav-trigger i {
     text-align: center
 }
 
-
-
 .vendor-register {
     padding-bottom: 140px;
     background-image: url('../img/vend-reg.webp');
@@ -4695,24 +4689,27 @@ nav a.sidenav-trigger i {
     margin-bottom: 0;
     text-align: center
 }
-.footerbutton a{
-    cursor: pointer; 
-    font-size: 14px; 
-    color: #3e3e3e; 
-    display: block; 
+
+.footerbutton a {
+    cursor: pointer;
+    font-size: 14px;
+    color: #3e3e3e;
+    display: block;
     text-align: center;
     padding: 9px 0px;
-    border-radius: 2px; 
+    border-radius: 2px;
 }
- .borderd-btn {
+
+.borderd-btn {
     border: 1px dashed #d0021b;
-    cursor: pointer; 
-    font-size: 14px; 
-    color: #3e3e3e; 
-    display: block; 
+    cursor: pointer;
+    font-size: 14px;
+    color: #3e3e3e;
+    display: block;
     text-align: center;
-     padding: 5px 0px; 
- }
+    padding: 5px 0px;
+}
+
 .footerbutton a:hover,
 .borderd-btn:hover {
     background-color: #d0021b;
@@ -4725,15 +4722,17 @@ nav a.sidenav-trigger i {
     line-height: 51px;
 }
 
-.footerbutton .b1{
+.footerbutton .b1 {
     background-color: #4caf50;
     color: #fff;
 }
-.footerbutton .b2{
+
+.footerbutton .b2 {
     background-color: #d0021b;
     color: #fff;
 }
-.footerbutton .b3{
+
+.footerbutton .b3 {
     background-color: #5679c0;
     color: #fff;
 }
@@ -4946,50 +4945,84 @@ nav a.sidenav-trigger i {
     width: 50px;
 }
 
-.rev-name{
+.rev-name {
     min-width: 75px;
     max-width: 75px;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
 }
-.lead-tr td{text-align: center; }
-.lead-tr td a{text-decoration: none; color: black; font-size: 13px; }
-.lead-view{background-color: #325cbf; padding: 5px; line-height: 23px; border-radius: 3px;}
-.lead-view i{position: relative; top: 7px;}
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {background: linear-gradient(to bottom, #d0021b 0%, #d0021b 100%) !important; }
-.vendor-detail-inputs.b-sho::after {
 
+.lead-tr td {
+    text-align: center;
+}
+
+.lead-tr td a {
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+}
+
+.lead-view {
+    background-color: #325cbf;
+    padding: 5px;
+    line-height: 23px;
+    border-radius: 3px;
+}
+
+.lead-view i {
+    position: relative;
+    top: 7px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: linear-gradient(to bottom, #d0021b 0%, #d0021b 100%) !important;
+}
+
+.vendor-detail-inputs.b-sho::after {
     content: "";
     clear: both;
     display: block;
+}
 
+.pend-box {
+    background: #d22121;
+    color: white;
+    display: inline-block;
+    padding: 7px 7px !important;
+    margin: 6px 6px 12px 9px;
 }
-.pend-box {background: #d22121; color: white; display: inline-block; padding: 7px 7px !important; margin: 6px 6px 12px 9px;
-}
-        .helper-text.red-text {
+
+.helper-text.red-text {
     min-height: 0 !important;
     text-align: left !important;
     position: absolute;
 }
+
 .top-bars {
     min-height: 35px;
     line-height: 33px;
     height: 30px;
 }
+
 .top-bars a {
     padding: 10px 10px;
 }
+
 .top-bars a:hover {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-content li a{
+.dropdown-content li a {
     font-size: 14px;
 }
-.dropdown-content li > a > i {
+
+.dropdown-content li>a>i {
     margin: 0 14px 0 0;
 }
 
+
 /* vendor detail page */
+
 .fixed-action-btn {
     position: relative;
     right: 0;
@@ -5032,7 +5065,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
 .check-group p {
     float: left;
     margin-right: 10px;
@@ -5047,51 +5079,76 @@ html {
 .favcol i {
     color: #fff !important;
 }
-.tit{
+
+.tit {
     white-space: nowrap !important;
-overflow: visible !important;
-text-overflow: unset !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
 }
 
-.r-crd-price{
+.r-crd-price {
     line-height: 22px;
 }
-.simil-crd{
+
+.simil-crd {
     border-radius: 0 0 2px 2px;
     padding: 12px !important;
-height: 98px;
+    height: 98px;
 }
-#date{
+
+#date {
     margin-left: 2rem;
 }
-.prefix{
+
+.prefix {
     font-size: 23px !important;
     top: 13px !important;
 }
-#date + label{
-   margin-left: 24px; 
+
+#date+label {
+    margin-left: 24px;
 }
+
 .banner-container {
-max-height: 500px;
-overflow: hidden;
+    max-height: 500px;
+    overflow: hidden;
 }
+
+
 /* customer login page */
-.radio-iam p{
+
+.radio-iam p {
     float: left;
     margin-right: 10px;
 }
-.radio-iam span{
+
+.radio-iam span {
     margin-right: 20px;
 }
+
+
 /******topbar***/
-.topbar1{ height:40px !important;background-color: #e3e3e3 !important; }
-.to-innr {width: 90%; margin: auto;line-height: 40px; }
-.to-innr a{ color: black; }
-.to-innr a:hover{
+
+.topbar1 {
+    height: 40px !important;
+    background-color: #e3e3e3 !important;
+}
+
+.to-innr {
+    width: 90%;
+    margin: auto;
+    line-height: 40px;
+}
+
+.to-innr a {
+    color: black;
+}
+
+.to-innr a:hover {
     color: #d0021b !important;
 }
-.count-badge {
 
+.count-badge {
     background-color: #fff;
     float: right;
     padding: 1px 20px 3px 20px;
@@ -5101,5 +5158,165 @@ overflow: hidden;
     line-height: 21px;
     top: 8px;
     font-weight: 600;
+}
 
+
+/* 13-12-2019 */
+
+.container-invit {
+    width: 85%;
+    margin: auto;
+}
+
+.e-invite {
+    background: white;
+    padding: 20px 10%;
+    margin-top: -7%;
+}
+
+.e-invite-detail h3 {
+    font-size: 20px;
+    padding: 0px 16%;
+    color: #d0021b;
+    font-weight: 600;
+    line-height: 28px;
+    text-align: center;
+}
+
+.pad-10 {
+    line-height: 25px;
+}
+
+.pad0-11 {
+    padding: 0px 20%;
+}
+
+.e-invite-detail {
+    margin-top: 5%;
+}
+
+.proce-box {
+    text-align: center;
+    box-shadow: 0px 0px 4px 0px #d7d7d7;
+    padding: 40px 20px;
+}
+
+.proce-box:hover {
+    box-shadow: 0px 0px 19px 0px #d7d7d7;
+    transition: 1s;
+}
+
+.proce-box i {
+    font-size: 50px;
+}
+
+.pro-flow {
+    padding-top: 25px;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    background: #000000bf;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 65% 0px;
+    transition: 1s;
+}
+
+
+/* .overlay::before {
+    background: #000000d6;
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+} */
+
+.wedding-temp {
+    position: relative;
+}
+
+.wedding-temp::before {
+    position: absolute;
+    background: #000000b5;
+    content: '';
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.overlay i {
+    background: white;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    cursor: pointer;
+}
+
+.hv:hover .overlay {
+    opacity: 1;
+}
+
+.wedding-temp::before:hover {
+    opacity: 1;
+}
+
+.sec-bt {
+    padding-bottom: 50px;
+}
+
+.we-im {
+    width: 100%;
+}
+
+@media(max-width:767px) {
+    .pad0-11 {
+        padding: 0px 0%;
+    }
+    .e-invite {
+        background: white;
+        padding: 20px;
+        margin-top: 0%;
+    }
+    .e-invite-detail h3 {
+        font-size: 15px;
+        padding: 0px 3%;
+    }
+    .container-invit {
+        width: 95%;
+        margin: auto;
+    }
+    .proce-box {
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 3px 0px #d7d7d7;
+    }
+    .overlay {
+        position: absolute;
+        top: 51%;
+        transform: unset;
+        opacity: 1;
+        background: #000000bf;
+        width: 60%;
+        height: auto;
+        text-align: center;
+        padding: 15px;
+        transition: 1s;
+        margin-bottom: 13px;
+        left: 0;
+    }
+    .overlay i {
+        background: white;
+        font-size: 13px;
+        padding: 8px;
+        border-radius: 20px;
+        color: black;
+        cursor: pointer;
+    }
 }

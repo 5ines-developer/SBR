@@ -334,6 +334,13 @@ class Home extends CI_Controller {
         unlink(base_url().'application/cache');
         redirect(base_url().'admin-panel','refresh');
     }
+// 13-12-2019
+
+public function e_invite()
+{
+    $data['title']  = 'ShaadiBaraati | E-invite';
+    $this->load->view('site/e-invite',$data);
+}
 
 
 
