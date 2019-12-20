@@ -54,7 +54,7 @@
                         <div class="row">
                            <div class="col l12 m12 s12">
                               <div class="">
-                                 <p class="h5-para-p2">New Proposal (<?php echo (!empty($result))?count($result):''; ?>)</p>
+                                 <p class="h5-para-p2">Payment Cleared Proposal (<?php echo (!empty($result))?count($result):'0'; ?>)</p>
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">

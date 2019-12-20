@@ -85,7 +85,7 @@
 			if (!empty($data)) {
 				$this->convertPdf($insert);
 				$this->session->set_flashdata('error','Something went wrong please try again later!');
-				redirect('vendors/view-proposal','refresh');
+				redirect('vendors/view-proposal/'.$data,'refresh');
 			}else{
 				$this->session->set_flashdata('error','Something went wrong please try again later!');
 				redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
@@ -167,7 +167,27 @@
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
 		$this->load->view('sales/view-proposal', $data, FALSE);
 	}
+
+	public function allProposal($id = null)
+	{
+		$data['title']   = 'Vendors - Shaadibaraati';
+		$data['result'] = $this->m_vnupgrade->allProposal($this->aid,$id);
+		$this->load->view('sales/all-proposal', $data, FALSE);
+	}
 	
+	public function clearedProposal($id = null)
+	{
+		$data['title']   = 'Vendors - Shaadibaraati';
+		$data['result'] = $this->m_vnupgrade->clearedProposal($this->aid,$id);
+		$this->load->view('sales/cleared-proposal', $data, FALSE);
+	}
+
+	public function liveProposal($id = null)
+	{
+		$data['title']   = 'Vendors - Shaadibaraati';
+		$data['result'] = $this->m_vnupgrade->liveProposal($this->aid,$id);
+		$this->load->view('sales/live-proposal', $data, FALSE);
+	}
 }
 	
 	/* End of file Vendors_upgrade.php */

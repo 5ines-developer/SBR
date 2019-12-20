@@ -43,7 +43,7 @@
 
                      <div class="row">
                         <div class="col l8 m6">
-                                <p class="h5-para black-text m0">Vendors Discount Request</p>
+                                <p class="h5-para black-text m0">Vendors Discount & Renewal Request</p>
                          </div>
                       </div>
                      

@@ -44,50 +44,7 @@
                   <div class="main-bar">
                      <p class="h5-para black-text  mtb-20">Proposal</p>
                         <div class="dash-list">
-                        <div class="row ">
-                           <div class="col l2 m6 s12 p0">
-                              <a href="<?php echo base_url('vendors/new-proposal') ?>">
-                                 <div class="list-dashboard white z-depth-0">
-                                    <p class="para-p1 m0 center-align grey-text">Approved Proposal</p>
-                                 </div>
-                              </a>
-                           </div>
-                           <div class="col l2 m6 s12 p0">
-                             <a href="<?php echo base_url('vendors/approved-proposal') ?>">
-                                 <div class="list-dashboard white z-depth-0">
-                                    <p class="para-p1 grey-text m0 center-align grey-text">Approved</p>
-                                 </div>
-                              </a>
-                           </div>
-                           <div class="col l2 m6 s12 p0">
-                              <a href="<?php echo base_url('vendors/rejected-proposal') ?>">
-                                 <div class="list-dashboard green z-depth-0">
-                                    <p class="para-p1  m0 center-align white-text">Rejected</p>
-                                 </div>
-                              </a>
-                           </div>
-                           <div class="col l2 m6 s12 p0">
-                              <a href="<?php echo base_url('vendors/new-proposal') ?>">
-                                 <div class="list-dashboard white z-depth-0">
-                                    <p class="para-p1 grey-text m0 center-align">All Proposal</p>
-                                 </div>                                 
-                              </a>
-                           </div>
-                           <div class="col l2 m6 s12 p0">
-                              <a href="<?php echo base_url('vendors/new-proposal') ?>">
-                                 <div class="list-dashboard white z-depth-0">
-                                    <p class="para-p1 grey-text m0 center-align">Payment cleared</p>
-                                 </div>                                 
-                              </a>
-                           </div>
-                           <div class="col l2 m6 s12 p0">
-                              <a href="<?php echo base_url('vendors/new-proposal') ?>">
-                                 <div class="list-dashboard white z-depth-0">
-                                    <p class="para-p1 grey-text m0 center-align">Live</p>
-                                 </div>                                 
-                              </a>
-                           </div>
-                        </div>
+                        <?php $this->load->view('include/vendor-proposal'); ?>
                      </div>                     
                     </div>
                     </div>
@@ -97,7 +54,7 @@
                         <div class="row">
                            <div class="col l12 m12 s12">
                               <div class="">
-                                 <p class="h5-para-p2">Approved Proposal</p>
+                                 <p class="h5-para-p2">Approved Proposal (<?php echo (!empty($result))?count($result):'0'; ?>)</p>
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">

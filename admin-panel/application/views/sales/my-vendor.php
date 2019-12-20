@@ -115,12 +115,9 @@
                                              <?php } ?>
                                             </td>
 
-                                            <td>
-                                              <?php
-                                                  if (empty($value->package)) { ?>
+                                            <td>                                             
                                               <a href="<?php echo base_url('vendors/upgrade/'.$value->id.'') ?>"  class="btn blue hoverable"><i class="fas fa-calendar-check"></i>
                                               </a>
-                                            <?php } ?>
                                             </td>
 
                                             
