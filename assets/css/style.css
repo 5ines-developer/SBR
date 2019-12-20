@@ -5366,3 +5366,141 @@ html {
     text-align: center;
     margin-bottom: 50px;
 }
+
+
+/* 20-12-2019 Rishabh */
+
+.e-invite-contain li a {
+    padding: 5px 12px;
+    font-size: 15px;
+    color: #333;
+    line-height: 40px;
+    display: block;
+}
+
+.e-invite-contain {
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    margin: .5rem 0 1rem 0;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.e-invite-contain li a:hover {
+    background-color: #f1f1f1;
+}
+
+.dash-template h3 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #cc0720;
+}
+
+.template-m img {
+    width: 100%;
+}
+
+.template-m p {
+    text-align: center;
+    font-weight: 600;
+}
+
+.temp-view i {
+    background: #d0021b;
+    color: white;
+    font-size: 15px;
+    border-radius: 30px;
+    margin-left: 3px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
+
+.temp-view {
+    text-align: center;
+}
+
+.temp-view i:hover {
+    background: gray;
+    cursor: pointer;
+}
+
+.template-design {
+    margin-top: 40px;
+}
+
+.category-list .tabs .tab a.active {
+    background-color: #a70015;
+    color: #fff;
+}
+
+.category-list .tabs .indicator {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #a70015;
+    will-change: left, right;
+}
+
+.category-list .tabs .tab a:focus,
+.tabs .tab a:focus.active {
+    background-color: rgb(167, 0, 21);
+    outline: none;
+}
+
+.category-list .tabs .tab a {
+    color: rgb(0, 0, 0);
+}
+
+.category-list {
+    margin-top: 40px;
+}
+
+.bg-detail {
+    border: 1px solid #efefef;
+}
+
+.title-br h5 {
+    margin: 0;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 16px;
+    color: #d0021b;
+    padding: 20px;
+}
+
+.detial-bg-list {
+    padding: 20px;
+}
+
+.feedback-input p {
+    font-size: 13px;
+    margin: 0;
+}
+
+.feedback-input b {
+    padding-right: 10px;
+    font-size: 13px;
+    color: #131313;
+}
+
+.hh-text {
+    height: 100px !important;
+}
+
+.bg-detail {
+    margin-bottom: 12px;
+}
+
+@media(max-width:767px) {
+    .temp-view {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .dash-template h3 {
+        font-size: 12px;
+    }
+}

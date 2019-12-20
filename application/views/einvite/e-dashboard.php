@@ -31,17 +31,11 @@ $this->load->model('m_account');
                     <div class="col s12 m4 l3">
                         <div class="sidemenu">
                             <div class="card-panel   profile-box">
-                                <a href="<?php echo base_url('profile')?>" class=" pb-edit btn-floating btn-flat waves-effect waves-light"><i
-                                        class="material-icons">edit</i></a>
                                 <div class="pb-pic">
-                                    <?php $this->load->model('m_account');
-                                    $profile = $this->m_account->profile_pic($this->session->userdata('shdid'));
-                                     ?>
-                                    <img src="<?php echo (!empty($profile->su_profile_file))?$profile->su_profile_file:'https://anthemunited.com/app/uploads/2016/12/steve-lepan.jpg' ?>" alt="">
-
+                                    <img src="assets/img/pp.jpg" class="img-responsive" alt="">
                                 </div>
                                 <center>
-                                    <p class="white-text"><b>Rishbah</b></p>
+                                    <p class="white-text"><b>Rishabh</b></p>
                                 </center>
                                 <div class="pb-content center-align">
                                     <h6 class="white-text ">
@@ -50,21 +44,28 @@ $this->load->model('m_account');
                                 </div>
                             </div>
                             <div class="">
-                                <ul class="sidemenu-list-container z-depth-1">
+                                <ul class="e-invite-contain z-depth-1">
                                     <li>
-                                        <a href="<?php echo base_url('profile') ?>" class="<?php if( ($this->uri->segment(1)==" profile ") && ($this->uri->segment(2) == '') ){echo "active ";}?>"> <i class=" material-icons ">person</i> Profile</a>
+                                        <a href="#">Dashboard</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo base_url('profile/shortlisted-vendor') ?>" class="<?php if(($this->uri->segment(1)==" profile ") && ($this->uri->segment(2) == 'shortlisted-vendor')){echo "active ";}?>"><i class=" material-icons ">favorite</i> Shortlisted Vendor's</a>
+                                        <a href="#">Manage User Details</a>
                                     </li>
-
                                     <li>
-                                        <a href="<?php echo base_url('profile/enquired-vendors') ?>" class="<?php if(($this->uri->segment(1)==" profile ") && ($this->uri->segment(2) == 'enquired-vendors')){echo "active ";}?>"><i class=" material-icons ">comment</i> Enquired Vendor's </a>
+                                        <a href="#">Wedding Event</a>
                                     </li>
-
-                                    <!--  <li>
-                                        <a href=""><i class=" material-icons ">settings</i> Account Settings</a>
-                                    </li> -->
+                                    <li>
+                                        <a href="#">Family Members</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding Photos</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wedding Information</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">My Website</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -74,60 +75,125 @@ $this->load->model('m_account');
                     <div class="col s12 m8 l9">
                         <div class="card">
                             <div class="chead">
-                                <p class="truncate">Shortlisted Vendor's</p>
+                                <p class="truncate">Dashboard</p>
                             </div>
                             <div class="">
-
                                 <div class="cboady">
-                                    <ul>
-
-                                        <?php if (!empty($vendor)) { foreach ($vendor as $key => $value) {?>
-                                        <li>
-                                            <div class="list-item">
-                                                <div class="row m0">
-                                                    <div class="col s12 m6 l6">
-                                                        <div class="list-item-head">
-                                                            <?php $category = $this->ci->m_account->getCategory($value->category);  ?>
-
-                                                            <a href="<?php echo base_url('detail/'.str_replace(" ","- ",strtolower($category)).'/'.str_replace(" ","- ",strtolower($value->name)).'/'.$value->uniq)?>" class="truncate"><?php echo $value->name ?></a>
+                                    <div class="category-list">
+                                        <ul class="tabs tab-ll">
+                                            <li class="tab tab-li col s3"><a href="#a1">Mehndi</a></li>
+                                            <li class="tab tab-li col s3"><a href="#a2">Engagement</a></li>
+                                            <li class="tab tab-li col s3"><a href="#a3">Wedding</a></li>
+                                            <li class="tab tab-li col s3"><a href="#a4">Reception</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dash-template">
+                                        <h3>Select Your Template and Start to Create</h3>
+                                    </div>
+                                    <div class="template-design" id="a1">
+                                        <div class="row">
+                                            <div class="col offset-l2 l10 ">
+                                                <div class="row">
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <p>Mehndi Template 1</p>
                                                         </div>
-                                                        <div class="span-div truncate">
-                                                            <span><i class=" material-icons ">location_on</i> <?php echo $this->ci->m_account->getCity($value->city); ?></span>
-                                                            <span><i class=" material-icons ">email</i> <?php echo $value->email ?></span>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
                                                         </div>
-
                                                     </div>
-                                                    <div class="col s6 m3 l3">
-                                                        <a href="<?php echo base_url('detail/'.str_replace(" ","- ",strtolower($category)).'/'.str_replace(" ","- ",strtolower($value->name)).'/'.$value->uniq)?>" class="rouded-btn ">Contact</a>
-                                                    </div>
-                                                    <div class="col s6 m3 l3">
-                                                        <span class=" badge green"><i class=" material-icons ">star</i> <?php $review = $this->ci->m_account->getReview($value->id); 
-
-                                                    if ($review) {
-                                                    $ratingSum = 0;
-                                                    foreach ($review as $rev => $revw) {
-                                                    $ratingSum += $revw->rating;
-                                                     $avg = $ratingSum / count($review);
-                                            } 
-
-                                            echo round($avg, 1); 
-
-
-                                        }?>
-
-
-
-
-                                                            </span>
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template2.jpg" class="img-responsive" alt="">
+                                                            <p>Mehndi Template 2</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
-
-                                        <?php } } ?>
-
-
-                                    </ul>
+                                        </div>
+                                    </div>
+                                    <div class="template-design" id="a2">
+                                        <div class="row">
+                                            <div class="col offset-l2 l10 ">
+                                                <div class="row">
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <p>Engagement Template 1</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <p>Engagement Template 2</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="template-design" id="a3">
+                                        <div class="row">
+                                            <div class="col offset-l2 l10 ">
+                                                <div class="row">
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <p>Wedding Template 1</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <p>Wedding Template 2</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="template-design" id="a4">
+                                        <div class="row">
+                                            <div class="col offset-l2 l10 ">
+                                                <div class="row">
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template2.jpg" class="img-responsive" alt="">
+                                                            <p>Reception Template 1</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col l5 m4 s12">
+                                                        <div class="template-m">
+                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <p>Reception Template 2</p>
+                                                        </div>
+                                                        <div class="temp-view">
+                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -136,14 +202,18 @@ $this->load->model('m_account');
             </div>
         </section>
 
-
     </div>
 
     <!-- script -->
+    <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-
+    <script>
+        $(document).ready(function() {
+            $('.tabs').tabs();
+        });
+    </script>
     <script>
         var app = new Vue({
             el: '#app',

@@ -161,7 +161,9 @@ $route['free-quote'] 	            		= 'home/freeQuote';
 
 // e-invite
 $route['e-dashboard']   				    = 'einvite/einvite_dashboard';
-
+$route['manage-user']   				    = 'einvite/manage_user';
+$route['wedding-event']   				    = 'einvite/wedding_event';
+$route['family-member']   				    = 'einvite/family_member';
 
 
 
