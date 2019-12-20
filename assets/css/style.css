@@ -5319,4 +5319,50 @@ html {
         color: black;
         cursor: pointer;
     }
+    /* R**************** 16-12-2019 */
+    .op {
+        padding: 0px !important;
+    }
+    .card-wed {
+        height: 265px;
+    }
+}
+
+.select-wrapper {
+    background: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.gg-select .select-dropdown.dropdown-trigger {
+    border: none !important;
+}
+
+.card-wed {
+    text-align: center;
+    background: white;
+    box-shadow: 0px 0px 4px 0px #d7d7d7;
+    margin-bottom: 20px;
+    height: 285px;
+}
+
+.wed-detail p {
+    margin: 0px;
+    padding: 10px 0px;
+}
+
+.wed-detail a {
+    color: black;
+    margin: 0px 6px;
+    font-size: 14px;
+}
+
+.wed-detail b {
+    font-size: 13px;
+    margin-right: =;
+}
+
+.class-pagi {
+    text-align: center;
+    margin-bottom: 50px;
 }

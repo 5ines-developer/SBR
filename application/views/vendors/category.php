@@ -15,129 +15,126 @@ $this->load->model('m_vendors');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-     <?php $this->load->view('includes/favicon.php');  ?>
+    <?php $this->load->view('includes/favicon.php');  ?>
     <style>
-   
-    .preloader{
-        display:none;
-    }
-
+        .preloader {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-   
-        <!-- header -->
-        <?php $this->load->view('includes/header.php'); ?>
-        <!-- end header -->
-        <div id="app">
+
+    <!-- header -->
+    <?php $this->load->view('includes/header.php'); ?>
+    <!-- end header -->
+    <div id="app">
         <!-- body  -->
-        <section class="result-head" style="background-image:url(<?php echo $this->m_vendors->bannimage(ucwords(str_replace("-"," ",$this->uri->segment(3)))); ?>)">
-            <div class="center-align container" >
+        <section class="result-head" style="background-image:url(<?php echo $this->m_vendors->bannimage(ucwords(str_replace(" - "," ",$this->uri->segment(3)))); ?>)">
+            <div class="center-align container">
                 <div class="row m0">
-                        <div id="searchble-container" class="row m0">
-                            <h4 class="white-text">India's Most Trusted Online Wedding Market</h4>
-                            <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
+                    <div id="searchble-container" class="row m0">
+                        <h4 class="white-text">India's Most Trusted Online Wedding Market</h4>
+                        <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
 
-                                <div class="col s12 m10 push-m1 l8 push-l2 mb10">
-                                    <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor"
-                                        v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+                            <div class="col s12 m10 push-m1 l8 push-l2 mb10">
+                                <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
 
-                                    <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
-                                    <div class="preloader" :class="{'previsible': previsible }">
-                                        <div class="preloader-wrapper big active" id="prelod">
-                                            <div class="spinner-layer spinner-blue">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="circle-clipper right">
-                                                    <div class="circle"></div>
-                                                </div>
+                                <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
+                                <div class="preloader" :class="{'previsible': previsible }">
+                                    <div class="preloader-wrapper big active" id="prelod">
+                                        <div class="spinner-layer spinner-blue">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
                                             </div>
-
-                                            <div class="spinner-layer spinner-red">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="circle-clipper right">
-                                                    <div class="circle"></div>
-                                                </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
                                             </div>
-
-                                            <div class="spinner-layer spinner-yellow">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="circle-clipper right">
-                                                    <div class="circle"></div>
-                                                </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
                                             </div>
+                                        </div>
 
-                                            <div class="spinner-layer spinner-green">
-                                                <div class="circle-clipper left">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="gap-patch">
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="circle-clipper right">
-                                                    <div class="circle"></div>
-                                                </div>
+                                        <div class="spinner-layer spinner-red">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spinner-layer spinner-yellow">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="spinner-layer spinner-green">
+                                            <div class="circle-clipper left">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="gap-patch">
+                                                <div class="circle"></div>
+                                            </div>
+                                            <div class="circle-clipper right">
+                                                <div class="circle"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="col s12 m8 push-m2 l8 push-l2" class="serch-select">
-                                    <div class="col s12 m6 ">
-                                        <select name="ct" class="select-search" id="sel-cato">
+                            <div class="col s12 m8 push-m2 l8 push-l2" class="serch-select">
+                                <div class="col s12 m6 ">
+                                    <select name="ct" class="select-search" id="sel-cato">
                                             <option value="">All Categories</option>
                                             <?php if (!empty(vendor_category())) {
                                                         foreach (vendor_category() as $categorys => $categories) { ?>
                                             <option <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?> value="<?php echo $categories->category ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                             <?php   } } ?>
                                         </select>
-                                    </div>
-                                    <div class="col s12 m6">
-                                        <select name="q" id="sel-city">
+                                </div>
+                                <div class="col s12 m6">
+                                    <select name="q" id="sel-city">
                                             <option value="">All Cities</option>
                                             <?php if (!empty(cities())) {foreach (cities() as $citys => $cities) { ?>
                                             <option <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                             <?php   } } ?>
                                         </select>
-                                    </div>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
-        
 
-<?php if (empty($vendors)) { ?>
-            <section class="no-result">
 
-    <div class="col l12">
-                        <center>
-                            <img src="<?php echo base_url('assets/img/no-result.png') ?>" alt="">
-                        </center>
-                        </div>
+        <?php if (empty($vendors)) { ?>
+        <section class="no-result">
 
-    </section>
-<?php }else{ ?>
+            <div class="col l12">
+                <center>
+                    <img src="<?php echo base_url('assets/img/no-result.png') ?>" alt="">
+                </center>
+            </div>
 
-            <section class="result-body">
+        </section>
+        <?php }else{ ?>
+
+        <section class="result-body">
             <div class="container-2">
                 <div class="row m0">
                     <!-- left menu -->
@@ -156,8 +153,8 @@ $this->load->model('m_vendors');
                             </div>
                             <div class="filter-divider"></div>
  -->
-                            <!-- locality -->
-                            <!-- <div class="filter-sub-head" >
+                    <!-- locality -->
+                    <!-- <div class="filter-sub-head" >
                                 <span >Locality</span>
                                 <span class="right  waves-effect waves-red" @click="isShow = !isShow">
                                     <i class="material-icons" v-if="isShow">remove</i>
@@ -201,8 +198,8 @@ $this->load->model('m_vendors');
                                 </div>
                             </transition> -->
 
-                            <!-- days -->
-                            <!-- <div class="filter-sub-head">
+                    <!-- days -->
+                    <!-- <div class="filter-sub-head">
                                 <span >No of Days</span>
                                 <span class="right  waves-effect waves-red" @click="isDay = !isDay">
                                     <i class="material-icons" v-if="isDay">remove</i>
@@ -247,8 +244,8 @@ $this->load->model('m_vendors');
                                 </div>
                             </transition> -->
 
-                            <!-- Budget -->
-                            <!-- <div class="filter-sub-head">
+                    <!-- Budget -->
+                    <!-- <div class="filter-sub-head">
                                 <span>Budget</span>
                                 <span class="right  waves-effect waves-red" @click="isbudget = !isbudget">
                                     <i class="material-icons" v-if="isbudget">remove</i>
@@ -293,8 +290,8 @@ $this->load->model('m_vendors');
                                 </div>
                             </transition> -->
 
-                            <!-- ratings -->
-                            <!-- <div class="filter-sub-head">
+                    <!-- ratings -->
+                    <!-- <div class="filter-sub-head">
                                 <span>Average ratings</span>
                                 <span class="right  waves-effect waves-red" @click="isAvg = !isAvg">
                                     <i class="material-icons" v-if="isAvg">remove</i>
@@ -342,7 +339,7 @@ $this->load->model('m_vendors');
 
 
 
-                        <!-- </div>
+                    <!-- </div>
                     </div> -->
                     <!-- end left menu -->
 
@@ -357,14 +354,15 @@ $this->load->model('m_vendors');
                             <div class="cat-row-heding">
                                 <div class="col m6 s12">
                                     <a href="<?php echo base_url().'vendors/all/'.$clink ?>">
-                                        <h4><?php echo '<img src="'.base_url().$value->icon.'" class="responsive-img" alt="'.$value->category.'">'.$value->category ?></h4>
+                                        <h4>
+                                            <?php echo '<img src="'.base_url().$value->icon.'" class="responsive-img" alt="'.$value->category.'">'.$value->category ?></h4>
                                     </a>
                                 </div>
                                 <div class="col m6 s6 right-align hide-on-small-only">
                                     <a href="<?php echo base_url().'vendors/all/'.$clink ?>" class="borderd-btn">View All <i class="material-icons">arrow_forward</i></a>
                                 </div>
                             </div>
-                            
+
                             <div class="clearfix"></div>
                             <?php foreach ($value->vendors as $vkey => $vendr) { 
                                 $pack = $this->ci->m_search->packageName($vendr->package);
@@ -373,11 +371,10 @@ $this->load->model('m_vendors');
                                     }
                                     $lable_class = strtolower(str_replace(' ', '-', $pack)); 
                             ?>
-                                <div class="col s6 m4 l3" >
+                            <div class="col s6 m4 l3">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","-",strtolower($vendr->name))).'/'.$vendr->uniq)?>"
-                                            target="_blank">
+                                        <a href="<?php echo base_url('detail/'.str_replace(" ","- ",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","- ",strtolower($vendr->name))).'/'.$vendr->uniq)?>" target="_blank">
                                             <div class="card-image">
                                                 <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                                                 <img src="<?php echo (!empty($vendr->profile_file))? base_url().$vendr->profile_file:'' ?>">
@@ -386,18 +383,21 @@ $this->load->model('m_vendors');
                                                 <div class="row m0">
                                                     <div class="col s12 m12">
                                                         <p class="m0 r-crd-title tit">
-                                                            <?php echo (!empty($vendr->name))?$vendr->name:'' ?></p>
-                                                        
+                                                            <?php echo (!empty($vendr->name))?$vendr->name:'' ?>
+                                                        </p>
+
                                                     </div>
                                                     <div class="col s12 m5">
 
-                                                    <p class="m0 r-crd-location">
-                                                            <?php echo (!empty($vendr->city))?$vendr->city:'' ?></p>
+                                                        <p class="m0 r-crd-location">
+                                                            <?php echo (!empty($vendr->city))?$vendr->city:'' ?>
+                                                        </p>
                                                     </div>
 
                                                     <div class="col s12 m7">
-                                                        
-                                                        <p class="m0 r-crd-price"><?php
+
+                                                        <p class="m0 r-crd-price">
+                                                            <?php
                                                     $amount = (!empty($vendr->price))?$vendr->price:'';
                                                     $num =$amount;
                                                     $explrestunits ='';
@@ -419,16 +419,18 @@ $this->load->model('m_vendors');
                                                     } else {
                                                     $thecash = $num;
                                                     }
-                                                    echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($vendr->price_for))?'&nbsp'.$vendr->price_for:' Per day'; ?> </p>
+                                                    echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($vendr->price_for))?'&nbsp'.$vendr->price_for:' Per day'; ?>
+                                                        </p>
                                                     </div>
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">
-                                                        <p class=" r-crd-category"><?php echo $value->category ?></p>
+                                                        <p class=" r-crd-category">
+                                                            <?php echo $value->category ?>
+                                                        </p>
                                                     </div>
                                                     <div class="col s12 m6 hide-on-small-only">
                                                         <p class="m0 r-crd-ratings">
-                                                            <?php echo $this->ci->m_search->countReview($vendr->id) ?>
-                                                            reviews <span class="c-badge green"><i
+                                                            <?php echo $this->ci->m_search->countReview($vendr->id) ?> reviews <span class="c-badge green"><i
                                                                     class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($vendr->id) ?> </span></p>
                                                     </div>
                                                 </div>
@@ -445,12 +447,12 @@ $this->load->model('m_vendors');
             </div>
         </section>
 
-<?php } ?>
+        <?php } ?>
 
 
 
 
-    <?php $this->load->view('includes/footer'); ?>
+        <?php $this->load->view('includes/footer'); ?>
     </div>
 
 
@@ -463,142 +465,142 @@ $this->load->model('m_vendors');
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
 
     <script>
-        
-    <?php $this->load->view('includes/message'); ?>
+        <?php $this->load->view('includes/message'); ?>
     </script>
 
     <script>
-        
-        
-        
-    var app = new Vue({
-        el: '#app',
-        data: {
-            listItem: '',
-            isShow: true,
-            isDay: true,
-            isbudget: true,
-            isAvg: true,
-            isFilter: true,
-            autocomplete: '',
-            vendor: '',
-            visible: false,
-            previsible: false,
-            email: '',
-            emailError: '',
+        var app = new Vue({
+            el: '#app',
+            data: {
+                listItem: '',
+                isShow: true,
+                isDay: true,
+                isbudget: true,
+                isAvg: true,
+                isFilter: true,
+                autocomplete: '',
+                vendor: '',
+                visible: false,
+                previsible: false,
+                email: '',
+                emailError: '',
 
-        },
-        created() {
-            window.addEventListener('resize', this.handleResize)
-            this.handleResize();
-        },
-        mounted(){
-            new SlimSelect({ select: '#sel-cato'});
-        new SlimSelect({ select: '#sel-city'});
-        },
-        methods: {
-
-                        // email check on database
-            emailCheck() {
-                this.emailError = '';
-                const formData = new FormData();
-                formData.append('email', this.email);
-                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
-                    .then(response => {
-                        if (response.data == '1') {
-                            this.emailError = 'You are already subscribed.';
-                        } else {
-                            this.emailError = '';
-                        }
-                    })
-                    .catch(error => {
-                        if (error.response) {
-                            this.errormsg = error.response.data.error;
-                        }
-                    })
             },
-             checkForm() {
-                if (this.emailError == '') {
-
-
-                    this.$refs.form.submit()
-                } else {}
+            created() {
+                window.addEventListener('resize', this.handleResize)
+                this.handleResize();
             },
-            handleResize() {
-                if (window.innerWidth <= 600) {
-                    this.isFilter = false;
+            mounted() {
+                new SlimSelect({
+                    select: '#sel-cato'
+                });
+                new SlimSelect({
+                    select: '#sel-city'
+                });
+            },
+            methods: {
+
+                // email check on database
+                emailCheck() {
+                    this.emailError = '';
+                    const formData = new FormData();
+                    formData.append('email', this.email);
+                    axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                        .then(response => {
+                            if (response.data == '1') {
+                                this.emailError = 'You are already subscribed.';
+                            } else {
+                                this.emailError = '';
+                            }
+                        })
+                        .catch(error => {
+                            if (error.response) {
+                                this.errormsg = error.response.data.error;
+                            }
+                        })
+                },
+                checkForm() {
+                    if (this.emailError == '') {
+
+
+                        this.$refs.form.submit()
+                    } else {}
+                },
+                handleResize() {
+                    if (window.innerWidth <= 600) {
+                        this.isFilter = false;
+                    }
+                },
+
+
+                vendorcheck() {
+                    this.autocomplete = '';
+                    this.visible = true;
+                    this.previsible = true;
+                    const formData = new FormData();
+                    formData.append('vendor', this.vendor);
+                    axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
+                        .then(response => {
+                            if (response.data != '') {
+                                this.previsible = false;
+                                this.autocomplete = response.data;
+                            } else {
+                                this.previsible = false;
+                                this.autocomplete = '';
+                            }
+                        })
+                        .catch(error => {
+                            this.previsible = false;
+                            if (error.response) {
+                                this.errormsg = error.response.data.error;
+                            }
+                        })
                 }
             },
 
-
-            vendorcheck() {
-                this.autocomplete = '';
-                this.visible = true;
-                this.previsible = true;
-                const formData = new FormData();
-                formData.append('vendor', this.vendor);
-                axios.post('<?php echo base_url() ?>search/vendorcheck', formData)
-                    .then(response => {
-                        if (response.data != '') {
-                            this.previsible = false;
-                            this.autocomplete = response.data;
-                        } else {
-                            this.previsible = false;
-                            this.autocomplete = '';
-                        }
-                    })
-                    .catch(error => {
-                        this.previsible = false;
-                        if (error.response) {
-                            this.errormsg = error.response.data.error;
-                        }
-                    })
-            }
-        },
-
-    });
+        });
     </script>
     <script>
-    // search in reasult page
-    $(document).ready(function() {
+        // search in reasult page
+        $(document).ready(function() {
 
 
-        $(document).on('change', '#sel-city,#sel-cato', function(e) {
-            e.preventDefault();
+            $(document).on('change', '#sel-city,#sel-cato', function(e) {
+                e.preventDefault();
 
-            var cityval = $('#sel-city').children("option:selected").val();
-            var city = cityval.toLowerCase();
-            var categoryval = $('#sel-cato').children("option:selected").val();
-            var cat = categoryval.toLowerCase();
+                var cityval = $('#sel-city').children("option:selected").val();
+                var city = cityval.toLowerCase();
+                var categoryval = $('#sel-cato').children("option:selected").val();
+                var cat = categoryval.toLowerCase();
 
-            if (city == '') {
-                var finalUrl = '<?php echo base_url()?>vendors/all/' + cat.replace(" ", "-", );
-            } else {
-                var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat.replace(" ", "-", );
-            }
-            var url = finalUrl.replace(" ", "-", );
+                if (city == '') {
+                    var finalUrl = '<?php echo base_url()?>vendors/all/' + cat.replace(" ", "-", );
+                } else {
+                    var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat.replace(" ", "-", );
+                }
+                var url = finalUrl.replace(" ", "-", );
 
 
 
-            $("#search-form").attr('action', url);
-            $("#search-form").submit();
+                $("#search-form").attr('action', url);
+                $("#search-form").submit();
+            });
+
+
+            $('html').click(function() {
+                // $('.sg-box').hide();
+                $(".sg-box").removeClass("visible");
+            })
+
+            $('.sg-box').click(function(e) {
+                e.stopPropagation();
+            });
+
+            $('#search-vend').keyup(function() {
+                $(".sg-box").addClass("visible");
+            })
+
         });
-
-
-        $('html').click(function() {
-            // $('.sg-box').hide();
-            $(".sg-box").removeClass("visible");
-        })
-
-        $('.sg-box').click(function(e) {
-            e.stopPropagation();
-        });
-
-        $('#search-vend').keyup(function() {
-            $(".sg-box").addClass("visible");
-        })
-
-    });
     </script>
 </body>
 

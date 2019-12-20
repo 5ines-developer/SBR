@@ -341,6 +341,11 @@ public function e_invite()
     $data['title']  = 'ShaadiBaraati | E-invite';
     $this->load->view('site/e-invite',$data);
 }
+public function real_wedding()
+{
+    $data['title']  = 'ShaadiBaraati | Real Wedding';
+    $this->load->view('site/real-wedding',$data);
+}
 
 
 
