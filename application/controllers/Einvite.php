@@ -22,6 +22,16 @@ class Einvite extends CI_Controller {
         $data['title']  = 'ShaadiBaraati | Family Member';
         $this->load->view('einvite/family-member',$data);
     }
+    public function wedding_photo()
+    {
+        $data['title']  = 'ShaadiBaraati | Wedding Photo';
+        $this->load->view('einvite/wedding-photo',$data);
+    }
+    public function wedding_information()
+    {
+        $data['title']  = 'ShaadiBaraati | Wedding Information';
+        $this->load->view('einvite/wedding-information',$data);
+    }
 }
 
 
