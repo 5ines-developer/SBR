@@ -3,18 +3,14 @@
 <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive" alt=""></a>
 </div>
 
-<div class="navbar-fixed">
-
-
-        <nav class="z-depth-1 navbar-fixed">
-
+<div class="">
+        <nav class="z-depth-1 ">
             <div class="nav-wrapper white hide-on-med-and-down topbar1">
                 <div class="to-innr">
-                    <a href="<?php echo base_url('free-quote') ?>" target="_blank" class=" black-text" >&nbsp; Get a Free quote &nbsp;</a>
-                    <span class="black-text" >| </span>
-                    <span class="black-text">Toll Free: <a href="tel:18004199456">1800 4199 456</a></span>
-
-                        <ul class="right">
+                    <a href="<?php echo base_url('free-quote') ?>" target="_blank" class=" white-text" >&nbsp; Get a Free quote &nbsp;</a>
+                    <span class="white-text" >| </span>
+                    <span class="white-text">Toll Free: <a href="tel:18004199456">1800 4199 456</a></span>
+                        <ul class="right ul-social">
                             <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
                                         class="img-responisve socil-icon" alt=""> </a></li>

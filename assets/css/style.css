@@ -4712,7 +4712,7 @@ nav a.sidenav-trigger i {
 
 .footerbutton a:hover,
 .borderd-btn:hover {
-    background-color: #d0021b;
+    background-color: #0a9a27;
     color: #fff;
 }
 
@@ -4723,7 +4723,7 @@ nav a.sidenav-trigger i {
 }
 
 .footerbutton .b1 {
-    background-color: #4caf50;
+    background-color: #d0021b;
     color: #fff;
 }
 
@@ -4733,7 +4733,7 @@ nav a.sidenav-trigger i {
 }
 
 .footerbutton .b3 {
-    background-color: #5679c0;
+    background-color: #d0021b;
     color: #fff;
 }
 
@@ -5131,7 +5131,7 @@ html {
 
 .topbar1 {
     height: 40px !important;
-    background-color: #e3e3e3 !important;
+    background-color: black !important;
 }
 
 .to-innr {
@@ -5141,7 +5141,7 @@ html {
 }
 
 .to-innr a {
-    color: black;
+    color: white;
 }
 
 .to-innr a:hover {
@@ -5523,6 +5523,23 @@ html {
     opacity: 1;
     cursor: pointer;
     transition: 1s;
+}
+
+
+/* 25-12-2019 R */
+
+.ul-social a {
+    background: white;
+}
+
+.ul-social a:hover {
+    background: white;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 @media(max-width:767px) {

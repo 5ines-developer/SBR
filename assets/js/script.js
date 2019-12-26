@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-  //  tool tip
+    //  tool tip
     var toll = document.querySelectorAll('.tooltipped');
     var tollinstances = M.Tooltip.init(toll, {
-      margin: 0
+        margin: 0
     });
 
-  // droupdown
+    // droupdown
     var droup = document.querySelectorAll('.dropdown-trigger');
     var droupinstances = M.Dropdown.init(droup, {
-      constrainWidth: false,
-      coverTrigger: false,
-      hover: true
-    } );
+        constrainWidth: false,
+        coverTrigger: false,
+        hover: true
+    });
 
-  // // selcet
+    // // selcet
     var slect = document.querySelectorAll('select[name=qservice]');
     var slectinstances = M.FormSelect.init(slect);
 
@@ -23,16 +23,31 @@ document.addEventListener('DOMContentLoaded', function() {
     var slect = document.querySelectorAll('select[name=qbudget]');
     var slectinstances = M.FormSelect.init(slect);
 
-  // nav drwaver
+    // nav drwaver
     var sidenav = document.querySelectorAll('.sidenav');
     var sidenavinstances = M.Sidenav.init(sidenav);
 
-  // modal
+    // modal
     var model = document.querySelectorAll('.modal');
     var modelinstances = M.Modal.init(model);
 
     var date = document.querySelectorAll('.datepicker');
     var instances = M.Datepicker.init(date, {
-      format: 'yyyy-mm-dd',});
-  });
+        format: 'yyyy-mm-dd',
+    });
 
+    // scroll fixed nav
+    window.onscroll = function() { myFunction() };
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+
+
+});
