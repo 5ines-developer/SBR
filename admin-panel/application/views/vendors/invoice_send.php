@@ -51,70 +51,132 @@
 
                                             <div class="row m0">
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="c_name" name="c_name" class="validate" required value="<?php echo (!empty($invoice->c_name))?$invoice->c_name:''; ?>">
+                                                  <input type="text" id="c_name" name="c_name" class="validate" required value="<?php echo (!empty($invoice[0]->name))?$invoice[0]->name:''; ?>">
                                                   <label for="c_name">Client name </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="c_gstin" name="c_gstin" class="validate" required value="<?php echo (!empty($invoice->c_gstin))?$invoice->c_gstin:''; ?>">
+                                                  <input type="text" id="c_gstin" name="c_gstin" class="validate" required value="<?php echo (!empty($invoice[0]->gstno))?$invoice[0]->gstno:''; ?>">
                                                   <label for="c_gstin">Client GSTIN </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="invoice_no" name="invoice_no" class="validate" required value="<?php echo (!empty($invoice->invoice_no))?$invoice->invoice_no:''; ?>">
+                                                  <input type="text" id="invoice_no" name="invoice_no" class="validate" required>
                                                   <label for="invoice_no">Invoice No.</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="in_date" name="in_date" class="datepicker validate" required value="<?php echo (!empty($invoice->in_date))?$invoice->in_date:''; ?>">
+                                                  <input type="text" id="in_date" name="in_date" class="datepicker validate" required >
                                                   <label for="in_date">Invoice Date</label>
                                                 </div>
                                                 
                                                 <div class="input-field col s12 l12">
-                                                  <textarea id="c_address" class="materialize-textarea" required name="c_address"><?php echo (!empty($invoice->c_address))?$invoice->c_address:''; ?></textarea>
+                                                  <textarea id="c_address" class="materialize-textarea" required name="c_address"><?php echo (!empty($invoice[0]->laddress))?$invoice[0]->laddress:''; ?></textarea>
                                                   <label for="c_address">Client Address</label>
                                                 </div>
 
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="package" name="package" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->package))?$invoice->package:''; ?>">
+                                                  value="<?php echo (!empty($invoice[0]->title))?$invoice[0]->title:''; ?>">
                                                   <label for="package">package</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="pa_cost" name="pa_cost" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->pa_cost))?$invoice->pa_cost:''; ?>">
+                                                  value="<?php echo (!empty($invoice[0]->price))?$invoice[0]->price:''; ?>">
                                                   <label for="pa_cost">package Cost</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="discount" name="discount" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->discount))?$invoice->discount:''; ?>">
+                                                  value="<?php echo (!empty($invoice[0]->discount))?$invoice[0]->discount.' %':''; ?>">
                                                   <label for="discount">Discount</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="cgst" name="cgst" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->cgst))?$invoice->cgst:''; ?>">
+                                                  <input type="text" id="cgst" name="cgst" class="validate" required>
                                                   <label for="cgst">CGST @9%</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="sgst" name="sgst" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->sgst))?$invoice->sgst:''; ?>">
+                                                  <input type="text" id="sgst" name="sgst" class="validate" required>
                                                   <label for="sgst">SGST @9%</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="igst" name="igst" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->igst))?$invoice->igst:''; ?>">
+                                                  <input type="text" id="igst" name="igst" class="validate" required>
                                                   <label for="igst">IGST @9%</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="total" name="total" class="validate" required 
-                                                  value="<?php echo (!empty($invoice->total))?$invoice->total:''; ?>">
+                                                  value="<?php echo (!empty($invoice[0]->total))?$invoice[0]->total:''; ?>">
                                                   <label for="total">Total (Rs.)</label>
                                                 </div>
+                                                <?php
+                                              $num = $invoice[0]->total;
+                                              $num    = ( string ) ( ( int ) $num );
+                                     
+                                              if( ( int ) ( $num ) && ctype_digit( $num ) )
+                                              {
+                                                  $words  = array( );
+                                                 
+                                                  $num    = str_replace( array( ',' , ' ' ) , '' , trim( $num ) );
+                                                 
+                                                  $list1  = array('','one','two','three','four','five','six','seven',
+                                                      'eight','nine','ten','eleven','twelve','thirteen','fourteen',
+                                                      'fifteen','sixteen','seventeen','eighteen','nineteen');
+                                                 
+                                                  $list2  = array('','ten','twenty','thirty','forty','fifty','sixty',
+                                                      'seventy','eighty','ninety','hundred');
+                                                 
+                                                  $list3  = array('','thousand','million','billion','trillion',
+                                                      'quadrillion','quintillion','sextillion','septillion',
+                                                      'octillion','nonillion','decillion','undecillion',
+                                                      'duodecillion','tredecillion','quattuordecillion',
+                                                      'quindecillion','sexdecillion','septendecillion',
+                                                      'octodecillion','novemdecillion','vigintillion');
+                                                 
+                                                  $num_length = strlen( $num );
+                                                  $levels = ( int ) ( ( $num_length + 2 ) / 3 );
+                                                  $max_length = $levels * 3;
+                                                  $num    = substr( '00'.$num , -$max_length );
+                                                  $num_levels = str_split( $num , 3 );
+                                                 
+                                                  foreach( $num_levels as $num_part )
+                                                  {
+                                                      $levels--;
+                                                      $hundreds   = ( int ) ( $num_part / 100 );
+                                                      $hundreds   = ( $hundreds ? ' ' . $list1[$hundreds] . ' Hundred' . ( $hundreds == 1 ? '' : 's' ) . ' ' : '' );
+                                                      $tens       = ( int ) ( $num_part % 100 );
+                                                      $singles    = '';
+                                                     
+                                                      if( $tens < 20 ) { $tens = ( $tens ? ' ' . $list1[$tens] . ' ' : '' ); } else { $tens = ( int ) ( $tens / 10 ); $tens = ' ' . $list2[$tens] . ' '; $singles = ( int ) ( $num_part % 10 ); $singles = ' ' . $list1[$singles] . ' '; } $words[] = $hundreds . $tens . $singles . ( ( $levels && ( int ) ( $num_part ) ) ? ' ' . $list3[$levels] . ' ' : '' ); 
+                                                  } 
+
+                                                      $commas = count( $words ); 
+                                                      if( $commas > 1 )
+                                                  {
+                                                      $commas = $commas - 1;
+                                                  }
+                                                 
+                                                  $words  = implode( ', ' , $words );
+                                                 
+                                                  //Some Finishing Touch
+                                                  //Replacing multiples of spaces with one space
+                                                  $words  = trim( str_replace( ' ,' , ',' , trim( ucwords( $words ) ) ) , ', ' );
+                                                  if( $commas )
+                                                  {
+                                                      $words  = str_replace( ',' , ' and' , $words );
+                                                  }
+                                                  
+                                              }
+                                              else if( ! ( ( int ) $num ) )
+                                              {
+                                                  $words ='';
+                                              }
+
+
+                                              ?>
 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="w_amount" name="w_amount" class="validate" required value="<?php echo (!empty($invoice->w_amount))?$invoice->w_amount:''; ?>">
+                                                  <input type="text" id="w_amount" name="w_amount" class="validate" required value="<?php echo (!empty($words))?$words:''; ?>">
                                                   <label for="w_amount">Total Amount in words</label>
                                                 </div>
 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="b_name" name="b_name" class="validate" required value="<?php echo (!empty($invoice->b_name))?$invoice->b_name:''; ?>">
+                                                  <input type="text" id="b_name" name="b_name" class="validate" required value="<?php echo (!empty($invoice[0]->dr_bank))?$invoice[0]->dr_bank:''; ?>">
                                                   <label for="b_name">Bank Name</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
@@ -133,7 +195,7 @@
                                             </div>
 
                                             <input type="hidden" name="uniq_id" value="<?php echo random_string('alnum',10) ?>">
-                                            <input type="hidden" name="v_id" value="<?php echo (!empty($vid))?$vid:''; ?>">
+                                            <input type="hidden" name="rpid" value="<?php echo (!empty($rpid))?$rpid:''; ?>">
                                             <div class="col s12 mtb20">
                                                 <button class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result" type="submit">Submit
                                                     <i class="fas fa-paper-plane right"></i>

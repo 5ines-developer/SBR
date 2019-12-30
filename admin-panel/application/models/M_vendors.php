@@ -98,22 +98,17 @@ class M_vendors extends CI_Model {
     **/
 	public function insert_vendor($insert)
 	{
-
-		
+		$this->db->where('uniq', $insert['uniq']);
+		$query = $this->db->get('vendor')->row_array();
+		if ($query > 0) {
 			$this->db->where('uniq', $insert['uniq']);
-			$query = $this->db->get('vendor')->row_array();
-			if ($query > 0) {
-				$this->db->where('uniq', $insert['uniq']);
-				 $this->db->update('vendor', $insert);
-				return  $query['id'];
-			}else{
-				$this->db->insert('vendor',$insert);
-				$insert_id = $this->db->insert_id();
-		  		return  $insert_id;
-			}
-
-		
-			
+			 $this->db->update('vendor', $insert);
+			return  $query['id'];
+		}else{
+			$this->db->insert('vendor',$insert);
+			$insert_id = $this->db->insert_id();
+		  	return  $insert_id;
+		}
     }
 
     /**

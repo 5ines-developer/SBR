@@ -92,8 +92,8 @@ class M_vnupgrade extends CI_Model {
 	{
 		return $this->db->where('rp.added_by', $added)
 		->where('rp.seen !=',1)
-		->where('rp.approved !=',1)
 		->where('rp.live !=',1)
+		->where('rp.status !=', 1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
@@ -109,8 +109,7 @@ class M_vnupgrade extends CI_Model {
 	public function approvedProposal($added = null)
 	{
 		return $this->db->where('rp.added_by', $added)
-		->where('rp.status', '1')
-		->where('rp.approved',1)
+		->where('rp.status', 1)
 		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
@@ -127,7 +126,6 @@ class M_vnupgrade extends CI_Model {
 	{
 		return $this->db->where('rp.added_by', $added)
 		->where('rp.status', '2')
-		->where('rp.approved !=',1)
 		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
@@ -143,8 +141,7 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->where('rp.seen !=',1)
-		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from')
+		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -153,6 +150,13 @@ class M_vnupgrade extends CI_Model {
 		->join('package p', 'p.id = rp.package', 'left')
 		->order_by('rp.id','desc')
 		->get()->row_array();
+	}
+
+	public function seenChange($id='')
+	{
+		return $this->db->where('id', $id)
+		->where('seen','0')
+		->update('renew_package',array('seen' => 1 ));
 	}
 
 	public function allProposal($added = null)
@@ -170,7 +174,7 @@ class M_vnupgrade extends CI_Model {
 
 	public function clearedProposal($added = null)
 	{
-		return $this->db->where('rp.approved',1)
+		return $this->db->where('rp.status',1)
 		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')

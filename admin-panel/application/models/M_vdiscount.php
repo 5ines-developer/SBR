@@ -12,15 +12,27 @@ class M_vdiscount extends CI_Model {
                 $val[] = $key->id;
             }
             $this->db->group_start();
-                $this->db->where_in('added_by',$val);
+                $this->db->where_in('rp.added_by',$val);
             $this->db->group_end();
         }
-		return $this->db->where('discount_status', '0')->get('vendor')->result();
+
+        return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank')
+		->from('renew_package rp')
+		->join('city cty', 'cty.id = rp.v_city', 'left')
+		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
+		->join('category cat', 'cat.id = rp.v_category', 'left')
+		->join('admin am', 'am.id = rp.added_by', 'left')
+		->join('package p', 'p.id = rp.package', 'left')
+		->order_by('rp.id','desc')
+		->get()->result();
+
+        
+
 	}
 
 	public function status_change($id='',$status='')
 	{
-		return $this->db->where('id', $id)->update('vendor',array('discount_status' => $status));
+		return $this->db->where('id', $id)->update('renew_package',array('status' => $status,'approved' =>$status));
 	}
 
 	public function getVendor($id='')
@@ -31,7 +43,6 @@ class M_vdiscount extends CI_Model {
 				->join('admin ad','ad.id = ve.added_by','left')
 				->join('package pc','pc.id = ve.package','left')
 				->get()->row();
-
 				return $query;
 	}
 
@@ -45,7 +56,7 @@ class M_vdiscount extends CI_Model {
 	{
 		$query = $this->db->where('uniq_id', $insert['uniq_id'])->get('package_invoice');
 		if ($query->num_rows() > 0) {
-			return $this->db->where('uniq_id', $insert['uniq_id'])->get('package_invoice',$insert);
+			return $this->db->where('uniq_id', $insert['uniq_id'])->update('package_invoice',$insert);
 		}else{
 			return $this->db->insert('package_invoice', $insert);
 		}

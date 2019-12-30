@@ -95,24 +95,20 @@
       <table class="no-borders">
         <thead>
           <tr>
-            <td><b>Arnav Media and Entertainment Private Limited</b></td>
+            <td><b>Baraati Media and Entertainment Private Limited</b></td>
             <th class="right-align">Support : <span class="red-text">1800 4199 456</span></th>
             
           </tr>
           <tr>
-            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-            <th class="right-align">Email : <span ><a class="red-text" href="mailto:info@shaadibaraati.com">info@shaadibaraati.com</a></span> </th>
+            <td>No 60, Old no, 32/1, 2nd Floor St. John Road, Ulsor.</td>
+            <th class="right-align">Email : <span ><a class="red-text" href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></span> </th>
           </tr>
           <tr>
-            <td>Natus esse, inventore laudantium quae, nam, in repudiandae</td>
+            <td>Bangalore, Karnataka 560042 IN</td>
           </tr>
           <tr>
-            <td><b>GSTIN</b> : 987654321000 </td>
+            <td><b>GSTIN</b> : 89AAICB5254GIZJ </td>
           </tr>
-          <tr>
-            <td><b>CIN N0.</b> : 987654321000  </td>
-          </tr>
-          
         </thead>        
       </table>
       <div class="divider"></div>
@@ -193,7 +189,7 @@
               <table class="outer-borders">
                 <thead>
                   <th>Total Amount paid in words </th>
-                  <td>Natus esse, inventore laudantium quae, nam, </td>
+                  <td><?php echo (!empty($result['w_amount']))?$result['w_amount']:''; ?>  </td>
                 </thead>
                 <tbody>
                   <tr>
@@ -255,17 +251,6 @@
           </tr>
         </tbody>
       </table>
-
-
-
-
-      
-
-
-
-
-    
-
       <table class="terms">
         <thead>
           <tr>

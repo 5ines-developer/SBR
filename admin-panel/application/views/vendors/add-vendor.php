@@ -91,7 +91,7 @@
                                             <div class="input-field col s12 l6">
                                                 <input type="text" id="price_for" name="price_for" class="validate"
                                                     value="<?php echo (!empty($result->price_for)?$result->price_for:'') ?>">
-                                                <label for="price_for">Price Per<span class="red-text"> *</span></label>
+                                                <label for="price_for">Price Per</label>
                                                 <p><span class="error"><?php echo form_error('price_for'); ?></span></p>
                                             </div>
                                             <div class="input-field col s12 l6">
@@ -142,6 +142,7 @@
                                         <input type="hidden" name="uniq"
                                             value="<?php echo random_string('alnum',10) ?>">
 
+
                                         <div class="col s12 center mtb20">
                                             <button
                                                 class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result"
@@ -150,6 +151,7 @@
                                             </button>
                                             <br>
                                         </div>
+                                        <div class="clearfix"></div>
                                     </form>
                                 </div>
                             </div>
@@ -172,42 +174,6 @@
     <script>
     $(document).ready(function() {
         $('select').formSelect();
-
-        $("#vendor-form").validate({
-            rules: {
-                name: {
-                    required: true,
-                },
-                email: {
-                    required: true,
-                },
-                phone: {
-                    required: true,
-                },
-                category: {
-                    required: true,
-                },
-                city: {
-                    required: true,
-                },
-                vimage: {
-                    required: true,
-                },
-                package:{
-                  required: true,
-                }
-            },
-            messages: {
-
-                name: "Please enter a vendor Name",
-                email: "Please enter a vendor Email",
-                phone: "Please enter a vendor Phone Number",
-                category: "Please Select the Category",
-                city: "Please Select the City",
-                vimage: "Please choose your profile image",
-                package: "Please Select the Package",
-            }
-        });
 
         $(document).on('change','#discount',function(){
             $('#dissatus').val('1');

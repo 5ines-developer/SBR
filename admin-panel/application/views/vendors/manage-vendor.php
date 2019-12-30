@@ -79,6 +79,7 @@
                                           <th id="c" class="h5-para-p2" width="120px">Package</th>
                                           <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
                                           <th id="f" class="h5-para-p2" width="100px">Status</th>
+                                          <th id="f" class="h5-para-p2" width="100px">Upgrade</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
                                        </tr>
                                     </thead>
@@ -112,6 +113,11 @@
                                              <?php }else if (!empty($value->status) && $value->status =='3') { ?>
                                               <span class='white-text orange lighten-1'>Approval Pending</span>
                                              <?php } ?>
+                                            </td>
+
+                                            <td>                                             
+                                              <a href="<?php echo base_url('vendors/upgrade/'.$value->id.'') ?>"  class="btn blue hoverable"><i class="fas fa-calendar-check"></i>
+                                              </a>
                                             </td>
 
                                             

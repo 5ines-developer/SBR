@@ -59,7 +59,7 @@
           </tr>
           <tr>
             <td style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: 1px solid gray;border-right: none;" colspan="2">Vendor Listing Name : <?php echo (!empty($result['lname']))?$result['lname']:''; ?> </td>
-            <td style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: none;border-right: 1px solid gray;" class="right-align">Date : <?php echo (!empty($result['pay_date']))?$result['pay_date']:''; ?></td>
+            <td style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: none;border-right: 1px solid gray;" class="right-align">Date : <?php echo (!empty($result['pay_date']))?date('d M, Y',strtotime($result['pay_date'])):''; ?></td>
           </tr>
           <tr><td style="border: 1px solid gray;" colspan="3"> Billing Name: <?php echo (!empty($result['in_name']))?$result['in_name']:''; ?></td></tr>
           <tr><td style="border: 1px solid gray;" colspan="3">GST NO : <?php echo (!empty($result['gstno']))?$result['gstno']:''; ?></td></tr>

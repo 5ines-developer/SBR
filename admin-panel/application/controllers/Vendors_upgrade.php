@@ -27,6 +27,7 @@
 		}
 
 
+
 	    /**
 	     * Vendors -> upgrade vendors
 	     * load view page
@@ -83,6 +84,7 @@
 
 			$data = $this->m_vnupgrade->insertProposal($insert);
 			if (!empty($data)) {
+				$insert['insert_id'] = $data;
 				$this->convertPdf($insert);
 				$this->session->set_flashdata('error','Something went wrong please try again later!');
 				redirect('vendors/view-proposal/'.$data,'refresh');
@@ -131,7 +133,7 @@
         $this->email->attach($_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/admin-panel/'.$pdfFile);
         if ($this->email->send()) {
             $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Admin, admin will verify and approve your request ');
-            redirect('vendors/view-proposal','refresh');
+            redirect('vendors/view-proposal/'.$insert['insert_id'],'refresh');
         } else {
             $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
             redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
@@ -165,6 +167,10 @@
 	{
 		$data['title']   = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+
+		if($this->type == '1'){
+			$this->m_vnupgrade->seenChange($id);
+		}
 		$this->load->view('sales/view-proposal', $data, FALSE);
 	}
 

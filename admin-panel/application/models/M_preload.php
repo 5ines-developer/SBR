@@ -28,16 +28,24 @@ class M_preload extends CI_Model {
 
     public function getDisccount()
     {
-        if ($this->session->userdata('sha_type') == '2' ) {
+         if ($this->session->userdata('sha_type') == '2' ) {
             $addedby = $this->db->select('id')->where('manager',$this->session->userdata('sha_id'))->get('admin')->result();
             foreach ($addedby as $key ) {
                 $val[] = $key->id;
             }
             $this->db->group_start();
-                $this->db->where_in('added_by',$val);
+                $this->db->where_in('rp.added_by',$val);
             $this->db->group_end();
         }
-        return $this->db->where('discount_status', '0')->get('vendor')->num_rows();
+        $this->db->where('rp.seen !=', 1);
+        $this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package');
+        $this->db->order_by('ven.id', 'desc');
+        $this->db->from('renew_package rp');
+        $this->db->join('vendor ven', 'ven.id = rp.vendor_id', 'left');
+        $this->db->join('city cty', 'cty.id = rp.v_city', 'left');
+        $this->db->join('category cat', 'cat.id = rp.v_category', 'left');
+        $this->db->join('package pac', 'pac.id = rp.package', 'left');
+        return $this->db->get()->num_rows();
     }
 
     public function newProposal($value='')

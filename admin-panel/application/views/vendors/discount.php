@@ -60,71 +60,41 @@
                                 <table id="dynamic" class="striped">
 
                                     <thead>
-                                       <tr class="tt">
-                                          <th id="g" class="h5-para-p2" width="62px">Action</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Name</th>
-                                          <th id="b" class="h5-para-p2" width="100px">Email ID</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Phone</th>
-                                          <th id="c" class="h5-para-p2" width="120px">City</th>
+                                        <tr class="tt">
+                                          <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Vendor Name</th>
+                                          <th id="b" class="h5-para-p2" width="100px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Package</th>
-                                          <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
-                                          <th id="f" class="h5-para-p2" width="100px">Status</th>
-                                          <th id="f" class="h5-para-p2" width="100px">Operations</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Package Requested</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Date</th>
+                                          <th id="g" class="h5-para-p2" width="62px">Action</th>
                                        </tr>
                                     </thead>
                                     <tbody>
 
                                     <?php
 
-                                    if (!empty($result)) { 
-
-                                      foreach ($result as $key => $value) {
-
+                                    if (!empty($result)) {
+                                      $count= 0;
+                                      foreach ($result as $key => $value) { $count += 1;
                                       ?>
+                                       <tr>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->title))?$value->title:'---'  ?></a></td>
+                                            <td><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
+                                            <td class="action-btn  center-align"> <!-- view user -->
 
-                                      <tr>
-                                        <td class="action-btn  center-align">
-                                              <!-- view vendors -->
-                                                <a href="<?php echo base_url('vendors/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></a>
-                                              <!-- view vendors -->
-                                              <!-- edit vendors -->
-                                              <a href="<?php echo base_url('vendors/edit/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-edit "></i></a>
-                                              <!-- edit vendors -->
-                                            </td>
-
-                                            <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
-                                            <td ><a href="mailto:<?php echo (!empty($value->email))?$value->email:'---'  ?>" ><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
-                                            <td ><a href="tel:<?php echo (!empty($value->phone))?$value->phone:'---'  ?>" ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
-                                            <td ><?php echo $this->ci->m_vendors->getCity($value->city);  ?></td>
-                                            <td > <?php echo $this->ci->m_vendors->getCategory($value->category);  ?> </td> 
-                                            <td ><?php echo $this->ci->m_vendors->packageName($value->package);  ?></td>
-                                            <td><?php echo (!empty($value->registered_date))?date("M d, Y ", strtotime($value->registered_date)):'---'; ?></td>
-
-                                            <td class="status"> 
-                                              <?php
-                                              if (!empty($value->is_active) && $value->is_active =='1') { ?>
-                                                <span class='white-text green lighten-1'>Active</span>
-                                             <?php }else if (empty($value->is_active) && $value->is_active =='0'){ ?>
-                                               <span class='white-text blue'>Pending</span>
-                                             <?php }else if (!empty($value->is_active) && $value->is_active =='2') { ?>
-                                              <span class='white-text red'>Blocked</span>
-                                             <?php }else if (!empty($value->is_active) && $value->is_active =='3') { ?>
-                                              <span class='white-text orange lighten-1'>Approval Pending</span>
-                                             <?php } ?>
-                                            </td>
-                                            <td class="action-btn  center-align">
                                               <!-- view vendors -->
                                                 <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$value->id.'') ?>"  class="green hoverable">Approve</a>
                                               <!-- view vendors -->
                                               <!-- edit vendors -->
                                               <a onclick="return confirm('Are you sure you want to Reject?');" href="<?php echo base_url('vendors-discount/reject/'.$value->id.'') ?>"  class="red hoverable">Reject</a>
-                                              <!-- edit vendors -->
+                                              
+                                              <!-- view user -->
                                             </td>
-
-                                            
-
-                                            
                                           
                                         </tr>
                                       

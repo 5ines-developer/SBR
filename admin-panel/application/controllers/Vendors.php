@@ -156,13 +156,21 @@ class Vendors extends CI_Controller {
                             'discount'      =>  $this->input->post('discount'),
                         );
 
+                        if(!empty($this->input->post('package')))
+                        {
+                            $insert['package'] = $this->input->post('package');
+                        }
                         
 
                         if (!empty($imgpath)) {$insert['profile_file'] =  $imgpath; $insert['img'] = $file_name; } 
-                         if (($this->type != '1') && (!empty($dissatus))){ 
-                            $insert['discount_status'] = '0'; 
-                        }
                         if (!empty($edit)) {$e = 'Updated'; }else{ $insert['added_by'] = $this->session->userdata('sha_id'); $e = 'Added'; }
+
+                        if (($this->type != '1') && (!empty($dissatus))){ 
+                            $insert['discount_status'] = '0'; 
+                        }else{
+                            $insert['discount_status'] = '1';
+                        }
+
 
                         /*******insert vendor detail*********/
                         $output = $this->m_vendors->insert_vendor($insert);
@@ -236,9 +244,9 @@ class Vendors extends CI_Controller {
         $data['result']     = $this->m_vendors->detail($id);
         $data['enquiry']    = $this->m_vendors->vendorEnquiry($id);
         $data['port']       = $this->m_vendors->get_portfolio($id);
-        $data['video']       = $this->m_vendors->get_video($id);
+        $data['video']      = $this->m_vendors->get_video($id);
         $data['review']     = $this->m_vendors->vendor_review($id);
-        $data['offer']     = $this->m_vendors->vendor_offer($id);
+        $data['offer']      = $this->m_vendors->vendor_offer($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $data['title']      = 'Detail Vendor - Shaadibaraati';
         $this->load->view('vendors/view-vendor', $data, FALSE);
