@@ -160,11 +160,6 @@ class Adminusers extends CI_Controller {
         $data['manager'] = $this->m_adminusers->getManager();
         $data['menues'] = $this->m_adminusers->getMenu(); 
         $data['target'] = $this->m_adminusers->getTarget($data['result']->id); 
-        
-        echo "<pre>";
-        print_r ($data);
-        echo "</pre>";
-        
         $this->load->view('employee/edit', $data, FALSE); 
     }
 
