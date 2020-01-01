@@ -117,7 +117,27 @@ class M_finance extends CI_Model {
 	{
 		$this->db->where('id', $id)->update('renew_package',array('live' => '1'));
 		if ($this->db->affected_rows() > 0) {
+			$this->addPackage($id);
 			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+	public function addPackage($id='')
+	{
+		
+		$rp = $this->db->select('vendor_id,package')->where('id', $id)->get('renew_package')->row();
+		if (!empty($rp)) {
+			$insert = array(
+				'package' => $rp->package, 
+				'discount_status' => '1', 
+				'upgrad' => $id, 
+			);
+			$this->db->where('id', $rp->vendor_id)->update('vendor',$insert);
+			return true;
+
 		}else{
 			return false;
 		}
