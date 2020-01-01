@@ -16,6 +16,7 @@ class M_vdiscount extends CI_Model {
             $this->db->group_end();
         }
 
+        $this->db->where('rp.approved', '0');
         return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')

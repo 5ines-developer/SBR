@@ -26,6 +26,8 @@
             echo '<span class="new badge">'. $this->ci->preload->disccount() .'</span> ';
           } ?></a></li>
 
+          <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
+
         <div class="divider"></div>
 
         <li class="<?php echo $this->uri->segment(1) == 'package'?'active':'' ?>"><a href="<?php echo base_url('package') ?>"><i class="fas fa-ribbon li-icon"></i>Package</a></li>
@@ -37,9 +39,6 @@
             echo '<span class="new badge">'. $this->ci->preload->bypackage() .'</span> ';
           } ?></a></li> 
         <div class="divider"></div>
-          
-
-
         <li class="<?php echo $this->uri->segment(1) == 'leads'?'active':'' ?>"><a href="<?php echo base_url('leads') ?>"><i class="fas fa-comments li-icon"></i>Lead Management</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'enquiries'?'active':'' ?>"><a href="<?php echo base_url('enquiries') ?>"><i class="fas fa-comments li-icon"></i>Enquiries</a></li>
         <!-- <li class="<?php echo $this->uri->segment(1) == 'vendor-enquiry'?'active':'' ?>"><a href="<?php echo base_url('vendor-enquiry') ?>"><i class="fas fa-comment li-icon"></i>Vendor Enquiry</a></li> -->
@@ -89,7 +88,9 @@
 
      
       <ul class="li-list ">
+        <?php if ($this->session->userdata('sha_type' != 7)) { ?>
         <li class="<?php echo $this->uri->segment(1) == 'dashboard'?'active':''?>"> <a href="<?php echo base_url('dashboard') ?>"><i class="fab fa-delicious li-icon"></i>Dashboard</a></li>
+      <?php } ?>
 
 
         <?php
@@ -170,8 +171,12 @@
           <?php if($this->ci->preload->disccount() > 0){
             echo '<span class="new badge">'. $this->ci->preload->disccount() .'</span> ';
           } ?></a></li>
-          <?php }
-          if ($value == '12') { ?>
+          <?php } ?>
+
+          <?php if($this->session->userdata('sha_type') == '7'){ ?>
+            <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
+          <?php } ?>
+          <?php if ($value == '12') { ?>
           <li class="<?php echo $this->uri->segment(1) == 'leads'?'active':'' ?>"><a href="<?php echo base_url('leads') ?>"><i class="fas fa-comments li-icon"></i>Lead Management</a></li>
           <?php } if ($value == '9') { ?>
           <li class="<?php echo $this->uri->segment(1) == 'package'?'active':'' ?>"><a href="<?php echo base_url('package') ?>"><i class="fas fa-ribbon li-icon"></i>Package</a></li>

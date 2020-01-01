@@ -21,7 +21,7 @@ class Vendor_discount extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("8", $acces))
+        if(in_array("8", $acces))
         {
             $this->access = true;
 
@@ -47,17 +47,16 @@ class Vendor_discount extends CI_Controller {
         $data['rpid'] = $id;
 		$status = '1';
 		// send to model
-        // if($this->m_vdiscount->status_change($id,$status)){
+        if($this->m_vdiscount->status_change($id,$status)){
         	if($this->invoice($data))
             {
                 $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
                 redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
             }
-           
-       	// }else{
-        //    $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
-        //    redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
-       	// }
+       	}else{
+           $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+           redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
+       	}
 		
 	}
 
@@ -91,25 +90,21 @@ class Vendor_discount extends CI_Controller {
             'ifsc'          => $this->input->post('ifsc'), 
             'b_address'     => $this->input->post('b_address'), 
             'uniq_id'       => $this->input->post('uniq_id'), 
-            'renewal_id'          => $this->input->post('rpid') 
+            'renewal_id'    => $this->input->post('rpid') 
         );
-
-        
-
 
         // send to model
         if($this->m_vdiscount->invoiceInsert($insert)){
 
             $data['result'] = $insert;
             $this->load->library('pdf');
-            // $this->load->view('vendors/proposals',$data);
             // Get output html
             $html = $this->output->get_output($this->load->view('vendors/invoice',$data));
             $pdf = $this->pdf->loadHtml($html);
             $this->pdf->setPaper('A3', 'Potrait');
             $this->pdf->render();
             // Output the generated PDF (1 = download and 0 = preview)
-            $this->pdf->stream("welcome.pdf", array("Attachment"=>1));
+            // $this->pdf->stream("welcome.pdf", array("Attachment"=>1));
             $fileName = random_string('alnum',10);
             file_put_contents('pdf/invoice-'.$fileName.'.pdf',$this->pdf->output());
             $pdfFile = 'pdf/invoice-'.$fileName.'.pdf';
@@ -126,6 +121,13 @@ class Vendor_discount extends CI_Controller {
     public function send_invoice($data='',$pdfFile='')
     {
 
+        $data['result'] = $data;
+        $added = $this->db->select('vendor_id,added_by')->where('id', $data['renewal_id'])->get('renew_package')->row();
+        $admin = $this->db->select('manager,email')->where('id', $added->added_by)->get('admin')->row();
+        $vendor = $this->db->select('email')->where('id', $added->vendor_id)->get('vendor')->row();
+        if (!empty($admin->manager)) {
+            $data['manager'] = $this->m_vdiscount->getManager($admin->manager);
+        }
         $this->load->config('email');
         $this->load->library('email');
         $to = $this->config->item('vr_to');
@@ -133,17 +135,13 @@ class Vendor_discount extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to('prathwi@5ine.in');
-        // $this->email->to($data['result']->email);
-        // if ($this->type != '2') {
-        //     $data['manager'] = $this->m_vdiscount->getManager($data['result']->manager);
-        //     if (!empty($data['manager'])) {
-        //      $this->email->cc($data['manager']->email);
-        //     }
-        // }
-        $msg = $this->load->view('email/discount_approve', $data, true); 
+        $this->email->to($vendor->email,$admin->email);
+        if (!empty($data['manager'])) {
+            $this->email->cc($data['manager']->email);
+        }
+        $msg = $this->load->view('email/discount_approve', $data, true);
         $this->email->subject('Vendor Package Invoice');
-        $this->email->message('Your package and discount request has been approved!');
+        $this->email->message($msg);
         $this->email->attach($_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/admin-panel/'.$pdfFile);
         if ($this->email->send()) {
             $this->session->set_flashdata('success', 'Successfully invoice sent to vendor');

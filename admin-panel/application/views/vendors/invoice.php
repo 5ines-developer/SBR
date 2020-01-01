@@ -186,7 +186,7 @@
         <tbody>
           <tr>
             <td>
-              <table class="outer-borders">
+              <table>
                 <thead>
                   <th>Total Amount paid in words </th>
                   <td><?php echo (!empty($result['w_amount']))?$result['w_amount']:''; ?>  </td>

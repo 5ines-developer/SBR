@@ -66,7 +66,8 @@
                                                   <select name="Ad_type" required id="Ad_type">
                                                     <option value="">Choose Employee Type</option>
                                                     <option value="2">Manager</option>
-                                                    <option value="3">Executive</option>
+                                                    <option value="3">Sales Executive</option>
+                                                    <option value="7">Finance executive</option>
                                                     <option value="4">Area Sales Manager</option>
                                                     <option value="5">Sales Manager</option>
                                                     <option value="6">Tele Caller</option>

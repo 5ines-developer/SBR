@@ -50,20 +50,23 @@ class M_preload extends CI_Model {
 
     public function newProposal($value='')
     {
-        return $this->db->where('rp.added_by', $this->session->userdata('sha_id'))
-        ->where('rp.seen !=',1)
+        if ($this->session->userdata('sha_type') == '2' ) {
+            $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
+        }
+        return $this->db ->where('rp.seen !=',1)
         ->where('rp.approved !=',1)
         ->where('rp.live !=',1)
         ->from('renew_package rp')
-        ->get()->result();
+         ->get()->result();
     }
     
 
     public function approvedProposal($value='')
     {
-        return $this->db->where('rp.added_by', $this->session->userdata('sha_id'))
-        ->where('rp.seen !=',1)
-        ->where('rp.approved',1)
+        if ($this->session->userdata('sha_type') == '2' ) {
+            $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
+        }
+        return $this->db->where('rp.approved',1)
         ->where('rp.live !=',1)
         ->from('renew_package rp')
         ->get()->result();
@@ -71,8 +74,10 @@ class M_preload extends CI_Model {
 
     public function rejectProposal($value='')
     {
-        return $this->db->where('rp.added_by', $this->session->userdata('sha_id'))
-        ->where('rp.status', '2')
+        if ($this->session->userdata('sha_type') == '2' ) {
+            $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
+        }
+        return $this->db->where('rp.status', '2')
 		->where('rp.approved !=',1)
 		->where('rp.live !=',1)
         ->from('renew_package rp')

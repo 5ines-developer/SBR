@@ -192,6 +192,16 @@ $route['vendors/cleared-proposal']			=	'vendors_upgrade/clearedProposal';
 $route['vendors/live-proposal']				=	'vendors_upgrade/liveProposal';
 
 
+//finance
+$route['finance/new-proposal']			    =	'finance/newProposal';
+$route['finance/view-proposal/(:any)']		=	'finance/view_proposal/$1';
+$route['finance/approved-proposal']			=	'finance/approvedProposal';
+$route['finance/rejected-proposal']			=	'finance/rejectedProposal';
+$route['finance/all-proposal']				=	'finance/allProposal';
+$route['finance/cleared-proposal']			=	'finance/clearedProposal';
+$route['finance/live-proposal']				=	'finance/liveProposal';
+$route['finance/make-live/(:any)']			=	'finance/makeLive/$1';
+
 
 
 
