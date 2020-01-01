@@ -77,10 +77,35 @@
                                       foreach ($result as $key => $value) {
                                       ?>
                                       <tr>
+
+                                      <?php  $type ='';
+
+                                      switch ($value->admin_type) {
+                                         case '2':
+                                            $type = 'Manager';
+                                            break;
+                                          case '3':
+                                             $type = 'Sales Executive';
+                                             break;
+                                          case '4':
+                                             $type = 'Area Sales Manager';
+                                             break;
+                                          case '5':
+                                             $type = 'Sales Manager';
+                                             break;
+                                          case '6':
+                                             $type = 'Tele Caller';
+                                             break;
+
+                                          default:
+                                          $type = 'finance Executive';
+                                            break;
+                                      }
+                                      ?>
                                             <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php if(!empty($value->admin_type) && $value->admin_type == '2'){ echo 'Manager'; }else if(!empty($value->admin_type) && $value->admin_type == '3'){ echo 'Executive'; } ?></a></td>
+                                            <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo $type ?></a></td>
 
                                             <td class="action-btn  center-align">
                                               <!-- view user -->
