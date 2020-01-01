@@ -125,7 +125,6 @@
                                                 <input type="text" id="target" name="target" class="validate">
                                                 <label for="target">Target</label>
                                               </div>
-
                                             <div>
 
                                               <div class="clearfix"></div>

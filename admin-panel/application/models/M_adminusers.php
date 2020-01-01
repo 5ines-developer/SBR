@@ -55,11 +55,22 @@ class M_adminusers extends CI_Model {
         $result = $this->db->where('emp_id', $targt['emp_id'])->where('year',$targt['year'])->where('month',$targt['month'])
         ->get('e_target')->row();
         if (!empty($result)) {
-            return false;
+            $this->db->where('emp_id', $targt['emp_id'])->where('year',$targt['year'])->where('month',$targt['month']);            
+            return $this->db->update('e_target', $targt);            
         }else{
             return $this->db->insert('e_target', $targt);
         }
 
+    }
+
+    /**
+     *Get employee target
+    * **/ 
+    public function getTarget($id = null)
+    {
+        
+        return $this->db->where('emp_id', $id)->where('year',date('Y'))->get('e_target')->result();
+        
     }
 
     /**
