@@ -101,14 +101,16 @@
                           <label for="phone">Phone</label>
                           <p><span class="error"><?php echo form_error('phone'); ?></span></p>
                         </div>
+
                         
                         <div class="input-field col s12 l6">
                           <select name="Ad_type" required id="Ad_type" >
                             <option value="2" <?php if($result->admin_type == '2') { echo'selected'; } ?> >Manager</option>
                             <option value="3" <?php if($result->admin_type == '3') { echo'selected'; } ?> >Executive</option>
-                            <option value="4" <?php if($result->admin_type == '4') { echo'selected'; } ?>>Area Sales Manager</option>
-                            <option value="5" <?php if($result->admin_type == '5') { echo'selected'; } ?>>Sales Manager</option>
-                            <option value="6" <?php if($result->admin_type == '6') { echo'selected'; } ?>>Tele Caller</option>
+                            <option value="4" <?php if($result->admin_type == '4') { echo'selected'; } ?> >Area Sales Manager</option>
+                            <option value="5" <?php if($result->admin_type == '5') { echo'selected'; } ?> >Sales Manager</option>
+                            <option value="6" <?php if($result->admin_type == '6') { echo'selected'; } ?> >Tele Caller</option>
+                            <option value="7" <?php if($result->admin_type == '7') { echo'selected'; } ?> >Finance executive</option>
                           </select>
                           <label>Employee Type</label>
                         </div>

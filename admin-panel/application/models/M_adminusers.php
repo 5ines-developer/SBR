@@ -36,13 +36,30 @@ class M_adminusers extends CI_Model {
      * **/ 
     public function insert($insert = null)
     {
-        $query = $this->db->where('reference_d', $insert['reference_d'])->get('admin')->result();
+        $query = $this->db->where('reference_d', $insert['reference_d'])->get('admin')->row();
         if(!empty($query)){
-            return $this->db->where('reference_d', $insert['reference_d'])->update('admin',$insert);
+            $this->db->where('reference_d', $insert['reference_d'])->update('admin',$insert);
+            return $query->id;
         }else{
-            return $this->db->insert('admin',$insert);
+            $this->db->insert('admin',$insert);
+            return $this->db->insert_id();
         }      
         
+    }
+
+    /**
+     *insert employee target
+    * **/ 
+    public function empTarget($targt='')
+    {
+        $result = $this->db->where('emp_id', $targt['emp_id'])->where('year',$targt['year'])->where('month',$targt['month'])
+        ->get('e_target')->row();
+        if (!empty($result)) {
+            return false;
+        }else{
+            return $this->db->insert('e_target', $targt);
+        }
+
     }
 
     /**

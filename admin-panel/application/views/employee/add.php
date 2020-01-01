@@ -102,6 +102,35 @@
                                             </div>
 
                                             <div class="row m0">
+                                              <div class="input-field col s12 l6">
+                                                <select name="month" required id="discount">
+                                                  <option value="">Choose a Month in <?php echo date('Y') ?></option>
+                                                  <option value="1">Jan</option>
+                                                  <option value="2">Feb</option>
+                                                  <option value="3">March</option>
+                                                  <option value="4">April</option>
+                                                  <option value="5">May</option>
+                                                  <option value="6">June</option>
+                                                  <option value="7">July</option>
+                                                  <option value="8">August</option>
+                                                  <option value="9">September</option>
+                                                  <option value="10">October</option>
+                                                  <option value="11">November</option>
+                                                  <option value="12">December</option>
+                                                  </select>
+                                                  <label>Employee Target</label>
+                                              </div>
+
+                                              <div class="input-field col s12 l6">
+                                                <input type="text" id="target" name="target" class="validate">
+                                                <label for="target">Target</label>
+                                              </div>
+
+                                            <div>
+
+                                              <div class="clearfix"></div>
+
+                                            <div class="row m0">
                                             <div class="ml-15">
                                               <p>Access Permission</p>
                                               <div class="input-field col s12 l12">
