@@ -2,10 +2,21 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Einvite extends CI_Controller {
-    public function einvite_dashboard()
+
+    public function __construct()
+    {
+        parent::__construct();
+        //Do your magic here
+        $this->load->model('m_invite');
+        if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
+        $this->id = $this->session->userdata('sha_id');
+    }
+
+
+    public function index()
     {
         $data['title']  = 'ShaadiBaraati | Dashboard';
-        $this->load->view('einvite/e-dashboard',$data);
+        $this->load->view('einvite/theme-select',$data);
     }
     public function manage_user()
     {

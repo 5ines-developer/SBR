@@ -28,54 +28,13 @@ $this->load->model('m_account');
             <div class="container-1">
                 <div class="row m0">
                     <!-- left menu -->
-                    <div class="col s12 m4 l3">
-                        <div class="sidemenu">
-                            <div class="card-panel   profile-box">
-                                <div class="pb-pic">
-                                    <img src="assets/img/pp.jpg" class="img-responsive" alt="">
-                                </div>
-                                <center>
-                                    <p class="white-text"><b>Rishabh</b></p>
-                                </center>
-                                <div class="pb-content center-align">
-                                    <h6 class="white-text ">
-                                        <?php echo (!empty($profile->su_name))?ucfirst($profile->su_name):'' ?>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="e-invite-contain z-depth-1">
-                                    <li>
-                                        <a href="#">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage User Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Event</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Family Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Photos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Information</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">My Website</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                     <?php $this->load->view('includes/left-menu.php'); ?>
                     <!-- end left menu -->
 
                     <div class="col s12 m8 l9">
                         <div class="card">
                             <div class="chead">
-                                <p class="truncate">Dashboard</p>
+                                <p class="truncate">Select Theme</p>
                             </div>
                             <div class="">
                                 <div class="cboady">
@@ -96,20 +55,22 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
                                                             <p>Mehndi Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a></a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(mehindi1)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template2.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template2.jpg" class="img-responsive" alt="">
                                                             <p>Mehndi Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(mehindi2)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -122,20 +83,22 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
                                                             <p>Engagement Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(eng1)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
                                                             <p>Engagement Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(eng2)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -148,20 +111,22 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
                                                             <p>Wedding Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(wed1)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
                                                             <p>Wedding Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(wed2)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,20 +139,22 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template2.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template2.jpg" class="img-responsive" alt="">
                                                             <p>Reception Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(rec1)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
                                                         <div class="template-m">
-                                                            <img src="assets/img/template1.jpg" class="img-responsive" alt="">
+                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
                                                             <p>Reception Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme(rec2)"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -209,28 +176,34 @@ $this->load->model('m_account');
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.tabs').tabs();
+            $('.collapsible-body').css({
+                display: 'block',
+            });
         });
     </script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                list: [{
-                        id: '1'
-                    }, {
-                        id: '1'
-                    }, {
-                        id: '1'
-                    }, {
-                        id: '1'
-                    }, {
-                        id: '1'
-                    },
+                mehindi1:'',
+                mehindi2:'',
+                rec1:'',
+                rec2:'',
+                wed1:'',
+                wed2:'',
+                eng1:'',
+                eng2:'',
 
-                ]
+            },
+            methods:{
+                theme(type){
+                    alert('ok');
+                }
+
             }
         });
     </script>

@@ -16,6 +16,14 @@
             <li>
                 <a  href="<?php echo base_url('vendor/package') ?>" class="<?php echo ($this->uri->segment(2) =='package' && $this->uri->segment(1) =='vendor')?'active':'' ?>"><i class=" material-icons vender-icon">local_offer</i> Buy Packages</a>
             </li>
+
+            <li class="droup-link <?php echo $this->uri->segment(1) == 'career'?'active':'' ?>"><a class="droup-link-item"><i class="fas fa-user-tie li-icon"></i>Career</a>
+            <ul class="droupmenu">
+              <li class="<?php echo $this->uri->segment(1) == 'career'?'active':'' ?>"><a href="<?php echo base_url('career') ?>">Jobs</a></li>
+              <li class="<?php echo $this->uri->segment(2) == 'applications'?'active':'' ?>"><a href="<?php echo base_url('career/applications') ?>">Applications</a></li>
+            </ul>
+      </li>
+      
         </ul>
     </div>
 </div>

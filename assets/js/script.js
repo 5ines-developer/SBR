@@ -47,6 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove("sticky");
         }
     }
+    //collapsible
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems);
+
+   
 
 
 });

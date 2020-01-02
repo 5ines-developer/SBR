@@ -1453,6 +1453,10 @@ table tr .td-a {
     padding: 0px !important
 }
 
+.p0 {
+    padding: 0px !important
+}
+
 #addform textarea {
     border: 1px solid #cccbcb;
     min-height: 150px;
