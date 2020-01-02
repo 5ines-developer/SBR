@@ -5537,9 +5537,19 @@ html {
 }
 
 .sticky {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     width: 100%;
+    z-index: 99999;
+}
+
+#myHeader {
+    height: auto;
+}
+
+.nav-head {
+    height: 115px;
+    background: white;
 }
 
 @media(max-width:767px) {
@@ -5556,5 +5566,9 @@ html {
     }
     .detial-bg-list {
         padding: 20px 20px;
+    }
+    .nav-head {
+        height: 60px;
+        background: white;
     }
 }

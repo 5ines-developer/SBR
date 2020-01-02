@@ -35,9 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Datepicker.init(date, {
         format: 'yyyy-mm-dd',
     });
-
-    // scroll fixed nav
     window.onscroll = function() { myFunction() };
+
     var header = document.getElementById("myHeader");
     var sticky = header.offsetTop;
 
