@@ -68,7 +68,7 @@
                                             <?php if($this->session->userdata('sha_type') =='1'){ ?>
                                             <div class="input-field col s12 l6">
                                               <select name="package" class="packge">
-                                                <option value="0">Choose Package</option>
+                                                <option value="0">Free Listing</option>
                                                 <?php if (!empty($package)) {
                                                     foreach ($package as $pack => $packg) { ?>
                                                          <option value="<?php echo (!empty($packg))?$packg->id:''; ?>"><?php echo (!empty($title))?$packg->title:''; ?></option>

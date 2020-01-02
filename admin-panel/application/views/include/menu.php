@@ -88,7 +88,7 @@
 
      
       <ul class="li-list ">
-        <?php if ($this->session->userdata('sha_type' != 7)) { ?>
+        <?php if ($this->session->userdata('sha_type') != 7) { ?>
         <li class="<?php echo $this->uri->segment(1) == 'dashboard'?'active':''?>"> <a href="<?php echo base_url('dashboard') ?>"><i class="fab fa-delicious li-icon"></i>Dashboard</a></li>
       <?php } ?>
 

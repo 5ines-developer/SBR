@@ -33,10 +33,14 @@ class M_preload extends CI_Model {
             foreach ($addedby as $key ) {
                 $val[] = $key->id;
             }
-            $this->db->group_start();
-                $this->db->where_in('rp.added_by',$val);
-            $this->db->group_end();
+            if(!empty($val)){
+                $this->db->group_start();
+                    $this->db->where_in('rp.added_by',$val);
+                $this->db->group_end();
+            }
+            
         }
+        $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
         $this->db->where('rp.seen !=', 1);
         $this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package');
         $this->db->order_by('ven.id', 'desc');

@@ -42,9 +42,8 @@ class Leads extends CI_Controller {
         $category    = $this->input->get('category');
         $v_type      = $this->input->get('v_type');
         $search      = $this->input->get('search');
-        
-        $data['vendors']    = $this->m_leads->getVendors($city,$category,$v_type,$search); 
 
+        $data['vendors']    = $this->m_leads->getVendors($city,$category,$v_type,$search); 
         
         if (!empty($data['vendors'])) {
              $ldsa ='';

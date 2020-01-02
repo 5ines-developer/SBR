@@ -9,7 +9,7 @@
 <!--[if !mso]><!-->
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <!--<![endif]-->
-<title></title>
+<title>Shaadibaraati</title>
 <!--[if !mso]><!-->
 <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet" type="text/css"/>
 <!--<![endif]-->

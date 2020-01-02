@@ -100,6 +100,7 @@ class Authentication extends CI_Controller {
     **/
     public function logout()
     {
+        $session_data = array( 'sha_id' => $this->session->userdata('sha_id'), 'sha_name' => $this->session->userdata('sha_name'),'sha_type' => $this->session->userdata('sha_type'));
         $this->session->unset_userdata($session_data);
         $this->session->sess_destroy();
         $this->session->set_flashdata('logout', 'You are logged out Successfully');

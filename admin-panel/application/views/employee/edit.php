@@ -44,26 +44,20 @@
                   <a class="waves-effect waves-light btn modal-trigger blue " href="#modal1">Reset Password</a>
                   <?php
                   if ($result->is_active == '2') { ?>
-                  <a href=""
-                    class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"
-                  id="unblock">Unblock</a>
-                  
+                  <a href="" class="waves-effect waves-light btn green hoverable white-text darken-4 plr40" id="unblock">Unblock</a>
                   <?php }elseif ($result->is_active == '1') { ?>
-                  <a href=""
-                    class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"
-                  id="block">Block</a>
-                  
+                  <a href="" class="waves-effect waves-light btn red hoverable white-text darken-4 plr40" id="block">Block</a>
                   <?php } ?>
                   
-                  <a href=""class="waves-effect waves-light btn red hoverable white-text darken-4 plr40"id="block" style="display: none">Block</a>
-                  <a href=""class="waves-effect waves-light btn green hoverable white-text darken-4 plr40"id="unblock" style="display: none">Unblock</a>
+                  <a href="" class="waves-effect waves-light btn red hoverable white-text darken-4 plr40" id="block" style="display: none">Block</a>
+                  <a href="" class="waves-effect waves-light btn green hoverable white-text darken-4 plr40" id="unblock" style="display: none">Unblock</a>
                   <input type="hidden" name="userid" id="userid" value="<?php echo $result->id ?>">
                 </div>
                 
               </div>
               <div id="modal1" class="modal">
                 <div class="modal-content">
-                  <form action="<?php echo base_url('adminusers/reset_pass') ?>" method="post" id="admin-form" enctype="multipart/form-data">
+                  <form action="<?php echo base_url('adminusers/reset_pass') ?>" method="post" id="admin-forms" enctype="multipart/form-data">
                     <div class="row m0">
                       <div class="input-field col s12 l6">
                         <input type="password" id="password" name="password" class="validate" required >
@@ -71,7 +65,7 @@
                         <label for="password">New Password<span class="red-text">*</span></label>
                       </div>
                     </div>
-                    <button class="btn waves-effect waves-light green darken-4 hoverable btn-large upload-result" type="submit">Submit
+                    <button class="btn waves-effect waves-light green darken-4 hoverable btn-large " type="submit">Submit
                         <i class="fas fa-paper-plane right"></i>
                         </button>
                   </form>
@@ -159,10 +153,10 @@
                         </div>
 
                         <div class="input-field col s12 l6">
-                          <input type="text" id="target" name="target" class="validate">
+                          <input type="text" id="target" name="target" class="validate" />
                           <label for="target">Target</label>
                         </div>
-                      <div>
+                      </div>
                       <div class="row m0">
                         <div class="input-field col s12 l10">
                           <table>
@@ -314,29 +308,29 @@
     ad_type:"Please select the Employee type",
     }
     });
+   
     
     $(document).on('change','#Ad_type',function(){
-    var adtype = $(this).val();
-    if(adtype != 2){
-    $('#manager_col').css('display','block');
-    }else{
-    $('#manager_col').css('display','none');
-    }
+      var adtype = $(this).val();
+      if(adtype != 2){
+        $('#manager_col').css('display','block');
+      }else{
+        $('#manager_col').css('display','none');
+      }
     })
     $("#block").on('click', function(event) {
-    event.preventDefault();
-    var id = $("input[name='userid']").val();
-    loder(true);
+      event.preventDefault();
+      var id = $("input[name='userid']").val();
+      loder(true);
     $.ajax({
-    url: "<?php echo base_url();?>adminusers/block",
-    type: "get",
-    dataType: "html",
-    data: {
-    'id': id,
-    'status': '2'
-    },
+      url: "<?php echo base_url();?>adminusers/block",
+      type: "get",
+      dataType: "html",
+      data: {
+        'id': id,
+        'status': '2'
+      },
     success: function(data) {
-    console.log(data);
     $('#unblock').css('display', ' inline-block ');
     $('#block').css('display', 'none');
     loder(false);

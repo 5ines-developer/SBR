@@ -135,10 +135,11 @@ class Vendor_discount extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to($vendor->email,$admin->email);
-        if (!empty($data['manager'])) {
-            $this->email->cc($data['manager']->email);
-        }
+        $this->email->to('prathwi@5ine.in');
+        // $this->email->to($vendor->email,$admin->email);
+        // if (!empty($data['manager'])) {
+        //     $this->email->cc($data['manager']->email);
+        // }
         $msg = $this->load->view('email/discount_approve', $data, true);
         $this->email->subject('Vendor Package Invoice');
         $this->email->message($msg);
@@ -164,12 +165,12 @@ class Vendor_discount extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $msg = $this->load->view('email/discount_reject', $data, true); 
         $this->email->set_newline("\r\n");
-        $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to($data['result']->email);
-        if ($this->type != '2') {
-            $data['manager'] = $this->m_vdiscount->getManager($data['result']->manager);
-            $this->email->cc($data['manager']->email);
-        }
+        $this->email->from($from, 'ShaadiBaraati');$this->email->to('prathwi@5ine.in');
+        // $this->email->to($data['result']->email);
+        // if ($this->type != '2') {
+        //     $data['manager'] = $this->m_vdiscount->getManager($data['result']->manager);
+        //     $this->email->cc($data['manager']->email);
+        // }
         $this->email->subject('Vendor Discount Request');
         $this->email->message($msg);
         if ($this->email->send()) {
@@ -180,7 +181,7 @@ class Vendor_discount extends CI_Controller {
     }
 
 
-    public function reject($value='')
+    public function reject($id='')
     {
         $status = '2';
         // send to model

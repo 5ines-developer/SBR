@@ -66,7 +66,7 @@
                                                 <div class="col s12 m7">
                                                     <div class="row m0">
                                                         <div class="col s12 center m6">
-                                                           <h5 class="green-text darken-3"><?php echo count($vendor) ?></h5> 
+                                                           <h5 class="green-text darken-3"><?php echo (!empty($vendor))?count($vendor):''; ?></h5> 
                                                            <p>Total Contacted Vendors</p>
                                                         </div>
                                                         
@@ -137,6 +137,14 @@
                                     <tr>
                                         <th class="w205"><i class="fas fa-calendar-alt mr10"></i> Registered date</th>
                                         <td><?php echo (!empty($result->su_registered_date))?date("M d, Y ", strtotime($result->su_registered_date)):'---'; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="w205"><i class="far fa-user mr10"></i> User Type</th>
+                                        <td ><?php echo (!empty($result->iam))?$result->iam:'---'  ?></td>
+                                    </tr>
+                                    <tr> 
+                                        <th class="w205"><i class="fa fa-map-marker mr10"></i>Live In</th>
+                                        <td ><?php echo (!empty($result->live))?$result->live:'---'  ?></td>
                                     </tr>
                                     <tr>
                                         <th class="w205"><i class="fas fa-venus-mars mr10"></i></i>Gender</th>

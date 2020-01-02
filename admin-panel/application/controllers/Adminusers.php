@@ -78,9 +78,13 @@ class Adminusers extends CI_Controller {
             $target     =   $this->input->post('target');
 
             $mens='';
-            foreach ($menu as $menus => $men) {
-               $mens .= $men.',';               
-            }           
+
+            if (!empty($menu)) {
+               foreach ($menu as $menus => $men) {
+                $mens .= $men.',';               
+                } 
+            }
+                      
 
             $insert = array(
                 'name'          =>  $name,
@@ -234,7 +238,7 @@ class Adminusers extends CI_Controller {
 
     public function reset_pass($value='')
     {
-        $password   = $this->input->post('password');
+        $password   = $this->bcrypt->hash_password($this->input->post('password'));
         $eid        = $this->input->post('eid');
         if($this->m_adminusers->reset_pass($password,$eid)){
             $this->session->set_flashdata('success', 'Employee password updated Successfully!');

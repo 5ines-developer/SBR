@@ -11,12 +11,14 @@ class M_vdiscount extends CI_Model {
             foreach ($addedby as $key ) {
                 $val[] = $key->id;
             }
-            $this->db->group_start();
-                $this->db->where_in('rp.added_by',$val);
-            $this->db->group_end();
+            if(!empty($val)){
+	            $this->db->group_start();
+	                $this->db->where_in('rp.added_by',$val);
+	            $this->db->group_end();
+        	}
         }
 
-        $this->db->where('rp.approved', '0');
+        $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
         return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')

@@ -9,4 +9,3 @@ class Pdf extends Dompdf {
     } 
 } 
 ?>
-?>

@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shaadibaraati | Registration</title>
+    <title>Shaadibaraati | Employee - Registration</title>
         
     <style type="text/css">
     p{
@@ -507,7 +507,7 @@
 }</style></head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
         <!--*|IF:MC_PREVIEW_TEXT|*-->
-        <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
+        <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Shaadibaraati | Employee - Registration</span><!--<![endif]-->
         <!--*|END:IF|*-->
         <center>
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">

@@ -1,5 +1,4 @@
-<?php
-	defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	class Vendors_upgrade extends CI_Controller {
 
@@ -111,7 +110,7 @@
 			$fileName = random_string('alnum',10);
 			file_put_contents('pdf/propsal-'.$fileName.'.pdf',$this->pdf->output());
 			$pdfFile = 'pdf/propsal-'.$fileName.'.pdf';
-			$this->send_sales($insert['vendor_id'],$pdfFile);
+			$this->send_sales($insert,$pdfFile);
 		}
 
 	public function send_sales($insert='',$pdfFile='')

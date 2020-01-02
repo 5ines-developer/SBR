@@ -215,7 +215,7 @@ $this->load->model('m_vendors');
 
                                             <div class="input-field col s12 l6">
                                                 <select name="package" class="packge">
-                                                    <option value="0">Choose Package</option>
+                                                    <option value="0">Free Listing</option>
 
                                                     <?php if (!empty($package)) {
                                                     foreach ($package as $pack => $packg) { ?>

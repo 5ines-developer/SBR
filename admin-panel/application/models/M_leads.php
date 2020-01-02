@@ -27,7 +27,7 @@ class M_leads extends CI_Model {
 			->from('vendor vn')
 			->select('vn.name,vn.id as vid,ve.vendor_id as lvn_id,ve.user_name as lvn_name')
 			->join('vendor_enquiry ve', 've.vendor_id = vn.id', 'left')			
-			->get('vendor vn')->result();
+			->get()->result();
 		}else if ($v_type =='free') {
 			$nul = 0;
 			return $this->db->where('vn.package',$nul)
@@ -38,13 +38,13 @@ class M_leads extends CI_Model {
 			->get()->result();			
 			
 		}else{
-            $this->db->select('vn.name,vn.id as vid,pac.*,vp.*,ve.vendor_id as lvn_id,ve.user_name as lvn_name')	
-            ->group_by('vn.name')	
-			->from('vendor_package  vp')
-			->join('vendor vn', 'vn.id = vp.vendor_id', 'left')
-			->join('vendor_enquiry ve', 've.vendor_id = vp.vendor_id', 'left')
-			->join('package pac', 'pac.id = vp.package_id', 'left');
-			return $this->db->get()->result();
+            return $this->db->select('vn.name,vn.id as vid,pac.*,ve.vendor_id as lvn_id,ve.user_name as lvn_name')	
+            ->group_by('vn.name')
+            ->where('vn.package !=','0')
+            ->from('vendor vn')
+			->join('vendor_enquiry ve', 've.vendor_id = vn.id', 'left')	
+			->join('package pac', 'pac.id = vn.package', 'left')
+			->get()->result();
 		}	
     }
     
