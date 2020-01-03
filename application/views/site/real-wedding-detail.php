@@ -17,11 +17,11 @@
 <body>
     <?php $this->load->view('includes/header.php'); ?>
     <div id="app">
-        <section class="contact-weadding ">
+        <section class="real-weading">
             <div class="container-wedding">
                 <div class="row">
                     <div class="col l12 s12">
-                        <div class="real-weading">
+                        <div class="">
                             <div class="wedding-name">
                                 <h5>Jashan & Karan</h5>
                                 <p>Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of template</p>
@@ -34,7 +34,7 @@
 
             </div>
         </section>
-        <section>
+        <section class="sec">
             <div class="container-fluide">
                 <div class="row">
                     <div class="col l12 m112 s12">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
         </section>
-        <section>
+        <section class="sec #fafafa grey lighten-5">
             <div class="container-fluide">
                 <div class="row">
                     <div class="col l12 s12 m12">
