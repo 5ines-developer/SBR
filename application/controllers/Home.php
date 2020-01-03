@@ -346,6 +346,11 @@ public function real_wedding()
     $data['title']  = 'ShaadiBaraati | Real Wedding';
     $this->load->view('site/real-wedding',$data);
 }
+public function real_wedding_detail()
+{
+    $data['title']  = 'ShaadiBaraati | Real Wedding Detail';
+    $this->load->view('site/real-wedding-detail',$data);
+}
 
 
 

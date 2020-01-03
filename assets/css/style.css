@@ -2234,8 +2234,9 @@ r-crd-category {
 }
 
 .tollfree a {
-    height: 64px;
-    height: 48px;
+    /* height: 64px;
+    height: 48px; */
+    height: 75px;
 }
 
 #vendordropdown {
@@ -4677,11 +4678,12 @@ nav a.sidenav-trigger i {
 
 .contatct-item p a {
     color: #d0021b;
+    font-size: 13px;
 }
 
 .contatct-item p a:hover {
     color: #333;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .contatct-item {
@@ -5552,6 +5554,127 @@ html {
     background: white;
 }
 
+
+/* real-wedding-detail */
+
+.real-weading img {
+    max-width: 100%;
+}
+
+.contact-weadding {
+    padding-top: 30px;
+}
+
+.real-weading {
+    background: #00000087 url('../img/b1.jpg');
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-size: auto;
+    background-blend-mode: color;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 11% 0px;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.wedding-name h5 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+.container-wedding {
+    max-width: 95%;
+    margin: auto;
+}
+
+.wedding-name i {
+    font-size: 13px;
+}
+
+.wedding-name {
+    background: #fff;
+    width: 50%;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    padding: 25px 25px;
+    border-radius: 12px;
+    border-left: 10px solid gray;
+}
+
+.wedding-name p {
+    color: #353535;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.phots-title h5 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    color: #1c1c1c;
+}
+
+.wedding-name a {
+    color: #d0021b;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.line-weadd {
+    border-bottom: 1px solid #cecece;
+    padding-top: 15px;
+    width: 60%;
+}
+
+.nh-name {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    background: #b90a19;
+    color: white;
+    padding: 10px;
+    width: 30%;
+    margin-bottom: 22px;
+}
+
+.res-pp {
+    padding-bottom: 12px;
+}
+
+.icon-zoom i {
+    background: #d0021b;
+    padding: 10px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    cursor: pointer;
+    border-radius: 35px;
+    font-size: 22px;
+    border: 3px solid white;
+    transition: 1s;
+}
+
+.pic:hover i {
+    opacity: 2;
+}
+
+.pic {
+    position: relative;
+}
+
 @media(max-width:767px) {
     .temp-view {
         text-align: center;
@@ -5570,5 +5693,22 @@ html {
     .nav-head {
         height: 60px;
         background: white;
+    }
+    /* real wedding detail */
+    .wedding-name {
+        width: 100%;
+        position: unset;
+        background: #fff0;
+        border-left: 10px solid #b7b7b7;
+    }
+    .wedding-name h5 {
+        color: white;
+    }
+    .wedding-name p {
+        color: #fff;
+    }
+    .nh-name {
+        font-size: 14px;
+        width: 90%;
     }
 }
