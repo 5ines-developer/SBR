@@ -28,48 +28,7 @@ $this->load->model('m_account');
             <div class="container-1">
                 <div class="row m0">
                     <!-- left menu -->
-                    <div class="col s12 m4 l3">
-                        <div class="sidemenu">
-                            <div class="card-panel   profile-box">
-                                <div class="pb-pic">
-                                    <img src="assets/img/pp.jpg" class="img-responsive" alt="">
-                                </div>
-                                <center>
-                                    <p class="white-text"><b>Rishabh</b></p>
-                                </center>
-                                <div class="pb-content center-align">
-                                    <h6 class="white-text ">
-                                        <?php echo (!empty($profile->su_name))?ucfirst($profile->su_name):'' ?>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="e-invite-contain z-depth-1">
-                                    <li>
-                                        <a href="#">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage User Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Event</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Family Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Photos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Information</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">My Website</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $this->load->view('includes/left-menu.php'); ?>
                     <!-- end left menu -->
 
                     <div class="col s12 m8 l9">
@@ -79,7 +38,7 @@ $this->load->model('m_account');
                             </div>
                             <div class="">
                                 <div class="cboady">
-                                    <form class="" action="#" method="POST">
+                                    <form class="" action="<?php echo base_url() ?>family-member" method="POST" enctype="multipart/form-data"> 
                                         <div class="bg-detail">
                                             <div class="title-br">
                                                 <h5>Bride / Groom Family</h5>
@@ -88,42 +47,78 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <select class="b_family">
-                                                                <option value="" disabled selected>Family <span class="red-text">*</span></option>
+                                                            <select class="family" required="" name="family">
+                                                                <option value="" disabled>Select Family <span class="red-text">*</span></option>
                                                                 <option value="bride">Bride</option>
                                                                 <option value="groom">Groom</option>
                                                             
                                                               </select>
+                                                               <label for="">Family</label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 s12 m6">
                                                         <div class="input-field">
-                                                            <select class="b_family">
-                                                                <option value="" disabled selected>Relation <span class="red-text">*</span></option>
+                                                            <select class="relation" required="" name="relation">
+                                                                <option value="" disabled>Select Relation <span class="red-text">*</span></option>
                                                                 <option value="father">Father</option>
                                                                 <option value="mother">Mother</option>
                                                                 <option value="brother">Brother</option>
                                                                 <option value="sister">Sister</option>
                                                               </select>
+                                                              <label for="">Relation</label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 s12 m6">
                                                         <div class="input-field">
-                                                            <input id="brd_name" type="text" name="brd_name" class="validate">
-                                                            <label for="brd_name">Member Name <span class="red-text">*</span></label>
+                                                            <input id="name" type="text" required name="name" class="validate">
+                                                            <label for="name">Member Name <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
                                                     <div class="col l6 s12 m6">
                                                         <div class="feedback-input">
                                                             <div class="file-field input-field">
-                                                                <div class="btn hh-file"><span>File</span> <input type="file" name="file"></div>
+                                                                <div class="btn hh-file"><span>File</span> <input type="file" name="image"></div>
                                                                 <div class="file-path-wrapper"><input required="required" type="text" placeholder="Choose image" class="file-path validate if-file"></div>
                                                                 <p><b>Note :</b>PNG , JPG image accepted for better view use 1MB</p>
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col l2 m2 s12">
+                                                        <a href="<?php echo base_url('wedding-photo') ?>" class="tooltipped waves-effect waves-light btn red accent-4 white-text" data-position="bottom" data-tooltip="Click here if you dont want to add more family member">Next <i class="material-icons dp48" style="position: relative; top: 4px;">chevron_right</i></a>
+                                                     </div>
+                                                     <div class="clearfix"></div>
+
+                                                    <div class="row mo">
+                                                    <?php
+                                                    if (!empty($result)) {
+                                                        foreach ($result as $key => $value) { ?>
+                                                        <div class="col l5 m5 s12">
+                                                            <div class="card scrollspy" id="personal-detail">
+                                                                <div class="card-content">
+                                                                    <div class="col s12">
+                                                                    <p class="bold mb10 h6"><?php echo $value->name ?></p>
+                                                                </div>
+                                                                        <div class="col s12">
+                                                                            <img width="100px" src="<?php echo base_url().$value->image ?>" alt="">
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                        <div class="col s12">
+                                                                            <p>Family Type : <?php echo $value->family ?></p>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+
+                                                                        <div class="col s12">
+                                                                            <p>Relation  : <?php echo $value->realtion ?></p>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                    <?php   } } ?>
+                                                    
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -141,15 +136,17 @@ $this->load->model('m_account');
     </div>
 
     <!-- script -->
-    <!-- <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script> -->
+    <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-    <!-- <script>
+    <script>
         $(document).ready(function() {
-            $('.tabs').tabs();
+            $('.collapsible-body').css({
+                display: 'block',
+            });
         });
-    </script> -->
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');

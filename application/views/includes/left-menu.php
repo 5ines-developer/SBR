@@ -33,7 +33,7 @@
                                     <a href="<?php echo base_url('select-theme') ?>" class="<?php if(($this->uri->segment(1)=="select-theme")){echo "grey lighten-1";}?>"><i class="material-icons"> insert_invitation </i> Select theme</a> 
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url('bide-groom') ?>" class="<?php if(($this->uri->segment(1)=="bide-groom")){echo "grey lighten-1";}?>"><i class="material-icons"> supervised_user_circle </i> Groom & Bride Details</a> 
+                                    <a href="<?php echo base_url('bide-groom') ?>" class="<?php if(($this->uri->segment(1)=="bide-groom")){echo "grey lighten-1"; }?>"><i class="material-icons"> supervised_user_circle </i> Groom & Bride Details</a> 
                                 </li>
                                 <li>
                                     <a href="<?php echo base_url('invite-event') ?>" class="<?php if(($this->uri->segment(1)=="invite-event")){echo "grey lighten-1";}?>"><i class="material-icons"> emoji_nature </i> Wedding Event</a> 
@@ -44,11 +44,11 @@
                                 <li>
                                     <a href="<?php echo base_url('wedding-photo') ?>" class="<?php if(($this->uri->segment(1)=="wedding-photo")){ echo "grey lighten-1"; }?>"><i class="material-icons"> photo_library </i> Wedding Photos</a> </li>
                                 <li>
-                                    <a href="<?php echo base_url('wedding-information') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> perm_device_information </i> Wedding Information</a> 
+                                    <a href="<?php echo base_url('wedding-information') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> perm_device_information </i> RSVP</a> 
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="<?php echo base_url('wedding-information') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> settings_input_composite </i> My Website</a> 
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                     </ul>

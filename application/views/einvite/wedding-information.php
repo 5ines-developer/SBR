@@ -28,58 +28,17 @@ $this->load->model('m_account');
             <div class="container-1">
                 <div class="row m0">
                     <!-- left menu -->
-                    <div class="col s12 m4 l3">
-                        <div class="sidemenu">
-                            <div class="card-panel   profile-box">
-                                <div class="pb-pic">
-                                    <img src="assets/img/pp.jpg" class="img-responsive" alt="">
-                                </div>
-                                <center>
-                                    <p class="white-text"><b>Rishabh</b></p>
-                                </center>
-                                <div class="pb-content center-align">
-                                    <h6 class="white-text ">
-                                        <?php echo (!empty($profile->su_name))?ucfirst($profile->su_name):'' ?>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="e-invite-contain z-depth-1">
-                                    <li>
-                                        <a href="#">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage User Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Event</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Family Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Photos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Information</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">My Website</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $this->load->view('includes/left-menu.php'); ?>
                     <!-- end left menu -->
 
                     <div class="col s12 m8 l9">
                         <div class="card">
                             <div class="chead">
-                                <p class="truncate">Wedding Information</p>
+                                <p class="truncate">RSVP</p>
                             </div>
                             <div class="">
                                 <div class="cboady">
-                                    <form class="" action="" method="POST">
+                                    <form action="<?php echo base_url('wedding-information/insert') ?>" method="POST">
                                         <div class="bg-detail">
                                             <div class="title-br">
                                                 <h5>Bride Information</h5>
@@ -88,20 +47,20 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_cname" type="text" name="brd_cname" class="validate">
-                                                            <label for="brd_cname">Bride Contact Name  <span class="red-text">*</span></label>
+                                                            <input id="bname" type="text" name="bname" class="validate">
+                                                            <label for="bname">Bride Contact Name  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_rname" type="text" name="brd_rname" class="validate">
-                                                            <label for="brd_rname">Bride Relation  <span class="red-text">*</span></label>
+                                                            <input id="brelation" type="text" name="brelation" class="validate">
+                                                            <label for="brelation">Bride Relation  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_cnname" type="text" name="brd_cnname" class="validate">
-                                                            <label for="brd_cnname">Bride Contact No  <span class="red-text">*</span></label>
+                                                            <input id="bnumber" type="text" name="bnumber" class="validate">
+                                                            <label for="bnumber">Bride Contact No  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,20 +74,20 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_gname" type="text" name="brd_gname" class="validate">
-                                                            <label for="brd_gname">Groom Contact Name  <span class="red-text">*</span></label>
+                                                            <input id="gname" type="text" name="gname" class="validate">
+                                                            <label for="gname">Groom Contact Name  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_gname" type="text" name="brd_gname" class="validate">
-                                                            <label for="brd_gname">Groom Relation  <span class="red-text">*</span></label>
+                                                            <input id="grelation" type="text" name="grelation" class="validate">
+                                                            <label for="grelation">Groom Relation  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_gnname" type="text" name="brd_gnname" class="validate">
-                                                            <label for="brd_gnname">Groom Contact No  <span class="red-text">*</span></label>
+                                                            <input id="gnumber" type="text" name="gnumber" class="validate">
+                                                            <label for="gnumber">Groom Contact No  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -148,15 +107,17 @@ $this->load->model('m_account');
     </div>
 
     <!-- script -->
-    <!-- <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script> -->
+    <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-    <!-- <script>
+    <script>
         $(document).ready(function() {
-            $('.tabs').tabs();
+            $('.collapsible-body').css({
+                display: 'block',
+            });
         });
-    </script> -->
+    </script>
     <script>
         var app = new Vue({
             el: '#app',

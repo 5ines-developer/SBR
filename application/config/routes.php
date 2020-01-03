@@ -162,10 +162,15 @@ $route['free-quote'] 	            		= 'home/freeQuote';
 // e-invite
 $route['select-theme']   				    = 'einvite/index';
 $route['bide-groom']   				    	= 'einvite/manage_user';
+$route['bide-groom/insert']   				= 'einvite/insertBgdetail';
 $route['invite-event']   				    = 'einvite/wedding_event';
+$route['invite-event/insert']   			= 'einvite/eventInsert';
 $route['family-member']   				    = 'einvite/family_member';
 $route['wedding-photo']   				    = 'einvite/wedding_photo';
+$route['wedding-photo/insert']   			= 'einvite/galleryInsert';
+
 $route['wedding-information']   			= 'einvite/wedding_information';
+$route['wedding-information/insert']   		= 'einvite/rsvpInsert';
 
 
 

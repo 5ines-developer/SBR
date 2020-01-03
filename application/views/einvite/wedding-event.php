@@ -28,48 +28,7 @@ $this->load->model('m_account');
             <div class="container-1">
                 <div class="row m0">
                     <!-- left menu -->
-                    <div class="col s12 m4 l3">
-                        <div class="sidemenu">
-                            <div class="card-panel   profile-box">
-                                <div class="pb-pic">
-                                    <img src="assets/img/pp.jpg" class="img-responsive" alt="">
-                                </div>
-                                <center>
-                                    <p class="white-text"><b>Rishabh</b></p>
-                                </center>
-                                <div class="pb-content center-align">
-                                    <h6 class="white-text ">
-                                        <?php echo (!empty($profile->su_name))?ucfirst($profile->su_name):'' ?>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="e-invite-contain z-depth-1">
-                                    <li>
-                                        <a href="#">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage User Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Event</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Family Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Photos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Information</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">My Website</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $this->load->view('includes/left-menu.php'); ?>
                     <!-- end left menu -->
 
                     <div class="col s12 m8 l9">
@@ -79,56 +38,107 @@ $this->load->model('m_account');
                             </div>
                             <div class="">
                                 <div class="cboady">
-                                    <form class="" action="#" method="POST">
+                                    <form class="" action="<?php echo base_url('invite-event/insert') ?>" method="POST">
                                         <div class="bg-detail">
                                             <div class="title-br">
                                                 <h5>Event Details</h5>
                                             </div>
                                             <div class="detial-bg-list">
-                                                <div class="row">
-                                                    <div class="col l5 m5 s12">
+                                                <div class="row m0">
+                                                    <div class="col l6 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brd_name" type="text" name="brd_name" class="validate">
-                                                            <label for="brd_name">Event Name  <span class="red-text">*</span></label>
+                                                            <input id="eve_name" type="text" name="eve_name" required="" class="validate">
+                                                            <label for="eve_name">Event Name  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
-                                                    <div class="col l5 s12 m6">
+                                                    <div class="col l6 s12 m6">
                                                         <div class="input-field">
-                                                            <input id="brd_name" type="text" name="brd_name" class="validate">
-                                                            <label for="brd_name">Phone No  <span class="red-text">*</span></label>
+                                                            <input id="eve_venue" type="text" name="eve_venue" required="" class="validate">
+                                                            <label for="eve_venue">Venue <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
-                                                    <div class="col l5 s12 m6">
+                                                    <div class="col l6 s12 m6">
                                                         <div class="input-field">
-                                                            <input id="brd_name" type="text" name="brd_name" class="validate">
-                                                            <label for="brd_name">Event Date <span class="red-text">*</span></label>
+                                                            <input id="eve_date" type="text" name="eve_date" required="" class="datepicker">
+                                                            <label for="eve_date">Event Date <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
-                                                    <div class="col l5 s12 m6">
+                                                    <div class="col l6 s12 m6">
                                                         <div class="input-field">
-                                                            <input id="brd_name" type="text" name="brd_name" class="validate">
-                                                            <label for="brd_name">Event Time  <span class="red-text">*</span></label>
+                                                             <input type="text" name="eve_time" class="validate" required>
+                                                            <label for="eve_time">Event Time  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col l8 s12 m6">
+                                                    <div class="col l6 s12 m6">
                                                         <div class="input-field">
-                                                            <textarea id="eve_add" name="eve_add" class="materialize-textarea hh-text"></textarea>
+                                                            <textarea id="eve_add" name="eve_add" class="materialize-textarea"></textarea>
                                                             <label for="eve_add">Address  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
-                                                    <div class="col l8 m5 s12">
+                                                    <div class="col l6 m6 s12">
                                                         <div class="input-field ">
-                                                            <textarea id="textarea1" name="eve_dec" class="materialize-textarea hh-text"></textarea>
-                                                            <label for="brd_dec">Event Description  <span class="red-text">*</span></label>
+                                                            <textarea id="eve_dec" name="eve_dec" class="materialize-textarea"></textarea>
+                                                            <label for="eve_dec">Event Description  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col l2 m2 s12">
+                                                        <a href="<?php echo base_url('family-member') ?>" class="tooltipped waves-effect waves-light btn red accent-4 white-text" data-position="bottom" data-tooltip="Click here if you dont want to add more event">Next <i class="material-icons dp48" style="position: relative; top: 4px;">chevron_right</i></a>
+                                                     </div>
+                                                     <div class="clearfix"></div>
+
+                                                    <div class="row mo">
+                                                    <?php
+                                                    if (!empty($result)) {
+                                                        foreach ($result as $key => $value) { ?>
+                                                        <div class="col l5 m5 s12">
+                                                            <div class="card scrollspy" id="personal-detail">
+                                                                <div class="card-content">
+                                                                    <p class="bold mb10 h6"><?php echo $value->name ?></p>
+                                                                        <div class="col s12">
+                                                                            <p><?php echo $value->venue ?></p>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+
+                                                                        <div class="col s12">
+                                                                            <p><?php echo date('d M, Y',strtotime($value->date)) ?> <span><?php echo $value->time ?></span></p>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+
+                                                                        <div class="col s12">
+                                                                            <p><?php echo (!empty($value->address))?$value->address:''; ?></p>
+                                                                        </div>
+                                                                        <div class="col s12">
+                                                                            <p><?php echo (!empty($value->desc))?$value->desc:''; ?></p>
+                                                                        </div>
+                                                                        <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                         </div>
+                                                    <?php   } } ?>
+                                                    
+                                                    </div>
+
+
+                                                     
+                                                     
+
                                                 </div>
+                                                
+                                                <div class="clearfix"></div>
+
                                             </div>
+
+
+
                                         </div>
                                         <button type="submit" class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                         <button type="reset" class="waves-effect waves-light btn white plr30 accent-4 black-text">Reset</button>
                                     </form>
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -140,15 +150,20 @@ $this->load->model('m_account');
     </div>
 
     <!-- script -->
-    <!-- <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script> -->
+    <script src="<?php echo base_url()?>/assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-    <!-- <script>
+    <script>
+        <?php $this->load->view('includes/message'); ?>
+    </script>
+    <script>
         $(document).ready(function() {
-            $('.tabs').tabs();
+            $('.collapsible-body').css({
+                display: 'block',
+            });
         });
-    </script> -->
+    </script>
     <script>
         var app = new Vue({
             el: '#app',

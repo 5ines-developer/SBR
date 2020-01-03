@@ -1,3 +1,8 @@
+<?php 
+$this->ci =& get_instance();
+$this->load->model('m_account'); 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +17,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/image-uploader.min.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <?php $this->load->view('includes/favicon.php');  ?>
+
+    <style>
+        .img-wed {height: 140px; margin-bottom: 10px; overflow: hidden; max-height: 140px; } 
+    </style>
 </head>
 
 <body>
@@ -24,48 +33,7 @@
             <div class="container-1">
                 <div class="row m0">
                     <!-- left menu -->
-                    <div class="col s12 m4 l3">
-                        <div class="sidemenu">
-                            <div class="card-panel   profile-box">
-                                <div class="pb-pic">
-                                    <img src="assets/img/pp.jpg" class="img-responsive" alt="">
-                                </div>
-                                <center>
-                                    <p class="white-text"><b>Rishabh</b></p>
-                                </center>
-                                <div class="pb-content center-align">
-                                    <h6 class="white-text ">
-                                        <?php echo (!empty($profile->su_name))?ucfirst($profile->su_name):'' ?>
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="e-invite-contain z-depth-1">
-                                    <li>
-                                        <a href="#">Dashboard</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Manage User Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Event</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Family Members</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Photos</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Wedding Information</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">My Website</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <?php $this->load->view('includes/left-menu.php'); ?>
                     <!-- end left menu -->
 
                     <div class="col s12 m8 l9">
@@ -75,7 +43,7 @@
                             </div>
                             <div class="">
                                 <div class="cboady">
-                                    <form action="" method="post" enctype="multipart/form-data">
+                                    <form action="<?php echo base_url('wedding-photo/insert') ?>" method="post" enctype="multipart/form-data">
                                         <div class="bg-detail">
                                             <div class="title-br">
                                                 <h5>Upload Photos</h5>
@@ -84,19 +52,26 @@
                                                 <!-- Portfolio  -->
                                                 <div class="list-profile">
                                                     <div class="">
-                                                        <div class="row m0">
-                                                            <div class="col l4 m3 s6">
+                                                                <div class="row m0">
+
+                                                        
+                                                            <div v-for="image  in imgs" :key="image.id" class="col l4 m3 s6">
                                                                 <div class="wedding-photo">
                                                                     <div class="img-wed">
-                                                                        <img src="assets/img/about-oo.jpg" class="img-responsive" alt="">
+                                                                        <img :src="image.image"  class="img-responsive" alt="">
                                                                     </div>
                                                                     <div class="wed-hov">
-                                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="">
+                                                                        <a v-on:click="galDelete(image.id)">
                                                                             <i class="large material-icons">delete</i></a>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                                
+                                               
+
                                                         </div>
+
+                                                        
                                                         <div class="row m0">
                                                             <div class="col col l12 m10 s12">
                                                                 <div class="file-field input-field mm-drop">
@@ -133,54 +108,50 @@
     <script src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
     <script src="<?php echo base_url() ?>assets/js/image-uploader.min.js"></script>
     <script>
-        DecoupledEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                const toolbarContainer = document.querySelector('#toolbar-container');
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('select');
-            var instances = M.FormSelect.init(elems);
-
-            // nav
-            var sidenav = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(sidenav);
-
-        });
-    </script>
-    <!-- <script>
-        CKEDITOR.replace('editor');
-    </script> -->
-
-    <script>
         $(document).ready(function() {
+            $('.collapsible-body').css({
+                display: 'block',
+            });
             $('.input-images').imageUploader();
         });
     </script>
-
-    <script>
-        $(document).ready(function() {
-                    $('.modal').modal();
-                    $('.scrollspy').scrollSpy();
-    </script>
-
     <script>
         var demo = new Vue({
             el: '#app',
             data: {
-
-                file: '',
+                imgs: [],
             },
-
             methods: {
+                getData: function() {
+                axios.post('<?php echo base_url() ?>einvite/gallery')
+                    .then(response => {
+                        if (response.data != '') {
+                            this.imgs   = response.data;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(response);
+
+                    })
+                },
+                galDelete(id){
+                       axios.post('<?php echo base_url('einvite/galDelete/') ?>'+id)
+                       .then(response => {
+                            if (response.data != '') {
+                                this.imgs   = response.data;
+                                 M.toast({html: 'Image deleted Successfully', classes: 'green', displayLength : 5000 });
+                            }
+                        })
+                        .catch(error => {
+                            console.log(response);
+
+                        })
+                }
 
             },
+            mounted: function() {
+                this.getData();
+            }
 
         });
     </script>
