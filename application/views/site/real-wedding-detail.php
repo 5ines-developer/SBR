@@ -38,7 +38,7 @@
             <div class="container-fluide">
                 <div class="row">
                     <div class="col l12 m112 s12">
-                        <h5 class="nh-name">Project Gallery</h5>
+                        <h5 class="nh-name">Photo Gallery</h5>
                         <div class="bg-depth1 ven-10p" id="gallery">
                             <div class="row">
                                 <div v-for="(src, index) in imgs" :key="index" class="pic col l3 m4 s12" @click="() => showImg(index)">
