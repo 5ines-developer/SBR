@@ -46,9 +46,9 @@
                                 <li>
                                     <a href="<?php echo base_url('wedding-information') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> perm_device_information </i> RSVP</a> 
                                 </li>
-                                <!-- <li>
-                                    <a href="<?php echo base_url('wedding-information') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> settings_input_composite </i> My Website</a> 
-                                </li> -->
+                                <li>
+                                    <a href="<?php echo base_url('my-website') ?>" class="<?php if(($this->uri->segment(1)=="my-website")){ echo "grey lighten-1";}?>"><i class="material-icons"> settings_input_composite </i> My Website</a> 
+                                </li>
                             </ul>
                         </li>
                     </ul>

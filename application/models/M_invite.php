@@ -93,6 +93,34 @@ class M_invite extends CI_Model {
 		return $this->db->where('invite_id',$result)->get('e_invitegallery')->result();
 	}
 
+	public function getWebsite($user_id='')
+	{
+		return $this->db->where('user_id', $user_id)->where('status',1)->get('einvite')->result();
+	}
+
+	public function myWebsite($id='')
+	{
+		return $this->db->where('id', $id)->where('status',1)->get('einvite')->row();
+	}
+
+	public function getGallery($id='')
+	{
+		return $this->db->where('invite_id',$id)->get('e_invitegallery')->result();
+	}
+
+	public function getEvent($id='')
+	{
+		return $this->db->where('invite_id',$id)->get('einvite_event')->result();
+	}
+
+	public function getFam($id='')
+	{
+		return $this->db->where('invite_id',$id)->get('e_invite_family')->result();
+	}
+
+
+
+
 	
 
 }

@@ -169,9 +169,11 @@ $route['invite-event/insert']   			= 'einvite/eventInsert';
 $route['family-member']   				    = 'einvite/family_member';
 $route['wedding-photo']   				    = 'einvite/wedding_photo';
 $route['wedding-photo/insert']   			= 'einvite/galleryInsert';
-
 $route['wedding-information']   			= 'einvite/wedding_information';
 $route['wedding-information/insert']   		= 'einvite/rsvpInsert';
+
+$route['my-website']   						= 'einvite/myWebsite';
+$route['my-website/(:any)']   				= 'einvite/myWebsite/$1';
 
 
 

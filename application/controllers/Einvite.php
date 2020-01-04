@@ -297,7 +297,55 @@ class Einvite extends CI_Controller {
             }
 
             redirect('my-website','refresh');
+    }
 
+    public function myWebsite($value='')
+    {
+        $site = $this->input->get('site');
+        if (!empty($site)) {
+            $site = base64_decode($site);
+            $site = urldecode($site);
+            $output = $this->m_invite->myWebsite($site);
+            $output->gallery  =   $this->m_invite->getGallery($site);
+            $output->event    =   $this->m_invite->getEvent($site);
+            $output->family   =   $this->m_invite->getFam($site);
+            $data['result']   = $output;
+
+         switch ($output->theme) {
+            case 'mehindi1':
+                $view = 'einvite/mehindhi1';
+                break;
+            case 'mehindi2':
+                $view = 'einvite/mehindhi2';
+                break;
+            case 'rec1':
+                $view = 'einvite/reception1';
+                break;
+            case 'rec2':
+                $view = 'einvite/reception2';
+                break;
+            case 'eng1':
+                $view = 'einvite/engagement1';
+                break;
+            case 'eng2':
+                $view = 'einvite/engagement2';
+                break;
+            case 'wed1':
+                $view = 'einvite/wedding1';
+                break;
+            case 'wed2':
+                $view = 'einvite/wedding2';
+                break;
+            default:
+                $view = '';
+                break;
+            }
+            $this->load->view($view,$data);
+        }else{
+            $data['title']  = 'ShaadiBaraati | My website';
+            $data['result'] = $this->m_invite->getWebsite($this->id);
+            $this->load->view('einvite/my-website',$data);
+        }
     }
 
 
