@@ -91,7 +91,7 @@
                     <div class="row">
                         <div class="col s12 m4">
                             <div class="hv wedding-temp">
-                                <img src="assets/img/wedding1.jpg" class="img-responsive we-im" alt="">
+                                <img src="<?php echo base_url() ?>assets/img/wedding1.jpg" class="img-responsive we-im" alt="">
                                 <div class="overlay">
                                     <a> <i class="material-icons">remove_red_eye</i></a>
                                     <a> <i class="material-icons">create</i></a>
@@ -100,7 +100,7 @@
                         </div>
                         <div class="col s12 m4">
                             <div class="hv wedding-temp">
-                                <img src="assets/img/wedding1.jpg" class="img-responsive" alt="">
+                                <img src="<?php echo base_url() ?>assets/img/wedding1.jpg" class="img-responsive" alt="">
                                 <div class="overlay">
                                     <a> <i class="material-icons">remove_red_eye</i></a>
                                     <a> <i class="material-icons">create</i></a>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="col s12 m4">
                             <div class="hv wedding-temp">
-                                <img src="assets/img/wedding1.jpg" class="img-responsive" alt="">
+                                <img src="<?php echo base_url() ?>assets/img/wedding1.jpg" class="img-responsive" alt="">
                                 <div class="overlay">
                                     <a> <i class="material-icons">remove_red_eye</i></a>
                                     <a> <i class="material-icons">create</i></a>

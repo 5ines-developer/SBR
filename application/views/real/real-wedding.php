@@ -5,13 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shaadi Baraati</title>
+    <title><?php echo $title; ?></title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>/assets/css/slimselect.min.css">
     <?php $this->load->view('includes/favicon.php');  ?>
+    <style>
+        .img-box img {
+            max-height:235px;
+            min-height:235px;
+            width:100%;
+        }
+        .wed-detail p{
+            color:black;
+        }
+        @media (max-width:991px) and (min-width:768px){
+            .img-box img {
+                min-height:144px;
+                width:100%;
+            }
+            .card-wed {
+                height: 236px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -23,38 +42,6 @@
                     <div class="banner-up ">
                         <h5 class="white-text">Real Wedding</h5>
                         <p class="tc white-text pad0-11">Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of templates.</p>
-                        <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
-                            <div class="col s12 m10 push-m1 l8 push-l2 mb10">
-                                <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
-                            </div>
-                            <div class="col s12 m8 push-m2 l8 push-l2 gg-select" class="serch-select ">
-                                <div class="col s12 m4 op">
-                                    <select name="ct" class="select-search" id="sel-cato">
-                                        <option value="">All Cities</option>
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col s12 m4 op">
-                                    <select name="q" id="sel-city">
-                                        <option value="" disabled selected>All Cultures</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                                <div class="col s12 m4 op">
-                                    <select name="q" id="sel-city">
-                                        <option value="" disabled selected>Select Customer</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -72,56 +59,30 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s3.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
+                    <?php if(!empty($records)){
+                        foreach($records as $row){ ;?>
+                        <a href="<?php echo base_url('real-wedding/detail/'.$row->id.'') ?>" >
+                            <div class="col l4 s12 m4">
+                                <div class="card-wed">
+                                    <div class="img-box">
+                                    <img src="<?php echo base_url().'/'.$row->image;?>" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="wed-detail">
+                                        <p><b><?php echo $row->name;?></b> | <?php echo $row->city;?></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s2.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s2.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s3.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s2.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s3.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
+                        </a>
+                    <?php }}?>
+                </div>
+                <div class="row m0">
+                    <div class="col s12">
+                        <?php echo (!empty($pagelink))?$pagelink: '' ?>
                     </div>
                 </div>
-                <div class="class-pagi">
+
+
+                <!-- <div class="class-pagi">
                     <ul class="pagination">
                         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
                         <li class="active"><a href="#!">1</a></li>
@@ -131,7 +92,7 @@
                         <li class="waves-effect"><a href="#!">5</a></li>
                         <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -167,6 +128,7 @@
                 previsible: false,
                 email: '',
                 emailError: '',
+                
 
             },
             created() {

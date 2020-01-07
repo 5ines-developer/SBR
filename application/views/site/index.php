@@ -382,57 +382,25 @@
             <div class="row">
                 <div class="">
                     <div class="wedding-list">
-                        <div class="wedding-detail">
-                            <a href="">
-                                <img src="<?php echo base_url() ?>assets/img/real-wedding/rw1.jpg"
-                                    class="img-responsive icn-real" width="100%" alt="">
-                                <div class="title-real-wedding">
-                                    <h6 class="white-text">Naveen </h6>
-                                    <p class="m0">Bangalore</p>
-                                </div>
-                            </a>
-                        </div>
+                        <?php
+                        if (!empty($real)) {
+                           foreach ($real as $key => $value) {
+                           $rimg = (!empty($value->image))?$value->image:''; ?>
+                            <div class="wedding-detail">
+                                <a href="<?php echo base_url('real-wedding/detail/').$value->id ?>">
+                                    <img src="<?php echo base_url().$rimg ?>"
+                                        class="img-responsive icn-real" width="100%" alt="">
+                                    <div class="title-real-wedding">
+                                        <h6 class="white-text"><?php echo (!empty($value->name))?$value->name:''; ?> </h6>
+                                        <p class="m0"><?php echo (!empty($value->city))?$value->city:''; ?></p>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php   }
+                        }
+                        ?>
+                        
 
-                        <div class="wedding-detail">
-                            <a href="">
-                                <img src="<?php echo base_url() ?>assets/img/real-wedding/rw2.jpg"
-                                    class="img-responsive icn-real" width="100%" alt="">
-                                <div class="title-real-wedding">
-                                    <h6 class="white-text">Naveen </h6>
-                                    <p class="m0">Bangalore</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="wedding-detail">
-                            <a href="">
-                                <img src="<?php echo base_url() ?>assets/img/real-wedding/rw3.jpg"
-                                    class="img-responsive icn-real" width="100%" alt="">
-                                <div class="title-real-wedding">
-                                    <h6 class="white-text">Naveen </h6>
-                                    <p class="m0">Bangalore</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="wedding-detail">
-                            <a href="">
-                                <img src="<?php echo base_url() ?>assets/img/real-wedding/rw4.jpg"
-                                    class="img-responsiveicn-real" width="100%" alt="">
-                                <div class="title-real-wedding">
-                                    <h6 class="white-text">Naveen </h6>
-                                    <p class="m0">Bangalore</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="wedding-detail">
-                            <a href="">
-                                <img src="<?php echo base_url() ?>assets/img/real-wedding/rw5.jpg"
-                                    class="img-responsiveicn-real" width="100%" alt="">
-                                <div class="title-real-wedding">
-                                    <h6 class="white-text">Naveen </h6>
-                                    <p class="m0">Bangalore</p>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

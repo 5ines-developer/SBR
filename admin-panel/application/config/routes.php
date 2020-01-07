@@ -202,6 +202,13 @@ $route['finance/cleared-proposal']			=	'finance/clearedProposal';
 $route['finance/live-proposal']				=	'finance/liveProposal';
 $route['finance/make-live/(:any)']			=	'finance/makeLive/$1';
 
+//real wedding
+$route['real-wedding']			            =	'weding/index';
+$route['real-wedding/add']			        =	'weding/add';
+$route['real-wedding/view/(:any)']			=	'weding/view/$1';
+$route['real-wedding/edit/(:any)']			=	'weding/editReal/$1';
+
+
 
 
 

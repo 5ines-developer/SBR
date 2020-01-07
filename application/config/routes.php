@@ -160,6 +160,12 @@ $route['vendor/leads/(:any)'] 	            = 'Vendor_detail/leads/$1';
 //freequote
 $route['free-quote'] 	            		= 'home/freeQuote';
 
+//real wedding
+$route['real-wedding']   				= 'real_wedding/real_wedding';
+$route['real-wedding/(:any)']   		= 'real_wedding/real_wedding/$1';
+$route['real-wedding/detail/(:any)']   		    = 'real_wedding/real_wedding_detail/$1';
+
+
 // e-invite
 $route['select-theme']   				    = 'einvite/index';
 $route['bide-groom']   				    	= 'einvite/manage_user';

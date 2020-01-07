@@ -151,8 +151,22 @@ class M_home extends CI_Model
 		}else{
 			return false;
 		}
-		
 	}
+
+     /*
+     *Real wedding-> get profile
+     **/
+    public function realWed($per_page='',$page='')
+    {
+        $this->db->limit(5);
+        $query = $this->db->get('real_wed');
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+
+    }
 }
 
 /* End of file ModelName.php */

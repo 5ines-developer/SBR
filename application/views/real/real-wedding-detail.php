@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>/assets/css/slimselect.min.css">
     <?php $this->load->view('includes/favicon.php');  ?>
+    <style>
+        .img-box{
+            max-height:235px;
+            min-height:235px;
+            width:100%;
+            overflow: hidden;
+        }
+        .wed-detail p{
+            color:black;
+        }
+        .real-weading {
+        padding: 5% 0px;
+        }
+        @media (max-width:991px) and (min-width:768px){
+            .img-box{
+                min-height:144px;
+                width:100%;
+                overflow: hidden;
+            }
+            .card-wed {
+                height: 236px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -21,14 +45,18 @@
             <div class="container-wedding">
                 <div class="row">
                     <div class="col l12 s12">
-                        <div class="">
+                    <div class="banner-up ">
+                        <h5 class="white-text">Real Wedding</h5>
+                        <p class="tc white-text pad0-11">Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of templates.</p>
+                    </div>
+                        <!-- <div class="">
                             <div class="wedding-name">
                                 <h5>Jashan & Karan</h5>
                                 <p>Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of template</p>
                                 <div class="line-weadd"></div>
-                                <p class="location-wedding"><i class="material-icons">location_on</i> Bhubaneswar</p>
+                                
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -52,51 +80,41 @@
                         </div>
                     </div>
         </section>
+
+        <form action="" style="display: none">
+            <input id="gal_id" ref="myTestField" type="text" class="validate in-l"name="gal_id"value="<?php echo $this->uri->segment(3); ?>"> 
+        </form>
+
+         <?php if(!empty($related)){ ?>
         <section class="sec #fafafa grey lighten-5">
             <div class="container-fluide">
                 <div class="row">
                     <div class="col l12 s12 m12">
                         <h5 class="nh-name">Related Weddings</h5>
                     </div>
+                    <?php
+                        foreach($related as $row){
+                        ?>
+                         <a href="<?php echo base_url('real-wedding/detail/'.$row->id.'') ?>" >
+                    <div class="col l4 s12 m4">
+                        <div class="card-wed">
+                        <div class="img-box">
+                            <img src="<?php echo base_url().'/'.$row->image;?>" class="img-responsive" alt="">
+                            </div>
+                            <div class="wed-detail">
+                                <p><b><?php echo $row->name;?></b> | <?php echo $row->city;?></p>
+                            </div>
+                        </div>
+                    </div>
+                        </a>
+                    <?php }?>
 
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s3.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s2.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 s12 m4">
-                        <div class="card-wed">
-                            <img src="assets/img/s2.png" class="img-responsive" alt="">
-                            <div class="wed-detail">
-                                <p><a><b>Naveen & Janu</b></a> | <a>Banglore</a></p>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
-                <div class="class-pagi">
-                    <ul class="pagination">
-                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                        <li class="active"><a href="#!">1</a></li>
-                        <li class="waves-effect"><a href="#!">2</a></li>
-                        <li class="waves-effect"><a href="#!">3</a></li>
-                        <li class="waves-effect"><a href="#!">4</a></li>
-                        <li class="waves-effect"><a href="#!">5</a></li>
-                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                    </ul>
-                </div>
+                
             </div>
         </section>
+    <?php } ?>
         </div>
 
         <?php $this->load->view('includes/footer'); ?>
@@ -113,15 +131,8 @@
                 data: {
                     visible: false,
                     index: 0, // default: 0
-                    imgs: [
-                        'assets/img/vender/wp.jpg',
-                        'assets/img/vender/wp1.jpg',
-                        'assets/img/vender/wp2.jpg',
-                        'assets/img/vender/wp3.jpg',
-                        'assets/img/vender/wp4.jpg',
-                        'assets/img/vender/wp5.jpg',
-                        'assets/img/vender/wp6.jpg',
-                    ]
+                    imgs: [],
+                    gal_id:'',
                 },
                 methods: {
                     // mobile number check on database
@@ -162,7 +173,26 @@
                     },
                     handleHide() {
                         this.visible = false
-                    }
+                    },
+                    getData: function() {
+                        const formData = new FormData();
+                        formData.append('gal_id', this.$refs.myTestField.value);
+                        axios.post('<?php echo base_url() ?>real_wedding/gallery',formData)
+                        .then(response => {
+                            if (response.data != '') {
+                                this.imgs = response.data;
+                            }
+                        })
+                        .catch(error => {
+                            console.log(response);
+
+                        })
+
+                    },
+                    
+                },
+                mounted: function() {
+                    this.getData();
                 }
             })
         </script>

@@ -21,6 +21,7 @@ class Home extends CI_Controller {
         $data['title']      = 'ShaadiBaraati';
         $data['city']       = $this->m_home->getCity();
         $data['category']   = $this->m_home->getCategory();
+        $data['real']       = $this->m_home->realWed();
         $this->m_home->insertVisitor($this->input->ip_address());
 		$this->load->view('site/index', $data, FALSE);
     }
@@ -334,23 +335,14 @@ class Home extends CI_Controller {
         unlink(base_url().'application/cache');
         redirect(base_url().'admin-panel','refresh');
     }
-// 13-12-2019
+    // 13-12-2019
 
-public function e_invite()
-{
-    $data['title']  = 'ShaadiBaraati | E-invite';
-    $this->load->view('site/e-invite',$data);
-}
-public function real_wedding()
-{
-    $data['title']  = 'ShaadiBaraati | Real Wedding';
-    $this->load->view('site/real-wedding',$data);
-}
-public function real_wedding_detail()
-{
-    $data['title']  = 'ShaadiBaraati | Real Wedding Detail';
-    $this->load->view('site/real-wedding-detail',$data);
-}
+    public function e_invite()
+    {
+        $data['title']  = 'ShaadiBaraati | E-invite';
+        $this->load->view('site/e-invite',$data);
+    }
+
 
 
 
