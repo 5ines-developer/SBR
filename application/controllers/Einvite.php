@@ -39,8 +39,13 @@ class Einvite extends CI_Controller {
 
     public function manage_user()
     {
-        $data['title']  = 'ShaadiBaraati | Manage User';
-        $this->load->view('einvite/manage-user',$data);
+        if (!empty(select_theme())) {
+            $data['title']  = 'ShaadiBaraati | Manage User';
+            $this->load->view('einvite/manage-user',$data);
+        }else{
+            $this->session->set_flashdata('error', 'Please Select a theme to proceed the next step.');
+            redirect('select-theme','refresh');
+        }
     }
 
     public function insertBgdetail($value='')
@@ -97,9 +102,14 @@ class Einvite extends CI_Controller {
 
     public function wedding_event()
     {
-        $data['title']  = 'ShaadiBaraati | Wedding Event';
-        $data['result'] = $this->m_invite->getEvents($this->id);
-        $this->load->view('einvite/wedding-event',$data);
+        if (!empty(brdegroom()->groom)) {
+            $data['title']  = 'ShaadiBaraati | Wedding Event';
+            $data['result'] = $this->m_invite->getEvents($this->id);
+            $this->load->view('einvite/wedding-event',$data);
+        }else{
+            $this->session->set_flashdata('error', 'Please Enter groom & bride details to proceed the next step');
+            redirect('bride-groom','refresh');
+        }
     }
 
     public function eventInsert($value='')
@@ -165,16 +175,26 @@ class Einvite extends CI_Controller {
             $this->load->view('einvite/family-member',$data);
 
         }else{
-             $data['result'] = $this->m_invite->getfamily($this->id);
-            $this->load->view('einvite/family-member',$data);
+            if (!empty(wedEvenet())) {
+                $data['result'] = $this->m_invite->getfamily($this->id);
+                $this->load->view('einvite/family-member',$data);
+            }else{
+                $this->session->set_flashdata('error', 'Please Enter events details to proceed the next step');
+                redirect('invite-event','refresh');
+            }
         }
     }
 
 
     public function wedding_photo()
     {
-        $data['title']  = 'ShaadiBaraati | Wedding Photo';
-        $this->load->view('einvite/wedding-photo',$data);
+        if (!empty(wedfam())) {
+            $data['title']  = 'ShaadiBaraati | Wedding Photo';
+            $this->load->view('einvite/wedding-photo',$data);
+        }else{
+            $this->session->set_flashdata('error', 'Please Enter family details to proceed the next step');
+            redirect('family-member','refresh');
+        }
     }
 
     public function gallery($value='')
@@ -272,8 +292,14 @@ class Einvite extends CI_Controller {
 
     public function wedding_information()
     {
-        $data['title']  = 'ShaadiBaraati | Wedding Information';
+        if (!empty(wedfam())) {
+            $data['title']  = 'ShaadiBaraati | Wedding Information';
         $this->load->view('einvite/wedding-information',$data);
+        }else{
+            $this->session->set_flashdata('error', 'Please Add the wedding photos to proceed the next step');
+            redirect('wedding-photo','refresh');
+        }
+        
     }
 
     public function rsvpInsert($value='')
@@ -346,6 +372,51 @@ class Einvite extends CI_Controller {
             $data['result'] = $this->m_invite->getWebsite($this->id);
             $this->load->view('einvite/my-website',$data);
         }
+    }
+
+
+    public function preview($value='')
+    {
+        $data['title'] = 'ShaadiBaraati';
+        $item = $this->input->get('item');
+        switch ($item) {
+            case 'mehindi-1':
+                $view = 'einvite/e-templates/meh1';
+                break;
+            case 'mehindi-2':
+                $view = 'einvite/e-templates/meh2';
+                break;
+            case 'reception-1':
+                $view = 'einvite/e-templates/rec1';
+                break;
+            case 'reception-2':
+                $view = 'einvite/e-templates/rec2';
+                break;
+            case 'engagement-1':
+                $view = 'einvite/e-templates/eng1';
+                break;
+            case 'engagement-2':
+                $view = 'einvite/e-templates/eng2';
+                break;
+            case 'wedding-1':
+                $view = 'einvite/e-templates/wed1';
+                break;
+            case 'wedding-2':
+                $view = 'einvite/e-templates/wed2';
+                break;
+            default:
+                $view = '';
+                break;
+            }
+        $this->load->view($view,$data);
+       
+    }
+
+    public function changeStatus($value='')
+    {
+        $id = $this->input->post('gal_id');
+        $output = $this->db->where('id', $id)->update('einvite',array('status' => '0'));
+        echo $output;
     }
 
 

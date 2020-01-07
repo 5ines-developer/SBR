@@ -54,22 +54,21 @@ $this->load->model('m_account');
                                             <div class="col offset-l2 l10 ">
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': menbord}">
-                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd" :style="{'border': menbord}">
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/mehindhi1.png" class="img-responsive" alt="">
                                                             <p>Mehndi Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a></a><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('mehindi1')"><i class="material-icons">edit</i></a>
+                                                            <a href="<?php echo base_url('e-invite/preview') ?>?item=mehindi-1"><i class="material-icons">remove_red_eye</i></a> <a @click="theme('mehindi1')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': menbord2}">
-                                                            <img src="<?php echo base_url() ?>assets/img/template2.jpg" class="img-responsive" alt="">
-                                                            <p>Mehndi Template 2</p>
+                                                        <div class="template-m img-wedd" :style="{'border': menbord2}">
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/mehindhi2.jpg" class="img-responsive" alt="">
+                                                            <p>Mehendi Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=mehindi-2"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('mehindi2')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
@@ -82,22 +81,22 @@ $this->load->model('m_account');
                                             <div class="col offset-l2 l10 ">
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': engbord}">
-                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd" :style="{'border': engbord}">
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/engagement1.png" class="img-responsive" alt="">
                                                             <p>Engagement Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-1"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('eng1')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': engbord2}" >
-                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd" :style="{'border': engbord2}" >
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/engagement2.png" class="img-responsive" alt="">
                                                             <p>Engagement Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-2"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('eng2')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
@@ -110,22 +109,22 @@ $this->load->model('m_account');
                                             <div class="col offset-l2 l10 ">
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': wedbord}" >
-                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd" :style="{'border': wedbord}" >
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/weddding1.jpg" class="img-responsive" alt="">
                                                             <p>Wedding Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-1"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('wed1')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': wedbord2}" >
-                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd" :style="{'border': wedbord2}" >
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/wedding2.jpg" class="img-responsive" alt="">
                                                             <p>Wedding Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-2"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('wed2')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
@@ -138,22 +137,22 @@ $this->load->model('m_account');
                                             <div class="col offset-l2 l10 ">
                                                 <div class="row">
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m"  :style="{'border': recbord1}" >
-                                                            <img src="<?php echo base_url() ?>assets/img/template2.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd"  :style="{'border': recbord1}" >
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/reception1.jpg" class="img-responsive" alt="">
                                                             <p>Reception Template 1</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=reception-1"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('rec1')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m4 s12">
-                                                        <div class="template-m" :style="{'border': recbord2}">
-                                                            <img src="<?php echo base_url() ?>assets/img/template1.jpg" class="img-responsive" alt="">
+                                                        <div class="template-m img-wedd" :style="{'border': recbord2}">
+                                                            <img src="<?php echo base_url() ?>assets/img/e-invite/reception2.jpg" class="img-responsive" alt="">
                                                             <p>Reception Template 2</p>
                                                         </div>
                                                         <div class="temp-view">
-                                                            <a><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a href="<?php echo base_url('e-invite/preview')?>?item=reception-2"><i class="material-icons">remove_red_eye</i></a> 
                                                             <a @click="theme('rec2')"><i class="material-icons">edit</i></a>
                                                         </div>
                                                     </div>

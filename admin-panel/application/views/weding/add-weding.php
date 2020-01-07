@@ -80,8 +80,7 @@
                                                     <input class="file-path validate" type="text">
                                                 </div>
                                                 <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file
-                                                            (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max
-                                                                file size:</span> 512kb </i> <span
+                                                            (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">upload 400 * 600 ratio for good view</span>  </i> <span
                                                             class="red-text">*</span></small></h6>
                                             </div>
                                         </div>

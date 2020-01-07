@@ -16,8 +16,14 @@ $this->load->model('m_account');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <?php $this->load->view('includes/favicon.php');  ?>
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e149abf7dc3a500126f4d0f&product=inline-share-buttons&cms=sop' async='async'></script>
     <style>
-        .img-wed {height: 140px; margin-bottom: 10px; overflow: hidden; max-height: 140px; } 
+        .st-btn.st-first.st-last {width: 25% !important; } 
+        #st-1 {display: inline-block !important;
+position: relative !important;
+right: 0 !important;
+top: -8px;
+margin-left: 8px; } 
     </style>
 </head>
 
@@ -44,20 +50,19 @@ $this->load->model('m_account');
 
                                     <div class="template-design" id="a4">
                                         <div class="row">
-                                            <div class="col l10 ">
+                                            <div class="col l10 s12 m12 ">
                                                 <div class="row">
                                                     <?php 
                                                     if (!empty($result)) {
                                                         foreach ($result as $key => $value) {
 
-                                                            $groom = (!empty($value->groom))?$value->groom:'#';;
+                                                            $groom = (!empty($value->groom))?$value->groom:'#';
                                                             $bride = (!empty($value->bride))?$value->bride:'#';
-
 
                                                             switch ($value->theme) {
                                                                 case 'mehindi1':
                                                                     $name = 'Mehindi Website';
-                                                                    $theme = 'assets/img/e-invite/mehindhi1.jpg';
+                                                                    $theme = 'assets/img/e-invite/mehindhi1.png';
                                                                     break;
                                                                 case 'mehindi2':
                                                                     $name = 'Mehindi Website';
@@ -73,11 +78,11 @@ $this->load->model('m_account');
                                                                     break;
                                                                 case 'eng1':
                                                                     $name = 'Engagement Website';
-                                                                    $theme = 'assets/img/e-invite/engagement1.jpg';
+                                                                    $theme = 'assets/img/e-invite/engagement1.png';
                                                                     break;
                                                                 case 'eng2':
                                                                     $name = 'Engagement Website';
-                                                                    $theme = 'assets/img/e-invite/engagement2.jpg';
+                                                                    $theme = 'assets/img/e-invite/engagement2.png';
                                                                     break;
                                                                 case 'wed1':
                                                                     $name = 'Wedding Website';
@@ -92,15 +97,21 @@ $this->load->model('m_account');
                                                                     break;
                                                             }
                                                         ?>
-                                                        <div class="col l5 m4 s12">
+
+                                                        <form action="" style="display: none">
+            <input id="gal_id" ref="myTestField" type="text" class="validate in-l"name="gal_id"value="<?php echo $value->id; ?>"> 
+        </form>
+                                                        <div class="col l5 m6 s12">
                                                             <p><?php echo $name ?></p>
-                                                            <div class="template-m img-wed">
+                                                            <div class="template-m img-wedd">
                                                                 <img src="<?php echo base_url().$theme ?>" class="img-responsive" alt="">
                                                             </div>
                                                             <div class="temp-view">
+                                                                <div class="row">
                                                                 <a href="<?php echo base_url().'my-website/'.$groom.'-weds-'.$bride.'?site='.urlencode(base64_encode($value->id)).'' ?>"><i class="material-icons">remove_red_eye</i></a> 
-                                                                <a><i class="material-icons">edit</i></a>
-                                                                <a ><i class="material-icons green">share</i></a>
+                                                                <a @click="themeEdit()"><i class="material-icons">edit</i></a>
+                                                                <div class="sharethis-inline-share-buttons"></div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     <?php    } } ?>
@@ -139,10 +150,27 @@ $this->load->model('m_account');
         var app = new Vue({
             el: '#app',
             data: {
+                gal_id:'',
                 
 
             },
             methods:{
+                themeEdit(){
+
+                    const formData = new FormData();
+                    formData.append('gal_id', this.$refs.myTestField.value);
+                    axios.post('<?php echo base_url() ?>einvite/changeStatus',formData)
+                        .then(response => {
+                            if (response.data != '') {
+                               window.location.href ="<?php echo base_url('bide-groom') ?>"
+                            }
+                        })
+                        .catch(error => {
+                            console.log(response);
+
+                        })
+
+                },
                
             },
             

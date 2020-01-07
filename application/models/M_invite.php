@@ -21,9 +21,14 @@ class M_invite extends CI_Model {
 		return $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('theme');
 	}
 
+	public function brdeGroom($value='')
+	{
+		return $this->db->select('groom,bride')->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row();
+	}
+
 	public function getEvents($user_id='')
 	{
-		$result = $this->db->where('user_id', $user_id)->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('id');
 		$query = $this->db->where('invite_id',$result)->get('einvite_event')->result();
 		return $query;
 	}
@@ -52,7 +57,7 @@ class M_invite extends CI_Model {
 
 	public function getfamily($user_id='')
 	{
-		$result = $this->db->where('user_id', $user_id)->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('id');
 		return $this->db->where('invite_id',$result)->get('e_invite_family')->result();
 	}
 
@@ -89,7 +94,7 @@ class M_invite extends CI_Model {
 
 	public function getGlary($user_id='')
 	{
-		$result = $this->db->where('user_id', $user_id)->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('id');
 		return $this->db->where('invite_id',$result)->get('e_invitegallery')->result();
 	}
 
