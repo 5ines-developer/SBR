@@ -313,6 +313,7 @@ class Einvite extends CI_Controller {
                 'grsvprel'      => $this->input->post('grelation'),
                 'grsvp_phone'   => $this->input->post('gnumber'),
                 'user_id'       => $this->session->userdata('shdid'), 
+                'status'        => '1',
             );
 
             $data['result'] = $this->m_invite->themeinsert($insert);

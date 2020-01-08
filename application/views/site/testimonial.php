@@ -32,7 +32,7 @@
                             <div class="feedback-form z-depth-2">
                                 <h4>Write a Testimonial</h4>
                                 <div class="form-testimonial-list">
-                                    <form action="<?php echo base_url('testimonial-post')?>" method="post">
+                                    <form ref="form" @submit.prevent="checkForms" action="<?php echo base_url('testimonial-post')?>" method="post">
                                         <div class="row">
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
@@ -133,6 +133,17 @@
                                                         <label for="textarea1">Write your feedback here</label>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col l12 m6 s12 rcaptcha-col">
+                                                <div class="d-input">
+                                                    <div class="input-field">
+                                                        <div class="g-recaptcha"
+                                                        data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div> <span
+                                                    class="helper-text red-text">{{ captcha }}</span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="col l12 m6 s12"><br>
                                                 <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
                                         </div>
@@ -216,6 +227,58 @@
             }
         ]
 
+    });
+    </script>
+     <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            ar: '1',
+            email: '',
+            emailError: '',
+            captcha: '',
+
+        },
+
+
+
+        methods: {
+
+            // email check on database
+            emailCheck() {
+                this.emailError = '';
+                const formData = new FormData();
+                formData.append('email', this.email);
+                axios.post('<?php echo base_url() ?>home/emailcheck', formData)
+                    .then(response => {
+                        if (response.data == '1') {
+                            this.emailError = 'You are already subscribed.';
+                        } else {
+                            this.emailError = '';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+            },
+            checkForm() {
+                if (this.emailError == '') {
+
+                    this.$refs.form.submit()
+                }
+            },
+            checkForms(){
+                if (grecaptcha.getResponse() == '') {
+                    this.captcha = 'Captcha is required';
+                } else {
+                    this.$refs.form.submit();
+                }
+            },
+
+
+        },
     });
     </script>
 </body>

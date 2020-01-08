@@ -16,10 +16,10 @@ $this->load->model('m_account');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <?php $this->load->view('includes/favicon.php');  ?>
-    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e149abf7dc3a500126f4d0f&product=inline-share-buttons&cms=sop' async='async'></script>
+   <!--  <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e149abf7dc3a500126f4d0f&product=inline-share-buttons&cms=sop' async='async'></script> -->
     <style>
         .st-btn.st-first.st-last {width: 25% !important; } 
-        #st-1 {display: inline-block !important;
+        .sharethis-inline-share-buttons {display: inline-block !important;
 position: relative !important;
 right: 0 !important;
 top: -8px;
@@ -54,6 +54,7 @@ margin-left: 8px; }
                                                 <div class="row">
                                                     <?php 
                                                     if (!empty($result)) {
+                                                        $theme='';
                                                         foreach ($result as $key => $value) {
 
                                                             $groom = (!empty($value->groom))?$value->groom:'#';
@@ -110,7 +111,7 @@ margin-left: 8px; }
                                                                 <div class="row">
                                                                 <a href="<?php echo base_url().'my-website/'.$groom.'-weds-'.$bride.'?site='.urlencode(base64_encode($value->id)).'' ?>"><i class="material-icons">remove_red_eye</i></a> 
                                                                 <a @click="themeEdit()"><i class="material-icons">edit</i></a>
-                                                                <div class="sharethis-inline-share-buttons"></div>
+                                                                <!-- <div class="sharethis-inline-share-buttons"></div> -->
                                                                 </div>
                                                             </div>
                                                         </div>

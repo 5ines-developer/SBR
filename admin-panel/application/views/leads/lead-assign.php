@@ -123,9 +123,9 @@
                                                 </div>  
                                               </div><br>
                                             
-                                            <div class="row m0">
+                                            <div class="row m0 z-depth-1">
                                             <p class="vend-p">Vendors</p>
-                                              <div class="input-field col s12 l12">
+                                              <div class="input-field col s12 l12 ">
                                               <div class="vendor-col">
                                               </div>
                                               </div>

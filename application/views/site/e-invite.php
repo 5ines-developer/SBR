@@ -36,7 +36,7 @@
                                 <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
                                     nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
                                     felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi</p>
-                                <center><button type="submit" class="waves-effect waves-light btn red plr30 accent-4 white-text">Sign In</button></center>
+                                <center><a href="<?php echo base_url('login') ?>" class="waves-effect waves-light btn red plr30 accent-4 white-text">Sign In</a></center>
                             </div>
                             <div class="e-invite-detail">
                                 <h3 class="black-text">Working Process</h3>

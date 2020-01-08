@@ -17,7 +17,7 @@ class M_vendors extends CI_Model {
 			$this->db->where('ven.package !=', $null);
 		}
 
-		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package');
+		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package,ven.upgrad');
 		$this->db->order_by('ven.id', 'desc');
 		$this->db->from('vendor ven');
 		$this->db->join('city cty', 'cty.id = ven.city', 'left');

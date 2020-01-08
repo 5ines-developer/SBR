@@ -32,7 +32,7 @@
                             <div class="feedback-form z-depth-2">
                                 <h4>Give Us Your Feedback</h4>
                                 <div class="form-feed-list">
-                                    <form action="<?php echo base_url('feedback-post') ?>" method="post">
+                                    <form ref="form" @submit.prevent="checkForms" action="<?php echo base_url('feedback-post') ?>" method="post">
                                         <div class="row">
                                         <div class="col l12 m12 s12">
                                                 <div class="feedback-input padd10">
@@ -76,10 +76,22 @@
                                             <div class="col l12 m12 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <textarea id="textarea1" name="feedback" requred class="materialize-textarea hh-height" ></textarea>
+                                                        <textarea id="textarea1" name="feedback" requred class="materialize-textarea" ></textarea>
                                                         <label for="textarea1">Write your feedback here</label>
                                                     </div>
                                                 </div>
+                                            </div>
+
+                                                <div class="col l12 m6 s12 rcaptcha-col">
+                                                <div class="d-input">
+                                                    <div class="input-field">
+                                                        <div class="g-recaptcha"
+                                                            data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div> <span
+                                                            class="helper-text red-text">{{ captcha }}</span>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col l12 m12 s12"><br>
                                                 <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
                                         </div>
@@ -94,6 +106,7 @@
             <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -120,6 +133,7 @@
             ar: '1',
             email: '',
             emailError: '',
+            captcha: '',
            
         },
 
@@ -151,6 +165,13 @@
 
                     this.$refs.form.submit()
                 } 
+            },
+            checkForms(){
+                if (grecaptcha.getResponse() == '') {
+                    this.captcha = 'Captcha is required';
+                } else {
+                    this.$refs.form.submit();
+                }
             },
             
             // rating

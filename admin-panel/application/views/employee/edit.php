@@ -45,7 +45,7 @@
                   <?php
                   if ($result->is_active == '2') { ?>
                   <a href="" class="waves-effect waves-light btn green hoverable white-text darken-4 plr40" id="unblock">Unblock</a>
-                  <?php }elseif ($result->is_active == '1') { ?>
+                  <?php }elseif ($result->is_active == '1' || $result->is_active == '0' ) { ?>
                   <a href="" class="waves-effect waves-light btn red hoverable white-text darken-4 plr40" id="block">Block</a>
                   <?php } ?>
                   
@@ -157,7 +157,38 @@
                           <label for="target">Target</label>
                         </div>
                       </div>
+                      
+
+                      <div class="clearfix"></div>
+
+
                       <div class="row m0">
+                        <div class="ml-15">
+                          <p>Access Permission</p>
+                          <div class="input-field col s12 l12">
+                            <?php
+                            $admenu = explode (",", $result->menu);
+                            
+                            if (!empty($menues)) {
+                            foreach ($menues as $mens => $men) {
+                            
+                            ?>
+                            <div class="col l4">
+                              <p>
+                                <label>
+                                  
+                                  <input type="checkbox" name="menu[]" class="filled-in" value="<?php echo $men->id ?>" <?php for ($i=0; $i < count($admenu); $i++) { if($admenu[$i] == $men->id){ echo 'Checked'; } } ?> >
+                                  <span><?php echo $men->title ?></span>
+                                </label>
+                              </p>
+                            </div>
+                            <?php } } ?>
+                          </div>
+                        </div>
+                        
+                      </div>
+
+                      <div class="row z-depth-1 m0">
                         <div class="input-field col s12 l10">
                           <table>
                             <thead>
@@ -225,36 +256,7 @@
                               </tbody>
                           </table>
                         </div>
-                      </div>
-
-                      <div class="clearfix"></div>
-
-
-                      <div class="row m0">
-                        <div class="ml-15">
-                          <p>Access Permission</p>
-                          <div class="input-field col s12 l12">
-                            <?php
-                            $admenu = explode (",", $result->menu);
-                            
-                            if (!empty($menues)) {
-                            foreach ($menues as $mens => $men) {
-                            
-                            ?>
-                            <div class="col l4">
-                              <p>
-                                <label>
-                                  
-                                  <input type="checkbox" name="menu[]" class="filled-in" value="<?php echo $men->id ?>" <?php for ($i=0; $i < count($admenu); $i++) { if($admenu[$i] == $men->id){ echo 'Checked'; } } ?> >
-                                  <span><?php echo $men->title ?></span>
-                                </label>
-                              </p>
-                            </div>
-                            <?php } } ?>
-                          </div>
-                        </div>
-                        
-                      </div>
+                      </div><br>
                       
                       
                       <div class="col s12">

@@ -77,6 +77,7 @@
                                           <th id="c" class="h5-para-p2" width="120px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
                                           <th id="c" class="h5-para-p2" width="120px">Package</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Proposal</th>
                                           <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
                                           <th id="f" class="h5-para-p2" width="100px">Status</th>
                                           <th id="f" class="h5-para-p2" width="100px">Upgrade</th>
@@ -87,10 +88,8 @@
 
                                     <?php
 
-                                    if (!empty($result)) { 
-
+                                    if (!empty($result)) {
                                       foreach ($result as $key => $value) {
-
                                       ?>
 
                                       <tr>
@@ -100,6 +99,17 @@
                                             <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
                                             <td ><?php echo (!empty($value->title))?$value->title:'Free Listing'  ?></td>
+
+                                            <td ><?php
+                                            if (!empty($value->upgrad)) { ?>
+                                             <a href="<?php echo base_url('vendors/view-proposal/').$value->upgrad ?>" class="btn red darken-1 hoverable"><i class="far fa-file"></i></a>
+                                            <?php }else{
+                                              echo '---';
+                                            } ?>
+                                            </td>
+
+
+
                                             <td><?php echo (!empty($value->regdate))?date("M d, Y ", strtotime($value->regdate)):'---'; ?></td>
 
                                             <td class="status"> 

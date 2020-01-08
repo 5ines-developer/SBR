@@ -335,8 +335,8 @@ class Home extends CI_Controller {
         unlink(base_url().'application/cache');
         redirect(base_url().'admin-panel','refresh');
     }
-    // 13-12-2019
 
+    // e invite static page
     public function e_invite()
     {
         $data['title']  = 'ShaadiBaraati | E-invite';

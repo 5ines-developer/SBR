@@ -32,7 +32,7 @@
                         <div class="feedback-form z-depth-2">
                             <h4>Get a Free Quote</h4>
                             <div class="form-feed-list">
-                                <form action="<?php echo base_url('home/getquote') ?>" method="post">
+                                <form ref="form" @submit.prevent="checkForms" action="<?php echo base_url('home/getquote') ?>" method="post">
                                     <div class="row">
                                         <div class="input-field col s6">
                                             <input id="qfname" type="text" name="qfname" class="validate" required>
@@ -95,6 +95,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col l12 m6 s12 rcaptcha-col">
+                                            <div class="d-input">
+                                                <div class="input-field">
+                                                    <div class="g-recaptcha"
+                                                    data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div> <span
+                                                class="helper-text red-text">{{ captcha }}</span>
+                                            </div>
+                                        </div>
+                                        </div>
                                         <div class="col l4 m4 s4">
                                             <button type="submit" class="btn-find-get">Submit</button>
                                         </div>                                        
@@ -110,13 +119,14 @@
         <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
 
     <script>
-    < ? php $this - > load - > view('includes/message'); ? >
+    <?php $this->load->view('includes/message'); ?>
     </script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -131,6 +141,7 @@
             ar: '1',
             email: '',
             emailError: '',
+            captcha: '',
 
         },
 
@@ -161,6 +172,13 @@
                 if (this.emailError == '') {
 
                     this.$refs.form.submit()
+                }
+            },
+            checkForms(){
+                if (grecaptcha.getResponse() == '') {
+                    this.captcha = 'Captcha is required';
+                } else {
+                    this.$refs.form.submit();
                 }
             },
 

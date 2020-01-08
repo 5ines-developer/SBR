@@ -179,6 +179,8 @@ class Adminusers extends CI_Controller {
             $manager    =   $this->input->post('manager');
             $menu       =   $this->input->post('menu');
             $discount   =   $this->input->post('discount');
+            $month      =   $this->input->post('month');
+            $target     =   $this->input->post('target');
             
 
             $mens='';
@@ -196,11 +198,19 @@ class Adminusers extends CI_Controller {
                 'discount'      =>  $discount,
                 'menu'          =>  substr($mens,0,-1) ,
             );
-
-            
-           
-            
             $result = $this->m_adminusers->update($update,$id);
+
+            $targt = array(
+                'emp_id'    => $id, 
+                'added_by'  => $this->aid, 
+                'month'     => $month, 
+                'year'      => date('Y'), 
+                'target'    => $target,
+                'status'    => '1',
+            );
+
+           $this->m_adminusers->empTarget($targt);
+
             if(!empty($result)){
                 $this->session->set_flashdata('success', 'Employee Updated Successfully');
                 redirect('employees/edit/'.$id);
