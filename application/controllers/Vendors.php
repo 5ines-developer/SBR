@@ -207,9 +207,6 @@ class Vendors extends CI_Controller {
         $location   =   $this->input->post('location');
         $budget     =   $this->input->post('budget');
 
-
-
-
         $vendors = $this->m_vendors->getVendors($vendor_id);
 
         foreach ($vendors as $key => $value) { }
