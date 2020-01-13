@@ -80,6 +80,8 @@ class Search extends CI_Controller {
 
 			// $data['city']       = $this->m_home->getCity();
 			// $data['category']   = $this->m_home->getCategory();
+
+			$data['banner'] = $this->m_search->bannerGet();
 		
 			$this->load->view('vendors/result', $data, FALSE);
 		}

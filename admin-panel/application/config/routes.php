@@ -208,6 +208,14 @@ $route['real-wedding/add']			        =	'weding/add';
 $route['real-wedding/view/(:any)']			=	'weding/view/$1';
 $route['real-wedding/edit/(:any)']			=	'weding/editReal/$1';
 
+//category banner
+$route['category-banner/manage']			=	'category_banner/index'; //manage category
+$route['category-banner/add']			    =	'category_banner/add'; //add category
+$route['category-banner/insert']			=	'category_banner/insert'; 
+$route['category-banner/edit/(:any)']		=	'category_banner/edit/$1'; 
+$route['category-banner/view/(:any)']		=	'category_banner/view/$1';
+$route['category-banner/update/(:any)']		=	'category_banner/update/$1'; 
+
 
 
 

@@ -340,28 +340,28 @@ class Einvite extends CI_Controller {
 
          switch ($output->theme) {
             case 'mehindi1':
-                $view = 'einvite/mehindhi1';
+                $view = 'einvite/template/mehendi1';
                 break;
             case 'mehindi2':
-                $view = 'einvite/mehindhi2';
+                $view = 'einvite/template/mehendi2';
                 break;
             case 'rec1':
-                $view = 'einvite/reception1';
+                $view = 'einvite/template/reception1';
                 break;
             case 'rec2':
-                $view = 'einvite/reception2';
+                $view = 'einvite/template/reception2';
                 break;
             case 'eng1':
-                $view = 'einvite/engagement1';
+                $view = 'einvite/template/engagement1';
                 break;
             case 'eng2':
-                $view = 'einvite/engagement2';
+                $view = 'einvite/template/engagement2';
                 break;
             case 'wed1':
-                $view = 'einvite/wedding1';
+                $view = 'einvite/template/wedding1';
                 break;
             case 'wed2':
-                $view = 'einvite/wedding2';
+                $view = 'einvite/template/wedding2';
                 break;
             default:
                 $view = '';
@@ -382,28 +382,28 @@ class Einvite extends CI_Controller {
         $item = $this->input->get('item');
         switch ($item) {
             case 'mehindi-1':
-                $view = 'einvite/e-templates/meh1';
+                $view = 'einvite/preview/meh1';
                 break;
             case 'mehindi-2':
-                $view = 'einvite/e-templates/meh2';
+                $view = 'einvite/preview/meh2';
                 break;
             case 'reception-1':
-                $view = 'einvite/e-templates/rec1';
+                $view = 'einvite/preview/rec1';
                 break;
             case 'reception-2':
-                $view = 'einvite/e-templates/rec2';
+                $view = 'einvite/preview/rec2';
                 break;
             case 'engagement-1':
-                $view = 'einvite/e-templates/eng1';
+                $view = 'einvite/preview/eng1';
                 break;
             case 'engagement-2':
-                $view = 'einvite/e-templates/eng2';
+                $view = 'einvite/preview/eng2';
                 break;
             case 'wedding-1':
-                $view = 'einvite/e-templates/wed1';
+                $view = 'einvite/preview/wed1';
                 break;
             case 'wedding-2':
-                $view = 'einvite/e-templates/wed2';
+                $view = 'einvite/preview/wed2';
                 break;
             default:
                 $view = '';

@@ -23,7 +23,39 @@ $this->load->model('m_vendors');
     .preloader{
         display:none;
     }
+    .main{
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    background: rgba(0, 0, 0, 0);
+    z-index: 2;
+}
+.banner-slider {
+    max-height: 264px;
+    min-height: 264px;
+    overflow: hidden;
+}
 
+@media (max-width:991px){
+    .banner-slider {
+    max-height: 264px;
+}
+.slick-slide img {
+    width: auto;
+}
+}
+@media (max-width:600px){
+    .main {
+    top: 0px;
+}
+.banner-slider {
+    max-height: 285px;
+    overflow: hidden;
+}
+.slick-slide img {
+    width: auto;
+}
+}
     </style>
 </head>
 
@@ -34,7 +66,7 @@ $this->load->model('m_vendors');
         <!-- end header -->
         <div id="app">
         <!-- body  -->
-        <section class="result-head" style="background-image:url(<?php echo $this->m_vendors->bannimage(ucwords(str_replace("-"," ",$this->uri->segment(3)))); ?>)">
+        <!-- <section class="result-head" style="background-image:url(<?php echo $this->m_vendors->bannimage(ucwords(str_replace("-"," ",$this->uri->segment(3)))); ?>)">
             <div class="center-align container" >
                 <div class="row m0">
                         <div id="searchble-container" class="row m0">
@@ -123,7 +155,126 @@ $this->load->model('m_vendors');
                         </div>
                 </div>
             </div>
-        </section>
+        </section> -->
+
+        <section class="pb-0" style="position:relative;"> 
+            <div class="banner-slider">
+            <?php if(!empty($banner)){ 
+                foreach($banner as $ban => $bans){
+                if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",strtolower($bans->category)) == $this->uri->segment(3))  ){
+                    $back ='1';
+                ?>
+                <div>
+                    <img src="<?php echo base_url($bans->image) ?>" alt="" width="100%">
+                </div>
+            <?php }}}?>  
+            </div>   
+            
+            <?php
+                   
+            ?>
+
+
+            <div class="result-head main" style="background-image:url(<?php
+            if(empty($back)){
+                echo $this->m_vendors->bannimage(ucwords(str_replace("-"," ",$this->uri->segment(3))));
+            }
+
+
+             ?>);">
+            <div class="center-align container" >
+                <div class="row m0">
+                        <div id="searchble-container" class="row m0">
+                            <h4 class="white-text">India's Most Trusted Online Wedding Market</h4>
+                            <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
+
+                                <div class="col s12 m10 push-m1 l8 push-l2 mb10">
+                                    <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor"
+                                        v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+
+                                    <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
+                                    <div class="preloader" :class="{'previsible': previsible }">
+                                        <div class="preloader-wrapper big active" id="prelod">
+                                            <div class="spinner-layer spinner-blue">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spinner-layer spinner-red">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spinner-layer spinner-yellow">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="spinner-layer spinner-green">
+                                                <div class="circle-clipper left">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="gap-patch">
+                                                    <div class="circle"></div>
+                                                </div>
+                                                <div class="circle-clipper right">
+                                                    <div class="circle"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m8 push-m2 l8 push-l2" class="serch-select">
+                                    <div class="col s12 m6 ">
+                                        <select name="ct" class="select-search" id="sel-cato">
+                                            <option value="">All Categories</option>
+                                            <?php
+                                            if (!empty(vendor_category())) {
+                                                        foreach (vendor_category() as $categorys => $categories) { ?>
+                                            <option <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?> value="<?php echo $categories->category ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
+                                            <?php   } } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col s12 m6">
+                                        <select name="q" id="sel-city">
+                                            <option value="">All Cities</option>
+                                            <?php if (!empty(cities())) {foreach (cities() as $citys => $cities) { ?>
+                                            <option <?php echo (strtolower(str_replace("-"," ",$this->uri->segment(2))) == strtolower($cities->city))?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
+                                            <?php   } } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
 
 
 
@@ -458,6 +609,7 @@ $this->load->model('m_vendors');
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
 
     <script>
         
@@ -596,6 +748,21 @@ $this->load->model('m_vendors');
         })
 
     });
+    </script>
+     <script>
+     // banner slider
+     $('.banner-slider').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll:1,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed:2000,
+            arrows: false,
+            dots: false,
+            
+            
+        });
     </script>
 </body>
 

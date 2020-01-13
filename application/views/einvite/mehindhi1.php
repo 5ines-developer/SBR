@@ -126,9 +126,7 @@
                             <div class="pita pita-primary">
                                 The Bride's Side
                             </div>
-                            <?php
-
-                            if (!empty($result->family)) {
+                            <?php if (!empty($result->family)) {
                                 foreach ($result->family as $key => $value) { 
                                     if ($value->family == 'groom') {
                                     ?>
@@ -160,8 +158,7 @@
 
                             <?php if (!empty($result->family)) {
                                 foreach ($result->family as $key => $value) {
-                                if ($value->family == 'bride') {
-                                    ?>
+                                if ($value->family == 'bride') { ?>
 
                                    <div class="box-people">
                                         <div class="row">
@@ -203,8 +200,8 @@
                     </div>
                     <div class="gallery-img">
                         <div class="row">
-                            <?php if (!empty($result->family)) {
-                                foreach ($result->family as $key => $value) { ?>
+                            <?php if (!empty($result->gallery)) {
+                                foreach ($result->gallery as $key => $value) { ?>
                                 <div class="col-md-3 col-sm-6 mb-3">
                                     <a href="<?php echo base_url().$value->image ?>" class="icon example-image-link"
                                         data-lightbox="example-set">

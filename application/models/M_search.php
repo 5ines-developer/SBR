@@ -213,6 +213,17 @@ class M_search extends CI_Model {
        return $this->db->where('id', $id)->get('package')->row('title');
     }
 
+        //get banner
+    public function bannerGet($var = null)
+    {
+        $this->db->select('cb.id, cb.city_id, cb.category_id,  cb.image, cty.city, cb.city_id, cb.uniq, cb.category_id, cat.category');
+        $this->db->limit(10);
+        $this->db->from('category_banner cb');        
+        $this->db->join('category cat', 'cat.id = cb.category_id', 'left');
+        $this->db->join('city cty', 'cty.id = cb.city_id', 'left');
+        return $this->db->order_by('cb.id', 'desc')->get()->result();    
+    }
+
 }
 
 /* End of file M_search.php */
