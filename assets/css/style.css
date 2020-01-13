@@ -1409,7 +1409,7 @@ ul.detail li span {
     background: rgba(0, 0, 0, 0.6);
     background-size: cover;
     background-blend-mode: color;
-    padding: 40px 0;
+    padding: 55px 0px;
 }
 
 #search-vend {
@@ -5675,10 +5675,36 @@ html {
     position: relative;
 }
 
+
+/* 13-search bar wrror Rishabh */
+
+.search-for {
+    background: #d9d9d9;
+    padding: 1% 0px;
+}
+
+.result-heads {
+    position: relative;
+}
+
+.search-in {
+    position: absolute;
+    top: 30%;
+    left: 33%;
+}
+
+#search-vend {
+    margin-bottom: 10px;
+}
+
 @media(max-width:767px) {
     .temp-view {
         text-align: center;
         margin-bottom: 15px;
+    }
+    .search-for {
+        background: #d9d9d9;
+        padding: 5% 0px;
     }
     .dash-template h3 {
         font-size: 12px;
@@ -5713,4 +5739,9 @@ html {
     }
 }
 
-.img-wedd {height: 140px; margin-bottom: 10px; overflow: hidden; max-height: 140px; } 
+.img-wedd {
+    height: 140px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    max-height: 140px;
+}

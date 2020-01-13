@@ -37,91 +37,94 @@ $this->load->model('m_vendors');
                 <div class="row m0">
                     <div id="searchble-container" class="row m0">
                         <h4 class="white-text">India's Most Trusted Online Wedding Market</h4>
-                        <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="search-for">
+            <div class="container-fluide">
+                <div class="row m0">
+                    <div class="col l12 s12 m12">
+                        <div class="vendor-search">
+                            <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
+                                <div class="row m0">
+                                    <div class="col s12 m10 l6 ">
+                                        <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+                                        <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
+                                        <div class="preloader" :class="{'previsible': previsible }">
+                                            <div class="preloader-wrapper big active" id="prelod">
+                                                <div class="spinner-layer spinner-blue">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="spinner-layer spinner-red">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="spinner-layer spinner-yellow">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                </div>
 
-                            <div class="col s12 m10 push-m1 l8 push-l2 mb10">
-                                <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
-
-                                <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
-                                <div class="preloader" :class="{'previsible': previsible }">
-                                    <div class="preloader-wrapper big active" id="prelod">
-                                        <div class="spinner-layer spinner-blue">
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="spinner-layer spinner-red">
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="spinner-layer spinner-yellow">
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="spinner-layer spinner-green">
-                                            <div class="circle-clipper left">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="gap-patch">
-                                                <div class="circle"></div>
-                                            </div>
-                                            <div class="circle-clipper right">
-                                                <div class="circle"></div>
+                                                <div class="spinner-layer spinner-green">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m8 push-m2 l8 push-l2" class="serch-select">
-                                <div class="col s12 m6 ">
-                                    <select name="ct" class="select-search" id="sel-cato">
+                                    <div class="col l3 s12 m3">
+                                        <select name="ct" class="select-search" id="sel-cato">
                                             <option value="">All Categories</option>
                                             <?php if (!empty(vendor_category())) {
                                                         foreach (vendor_category() as $categorys => $categories) { ?>
                                             <option <?php echo (ucwords(str_replace("-"," ",$this->uri->segment(3))) == $categories->category)?'selected':''; ?> value="<?php echo $categories->category ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                             <?php   } } ?>
                                         </select>
-                                </div>
-                                <div class="col s12 m6">
-                                    <select name="q" id="sel-city">
+                                    </div>
+                                    <div class="col l3 s12 m3">
+                                        <select name="q" id="sel-city">
                                             <option value="">All Cities</option>
                                             <?php if (!empty(cities())) {foreach (cities() as $citys => $cities) { ?>
                                             <option <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                             <?php   } } ?>
                                         </select>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
         <?php if (empty($vendors)) { ?>
         <section class="no-result">
 
