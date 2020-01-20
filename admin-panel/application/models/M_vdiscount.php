@@ -18,7 +18,7 @@ class M_vdiscount extends CI_Model {
         	}
         }
 
-        $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
+        // $this->db->where('rp.added_by', $this->session->userdata('sha_id'));
         return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')

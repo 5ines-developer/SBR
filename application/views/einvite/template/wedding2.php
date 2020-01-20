@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/lightbox.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/shaadi2.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/lightbox.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/slick.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>assets1/css/style.css">
 
     <style>
     .slick-dots {
@@ -38,8 +38,8 @@
         <!-- home banner stAart -->
         <div class="home-banner">
             <div class="banner-title text-center">
-                <h2 class="wow ">Hussain <br><span>&amp;</span> jasmin</h2>
-                <span class="date ">12.12.2018</span>
+                <h2 class="wow "><?php echo (!empty($result->groom))?$result->groom:''; ?> <br><span>&amp;</span> <?php echo (!empty($result->bride))?$result->bride:''; ?></h2>
+                <span class="date "><?php echo (!empty($result->fndate))?date('d M, Y',strtotime($result->fndate)):''; ?></span>
                 <p>Save The Date</p>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <nav class="navbar custom-navbar navbar-expand-md bg-white" id="navbar">
                 <div class="container">
                     <a class="navbar-brand" href="#">
-                        <img src="assets/img/logo.png" alt="">
+                        <img src="<?php echo base_url()?>assets1/img/logo.png" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
                         aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,11 +100,11 @@
                     <div class="col-lg-3 col-md-4 col-sm-12 col-12">
                         <div class="about-list about-list-b">
                             <div class="imgs">
-                                <figure><img src="assets/img/about/1.jpg" alt="" class="img-fluid"></figure>
+                                <figure><img src="<?php echo base_url().$result->bimage ?>" alt="" class="img-fluid"></figure>
                             </div>
                             <div class="content text-center">
-                                <h2>Jasmine</h2>
-                                <p class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus accusamus perspiciatis praesentium tempora, obcaecati assumenda sed aut deserunt omnis? Recusandae accusantium enim amet? Laboriosam animi nobis natus unde officia minima?</p>
+                                <h2><?php echo (!empty($result->bride))?$result->bride:''; ?></h2>
+                                <p class="text-justify"><?php echo (!empty($result->bdetail))?$result->bdetail:''; ?></p>
                                 
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                             <div class="content text-center">
                                 <h2 class="wow">Invitation</h2>
                                 <p class="wow ">We inviting you and <br>your family on</p>
-                                <strong class="wow ">Saturday<br>20 May 2018</strong>
+                                <strong class="wow "><?php echo (!empty($value->date))?date('d M, Y',strtotime($value->date)):''; ?></strong>
                                 <span class="wow ">At St. Thomas's Church,<br>London, U.K.</span>
                             </div>
                             <div class="btn-rspd mr-t30 text-center">
@@ -125,11 +125,11 @@
                     <div class="col-lg-3 col-md-4 col-sm-12 col-12">
                         <div class="about-list about-list-g">
                             <div class="imgs">
-                                <figure><img src="assets/img/about/2.jpg" alt="" class="img-fluid"></figure>
+                                <figure><img src="<?php echo base_url().$result->gimage ?>" alt="" class="img-fluid"></figure>
                             </div>
                             <div class="content  text-center">
-                                <h2>Hussain</h2>
-                                <p class="text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus accusamus perspiciatis praesentium tempora, obcaecati assumenda sed aut deserunt omnis? Recusandae accusantium enim amet? Laboriosam animi nobis natus unde officia minima?</p>
+                                <h2><?php echo (!empty($result->groom))?$result->groom:''; ?></h2>
+                                <p class="text-justify"><?php echo (!empty($result->gdetail))?$result->gdetail:''; ?></p>
                             </div>
                         </div>
                     </div>
@@ -139,15 +139,13 @@
     </section>
    
     
-    <section class="family-section" id="family">
+    <section class="family-section" id="family"><br>
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-2"></div>
                 <div class="col-md-8 col-lg-8">
                     <div class="family text-center">
                         <h2>Groomsmen & Bridesmaid</h2>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s,</p>
                         <div class="tab">
                             <a href="javascript:void(0)" class="f-tab active" datavalue="groom">GROOM</a>
                             <a href="javascript:void(0)" class="f-tab " datavalue="bride">BRIDE</a>
@@ -160,55 +158,21 @@
             <div class=" bride hide">
                 <div class="four-times slider" data-sizes="">
                     <div class="row">
+                    <?php if (!empty($result->family)) {
+                    foreach ($result->family as $key => $value) {
+                    if ($value->family == 'bride') { ?>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="f-img-cont">
                                 <div class="f-img">
-                                    <img src="assets/img/family/1.jpg" alt="" class="img-fluid">
+                                    <img src="<?php echo base_url().$value->image ?>" alt="" class="img-fluid">
                                 </div>
                                 <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
+                                    <h2><?php echo (!empty($value->name))?$value->name:''; ?></h2>
+                                    <p><?php echo (!empty($value->realtion))?$value->realtion:''; ?></p>
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="f-img-cont">
-                                <div class="f-img">
-                                    <img src="assets/img/family/2.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="f-img-cont">
-                                <div class="f-img">
-                                    <img src="assets/img/family/3.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="f-img-cont">
-                                <div class="f-img">
-                                    <img src="assets/img/family/4.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
-                                </div>
-                            </div>
-                        </div>
-
+                    <?php    }} } ?>
                     </div>
                 </div>
             </div>
@@ -216,50 +180,23 @@
             <div class="groom hide">
                 <div class="four-times slider" data-sizes="">
                     <div class="row">
+                    <?php if (!empty($result->family)) {
+                    foreach ($result->family as $key => $value) {
+                    if ($value->family == 'groom') { ?>
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="f-img-cont">
                                 <div class="f-img">
-                                    <img src="assets/img/family/1.jpg" alt="" class="img-fluid">
+                                    <img src="<?php echo base_url().$value->image ?>" alt="" class="img-fluid">
                                 </div>
                                 <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
+                                    <h2><?php echo (!empty($value->name))?$value->name:''; ?></h2>
+                                    <p><?php echo (!empty($value->realtion))?$value->realtion:''; ?></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="f-img-cont">
-                                <div class="f-img">
-                                    <img src="assets/img/family/1.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="f-img-cont">
-                                <div class="f-img">
-                                    <img src="assets/img/family/1.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <div class="f-img-cont">
-                                <div class="f-img">
-                                    <img src="assets/img/family/1.jpg" alt="" class="img-fluid">
-                                </div>
-                                <div class="f-details text-center">
-                                    <h2>Mr.Clark Wills</h2>
-                                    <p>Mark's Father</p>
-                                </div>
-                            </div>
-                        </div>
+                    <?php } } } ?>
+                        
+                        
                     </div>
 
                 </div>
@@ -278,31 +215,18 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 col-sm-12 col-lg-4">
+                    <?php if (!empty($result->event)) {
+                    foreach ($result->event as $key => $value) { ?>
+                        <div class="col-md-4 col-sm-12 col-lg-4" style="margin: auto;">
                         <div class="event-infobox">
-                            <h2>Main Ceremony</h2>
-                            <h1>7:30 pm</h1>
-                            <span>St. Thomas's<br>Church, London, U.K.</span>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
-                                auctor vel velit auctor aliquet. Aenean sollicitudin, lorem quis </p>
+                            <h2><?php echo (!empty($value->name))?$value->name:''; ?></h2>
+                            <h1><?php echo (!empty($value->date))?date('d M, Y',strtotime($value->date)):''; ?> <?php echo (!empty($value->time))?$value->time:''; ?></h1>
+                            <span><?php echo (!empty($value->address))?$value->address:''; ?></span>
+                            <p><?php echo (!empty($value->desc))?$value->desc:''; ?> </p>
                             
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-12  col-lg-4">
-                        <div class="event-img text-center">
-                            <figure><img src="assets/img/about/3.jpg" alt=""></figure>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12  col-lg-4">
-                        <div class="event-infobox">
-                            <h2>Wedding Party</h2>
-                            <h1>7:30 pm</h1>
-                            <span>St. Thomas's<br>Church, London, U.K.</span>
-                            <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
-                                auctor vel velit auctor aliquet. Aenean sollicitudin, lorem quis </p>
-                           
-                        </div>
-                    </div>
+                    <?php }} ?>
                 </div>
             </div>
         </div>
@@ -313,7 +237,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="section-heading">
-                            <p>HUSSAIN & JASMIN</p>
+                            <p><?php echo (!empty($result->groom))?$result->groom:''; ?> & <?php echo (!empty($result->bride))?$result->bride:''; ?></p>
                             <h2>MEMORABLE PHOTO GALLERY</h2>
                         </div>
                     </div>
@@ -322,42 +246,15 @@
                     <div class="col-md-12 col-sm-12 pd-0">
                         <div class="gallery-slider slick-slider">
                             <div class="row">
+                                <?php if (!empty($result->gallery)) {
+                                foreach ($result->gallery as $key => $value) { ?>
                                 <div class="col-md-4 col-sm-6 pad">
-                                    <a class="example-image-link" href="assets/img/gallery/1.jpg"
+                                    <a class="example-image-link" href="<?php echo base_url().$value->image ?>"
                                         data-lightbox="example-set">
-                                        <img src="assets/img/gallery/1.jpg" alt="" class="img-fluid">
+                                        <img src="<?php echo base_url().$value->image ?>" alt="" class="img-fluid">
                                     </a>
                                 </div>
-                                <div class="col-md-4 col-sm-6 pad">
-                                    <a class="example-image-link" href="assets/img/gallery/2.jpg"
-                                        data-lightbox="example-set">
-                                        <img src="assets/img/gallery/2.jpg" alt="" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-4 col-sm-6 pad">
-                                    <a class="example-image-link" href="assets/img/gallery/3.jpg"
-                                        data-lightbox="example-set">
-                                        <img src="assets/img/gallery/3.jpg" alt="" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-4 col-sm-6 pad">
-                                    <a class="example-image-link" href="assets/img/gallery/6.jpg"
-                                        data-lightbox="example-set">
-                                        <img src="assets/img/gallery/6.jpg" alt="" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-4 col-sm-6 pad">
-                                    <a class="example-image-link" href="assets/img/gallery/7.jpg"
-                                        data-lightbox="example-set">
-                                        <img src="assets/img/gallery/7.jpg" alt="" class="img-fluid">
-                                    </a>
-                                </div>
-                                <div class="col-md-4 col-sm-6 pad">
-                                    <a class="example-image-link" href="assets/img/gallery/8.jpg"
-                                        data-lightbox="example-set">
-                                        <img src="assets/img/gallery/8.jpg" alt="" class="img-fluid">
-                                    </a>
-                                </div>
+                                <?php }} ?>
                             </div>
                         </div>
                     </div>
@@ -374,14 +271,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="dd">
-                        <h4>Groom : <span>Hussain</span></h4>
-                        <p class="telephone"><a href="tel:+">+91-1234567890</a></p>
+                        <h4>Groom : <span><?php echo (!empty($result->grsvp_name))?$result->grsvp_name:''; ?></span></h4>
+                        <p class="telephone"><a href="tel:<?php echo (!empty($result->grsvp_phone))?$result->grsvp_phone:''; ?>"><?php echo (!empty($result->grsvp_phone))?$result->grsvp_phone:''; ?></a></p>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="dd">
-                        <h4>Groom : <span>Jassmine</span></h4>
-                        <p class="telephone"><a href="tel:+">+91-1234567890</a></p>
+                        <h4>Groom : <span><?php echo (!empty($result->brsvp_name))?$result->brsvp_name:''; ?></span></h4>
+                        <p class="telephone"><a href="tel:<?php echo (!empty($result->brsvp_phone))?$result->brsvp_phone:''; ?>"><?php echo (!empty($result->brsvp_phone))?$result->brsvp_phone:''; ?></a></p>
                     </div>
                 </div>
             </div>
@@ -391,12 +288,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="assets/js/lightbox-plus-jquery.min.js"></script>
+    <script src="<?php echo base_url()?>assets1/js/lightbox-plus-jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/vue.js"></script>
+    <script src="<?php echo base_url()?>assets1/js/slick.js"></script>
+    <script src="<?php echo base_url()?>assets1/js/jquery.easing.min.js"></script>
+    <script src="<?php echo base_url()?>assets1/js/script.js"></script>
+    <script src="<?php echo base_url()?>assets1/js/vue.js"></script>
 
     <script>
     //tab for family section

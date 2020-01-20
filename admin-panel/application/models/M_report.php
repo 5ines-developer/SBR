@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_report extends CI_Model {
 
 
-	public function vendorGet($value='')
+	public function empGet($value='')
 	{
 		return $this->db->select('id,name,email')->where('admin_type', '3')->get('admin')->result();
 	}

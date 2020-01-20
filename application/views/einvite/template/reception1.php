@@ -72,7 +72,7 @@
 							<div class="heartline">
 								<hr>
 								<i class="fa fa-heart"></i> </div>
-							<h4><?php echo (!empty($value->date))?date('d M, Y',strtotime($value->date)):''; ?></h4>
+							<h4><?php echo (!empty($result->fndate))?date('d M, Y',strtotime($result->fndate)):''; ?></h4>
 							<p class="downArrow"><a href="#theCouple"><i class="fa fa-chevron-down"></i></a></p>
 						</div>
 						
@@ -100,10 +100,10 @@
 					<p><?php echo (!empty($result->bdetail))?$result->bdetail:''; ?></p>
 				</div>
 				<div class="col-md-2 col-lg-2 line"> <i class="fa fa-heart"></i> </div>
-				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5"> <img src="<?php echo base_url() ?>assets1/img6/groom.jpg" alt=" "
+				<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5"> <img src="<?php echo base_url().$result->gimage ?>" alt=" "
 						class="bigRound" />
-					<h3><?php echo (!empty($result->bride))?$result->bride:''; ?></h3>
-					<p><?php echo (!empty($result->bdetail))?$result->bdetail:''; ?></p>
+					<h3><?php echo (!empty($result->groom))?$result->groom:''; ?></h3>
+					<p><?php echo (!empty($result->gdetail))?$result->gdetail:''; ?></p>
 				</div>
 			</div>
 		</div>

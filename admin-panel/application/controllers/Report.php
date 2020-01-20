@@ -30,7 +30,10 @@ class Report extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Sales Report | Shaadibaraati';
-		$data['result'] = $this->m_report->vendorGet();
+		$data['result'] = $this->m_report->empGet();
+        echo "<pre>";
+        print_r ($data);
+        echo "</pre>";
         $this->load->view('report/sales.php', $data, FALSE);
 	}
 

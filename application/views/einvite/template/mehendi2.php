@@ -134,7 +134,6 @@
                         <img src="<?php echo base_url() ?>assets1/img5/2.png" alt="" class="img-fluid">
                         <h2 class="text">Date & Time</h2>
                         <h5><?php echo (!empty($value->date))?date('d M, Y',strtotime($value->date)):''; ?> <?php echo (!empty($value->time))?$value->time:''; ?></h5>
-                        <p>Pho: <a href="tel:+">+10 23 243 23</a></p>
                         <p class="location"> <?php echo (!empty($value->address))?$value->address:''; ?></p>
                         <p><?php echo (!empty($value->desc))?$value->desc:''; ?></p>
                     </div>

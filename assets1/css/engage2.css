@@ -4,10 +4,6 @@
     display: flex
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 .preloader {
     position: fixed;
     top: 0;
@@ -646,7 +642,7 @@ section h2:before {
     position: absolute;
     content: '';
     display: block;
-    background-image: url(../pic/img/decor.svg);
+    background-image: url(../engage/img/decor.svg);
     background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -912,7 +908,7 @@ section.section-couple .flowers:before {
     width: 43.2vmin;
     height: 16rem;
     height: 43.2vmin;
-    background-image: url(../pic/img/flowers.svg);
+    background-image: url(../engage/img/flowers.svg);
     background-position: center center;
     background-size: cover;
     opacity: .1;
@@ -2292,7 +2288,7 @@ section.section-hero {
 }
 
 .section-hero {
-    background: url('../pic/img/65.jpg');
+    background: url('../engage/img/65.jpg');
     background-repeat: repeat;
     background-attachment: scroll;
     background-size: auto;
