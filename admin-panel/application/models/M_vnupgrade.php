@@ -140,7 +140,7 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date,rp.gst,rp.discount,rp.dr_bank,rp.cat_banner,rp.city_banner,rp.ld_email,rp.ld_email,city.city as incity,rp.state,rp.pay_type,rp.pay_mode,rp.rec_no,rp.dr_bank,rp.pdc,rp.employee,rp.manager')
+		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date,rp.gst,rp.discount,rp.dr_bank,rp.cat_banner,rp.city_banner,rp.ld_email,rp.ld_email,city.city as incity,rp.state,rp.pay_type,rp.pay_mode,rp.rec_no,rp.dr_bank,rp.pdc,rp.employee,rp.manager,rp.status')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('city city', 'city.id = rp.in_city', 'left')

@@ -47,7 +47,7 @@
                                 <a href="<?php echo base_url('vendors/proposal-detail/'.$result['id'])  ?>" class="waves-effect waves-light btn blue darken-1 white-text hoverable ">View Proposal</a> </p>
                             </div>
                             <?php
-                            if ($this->session->userdata('sha_type') == '1') { ?>
+                            if ($this->session->userdata('sha_type') == '1' && $result['status'] == '0') { ?>
                               <div class="col 12 m6 right-align">
                                   <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Approve</a>
                                   <!-- view vendors -->

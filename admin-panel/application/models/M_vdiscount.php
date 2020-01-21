@@ -21,14 +21,14 @@ class M_vdiscount extends CI_Model {
         	$this->db->where('rp.added_by', $this->session->userdata('sha_id'));
         }
 
-        return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank,rp.gst')
+        return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank,rp.gst,rp.seen,rp.live,rp.approved,rp.status')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
 		->join('category cat', 'cat.id = rp.v_category', 'left')
 		->join('admin am', 'am.id = rp.added_by', 'left')
 		->join('package p', 'p.id = rp.package', 'left')
-		->order_by('rp.id','desc')
+		->order_by('rp.approved','desc')
 		->get()->result();
 
         

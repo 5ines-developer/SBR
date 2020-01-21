@@ -187,9 +187,9 @@ class Vendor_discount extends CI_Controller {
         // send to model
         if($this->m_vdiscount->status_change($id,$status)){
             $this->sendreject($id);
-            if ($this->type != '2') {
-                $this->sendmanager($id);
-            }
+            // if ($this->type != '2') {
+            //     $this->sendmanager($id);
+            // }
            $this->session->set_flashdata('success', 'Vendor discount request rejected Successfully');
            redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
         }else{

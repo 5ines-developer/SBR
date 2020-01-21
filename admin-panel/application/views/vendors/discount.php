@@ -66,6 +66,7 @@
                                           <th id="b" class="h5-para-p2" width="100px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
                                           <th id="c" class="h5-para-p2" width="120px">Package Requested</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Status</th>
                                           <th id="c" class="h5-para-p2" width="120px">Date</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
                                        </tr>
@@ -85,8 +86,19 @@
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->title))?$value->title:'---'  ?></a></td>
                                             <td><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
+                                            <td class="status"><a target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>">
+                                              <?php 
+                                              if(($value->approved == '1') && ($value->status =='1')){
+                                                echo '<span class="white-text blue lighten-1">Approved</span>';
+                                              }else if(($value->live == '1') && ($value->status =='1')){
+                                                echo '<span class="white-text green lighten-1">Live</span>';
+                                              }else if(($value->live == '0') && ($value->status == '0') && ($value->approved == '0')){
+                                                echo '<span class="white-text orange lighten-1">Pending</span>';
+                                              }else{
+                                                echo '<span class="white-text red lighten-1">Rejected</span>';
+                                              } ?>
+                                            </a></td>
                                             <td class="action-btn  center-align"> <!-- view user -->
-
                                              <a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
                                               
                                               <!-- view user -->
