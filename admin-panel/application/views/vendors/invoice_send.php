@@ -88,16 +88,8 @@
                                                   <label for="discount">Discount</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="cgst" name="cgst" class="validate" required>
-                                                  <label for="cgst">CGST @9%</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="sgst" name="sgst" class="validate" required>
-                                                  <label for="sgst">SGST @9%</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="igst" name="igst" class="validate" required>
-                                                  <label for="igst">IGST @9%</label>
+                                                  <input type="text" id="cgst" name="cgst" class="validate" required value="<?php echo (!empty($invoice[0]->gst))?$invoice[0]->gst:''; ?>">
+                                                  <label for="cgst">GST</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="total" name="total" class="validate" required 

@@ -87,11 +87,7 @@
                                             <td><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
                                             <td class="action-btn  center-align"> <!-- view user -->
 
-                                              <!-- view vendors -->
-                                                <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$value->id.'') ?>"  class="green hoverable">Approve</a>
-                                              <!-- view vendors -->
-                                              <!-- edit vendors -->
-                                              <a onclick="return confirm('Are you sure you want to Reject?');" href="<?php echo base_url('vendors-discount/reject/'.$value->id.'') ?>"  class="red hoverable">Reject</a>
+                                             <a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
                                               
                                               <!-- view user -->
                                             </td>
