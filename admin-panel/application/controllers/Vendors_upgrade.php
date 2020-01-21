@@ -39,6 +39,8 @@
 			$data['city']       = $this->m_vnupgrade->get_city();
 			$data['category']   = $this->m_vnupgrade->get_category();
 			$data['package']    = $this->m_vnupgrade->getPackage();
+			$data['invoice']    = $this->m_vnupgrade->getInvoice($id);
+			$data['employee']    = $this->m_vnupgrade->getEmployee();
 			$this->load->view('sales/upgrade', $data, FALSE);
 		}
 
@@ -75,12 +77,14 @@
             'rec_no'        	=> $this->input->post('rec_no'),
 			'pan_no'        	=> $this->input->post('pan_no'),
 			'dr_bank'        	=> $this->input->post('dr_bank'),
+			'pay_type'        	=> $this->input->post('pay_type'),
+			'pdc'        		=> $this->input->post('pdc'),
+			'employee'        	=> $this->input->post('emp'),
+			'manager'        	=> $this->input->post('mang'),
             'added_by'          => $this->aid,
             'started_from'      => date('Y-m-h'),
             'uniq'          	=> $this->input->post('uniq'),
         	);
-
-
 			$data = $this->m_vnupgrade->insertProposal($insert);
 			if (!empty($data)) {
 				$insert['insert_id'] = $data;
@@ -192,6 +196,25 @@
 		$data['title']   = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->liveProposal($this->aid,$id);
 		$this->load->view('sales/live-proposal', $data, FALSE);
+	}
+
+
+	/**
+	 * vendor upgrade/renewal - get the package price
+	 * calculate the price & discount automatically
+	 * url : vendors/upgrade/(param=vendor id)
+	**/		
+	public function getPrice($value='')
+	{
+		$data = array();
+		$package = $this->input->get('package');
+		$output = $this->m_vnupgrade->packPrice($package); 
+		$price = str_replace( ',', '', $output );
+		$gst = (($price)* 18) / 100 ;
+		$data['price'] = $price;
+		$data['gst'] = $gst;
+		echo json_encode($data);
+
 	}
 }
 	

@@ -36,7 +36,7 @@ class M_vnupgrade extends CI_Model {
     **/
 	public function detail($id='')
 	{
-		$this->db->select('v.id as vId,ct.id as citId, ct.city as city,cat.id as catId, cat.category as category')
+		$this->db->select('v.id as vId,ct.id as citId, ct.city as city,cat.id as catId, cat.category as category,v.name,v.email,v.phone,v.address')
 		->where('v.id', $id)
 		->from('vendor v')
 		->join('city ct', 'ct.id = v.city', 'left')
@@ -140,7 +140,7 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date')
+		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date,rp.gst,rp.discount,rp.dr_bank')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -198,6 +198,21 @@ class M_vnupgrade extends CI_Model {
 		->join('package p', 'p.id = rp.package', 'left')
 		->order_by('rp.id','desc')
 		->get()->result();
+	}
+
+	public function packPrice($package='')
+	{
+		return $this->db->where('id', $package)->get('package')->row('price');
+	}
+
+	public function getInvoice($id='')
+	{
+		return $this->db->where('vendor_id', $id)->get('renew_package')->row();
+	}
+
+	public function getEmployee($value='')
+	{
+		return $this->db->where('admin_type !=', 1)->get('admin')->result();
 	}
 }
 

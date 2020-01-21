@@ -18,18 +18,27 @@
         .no-border-t{ border-top :  none !important; }
         .no-border-tb{ border-top :  none !important; border-bottom :  none !important; } */
         table tr td {font-size: 13px; font-weight: 600;}
+        td, th {
+
+    padding: 8px 5px; }
 
 
      </style>
    </head>
    <body>
+
+    <div id="header-include">
+      <?php $this->load->view('include/header.php'); ?>
+    </div>
+
     
       <!-- first layout -->
         <section class="sec-top">
             <div class="container-wrap">
                 <div class="col l12 m12 s12">
                     <div class="row">
-                        <div class="col m12 s12 l8 offset-l2">
+                      <?php $this->load->view('include/menu.php'); ?>
+                        <div class="col m12 s12 l8 ">
 
                             <div class="card">
                                 <div class="card-content">
@@ -63,8 +72,7 @@
           </tr>
           <tr><td style="border: 1px solid gray;" colspan="3"> Billing Name: <?php echo (!empty($result['in_name']))?$result['in_name']:''; ?></td></tr>
           <tr><td style="border: 1px solid gray;" colspan="3">GST NO : <?php echo (!empty($result['gstno']))?$result['gstno']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3" height="100px;">Address :  <?php echo (!empty($result['laddress']))?$result['laddress']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">City : <?php echo (!empty($result['city']))?$result['city']:''; ?></td></tr>
+          <tr><td style="border: 1px solid gray; position: relative; top: -15px; bottom: 0; height: 68px;" colspan="3" height="100px;">Address :  <?php echo (!empty($result['laddress']))?$result['laddress']:''; ?></td></tr> <tr><td style="border: 1px solid gray;" colspan="3">City : <?php echo (!empty($result['city']))?$result['city']:''; ?></td></tr>
           <tr><td style="border: 1px solid gray;" colspan="3">Contact Person : <?php echo (!empty($result['in_name']))?$result['in_name']:''; ?></td></tr>
           <tr><td style="border: 1px solid gray;" colspan="3">Email Id : <?php echo (!empty($result['in_email']))?$result['in_email']:''; ?></td></tr>
           <tr><td style="border: 1px solid gray;" colspan="3">Mobile Number : <?php echo (!empty($result['in_mobile']))?$result['in_mobile']:''; ?></td></tr>
@@ -72,18 +80,62 @@
           <tr><td style="border: 1px solid gray;" colspan="3">Category: <?php echo (!empty($result['category']))?$result['category']:''; ?></td></tr>
           <tr>
             <th style="border: 1px solid gray;">Sr No</th>
-            <th style="border: 1px solid gray;" colspan="1" colspan="1">Description</th>
-            <th style="border: 1px solid gray;">Amount in Rs.</th>
+            <th style="border: 1px solid gray;" colspan="1" >Description</th>
+            <th style="border: 1px solid gray;width: 20%;">Amount in Rs.</th>
           </tr>
-          <tr>
+          <!-- <tr>
             <td style="border: 1px solid gray;">1</td>
-            <td colspan="1" style="border: 1px solid gray;">Package Name: <?php echo (!empty($result['title']))?$result['title']:''; ?><br><br><span><b>Note: 18% GST as applicable</b></span></td>
-            <td style="border: 1px solid gray;"><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
+            <td colspan="1" style="border: 1px solid gray;">Package Name: <?php echo (!empty($result['title']))?$result['title']:''; ?><br>
+            <span style="float: right;">Net Amount - &nbsp;&nbsp;</span><br>
+            <span style="float: right;">GST Amount - &nbsp;&nbsp;</span><br>
+            <span style="float: right;">Discount - &nbsp;&nbsp;</span>
+            <br><br><span><b>Note: 18% GST as applicable</b></span>
+            </td>
+            <td style="border: 1px solid gray;"><br>
+              Net Amount - 
+              <span>Net Amount - &nbsp;&nbsp;</span><br>
+              <span>Net Amount - &nbsp;&nbsp;</span><br>
+
+              <?php echo (!empty($result['total']))?$result['total']:''; ?></td>
+          </tr> -->
+          <tr style="border-bottom:none;">
+            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;">1</td>
+             <td colspan="1" style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;">Package Name: <?php echo (!empty($result['title']))?$result['title']:''; ?>
+             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
+          </tr>
+          <tr style="border-bottom:none;">
+            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
+             <td colspan="1" style="float:right;border:none;">Net Amount -</td>
+             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"><?php echo (!empty($result['namopunt']))?$result['namopunt']:''; ?></td>
+          </tr>
+          <tr style="border-bottom:none;">
+            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
+             <td colspan="1" style="float:right;border:none;">GST -</td>
+             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"><?php echo (!empty($result['gst']))?$result['gst']:''; ?></td>
+          </tr>
+          <?php 
+            $amount = $result['namopunt'] + $result['gst'];
+            if (!empty($result['discount'])) {
+              $discount =  ($amount * $result['discount']) / 100;
+            }else{
+              $discount =  0;
+            }
+            $total = $amount - $discount;
+          ?>
+          <tr style="border-bottom:none;">
+            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
+             <td colspan="1" style="float:right;border:none;">Discount -
+             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"><?php echo $discount ?></td>
+          </tr>
+          <tr style="border-bottom:none;">
+            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
+             <td colspan="1" style="float:left;border:none;"><b>Note: 18% GST as applicable</b></td>
+             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
           </tr>
           <tr>
             <td  style="border: 1px solid gray;"></td>
             <td colspan="1" style="border: 1px solid gray;" class="right-align">Total</td>
-            <td  style="border: 1px solid gray;"><?php echo (!empty($result['namopunt']))?$result['namopunt']:''; ?></td>
+            <td  style="border: 1px solid gray;"><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
           </tr>
           <tr>
             <td style="border: 1px solid gray;" colspan="3">
@@ -98,14 +150,6 @@
           </tr>
           <tr><td style="border: 1px solid gray;" colspan="3"><small>I/We have read and understood the terms and conditions on the back of this order & agreement form, and I/We hereby put My/Our Signature in acceptance thereof</small></td></tr>
           <tr><th style="border: 1px solid gray;" colspan="3" class="right-align">Baraati Media & Entertainment Pvt LTD.</th></tr>
-          <tr>
-            <td style="border: 1px solid gray;"  colspan="2">
-              <span>Vendor Seal &b Signature</span><br>
-              <span>Name : Mr/Ms/Mrs. <?php echo (!empty($result['pan_no']))?$result['pan_no']:''; ?> </span><br>
-              <span>Designation: <?php if($result['admin_type'] == 2){ echo 'manager'; }else if($result['admin_type'] == 3){ echo 'sales Executive'; }else if($result['admin_type'] == 4){ echo 'Regional Manager'; }else if($result['admin_type'] == 5){ echo 'Zone Manager'; } ?></span>
-            </td>
-            <td style="border: 1px solid gray;" class="right-align">Authorised Signatory </td> 
-          </tr>
           <tr>
           <td style="border: 1px solid gray;" class="right-align" colspan="2">Employee Name:</td>
             <td style="border: 1px solid gray;" colspan="1"><?php echo (!empty($result['empname']))?$result['empname']:''; ?></td>
