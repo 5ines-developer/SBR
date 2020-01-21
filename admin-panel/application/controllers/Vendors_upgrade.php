@@ -168,9 +168,9 @@
 
 	public function view_proposal($id = null)
 	{
-		$data['title']   = 'Vendors - Shaadibaraati';
+		$data['title']  = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
-
+		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
 		if($this->type == '1'){
 			$this->m_vnupgrade->seenChange($id);
 		}
@@ -214,7 +214,29 @@
 		$data['price'] = $price;
 		$data['gst'] = $gst;
 		echo json_encode($data);
+	}
 
+	public function viewProps($id='')
+	{
+		$data['title']  = 'Vendors - Shaadibaraati';
+		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
+		if($this->type == '1'){
+			$this->m_vnupgrade->seenChange($id);
+		}
+		$this->load->view('sales/proposal-detail', $data, FALSE);
+	}
+
+	public function downloads($id='')
+	{
+		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+		$this->load->library('pdf');
+		$html = $this->output->get_output($this->load->view('sales/proposal',$data));
+		$pdf = $this->pdf->loadHtml($html);
+		$this->pdf->setPaper('A3', 'Potrait');
+		$this->pdf->render();
+		// Output the generated PDF (1 = download and 0 = preview)
+        $this->pdf->stream("vendor-propsal.pdf", array("Attachment"=>1));
 	}
 }
 	

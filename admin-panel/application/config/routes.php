@@ -190,6 +190,9 @@ $route['vendors/rejected-proposal']			=	'vendors_upgrade/rejectedProposal';
 $route['vendors/all-proposal']				=	'vendors_upgrade/allProposal';
 $route['vendors/cleared-proposal']			=	'vendors_upgrade/clearedProposal';
 $route['vendors/live-proposal']				=	'vendors_upgrade/liveProposal';
+$route['vendors/proposal-detail/(:any)']	=	'vendors_upgrade/viewProps/$1';
+$route['vendors-proposal/download/(:any)']	=	'vendors_upgrade/downloads/$1';
+
 
 
 //finance

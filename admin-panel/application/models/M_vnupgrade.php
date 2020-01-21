@@ -140,9 +140,10 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date,rp.gst,rp.discount,rp.dr_bank')
+		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date,rp.gst,rp.discount,rp.dr_bank,rp.cat_banner,rp.city_banner,rp.ld_email,rp.ld_email,city.city as incity,rp.state,rp.pay_type,rp.pay_mode,rp.rec_no,rp.dr_bank,rp.pdc,rp.employee,rp.manager')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
+		->join('city city', 'city.id = rp.in_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
 		->join('category cat', 'cat.id = rp.v_category', 'left')
 		->join('admin am', 'am.id = rp.added_by', 'left')
@@ -213,6 +214,15 @@ class M_vnupgrade extends CI_Model {
 	public function getEmployee($value='')
 	{
 		return $this->db->where('admin_type !=', 1)->get('admin')->result();
+	}
+
+	public function employ($emp='',$manager='')
+	{
+		$query = $this->db->select('id,name')->where('id', $emp)->get('admin')->row();
+		if(!empty($query)){
+			$query->manager = $this->db->select('id,name')->where('id', $manager)->get('admin')->row();
+		}
+		return $query;
 	}
 }
 
