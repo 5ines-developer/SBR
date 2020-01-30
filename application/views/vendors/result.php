@@ -51,9 +51,9 @@ $this->load->model('m_vendors');
                 top: 0px;
             }
             .banner-slider {
-                max-height: 155px;
-                height: 155px;
-                min-height: 155px;
+                max-height: 245px;
+                height: 246px;
+                min-height: 245px;
                 overflow: hidden;
             }
             .slick-slide img {

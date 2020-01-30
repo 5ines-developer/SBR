@@ -80,19 +80,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col l12 m12 s12">
-                        <div class="e-invite-detail">
-                            <h3 class="black-text">Working Process</h3>
+                        <div class="e-invite-detail dash-template-invite">
+                            <h3 class="">Select Your Template and Start to Create</h3>
+                            <center><img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt=""></center>
                             <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
                                 pellentesque eu, pretium quis, sem. Nulla coo, rhoncus ut, imperdiet a, venenatis</p>
                         </div>
                     </div>
                 </div>
-                <div class="pro-flow">
-                    <div class="row">
+                <div class="pro-flows">
+                    <!-- <div class="row">
                         <div class="col s12 m4">
                             <div class="hv wedding-temp">
                                 <img src="<?php echo base_url() ?>assets/img/wedding1.jpg" class="img-responsive we-im" alt="">
-                                <div class="overlay">
+                                <div class="overlays">
                                     <a> <i class="material-icons">remove_red_eye</i></a>
                                     <a> <i class="material-icons">create</i></a>
                                 </div>
@@ -101,7 +102,7 @@
                         <div class="col s12 m4">
                             <div class="hv wedding-temp">
                                 <img src="<?php echo base_url() ?>assets/img/wedding1.jpg" class="img-responsive" alt="">
-                                <div class="overlay">
+                                <div class="overlays">
                                     <a> <i class="material-icons">remove_red_eye</i></a>
                                     <a> <i class="material-icons">create</i></a>
                                 </div>
@@ -110,9 +111,126 @@
                         <div class="col s12 m4">
                             <div class="hv wedding-temp">
                                 <img src="<?php echo base_url() ?>assets/img/wedding1.jpg" class="img-responsive" alt="">
-                                <div class="overlay">
+                                <div class="overlays">
                                     <a> <i class="material-icons">remove_red_eye</i></a>
                                     <a> <i class="material-icons">create</i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="cboady-invite">
+                        <div class="category-list">
+                            <ul class="tabs tab-ll">
+                                <li class="tab tab-li col s3"><a href="#a1">Mehndi</a></li>
+                                <li class="tab tab-li col s3"><a href="#a2">Engagement</a></li>
+                                <li class="tab tab-li col s3"><a href="#a3">Wedding</a></li>
+                                <li class="tab tab-li col s3"><a href="#a4">Reception</a></li>
+                            </ul>
+                        </div>
+                        <!-- <div class="dash-template-invite">
+                            <h3>Select Your Template and Start to Create</h3>
+                        </div> -->
+                        <div class="template-design" id="a1">
+                            <div class="row">
+                                <div class="col offset-l2 l10 ">
+                                    <div class="row">
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/mehindhi1.png" class="img-responsive" alt="">
+                                                <p>Mehndi Template 1</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/mehindhi2.jpg" class="img-responsive" alt="">
+                                                <p>Mehndi Template 2</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="template-design" id="a2">
+                            <div class="row">
+                                <div class="col offset-l2 l10 ">
+                                    <div class="row">
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/engagement1.png" class="img-responsive" alt="">
+                                                <p>Engagement Template 1</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/engagement2.png" class="img-responsive" alt="">
+                                                <p>Engagement Template 2</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="template-design" id="a3">
+                            <div class="row">
+                                <div class="col offset-l2 l10 ">
+                                    <div class="row">
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/weddding1.jpg" class="img-responsive" alt="">
+                                                <p>Wedding Template 1</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/wedding2.jpg" class="img-responsive" alt="">
+                                                <p>Wedding Template 2</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="template-design" id="a4">
+                            <div class="row">
+                                <div class="col offset-l2 l10 ">
+                                    <div class="row">
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/reception1.jpg" class="img-responsive" alt="">
+                                                <p>Reception Template 1</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                        <div class="col l5 m4 s12">
+                                            <div class="template-m img-wedd z-depth-1">
+                                                <img src="<?php echo base_url()?>assets/img/e-invite/reception2.jpg" class="img-responsive" alt="">
+                                                <p>Reception Template 2</p>
+                                            </div>
+                                            <div class="temp-view">
+                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +244,11 @@
         <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/script.js"></script>
-
+        <script>
+            $(document).ready(function() {
+                $('.tabs').tabs();
+            });
+        </script>
 
         <script>
             var a = 0;
