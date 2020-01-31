@@ -61,22 +61,48 @@
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">
-                                          <th id="a" class="h5-para-p2" width="130px">Employee Name</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Employee Email</th>
-                                          <th id="b" class="h5-para-p2" width="100px">Vendors Added</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Leads Assigned</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Date</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Vendor Name</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Phone No.</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Email</th>
+                                          <th id="b" class="h5-para-p2" width="100px">Package</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Net Amount</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Discount</th>
+                                          <th id="c" class="h5-para-p2" width="120px">GST</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Total</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Validity</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Employee Name</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Manager</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Status</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Action</th>
                                        </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                     if (!empty($result)) {
                                       foreach ($result as $key => $value) {
+                                        $count =$key++;
                                       ?>
                                         <tr>
+                                            <td ><?php echo $count ?></td>
+                                            <td ><?php echo (!empty($value->added_on))?date('d M, Y',strtotime($value->added_on)):'---'  ?></td>
                                             <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></td>
                                             <td ><?php echo (!empty($value->email))?$value->email:'---'  ?></td>
-                                            <td ><?php echo $this->ci->m_report->vendorsCount($value->id);  ?></td>
+                                            <td ><?php echo (!empty($value->title))?$value->title:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->namopunt))?$value->namopunt:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->discount))?$value->discount.'%':'---'  ?></td>
+                                            <td ><?php echo (!empty($value->gst))?$value->gst:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->total))?$value->total:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->validity))?$value->validity:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->employee))?$value->employee:'---'  ?></td>
                                             <td ><?php echo $this->ci->m_report->leadsCount($value->id);  ?></td>
+
+                                            <td ><?php  if($value->status == '1' && $value->live == '1'){ echo 'Live'; } else if($value->status == '1' && $value->live == '0'){ echo 'Approved'; }else if($value->status == '2'){ echo 'Rejected'; } else if($value->status == '0'){ echo 'Pending'; } ?></td>
+                                            <td></td>
+                                            <td></td>
+                                            
                                         </tr>
                                     <?php } } ?>
                                     </tbody>
@@ -110,7 +136,7 @@
 
       <script>
           $(document).ready( function () {
-              $('table').DataTable({
+              $('#dynamic').DataTable({
                   dom: 'Bfrtip',
                   buttons: [
                       'copy', 'csv', 'excel', 'pdf'
