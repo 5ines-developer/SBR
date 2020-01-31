@@ -14,8 +14,8 @@
     <?php $this->load->view('includes/favicon.php');  ?>
     <style>
         .img-box img {
-            max-height:235px;
-            min-height:235px;
+            /* max-height:235px;
+            min-height:235px; */
             width:100%;
         }
         .wed-detail p{
@@ -23,12 +23,12 @@
         }
         @media (max-width:991px) and (min-width:768px){
             .img-box img {
-                min-height:144px;
+                /* min-height:144px; */
                 width:100%;
             }
-            .card-wed {
+            /* .card-wed {
                 height: 236px;
-            }
+            } */
         }
     </style>
 </head>

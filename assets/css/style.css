@@ -2172,7 +2172,7 @@ r-crd-category {
         min-height: auto;
     }
     .ss-main .ss-single-selected {
-        margin-bottom: 10px;
+        margin-bottom: 7px;
     }
 }
 
@@ -4712,9 +4712,13 @@ nav a.sidenav-trigger i {
     padding: 5px 0px;
 }
 
-.footerbutton a:hover,
-.borderd-btn:hover {
+.footerbutton a:hover {
     background-color: #0a9a27;
+    color: #fff;
+}
+
+.borderd-btn:hover {
+    background-color: #d0021b;
     color: #fff;
 }
 
@@ -5216,7 +5220,7 @@ html {
     padding-top: 25px;
 }
 
-.overlay {
+.overlays {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -5253,7 +5257,7 @@ html {
     opacity: 0;
 }
 
-.overlay i {
+.overlays i {
     background: white;
     font-size: 14px;
     padding: 10px;
@@ -5262,7 +5266,7 @@ html {
     cursor: pointer;
 }
 
-.hv:hover .overlay {
+.hv:hover .overlays {
     opacity: 1;
 }
 
@@ -5276,6 +5280,16 @@ html {
 
 .we-im {
     width: 100%;
+}
+
+.cboady-invite {
+    text-align: center;
+}
+
+.dash-template-invite h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #a70015;
 }
 
 @media(max-width:767px) {
@@ -5299,7 +5313,7 @@ html {
         margin-bottom: 15px;
         box-shadow: 0px 0px 3px 0px #d7d7d7;
     }
-    .overlay {
+    .overlays {
         position: absolute;
         top: 51%;
         transform: unset;
@@ -5313,7 +5327,7 @@ html {
         margin-bottom: 13px;
         left: 0;
     }
-    .overlay i {
+    .overlays i {
         background: white;
         font-size: 13px;
         padding: 8px;
@@ -5325,9 +5339,9 @@ html {
     .op {
         padding: 0px !important;
     }
-    .card-wed {
+    /* .card-wed {
         height: 265px;
-    }
+    } */
 }
 
 .select-wrapper {
@@ -5345,7 +5359,7 @@ html {
     background: white;
     box-shadow: 0px 0px 4px 0px #d7d7d7;
     margin-bottom: 20px;
-    height: 285px;
+    /* height: 285px; */
 }
 
 .wed-detail p {
@@ -5679,7 +5693,7 @@ html {
 /* 13-search bar wrror Rishabh */
 
 .search-for {
-    background: #d9d9d9;
+    background: #5e5e5e;
     padding: 1% 0px;
 }
 
@@ -5693,11 +5707,10 @@ html {
     left: 33%;
 }
 
-#search-vend {
-    margin-bottom: 10px;
-}
-
 @media(max-width:767px) {
+    #search-vend {
+        margin-bottom: 0px;
+    }
     .temp-view {
         text-align: center;
         margin-bottom: 15px;
