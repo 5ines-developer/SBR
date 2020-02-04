@@ -180,56 +180,10 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/slick.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
-
     <script>
-        <?php $this->load->view('includes/message'); ?>
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.collapsible');
-            var instances = M.Collapsible.init(elems);
-        });
-    </script>
-    <script>
-        $('.testimonial-full').slick({
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        nextArrow: false,
-        prevArrow: false,
-        dots: true,
-        responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    infinite: true,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-
-    });
-    </script>
-     <script>
     var app = new Vue({
         el: '#app',
         data: {
@@ -281,6 +235,54 @@
         },
     });
     </script>
+
+    <script>
+        <?php $this->load->view('includes/message'); ?>
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems);
+        });
+    
+        $('.testimonial-full').slick({
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        nextArrow: false,
+        prevArrow: false,
+        dots: true,
+        responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+
+    });
+
+    </script>
+
+    
 </body>
 
 </html>
