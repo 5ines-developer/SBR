@@ -5,7 +5,7 @@
 
 <div class="">
     <nav class="z-depth-1 nav-head">
-        <div class="nav-wrapper white hide-on-med-and-down topbar1">
+        <div class="nav-wrapper white topbar1">
             <div class="to-innr">
                 <a href="<?php echo base_url('free-quote') ?>" target="_blank" class=" white-text">&nbsp; Get a Free quote &nbsp;</a>
                 <span class="white-text">| </span>

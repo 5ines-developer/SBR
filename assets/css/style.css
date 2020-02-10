@@ -800,8 +800,8 @@ h6 {
         font-size: 14px;
     }
     .brand-logo {
-        width: 241px;
-        margin-top: 0px;
+        width: 220px;
+        margin-top: 3px;
     }
     .lec-search h5 {
         font-size: 18px;
@@ -5708,15 +5708,20 @@ html {
 }
 
 @media(max-width:767px) {
+    .card .card-content p {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
     #search-vend {
-        margin-bottom: 0px;
+        margin-bottom: 7px;
     }
     .temp-view {
         text-align: center;
         margin-bottom: 15px;
     }
     .search-for {
-        background: #d9d9d9;
+        background: #5e5e5e;
         padding: 5% 0px;
     }
     .dash-template h3 {
@@ -5730,7 +5735,7 @@ html {
         padding: 20px 20px;
     }
     .nav-head {
-        height: 60px;
+        height: 100px;
         background: white;
     }
     /* real wedding detail */
@@ -5749,6 +5754,15 @@ html {
     .nh-name {
         font-size: 14px;
         width: 90%;
+    }
+    /* .sticky {
+        position: unset !important;
+        top: 0;
+        width: 100%;
+        z-index: 99999;
+    } */
+    .ul-social {
+        display: none;
     }
 }
 
