@@ -155,6 +155,9 @@ class Vendor extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $data['regid'] = $regid;
         $msg = $this->load->view('email/vendor-register', $data, true);
+        echo "<pre>";
+        print_r ($msg);
+        echo "</pre>";exit();
         $this->email->set_newline("\r\n");
         $this->email->from($from , 'ShaadiBaraati');
         $this->email->to($to);

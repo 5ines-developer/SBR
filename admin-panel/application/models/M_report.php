@@ -55,6 +55,11 @@ class M_report extends CI_Model {
         return $counts;
 	}
 
+	public function employee($value='')
+	{
+		# code...
+	}
+
 
 }
 

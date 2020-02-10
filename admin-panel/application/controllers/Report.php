@@ -51,6 +51,14 @@ class Report extends CI_Controller {
         $this->load->view('report/visitors.php', $data, FALSE);
     }
 
+    public function employee($value='')
+    {
+        $startdate     = date('Y-m-d H:i:s',strtotime(date('Y-01-01')));
+        $data['title'] = 'Leads Report | Shaadibaraati';
+        $data['result'] = $this->m_report->employee();
+        $this->load->view('report/employee.php', $data, FALSE);
+    }
+
 }
 
 /* End of file Report.php */

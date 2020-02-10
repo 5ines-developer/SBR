@@ -178,6 +178,9 @@ $route['leads']			            		=	'Leads/manage';
 $route['sales-report']			            =	'report/index';
 $route['leads-report']			            =	'report/leads';
 $route['visitors-report']			        =	'report/visitors';
+$route['employee-report']			        =	'report/employee';
+
+
 
 // vendors renewel - upgrade to paid
 $route['vendors/my-vendors']			    =	'vendors_upgrade/index';
