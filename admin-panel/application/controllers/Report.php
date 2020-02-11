@@ -9,6 +9,7 @@ class Report extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_report');
+        $this->load->model('m_vendors');
 
         $this->ci =& get_instance();
         $accs = $this->ci->preload->access();
@@ -53,9 +54,12 @@ class Report extends CI_Controller {
 
     public function employee($value='')
     {
-        $startdate     = date('Y-m-d H:i:s',strtotime(date('Y-01-01')));
-        $data['title'] = 'Leads Report | Shaadibaraati';
-        $data['result'] = $this->m_report->employee();
+        $year = $this->input->get('year');
+        $month = $this->input->get('month');
+        $city = $this->input->get('city');
+        $data['title']      = 'Leads Report | Shaadibaraati';
+        $data['result']     = $this->m_report->employee($year,$month,$city);
+        $data['city']       = $this->m_vendors->get_city();
         $this->load->view('report/employee.php', $data, FALSE);
     }
 

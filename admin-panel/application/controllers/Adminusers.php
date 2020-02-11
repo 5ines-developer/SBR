@@ -10,6 +10,7 @@ class Adminusers extends CI_Controller {
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->aid = $this->session->userdata('sha_id');
         $this->load->model('m_adminusers');
+        $this->load->model('m_vendors');
         $this->load->library('bcrypt');
 
         $this->ci =& get_instance();
@@ -48,6 +49,7 @@ class Adminusers extends CI_Controller {
         $data['title']  = 'Employee - Shaadibaraati';
         $data['manager'] = $this->m_adminusers->getManager();
         $data['menues'] = $this->m_adminusers->getMenu();
+        $data['city']     = $this->m_vendors->get_city();
         $this->load->view('employee/add', $data, FALSE); 
     }
 
@@ -76,6 +78,7 @@ class Adminusers extends CI_Controller {
             $discount   =   $this->input->post('discount');
             $month      =   $this->input->post('month');
             $target     =   $this->input->post('target');
+            $city       =   $this->input->post('city');
 
             $mens='';
 
@@ -97,6 +100,7 @@ class Adminusers extends CI_Controller {
                 'manager'       =>  $manager,
                 'discount'      =>  $discount,
                 'menu'          =>  substr($mens,0,-1) ,
+                'city'          =>  $city,
             );
             $result = $this->m_adminusers->insert($insert);
 
@@ -164,6 +168,7 @@ class Adminusers extends CI_Controller {
         $data['manager'] = $this->m_adminusers->getManager();
         $data['menues'] = $this->m_adminusers->getMenu(); 
         $data['target'] = $this->m_adminusers->getTarget($data['result']->id); 
+        $data['city']     = $this->m_vendors->get_city();
         $this->load->view('employee/edit', $data, FALSE); 
     }
 
@@ -181,6 +186,7 @@ class Adminusers extends CI_Controller {
             $discount   =   $this->input->post('discount');
             $month      =   $this->input->post('month');
             $target     =   $this->input->post('target');
+            $city       =   $this->input->post('city');
             
 
             $mens='';
@@ -197,6 +203,7 @@ class Adminusers extends CI_Controller {
                 'manager'       =>  $manager,
                 'discount'      =>  $discount,
                 'menu'          =>  substr($mens,0,-1) ,
+                'city'          =>  $city,
             );
             $result = $this->m_adminusers->update($update,$id);
 

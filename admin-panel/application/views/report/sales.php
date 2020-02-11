@@ -75,7 +75,7 @@
                                           <th id="c" class="h5-para-p2" width="120px">Employee Name</th>
                                           <th id="c" class="h5-para-p2" width="120px">Manager</th>
                                           <th id="c" class="h5-para-p2" width="120px">Status</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Action</th>
+                                          <!-- <th id="c" class="h5-para-p2" width="120px">Action</th> -->
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -98,11 +98,9 @@
                                             <td ><?php echo (!empty($value->validity))?$value->validity:'---'  ?></td>
                                             <td ><?php echo (!empty($value->employee))?$value->employee:'---'  ?></td>
                                             <td ><?php echo $this->ci->m_report->leadsCount($value->id);  ?></td>
-
                                             <td ><?php  if($value->status == '1' && $value->live == '1'){ echo 'Live'; } else if($value->status == '1' && $value->live == '0'){ echo 'Approved'; }else if($value->status == '2'){ echo 'Rejected'; } else if($value->status == '0'){ echo 'Pending'; } ?></td>
-                                            <td></td>
-                                            <td></td>
-                                            
+                                            <!-- <td></td>
+                                            <td></td> -->
                                         </tr>
                                     <?php } } ?>
                                     </tbody>
@@ -121,7 +119,6 @@
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
-      <script type="text/javascript" src="<?php echo base_url()?>assets/js/chart.min.js"></script>
       <!-- data table -->
       <script type="text/javascript" src="<?php echo base_url()?>assets/dataTable/datatables.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/dataTable/button/js/dataTables.buttons.min.js"></script>
@@ -130,21 +127,21 @@
       <script type="text/javascript" src="<?php echo base_url()?>assets/dataTable/button/js/pdfmake.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>assets/dataTable/button/js/vfs_fonts.js"></script>
        <script>
-  <?php $this->load->view('include/message.php'); ?>
+      <?php $this->load->view('include/message.php'); ?>
     
-  </script>
-
-      <script>
-          $(document).ready( function () {
-              $('#dynamic').DataTable({
-                  dom: 'Bfrtip',
-                  buttons: [
-                      'copy', 'csv', 'excel', 'pdf'
-                  ], 
-              });
-              $('select').formSelect();
-          } );
       </script>
+
+          <script>
+              $(document).ready( function () {
+                  $('table').DataTable({
+                      dom: 'Bfrtip',
+                      buttons: [
+                          'copy', 'csv', 'excel', 'pdf'
+                      ], 
+                  });
+                  $('select').formSelect();
+              } );
+          </script>
       
 </body>
 </html>

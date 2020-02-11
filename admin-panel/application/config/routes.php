@@ -129,8 +129,7 @@ $route['testimonial']	            =	'enquiries/testimonial';
 $route['testimonial/(:any)']	    =	'enquiries/testimonial/$1'; 
 $route['testimonial-status/(:any)']	=	'enquiries/testimonial_status/$1'; 
 $route['feedback']	                =	'enquiries/feedback'; 
-$route['feedback/(:any)']	        =	'enquiries/feedback/$1'; 
-
+$route['feedback/(:any)']	        =	'enquiries/feedback/$1';
 
 $route['career']	                =	'career'; 
 $route['career/add']	            =	'career/add'; 
@@ -138,14 +137,12 @@ $route['career/edit/(:any)']	    =	'career/edit/$1';
 $route['career/detail/(:any)']	    =	'career/detail/$1'; 
 $route['career/delete/(:any)']	    =	'career/delete/$1'; 
 $route['career/status/(:any)']	    =	'career/status/$1'; 
-$route['career/applications']	    =	'career/applications'; 
-
+$route['career/applications']	    =	'career/applications';
 //vendor enquiry
 $route['vendor-enquiry']			    =	'vendorenquiry/index'; 
 $route['vendor-enquiry/view/(:any)']	=	'vendorenquiry/detail/$1'; 
 $route['vendor-package']			    =	'vendorenquiry/packageGet'; 
-$route['vendor-package/view/(:any)']    =	'vendorenquiry/viewPackage/$1'; 
-
+$route['vendor-package/view/(:any)']    =	'vendorenquiry/viewPackage/$1';
 //employee
 $route['employees']			        =	'Adminusers/index'; 
 $route['employees/add']			    =	'Adminusers/add'; 
@@ -156,12 +153,10 @@ $route['employees/delete/(:any)']	=	'Adminusers/delete/$1';
 $route['employees/verify']			=	'Employe_auth/verify';
 $route['employees/add-password/(:any)/(:any)']	=	'Employe_auth/add_pass/$1/$2';
 $route['employees/update-password']	=	'Employe_auth/update_pass';
-
 //vendor discount request
 $route['vendors-discount']			=	'vendor_discount/index'; 
 $route['vendors-discount/approve/(:any)']	=	'vendor_discount/approve/$1'; 
-$route['vendors-discount/reject/(:any)']	=	'vendor_discount/reject/$1'; 
-
+$route['vendors-discount/reject/(:any)']	=	'vendor_discount/reject/$1';
 //banner package
 $route['banner-package']			        =	'Banner_pacakge/index';
 $route['banner-package/add']			    =	'Banner_pacakge/add';
@@ -169,19 +164,9 @@ $route['banner-package/insert']			    =	'Banner_pacakge/insert';
 $route['banner-package/edit/(:any)']		=	'Banner_pacakge/edit/$1';
 $route['banner-package/update']			    =	'Banner_pacakge/update';
 $route['banner-package/delete/(:any)']		=	'Banner_pacakge/delete/$1';
-
 //leads management
 $route['leads/add']			        		=	'Leads/index';
 $route['leads']			            		=	'Leads/manage';
-
-//sale report
-$route['sales-report']			            =	'report/index';
-$route['leads-report']			            =	'report/leads';
-$route['visitors-report']			        =	'report/visitors';
-$route['employee-report']			        =	'report/employee';
-
-
-
 // vendors renewel - upgrade to paid
 $route['vendors/my-vendors']			    =	'vendors_upgrade/index';
 $route['vendors/upgrade/(:any)']			=	'vendors_upgrade/upgrade/$1';
@@ -195,9 +180,6 @@ $route['vendors/cleared-proposal']			=	'vendors_upgrade/clearedProposal';
 $route['vendors/live-proposal']				=	'vendors_upgrade/liveProposal';
 $route['vendors/proposal-detail/(:any)']	=	'vendors_upgrade/viewProps/$1';
 $route['vendors-proposal/download/(:any)']	=	'vendors_upgrade/downloads/$1';
-
-
-
 //finance
 $route['finance/new-proposal']			    =	'finance/newProposal';
 $route['finance/view-proposal/(:any)']		=	'finance/view_proposal/$1';
@@ -207,13 +189,11 @@ $route['finance/all-proposal']				=	'finance/allProposal';
 $route['finance/cleared-proposal']			=	'finance/clearedProposal';
 $route['finance/live-proposal']				=	'finance/liveProposal';
 $route['finance/make-live/(:any)']			=	'finance/makeLive/$1';
-
 //real wedding
 $route['real-wedding']			            =	'weding/index';
 $route['real-wedding/add']			        =	'weding/add';
 $route['real-wedding/view/(:any)']			=	'weding/view/$1';
 $route['real-wedding/edit/(:any)']			=	'weding/editReal/$1';
-
 //category banner
 $route['category-banner/manage']			=	'category_banner/index'; //manage category
 $route['category-banner/add']			    =	'category_banner/add'; //add category
@@ -221,6 +201,11 @@ $route['category-banner/insert']			=	'category_banner/insert';
 $route['category-banner/edit/(:any)']		=	'category_banner/edit/$1'; 
 $route['category-banner/view/(:any)']		=	'category_banner/view/$1';
 $route['category-banner/update/(:any)']		=	'category_banner/update/$1'; 
+//sale report
+$route['sales-report']			            =	'report/index';
+$route['leads-report']			            =	'report/leads';
+$route['visitors-report']			        =	'report/visitors';
+$route['employee-report']			        =	'report/employee';
 
 
 

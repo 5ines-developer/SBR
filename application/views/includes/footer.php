@@ -136,7 +136,7 @@
 
                            if (!empty($category)) {
                             foreach ($category as $key => $value) { ?>
-                            <li><a class="hov-a" href="<?php echo base_url('vendors/delhi/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Delhi' ?></a></li>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/delhi-ncr/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo $value->category.' in Delhi' ?></a></li>
                            <?php } } ?>
                         </ul>
                     </div>

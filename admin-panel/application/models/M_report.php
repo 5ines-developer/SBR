@@ -55,9 +55,49 @@ class M_report extends CI_Model {
         return $counts;
 	}
 
-	public function employee($value='')
+	public function employee($year='',$month='',$city='')
 	{
-		# code...
+		if (!empty($city)) { $this->db->where('a.city', $city); } 
+		if (!empty($month)) { $this->db->where('et.month', $month); } 
+		if (!empty($year)) { $this->db->where('et.year', $year); }
+		$this->db->group_by('id');
+		$this->db->where('a.admin_type', 3);
+		$this->db->select('a.id,et.target,et.year,et.month,cty.city,a.name');
+		$this->db->from('admin a');
+		$this->db->join('e_target et', 'et.emp_id = a.id', 'left');
+		$this->db->join('city cty', 'cty.id = a.city', 'left');
+		return $this->db->get()->result();
+	}
+
+	public function emp_clear($id='',$month='',$year='')
+	{
+		$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+		$sdate = '01-'.$month.'-'.$year;
+		$edate = $days.'-'.$month.'-'.$year;
+		$start = date('Y-m-d',strtotime($sdate));
+		$end = date('Y-m-d',strtotime($edate));
+		$this->db->select_sum('total');
+		$this->db->where('added_on >=', $start);
+		$this->db->where('added_on <=', $end);
+		$this->db->where('status', '1');
+		$this->db->where('live', '1');
+		$this->db->where('employee', $id);
+		$result = $this->db->get('renew_package')->row();
+		if (!empty($result->total)) {
+			return $result->total;
+		}else{
+			return 0;
+		}
+	}
+
+	public function manager($id='')
+	{
+		$manager = $this->db->where('id', $id)->get('admin')->row('manager');
+		if (!empty($manager)) {
+			return $this->db->where('id', $manager)->get('admin')->row('name');
+		}else{
+			return false;
+		}
 	}
 
 
