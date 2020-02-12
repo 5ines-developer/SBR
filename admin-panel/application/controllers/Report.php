@@ -39,7 +39,7 @@ class Report extends CI_Controller {
     public function leads($value='')
     {
         $data['title'] = 'Leads Report | Shaadibaraati';
-        $data['result'] = $this->m_report->vendorGet();
+        $data['result'] = $this->m_report->empGet();
         $this->load->view('report/leads.php', $data, FALSE);
     }
 
@@ -57,11 +57,32 @@ class Report extends CI_Controller {
         $year = $this->input->get('year');
         $month = $this->input->get('month');
         $city = $this->input->get('city');
-        $data['title']      = 'Leads Report | Shaadibaraati';
+        $data['title']      = 'Employee Report | Shaadibaraati';
         $data['result']     = $this->m_report->employee($year,$month,$city);
         $data['city']       = $this->m_vendors->get_city();
         $this->load->view('report/employee.php', $data, FALSE);
     }
+
+    public function team($value='')
+    {
+        $city = $this->input->get('city');
+        $data['title']      = 'Team Report | Shaadibaraati';
+        $data['result']     = $this->m_report->getManager($city);
+        $data['city']       = $this->m_vendors->get_city();
+        $this->load->view('report/team.php', $data, FALSE);
+    }
+
+    public function liveReport($value='')
+    {
+        $city   = $this->input->get('city');
+        $month  = $this->input->get('month');
+        $year   = $this->input->get('year');
+        $data['title']    = 'Live Report | Shaadibaraati';
+        $data['result']   = $this->m_report->liveReport($city,$month,$year);
+        $data['city']     = $this->m_vendors->get_city();
+        $this->load->view('report/live.php', $data, FALSE);
+    }
+
 
 }
 

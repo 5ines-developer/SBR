@@ -76,6 +76,7 @@
                                             <?php  } } ?>
                                           </select>
                                         </div>
+                                      </div>
                                   <div class="row">
                                     <div class="clearfix"></div>
 
@@ -99,38 +100,33 @@
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">
-                                          <th id="a" class="h5-para-p2" width="130px">Employee Branch</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Employee Name</th>
                                           <th id="a" class="h5-para-p2" width="130px">Manager</th>
+                                          <th id="a" class="h5-para-p2" width="130px">City</th>
                                           <th id="a" class="h5-para-p2" width="130px">Target</th>
                                           <th id="c" class="h5-para-p2" width="120px">Cleared</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Pending</th>
+                                          <!-- <th id="c" class="h5-para-p2" width="120px">Pending</th> -->
                                        </tr>
                                     </thead>
                                     <tbody>
                                     <?php
                                     if (!empty($result)) {
-                                      $yrs='';
-                                      $mnt='';
+                                      $year='';
+                                      $month='';
+                                      
                                       foreach ($result as $key => $value) {
                                         $yr = $this->input->get('year');
                                         $mn = $this->input->get('month');
-                                        if (!empty($yr)) {$yrs = $yr; }else{$yrs = date('Y'); }
-                                        if (!empty($mn)) {$mnt = $mn; }else{$mnt = date('m'); }
-                                        $cleared = $this->ci->m_report->emp_clear($value->id,$mnt,$yrs);
-                                        $target = str_replace(",","",$value->target);
-                                        if ($cleared > $target) {$pending = $cleared - $target; }else{$pending = $target - $cleared; } 
-
-                                        $manager = $this->ci->m_report->manager($value->id);
+                                        if (!empty($yr)) { $year = $yr; }else{$yrs = date('Y'); }
+                                        if (!empty($mn)) { $month = $mn; }else{$mnt = date('m'); }
+                                         $target = $this->ci->m_report->mantarget($year,$month,$value->id);
+                                         $clear = $this->ci->m_report->manclear($year,$month,$value->id);
 
                                         ?>
                                         <tr>
-                                            <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
-                                            <td ><?php echo $manager; ?></td>
-                                            <td ><?php echo (!empty($value->target))?$value->target:'---'  ?></td>
-                                            <td ><?php echo   $cleared  ?></td>
-                                            <td ><?php echo $pending  ?></td>
+                                            <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
+                                            <td ><?php echo $target  ?></td>
+                                            <td ><?php echo $clear;  ?></td>
                                         </tr>
                                     <?php } 
 

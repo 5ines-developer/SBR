@@ -83,6 +83,8 @@
       <li class="<?php echo $this->uri->segment(1) == 'leads-report'?'active':'' ?>"><a href="<?php echo base_url('leads-report') ?>"><i class="fas fa-chart-line li-icon"></i>Leads Report</a></li>
       <li class="<?php echo $this->uri->segment(1) == 'visitors-report'?'active':'' ?>"><a href="<?php echo base_url('visitors-report') ?>"><i class="fas fa-chart-line li-icon"></i>Visitors Report</a></li>
       <li class="<?php echo $this->uri->segment(1) == 'employee-report'?'active':'' ?>"><a href="<?php echo base_url('employee-report') ?>"><i class="fas fa-chart-line li-icon"></i>Employee Report</a></li>
+      <li class="<?php echo $this->uri->segment(1) == 'team-report'?'active':'' ?>"><a href="<?php echo base_url('team-report') ?>"><i class="fas fa-chart-line li-icon"></i>Team Report</a></li>
+      <li class="<?php echo $this->uri->segment(1) == 'live-report'?'active':'' ?>"><a href="<?php echo base_url('live-report') ?>"><i class="fas fa-chart-line li-icon"></i>Live Report</a></li>
 
         
       

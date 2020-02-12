@@ -71,6 +71,9 @@ class M_report extends CI_Model {
 
 	public function emp_clear($id='',$month='',$year='')
 	{
+		if ($month == '') { $month = date('m'); }
+		if ($year == '') { $year = date('Y'); }
+		$month = (int)$month;
 		$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
 		$sdate = '01-'.$month.'-'.$year;
 		$edate = $days.'-'.$month.'-'.$year;
@@ -98,6 +101,88 @@ class M_report extends CI_Model {
 		}else{
 			return false;
 		}
+	}
+
+	public function getManager($city='')
+	{
+		if (!empty($city)) { $this->db->where('a.city', $city); } 
+		$this->db->where('a.admin_type', 2);
+		$this->db->select('a.id, a.name,cty.city');
+		$this->db->from('admin a');
+		$this->db->join('city cty', 'cty.id = a.city', 'left');
+		return $this->db->get()->result();
+	}
+
+	public function mantarget($year='',$month='',$id='')
+	{
+		if ($month == '') { $month = date('m'); }
+		if ($year == '') { $year = date('Y'); }
+		$month = (int)$month;
+		$query = $this->db->where('manager', $id)->get('admin')->result();
+		foreach ($query as $key => $value) {
+			$result = $this->db->where('emp_id', $value->id)->where('month',$month)->where('year',$year)->get('e_target')->row('target');
+			$target[] = str_replace(",", "", $result); 
+		}
+		return $targ = array_sum($target);
+	}
+
+	public function manclear($year='',$month='',$id='')
+	{
+		if ($month == '') { $month = date('m'); }
+		if ($year == '') { $year = date('Y'); }
+		$month = (int)$month;
+		$target = array();
+		$query = $this->db->where('manager', $id)->get('admin')->result();
+		foreach ($query as $key => $value) {
+			if (!empty($month) || !empty($year)) {
+				$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+				$sdate = '01-'.$month.'-'.$year;
+				$edate = $days.'-'.$month.'-'.$year;
+				$start = date('Y-m-d',strtotime($sdate));
+				$end = date('Y-m-d',strtotime($edate));
+				$this->db->select_sum('total');
+				$this->db->where('added_on >=', $start);
+				$this->db->where('added_on <=', $end);
+			}
+			$this->db->where('status', '1');
+			$this->db->where('live', '1');
+			$this->db->where('employee', $value->id);
+			$result = $this->db->get('renew_package')->row();
+			if (!empty($result)) {
+				$target[] = str_replace(",", "", $result->total);
+			}else{
+				$target = array();
+			}
+		}
+		return $targ = array_sum($target);
+	}
+
+	public function liveReport($city='',$month='',$year='')
+	{
+		if ($month == '') { $month = date('m'); }
+		if ($year == '') { $year = date('Y'); }
+		$month = (int)$month;
+		if (!empty($month) || !empty($year)) {
+			$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
+			$sdate = '01-'.$month.'-'.$year;
+			$edate = $days.'-'.$month.'-'.$year;
+			$start = date('Y-m-d',strtotime($sdate));
+			$end = date('Y-m-d',strtotime($edate));
+			$this->db->select_sum('total');
+			$this->db->where('rp.added_on >=', $start);
+			$this->db->where('rp.added_on <=', $end);
+		}
+
+		if (!empty($city)) { $this->db->where('rp.v_city', $city); } 
+
+		$this->db->where('live', 1);
+		$this->db->where('status', 1);
+		$this->db->select('rp.*,vn.*,rp.discount,pc.title,rp.employee as employeename ,a.name as employee');
+		$this->db->from('renew_package rp');
+		$this->db->join('vendor vn', 'vn.id = rp.vendor_id', 'left');
+		$this->db->join('package pc', 'pc.id = rp.package', 'left');
+		$this->db->join('admin a', 'a.id = rp.employee', 'left');
+		return $this->db->get()->result();
 	}
 
 

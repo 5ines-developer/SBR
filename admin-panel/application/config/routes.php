@@ -206,7 +206,8 @@ $route['sales-report']			            =	'report/index';
 $route['leads-report']			            =	'report/leads';
 $route['visitors-report']			        =	'report/visitors';
 $route['employee-report']			        =	'report/employee';
-
+$route['team-report']			       	 	=	'report/team';
+$route['live-report']			       	 	=	'report/liveReport';
 
 
 
