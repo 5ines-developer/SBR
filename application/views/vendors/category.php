@@ -48,9 +48,11 @@ $this->load->model('m_vendors');
                         <div class="vendor-search">
                             <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                                 <div class="row m0">
-                                    <div class="col s12 m10 l6 ">
+                                    <div class="col s12 m6 l6 ">
+                                        <div class="kill">
                                         <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
                                         <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
+                                        </div>
                                         <div class="preloader" :class="{'previsible': previsible }">
                                             <div class="preloader-wrapper big active" id="prelod">
                                                 <div class="spinner-layer spinner-blue">
