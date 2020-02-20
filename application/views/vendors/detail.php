@@ -30,7 +30,13 @@ $this->load->model('m_vendors');
         <!-- body  -->
 
         <?php if (!empty($vendor)) {
-            foreach ($vendor as $key => $value) { ?>
+            foreach ($vendor as $key => $value) { 
+
+                echo "<pre>";
+                print_r ($value);
+                echo "</pre>";
+
+        ?>
         <section id="detail">
             <div class="container-fluide">
                 <div class="row">
@@ -39,6 +45,8 @@ $this->load->model('m_vendors');
                             <img class="responsive-img z-depth-1"
                                 src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:''; ?>"
                                 alt="<?php echo (!empty($value->name))?$value->name:''; ?>" width="100%">
+
+                                <span class="v-lable wed-premium"><img src="http://localhost/shaadibaraati/assets/img/lable.png" class="v-lable-image">Wed Premium</span>
                         </div>
                         <!-- basic info -->
                         <div class="detail-bs-info">
@@ -435,7 +443,7 @@ $this->load->model('m_vendors');
                                             </div>
                                         </div>
                                     </div>
-                                    <vue-easy-lightbox :visible="visible" :imgs="imgs" @hide="handleHide">
+                                    <vue-easy-lightbox :visible="visible" :imgs="imgs" :index="index" @hide="handleHide">
                                     </vue-easy-lightbox>
 
                                 </div>
@@ -1008,6 +1016,7 @@ $this->load->model('m_vendors');
             isShow: true,
             visible: false,
             favcol: false,
+            index: 0,
             vndr_id: '',
             rev_rating: '',
             ar: '1',
