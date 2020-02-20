@@ -180,6 +180,7 @@ class M_search extends CI_Model {
         }
       $result = vendor_category();
       foreach ($result as $key => $value) {
+        $this->db->group_by('name');
         $value->vendors = $this->getVendors($value->id,$cityId);
       }
       return  $result;

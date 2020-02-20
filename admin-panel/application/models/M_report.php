@@ -37,12 +37,33 @@ class M_report extends CI_Model {
 		return $this->db->where('assigned_by', $id)->get('leads_assign')->num_rows();
 	}
 
-	public function visitors($startdate='')
+	public function visitors($year='',$month='')
 	{
+		$newData=array();
+		$counts='';
         $this->db->select('date');
-        $now    = date("Y-m-d H:i:s");
-        $this->db->where('date <=', $now);        
-        $this->db->where('date >=', $startdate);
+        if (!empty($year) && !empty($month)) {
+        	if ($month < 10) {
+        		$month = '0'.$month;
+        	}
+        	$syear = $year.'-'.date(''.$month.'-01 0:01:00');
+        	$eyear = $year.'-'.date(''.$month.'-31 11:59:00');
+        	$this->db->where('date >=', $syear);
+        	$this->db->where('date <=', $eyear);
+        }else if (!empty($year)) {
+        	$syear = $year.'-'.date('01-01 0:01:00');
+        	$eyear = $year.'-'.date('12-31 11:59:00');
+        	$this->db->where('date >=', $syear);
+        	$this->db->where('date <=', $eyear);
+        }else if (!empty($month)) {
+        	$syear = date('Y-'.$month.'-01 0:01:00');
+        	$eyear = date('Y-'.$month.'-31 11:59:00');
+        	$this->db->where('date >=', $syear);
+        	$this->db->where('date <=', $eyear);
+        }
+
+
+
         $query = $this->db->get('visitors')->result();
         foreach ($query as $key => $value) {
         	$newData[]= date("Y-m-d",strtotime($value->date));
@@ -115,6 +136,7 @@ class M_report extends CI_Model {
 
 	public function mantarget($year='',$month='',$id='')
 	{
+		$target= '';
 		if ($month == '') { $month = date('m'); }
 		if ($year == '') { $year = date('Y'); }
 		$month = (int)$month;
@@ -123,7 +145,11 @@ class M_report extends CI_Model {
 			$result = $this->db->where('emp_id', $value->id)->where('month',$month)->where('year',$year)->get('e_target')->row('target');
 			$target[] = str_replace(",", "", $result); 
 		}
-		return $targ = array_sum($target);
+		if (!empty($target)) {
+			
+		}else{
+			return null;
+		}
 	}
 
 	public function manclear($year='',$month='',$id='')

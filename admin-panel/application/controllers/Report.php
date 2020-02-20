@@ -46,9 +46,11 @@ class Report extends CI_Controller {
 
     public function visitors($value='')
     {
-        $startdate     = date('Y-m-d H:i:s',strtotime(date('Y-01-01')));
+
+        $year   = $this->input->get('year');
+        $month  = $this->input->get('month');
         $data['title'] = 'Leads Report | Shaadibaraati';
-        $data['result'] = $this->m_report->visitors($startdate);
+        $data['result'] = $this->m_report->visitors($year,$month);
         $this->load->view('report/visitors.php', $data, FALSE);
     }
 

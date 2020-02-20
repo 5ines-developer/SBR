@@ -41,11 +41,36 @@
                   <div class="main-bar">
 
                     <div class="row">
-                                <div class="col 12 m6">
-                                    <p class="h5-para black-text m0">Visitors Report</p>
-                                </div>
-                                
-                            </div>
+                      <div class="col 12 m6">
+                          <p class="h5-para black-text m0">Visitors Report</p>
+                      </div>
+                    </div>
+
+
+                            <div class="row">
+                                      <div class="col l3 m6">
+                                          <select id="year"  fname="year" name="year" class="select-list" required="">
+                                            <option value="">Choose a year</option>
+                                            <?php for($i=2010; $i <=date('Y'); $i++ ){
+                                               ?>
+                                              <option value="<?php echo $i; ?>" <?php if($this->input->get('year') == $i){ echo 'selected'; } ?>><?php echo $i; ?></option>
+                                            <?php }?>
+                                          </select>
+                                        </div>
+
+                                        <div class="col l3 m6">
+                                          <select id="month"  fname="month" name="month" class="select-list" required="">
+                                            <option value="">Choose a month</option>
+                                            <?php
+                                            $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July ', 'August', 'September', 'October', 'November', 'December',);
+                                            foreach ($months as $key => $value) { ?>
+                                             <option value="<?php echo $key+1; ?>" <?php if($this->input->get('month') == $key+1){ echo 'selected'; } ?>><?php echo $value; ?></option>
+                                            <?php }?>
+                                          </select>
+                                        </div>
+
+                                       
+                                      </div>
 
                      
                      <!-- end dash -->
@@ -117,6 +142,42 @@
                   ], 
               });
               $('select').formSelect();
+
+              $('.select-list').change(function(){
+
+                if(window.location.href.indexOf("?") < 0){
+                    var windowUrl = window.location.href+'?';
+                } else{
+                    var windowUrl = window.location.href;
+                }
+
+                var val = $(this).val();
+                var name = '&'+$(this).attr('fname')+'=';
+                var names=$(this).attr('fname');
+                var url = windowUrl+name+val;
+                var originalURL = windowUrl+name+val;
+                var alteredURL = removeParam(names, originalURL);
+                window.location = alteredURL+name+val;
+            });
+
+              function removeParam(key, sourceURL) {
+                var rtn = sourceURL.split("?")[0],
+                    param,
+                    params_arr = [],
+                    queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+                if (queryString !== "") {
+                    params_arr = queryString.split("&");
+                    for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+                        param = params_arr[i].split("=")[0];
+                        if (param === key) {
+                            params_arr.splice(i, 1);
+                        }
+                    }
+                    rtn = rtn + "?" + params_arr.join("&");
+                }
+                return rtn;
+            }
+            
           } );
       </script>
       
