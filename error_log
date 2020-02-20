@@ -1,0 +1,5 @@
+[23-Aug-2019 07:08:08 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/a5ineprojects9/public_html/shaadibaraati/application/models/M_authentication.php on line 26
+[24-Aug-2019 05:04:34 Etc/GMT] PHP Parse error:  syntax error, unexpected ';' in /home/a5ineprojects9/public_html/shaadibaraati/application/views/includes/left-menu.php on line 19
+[24-Aug-2019 05:05:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '?' in /home/a5ineprojects9/public_html/shaadibaraati/application/views/includes/left-menu.php on line 19
+[24-Aug-2019 05:59:05 Etc/GMT] PHP Parse error:  syntax error, unexpected ''is_unique'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/a5ineprojects9/public_html/shaadibaraati/application/controllers/Authentication.php on line 59
+[24-Aug-2019 06:00:11 Etc/GMT] PHP Parse error:  syntax error, unexpected ''is_unique'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/a5ineprojects9/public_html/shaadibaraati/application/controllers/Authentication.php on line 59
