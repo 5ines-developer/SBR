@@ -5118,6 +5118,7 @@ html {
 .banner-container {
     max-height: 500px;
     overflow: hidden;
+    position: relative;
 }
 
 

@@ -31,11 +31,6 @@ $this->load->model('m_vendors');
 
         <?php if (!empty($vendor)) {
             foreach ($vendor as $key => $value) { 
-
-                echo "<pre>";
-                print_r ($value);
-                echo "</pre>";
-
         ?>
         <section id="detail">
             <div class="container-fluide">
@@ -45,8 +40,18 @@ $this->load->model('m_vendors');
                             <img class="responsive-img z-depth-1"
                                 src="<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:''; ?>"
                                 alt="<?php echo (!empty($value->name))?$value->name:''; ?>" width="100%">
+                                <?php
+                                    $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
+                                    $pack = $this->ci->m_search->packageName($value->package);
+                                    if (empty($pack) || empty($value->discount_status)) {
+                                        $pack = 'Free Listing';
+                                    }
+                                    $lable_class = strtolower(str_replace(' ', '-', $pack));
+                                ?>
 
-                                <span class="v-lable wed-premium"><img src="http://localhost/shaadibaraati/assets/img/lable.png" class="v-lable-image">Wed Premium</span>
+
+
+                                <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                         </div>
                         <!-- basic info -->
                         <div class="detail-bs-info">
