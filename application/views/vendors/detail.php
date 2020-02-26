@@ -17,6 +17,9 @@ $this->load->model('m_vendors');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
      <?php $this->load->view('includes/favicon.php');  ?>
     <style>
+        .bd-input > span{
+            font-size: 13px !important;
+        }
 
     </style>
 </head>
@@ -122,19 +125,19 @@ $this->load->model('m_vendors');
                                                                 class="fas fa-share-alt tiny"></i></a>
                                                         <span>Share</span>
                                                         <ul>
-                                                            <li> <a href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->name ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->name ?>"
+                                                            <li> 
+                                                                <a href="http://www.facebook.com/sharer.php?s=100&p[summary]=<?php echo $value->name ?>&p[url]=<?php echo current_url(); ?>&p[title]=<?php echo $value->name ?>"
                                                                     target="_blank" class="btn-floating blue"><i
-                                                                        class="fab fa-facebook-f"></i></a></li>
-
-                                                            <li><a href="http://twitter.com/home?url=<?php echo $value->name ?>+<?php echo current_url(); ?>"
-                                                                    target="_blank" class="btn-floating blue"><i
+                                                                        class="fab fa-facebook-f"></i></a>
+                                                            </li>
+                                                            <li><a href="http://twitter.com/share?text=<?php echo $value->name ?>&url=<?php echo current_url() ?>" target="_blank" class="btn-floating blue"><i
                                                                         class="fab fa-twitter"></i></a></li>
 
-                                                            <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo current_url(); ?>&description=<?php $desc = str_replace(' ', '-', $value->name); echo $desc ?>"
+                                                            <li><a href="http://pinterest.com/pin/create/button/?url=<?php echo current_url(); ?>]&media=<?php echo (!empty($value->profile_file))?base_url().$value->profile_file:''; ?>"
                                                                     class="btn-floating red" target="_blank"><i
                                                                         class="fab fa-pinterest-p"></i></a></li>
 
-                                                            <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;amp;url=<?php echo current_url(); ?>/&amp;amp;title=<?php echo $value->name ?>&amp;amp;source=5ineproject.com/shaadibaraati"
+                                                            <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo current_url(); ?>"
                                                                     target="_blank" class="btn-floating blue"><i
                                                                         class="fab fa-linkedin-in"></i></a></li>
                                                         </ul>
@@ -246,7 +249,7 @@ $this->load->model('m_vendors');
 
                                        
                                          ?>
-                                        <form class="row m0" action="<?php echo base_url()?>enquire-vendor"
+                                        <form ref="c_forms" @submit.prevent="contForm" class="row m0" action="<?php echo base_url()?>enquire-vendor"
                                             method="post">
                                             <div class="row m0">
                                                 <div class="input-field col s6">
@@ -283,8 +286,19 @@ $this->load->model('m_vendors');
                                                     <input id="location" type="text" class="validate" name="location"> 
                                                     <label for="location">Location</label>
                                                 </div>
-                                                <div class="input-field col s6">
-                                                    <input id="budget" type="text" class="validate" name="budget"> 
+                                                <div class="input-field col s6 bd-input">
+
+                                                    <select required name="budget" id="budget">
+                                                        <option value="Below 50k">Below 50k</option>
+                                                        <option value="Upto 1 Lakh">Upto 1 Lakh</option>
+                                                        <option value="1lakh - 5lakh">1 Lakh - 5 Lakh</option>
+                                                        <option value="5lakh - 10lakh">5 Lakh - 10 Lakh</option>
+                                                        <option value="10lakh - 20lakh">10 Lakh - 20 Lakh</option>
+                                                        <option value="25lakh - 50lakh">25 Lakh - 50 Lakh</option>
+                                                        <option value="Above 50 lakh">Above 50 Lakh</option>
+                                                    </select>
+
+                                                    <!-- <input id="budget" type="text" class="validate" name="budget">  -->
                                                     <label for="budget">Budget</label>
                                                 </div>
                                             </div>
@@ -334,6 +348,13 @@ $this->load->model('m_vendors');
                                                     <textarea id="wed_detail" class="materialize-textarea" required
                                                         name="wed_detail"></textarea>
                                                     <label for="wed_detail">Details about your wedding</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row m0">
+                                                <div class="input-field col s12">
+                                                    <div class="g-recaptcha"
+                                                        data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div> <span class="helper-text red-text">{{ captcha }}</span>
                                                 </div>
                                             </div>
 
@@ -1001,12 +1022,19 @@ $this->load->model('m_vendors');
         <?php $this->load->view('includes/footer'); ?>
     </div>
     <!-- script -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script>
     <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+    </script>
 
 
     <script>
@@ -1039,6 +1067,7 @@ $this->load->model('m_vendors');
                 highlyExperiencw: false,
                 review: '',
             },
+            captcha:'',
         },
 
 
@@ -1089,6 +1118,13 @@ $this->load->model('m_vendors');
 
                     this.$refs.form.submit()
                 } else {}
+            },
+            contForm() {
+                if (grecaptcha.getResponse() == '') {
+                        this.captcha = 'Captcha is required';
+                } else {
+                        this.$refs.c_forms.submit();
+                }
             },
             showImg(index) {
                 this.index = index
