@@ -37,6 +37,40 @@ class Vendors extends CI_Controller {
         $this->load->view('vendors/detail', $data, FALSE);
     }
 
+    public function phone_check($value='')
+    {
+      $phone = $this->input->post('phone');
+      $otp = random_string('numeric',6);
+            $curl = curl_init();
+            $post_fields = array();
+            $post_fields["method"] = "sendMessage";
+            $post_fields["send_to"] = '91'.$phone.'';
+          $post_fields["msg"]  = 'Dear Customer
+
+Your OTP is '.$otp.' . Use this OTP to get vendor details.';
+
+                
+            $post_fields["msg_type"] = "TEXT";
+            $post_fields["userid"] = "2000187670";
+            $post_fields["password"] = "Sidhu@9787";
+            $post_fields["auth_scheme"] = "PLAIN";
+            $post_fields["format"] = "JSON";
+
+            curl_setopt_array($curl, array(CURLOPT_URL => "http://enterprise.smsgupshup.com/GatewayAPI/rest",CURLOPT_RETURNTRANSFER => true,CURLOPT_ENCODING => "",CURLOPT_MAXREDIRS => 10,CURLOPT_TIMEOUT => 30,CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,CURLOPT_CUSTOMREQUEST => "POST",CURLOPT_POSTFIELDS => $post_fields));
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+            if ($err) {
+               // echo "cURL Error #:" . $err;
+               $output = '';
+            } 
+            else 
+            {
+              $output = $otp;
+            }
+        echo $output;
+    }
+
 
     public function gallery($value='')
     {
@@ -160,7 +194,7 @@ class Vendors extends CI_Controller {
           if($this->m_vendors->addReview($insert)){
                $this->session->set_flashdata('success', 'Review added Successfully');
           }else{
-                    $this->session->set_flashdata('error', 'Something went wrong please try again later!');
+            $this->session->set_flashdata('error', 'Something went wrong please try again later!');
           }
           redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq,'refresh');
     }

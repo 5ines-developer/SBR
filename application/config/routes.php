@@ -109,6 +109,7 @@ $route['get-favourite']   				= 'vendors/getFavourite';
 
 //enquire vendors
 $route['enquire-vendor']   				= 'vendors/enquireVendor';
+$route['enquire-phoneCheck']   			= 'vendors/phone_check';
 //all category
 $route['categories']   				    = 'vendors/allCategory';
 $route['terms-conditions']   		    = 'home/terms_conditions';

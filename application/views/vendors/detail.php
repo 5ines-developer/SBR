@@ -17,8 +17,18 @@ $this->load->model('m_vendors');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
      <?php $this->load->view('includes/favicon.php');  ?>
     <style>
-        .bd-input > span{
+        .bd-input span{
             font-size: 13px !important;
+        }
+
+        .select-wrapper input.select-dropdown {
+            font-size: 12px !important;
+        }
+        #phonemodal {
+            top: 30% !important;
+        }
+        body {
+            overflow: auto !important;
         }
 
     </style>
@@ -74,8 +84,7 @@ $this->load->model('m_vendors');
 
                                         <form action="" style="display: none">
                                             <input id="vndr_id" ref="myTestField" type="text" class="validate in-l"
-                                                name="vndr_id"
-                                                value="<?php echo (!empty($value->id))?$value->id:''; ?>">
+                                                name="vndr_id" value="<?php echo (!empty($value->id))?$value->id:''; ?>">
                                         </form>
 
 
@@ -270,10 +279,11 @@ $this->load->model('m_vendors');
                                             <div class="row m0">
                                                 <div class="input-field col s6">
                                                     <input id="phone" type="text" class="validate" name="e_mobile"
-                                                        <?php echo (!empty($user->su_phone))?'readonly':''; ?>
+                                                        <?php echo (!empty($user->su_phone))?'readonly':'';  ?>
                                                         value="<?php echo (!empty($user->su_phone))?$user->su_phone:''; ?>"
-                                                        required>
+                                                        required @change="phoneCheck" ref="usphone" v-model="phone">
                                                     <label for="phone">Mobile Number</label>
+                                                    <span class="helper-text red-text" >{{ phoneError }}</span>
                                                 </div>
                                                 <div class="input-field col s6">
                                                     <i class="material-icons dp48 prefix">date_range</i><input id="date" type="text" class="validate datepicker"
@@ -354,20 +364,14 @@ $this->load->model('m_vendors');
                                             <div class="row m0">
                                                 <div class="input-field col s12">
                                                     <div class="g-recaptcha"
-                                                        data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div> <span class="helper-text red-text">{{ captcha }}</span>
+                                                        data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div> <span class="helper-text red-text">{{ captcha }}</span>
                                                 </div>
                                             </div>
-
                                             <input type="hidden" name="vendor_id" value="<?php echo $value->uniq ?>">
                                             <input type="hidden" name="uniq"
                                                 value="<?php echo random_string('alnum',20); ?>">
-
-
-
-
                                             <div class="input-field">
-                                                <button
-                                                    class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                                                <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
                                         </form>
                                     </div>
@@ -1015,6 +1019,25 @@ $this->load->model('m_vendors');
 
         <?php } } ?>
 
+        <div id="phonemodal" class="modal">
+            <div class="modal-content">
+              <h4>Verify Phone</h4>
+              <p>Please enter the OTP which has been sent to your Phone</p>
+               <div class="col l7 m3 s12">
+                <form ref="otp_form" @submit.prevent="formSubmit" action="#" method="post" enctype="multipart/form-data" id="otp_form">
+                    <div class="input-field ">
+                        <input type="text" id="potp" name="potp" class="validate" v-model="potp" >
+                        <label for="potp">OTP</label>
+                        <span class="helper-text red-text" >{{ potpError }}</span>
+                    </div><br>
+                    <div class="input-field">
+                        <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                    </div>
+                </form>
+               </div>
+            </div>
+          </div>
+          <input type="hidden" v-model="votp">
 
 
 
@@ -1068,9 +1091,12 @@ $this->load->model('m_vendors');
                 review: '',
             },
             captcha:'',
+            phone:'',
+            phoneError:'',
+            potp:'',
+            potpError :'',
+            votp:'',
         },
-
-
 
         methods: {
             // more review view
@@ -1112,6 +1138,49 @@ $this->load->model('m_vendors');
                         }
                     })
             },
+            phoneCheck(){
+                this.phoneError = '';
+                if(this.phone.length !=10){
+                    this.phoneError = 'Phone number must be 10 digits!';
+                }else{
+                    const formData = new FormData();
+                    formData.append('phone', this.phone);
+                    axios.post('<?php echo base_url() ?>enquire-phoneCheck', formData)
+                    .then(response => {
+                        if(response.data != ''){
+                            var Modalelem = document.querySelector('#phonemodal');
+                            var instance = M.Modal.init(Modalelem,{ dismissible: false });
+                            instance.open();
+                            this.votp = response.data;
+
+                            document.getElementsByTagName("body").removeAttribute("style");
+                        }else{
+                            this.phoneError = 'Please try with different Phone number';
+                        }
+                    })
+                    .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                    })
+
+                    
+                }
+            },
+            formSubmit(e){
+                e.preventDefault();
+                        this.potpError = '';
+                        const formData = new FormData();
+                        formData.append('potp', this.potp);
+                        if(this.potp == this.votp){
+                            var Modalelem = document.querySelector('#phonemodal');
+                            var instance = M.Modal.init(Modalelem,{ dismissible: true });
+                            instance.close();
+                            M.toast({html: 'OTP has been verified, you can enquire now', classes: 'green', displayLength : 5000 });
+                        }else{
+                            this.potpError = 'Invalid OTP, Please try again!';
+                        }
+                },
             checkForm() {
                 if (this.emailError == '') {
 
@@ -1120,10 +1189,12 @@ $this->load->model('m_vendors');
                 } else {}
             },
             contForm() {
-                if (grecaptcha.getResponse() == '') {
-                        this.captcha = 'Captcha is required';
-                } else {
-                        this.$refs.c_forms.submit();
+                if (this.phoneError == '') {
+                    if (grecaptcha.getResponse() == '') {
+                            this.captcha = 'Captcha is required';
+                    } else {
+                            this.$refs.c_forms.submit();
+                    }
                 }
             },
             showImg(index) {

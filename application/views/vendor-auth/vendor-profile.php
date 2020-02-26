@@ -786,17 +786,7 @@ $this->load->model('m_vendorDetail');
                             this.errormsg = error.response.data.error;
                         }
                       })
-                },
-
-
-                
-
-
-
-
-                
-
-                getPrice(){
+                },getPrice(){
                         axios.post('<?php echo base_url() ?>vendor_detail/getPrice')
                       .then(response => {
                         if(response.data != ''){
