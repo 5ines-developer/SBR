@@ -76,7 +76,7 @@
                 </div>
             </div>
         </section>
-        <section class="white sec-bt">
+        <section class="white sec-bt" id="template">
             <div class="container">
                 <div class="row">
                     <div class="col l12 m12 s12">

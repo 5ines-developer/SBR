@@ -211,6 +211,7 @@ h4 {
     font-size: 16px;
     letter-spacing: 1px;
     cursor: pointer;
+    color: black;
 }
 
 .btn-cate:hover {
@@ -1005,11 +1006,11 @@ h6 {
 }
 
 @media(min-width:768px) and (max-width:991px) {
-        /*search-box*/
+    /*search-box*/
     .kill {
-    position: relative !important;
-    width: 100% !important;
-}
+        position: relative !important;
+        width: 100% !important;
+    }
     .sg-box {
         position: absolute !important;
     }
@@ -1730,7 +1731,7 @@ r-crd-category {
 }
 
 .sg-box {
-/*    visibility: visible;
+    /*    visibility: visible;
     opacity: 0;
     z-index: 0;
     transition: 0.05s;
@@ -1748,35 +1749,34 @@ r-crd-category {
     top: 0px;
     border-top: 1px solid #eaeaea;*/
     visibility: visible;
-opacity: 0;
-transition: 0.05s;
-padding: 15px;
+    opacity: 0;
+    transition: 0.05s;
+    padding: 15px;
     padding-left: 15px;
-/*min-width: 544px;*/
-width: calc(100% - 0px);
-background:
-#fff;
-max-height: 400px;
-position: absolute;
-margin: 0px;
+    /*min-width: 544px;*/
+    width: calc(100% - 0px);
+    background: #fff;
+    max-height: 400px;
+    position: absolute;
+    margin: 0px;
     margin-top: 0px;
-box-shadow: 0px 4px 5px
-#8080801f;
-border-radius: 0 0 4px 4px;
-overflow-y: scroll;
-scrollbar-width: thin;
-display: block;
-top: unset;
-border-top: 1px solid
-#eaeaea;
-margin-top: -5px;
-z-index: 9999 !important;
+    box-shadow: 0px 4px 5px #8080801f;
+    border-radius: 0 0 4px 4px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    display: block;
+    top: unset;
+    border-top: 1px solid #eaeaea;
+    margin-top: -5px;
+    z-index: 9999 !important;
 }
+
 .kill {
     position: relative;
-   /* width: calc(100% - 809px);*/
-   width: 100%;
+    /* width: calc(100% - 809px);*/
+    width: 100%;
 }
+
 .visible {
     visibility: visible;
     opacity: 1;
@@ -2472,9 +2472,9 @@ a.viewmore:hover {
 @media(max-width:767px) {
     /*search-box*/
     .kill {
-    position: relative;
-    width: 100%;
-}
+        position: relative;
+        width: 100%;
+    }
     .sg-box {
         position: absolute;
     }
