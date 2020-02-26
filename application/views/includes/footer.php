@@ -84,13 +84,13 @@
 
                                 
                                 <div class="row m0 footerbutton">
-                                    <div class="col s4">
+                                    <div class="col s4 l4 m4">
                                         <a href="<?php echo base_url('free-quote') ?>" class="b1">Get Free Quote</a>
                                     </div>
-                                    <div class="col s4">
+                                    <div class="col s5 l4 m4">
                                         <a href="<?php echo base_url('vendor/register') ?>" class="b2">Register as Vendor</a>
                                     </div>
-                                    <div class="col s4">
+                                    <div class="col s3 l4 m4">
                                         <a href="https://pages.razorpay.com/pl_Ckj0SFClrYvOzF/view" class="b3">Pay Now</a>
                                     </div>
                                 </div>

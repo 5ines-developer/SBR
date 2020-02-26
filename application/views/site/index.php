@@ -111,7 +111,7 @@
         <section class="sec">
             <div class="container-fluide">
                 <div class="row">
-                    <div class="col l12">
+                    <div class="col l12 m12 s12">
                         <div class="vender-detail">
                             <h4>Vendors Categories</h4>
                             <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
@@ -368,7 +368,7 @@
         <section>
             <div class="container">
                 <div class="row m0">
-                    <div class="col l12">
+                    <div class="col l12 m12 s12">
                         <div class="vender-detail">
                             <h4>Real Wedding Storie's</h4>
                             <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
@@ -409,7 +409,7 @@
     <section class="sec mb30">
         <div class="container">
             <div class="row">
-                <div class="col l12">
+            <div class="col l12 m12 s12">
                     <div class="vender-detail">
                         <h4>Happy Couple's</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
@@ -474,7 +474,7 @@
     <section class="sec bg-col">
         <div class="container-fluide">
             <div class="row">
-                <div class="col l12">
+            <div class="col l12 m12 s12">
                     <div class="vender-detail">
                         <h4>Our Blogs</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive " alt="">

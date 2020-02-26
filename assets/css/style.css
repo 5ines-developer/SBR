@@ -1060,6 +1060,17 @@ h6 {
         top: 105px;
         right: -92px;
     }
+    /* 26-02-2020 */
+    .btn-find {
+        padding: 0px 25px;
+    }
+    .top-cities {
+        margin-top: -80px;
+    }
+    .brand-logo {
+        width: 255px;
+        margin-top: 3px;
+    }
 }
 
 @media(min-width:992px) and (max-width :1200px) {
@@ -4512,9 +4523,10 @@ nav a.sidenav-trigger i {
 
 @media(max-width:450px) {
     .footerbutton a {
-        padding: 5px 5px;
-        min-height: 54px;
-        align-items: center;
+        min-height: 35px;
+        display: flex !important;
+        justify-content: center;
+        font-size: 11px !important;
     }
 }
 
