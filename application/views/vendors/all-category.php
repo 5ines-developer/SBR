@@ -66,7 +66,7 @@ top: -3px;
     width: 100%;
 }
 .allcat{
-    background: rgba(0, 0, 0, 0.6) url('https://www.magicorbits.com/Contents/images/6.jpg') !important;
+    background: rgba(0, 0, 0, 0.6) url('assets/img/vendors-c.jpg') !important;
 }
 
 
