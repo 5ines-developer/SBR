@@ -3475,7 +3475,7 @@ input:not([type]):focus {
     padding: 5px 30px;
     transition: .3s;
     background: #fff;
-    cursor: pointer;
+    cursor: auto;
 }
 
 .wed-bottom-inner:hover {

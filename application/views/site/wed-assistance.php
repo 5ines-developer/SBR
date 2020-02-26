@@ -34,9 +34,6 @@
             <div class="container-fluide">
                 <div class="row">
                     <div class="col s12">
-
-                        
-
                         <div class="wda-serviceitem">
                             <div class="col s12 m6 l6">
                                 <div class="wdas-item-content ">
