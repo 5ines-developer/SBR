@@ -1071,6 +1071,16 @@ h6 {
         width: 255px;
         margin-top: 3px;
     }
+    .wed-assis-banner {
+        background-size: cover !important;
+        background-blend-mode: overlay;
+        text-align: center;
+        background-repeat: no-repeat !important;
+    }
+    .pricing {
+        margin: 0;
+    }
+    /* end 2020 */
 }
 
 @media(min-width:992px) and (max-width :1200px) {
@@ -5830,4 +5840,20 @@ html {
     margin-bottom: 10px;
     overflow: hidden;
     max-height: 140px;
+}
+
+
+/* 20-02-2020 */
+
+.btn-web {
+    background: white;
+    padding: 8px 20px;
+    color: black;
+    border: 1px solid white;
+}
+
+.btn-web:hover {
+    background: #d0021b;
+    color: white;
+    border: 1px solid white;
 }
