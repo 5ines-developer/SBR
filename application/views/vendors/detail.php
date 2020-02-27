@@ -447,7 +447,7 @@ $this->load->model('m_vendors');
                     <!-- end Servicess -->
 
                     <!-- gallery -->
-                    <div id="vendor-gallery" v-if="imgs.length > 0">
+                    <!-- <div id="vendor-gallery" v-if="imgs.length > 0">
                         <div class="card">
                             <div class="card-container">
                                 <div class="row m0">
@@ -456,9 +456,9 @@ $this->load->model('m_vendors');
                                             <p>Photo Gallery</p>
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    <div class="clearfix"></div> -->
 
-                                    <div class="" onload="myFunction()">
+                                   <!-- <div class="" onload="myFunction()">
                                         <div v-for="(src, index) in imgs" :key="index" class="pic col5s">
                                             <div @click="() => showImg(index)" v-if="index < 11">
                                                 <img :src="src" class="">
@@ -472,14 +472,35 @@ $this->load->model('m_vendors');
                                                 <img :src="src" class="">
                                             </div>
                                         </div>
-                                    </div>
-                                    <vue-easy-lightbox :visible="visible" :imgs="imgs" :index="index" @hide="handleHide">
-                                    </vue-easy-lightbox>
+                                    </div> -->
+                                    <!-- <vue-easy-lightbox :visible="visible" :imgs="imgs" :index="index" @hide="handleHide">
+                                    </vue-easy-lightbox> -->
 
-                                </div>
+                                    
+
+                           <!--      </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <template>
+
+                    <CoolLightBox 
+                                      :items="items" 
+                                      :index="index"
+                                      @close="index = null">
+                                    </CoolLightBox>
+
+                                    <div class="images-wrapper">
+                                      <div
+                                        class="image"
+                                        v-for="(image, imageIndex) in items"
+                                        :key="imageIndex"
+                                        @click="index = imageIndex"
+                                        :style="{ backgroundImage: 'url(' + image + ')' }"
+                                      ></div>
+                                    </div>
+                    </template>
+
                     <!-- end gallery -->
 
 
@@ -1048,7 +1069,10 @@ $this->load->model('m_vendors');
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script> -->
+
+     <script src="//unpkg.com/vue-cool-lightbox"></script> 
+
     <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
@@ -1066,6 +1090,7 @@ $this->load->model('m_vendors');
 
     <script>
     Vue.component('star-rating', VueStarRating.default);
+    Vue.component('vue-cool-lightbox', window.CoolLightBox.default);
     var app = new Vue({
         el: '#app',
         data: {
@@ -1096,6 +1121,11 @@ $this->load->model('m_vendors');
             potp:'',
             potpError :'',
             votp:'',
+            items: [
+                'https://cosmos-images2.imgix.net/file/spina/photo/20565/191010_nature.jpg?ixlib=rails-2.1.4&auto=format&ch=Width%2CDPR&fit=max&w=835',
+                'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/nature-quotes-1557340276.jpg?crop=0.666xw:1.00xh;0.168xw,0&resize=640:*',
+              ],
+            index: null,
         },
 
         methods: {
