@@ -5837,6 +5837,13 @@ html {
     .ul-social {
         display: none;
     }
+    /* 28-02-2020 */
+    .padd-con {
+        padding: 0px;
+    }
+    .contact-form {
+        background: #000000ab;
+    }
 }
 
 .img-wedd {
@@ -5903,4 +5910,13 @@ html {
 .vender-he .vendor-inf {
     overflow: hidden;
     height: 55px;
+}
+
+@media (min-width:768px) and (max-width:992px) {
+    .contact-form {
+        background: #000000ab;
+    }
+    .address-detail {
+        padding: 3% 15px 32px 15px;
+    }
 }
