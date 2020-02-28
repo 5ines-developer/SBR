@@ -22,7 +22,7 @@
                 <div class="col l12 s12">
                     <div class="banner-up ">
                         <h5 class="white-text">Real Wedding</h5>
-                        <p class="tc white-text pad0-11">Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of templates.</p>
+                        <p class="tc white-text pad0-11">Browse by city to find wedding professionals in your area and view photos of their work.</p>
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                             <div class="col s12 m10 push-m1 l8 push-l2 mb10">
                                 <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
@@ -66,8 +66,7 @@
                     <div class="col l12 m12 s12">
                         <div class="e-invite-detail">
                             <h3>It is all About Real Weddings Stories</h3>
-                            <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                pellentesque eu, pretium quis, sem.</p>
+                            <p class="tc black-text pad-10">What greater thing is there for two human souls, than to feel that they are joined for life–to strength each other in all labor, to rest on each other in all sorrow, to minister to each other in silent unspeakable memories at the moment of the last parting?</p>
                         </div>
                     </div>
                 </div>
