@@ -5867,3 +5867,19 @@ html {
     box-shadow: 0px 5px 20px 0px #d5d5d5;
     transition: 1s;
 }
+
+.pic-over {
+    overflow: hidden;
+    height: 177px;
+    margin-bottom: 15px;
+}
+
+.responsive-pp {
+    padding-bottom: 12px;
+    width: 300px;
+    background: #979797;
+}
+
+.img-real {
+    background: #979797;
+}
