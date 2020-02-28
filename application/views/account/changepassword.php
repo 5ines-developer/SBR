@@ -14,27 +14,28 @@
      <?php $this->load->view('includes/favicon.php');  ?>
 </head>
 
-<body class="#fafafa grey lighten-5">
+<body >
     <div id="app">
         <!-- header -->
         <?php $this->load->view('includes/header.php'); ?>
         <!-- end header -->
-        <section class="sec">
+        <section class="dsection">
             <div class="container-fluide">
                 <div class="row">
-                    <?php $this->load->view('includes/vendor-sidebar.php'); ?>
+                    <?php $this->load->view('includes/left-menu.php'); ?>
                     <div class="col l9 m9 s12">
-                        <div class="vendor-detail-inputs b-sho white">
+                        <div class="vendor-detail-inputs  white z-depth-1">
                             <div class="vendor-head">
                                 <h6>Change Password</h6>
                             </div>
-                            <form action="<?php echo base_url('vendor/update-password') ?>" method="post">
+                            <form action="<?php echo base_url('update-password') ?>" method="post">
                                 <div class="vendor-inputs wid-50">
                                     <div class="row">
                                         <div class="col l12 m5 s12">
                                             <div class="input-field">
-                                                <input id="curtpasword" type="password" v-model="curtpassw" name="curtpassword" required="">
+                                                <input id="curtpasword" @change="cuenpasscheck" type="password" v-model="curtpassw" name="curtpassword" required="">
                                                 <label for="curtpassword">Current Password<span class="red-text">*</span></label>
+                                                <span class="helper-text red-text">{{ curtpaserror }}</span>
                                             </div>
                                         </div>
                                         <div class="col l12 m5 s12">
@@ -68,7 +69,6 @@
         </section>
         </div>
         <!-- script -->
-        <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
@@ -76,6 +76,7 @@
         <script>
             <?php $this->load->view('includes/message'); ?>
         </script>
+
         <script>
             var demo = new Vue({
                 el: '#app',
@@ -84,12 +85,29 @@
                     copassw: '',
                     curtpassw: '',
                     cpswerror: '',
+                    curtpaserror:'',
                 },
 
                 methods: {
+                    cuenpasscheck(){
+                        this.curtpaserror = '';
+                        const formData = new FormData();
+                        formData.append('pass', this.curtpassw);
+                        axios.post('<?php echo base_url() ?>account/curnpasscheck', formData)
+                        .then(response => {
+                            if (response.data == '') {
+                                this.curtpaserror = 'Invalid Current passwprd';
+                            } else {
+                                this.curtpaserror = '';
+                            }
+                        })
+                        .catch(error => {
+                                if (error.response) {
+                                this.errormsg = error.response.data.error;
+                            }
+                        })
 
-                    // check psw
-                    checkCpsw() {
+                    },checkCpsw() {
                         if (this.newpassw != this.copassw) {
                             this.cpswerror = 'Password must match with previous entry!';
 
@@ -98,7 +116,7 @@
                         }
                     },
                     checkForm() {
-                        if ((this.cpswerror == '')) {
+                        if ((this.cpswerror == '') && (this.curtpaserror == '')) {
 
 
                             this.$refs.form.submit()

@@ -83,6 +83,26 @@ class M_account extends CI_Model {
         }
     }
 
+    public function changepass($id,$npass)
+    {
+        $this->db->where('su_id', $id);
+        $query = $this->db->get('user');
+        if($query->num_rows() > 0)
+        {
+            $this->db->where('su_id', $id);
+            $this->db->update('user',  array('su_password' =>$npass));
+            if ($this->db->affected_rows() > 0)
+            {
+                return true;
+            }else{
+
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
 
 
 
