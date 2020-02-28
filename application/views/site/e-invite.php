@@ -21,7 +21,7 @@
                 <div class="col l12 s12">
                     <div class="banner-up ">
                         <h5 class="white-text">E-Invite</h5>
-                        <p class="tc white-text pad0-11">Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of templates.</p>
+                        <p class="tc white-text pad0-11">Easily customise your Wedding Website design.</p>
                     </div>
                 </div>
             </div>
@@ -33,15 +33,13 @@
                         <div class="e-invite z-depth-1">
                             <div class="e-invite-detail">
                                 <h3>Create Your Free Wedding Invitation Website and Invite Your Family & Friends</h3>
-                                <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-                                    felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi</p>
+                                <p class="tc black-text pad-10">Your wedding events schedule, RSVP, and many more : share all of your details with guests through your Wedding Website!!</p>
                                 <center><a href="<?php echo base_url('login') ?>" class="waves-effect waves-light btn red plr30 accent-4 white-text">Sign In</a></center>
                             </div>
                             <div class="e-invite-detail">
                                 <h3 class="black-text">Working Process</h3>
-                                <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-                                    nec, pellentesque eu, pretium quis, sem. Nulla coo, rhoncus ut, imperdiet a, venenatis</p>
+                                <!-- <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
+                                    nec, pellentesque eu, pretium quis, sem. Nulla coo, rhoncus ut, imperdiet a, venenatis</p> -->
                             </div>
                             <div class="pro-flow">
                                 <div class="row">
@@ -49,7 +47,7 @@
                                         <div class="proce-box">
                                             <i class="material-icons">laptop_chromebook</i>
                                             <h6>Create a Website</h6>
-                                            <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget</p>
+                                            <p class="tc black-text pad-10">Select your design, add details, and personalize your website for you loved once.</p>
                                         </div>
 
                                     </div>
@@ -58,7 +56,7 @@
                                         <div class="proce-box">
                                             <i class="material-icons">assignment</i>
                                             <h6>Add Information</h6>
-                                            <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget</p>
+                                            <p class="tc black-text pad-10">Inform guests about your wedding events schedule, locations, and many more.</p>
                                         </div>
 
                                     </div>
@@ -66,7 +64,7 @@
                                         <div class="proce-box">
                                             <i class="material-icons">list</i>
                                             <h6>Guest List</h6>
-                                            <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget</p>
+                                            <p class="tc black-text pad-10">Sync guest list automatically.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -83,8 +81,7 @@
                         <div class="e-invite-detail dash-template-invite">
                             <h3 class="">Select Your Template and Start to Create</h3>
                             <center><img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt=""></center>
-                            <p class="tc black-text pad-10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
-                                pellentesque eu, pretium quis, sem. Nulla coo, rhoncus ut, imperdiet a, venenatis</p>
+                            <p class="tc black-text pad-10">Quickly Create and share all of your details in one place,Quickly customize your Wedding Website Templates.</p>
                         </div>
                     </div>
                 </div>
@@ -140,7 +137,7 @@
                                                 <p>Mehndi Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview') ?>?item=mehindi-1"><i class="material-icons">remove_red_eye</i></a> <a @click="theme('mehindi1')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -149,7 +146,8 @@
                                                 <p>Mehndi Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=mehindi-2"><i class="material-icons">remove_red_eye</i></a> 
+                                             <a @click="theme('mehindi2')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -166,7 +164,8 @@
                                                 <p>Engagement Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-1"><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme('eng1')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -175,7 +174,8 @@
                                                 <p>Engagement Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-2"><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme('eng2')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +192,8 @@
                                                 <p>Wedding Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-1"><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme('wed1')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -201,7 +202,8 @@
                                                 <p>Wedding Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-2"><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme('wed2')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +220,8 @@
                                                 <p>Reception Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=reception-1"><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme('rec1')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -227,7 +230,8 @@
                                                 <p>Reception Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                                <a><i class="material-icons">remove_red_eye</i></a> <a><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview')?>?item=reception-2"><i class="material-icons">remove_red_eye</i></a> 
+                                                            <a @click="theme('rec2')"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
