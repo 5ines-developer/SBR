@@ -53,21 +53,21 @@
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input sele-ty">
                                                         <div class="input-field m0">
-                                                            <select id="citys" name="city" class="form-control js-example-tags" required="required">
+                                                            <select id="citys" name="city" class="form-control js-example-tags" v-model="cty">
                                                             <option value="">City</option>
                                                             <?php if (!empty(cities())) {foreach (cities() as $citys => $cities) { ?>
                                                             <option value="<?php echo $cities->id ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                                             <?php   } } ?>
                                                            </select>
-                                                           <span class="helper-text red-text" ><?php echo form_error('city'); ?></span>
                                                         </div>
+                                                           <span class="helper-text red-text" >{{ cityError }}</span><br>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input sele-ty">
                                                         <div class="input-field m0">
-                                                            <select id="vendor-type" name="category" class="form-control js-example-tags" required="required">
+                                                            <select id="vendor-type" name="category" class="form-control js-example-tags" v-model="cat">
                                                             <option value="">Vendor Type</option>
                                                             <?php if (!empty(vendor_category())) {
                                                                 foreach (vendor_category() as $categorys => $categories) { 
@@ -75,25 +75,22 @@
                                                                     <option value="<?php echo $categories->id ?>" > <?php echo (!empty($categories->category))?$categories->category:''; ?> </option>
                                                             <?php   } }?>
                                                              </select>
-                                                             <span class="helper-text red-text" ><?php echo form_error('category'); ?></span>
-                                                        </div>
+                                                        </div> <span class="helper-text red-text" >{{ catError }}</span><br>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0">
-                                                            <input id="email" type="email" class="validate  in-l" v-on:keyup="emailCheck" v-model="email" placeholder="Email" name="email" required="">
+                                                            <input id="email" type="email" class="validate  in-l" v-on:change="emailCheck" v-model="email" placeholder="Email" name="email" required="">
                                                             <span class="helper-text red-text" >{{ emailError }}</span>
-                                                            <span class="helper-text red-text" ><?php echo form_error('email'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col l12 m6 s12">
                                                     <div class="d-input">
                                                         <div class="input-field m0">
-                                                            <input id="phone" type="text" class="validate  in-l" v-model="phone" v-on:keyup="mobileCheck" placeholder="Mobile No" name="phone" required="">
+                                                            <input id="phone" type="text" class="validate  in-l" v-model="phone" v-on:change="mobileCheck" placeholder="Mobile No" name="phone" required="">
                                                             <span class="helper-text red-text" >{{ phoneError }}</span>
-                                                            <span class="helper-text red-text" ><?php echo form_error('phone'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,7 +98,6 @@
                                                     <div class="d-input">
                                                         <div class="input-field m0">
                                                             <input id="password" type="password" class="validate  in-l" v-model="passw" placeholder="Password" name="password" required="">
-                                                            <span class="helper-text red-text" ><?php echo form_error('password'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -110,7 +106,6 @@
                                                         <div class="input-field m0">
                                                             <input id="confpassword" type="password" class="validate  in-l" v-model="copassw" v-on:keyup="checkCpsw" placeholder="Confirm Password" name="cpassword" required="">
                                                             <span class="helper-text red-text">{{ cpswerror }}</span>
-                                                            <span class="helper-text red-text" ><?php echo form_error('cpassword'); ?></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -118,7 +113,7 @@
                                                     <div class="d-input">
                                                         <div class="g-recaptcha" data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div>
                                                     </div>
-                                                    <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div>
+                                                    <div class="error text-denger" style="margin-bottom:10px;color:#fff"></div><br>
                                                 </div>
                                             </div>
                                             <div class="col s12 center">
@@ -174,35 +169,43 @@
                 emailError:'',
                 cpswerror: '',
                 nameError: '',
-                phoneError: '',
-                brandError:''
+                brandError:'',
+                cty:'',
+                cat:'',
+                cityError:'',
+                catError:'',
             },
 
             methods: {
                 // mobile number check on database
                 mobileCheck(){
                     this.phoneError = '';
-                    const formData = new FormData();
+                    if(this.phone.length !=10){
+                        this.phoneError = 'Phone number must be 10 digits!';
+
+                    }else{
+
+                        const formData = new FormData();
                         formData.append('phone', this.phone);
                         axios.post('<?php echo base_url() ?>vendor/phone_check', formData)
-                      .then(response => {
-                        if(response.data == '1'){
-                            this.phoneError = 'This Phone number already exist!';
-                        }else if(response.data == '2'){
-                            this.phoneError = 'This Phone number already exist with shaadibaraati user!';
-                        }{
-                            this.phoneError = '';
-                        }
-                      })
-                      .catch(error => {
-                        if (error.response) {
-                            this.errormsg = error.response.data.error;
-                        }
-                      })
+                          .then(response => {
+                            if(response.data == '1'){
+                                alert('ok')
+                                this.phoneError = 'This Phone number already exist!';
+                            }else if(response.data == '2'){
+                                this.phoneError = 'This Phone number already exist with shaadibaraati user!';
+                            }else{
+                                this.phoneError = '';
+                            }
+                          })
+                          .catch(error => {
+                            if (error.response) {
+                                this.errormsg = error.response.data.error;
+                            }
+                          })
+                    }
+
                 },
-
-                
-
                 // email check on database
                 emailCheck(){
 
@@ -257,7 +260,11 @@
                     }
                 },
                 checkForm(){
-                   if((this.cpswerror == '') && (this.phoneError == '') && (this.emailError =='')){
+                    this.catError='';
+                    this.cityError='';
+                    if (this.cty == '') { this.cityError = 'Please Select Your City'; }
+                    if (this.cat =='') { this.catError = 'Please Select Your Category'; }
+                   if((this.cpswerror == '') && (this.phoneError == '') && (this.emailError =='') && (this.catError =='')&& (this.cityError =='')){
                         if (grecaptcha.getResponse() == '') {
                             this.captcha = 'Captcha is required';
                         }else{
