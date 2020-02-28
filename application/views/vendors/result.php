@@ -199,12 +199,15 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
             <div class="container-fluide">
                 <div class="row m0">
                     <div class="col l12 s12 m12">
-                        <div class="vendor-search">
+                    <div class="vendor-search vender-he">
                             <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                                 <div class="row m0">
                                     <div class="col s12 m10 l6 ">
-                                        <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend">
+                                    <div class="kill">
+                                        <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend"> 
+                                    
                                         <ul class="sg-box" :class="{'visible': visible }" v-html="autocomplete"></ul>
+                                        </div>
                                         <div class="preloader" :class="{'previsible': previsible }">
                                             <div class="preloader-wrapper big active" id="prelod">
                                                 <div class="spinner-layer spinner-blue">

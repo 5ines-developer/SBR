@@ -69,8 +69,8 @@
                         <h5 class="nh-name">Photo Gallery</h5>
                         <div class="bg-depth1 ven-10p" id="gallery">
                             <div class="row">
-                                <div v-for="(src, index) in imgs" :key="index" class="pic col l3 m4 s12" @click="() => showImg(index)">
-                                    <img :src="src" class="img-responsive res-pp">
+                                <div v-for="(src, index) in imgs" :key="index" class="pic pic-over col l3 m4 s12" @click="() => showImg(index)">
+                                    <img :src="src" class="img-responsive responsive-pp">
                                     <div class="icon-zoom">
                                         <i class="material-icons">zoom_in</i>
                                     </div>
@@ -98,7 +98,7 @@
                          <a href="<?php echo base_url('real-wedding/detail/'.$row->id.'') ?>" >
                     <div class="col l4 s12 m4">
                         <div class="card-wed">
-                        <div class="img-box">
+                        <div class="img-box img-real">
                             <img src="<?php echo base_url().'/'.$row->image;?>" class="img-responsive" alt="">
                             </div>
                             <div class="wed-detail">
