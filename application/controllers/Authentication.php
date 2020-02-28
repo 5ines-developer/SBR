@@ -100,7 +100,7 @@ class Authentication extends CI_Controller {
             $this->sendregister($email, $refid);
         		if($this->sendregister($email, $refid))
         		{
-        			$this->session->set_flashdata('success', 'Before you can login, you must active your account with the link sent to your email address.');
+        			$this->session->set_flashdata('success', 'Before you can login,<br> you must active your account with the link sent to your email address.');
                     redirect('login','refresh');
         		}else{
         			$this->session->set_flashdata('error', 'Something went wrong please try again later');
@@ -127,17 +127,16 @@ class Authentication extends CI_Controller {
         $msg = $this->load->view('email/registration', $data, true);
 		$this->email->set_newline("\r\n");
 		$this->email->from($from , 'ShaadiBaraati');
+        $this->email->to('prathwi@5ine.in');
         $this->email->to($to);
         $this->email->subject('Registration verification'); 
         $this->email->message($msg);
      	if($this->email->send())  
-        {  
-           
+        {
          	return true;
         } 
         else
         {
-            
             return false;
         }
         

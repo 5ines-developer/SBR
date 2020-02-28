@@ -104,6 +104,47 @@ class Account extends CI_Controller {
 			$this->load->view('account/enq-vendor', $data, FALSE);
 		}
 
+	public function changePassword($var = null)
+    {
+		$data['title'] = 'Change password | Shaadibaraati';
+		$this->load->view('account/changepassword',$data);
+		     
+	}
+
+	public function password_validation()
+    {
+        $this->form_validation->set_rules('curtpassword', 'Current Password', 'callback_passwordcheck');
+        $this->form_validation->set_rules('newpassword', 'New Password', 'required');
+        $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|matches[newpassword]');
+        if ($this->form_validation->run() == false) {
+            $error = validation_errors();
+            $this->session->set_flashdata('formerror', $error);
+            redirect('vendor/change-password');
+        } else {
+			$password = $this->input->post('newpassword');
+			$hash  = $this->bcrypt->hash_password($password);
+			
+            if ($this->m_vendorDetail->changepass($this->id, $hash)) {
+                $this->session->set_flashdata('success', 'Password updated Successfully');
+                redirect('vendor/change-password');
+            } else {
+                $this->session->set_flashdata('error', 'unable to update your password, New password is matching with the current password!');
+                redirect('vendor/change-password');
+            }
+        }
+	}
+	
+	public function passwordcheck($password)
+    {
+		$result = $this->db->where('id', $this->id)->get('vendor')->row();
+		if ($this->bcrypt->check_password($password, $result->password)) {
+			return true;
+		}else{
+			$this->form_validation->set_message('passwordcheck', 'The {field} is not Valid');
+			return false;
+		}
+    }
+
 
 
 }
