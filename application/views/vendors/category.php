@@ -45,7 +45,7 @@ $this->load->model('m_vendors');
             <div class="container-fluide">
                 <div class="row m0">
                     <div class="col l12 s12 m12">
-                        <div class="vendor-search">
+                        <div class="vendor-search vender-he">
                             <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                                 <div class="row m0">
                                     <div class="col s12 m6 l6 ">

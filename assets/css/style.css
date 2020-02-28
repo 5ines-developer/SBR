@@ -1817,9 +1817,10 @@ r-crd-category {
     padding-left: 20px;
 }
 
-.sg-result-list:hover {
+
+/* .sg-result-list:hover {
     background-color: #f0f0f0;
-}
+} */
 
 
 /* vendor detail pa */
@@ -5154,11 +5155,12 @@ html {
     color: #fff !important;
 }
 
-.tit {
+
+/* .tit {
     white-space: nowrap !important;
     overflow: visible !important;
     text-overflow: unset !important;
-}
+} */
 
 .r-crd-price {
     line-height: 22px;
@@ -5882,4 +5884,23 @@ html {
 
 .img-real {
     background: #979797;
+}
+
+.vendor-inf:hover {
+    background: #e6e6e6;
+    padding: 5px;
+}
+
+.vendor-inf {
+    padding: 5px;
+}
+
+.vender-he .vendor-inf img {
+    height: 50px;
+    background: gray;
+}
+
+.vender-he .vendor-inf {
+    overflow: hidden;
+    height: 55px;
 }
