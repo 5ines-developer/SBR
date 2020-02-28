@@ -74,7 +74,7 @@
                                             <div class="col  s12 m6">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
-                                                        <input id="pn" name="phone" type="text" class="validate" required="">
+                                                        <input id="pn" name="phone" type="text" minlength="10" maxlength="10" class="validate" required="">
                                                         <label for="pn">Phone<span class="red-text">*</span></label>
                                                     </div>
                                                 </div>

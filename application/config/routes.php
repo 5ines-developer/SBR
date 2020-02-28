@@ -57,6 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['register'] 		= 'authentication/index'; //load view page
 $route['register/add'] 	= 'authentication/register_insert'; //add user details
 $route['email-verification'] 	= 'authentication/email_verification'; //email verification
+$route['resend-link'] 	= 'authentication/resend_link'; //email verification
 
 //login
 $route['login'] 		= 'authentication/login'; //load view page
@@ -73,10 +74,12 @@ $route['forgot-password/update'] 		= 'authentication/update_pass';
 $route['profile'] 						= 'account/index';
 $route['profile/update'] 				= 'account/update_profile';
 
+//change password
+$route['change-password'] 			= 'account/changePassword';
+$route['update-password'] 			= 'account/password_validation';
+
 //shortlisted vendor
-
 $route['profile/shortlisted-vendor'] 	= 'account/getShortist';
-
 //enquired vendors
 $route['profile/enquired-vendors']   	= 'account/enquireVendor';
 

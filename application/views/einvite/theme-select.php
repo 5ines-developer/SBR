@@ -40,7 +40,7 @@ $this->load->model('m_account');
                                 <div class="cboady">
                                     <div class="category-list">
                                         <ul class="tabs tab-ll">
-                                            <li class="tab tab-li col s3"><a href="#a1" :class="{'active': mehnactive}">Mehndi</a></li>
+                                            <li class="tab tab-li col s3"><a id="actrem" href="#a1" :class="{'active': mehnactive}">Mehndi</a></li>
                                             <li class="tab tab-li col s3"><a href="#a2" :class="{'active': engactive}">Engagement</a></li>
                                             <li class="tab tab-li col s3"><a href="#a3" :class="{'active': wedactive}">Wedding</a></li>
                                             <li class="tab tab-li col s3"><a href="#a4" :class="{'active': recactive}">Reception</a></li>
@@ -236,15 +236,19 @@ $this->load->model('m_account');
                 getTheme(){
                     axios.post('<?php echo base_url() ?>einvite/getThemeselect')
                     .then(response => {
-                        console.log(response)
                         if(response.data == 'rec1'){
                             this.recactive = true;
                             this.rectmp = 'block';
                             this.recbord1 = '2px solid #d0021b;';
+                             var element = document.getElementById("actrem");
+                            element.classList.remove("active");
+
                         }else if(response.data  == 'rec2'){
                             this.recactive = true;
                             this.rectmp = 'block';
                             this.recbord2 = '2px solid #d0021b;';
+                            var element = document.getElementById("actrem");
+                            element.classList.remove("active");
                         }else if(response.data  == 'mehindi1'){
                             this.mehnactive = true;
                             this.mentmp = 'block';
@@ -257,18 +261,33 @@ $this->load->model('m_account');
                             this.engactive = true;
                             this.engtmp = 'block';
                             this.engbord = '2px solid #d0021b;';
+
+                            var element = document.getElementById("actrem");
+                            element.classList.remove("active");
+
                         }else if(response.data  == 'eng2'){
                             this.engactive = true;
                             this.engtmp = 'block';
                             this.engbord2 = '2px solid #d0021b;';
+
+                            var element = document.getElementById("actrem");
+                            element.classList.remove("active");
                         }else if(response.data  == 'wed1'){
                             this.wedactive = true;
                             this.wedtmp = 'block';
                             this.wedbord = '2px solid #d0021b;';
+
+                            var element = document.getElementById("actrem");
+                            element.classList.remove("active");
+
                         }else if(response.data  == 'wed2'){
                             this.wedactive = true;
                             this.wedtmp = 'block';
                             this.wedbord2 = '2px solid #d0021b;';
+
+                            var element = document.getElementById("actrem");
+                            element.classList.remove("active");
+
                         }else{
                             this.mehnactive = true;
                             this.mentmp = 'block';

@@ -59,7 +59,7 @@
                                         <div class="d-input">
                                             <div class="input-field">
                                                 <input id="number" type="text" class="validate  in-l" v-model="phone"
-                                                    placeholder="Mobile No" v-on:keyup="mobileCheck" required=""
+                                                    placeholder="Mobile No" v-on:change="mobileCheck" required=""
                                                     name="phone">
                                                 <span class="helper-text red-text">{{ phoneError }}</span>
                                             </div>
@@ -69,7 +69,7 @@
                                         <div class="d-input">
                                             <div class="input-field">
                                                 <input id="email" type="email" class="validate  in-l"
-                                                    placeholder="Email Address" v-model="email" v-on:keyup="emailCheck"
+                                                    placeholder="Email Address" v-model="email" v-on:change="emailCheck"
                                                     required="" name="email">
                                                 <span class="helper-text red-text">{{ emailError }}</span>
                                             </div>
@@ -193,10 +193,14 @@
         methods: {
             // mobile number check on database
             mobileCheck() {
+
                 this.phoneError = '';
-                const formData = new FormData();
-                formData.append('phone', this.phone);
-                axios.post('<?php echo base_url() ?>authentication/phone_check', formData)
+                if (this.phone.length !=10) {
+                    this.phoneError = 'Mobile number must be 10 digits.';
+                }else{
+                    const formData = new FormData();
+                    formData.append('phone', this.phone);
+                    axios.post('<?php echo base_url() ?>authentication/phone_check', formData)
                     .then(response => {
                         if (response.data == '1') {
                             this.phoneError = 'This Phone number already exist!';
@@ -205,10 +209,11 @@
                         }
                     })
                     .catch(error => {
-                        if (error.response) {
+                            if (error.response) {
                             this.errormsg = error.response.data.error;
                         }
                     })
+                }
             },
 
             // email check on database
@@ -244,7 +249,6 @@
             },
             checkForm() {
                 if ((this.cpswerror == '') && (this.phoneError == '') && (this.emailError == '')) {
-
                     if (grecaptcha.getResponse() == '') {
                         this.captcha = 'Captcha is required';
                     } else {

@@ -32,7 +32,7 @@
                             <div class="feedback-form z-depth-2">
                                 <h4>Give Us Your Feedback</h4>
                                 <div class="form-feed-list">
-                                    <form ref="form" @submit.prevent="checkForms" action="<?php echo base_url('feedback-post') ?>" method="post">
+                                    <form ref="formss" @submit.prevent="checkForms" action="<?php echo base_url('feedback-post') ?>" method="post">
                                         <div class="row">
                                         <div class="col l12 m12 s12">
                                                 <div class="feedback-input padd10">
@@ -68,7 +68,7 @@
                                              <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
-                                                        <input id="phone" name="phone" type="text" class="validate" required="">
+                                                        <input id="phone" name="phone" minlength="10" maxlength="10" type="text" class="validate" required="">
                                                         <label for="phone">Phone</label>
                                                     </div>
                                                 </div>
@@ -170,7 +170,13 @@
                 if (grecaptcha.getResponse() == '') {
                     this.captcha = 'Captcha is required';
                 } else {
-                    this.$refs.form.submit();
+                    if ((this.ar <= '3')) {
+                        if (confirm('Do you really want to give a ' + this.ar + ' rating')) {
+                            this.$refs.formss.submit()
+                        }
+                    }else{
+                        this.$refs.formss.submit();
+                    }
                 }
             },
             

@@ -7,7 +7,7 @@
                 <?php $this->load->model('m_account');
                 $profile = $this->m_account->profile_pic($this->session->userdata('shdid'));
                 ?>
-                <img src="<?php echo (!empty($profile->su_profile_file))?$profile->su_profile_file:'https://anthemunited.com/app/uploads/2016/12/steve-lepan.jpg' ?>" alt="">
+                <img src="<?php echo (!empty($profile->su_profile_file))?base_url().$profile->su_profile_file:'https://anthemunited.com/app/uploads/2016/12/steve-lepan.jpg' ?>" alt="">
             </div>
             <div class="pb-content center-align">
                 <h6 class="white-text "><?php echo (!empty($profile->su_name))?ucfirst($profile->su_name):'' ?></h6>
@@ -18,6 +18,11 @@
                 <li>
                     <a href="<?php echo base_url('profile') ?>" class="<?php if( ($this->uri->segment(1)=="profile") && ($this->uri->segment(2) == '') ){echo "active";}?>"> <i class=" material-icons ">person</i> Profile</a>
                 </li>
+
+                <li>
+                    <a href="<?php echo base_url('change-password') ?>" class="<?php if( ($this->uri->segment(1)=="change-password") && ($this->uri->segment(2) == '') ){echo "active";}?>"> <i class="material-icons"> settings </i> Change Password</a>
+                </li>
+
                 <li>
                     <a href="<?php echo base_url('profile/shortlisted-vendor') ?>" class="<?php if(($this->uri->segment(1)=="profile") && ($this->uri->segment(2) == 'shortlisted-vendor')){echo "active";}?>"><i class=" material-icons ">favorite</i> Shortlisted Vendor's</a>
                 </li>
