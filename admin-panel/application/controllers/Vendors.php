@@ -210,8 +210,18 @@ class Vendors extends CI_Controller {
     **/
     public function manage_vendors($id='')
     {
-        $filter = $this->input->get('f');
-        $data['result']  = $this->m_vendors->get_vendors($id,$filter);
+        $filter     = $this->input->get('f');
+        $filt['package']    = $this->input->get('package');
+        $filt['city']      = $this->input->get('city');
+        $filt['category']  = $this->input->get('category');
+
+
+        $data['result']  = $this->m_vendors->get_vendors($id,$filter,$filt);
+
+        $data['category'] = $this->m_vendors->get_category();
+        $data['city']     = $this->m_vendors->get_city();
+        $data['package']  = $this->m_vendors->getPackage();
+
         $data['title']   = 'Vendors - Shaadibaraati';
         $data['aid']   = $id;
         $this->load->view('vendors/manage-vendor', $data, FALSE);
@@ -666,6 +676,18 @@ class Vendors extends CI_Controller {
     public function prop($value='')
     {
         $this->load->view('vendors/prop');
+    }
+
+    public function reset_pass($value='')
+    {
+        $password   = $this->bcrypt->hash_password($this->input->post('password'));
+        $eid        = $this->input->post('eid');
+        if($this->m_vendors->reset_pass($password,$eid)){
+            $this->session->set_flashdata('success', 'Vendor password updated Successfully!');
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+        }
+        redirect('vendors/edit/'.$eid,'refresh');
     }
 
 

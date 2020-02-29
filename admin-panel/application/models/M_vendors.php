@@ -8,13 +8,24 @@ class M_vendors extends CI_Model {
      * get Vendors details from database
      * url : vendors/manage
     **/
-	public function get_vendors($id='',$filter='')
+	public function get_vendors($id='',$filter='',$filt='')
 	{
 		$null=0;
 		if (!empty($filter) && $filter =='free') {
 			$this->db->where('ven.package', $null);
-		}elseif (!empty($filter)) {
+		}elseif (empty($filter) || $filter =='paid') {
 			$this->db->where('ven.package !=', $null);
+		}
+
+		if (!empty($filt['package'])) {
+			$this->db->where('ven.package', $filt['package']);
+		}
+
+		if (!empty($filt['city'])) {
+			$this->db->where('ven.city', $filt['city']);
+		}
+		if (!empty($filt['category'])) {
+			$this->db->where('ven.category', $filt['category']);
 		}
 
 		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package,ven.upgrad');
@@ -486,12 +497,15 @@ class M_vendors extends CI_Model {
 
 
 	public function pack_insert($insert = null)
-	{	
-		
+	{
 		$this->db->where('vendor_id', $insert['vendor_id'])->delete('vendor_package');			
-		return $this->db->insert('vendor_package', $insert);	
-		
+		return $this->db->insert('vendor_package', $insert);
 	}
+
+	public function reset_pass($pass='',$eid='')
+    {
+        return $this->db->where('id', $eid)->update('vendor',array('password' => $pass ));
+    }
 
 
 

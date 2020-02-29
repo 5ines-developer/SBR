@@ -176,7 +176,7 @@
                   $('select').formSelect();
 
 
-                  $('.select-list').change(function(){
+              $('.select-list').change(function(){
 
                 if(window.location.href.indexOf("?") < 0){
                     var windowUrl = window.location.href+'?';
@@ -184,14 +184,14 @@
                     var windowUrl = window.location.href;
                 }
 
-                var val = $(this).val();
-                var name = '&'+$(this).attr('fname')+'=';
-                var names=$(this).attr('fname');
-                var url = windowUrl+name+val;
-                var originalURL = windowUrl+name+val;
-                var alteredURL = removeParam(names, originalURL);
-                window.location = alteredURL+name+val;
-            });
+                  var val = $(this).val();
+                  var name = '&'+$(this).attr('fname')+'=';
+                  var names=$(this).attr('fname');
+                  var url = windowUrl+name+val;
+                  var originalURL = windowUrl+name+val;
+                  var alteredURL = removeParam(names, originalURL);
+                  window.location = alteredURL+name+val;
+              });
 
               function removeParam(key, sourceURL) {
                 var rtn = sourceURL.split("?")[0],
