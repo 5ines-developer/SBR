@@ -210,8 +210,18 @@ class Vendors extends CI_Controller {
     **/
     public function manage_vendors($id='')
     {
-        $filter = $this->input->get('f');
-        $data['result']  = $this->m_vendors->get_vendors($id,$filter);
+        $filter     = $this->input->get('f');
+        $filt['package']    = $this->input->get('package');
+        $filt['city']      = $this->input->get('city');
+        $filt['category']  = $this->input->get('category');
+
+
+        $data['result']  = $this->m_vendors->get_vendors($id,$filter,$filt);
+
+        $data['category'] = $this->m_vendors->get_category();
+        $data['city']     = $this->m_vendors->get_city();
+        $data['package']  = $this->m_vendors->getPackage();
+
         $data['title']   = 'Vendors - Shaadibaraati';
         $data['aid']   = $id;
         $this->load->view('vendors/manage-vendor', $data, FALSE);

@@ -45,9 +45,9 @@
                               <div class="col l4 m6">
                                 <p class="h5-para black-text m0">Vendors</p>
                               </div>
-                                <a href="<?php echo base_url('vendors/manage')  ?>" class="waves-effect waves-light btn green  white-text hoverable ">All</a>
-                                <a href="<?php echo base_url('vendors/manage/?f=paid')  ?>" class="waves-effect waves-light btn orange white-text hoverable ">Paid</a>
-                                <a href="<?php echo base_url('vendors/manage/?f=free')  ?>" class="waves-effect waves-light btn blue  white-text hoverable ">Free</a>
+                                <a class="waves-effect waves-light btn green  white-text hoverable select-lists" dat-is="all" fname="f">All</a>
+                                <a class="waves-effect waves-light btn orange white-text hoverable select-lists" dat-is="paid" fname="f">Paid</a>
+                                <a class="waves-effect waves-light btn blue  white-text hoverable select-lists" dat-is="free" fname="f">Free</a>
                               
                               
                             </div>
@@ -58,6 +58,39 @@
                       </div>
                      
                      <!-- end dash -->
+
+                      <div class="row">
+                                      <div class="col l3 m6">
+                                          <select id="city"  fname="city" class="select-list" name="city">
+                                            <option value="">Choose a city</option>
+                                            <?php if (!empty($city)) { 
+                                              foreach ($city as $cit => $cits) { ?>
+                                                <option value="<?php echo $cits->id ?>" <?php if($this->input->get('city') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->city ?></option> 
+                                            <?php  } } ?>
+                                          </select>
+                                        </div>
+
+                                        <div class="col l3 m6">
+                                          <select id="category"  fname="category" class="select-list" name="category">
+                                            <option value="">Choose a Category</option>
+                                            <?php if (!empty($category)) { 
+                                              foreach ($category as $categ => $cat) { ?>
+                                                <option value="<?php echo $cat->id ?>" <?php if($this->input->get('category') == $cat->id){ echo 'selected'; } ?> ><?php echo $cat->category ?></option> 
+                                            <?php  } } ?>
+                                          </select>
+                                        </div>
+
+                                       <div class="col l3 m6">
+                                          <select id="package"  fname="package" class="select-list" name="package">
+                                            <option value="">Choose a Package</option>
+                                            <?php if (!empty($package)) { 
+                                              foreach ($package as $pack => $pac) { ?>
+                                                <option value="<?php echo $pac->id ?>" <?php if($this->input->get('package') == $pac->id){ echo 'selected'; } ?> ><?php echo $pac->title ?></option> 
+                                            <?php  } } ?>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <div class="clearfix"></div>
                      
 
                      <!-- chart-table -->
@@ -185,6 +218,61 @@
                   ], 
               });
               $('select').formSelect();
+
+              $('.select-list').change(function(){
+
+                if(window.location.href.indexOf("?") < 0){
+                    var windowUrl = window.location.href+'?';
+                } else{
+                    var windowUrl = window.location.href;
+                }
+
+                  var val = $(this).val();
+                  var name = '&'+$(this).attr('fname')+'=';
+                  var names=$(this).attr('fname');
+                  var url = windowUrl+name+val;
+                  var originalURL = windowUrl+name+val;
+                  var alteredURL = removeParam(names, originalURL);
+                  window.location = alteredURL+name+val;
+              });
+
+              $('.select-lists').click(function(){
+
+                if(window.location.href.indexOf("?") < 0){
+                    var windowUrl = window.location.href+'?';
+                } else{
+                    var windowUrl = window.location.href;
+                }
+
+                  var val = $(this).attr('dat-is');
+                  
+                  var name = '&'+$(this).attr('fname')+'=';
+                  var names=$(this).attr('fname');
+                  var url = windowUrl+name+val;
+                  var originalURL = windowUrl+name+val;
+                  var alteredURL = removeParam(names, originalURL);
+                  window.location = alteredURL+name+val;
+
+              });
+
+              function removeParam(key, sourceURL) {
+                var rtn = sourceURL.split("?")[0],
+                    param,
+                    params_arr = [],
+                    queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+                if (queryString !== "") {
+                    params_arr = queryString.split("&");
+                    for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+                        param = params_arr[i].split("=")[0];
+                        if (param === key) {
+                            params_arr.splice(i, 1);
+                        }
+                    }
+                    rtn = rtn + "?" + params_arr.join("&");
+                }
+                return rtn;
+            }
+
           } );
       </script>
       
