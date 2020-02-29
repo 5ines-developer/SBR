@@ -678,6 +678,18 @@ class Vendors extends CI_Controller {
         $this->load->view('vendors/prop');
     }
 
+    public function reset_pass($value='')
+    {
+        $password   = $this->bcrypt->hash_password($this->input->post('password'));
+        $eid        = $this->input->post('eid');
+        if($this->m_vendors->reset_pass($password,$eid)){
+            $this->session->set_flashdata('success', 'Vendor password updated Successfully!');
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+        }
+        redirect('vendors/edit/'.$eid,'refresh');
+    }
+
 
 
 

@@ -121,6 +121,11 @@ $this->load->model('m_vendors');
             height: auto;
             max-height: 95px;
         }
+        #modal1{
+            z-index: 99999 !important;
+        }
+
+
     </style>
 </head>
 
@@ -144,6 +149,8 @@ $this->load->model('m_vendors');
                                 <p class="h5-para black-text  m0">Update Vendor</p>
                             </div>
                             <div class="col 12 m6 right-align">
+                                <a class="waves-effect waves-light btn modal-trigger blue " href="#modal1">Reset Password</a>
+
                                 <a href="<?php echo base_url('vendors/view/'.$result->id)  ?>" class="waves-effect waves-light btn blue darken-4 white-text hoverable ">view
                                     Vendor</a>
                                     <?php if ($result->is_active == '3') { ?>
@@ -174,6 +181,28 @@ $this->load->model('m_vendors');
                                 
                             </div>
                         </div>
+
+
+
+                        <div id="modal1" class="modal">
+                        <div class="modal-content">
+                          <form action="<?php echo base_url('vendors/reset_pass') ?>" method="post" id="admin-forms" enctype="multipart/form-data">
+                            <div class="row m0">
+                              <div class="input-field col s12 l6">
+                                <input type="password" id="password" name="password" class="validate" required >
+                                <input type="hidden" name="eid" value="<?php echo (!empty($result->id))?$result->id:''; ?>">
+                                <label for="password">New Password<span class="red-text">*</span></label>
+                              </div>
+                            </div>
+                            <button class="btn waves-effect waves-light green darken-4 hoverable btn-large " type="submit">Submit
+                                <i class="fas fa-paper-plane right"></i>
+                                </button>
+                          </form>
+                        </div>
+                      </div>
+              
+
+
 
                         <div class="tab-buttons show-on-large hide-on-med-and-down stcky-nav z-depth-1">
                             <ul class="tabs1 transparent">
