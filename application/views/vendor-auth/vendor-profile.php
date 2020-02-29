@@ -18,6 +18,9 @@ $this->load->model('m_vendorDetail');
         .sub-reg.z-depth-1 {margin: 15px 0 5px 21px; } 
         #emailmodal {width: 35%; } 
         #phonemodal {width: 35%; } 
+         body {
+            overflow: auto !important;
+        }
 
 
     </style>

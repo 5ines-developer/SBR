@@ -33,8 +33,9 @@
                                     <div class="row">
                                         <div class="col l12 m5 s12">
                                             <div class="input-field">
-                                                <input id="curtpasword" type="password" v-model="curtpassw" name="curtpassword" required="">
+                                                <input id="curtpasword" type="password" @change="cuenpasscheck" v-model="curtpassw" name="curtpassword" required="">
                                                 <label for="curtpassword">Current Password<span class="red-text">*</span></label>
+                                                <span class="helper-text red-text">{{ curtpaserror }}</span>
                                             </div>
                                         </div>
                                         <div class="col l12 m5 s12">
@@ -84,10 +85,29 @@
                     copassw: '',
                     curtpassw: '',
                     cpswerror: '',
+                    curtpaserror:'',
                 },
 
                 methods: {
+                    cuenpasscheck(){
+                        this.curtpaserror = '';
+                        const formData = new FormData();
+                        formData.append('pass', this.curtpassw);
+                        axios.post('<?php echo base_url() ?>vendor_detail/curnpasscheck', formData)
+                        .then(response => {
+                            if (response.data == '') {
+                                this.curtpaserror = 'Invalid Current password';
+                            } else {
+                                this.curtpaserror = '';
+                            }
+                        })
+                        .catch(error => {
+                                if (error.response) {
+                                this.errormsg = error.response.data.error;
+                            }
+                        })
 
+                    },
                     // check psw
                     checkCpsw() {
                         if (this.newpassw != this.copassw) {
@@ -98,7 +118,7 @@
                         }
                     },
                     checkForm() {
-                        if ((this.cpswerror == '')) {
+                        if ((this.cpswerror == '') && (this.curtpaserror == '') ) {
 
 
                             this.$refs.form.submit()

@@ -236,6 +236,17 @@ Shaadibaraati.com
             }
         }
 	}
+
+    public function curnpasscheck($password='')
+    {
+        $pass = $this->input->post('pass');
+        $result = $this->db->where('id', $this->id)->get('vendor')->row();
+        if ($this->bcrypt->check_password($pass, $result->password)) {
+            echo '1';
+        }else{
+            echo '';
+        }
+    }
 	
 	public function passwordcheck($password)
     {

@@ -96,7 +96,7 @@
                         axios.post('<?php echo base_url() ?>account/curnpasscheck', formData)
                         .then(response => {
                             if (response.data == '') {
-                                this.curtpaserror = 'Invalid Current passwprd';
+                                this.curtpaserror = 'Invalid Current password';
                             } else {
                                 this.curtpaserror = '';
                             }
