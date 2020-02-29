@@ -56,7 +56,7 @@
                                                         <input type="file" name="image" accept=".png, .jpg, .jpeg" >
                                                     </div>
                                                     <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                        <input class="file-path validate" type="text" >
                                                     </div>
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
@@ -70,7 +70,7 @@
                                                         <input type="file" name="icon" accept=".png, .jpg, .jpeg, .gif">
                                                     </div>
                                                     <div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" style="border:transparent">
+                                                        <input class="file-path validate" type="text" >
                                                     </div>
                                                     <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
                                                 </div>
@@ -78,7 +78,7 @@
 
                                             <div class="row m0">
                                                 <div class="input-field col s12 l6">
-                                                    <select name="top_city" required="">
+                                                    <select name="top_city" required="" id="top_city">
                                                         <option value="" >Top City</option>
                                                         <option value="1" >Yes</option>
                                                         <option value="" >No</option>
