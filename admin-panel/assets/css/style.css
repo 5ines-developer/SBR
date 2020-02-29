@@ -1892,3 +1892,10 @@ div.tagsinput div {
 .dash-list a:hover .list-dashboard.green-active p {
     color: #000 !important;
 }
+
+
+/* 29-02-2020 */
+
+.sec-category {
+    margin-bottom: 10px !important;
+}

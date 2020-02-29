@@ -25,10 +25,18 @@ left: -133px !important;
     color: #fff;
     cursor: pointer;
         }
-        .marqaddnext {
+        .marqaddnext{
 
 background-color: #f4f4f4;
+margin-bottom:10px !important;
+/* border-bottom:1px solid gray; */
 border-radius: 4px;}
+.marqaddnext1 {
+    background-color: 
+#f4f4f4;
+border-radius: 4px;
+    margin-bottom: 10px !important;
+}
      </style>
    </head>
    <body>
@@ -107,7 +115,7 @@ border-radius: 4px;}
                                             <div class="row m0">
                                                 <p class="bold  black-text col  mb10 h6">Information Services</p>
                                             </div>
-                                            <div class="row m0 marqaddnext" id="marqaddnext">
+                                            <div class="row m0 marqaddnext sec-category" id="marqaddnext">
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="i_title" name="i_title[]" class="validate" required value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
                                                   <label for="i_title">Title <span class="red-text">*</span></label>
@@ -133,7 +141,7 @@ border-radius: 4px;}
                                             <div class="row m0">
                                                 <p class="bold  black-text col  mb10 h6">FAQ's</p>
                                             </div>
-                                            <div class="row m0 marqaddnext" id="marqaddnext1">
+                                            <div class="row m0 marqaddnext sec-category" id="marqaddnext1">
                                                 <div class="input-field col s12 l5">
                                                   <input type="text" id="quest" name="quest[]" class="validate" required value="<?php echo (!empty($setting)?$setting['name']:'') ?>">
                                                   <label for="quest">Question <span class="red-text">*</span></label>
