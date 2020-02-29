@@ -2422,7 +2422,7 @@ a.viewmore:hover {
     background-size: auto;
     background-repeat: no-repeat;
     background-position: right;
-    background-size: 45%;
+    background-size: cover;
     background-blend-mode: color;
     margin-top: -20px;
 }
@@ -5912,11 +5912,24 @@ html {
     height: 55px;
 }
 
-@media (min-width:768px) and (max-width:992px) {
+@media (min-width:768px) and (max-width:991px) {
     .contact-form {
         background: #000000ab;
+        margin-top: 30px;
     }
     .address-detail {
         padding: 3% 15px 32px 15px;
+    }
+}
+
+@media(min-width:992px) and (max-width:1200px) {
+    .padd-li p {
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 20px;
+        font-size: 12px;
+    }
+    .contact-form {
+        background-size: cover;
     }
 }
