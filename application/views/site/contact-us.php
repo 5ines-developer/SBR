@@ -36,7 +36,7 @@
             <div class="container-fluide">
                 <div class="contact-form">
                     <div class="row m0">
-                        <div class="col l7 back-con">
+                        <div class="col l7 m7 s12 back-con">
                             <div class="padd-con">
                                 <div class="hch">
                                     <h6 class="white-text">How can we help you ?</h6>
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                         <div class="back-add">
-                            <div class="col l5">
+                            <div class="col l5 m5 s12">
                                 <div class="address-detail">
                                     <div class="row m0 bor-bot">
                                         <div class="col l12 s12">

@@ -2422,7 +2422,7 @@ a.viewmore:hover {
     background-size: auto;
     background-repeat: no-repeat;
     background-position: right;
-    background-size: 45%;
+    background-size: cover;
     background-blend-mode: color;
     margin-top: -20px;
 }
@@ -2931,8 +2931,8 @@ input:not([type]):focus {
     }
     /* testimonial */
     .ratio-all {
-        float: unset;
-        margin-right: 0px;
+        float: left;
+        margin-right: 20px;
     }
     /* career */
     .care-detail {
@@ -3002,7 +3002,8 @@ input:not([type]):focus {
 }
 
 .vend-background {
-    background: #ffffffe8;
+    /* background: #ffffffe8; */
+    background: white;
     padding: 20px;
     border-radius: 25px;
 }
@@ -5837,6 +5838,20 @@ html {
     .ul-social {
         display: none;
     }
+    /* 28-02-2020 */
+    .padd-con {
+        padding: 0px;
+    }
+    .contact-form {
+        background: #000000ab;
+    }
+    /* 29-02-20202 */
+    .g-recaptcha {
+        transform: scale(0.77);
+        -webkit-transform: scale(0.77);
+        transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+    }
 }
 
 .img-wedd {
@@ -5903,4 +5918,42 @@ html {
 .vender-he .vendor-inf {
     overflow: hidden;
     height: 55px;
+}
+
+
+/* 29-02-2020 */
+
+.sel-quots input {
+    font-size: 14px !important;
+    color: #2f2f2f;
+}
+
+
+/* .vendor-sel input {
+    background: #ecebea !important;
+} */
+
+@media (min-width:768px) and (max-width:991px) {
+    .contact-form {
+        background: #000000ab;
+        margin-top: 30px;
+    }
+    .address-detail {
+        padding: 3% 15px 32px 15px;
+    }
+    .head-tile {
+        text-align: center;
+    }
+}
+
+@media(min-width:992px) and (max-width:1200px) {
+    .padd-li p {
+        font-weight: 600;
+        letter-spacing: 1px;
+        line-height: 20px;
+        font-size: 12px;
+    }
+    .contact-form {
+        background-size: cover;
+    }
 }

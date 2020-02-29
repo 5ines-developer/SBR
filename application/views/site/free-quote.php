@@ -50,7 +50,7 @@
                                             <input id="qphone" type="text" name="qphone" class="validate" required>
                                             <label for="qphone">Phone</label>
                                         </div>
-                                        <div class="input-field col s6">
+                                        <div class="input-field sel-quots col s6">
                                             <select required name="qservice">
                                                 <option value="" selected>Select Services</option>
                                                 <?php foreach (vendor_category() as $key => $cts) { ?>
@@ -58,12 +58,12 @@
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="input-field col s6">
+                                        <div class="input-field  col s6">
                                             <input id="qdate" type="text" name="qdate" class="validate datepicker"
                                                 required>
                                             <label for="qdate">Event Date</label>
                                         </div>
-                                        <div class="input-field col s6">
+                                        <div class="input-field  sel-quots  col s6">
                                             <select required name="qcity">
                                                 <option value="" selected>Select City</option>
                                                 <?php foreach (cities() as $key => $city) { ?>
@@ -72,7 +72,7 @@
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="input-field col s6">
+                                        <div class="input-field  sel-quots  col s6">
                                             <select required name="qbudget">
                                                 <option value="" selected>Budget</option>
                                                 <option value="Below 50k">Below 50k</option>

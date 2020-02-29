@@ -82,7 +82,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col l6 m6 s12">
+                                            <div class="col l6 m12 s12">
                                                 <div class="feedback-input">
                                                   <label for="phone" class="black-text h-rate">Rate Our Service <span class="red-text">*</span></label>
                                                     <div class="input-field if-feed">
@@ -107,7 +107,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col l6 m6 s12">
+                                            <div class="col l6 m12 s12">
                                                 <div class="feedback-input">
                                                   <label for="phone" class="black-text h-rate">Would you recommend us to your friends</label>
                                                     <div class="input-field if-feed">
@@ -126,7 +126,7 @@
                                                     </div>
                                                 </div>
                                             </div><br />
-                                            <div class="col l12 m6 s12">
+                                            <div class="col l12 m12 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field if-feed">
                                                         <textarea required id="textarea1" name="feedback" class="materialize-textarea " ></textarea>
@@ -134,7 +134,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col l12 m6 s12 rcaptcha-col">
+                                            <div class="col l12 m12 s12 rcaptcha-col">
                                                 <div class="d-input">
                                                     <div class="input-field">
                                                         <div class="g-recaptcha"
@@ -143,7 +143,7 @@
                                                 </div>
                                             </div>
                                             </div>
-                                            <div class="col l12 m6 s12"><br>
+                                            <div class="col l12 m12 s12"><br>
                                                 <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                             </div>
                                         </div>
@@ -266,14 +266,16 @@
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: false
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    dots: false
                 }
             }
         ]
