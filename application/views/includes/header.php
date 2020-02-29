@@ -1,3 +1,9 @@
+	<div class="wrapper">
+		  <div class='circle'>
+			    <div class="circle-cutter"></div>
+			    <div class="circle-inner"></div>
+		  </div>
+	</div>
 <?php $logo = base_url().'assets/img/logo.png'; ?>
 <div class="logo-brand">
     <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive" alt=""></a>
