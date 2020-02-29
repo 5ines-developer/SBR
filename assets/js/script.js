@@ -51,12 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems);
 
-
-
-
 });
 
 $(window).on('load', function() {
-    $('.circle').fadeOut();
+    $('.circles').fadeOut();
     $('.wrapper').delay(350).fadeOut('slow');
 });
