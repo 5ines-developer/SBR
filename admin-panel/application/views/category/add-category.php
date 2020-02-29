@@ -122,7 +122,7 @@ border-radius: 4px;
                                                   <p><span class="error"><?php echo form_error('category'); ?></span></p>
                                                 </div>
                                                 <div class="file-field input-field col s12 l4">
-                                                    <div class="btn btn-small black-text grey lighten-3">
+                                                    <div class="btn btn-small  black-text grey lighten-3">
                                                     <i class="far fa-image left  "></i>
                                                         <span class="">Add Image</span>
                                                         <input type="file" name="i_image[]" accept=".png, .jpg, .jpeg, .gif" required>
