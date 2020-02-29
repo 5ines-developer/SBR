@@ -2931,8 +2931,8 @@ input:not([type]):focus {
     }
     /* testimonial */
     .ratio-all {
-        float: unset;
-        margin-right: 0px;
+        float: left;
+        margin-right: 20px;
     }
     /* career */
     .care-detail {
