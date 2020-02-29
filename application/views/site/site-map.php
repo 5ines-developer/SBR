@@ -33,68 +33,79 @@
                    <div class="col l12 m12 s12">
                         <div class="div-sitmap">
                             <ul class="mj-sitemap">
-                                <li><a href="">Home</a></li>
-                                <li><a href="">About Us</a></li>
-                                <li><a >Vendors</a>
+                                <li><a href="<?php echo base_url()?>">Home</a></li>
+                                <li><a href="<?php echo base_url('about-us') ?>">About Us</a></li>
+                                <li><a>Vendors</a>
                                     <ul class="sitemap-sub-title">
-                                      <li><a href="">Wedding Photography</a></li>
+                                      <li><a href="">Wedding Photographer</a></li>
                                       <li><a href="">Wedding Venues</a></li>
-                                      <li><a href="">Wedding Card</a></li>
+                                      <li><a href="">Wedding Planner</a></li>
+                                      <li><a href="">Wedding Catering</a></li>
+                                      <li><a href="">Bridal Makeup Artist</a></li>
                                       <li><a href="">Wedding Decorator</a></li>
+                                      <li><a href="">Bridal Mehendi</a></li>
                                       <li><a href="">Bridal Wear</a></li>
                                       <li><a href="">Groom Wear</a></li>
                                       <li><a href="">Wedding Band</a></li>
-                                      <li><a href="">Mehendi Artist</a></li>
-                                      <li><a href="">Wedding Jewellery</a></li>
-                                      <li><a href="">Wedding Catering</a></li>
-                                      <li><a href="">Wedding Cakes</a></li>
-                                      <li><a href="">Rental Wear</a></li>
-                                      <li><a href="">Wedding Planner</a></li>
+                                      <li><a href="">Music & Entertainment</a></li>
+                                      <li><a href="">Balloon Decorator</a></li>
+                                      <li><a href="">Wedding Transportation</a></li>
+                                      <li><a href="">Background Verification</a></li>
+                                      <li><a href="">Honeymoon</a></li>
                                       <li><a href="">Astrology & Religious Services</a></li>
-                                      <li><a href="">Background Verification & Detective </a></li>
-                                      <li><a href="">Services</a></li>
-                                      <li><a href="">Balloon Decorators</a></li>
-                                      <li><a href="">Safa Wala</a></li>
-                                      <li><a href="">Honeymoon Packages</a></li>
+                                      <li><a href="">Wedding Jewellery</a></li>
+                                      <li><a href="">Wedding Invitations</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="">Wed Assistance</a></li>
+                                <li><a href="<?php echo base_url() ?>wed-assistance">Wedding Assistance</a></li>
                                 <li><a>Select City</a>
                                     <ul class="sitemap-sub-title">
-                                      <li><a href="">Bangalore</a></li>
-                                      <li><a href="">Ahmedabad</a></li>
-                                      <li><a href="">Chennai</a></li>
-                                      <li><a href="">Kerala</a></li>
-                                      <li><a href="">Delhi</a></li>
-                                      <li><a href="">Jaipur</a></li>
                                       <li><a href="">Kolkata</a></li>
-                                      <li><a href="">Mumbai</a></li>
-                                      <li><a href="">Chennai</a></li>
                                       <li><a href="">Hyderabad</a></li>
+                                      <li><a href="">Bangalore</a></li>
+                                      <li><a href="">Delhi NCR</a></li>
+                                      <li><a href="">Mumbai</a></li>
+                                      <li><a href="">Jaipur</a></li>
+                                      <li><a href="">Patna</a></li>
+                                      <li><a href="">Nagpur</a></li>
                                       <li><a href="">Chandigarh</a></li>
-                                      <li><a href="">Agra</a></li>
+                                      <li><a href="">Lucknow</a></li>
                                       <li><a href="">Indore</a></li>
+                                      <li><a href="">Bhubaneswar</a></li>
+                                      <li><a href="">Kerala</a></li>
+                                      <li><a href="">Chennai</a></li>
+                                      <li><a href="">Mangalore</a></li>
+                                      <li><a href="">Raipur</a></li>
+                                      <li><a href="">Mysore</a></li>
+                                      <li><a href="">Ahmedabad</a></li>
+                                      <li><a href="">Bhopal</a></li>
+                                      <li><a href="">Udaipur</a></li>
+                                      <li><a href="">Goa</a></li>
+                                      <li><a href="">Visakhapatnam</a></li>
+                                      <li><a href="">Ludhiana</a></li>
+                                      <li><a href="">Visakhapatnam</a></li>
+                                      <li><a href="">Coimbatore</a></li>
+                                      <li><a href="">Ujjain</a></li>
+                                      <li><a href="">Surat</a></li>
+                                      <li><a href="">Ranchi</a></li>
+                                      <li><a href="">Amritsar</a></li>
+                                      <li><a href="">Surat</a></li>
+                                      <li><a href="">Ranchi</a></li>
+                                      <li><a href="">Amritsar</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="">E-Invite</a></li>
-                                <li><a href="">Real Wedding</a></li>
-                                <li><a href="">Wedding Destination</a></li>
-                                <li><a href="">Vendor Reviews</a></li>
-                                <li><a href="">Privacy Policy</a></li>
-                                <li><a href="">Terms & Condition</a></li>
-                                <li><a href="">Testimonial</a></li>
-                                <li><a href="">Feedback / Complaints</a></li>
-                                <li><a href="">Blog</a></li>
-                                <li><a href="">Coutact Us</a></li>
-                                <!-- <li>ein weiterer Punkt</li>
-                                <li>der letzte Punkt
-                                    <ul>
-                                    <li>Nummer 1</li>
-                                    <li>Nummer 2</li>
-                                    <li>Nummer 3</li>
-                                    <li>Nummer 4</li>
-                                    </ul>
-                                </li> -->
+                                <li><a href="<?php echo base_url('e-invite')?>">E-Invite</a></li>
+                                <li><a href="<?php echo base_url('real-wedding') ?>">Real Wedding</a></li>
+                                <li><a href="#citymodel" class="modal-trigger">Select City</a></li>
+                                <li><a href="<?php echo base_url('e-invite')?>">E-Invite</a></li>
+                                <li><a href="<?php echo base_url('privacy-policy') ?>">Privacy Policy</a></li>
+                                <li><a href="<?php echo base_url('terms-conditions') ?>">Terms & Condition</a></li>
+                                <li><a href="<?php echo base_url() ?>testimonial">Testimonial</a></li>
+                                <li><a href="<?php echo base_url() ?>feedback">Feedback / Complaints</a></li>
+                                <li><a href="<?php echo base_url() ?>career">Career</a></li>
+                                <li><a href="<?php echo base_url() ?>blog">Blog</a></li>
+                                <li><a href="<?php echo base_url('contact-us') ?>">Coutact Us</a></li>
+
                                 </ul>
                         </div>
                    </div>

@@ -5912,6 +5912,14 @@ html {
     height: 55px;
 }
 
+
+/* 29-02-2020 */
+
+.sel-quots input {
+    font-size: 14px !important;
+    color: #2f2f2f;
+}
+
 @media (min-width:768px) and (max-width:991px) {
     .contact-form {
         background: #000000ab;
