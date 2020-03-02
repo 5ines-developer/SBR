@@ -35,56 +35,69 @@
 		public function upgrade($id='')
 		{
 			$data['title']   = 'Vendors - Shaadibaraati';
-			$data['result']     = $this->m_vnupgrade->detail($id);
-			$data['city']       = $this->m_vnupgrade->get_city();
-			$data['category']   = $this->m_vnupgrade->get_category();
-			$data['package']    = $this->m_vnupgrade->getPackage();
-			$data['invoice']    = $this->m_vnupgrade->getInvoice($id);
-			$data['employee']    = $this->m_vnupgrade->getEmployee();
-			$this->load->view('sales/upgrade', $data, FALSE);
+			$output = $this->m_vnupgrade->checkUpgrade($id);
+			if (!empty($output)) {
+				$this->session->set_flashdata('error', 'You cannot upgrade this vendor, <br> package upgrade is already in process for this vendor.');
+				redirect('vendors/manage','refresh');
+			}else{
+				$data['result']     = $this->m_vnupgrade->detail($id);
+				$data['city']       = $this->m_vnupgrade->get_city();
+				$data['category']   = $this->m_vnupgrade->get_category();
+				$data['package']    = $this->m_vnupgrade->getPackage();
+				$data['invoice']    = $this->m_vnupgrade->getInvoice($id);
+				$data['employee']   = $this->m_vnupgrade->getEmployee();
+				$this->load->view('sales/upgrade', $data, FALSE);
+			}
 		}
 
 		public function insertUpgrade($value='')
 		{
-			$insert = array(
-            'vendor_id'       	=> $this->input->post('vid'),
-            'v_city'            => $this->input->post('vcity'),
-            'v_category'        => $this->input->post('vcategory'),
-            'city_banner'       => $this->input->post('c_bnr'),
-            'cat_banner'       	=> $this->input->post('cat_bnr'),
-            'package'        	=> $this->input->post('vpackage'),
-            'discount'      	=> $this->input->post('discount'),
-            'lname'            	=> $this->input->post('l_name'),
-            'lnumber'           => $this->input->post('ld_phone'),
-            'ld_email'         	=> $this->input->post('ld_email'),
-            'in_name'         	=> $this->input->post('i_name'),
-            'city '          	=> $this->input->post('lcity'),
-            'gstno'     		=> $this->input->post('gstno'),
-            'laddress'   		=> $this->input->post('li_address'),
-            'in_mobile'      	=> $this->input->post('i_mobile'),
-            'in_email'          => $this->input->post('i_email'),
-            'in_street'         => $this->input->post('str_addrs'),
-            'in_city'        	=> $this->input->post('incity'),
-            'state'        		=> $this->input->post('listate'),
-            'postode'        	=> $this->input->post('postode'),
-            'namopunt'        	=> $this->input->post('nt_amnt'),
-            'gst'            	=> $this->input->post('gst_amount'),
-            'total'            	=> $this->input->post('t_amnt'),
-            'pay_mode'         	=> $this->input->post('pay_mode'),
-            'or_id '      		=> $this->input->post('ord_id'),
-            'pay_date'        	=> $this->input->post('pay_date'),
-            'landline'        	=> $this->input->post('i_landl'),
-            'rec_no'        	=> $this->input->post('rec_no'),
-			'pan_no'        	=> $this->input->post('pan_no'),
-			'dr_bank'        	=> $this->input->post('dr_bank'),
-			'pay_type'        	=> $this->input->post('pay_type'),
-			'pdc'        		=> $this->input->post('pdc'),
-			'employee'        	=> $this->input->post('emp'),
-			'manager'        	=> $this->input->post('mang'),
-            'added_by'          => $this->aid,
-            'started_from'      => date('Y-m-h'),
-            'uniq'          	=> $this->input->post('uniq'),
-        	);
+			$output = $this->m_vnupgrade->checkUpgrade($this->input->post('vid'));
+			if (!empty($output)) {
+				$this->session->set_flashdata('error', 'You cannot upgrade this vendor, <br> package upgrade is already in process for this vendor.');
+				redirect('vendors/manage/'.$this->input->post('vid'),'refresh');
+			}else{
+				$insert = array(
+	            'vendor_id'       	=> $this->input->post('vid'),
+	            'v_city'            => $this->input->post('vcity'),
+	            'v_category'        => $this->input->post('vcategory'),
+	            'city_banner'       => $this->input->post('c_bnr'),
+	            'cat_banner'       	=> $this->input->post('cat_bnr'),
+	            'package'        	=> $this->input->post('vpackage'),
+	            'discount'      	=> $this->input->post('discount'),
+	            'lname'            	=> $this->input->post('l_name'),
+	            'lnumber'           => $this->input->post('ld_phone'),
+	            'ld_email'         	=> $this->input->post('ld_email'),
+	            'in_name'         	=> $this->input->post('i_name'),
+	            'city '          	=> $this->input->post('lcity'),
+	            'gstno'     		=> $this->input->post('gstno'),
+	            'laddress'   		=> $this->input->post('li_address'),
+	            'in_mobile'      	=> $this->input->post('i_mobile'),
+	            'in_email'          => $this->input->post('i_email'),
+	            'in_street'         => $this->input->post('str_addrs'),
+	            'in_city'        	=> $this->input->post('incity'),
+	            'state'        		=> $this->input->post('listate'),
+	            'postode'        	=> $this->input->post('postode'),
+	            'namopunt'        	=> $this->input->post('nt_amnt'),
+	            'gst'            	=> $this->input->post('gst_amount'),
+	            'total'            	=> $this->input->post('t_amnt'),
+	            'pay_mode'         	=> $this->input->post('pay_mode'),
+	            'or_id '      		=> $this->input->post('ord_id'),
+	            'pay_date'        	=> $this->input->post('pay_date'),
+	            'landline'        	=> $this->input->post('i_landl'),
+	            'rec_no'        	=> $this->input->post('rec_no'),
+				'pan_no'        	=> $this->input->post('pan_no'),
+				'dr_bank'        	=> $this->input->post('dr_bank'),
+				'pay_type'        	=> $this->input->post('pay_type'),
+				'pdc'        		=> $this->input->post('pdc'),
+				'employee'        	=> $this->input->post('emp'),
+				'manager'        	=> $this->input->post('mang'),
+	            'added_by'          => $this->aid,
+	            'started_from'      => date('Y-m-h'),
+	            'uniq'          	=> $this->input->post('uniq'),
+				'acc_no'        	=> $this->input->post('accno'),
+				'ifsc'        		=> $this->input->post('ifsc'),
+	        	);
 			$data = $this->m_vnupgrade->insertProposal($insert);
 			if (!empty($data)) {
 				$insert['insert_id'] = $data;
@@ -94,6 +107,7 @@
 			}else{
 				$this->session->set_flashdata('error','Something went wrong please try again later!');
 				redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
+			}
 			}
 		}
 
@@ -119,7 +133,6 @@
 
 	public function send_sales($insert='',$pdfFile='')
     {
-
         $disc = $this->db->where('id', $this->aid)->get('admin')->row();
         $manager = $this->db->where('id', $disc->manager)->get('admin')->row('email');
         $this->load->config('email');
@@ -131,6 +144,9 @@
         $this->email->from($from, 'ShaadiBaraati');
         $this->email->to('prathwi@5ine.in');
         // $this->email->cc($manager);
+        // $this->email->to($to,$insert['ld_email']);
+        // $this->email->cc($manager,$cc);
+
         $this->email->subject('Vendor Package proposal');
         $this->email->message('New Vendor Package proposal has been submitted , document attached');
         $this->email->attach($_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/admin-panel/'.$pdfFile);

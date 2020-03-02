@@ -140,9 +140,6 @@
                                               echo '---';
                                             } ?>
                                             </td>
-
-
-
                                             <td><?php echo (!empty($value->regdate))?date("M d, Y ", strtotime($value->regdate)):'---'; ?></td>
 
                                             <td class="status"> 

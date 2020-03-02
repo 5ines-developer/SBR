@@ -253,10 +253,14 @@
                                                   <input type="text" id="dr_bank" name="dr_bank" class="validate" >
                                                   <label for="dr_bank">Drawee Bank</label>
                                                 </div>
-                                               <!--  <div class="input-field col s12 l6">
-                                                  <input type="text" id="pan_no" name="pan_no" class="validate" >
-                                                  <label for="pan_no">Pan Number</label>
-                                                </div> -->
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="accno" name="accno" class="validate" >
+                                                  <label for="accno">Bank Account Number</label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="ifsc" name="ifsc" class="validate" >
+                                                  <label for="ifsc">IFSC Code</label>
+                                                </div>
                                                 <div class="input-field col s12 l6" id="pdcs">
                                                   <input type="text" id="pdc" name="pdc" class="validate" >
                                                   <label for="pdc">PDC</label>
