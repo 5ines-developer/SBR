@@ -419,6 +419,25 @@ class Authentication extends CI_Controller {
         
     }
 
+    public function einvite_cron($value='')
+    {
+        $result = $this->db->get('einvite')->result();
+        if (!empty($result)) {
+            foreach ($result as $key => $value) {
+                $now = time(); // or your date as well
+                $your_date = strtotime($value->fndate);
+                $datediff = $now - $your_date;
+                $diff = round($datediff / (60 * 60 * 24));
+                if($diff > 30){
+                    $this->db->where('id', $value->id)->delete('einvite');
+                    $this->db->where('invite_id', $value->id)->delete('einvite_event');
+                    $this->db->where('invite_id', $value->id)->delete('e_invitegallery');
+                    $this->db->where('invite_id', $value->id)->delete('e_invite_family');
+                }
+            }
+        }
+    }
+
 
 
 	
