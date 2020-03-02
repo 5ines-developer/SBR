@@ -150,7 +150,6 @@
             var sel = document.querySelectorAll('select');
             var instances = M.FormSelect.init(sel);
         });
-
         var app = new Vue({
             el: '#app',
             data: {
@@ -245,8 +244,6 @@
     <script>
         // search in reasult page
         $(document).ready(function() {
-
-
             $(document).on('change', '#sel-city,#sel-cato', function(e) {
                 e.preventDefault();
 
@@ -261,8 +258,6 @@
                     var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat.replace(" ", "-", );
                 }
                 var url = finalUrl.replace(" ", "-", );
-
-
 
                 $("#search-form").attr('action', url);
                 $("#search-form").submit();
