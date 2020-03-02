@@ -30,8 +30,14 @@ class Report extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'Sales Report | Shaadibaraati';
-		$data['result'] = $this->m_report->saleReport();
+		$data['title']      = 'Sales Report | Shaadibaraati';
+        $filt['year']       = $this->input->get('year');
+        $filt['month']      = $this->input->get('month');
+        $filt['city']       = $this->input->get('city');
+        $filt['category']   = $this->input->get('category');
+		$data['result']     = $this->m_report->saleReport($filt);
+        $data['city']       = $this->m_vendors->get_city();
+        $data['category']   = $this->m_vendors->get_category();
         $this->load->view('report/sales.php', $data, FALSE);
 	}
 
@@ -39,7 +45,13 @@ class Report extends CI_Controller {
     public function leads($value='')
     {
         $data['title'] = 'Leads Report | Shaadibaraati';
-        $data['result'] = $this->m_report->empGet();
+        $filt['package']      = $this->input->get('package');
+        $filt['city']       = $this->input->get('city');
+        $filt['category']   = $this->input->get('category');
+        $data['result']     = $this->m_report->getVendors($filt);
+        $data['city']       = $this->m_vendors->get_city();
+        $data['category']   = $this->m_vendors->get_category();
+        $data['package']    = $this->m_vendors->getPackage();
         $this->load->view('report/leads.php', $data, FALSE);
     }
 

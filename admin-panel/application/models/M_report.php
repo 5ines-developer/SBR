@@ -3,8 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_report extends CI_Model {
 
-	public function saleReport($value='')
+	public function saleReport($filt='')
 	{
+			$mon='';
+			if ($filt['month'] < 10 ) { $mon = '0'.$filt['month']; }
+			$month = (!empty($filt['month']))?$mon:date('m');
+			$year = (!empty($filt['year']))?date('Y'):date('m');
+			$sdate = $year.'-'.$month.'-01 00:01:01';
+			$edate = $year.'-'.$month.'-31 11:59:00';
+			$this->db->where('rp.added_on >=', $sdate);
+			$this->db->where('rp.added_on <=', $edate);
+			if (!empty($filt['city'])) { $this->db->where('rp.v_city', $filt['city']); }
+			if (!empty($filt['category'])) { $this->db->where('rp.v_category', $filt['category']); }
 		return 
 		$this->db
 		// ->where('rp.status', 1)
@@ -34,7 +44,7 @@ class M_report extends CI_Model {
 
 	public function leadsCount($id='')
 	{
-		return $this->db->where('assigned_by', $id)->get('leads_assign')->num_rows();
+		return $this->db->where('vendor_id', $id)->get('vendor_enquiry')->num_rows();
 	}
 
 	public function visitors($year='',$month='')
@@ -61,9 +71,6 @@ class M_report extends CI_Model {
         	$this->db->where('date >=', $syear);
         	$this->db->where('date <=', $eyear);
         }
-
-
-
         $query = $this->db->get('visitors')->result();
         foreach ($query as $key => $value) {
         	$newData[]= date("Y-m-d",strtotime($value->date));
@@ -208,6 +215,30 @@ class M_report extends CI_Model {
 		$this->db->join('vendor vn', 'vn.id = rp.vendor_id', 'left');
 		$this->db->join('package pc', 'pc.id = rp.package', 'left');
 		$this->db->join('admin a', 'a.id = rp.employee', 'left');
+		return $this->db->get()->result();
+	}
+
+	public function getVendors($filt='')
+	{
+		if (!empty($filt['city'])) {
+			$this->db->where('ven.city', $filt['city']);
+		}
+		if (!empty($filt['category'])) {
+			$this->db->where('ven.category', $filt['category']);
+		}
+
+		if (!empty($filt['package'])) {
+			$this->db->where('ven.package', $filt['package']);
+		}
+		$this->db->group_by('ven.name,ven.id');
+
+		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,pac.leads,ven.package,ven.upgrad');
+		$this->db->order_by('ven.id', 'desc');
+		$this->db->from('vendor ven');
+		$this->db->join('city cty', 'cty.id = ven.city', 'left');
+		$this->db->join('category cat', 'cat.id = ven.category', 'left');
+		$this->db->join('package pac', 'pac.id = ven.package', 'left');
+		$this->db->join('vendor_enquiry vn', 'vn.vendor_id = ven.id', 'inner');
 		return $this->db->get()->result();
 	}
 
