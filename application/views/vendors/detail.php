@@ -1046,6 +1046,7 @@ $this->load->model('m_vendors');
     </div>
     <!-- script -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/vue-easy-lightbox.umd.min.js"></script>
