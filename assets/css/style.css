@@ -1772,8 +1772,8 @@ r-crd-category {
     visibility: visible;
     opacity: 0;
     transition: 0.05s;
-    padding: 15px;
-    padding-left: 15px;
+    /* padding: 15px;
+    padding-left: 15px; */
     /*min-width: 544px;*/
     width: calc(100% - 0px);
     background: #fff;
@@ -1812,9 +1812,9 @@ r-crd-category {
 
 .sg-result-list {
     list-style-type: none;
-    padding: 3px;
+    padding: 3px 0px;
     cursor: pointer;
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
 
