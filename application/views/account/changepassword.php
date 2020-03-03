@@ -118,9 +118,7 @@
                     },
                     checkForm() {
                         if ((this.cpswerror == '') && (this.curtpaserror == '')) {
-
-
-                            this.$refs.form.submit()
+                            this.$ref.form.submit();
                         } else {}
                     }
                 },

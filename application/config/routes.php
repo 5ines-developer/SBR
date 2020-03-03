@@ -127,7 +127,7 @@ $route['feedback-post']                 = 'home/feedback_post';
 $route['career']                        = 'home/career';
 $route['career/(:any)']                 = 'home/career/$1';
 $route['appaly/(:any)']                 = 'home/application/$1';
-$route['e-invite']   				    = 'home/e_invite';
+$route['einvite']   				    = 'home/e_invite';
 $route['real-wedding']   				= 'home/real_wedding';
 $route['real-wedding-detail']   		= 'home/real_wedding_detail';
 //vendor register
