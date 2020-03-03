@@ -23,7 +23,7 @@
         <span></span>
     </div>
     <div class="pre-loader">
-        <img src="assets/img/logo.png" class="img-responsive" alt="">
+        <!-- <img src="<?php echo base_url()?>assets/img/logo.png" class="img-responsive" alt=""> -->
 
     </div>
 </div>

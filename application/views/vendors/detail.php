@@ -30,6 +30,13 @@ $this->load->model('m_vendors');
         body {
             overflow: auto !important;
         }
+        .btn__prev .vel-icon.icon{
+            font-size: 50px !important;
+        }
+
+        .btn__next .vel-icon.icon{
+            font-size: 50px !important;
+        }
 
     </style>
 </head>
@@ -922,7 +929,7 @@ $this->load->model('m_vendors');
                     <div class="col 12 m6">
                         <h4 class="m0">Similar Vendors</h4>
                     </div>
-                    <div class="col 12 m6 right-align">
+                    <div class="col 12 m6 right-align hide-on-small-only">
                         <?php if(count($value->similar) > 4){ ?>
                         <a href="<?php echo base_url('vendors/'.str_replace(" ","-",strtolower($value->city)).'/'.str_replace(" ","-",strtolower($value->category))) ?>"
                             class="similar-more"> View All</a>
