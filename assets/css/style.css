@@ -6084,6 +6084,8 @@ html {
     }
 }
 
+
+/* 
 $bgcolor: #247fbc;
 $goocolor: #ffffff;
 $bigsize: 50px;
@@ -6091,8 +6093,10 @@ $smallsize: 30px;
 $containerwidth: 500px;
 $animoffset: 150px;
 $animtime: 2.5s;
-$containerheight: $bigsize*2;
-.loader {
+$containerheight: $bigsize*2; */
+
+
+/* .loader {
     filter: url('#goo');
     position: relative;
     width: $containerwidth;
@@ -6137,7 +6141,7 @@ $containerheight: $bigsize*2;
             left: $smallsize*2.5;
         }
     }
-}
+} */
 
 @keyframes move {
     0% {
