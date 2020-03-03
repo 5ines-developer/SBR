@@ -28,7 +28,7 @@
                             <div class="vendor-head">
                                 <h6>Change Password</h6>
                             </div>
-                            <form action="<?php echo base_url('update-password') ?>" method="post">
+                            <form ref="form" @submit.prevent="checkForm" action="<?php echo base_url('update-password') ?>" method="post">
                                 <div class="vendor-inputs wid-50">
                                     <div class="row">
                                         <div class="col l12 m5 s12">

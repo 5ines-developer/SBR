@@ -35,63 +35,37 @@
                             <ul class="mj-sitemap">
                                 <li><a href="<?php echo base_url()?>">Home</a></li>
                                 <li><a href="<?php echo base_url('about-us') ?>">About Us</a></li>
-                                <li><a>Vendors</a>
+                                <li><a href="<?php echo base_url('vendors')?>">Vendors</a>
                                     <ul class="sitemap-sub-title">
-                                      <li><a href="">Wedding Photographer</a></li>
-                                      <li><a href="">Wedding Venues</a></li>
-                                      <li><a href="">Wedding Planner</a></li>
-                                      <li><a href="">Wedding Catering</a></li>
-                                      <li><a href="">Bridal Makeup Artist</a></li>
-                                      <li><a href="">Wedding Decorator</a></li>
-                                      <li><a href="">Bridal Mehendi</a></li>
-                                      <li><a href="">Bridal Wear</a></li>
-                                      <li><a href="">Groom Wear</a></li>
-                                      <li><a href="">Wedding Band</a></li>
-                                      <li><a href="">Music & Entertainment</a></li>
-                                      <li><a href="">Balloon Decorator</a></li>
-                                      <li><a href="">Wedding Transportation</a></li>
-                                      <li><a href="">Background Verification</a></li>
-                                      <li><a href="">Honeymoon</a></li>
-                                      <li><a href="">Astrology & Religious Services</a></li>
-                                      <li><a href="">Wedding Jewellery</a></li>
-                                      <li><a href="">Wedding Invitations</a></li>
+
+                                      <?php foreach (vendor_category() as $key => $cvalue) { 
+                                        // id, icon, uniq, category
+                                        $count = count(vendor_category());
+                                        $clink = strtolower(str_replace(" ","-",$cvalue->category));
+                                        if($count % 2 == 1){  }else{ $num = $count; }
+                                        
+                                            echo '<li>
+
+                                            <a href="'.base_url().'vendors/all/'.$clink.'"> '.$cvalue->category.'</a> </li>';
+                                        
+                                        
+                                    } ?>
+
+
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo base_url() ?>wed-assistance">Wedding Assistance</a></li>
                                 <li><a>Select City</a>
                                     <ul class="sitemap-sub-title">
-                                      <li><a href="">Kolkata</a></li>
-                                      <li><a href="">Hyderabad</a></li>
-                                      <li><a href="">Bangalore</a></li>
-                                      <li><a href="">Delhi NCR</a></li>
-                                      <li><a href="">Mumbai</a></li>
-                                      <li><a href="">Jaipur</a></li>
-                                      <li><a href="">Patna</a></li>
-                                      <li><a href="">Nagpur</a></li>
-                                      <li><a href="">Chandigarh</a></li>
-                                      <li><a href="">Lucknow</a></li>
-                                      <li><a href="">Indore</a></li>
-                                      <li><a href="">Bhubaneswar</a></li>
-                                      <li><a href="">Kerala</a></li>
-                                      <li><a href="">Chennai</a></li>
-                                      <li><a href="">Mangalore</a></li>
-                                      <li><a href="">Raipur</a></li>
-                                      <li><a href="">Mysore</a></li>
-                                      <li><a href="">Ahmedabad</a></li>
-                                      <li><a href="">Bhopal</a></li>
-                                      <li><a href="">Udaipur</a></li>
-                                      <li><a href="">Goa</a></li>
-                                      <li><a href="">Visakhapatnam</a></li>
-                                      <li><a href="">Ludhiana</a></li>
-                                      <li><a href="">Visakhapatnam</a></li>
-                                      <li><a href="">Coimbatore</a></li>
-                                      <li><a href="">Ujjain</a></li>
-                                      <li><a href="">Surat</a></li>
-                                      <li><a href="">Ranchi</a></li>
-                                      <li><a href="">Amritsar</a></li>
-                                      <li><a href="">Surat</a></li>
-                                      <li><a href="">Ranchi</a></li>
-                                      <li><a href="">Amritsar</a></li>
+
+                                      <?php foreach (cities() as $key => $city) { 
+                                   ?>
+                                    <li >
+                                    <a href="<?php echo base_url('vendors/').strtolower(str_replace(" ","- ",$city->city)) ?>">
+                                               <?php echo $city->city ?>
+                                            </a>
+                                </li>
+                                <?php  }?>
                                     </ul>
                                 </li>
                                 <li><a href="<?php echo base_url('e-invite')?>">E-Invite</a></li>
@@ -104,7 +78,7 @@
                                 <li><a href="<?php echo base_url() ?>feedback">Feedback / Complaints</a></li>
                                 <li><a href="<?php echo base_url() ?>career">Career</a></li>
                                 <li><a href="<?php echo base_url() ?>blog">Blog</a></li>
-                                <li><a href="<?php echo base_url('contact-us') ?>">Coutact Us</a></li>
+                                <li><a href="<?php echo base_url('contact-us') ?>">Contact Us</a></li>
 
                                 </ul>
                         </div>
