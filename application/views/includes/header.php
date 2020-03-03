@@ -1,9 +1,32 @@
-	<!-- <div class="wrapper">
+<!-- <div class="wrapper">
 		  <div class='circle'>
 			    <div class="circle-cutter"></div>
 			    <div class="circle-inner"></div>
 		  </div>
 	</div> -->
+<div class="wrapper">
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="pre-loader">
+        <img src="assets/img/logo.png" class="img-responsive" alt="">
+
+    </div>
+</div>
 <?php $logo = base_url().'assets/img/logo.png'; ?>
 <div class="logo-brand">
     <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive" alt=""></a>
