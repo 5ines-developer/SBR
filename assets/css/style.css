@@ -6062,6 +6062,16 @@ html {
     }
 }
 
+@media(max-width:767px) {
+    /* 3-03-2020 */
+    .pricing-palden {
+        margin: 0;
+    }
+    .wd-pricing {
+        padding: 20px 0;
+    }
+}
+
 @media (min-width:768px) and (max-width:991px) {
     .contact-form {
         background: #000000ab;
