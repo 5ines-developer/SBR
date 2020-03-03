@@ -42,8 +42,7 @@
                                     alt="">
                             </div>
                             <div class="form-vendor-reg">
-                                <form id="demo" ref="form" @submit.prevent="checkForm"
-                                    action="<?php echo base_url('register/add') ?>" method="post"
+                                <form id="demo" ref="form" @submit.prevent="checkForm" action="<?php echo base_url('register/add') ?>" method="post"
                                     enctype="multipart/form-data">
                                     <div class="form-input-vendor-login">
                                         <div class="col l12 m6 s12">

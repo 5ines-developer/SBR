@@ -301,7 +301,7 @@
                 <div class="vender-list">
                     <div class="row m0">
                         <div class="col l3 s6 p10">
-                            <a href="<?php echo base_url('e-invite#template')?>">
+                            <a href="<?php echo base_url('einvite#template')?>">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei1.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
@@ -316,7 +316,7 @@
                             </a>
                         </div>
                         <div class="col l3 s6 p10">
-                        <a href="<?php echo base_url('e-invite#template')?>">
+                        <a href="<?php echo base_url('einvite#template')?>">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei2.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
@@ -330,7 +330,7 @@
                             </a>
                         </div>
                         <div class="col l3 s6 p10">
-                        <a href="<?php echo base_url('e-invite#template')?>">
+                        <a href="<?php echo base_url('einvite#template')?>">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei3.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
@@ -344,7 +344,7 @@
                             </a>
                         </div>
                         <div class="col l3 s6 p10">
-                        <a href="<?php echo base_url('e-invite#template')?>">
+                        <a href="<?php echo base_url('einvite#template')?>">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url() ?>assets/img/vender/ei4.jpg"
                                         class="img-responsive icn-li" width="100%" alt="">
