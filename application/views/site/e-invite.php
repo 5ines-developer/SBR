@@ -137,7 +137,7 @@
                                                 <p>Mehndi Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview') ?>?item=mehindi-1"><i class="material-icons">remove_red_eye</i></a> <a @click="theme('mehindi1')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('e-invite/preview') ?>?item=mehindi-1"><i class="material-icons">remove_red_eye</i></a> <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -147,7 +147,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=mehindi-2"><i class="material-icons">remove_red_eye</i></a> 
-                                             <a @click="theme('mehindi2')"><i class="material-icons">edit</i></a>
+                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-1"><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('eng1')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -175,7 +175,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-2"><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('eng2')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-1"><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('wed1')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -203,7 +203,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-2"><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('wed2')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +221,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=reception-1"><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('rec1')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -231,7 +231,7 @@
                                             </div>
                                             <div class="temp-view">
                                             <a href="<?php echo base_url('e-invite/preview')?>?item=reception-2"><i class="material-icons">remove_red_eye</i></a> 
-                                                            <a @click="theme('rec2')"><i class="material-icons">edit</i></a>
+                                            <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                     </div>
