@@ -254,7 +254,7 @@
             });
         </script>
 
-        <script>
+        <!-- <script>
             var a = 0;
             $(window).scroll(function() {
 
@@ -278,7 +278,6 @@
                                 },
                                 complete: function() {
                                     $this.text(this.countNum);
-                                    //alert('finished');
                                 }
 
                             });
@@ -287,7 +286,7 @@
                 }
 
             });
-        </script>
+        </script> -->
 
         <script>
             var demo = new Vue({
