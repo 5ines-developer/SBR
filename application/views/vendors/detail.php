@@ -371,7 +371,7 @@ $this->load->model('m_vendors');
                                             <div class="row m0">
                                                 <div class="input-field col s12">
                                                     <div class="g-recaptcha"
-                                                        data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div> <span class="helper-text red-text">{{ captcha }}</span>
+                                                        data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div> <span class="helper-text red-text">{{ captcha }}</span>
                                                 </div>
                                             </div>
                                             <input type="hidden" name="vendor_id" value="<?php echo $value->uniq ?>">

@@ -129,7 +129,7 @@
                                         <div class="d-input">
                                             <div class="input-field">
                                                 <div class="g-recaptcha"
-                                                    data-sitekey="6LfgeS8UAAAAAFzucpwQQef7KXcRi7Pzam5ZIqMX"></div> <span
+                                                    data-sitekey="6LfMhr0UAAAAAPOaSXvx2hfk0P_ruX4KDruHyu06"></div> <span
                                                     class="helper-text red-text">{{ captcha }}</span>
                                             </div>
                                         </div>

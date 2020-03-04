@@ -45,9 +45,13 @@ class Vendors extends CI_Controller {
             $post_fields = array();
             $post_fields["method"] = "sendMessage";
             $post_fields["send_to"] = '91'.$phone.'';
-          $post_fields["msg"]  = 'Dear Customer
+            $post_fields["msg"]  = 'Dear Customer
 
-Your OTP is '.$otp.' . Use this OTP to get vendor details.';
+Your OTP is '.$otp.' . Use this OTP to get vendor details.
+
+With Love
+Shaadibaraati.com
+1800 4199 456';
 
                 
             $post_fields["msg_type"] = "TEXT";
@@ -61,7 +65,6 @@ Your OTP is '.$otp.' . Use this OTP to get vendor details.';
             $err = curl_error($curl);
             curl_close($curl);
             if ($err) {
-               // echo "cURL Error #:" . $err;
                $output = '';
             } 
             else 

@@ -28,7 +28,7 @@
                             <div class="vendor-head">
                                 <h6>Change Password</h6>
                             </div>
-                            <form action="<?php echo base_url('vendor/update-password') ?>" method="post">
+                            <form ref="c_forms" @submit.prevent="contForm" action="<?php echo base_url('vendor/update-password') ?>" method="post">
                                 <div class="vendor-inputs wid-50">
                                     <div class="row">
                                         <div class="col l12 m5 s12">
@@ -117,11 +117,9 @@
                             this.cpswerror = '';
                         }
                     },
-                    checkForm() {
+                    contForm() {
                         if ((this.cpswerror == '') && (this.curtpaserror == '') ) {
-
-
-                            this.$refs.form.submit()
+                            this.$refs.c_forms.submit();
                         } else {}
                     }
                 },
