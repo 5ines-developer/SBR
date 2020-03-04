@@ -66,8 +66,9 @@
                                           <th id="g" class="h5-para-p2" width="62px">City</th>
                                           <th id="g" class="h5-para-p2" width="62px">Category</th>
                                           <th id="a" class="h5-para-p2" width="130px">Name</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Email</th>                                    
-                                          <th id="a" class="h5-para-p2" width="130px">Phone</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Email</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Phone</th> 
+                                          <th id="a" class="h5-para-p2" width="130px">Date</th> 
                                           <th id="b" class="h5-para-p2" width="100px">Budget</th>
                                           <th id="c" class="h5-para-p2" width="120px">Message</th>
                                        </tr>
@@ -86,6 +87,7 @@
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->date))?date('d M, Y',strtotime($value->date)):'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->budget))?$value->budget:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?></a></td>                                          
                                         </tr>

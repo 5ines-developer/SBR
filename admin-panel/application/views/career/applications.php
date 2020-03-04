@@ -65,6 +65,7 @@
                                           <th >Phone</th>
                                           <th >Experienece</th>
                                           <th >Position</th>
+                                          <th >Applied On</th>
                                           <th >Resumes</th>
                                        </tr>
                                     </thead>
@@ -81,6 +82,7 @@
                                             <td><?php echo $value->phone ?></td>
                                             <td><?php echo $value->experience ?></td>
                                             <td><?php echo $value->position ?></td>
+                                            <td><?php echo $value->created_on ?></td>
                                             
                                             <td class="action-btn  center-align">
                                                 <a href="<?php echo $this->config->item('web_url').$value->file ?>"  class="blue hoverable"><i class="fas fa-download  "></i></i></a>

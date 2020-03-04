@@ -35,10 +35,8 @@
                                 <h6 class="pack-head">Package Sheet for Year <?php echo date('Y').'-'.date('Y', strtotime('+1 year')); ?>  Pan India Per City</h6>
                                 <div class="pack-detail">
                                     <div class="row">
-
                                         <?php if (!empty($result)) {
                                            foreach ($result as $key => $value) { ?>
-
                                             <div class="col l4 m6 s12">
                                             <div class="package-list">
                                                 <div class="title-pack">
@@ -54,13 +52,7 @@
                                                 <a href="<?php echo base_url('vendor/buy-package?p='.$value->id.'&t=package') ?>" onclick="return confirm('Are you sure you want to buy this package');" class="buy-pack ">BUY NOW</a>
                                             </div>
                                         </div>
-                                         <?php  } } ?> 
-                                         
-                                        
-                                        
-                                        
-                                        
-                                       
+                                         <?php  } } ?>
                                     </div>
                                 </div>
                                 <!-- Banner price -->
@@ -85,7 +77,6 @@
                                             </div>
                                         </div>
                                     <?php } } ?>
-                                        
                                     </div>
                                 </div>
                             </div>

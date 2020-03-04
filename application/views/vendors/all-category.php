@@ -122,7 +122,7 @@ top: -3px;
                                 <div class="row m0">
                                     <?php foreach ($category as $key => $value) { ?>
                                     <div class="col l3 s6 m4 cat-spacea">
-                                        <a href="<?php echo base_url().'vendors/all/'.urlencode(strtolower(str_replace(" ","-",$value->category))) ?>" >
+                                        <a href="<?php echo base_url().'vendors/all/'.str_replace(" ","-",strtolower($value->category)) ?>" >
                                         
                                         <div class="card hoverable cat-space">
                                             <div class="card-image1 ">

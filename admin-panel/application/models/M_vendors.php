@@ -8,12 +8,12 @@ class M_vendors extends CI_Model {
      * get Vendors details from database
      * url : vendors/manage
     **/
-	public function get_vendors($id='',$filter='',$filt='')
+	public function get_vendors($id='',$filt='')
 	{
 		$null=0;
-		if (!empty($filter) && $filter =='free') {
+		if (!empty($filt['type']) && $filt['type'] =='free') {
 			$this->db->where('ven.package', $null);
-		}elseif (empty($filter) || $filter =='paid') {
+		}elseif (!empty($filt['type']) || $filt['type'] =='paid') {
 			$this->db->where('ven.package !=', $null);
 		}
 
@@ -28,6 +28,7 @@ class M_vendors extends CI_Model {
 			$this->db->where('ven.category', $filt['category']);
 		}
 
+		$this->db->where('is_active', 1);
 		$this->db->select('ven.id as id, ven.name as name , ven.phone as phone , ven.email as email, cty.city as city, cat.category as category,ven.registered_date as regdate,ven.is_active as status,pac.title,ven.package,ven.upgrad');
 		$this->db->order_by('ven.id', 'desc');
 		$this->db->from('vendor ven');

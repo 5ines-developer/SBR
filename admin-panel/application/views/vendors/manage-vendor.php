@@ -45,12 +45,10 @@
                               <div class="col l4 m6">
                                 <p class="h5-para black-text m0">Vendors</p>
                               </div>
-                                <a class="waves-effect waves-light btn green  white-text hoverable select-lists" dat-is="all" fname="f">All</a>
+                              <!--   <a class="waves-effect waves-light btn green  white-text hoverable select-lists" dat-is="all" fname="f">All</a>
                                 <a class="waves-effect waves-light btn orange white-text hoverable select-lists" dat-is="paid" fname="f">Paid</a>
-                                <a class="waves-effect waves-light btn blue  white-text hoverable select-lists" dat-is="free" fname="f">Free</a>
-                              
-                              
-                            </div>
+                                <a class="waves-effect waves-light btn blue  white-text hoverable select-lists" dat-is="free" fname="f">Free</a> --> 
+                              </div>
                          </div>
                         <div class="col l4 m6 right-align">
                           <a href="<?php echo base_url('vendors/add')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable "><i class="fas fa-plus left"></i> ADD Vendors</a>
@@ -60,6 +58,7 @@
                      <!-- end dash -->
 
                       <div class="row">
+                       <form action="<?php echo current_url(); ?>" method="get"> 
                                       <div class="col l3 m6">
                                           <select id="city"  fname="city" class="select-list" name="city">
                                             <option value="">Choose a city</option>
@@ -80,7 +79,7 @@
                                           </select>
                                         </div>
 
-                                       <div class="col l3 m6">
+                                       <!-- <div class="col l3 m6">
                                           <select id="package"  fname="package" class="select-list" name="package">
                                             <option value="">Choose a Package</option>
                                             <?php if (!empty($package)) { 
@@ -88,9 +87,28 @@
                                                 <option value="<?php echo $pac->id ?>" <?php if($this->input->get('package') == $pac->id){ echo 'selected'; } ?> ><?php echo $pac->title ?></option> 
                                             <?php  } } ?>
                                           </select>
+                                        </div> -->
+
+                                        <div class="col l3 m6">
+                                          <select id="type" class="select-list" name="type"> 
+                                            <option value="">Choose a type</option>
+                                            <option value="paid">Paid</option>
+                                            <option value="free">Free</option>
+                                          </select>
+
                                         </div>
-                                      </div>
-                                      <div class="clearfix"></div>
+
+                                        <div class="col l3 m6">
+                                          <button
+                                                class="btn waves-effect waves-light green darken-4 hoverable btn upload-result"
+                                                type="submit">Submit
+                                                <i class="fas fa-paper-plane right"></i>
+                                            </button>
+
+                                        </div>
+                              </form>
+                          </div>
+                          <div class="clearfix"></div>
                      
 
                      <!-- chart-table -->
@@ -216,22 +234,22 @@
               });
               $('select').formSelect();
 
-              $('.select-list').change(function(){
+              // $('.select-list').change(function(){
 
-                if(window.location.href.indexOf("?") < 0){
-                    var windowUrl = window.location.href+'?';
-                } else{
-                    var windowUrl = window.location.href;
-                }
+              //   if(window.location.href.indexOf("?") < 0){
+              //       var windowUrl = window.location.href+'?';
+              //   } else{
+              //       var windowUrl = window.location.href;
+              //   }
 
-                  var val = $(this).val();
-                  var name = '&'+$(this).attr('fname')+'=';
-                  var names=$(this).attr('fname');
-                  var url = windowUrl+name+val;
-                  var originalURL = windowUrl+name+val;
-                  var alteredURL = removeParam(names, originalURL);
-                  window.location = alteredURL+name+val;
-              });
+              //     var val = $(this).val();
+              //     var name = '&'+$(this).attr('fname')+'=';
+              //     var names=$(this).attr('fname');
+              //     var url = windowUrl+name+val;
+              //     var originalURL = windowUrl+name+val;
+              //     var alteredURL = removeParam(names, originalURL);
+              //     window.location = alteredURL+name+val;
+              // });
 
               $('.select-lists').click(function(){
 

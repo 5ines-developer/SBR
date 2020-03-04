@@ -1039,6 +1039,9 @@ $this->load->model('m_vendors');
                     </div><br>
                     <div class="input-field">
                         <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                        <a href="<?php echo current_url(); ?>" class="waves-effect waves-light btn blue darken-2 plr30 accent-4 white-text">Cancel</a>
+                    </div>
+                    <div class="input-field">
                         <a @click="resendOtp()" style="cursor: pointer;">Resend OTP</a>
                     </div>
                 </form>

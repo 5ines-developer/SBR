@@ -139,6 +139,13 @@ class Home extends CI_Controller {
 
     public function about_us()
     {
+
+        $vend   = $this->db->get('vendor')->num_rows();
+        $cust   = $this->db->get('user')->num_rows();
+        $wed    = $this->db->get('vendor_enquiry')->num_rows();
+        $data['vendor']     = 10000 + $vend; 
+        $data['customer']   = 125000  + $cust; 
+        $data['wedding']    = 5000 + $wed; 
         $data['title']  = 'about-us - ShaadiBaraati';
         $this->load->view('site/about-us',$data);
     }

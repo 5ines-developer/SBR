@@ -56,8 +56,8 @@ class Vendor_package extends CI_Controller {
             $this->email->subject('Package Request');
             $this->email->message($msg);
             if ($this->email->send()) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, <br />Our team will contact you soon.');
-                redirect('vendor/package','refresh');
+                $this->session->set_flashdata('success', 'Your request has been submitted successfully, <br />You can pay the package amount here.');
+                redirect('https://pages.razorpay.com/pl_Ckj0SFClrYvOzF/view','refresh');
             } else {
                 $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
                 redirect('vendor/package','refresh');

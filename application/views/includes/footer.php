@@ -24,17 +24,17 @@
                     </div>
                     <div class="social-media ">
                         <ul>
-                            <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
+                            <li><a href="https://www.facebook.com/shaadibaraatiofficial" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
                                         class="img-responisve socil-icon" alt=""> </a></li>
-                            <li><a href="https://www.twitter.com/shaadibaraati" taraget="_blank"><img
+                            <li><a href="https://www.twitter.com/shaadibaraati" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
                                         class="img-responisve socil-icon" alt=""></a></li>
                             <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg"
-                                    taraget="_blank"><img
+                                    target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
                                         class="img-responisve socil-icon" alt=""></a></li>
-                            <li><a href="https://www.instagram.com/shaadibaraatiofficial/" taraget="_blank"><img
+                            <li><a href="https://www.instagram.com/shaadibaraatiofficial/" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
                                         class="img-responisve socil-icon" alt=""></a></li>
                         </ul>

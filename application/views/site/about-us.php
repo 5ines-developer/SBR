@@ -51,21 +51,21 @@
                     <div class="col l4 m4 s12">
                         <div class="about-sha ">
                             <i class="fas fa-users"></i>
-                            <p class="counter-value" data-count="1000000">0</p>
+                            <p class="counter-value" data-count="<?php echo $vendor ?>">0</p>
                             <h5>Vendors</h5>
                         </div>
                     </div>
                     <div class="col l4 m4 s12">
                         <div class="about-sha">
                             <i class="fas fa-star"></i>
-                            <p class="counter-value" data-count="700000">0</p>
+                            <p class="counter-value" data-count="<?php echo $customer ?>">0</p>
                             <h5>Customer</h5>
                         </div>
                     </div>
                     <div class="col l4 m4 s12">
                         <div class="about-sha">
                             <i class="fas fa-heart"></i>
-                            <p class="counter-value" data-count="5000">0</p>
+                            <p class="counter-value" data-count="<?php echo $wedding ?>">0</p>
                             <h5>Weddings</h5>
                         </div>
                     </div>

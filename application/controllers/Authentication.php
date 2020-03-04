@@ -127,8 +127,8 @@ class Authentication extends CI_Controller {
         $msg = $this->load->view('email/registration', $data, true);
 		$this->email->set_newline("\r\n");
 		$this->email->from($from , 'ShaadiBaraati');
-        $this->email->to('prathwi@5ine.in');
         $this->email->to($to);
+        $this->email->cc('hello@shaadibaraati.com');
         $this->email->subject('Registration verification'); 
         $this->email->message($msg);
      	if($this->email->send())  

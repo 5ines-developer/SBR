@@ -92,8 +92,8 @@
 
                                               if (!empty($value->status) && $value->status =='1') { ?>
                                                 <span class='white-text green lighten-1'>Active</span>
-                                             <?php }else if (!empty($value->status) && $value->status =='0'){ ?>
-                                               <span class='white-text blue'>Pending</span>
+                                             <?php }else if (empty($value->status)){ ?>
+                                               <span class='white-text red'>InActive</span>
                                              <?php }else if (!empty($value->status) && $value->status =='2') { ?>
                                               <span class='white-text red'>Blocked</span>
                                              <?php }else if (!empty($value->status) && $value->status =='3') { ?>

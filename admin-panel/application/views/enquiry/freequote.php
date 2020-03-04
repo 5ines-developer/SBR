@@ -62,6 +62,7 @@
                                           <th id="a" class="h5-para-p2" width="130px">Name</th>
                                           <th id="b" class="h5-para-p2" width="100px">Email</th>
                                           <th id="c" class="h5-para-p2" width="120px">Phone</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Requested On</th>
                                           <th id="c" class="h5-para-p2" width="120px">Service</th>
                                           <th id="c" class="h5-para-p2" width="120px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Budget</th>
@@ -82,6 +83,7 @@
                                             <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->firstname))?$value->firstname.$value->lastname:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
+                                            <td><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->added_on))?date("M d, Y ", strtotime($value->added_on)):'---'; ?></a></td>
                                             <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->service))?$value->service:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"><?php echo (!empty($value->budget))?$value->budget:'---'  ?></a></td>

@@ -45,7 +45,6 @@ class Vendors_approval extends CI_Controller {
 				$this->session->set_flashdata('error', 'Some error occured please try again');
 			}
 			redirect('vendors/edit/'.$id,'refresh');
-
 		}else{
 			$data['result']  = $this->m_vendorsApproval->get_vendors();
 			$this->load->view('vendors/vendor-approval', $data, FALSE);

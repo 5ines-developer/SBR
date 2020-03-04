@@ -158,6 +158,7 @@ class Vendor extends CI_Controller {
         $this->email->set_newline("\r\n");
         $this->email->from($from , 'ShaadiBaraati');
         $this->email->to($to);
+        $this->email->cc('hello@shaadibaraati.com');
         $this->email->subject('Vendor Registration verification'); 
         $this->email->message($msg);
         if($this->email->send())  
