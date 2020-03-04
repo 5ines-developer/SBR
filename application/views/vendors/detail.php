@@ -1039,6 +1039,7 @@ $this->load->model('m_vendors');
                     </div><br>
                     <div class="input-field">
                         <button class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
+                        <a @click="resendOtp()" style="cursor: pointer;">Resend OTP</a>
                     </div>
                 </form>
                </div>
@@ -1174,6 +1175,22 @@ $this->load->model('m_vendors');
 
                     
                 }
+            },resendOtp(){
+                const formData = new FormData();
+                formData.append('phone', this.phone);
+                axios.post('<?php echo base_url() ?>enquire-phoneCheck', formData)
+                .then(response => {
+                     if(response.data != ''){
+                        this.votp = response.data;
+                        M.toast({html: 'Resent the OTP', classes: 'green', displayLength : 5000 });
+                     }else{
+                       M.toast({html: 'Some error occured, <br> please try again!', classes: 'green', displayLength : 5000 });
+                     }
+
+                })
+                .catch(error => {
+
+                })
             },
             formSubmit(e){
                 e.preventDefault();
