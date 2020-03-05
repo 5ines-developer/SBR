@@ -1049,6 +1049,7 @@ $this->load->model('m_vendors');
             </div>
           </div>
           <input type="hidden" v-model="votp">
+          <input type="hidden" v-model="c_url">
 
 
 
@@ -1108,6 +1109,7 @@ $this->load->model('m_vendors');
             potp:'',
             potpError :'',
             votp:'',
+            c_url:'<?php echo current_url() ?>',
         },
 
         methods: {
@@ -1300,7 +1302,9 @@ $this->load->model('m_vendors');
             },
 
             onFocus() {
-                axios.post('<?php echo base_url() ?>review/session-check')
+                const formData = new FormData();
+                formData.append('url',this.c_url);
+                axios.post('<?php echo base_url() ?>review/session-check',formData)
                     .then(response => {
                         if (response.data == '') {
                             window.location.href = "<?php echo base_url('login') ?>";

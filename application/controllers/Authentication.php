@@ -194,8 +194,13 @@ class Authentication extends CI_Controller {
 					'shduser' => $username,
                     'shdid'   => $data['output']['su_id'],
 				);
-			$this->session->set_userdata($session_data); 
-			redirect('authentication/enter');
+			$this->session->set_userdata($session_data);
+            
+                if($this->session->userdata('shurls') != ''){ 
+                    redirect($this->session->userdata('shurls'));
+                }else{
+                    redirect('authentication/enter');
+                }
 			}else{
 				$this->session->set_flashdata('error', 'Invalid Username or Password'); 
 				redirect('login');
