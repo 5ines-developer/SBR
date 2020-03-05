@@ -351,6 +351,14 @@ class Home extends CI_Controller {
     }
 
 
+    // landing page
+    public function landing_page()
+    {
+        $data['title']  = 'ShaadiBaraati | landing page';
+        $this->load->view('site/landing-page',$data);
+    }
+
+
 
 
 
