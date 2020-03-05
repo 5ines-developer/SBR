@@ -19,6 +19,9 @@ class Vendors extends CI_Controller {
     **/
     public function detail($category="",$name="",$uniqid="")
     {
+        if($this->session->userdata('shurls') != ''){ 
+          $this->session->unset_userdata('shurls');
+        }
         $output = $this->m_vendors->getVendors($uniqid);
         if (!empty($output )) {
           foreach ($output as $key => $value) {
@@ -146,6 +149,11 @@ Shaadibaraati.com
     public function reviewSession($value='')
     {
 
+      $url = $this->input->post('url');
+      $urls = array(
+          'shurls' => $url,
+        );
+      $this->session->set_userdata($urls);
       $user =  $this->session->userdata('shdid');
       if (!empty($user)) {
         echo "1";

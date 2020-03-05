@@ -568,10 +568,11 @@ $this->load->model('m_vendors');
                                     </div>
                                     <div class="clearfix"></div>
                                     <form action="<?php echo base_url('review/submit') ?>" method="post"
-                                        ref="reviewForm" @submit.prevent="checkForm">
+                                        ref="reviewForm" @submit.prevent="checkForms">
                                         <div class="col s12 mt20">
                                             <div class="left rateus"> Rate us : </div>
                                             <star-rating v-model="ar" :star-size="20"></star-rating>
+                                        <p><span class="red-text m0">{{ starError }}</span></p>
                                         </div>
 
                                         <div class="col s12 m10 l12">
@@ -1049,6 +1050,7 @@ $this->load->model('m_vendors');
             </div>
           </div>
           <input type="hidden" v-model="votp">
+          <input type="hidden" v-model="c_url">
 
 
 
@@ -1108,6 +1110,8 @@ $this->load->model('m_vendors');
             potp:'',
             potpError :'',
             votp:'',
+            c_url:'<?php echo current_url() ?>',
+            starError:'',
         },
 
         methods: {
@@ -1273,11 +1277,18 @@ $this->load->model('m_vendors');
 
             },
 
-            checkForm() {
+            checkForms() {
                 if ((this.ar <= '3')) {
-                    if (confirm('Do you really want to review this vendor with ' + this.ar + ' rating')) {
-                        this.$refs.reviewForm.submit()
+                    if(this.ar < '3'){
+                        this.starError = "Please give a rating for this vendor";
+                    }else{
+                        if (confirm('Do you really want to review this vendor with ' + this.ar + ' rating')) {
+                            this.$refs.reviewForm.submit()
+                        }
                     }
+
+                    
+                    
                 } else {
                     this.$refs.reviewForm.submit()
                 }
@@ -1300,7 +1311,9 @@ $this->load->model('m_vendors');
             },
 
             onFocus() {
-                axios.post('<?php echo base_url() ?>review/session-check')
+                const formData = new FormData();
+                formData.append('url',this.c_url);
+                axios.post('<?php echo base_url() ?>review/session-check',formData)
                     .then(response => {
                         if (response.data == '') {
                             window.location.href = "<?php echo base_url('login') ?>";

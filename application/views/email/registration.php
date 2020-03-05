@@ -629,23 +629,41 @@ please click the below button to activate your account<br>
             </td>
         </tr>
     </tbody>
-</table><table class="mcnButtonBlock" style="min-width:100%;" width="100%" cellspacing="0" cellpadding="0" border="0">
-    <tbody class="mcnButtonBlockOuter">
-        <tr>
-            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" class="mcnButtonBlockInner" valign="top" align="center">
-                <table class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 4px;background-color: #2BAADF;" cellspacing="0" cellpadding="0" border="0">
-                    <tbody>
-                        <tr>
-                            <td class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;" valign="middle" align="center">
-                                <a href="<?php echo base_url().'email-verification?regid='.$regid ?>" class="mcnButton " title="Activate my account" href="" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activate my account</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table></td>
+</table>
+
+
+<table class="mcnButtonBlock" style="min-width:100%;"
+  width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tbody class="mcnButtonBlockOuter">
+    <tr>
+      <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;"
+        class="mcnButtonBlockInner" valign="top"
+        align="center">
+        <table class="mcnButtonContentContainer"
+          style="border-collapse: separate !important;border-radius: 4px;background-color: #2BAADF;"
+          cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td class="mcnButtonContent"
+                style="font-family: Arial; font-size: 16px; padding: 18px;"
+                valign="middle" align="center">
+                <a class="mcnButton "
+                  title="Activate my account"
+                  href="<?php echo base_url().'email-verification?regid='.$regid ?>" target="_blank"
+                  style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activate my account</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</td>
                                                     </tr>
                                                 </table>
                                             </td>

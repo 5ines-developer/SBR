@@ -634,7 +634,7 @@ You have asked to reset your shaadibaraati vendor account password. Please click
                     <tbody>
                         <tr>
                             <td class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;" valign="middle" align="center">
-                                <a href="<?php echo base_url('vendor/forgot-password-set/'.$regid.'') ?>" class="mcnButton " title="Activate my account" href="" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">RESET PASSWORD</a>
+                                <a href="<?php echo base_url('vendor/forgot-password-set/'.$regid.'') ?>" class="mcnButton " title="Activate my account" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">RESET PASSWORD</a>
                             </td>
                         </tr>
                     </tbody>

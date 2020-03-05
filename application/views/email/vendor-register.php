@@ -637,7 +637,7 @@ please click the below button to activate your account<br>
                     <tbody>
                         <tr>
                             <td class="mcnButtonContent" style="font-family: Arial; font-size: 16px; padding: 18px;" valign="middle" align="center">
-                                <a href="<?php echo base_url().'vendor/email_verification?regid='.$regid ?>" class="mcnButton " title="Activate my account" href="" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activate my account</a>
+                                <a href="<?php echo base_url().'vendor/email_verification?regid='.$regid ?>" class="mcnButton " title="Activate my account" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Activate my account</a>
                             </td>
                         </tr>
                     </tbody>
