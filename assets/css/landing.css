@@ -1,0 +1,134 @@
+.landing-banner {
+    background: #000000ad url(../img/b1.jpg);
+    background-repeat: repeat;
+    background-size: auto;
+    background-repeat: repeat;
+    background-size: auto;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 5% 0px;
+}
+
+.title-landing h5 {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    line-height: 45px;
+    margin: 0;
+}
+
+.title-landing p {
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.title-answer h3 {
+    font-weight: 700;
+    color: white;
+    font-size: 16px;
+    width: 65%;
+    line-height: 25px;
+}
+
+.vender-detail p {
+    padding: 0px 8% !important;
+    font-size: 14px;
+}
+
+.vender-detail h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.wed-pare h3 {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0px;
+    line-height: 26px;
+}
+
+.wed-pare p {
+    text-align: center;
+}
+
+.wed-dd {
+    background: white;
+    padding: 15px;
+}
+
+.wed-pare {
+    padding: 20px;
+}
+
+.get-land p {
+    padding: 0px 20%;
+}
+
+.landing-footer h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: gray;
+}
+
+.landing-footer a {
+    color: black;
+    font-size: 14px;
+}
+
+.landing-footer a:hover {
+    color: #d0021b;
+    cursor: pointer;
+}
+
+.call-to-action h5 {
+    font-weight: 700;
+    font-size: 29px;
+}
+
+.call-to-action a {
+    background: #78c025;
+    padding: 10px 40px;
+    margin-top: 0px;
+    display: inline-block;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.call-to-action a:hover {
+    background: #d0021b;
+}
+
+
+/* swiper-form **************************************** */
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
