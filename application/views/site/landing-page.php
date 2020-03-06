@@ -86,23 +86,24 @@
                                 <br>matching your requirements!
                                 </span>
                                 <p class="hide-on-phone">Signup to view them &amp; get quotes</p>
-                                <form class="jqueryform2" novalidate="novalidate">
+                                <form action="#" method="post" class="jqueryform2">
                                     <div class="field">
-                                        <input type="text" name="fullname" onchange="document.getElementById('fullname').value = $(this).val();" required="">
+                                        <input type="text" name="fullname" id="fullname" required="">
                                         <label for="fullname">Name</label>
                                     </div>
                                     <div class="field">
-                                        <input type="email" name="email" onchange="document.getElementById('email').value = $(this).val();" required="">
+                                        <input type="email" name="email" id="email" required="">
                                         <label for="email">Email</label>
                                     </div>
                                     <div class="field">
-                                        <input type="tel" name="number" onchange="document.getElementById('number').value = $(this).val();" required="">
+                                        <input type="tel" name="number" id="number" required="">
                                         <label for="number">Mobile Number</label>
                                     </div>
+                                    <button class="action-pink-form" type="submit" value="submit">See Planners</button>
                                 </form>
-                                <button class="action-pink-form vndr-ct-filtrflw-lgn-web desktop">See Planners</button>
+                                <p class="hide-on-phone">Want to change your requirements? - <button class="back-three action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web">Go Back</button></p>
+                                <!-- <button class="action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web"><i class="fa left fa-angle-left"></i>Go Back &amp; Change</button> -->
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -248,19 +249,15 @@
         $(function() {
             $("#datep").datepicker();
         });
-        $('#myform > input').on('input', function() {
-            var empty = false;
-            $('form > input, form > select').each(function() {
-                if ($(this).val() == '') {
-                    empty = true;
-                }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $(".datepicker-done").click(function() {
+                $(".action-pink").css("display", "block");
             });
-
-            if (empty) {
-                $('#register').attr('disabled', 'disabled');
-            } else {
-                $('#register').removeAttr('disabled');
-            }
+            $(".datepicker-cancel").click(function() {
+                $(".action-pink").css("display", "none");
+            });
         });
     </script>
 </body>

@@ -68,11 +68,6 @@ h2 {
     width: 90%
 }
 
-.container {
-    width: 1170px;
-    margin: auto
-}
-
 .header {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
     width: 100%;
@@ -962,7 +957,7 @@ select:-webkit-autofill:focus {
         top: auto;
         right: auto;
         text-align: left;
-        height: 100vh;
+        height: 60vh;
         transform: inherit;
         box-shadow: none;
         border-radius: 0

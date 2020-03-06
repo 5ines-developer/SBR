@@ -300,6 +300,22 @@
     padding-top: 10px;
 }
 
+.action-pink {
+    display: none;
+}
+
+.action-empty-form {
+    background: #d0021b;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.action-empty-form:hover {
+    background: black;
+}
+
 
 /*-----*/
 
@@ -334,5 +350,25 @@
         width: 90%;
         margin: auto;
         margin-top: 32px;
+    }
+}
+
+@media(max-width:767px) {
+    .budget-label,
+    .type-label {
+        padding: 9px;
+        cursor: pointer;
+        width: 65%;
+    }
+    .filter-p1 i {
+        display: none;
+    }
+    .sub-text {
+        font-size: .75em;
+        color: var(--grey-text);
+        display: inline-block;
+        padding-top: 8px;
+        line-height: 20px;
+        width: 90%;
     }
 }
