@@ -95,7 +95,7 @@
 .call-to-action a {
     background: #78c025;
     padding: 10px 40px;
-    margin-top: 0px;
+    margin-top: 15px;
     display: inline-block;
     color: white;
     font-size: 17px;
@@ -106,29 +106,233 @@
     background: #d0021b;
 }
 
-
-/* swiper-form **************************************** */
-
-.swiper-container {
-    width: 100%;
-    height: 100%;
+.header-form {
+    background: #d9d9d9;
+    padding: 5px 20px;
+    margin-bottom: 5%;
 }
 
-.swiper-slide {
+.header-form h5 {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+    padding: 8px;
+}
+
+.header-form b {
+    background: white;
+    border-radius: 18px;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
     text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
+    line-height: 25px;
+    margin-right: 10px;
+    font-size: 11px;
+}
+
+
+/* .form-slider {
+    background: white;
+    height: 400px;
+} */
+
+.form-list-detail h4 {
+    font-size: 14px;
+    margin: 0;
+    color: black;
+    font-weight: 400;
+}
+
+.form-list-detail p {
+    padding: 8px 0px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.form-list-detail i {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.form-list-detail {
+    position: relative;
+    padding: 10px;
+    border-bottom: 1px solid #e3e3e3;
+    cursor: pointer;
+}
+
+.form-list-detail:hover {
+    background: #ececec;
+}
+
+.form-footer {
+    position: relative;
+}
+
+.form-footer p {
+    background: #d2d0d1;
+    color: black;
+    padding: 10px 10px;
+    position: absolute;
+    margin: 0px;
+    top: 146px;
+    width: 100%;
+}
+
+
+/* form-banner */
+
+.form-b {
+    display: none;
+}
+
+.filter-p1.type-label.border-bottom.vndr-ct-filtrflw-0-nxt-web:hover {
+    background: #f4f4f4;
+}
+
+.filter-p1.budget-label.two-slide-options.border-bottom.vndr-ct-filtrflw-1-nxt-web:hover {
+    background: #f7f7f7;
+}
+
+.filter-p1.budget-label.two-slide-options.vndr-ct-filtrflw-1-nxt-web:hover {
+    background: #f7f7f7;
+}
+
+.filter-p1 h6 {
+    font-size: 12px;
+    margin: 0;
+    font-weight: 6700;
+}
+
+.arrow-p {
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+}
+
+.arrow-btn {
+    position: absolute;
+    left: -18px;
+    top: 11px;
+    font-size: 16px;
+}
+
+.action-back:focus {
+    background: none;
+    color: black;
+}
+
+.checker-btn {
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+    top: 21px;
+}
+
+.budget-label {
+    position: relative;
+    border: 1px solid #f2f2f2;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.cc-date .datepicker-modal {
+    max-width: 455px;
+    min-width: 455px;
+    max-height: none;
+}
+
+.cc-date .date-text {
+    font-size: 13px !important;
+}
+
+.cc-date .datepicker-date-display {
+    background: #b90909;
+}
+
+.cc-date .year-text {
+    color: white !important;
+}
+
+.cc-date .datepicker-table td.is-selected {
+    background-color: #b90909;
+    color: #fff;
+    width: 30px !important;
+}
+
+.cc-date .datepicker-table td {
+    border-radius: 50%;
+}
+
+.cc-date td {
+    padding: 0px 8px !important;
+}
+
+#datep {
+    font-size: 12px;
+}
+
+.action-pink {
+    background: #d0021b;
+    color: #fff;
+    font-size: 1em;
+    width: 220px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.landing-footer p {
+    line-height: 35px;
+}
+
+.landing-footer h2 {
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+.copy-land {
+    padding-top: 10px;
+}
+
+
+/*-----*/
+
+.call-button-index {
+    display: block;
+    width: 328px;
+    height: 48px;
+    border-radius: 4px;
+    background-color: #78c025;
+    color: white;
+    font-family: inherit;
+    border: none;
+    padding: 0 16px;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 48px;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.call-button-index i {
+    line-height: 48px;
+    font-size: 25px;
+}
+
+.sec-footer {
+    padding: 50px 0px;
+}
+
+@media only screen and (max-width:600px) {
+    .call-button-index {
+        width: 90%;
+        margin: auto;
+        margin-top: 32px;
+    }
 }
