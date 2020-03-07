@@ -52,8 +52,3 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Collapsible.init(elems);
 
 });
-
-$(window).on('load', function() {
-    // $('."loader').fadeOut();
-    $('.wrapper').delay(350).fadeOut('slow');
-});

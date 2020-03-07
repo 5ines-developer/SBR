@@ -1,32 +1,3 @@
-<!-- <div class="wrapper">
-		  <div class='circle'>
-			    <div class="circle-cutter"></div>
-			    <div class="circle-inner"></div>
-		  </div>
-	</div> -->
-<div class="wrapper">
-    <div class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="pre-loader">
-        <!-- <img src="<?php echo base_url()?>assets/img/logo.png" class="img-responsive" alt=""> -->
-
-    </div>
-</div>
 <?php $logo = base_url().'assets/img/logo.png'; ?>
 <div class="logo-brand">
     <a href="<?php echo base_url()?>"><img src="<?php echo $logo ?>" class="img-responsive" alt=""></a>
@@ -40,16 +11,16 @@
                 <span class="white-text">| </span>
                 <span class="white-text">Toll Free: <a href="tel:18004199456">1800 4199 456</a></span>
                 <ul class="right ul-social">
-                    <li><a href="https://www.facebook.com/shaadibaraatiofficial" taraget="_blank"><img
+                    <li><a href="https://www.facebook.com/shaadibaraatiofficial" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
                                         class="img-responisve socil-icon" alt=""> </a></li>
-                    <li><a href="https://www.twitter.com/shaadibaraati" taraget="_blank"><img
+                    <li><a href="https://www.twitter.com/shaadibaraati" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
                                         class="img-responisve socil-icon" alt=""></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg" taraget="_blank"><img
+                    <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
                                         class="img-responisve socil-icon" alt=""></a></li>
-                    <li><a href="https://www.instagram.com/shaadibaraatiofficial/" taraget="_blank"><img
+                    <li><a href="https://www.instagram.com/shaadibaraatiofficial/" target="_blank"><img
                                         src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
                                         class="img-responisve socil-icon" alt=""></a></li>
                 </ul>
