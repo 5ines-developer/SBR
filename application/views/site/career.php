@@ -15,6 +15,7 @@
 
 <body>
     <div id="app">
+    <?php $this->load->view('includes/pre-loader.php'); ?>
         <?php $this->load->view('includes/header.php'); ?>
             <section class="contact-back sec">
                 <div class="row">

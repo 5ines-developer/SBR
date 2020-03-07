@@ -15,6 +15,7 @@
 </head>
 
 <body>
+<?php $this->load->view('includes/pre-loader.php'); ?>
     <?php $this->load->view('includes/header.php'); ?>
     <div id="app">
         <section class="real-weading">
