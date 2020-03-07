@@ -352,85 +352,9 @@
         //  next button on slide 3 (calender)
         $('.third-slide-next-but').click(get_vendor_count);
 
-        function get_vendor_count() {
-            if ($(window).width() >= 900) {
-                $('.filter-box').addClass('filter-box-resize-width');
-                $('.desktop-overlay').addClass('slider-overlay');
-                $('.hero-content').hide();
-                $('.slides').css('scroll-behavior', 'auto');
-            }
-            $('#loader-title').html("Hold on ...<\/br>");
-            $('#loader-content').html("... we are searching for matching <\/br> WEDDING PLANNERS");
-            $('.universal-loader').show();
-
-            let data = {
-                city: $('#city').val(),
-                budget: $('#budget_options').val(),
-                services: $('#planning_options').val()
-            };
-
-            $.ajax({
-                method: "POST",
-                url: "https://www.shaadisaga.com/wedding-planners/index_requirement_submission",
-                data: data,
-                dataType: "json"
-            }).done(function(response) {
-                $('.universal-loader').hide();
-                if (response.message == "success") {
-                    $('#forward_url').val(response.data.url);
-                }
-            });
-
-        };
-
         //  submit button on slide 4 (Form)
         $('.four-slide-next').click(submit_form);
 
-        function submit_form() {
-            if ($(this).hasClass("desktop")) {
-                if (!$('.jqueryform2').valid()) {
-                    return;
-                }
-            } else {
-                if (!$('.jqueryform1').valid()) {
-                    return;
-                }
-            }
-            $('#loader-title').html("Awesome!<\/br>");
-            $('#loader-content').html("Now showing you matching<\/br> WEDDING PLANNERS ...");
-            $('.universal-loader').show();
-            let budget = ["Wedding Budget <15L", "Wedding Budget 15L - 30L", "Wedding Budget 30L - 60L", "Wedding Budget <60L"];
-            let planning_type = {
-                "1,2,3": "Full Planning",
-                "1,2,4": "Partial Planning"
-            };
-            let data = {
-                name: $('#fullname').val(),
-                email: $('#email').val(),
-                mobile: $('#number').val(),
-                city: "Bangalore",
-                category: 5,
-                f_url: $('#forward_url').val(),
-                services: {
-                    "Planning type": planning_type[$('#planning_options').val()]
-                },
-                event_date: $('#event_dates').val(),
-                utm_tracking_info: {
-                    "utm_source": "facebook",
-                    "utm_medium": "cpc",
-                    "utm_campaign": "fb_cpc_planner_bangalore_6feb2020",
-                    "utm_term": null,
-                    "utm_content": null
-                },
-                query_text: budget[$('#budget_options').val() - 1]
-            };
-            $.ajax({
-                method: "POST",
-                url: "https://www.shaadisaga.com/wedding-vendors/queries/generate_query_from_ads",
-                data: data,
-                dataType: "script"
-            }).done();
-        };
 
         function web_browser_back_support() {
             if ($('#slide-2').hasClass('active')) {
