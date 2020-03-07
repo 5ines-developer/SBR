@@ -86,6 +86,11 @@
       <li class="<?php echo $this->uri->segment(1) == 'team-report'?'active':'' ?>"><a href="<?php echo base_url('team-report') ?>"><i class="fas fa-chart-line li-icon"></i>Team Report</a></li>
       <li class="<?php echo $this->uri->segment(1) == 'live-report'?'active':'' ?>"><a href="<?php echo base_url('live-report') ?>"><i class="fas fa-chart-line li-icon"></i>Live Report</a></li>
 
+      <div class="divider"></div>
+
+      <li class="<?php echo $this->uri->segment(1) == 'seo'?'active':'' ?>"><a href="<?php echo base_url('seo/manage') ?>"><i class="fas fa-poll-h li-icon"></i>Seo Data</a></li>
+
+
         
       
 
@@ -179,9 +184,7 @@
           } ?></a></li>
           <?php } ?>
 
-          <?php if($this->session->userdata('sha_type') == '7'){ ?>
-            <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
-          <?php } ?>
+          
           <?php if ($value == '12') { ?>
           <li class="<?php echo $this->uri->segment(1) == 'leads'?'active':'' ?>"><a href="<?php echo base_url('leads') ?>"><i class="fas fa-comments li-icon"></i>Lead Management</a></li>
           <?php } if ($value == '9') { ?>
@@ -191,11 +194,11 @@
             <li class="<?php echo $this->uri->segment(1) == 'banner-package'?'active':'' ?>"><a href="<?php echo base_url('banner-package') ?>"><i class="fas fa-ribbon li-icon"></i>Banner Package</a></li>
            <?php }
 
+      }?>
 
-
-
-
-           }?>
+           <?php if($this->session->userdata('sha_type') == '7'){ ?>
+            <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
+          <?php } ?>
         
 
 

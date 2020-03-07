@@ -209,6 +209,9 @@ $route['employee-report']			        =	'report/employee';
 $route['team-report']			       	 	=	'report/team';
 $route['live-report']			       	 	=	'report/liveReport';
 
+// seo data
+$route['seo/manage']			            =	'seo/index';
+
 
 
 

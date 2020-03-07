@@ -8,8 +8,12 @@ class Authentication extends CI_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('m_authentication');
-		$this->load->library('form_validation');
-		$this->load->library('bcrypt');
+		 $this->load->model('m_facebook');
+        $this->load->library('form_validation');
+        $this->load->library('bcrypt');
+        $this->load->library('facebook');
+        $this->load->model('m_google');
+        $this->load->library('google');
 	}
 
 	/**
@@ -21,6 +25,8 @@ class Authentication extends CI_Controller {
 
 		if ($this->session->userdata('shdid') == '') {
 			$data['title'] = 'Register - ShaadiBaraati';
+            $data['authURL'] = $this->fbLogin();
+            $data['loginURL'] = $this->googleLogin();
 			$this->load->view('auth/registration', $data, FALSE);
 		}else{
 			redirect('profile');
@@ -166,6 +172,8 @@ class Authentication extends CI_Controller {
     {
     	if ($this->session->userdata('shdid') == '') {
     		$data['title'] = 'Login - ShaadiBaraati';
+            $data['authURL'] = $this->fbLogin();
+            $data['loginURL'] = $this->googleLogin();
 			$this->load->view('auth/login', $data, FALSE);
     	}else{
     		redirect('profile');
@@ -207,6 +215,94 @@ class Authentication extends CI_Controller {
 			}
     	}
     }
+
+
+    public function fbLogin(Type $var = null)
+    {
+        $userData = array();
+        
+        // Check if user is logged in
+        if($this->facebook->is_authenticated()){
+            // Get user facebook profile details
+            $fbUser = $this->facebook->request('get', '/me?fields=id,first_name,last_name,email,link,gender,picture');
+            $first_name   = !empty($fbUser['first_name'])?$fbUser['first_name']:'';
+            $last_name    = !empty($fbUser['last_name'])?$fbUser['last_name']:'';
+            // Preparing data for database insertion
+            $userData['oauth_provider'] = 'facebook';
+            $userData['oauth_uid']    = !empty($fbUser['id'])?$fbUser['id']:'';;
+            $userData['su_name'] = $first_name.' '.$last_name; 
+            $userData['su_email']        = !empty($fbUser['email'])?$fbUser['email']:'';
+            $userData['su_profile_file']    = !empty($fbUser['picture']['data']['url'])?$fbUser['picture']['data']['url']:'';
+            $userData['su_is_active']=1;
+            // Insert or update user data
+            $userID = $this->m_facebook->checkUser($userData);
+
+            // Check user data insert or update status
+            if(!empty($userID)){
+                $data['userData'] = $userData;
+                $session_data = array(
+                    'shduser' => $userData['su_email'],
+                    'shdid'   => $userID,
+                );
+
+                $this->session->set_userdata($session_data);
+                if(!empty($session_data)){
+                   redirect('authentication/enter');
+                }
+            }else{
+               $data['userData'] = array();
+            }
+            
+            // Get logout URL
+            $data['logoutURL'] = $this->facebook->logout_url();
+        }else{
+            // Get login URL
+            return $this->facebook->login_url();
+        }
+    }
+    
+    public function googleLogin(Type $var = null)
+    {
+        //google login
+        if(isset($_GET['code'])){
+            
+            // Authenticate user with google
+            if($this->google->getAuthenticate()){
+            
+                // Get user info from google
+                $gpInfo = $this->google->getUserInfo();
+                $first_name   = $gpInfo['given_name'];
+                $last_name    = $gpInfo['family_name'];
+                // Preparing data for database insertion
+                $userData['oauth_provider'] = 'google';
+                $userData['oauth_uid']      = $gpInfo['id'];
+                $userData['su_name']     = $first_name.' '.$last_name; 
+                $userData['su_email']          = $gpInfo['email'];
+                $userData['su_profile_file']        = !empty($gpInfo['picture'])?$gpInfo['picture']:'';
+                $userData['su_is_active']=1;
+                // Insert or update user data to the database
+                $userID = $this->m_google->checkUser($userData);
+                
+                if(!empty($userID)){
+                    $data['userData'] = $userData;
+                    $session_data = array(
+                        'shduser' => $userData['su_email'],
+                        'shdid'   => $userID,
+                    );
+                    
+                   
+                    
+                    $this->session->set_userdata($session_data);
+                  
+                    if(!empty($session_data)){
+                       redirect('authentication/enter');
+                    }
+                }
+            }    
+        }    
+        return $this->google->loginURL();
+    }
+
 
 
     // set login session
