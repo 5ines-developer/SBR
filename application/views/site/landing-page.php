@@ -16,6 +16,7 @@
 
 <body>
     <!-- header -->
+    <?php $this->load->view('includes/pre-loader.php'); ?>
     <?php $this->load->view('includes/landing-header.php'); ?>
     <!-- end header -->
 
