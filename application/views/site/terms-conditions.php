@@ -2,6 +2,31 @@
 <html lang="en">
 
 <head>
+
+    <?php
+    $seo = seo();
+    $m_titl = '';
+    $m_descp = '';
+    $m_key = '';
+    $m_can = '';
+
+    if (!empty($seo[0])) {
+        foreach ($seo as $key => $value) {
+            if($value->page == 'terms-condition' || $value->page == 'Terms-Condition' || $value->page == 'Terms-&-Condition' || $value->page == 'terms-&-condition' || $value->page == 'terms & condition' || $value->page == 'Terms & Condition' || $value->page == 'Terms and Condition' || $value->page == 'terms and condition'){
+                $m_titl     = $value->title;
+                $m_descp    = $value->m_desc;
+                $m_key      = $value->keywords;
+                $m_can      = $value->can_link; 
+            }
+        }
+    }
+    ?>
+    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="<?php echo $m_descp ?>" />
+    <link rel="canonical" href="<?php echo $m_can ?>" />
+    <meta name="keywords" content="<?php echo $m_key ?>" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,7 +41,6 @@
 <body >
    
 <div id="demo">
-        <?php $this->load->view('includes/pre-loader.php'); ?>
         <?php $this->load->view('includes/header.php'); ?>
         
         <section class="contact-back sec">

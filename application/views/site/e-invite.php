@@ -2,10 +2,33 @@
 <html lang="en">
 
 <head>
+
+    <?php
+    $seo = seo();
+    $m_titl = '';
+    $m_descp = '';
+    $m_key = '';
+    $m_can = '';
+
+    if (!empty($seo[0])) {
+        foreach ($seo as $key => $value) {
+            if($value->page == 'e-invite' || $value->page == 'E-invite' || $value->page == 'E invite' || $value->page == 'e invite'){
+                $m_titl     = $value->title;
+                $m_descp    = $value->m_desc;
+                $m_key      = $value->keywords;
+                $m_can      = $value->can_link; 
+            }
+        }
+    }
+    ?>
+
+    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
+    <meta name="description" content="<?php echo $m_descp ?>" />
+    <link rel="canonical" href="<?php echo $m_can ?>" />
+    <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shaadi Baraati</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />

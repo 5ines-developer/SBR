@@ -42,7 +42,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $leads =  $ci->M_vendorDetail->leadscount($ci->session->userdata('shvid'));
                 return $leads;
             }
+        }
+
+        if(!function_exists('seo')) {
+            function seo() {
+                $ci = get_instance();
+    
+                $ci->load->model('M_seo');
+                $result =  $ci->M_seo->seoData();
+                return $result;
             }
+        }
 
 
 /* End of file LibraryName.php */

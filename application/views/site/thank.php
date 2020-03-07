@@ -13,6 +13,9 @@
 	</style>
 	<!-- <script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/jquery-1.9.1.min.js"></script>
 	<script src="https://2-22-4-dot-lead-pages.appspot.com/static/lp918/min/html5shiv.js"></script> -->
+	<script>
+  gtag('event', 'conversion', {'send_to': 'AW-726892140/-2IACMz-9bwBEOz8zdoC'});
+</script>
 </head>
 <body>
 	<header class="site-header" id="header">
