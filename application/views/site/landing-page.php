@@ -68,7 +68,9 @@
                             </div>
                             <div class="third-slide-container">
                                 <div class="calender-container cc-date">
-                                    <input type="text" id="datep" placeholder="Select Your Event Date">
+                                    <!-- <input type="text" id="datep" placeholder="Select Your Event Date"> -->
+                                    <input type="text" class="datepicker" id="datep" placeholder="Select Your Event Date">
+
                                     <span class="next-three"><div class="budget-label no-border third-slide-next-but pad-left but-slide-3-next input-options vndr-ct-filtrflw-2-nxt-web" data-option="" data-field="#event_dates">Dates not decided yet <i class="material-icons checker-btn">chevron_right</i></div></span>
                                 </div>
                                 <div class="slide-footer">
@@ -102,7 +104,6 @@
                                     <button class="action-pink-form" type="submit" value="submit">See Planners</button>
                                 </form>
                                 <p class="hide-on-phone">Want to change your requirements? - <button class="back-three action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web">Go Back</button></p>
-                                <!-- <button class="action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web"><i class="fa left fa-angle-left"></i>Go Back &amp; Change</button> -->
                             </div>
                         </div>
                     </div>
@@ -186,22 +187,24 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
+            <div class="row">
+                <div class="col offset-l1 offset-s0 offset-m0 l10 s12 m12">
                     <div class="contatct-item">
-                        <div class="col s6 m4">
-                            <p> <i class="material-icons">mail</i> </p>
-                            <p>Mail</p>
-                            <p><a href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></p>
-                        </div>
-                        <div class="col s6 m4">
-                            <p> <i class="material-icons">call</i> </p>
-                            <p>Toll Free</p>
-                            <p><a href="tel:18004199456">1800 4199 456</a></p>
-                        </div>
-                        <div class="col s12 m4 smslayout">
-                            <p> <i class="material-icons">sms</i> </p>
-                            <p>For Details TYPE <b>"BARAATI"</b> space your name and send it to 567678080</p>
+                        <div class="row">
+                            <div class="col l4 m4 s12">
+                                <p> <i class="material-icons">mail</i> </p>
+                                <p>Mail</p>
+                                <p><a href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></p>
+                            </div>
+                            <div class="col l4 m4 s12">
+                                <p> <i class="material-icons">call</i> </p>
+                                <p>Toll Free</p>
+                                <p><a href="tel:18004199456">1800 4199 456</a></p>
+                            </div>
+                            <div class="col l4 m4 s12">
+                                <p> <i class="material-icons">sms</i> </p>
+                                <p>For Details TYPE <b>"BARAATI"</b> space your name and send it to 567678080</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,8 +249,9 @@
     <script src="<?php echo base_url()?>assets/js/swiper.js"></script>
 
     <script>
-        $(function() {
-            $("#datep").datepicker();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems);
         });
     </script>
     <script>

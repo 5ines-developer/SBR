@@ -60,7 +60,7 @@ h2 {
 }
 
 .sub-text {
-    font-size: .75em;
+    font-size: 13px;
     color: var(--grey-text);
     display: inline-block;
     padding-top: 8px;
@@ -940,7 +940,7 @@ select:-webkit-autofill:focus {
     }
     .slide-header h2 {
         display: inline-block!important;
-        width: 87%
+        /* width: 87%; */
     }
     .slide-1 h3 {
         font-size: .75em;
@@ -957,7 +957,7 @@ select:-webkit-autofill:focus {
         top: auto;
         right: auto;
         text-align: left;
-        height: 60vh;
+        height: auto;
         transform: inherit;
         box-shadow: none;
         border-radius: 0
@@ -973,18 +973,18 @@ select:-webkit-autofill:focus {
         line-height: 1.33!important;
         padding-left: 36px
     }
-    .slide-footer,
+    /* .slide-footer,
     .form-container h1 {
         display: none
-    }
+    } */
     .form-container {
         width: 100%;
         display: block
     }
-    .form-side-steps,
+    /* .form-side-steps,
     .action-pink-form {
         display: none
-    }
+    } */
     .field {
         width: 100%
     }
@@ -1018,9 +1018,9 @@ select:-webkit-autofill:focus {
     .calender-container {
         margin: 0 27px 16px
     }
-    .hide-on-phone {
+    /* .hide-on-phone {
         display: none
-    }
+    } */
     .hide-on-desktop {
         display: block
     }
@@ -1103,7 +1103,7 @@ select:-webkit-autofill:focus {
         font: normal normal normal 40px/1 FontAwesome
     }
     .pad-left {
-        padding-left: 16px
+        padding-left: 0px
     }
     #datepicker-2 {
         width: 300px;
@@ -1201,9 +1201,9 @@ select:-webkit-autofill:focus {
         font-size: 1.25em;
         line-height: 1.4
     }
-    .result-found {
+    /* .result-found {
         display: none
-    }
+    } */
     .form-container {
         padding: 16px
     }

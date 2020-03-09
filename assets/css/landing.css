@@ -363,6 +363,10 @@
     .filter-p1 i {
         display: none;
     }
+    .vender-detail p {
+        padding: 0px;
+        font-size: 13px;
+    }
     .sub-text {
         font-size: .75em;
         color: var(--grey-text);
@@ -370,5 +374,143 @@
         padding-top: 8px;
         line-height: 20px;
         width: 90%;
+    }
+    .cc-date {
+        padding: 0px 10px;
+    }
+    .get-land p {
+        padding: 0px;
+    }
+    .cc-date .datepicker-modal {
+        max-width: 325px;
+        min-width: 300px;
+        max-height: none;
+    }
+    .call-to-action h5 {
+        font-weight: 700;
+        font-size: 19px;
+    }
+    .cc-date .datepicker-table td.is-selected {
+        background-color: #b90909;
+        color: #fff;
+        width: 40px !important;
+    }
+    .cc-date td {
+        padding: 0px 4px !important;
+    }
+    .action-pink {
+        float: left !important;
+        width: 24% !important;
+        margin-left: 20% !important;
+        margin: 14px 0px;
+    }
+    /* .form-container {
+        padding: 24px 36px;
+        min-width: 100%;
+    } */
+    .result-found {
+        font-size: 16px !important;
+        line-height: 1.33;
+        font-weight: 700;
+    }
+    .jqueryform2 {
+        width: 25%;
+    }
+    .form-container {
+        padding: 0px;
+        width: auto;
+        min-width: auto;
+        box-sizing: border-box;
+        display: inherit;
+        vertical-align: top;
+    }
+    #slide-4 .form-container p {
+        padding-top: 15px;
+        font-size: 11px;
+    }
+    .action-pink-form {
+        background: #d0021b;
+        width: 265px !important;
+        font-weight: 500;
+        position: absolute;
+        bottom: 30% !important;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .action-pink {
+        float: left !important;
+        width: 24% !important;
+        margin-left: 20% !important;
+        margin: 14px 0px;
+    }
+    .cc-date .datepicker-modal {
+        max-width: 300px !important;
+        min-width: 300px !important;
+        max-height: none;
+    }
+    .call-to-action h5 {
+        font-weight: 700;
+        font-size: 19px;
+    }
+    .cc-date .datepicker-table td.is-selected {
+        background-color: #b90909;
+        color: #fff;
+        width: 40px !important;
+    }
+    .cc-date td {
+        padding: 0px 4px !important;
+    }
+    .calender-container.cc-date {
+        width: 240px;
+        margin: 20px;
+    }
+    .form-container {
+        padding: 20px 18px !important;
+        width: auto !important;
+        min-width: auto !important;
+        box-sizing: border-box;
+        display: inherit;
+        vertical-align: top;
+    }
+    #slide-4 .form-container p {
+        padding-top: 15px;
+        font-size: 14px;
+    }
+    .action-pink-form {
+        background: #d0021b;
+        width: 265px !important;
+        font-weight: 500;
+        position: absolute;
+        bottom: 5% !important;
+    }
+    .result-found {
+        font-size: 16px !important;
+        line-height: 1.33;
+        font-weight: 700;
+    }
+    .jqueryform2 {
+        width: 25%;
+    }
+    .field {
+        display: flex;
+        width: 326px !important;
+        height: 75px !important;
+        position: relative;
+        flex-flow: column-reverse;
+    }
+    .wed-pare h3 {
+        font-size: 14px;
+        font-weight: 700;
+        text-align: center;
+        margin: 0px;
+        line-height: 20px;
+    }
+    .wed-pare {
+        padding: 5px 0px;
+    }
+    .wed-dd {
+        background: white;
+        padding: 10px;
     }
 }
