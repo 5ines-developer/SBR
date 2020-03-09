@@ -23,13 +23,13 @@
     <section class="landing-banner">
         <div class="container-fluide">
             <div class="row">
-                <div class="col l5 m5 s12">
+                <div class="col l6 m6 s12">
                     <div class="title-landing">
-                        <h5>Find the Perfect WEDDING PLANER in Bangalore</h5>
+                        <h5>Find the perfect WEDDING PLANNER in Bangalore</h5>
                         <p>Customize and send free Online Invitation for your Mehendi, Engagement, Wedding And Reception Events using our wide selection of templates. </p>
                     </div>
                     <div class="title-answer">
-                        <h3>Answer 3 Questions & see best suitable planners</h3>
+                        <h3>Answer 3 questions & see best suitable planners</h3>
                     </div>
                 </div>
                 <div class="col l6 m6 s12">
