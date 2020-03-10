@@ -5933,6 +5933,56 @@ html {
     background: #ecebea !important;
 } */
 
+
+/* 10-03-2020 - rwal-wedding gallery light box */
+
+.vel-img-modal.vel-modal {
+    z-index: 9999999999999999999999999 !important;
+}
+
+.btn__close {
+    background: white !important;
+    opacity: 1 !important;
+    color: black !important;
+    width: 40px !important;
+    height: 40px !important;
+    text-align: center;
+    line-height: 25px;
+}
+
+.btn__next {
+    color: white !important;
+    line-height: 23px;
+    text-align: center;
+    color: black !important;
+    opacity: 1 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: white !important;
+}
+
+.btn__prev.disable {
+    color: white !important;
+    line-height: 23px;
+    text-align: center;
+    color: black !important;
+    opacity: .6 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: white !important;
+}
+
+.btn__prev {
+    color: white !important;
+    line-height: 23px;
+    text-align: center;
+    color: black !important;
+    opacity: 1 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background: white !important;
+}
+
 @media(max-width:767px) {
     /* 3-03-2020 */
     .pricing-palden {
