@@ -5950,7 +5950,8 @@ html {
     line-height: 25px;
 }
 
-.btn__next {
+
+/* .btn__next {
     color: white !important;
     line-height: 23px;
     text-align: center;
@@ -5981,7 +5982,7 @@ html {
     width: 40px !important;
     height: 40px !important;
     background: white !important;
-}
+} */
 
 @media(max-width:767px) {
     /* 3-03-2020 */
