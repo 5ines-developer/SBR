@@ -533,11 +533,11 @@
 
     <?php $this->load->view('includes/footer'); ?>
     <!-- script -->
+    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
  

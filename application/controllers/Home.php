@@ -78,49 +78,61 @@ class Home extends CI_Controller {
 
     public function insertcontact($value='')
     {
-        $name       =   $this->input->post('name');
-        $email      =   $this->input->post('email');
-        $phone      =   $this->input->post('phone');
-        $subject    =   $this->input->post('subject');
-        $message    =   $this->input->post('message');
-        $uniq       =   $this->input->post('uniq');
-
-        $insert = array(
-          'name'    =>  $name , 
-          'email'   =>  $email , 
-          'phone'   =>  $phone , 
-          'subject' =>  $subject , 
-          'message' =>  $message ,
-          'uniq'    =>  $uniq
-        );
-
-        $data['result'] = $insert;
-        $data['output']  =  $this->m_home->addenquiry($insert);
-        if (!empty($data['output'])) {
-            $this->load->config('email');
-            $this->load->library('email');
-            
-            $to = $this->config->item('vr_to');
-            $cc = $this->config->item('vr_cc');
-
-            $from = $this->config->item('smtp_user');
-            $msg = $this->load->view('email/enquiry', $data, true);
-            $this->email->set_newline("\r\n");
-            $this->email->from($from, 'ShaadiBaraati');
-            $this->email->to($to);
-            $this->email->cc($cc);
-            $this->email->subject('Enquiry Form');
-            $this->email->message($msg);
-            if ($this->email->send()) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, <br />Our team will contact you soon.');
-                redirect('contact-us','refresh');
-            } else {
-                $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
-                redirect('contact-us','refresh');
-            }
+        $this->form_validation->set_rules('name', 'Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric');
+        $this->form_validation->set_rules('subject', 'Subject', 'alpha_numeric_spaces');
+        $this->form_validation->set_rules('message', 'Message', 'alpha_numeric_spaces');
+        if ($this->form_validation->run() == false) {
+            $this->form_validation->set_error_delimiters('', '<br>');
+            $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
+            redirect('contact-us','refresh');
         }else{
-              $this->session->set_flashdata('error', 'Unable to submit your request, <br />Please try again later!');
-              redirect('contact-us','refresh');
+
+            $name       =   $this->input->post('name');
+            $email      =   $this->input->post('email');
+            $phone      =   $this->input->post('phone');
+            $subject    =   $this->input->post('subject');
+            $message    =   $this->input->post('message');
+            $uniq       =   $this->input->post('uniq');
+
+            $insert = array(
+              'name'    =>  $name , 
+              'email'   =>  $email , 
+              'phone'   =>  $phone , 
+              'subject' =>  $subject , 
+              'message' =>  $message ,
+              'uniq'    =>  $uniq
+            );
+
+            $data['result'] = $insert;
+            $data['output']  =  $this->m_home->addenquiry($insert);
+            if (!empty($data['output'])) {
+                $this->load->config('email');
+                $this->load->library('email');
+                
+                $to = $this->config->item('vr_to');
+                $cc = $this->config->item('vr_cc');
+
+                $from = $this->config->item('smtp_user');
+                $msg = $this->load->view('email/enquiry', $data, true);
+                $this->email->set_newline("\r\n");
+                $this->email->from($from, 'ShaadiBaraati');
+                $this->email->to($to);
+                $this->email->cc($cc);
+                $this->email->subject('Enquiry Form');
+                $this->email->message($msg);
+                if ($this->email->send()) {
+                    $this->session->set_flashdata('success', 'Your request has been submitted successfully, <br />Our team will contact you soon.');
+                    redirect('contact-us','refresh');
+                } else {
+                    $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+                    redirect('contact-us','refresh');
+                }
+            }else{
+                  $this->session->set_flashdata('error', 'Unable to submit your request, <br />Please try again later!');
+                  redirect('contact-us','refresh');
+            }
         }
     }
 
@@ -199,106 +211,144 @@ class Home extends CI_Controller {
     
     public function getquote($id = null)
     {
-        $qfname     =   $this->input->post('qfname');
-        $qlname     =   $this->input->post('qlname');
-        $qemail     =   $this->input->post('qemail');
-        $qphone     =   $this->input->post('qphone');
-        $qservice   =   $this->input->post('qservice');
-        $qdate      =   $this->input->post('qdate');
-        $qcity      =   $this->input->post('qcity');
-        $qbudget    =   $this->input->post('qbudget');
-        $qmessage   =   $this->input->post('qmessage');
-        $quiniq   =   $this->input->post('quiniq');
 
-
-        $insert = array(
-          'firstname'    =>  $qfname , 
-          'lastname'   =>  $qlname , 
-          'email'   =>  $qemail , 
-          'phone'   =>  $qphone , 
-          'service' =>  $qservice ,
-          'date'    =>  $qdate,
-          'city'    =>  $qcity,
-          'budget'  =>  $qbudget,
-          'message' =>  $qmessage,
-          'uniq' =>  $quiniq,
-        );
-        $data['result'] = $insert;
-        $data['output']  =  $this->m_home->quoterequest($insert);
-        if (!empty($data['output'])) {
-            $this->load->config('email');
-            $this->load->library('email');
-
-            $to = $this->config->item('vr_to');
-            $cc = $this->config->item('vr_cc');
-            $from = $this->config->item('smtp_user');
-            $msg = $this->load->view('email/getquote', $data, true);
-            $this->email->set_newline("\r\n");
-            $this->email->from($from, 'ShaadiBaraati');
-            $this->email->to($to);
-            $this->email->cc($cc);
-            $this->email->subject('Free Quote request');
-            $this->email->message($msg);
-            if ($this->email->send()) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, br /> Our team will reach you soon.');
-                redirect(base_url(),'refresh');
-            } else {
-                $this->session->set_flashdata('error', 'Unable to submit your request,<br /> Please try again later!');
-                redirect(base_url(),'refresh');
-            }
+        $this->form_validation->set_rules('qfname', 'First Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('qlname', 'Last Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('qemail', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('qphone', 'Phone Number', 'required|numeric');
+        $this->form_validation->set_rules('qservice', 'Service', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('qdate', 'Event Date', 'required');
+        $this->form_validation->set_rules('qcity', 'City', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('qbudget', 'Budget', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('qmessage', 'Message', 'alpha_numeric_spaces');
+        if ($this->form_validation->run() == false) {
+            $this->form_validation->set_error_delimiters('', '<br>');
+            $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
+            redirect('free-quote','refresh');
         }else{
-              $this->session->set_flashdata('error', 'Unable to submit your request,<br /> Please try again later!');
-              redirect(base_url(),'refresh');
+
+            $qfname     =   $this->input->post('qfname');
+            $qlname     =   $this->input->post('qlname');
+            $qemail     =   $this->input->post('qemail');
+            $qphone     =   $this->input->post('qphone');
+            $qservice   =   $this->input->post('qservice');
+            $qdate      =   $this->input->post('qdate');
+            $qcity      =   $this->input->post('qcity');
+            $qbudget    =   $this->input->post('qbudget');
+            $qmessage   =   $this->input->post('qmessage');
+            $quiniq     =   $this->input->post('quiniq');
+
+            $insert = array(
+              'firstname'    =>  $qfname , 
+              'lastname'   =>  $qlname , 
+              'email'   =>  $qemail , 
+              'phone'   =>  $qphone , 
+              'service' =>  $qservice ,
+              'date'    =>  $qdate,
+              'city'    =>  $qcity,
+              'budget'  =>  $qbudget,
+              'message' =>  $qmessage,
+              'uniq' =>  $quiniq,
+            );
+            $data['result'] = $insert;
+            $data['output']  =  $this->m_home->quoterequest($insert);
+            if (!empty($data['output'])) {
+                $this->load->config('email');
+                $this->load->library('email');
+                $to = $this->config->item('vr_to');
+                $cc = $this->config->item('vr_cc');
+                $from = $this->config->item('smtp_user');
+                $msg = $this->load->view('email/getquote', $data, true);
+                $this->email->set_newline("\r\n");
+                $this->email->from($from, 'ShaadiBaraati');
+                $this->email->to($to);
+                $this->email->cc($cc);
+                $this->email->subject('Free Quote request');
+                $this->email->message($msg);
+                if ($this->email->send()) {
+                    $this->session->set_flashdata('success', 'Your request has been submitted successfully, br /> Our team will reach you soon.');
+                    redirect('free-quote','refresh');
+                } else {
+                    $this->session->set_flashdata('error', 'Unable to submit your request,<br /> Please try again later!');
+                    redirect('free-quote','refresh');
+                }
+            }else{
+                  $this->session->set_flashdata('error', 'Unable to submit your request,<br /> Please try again later!');
+                  redirect('free-quote','refresh');
+            }
         }
     }
 
     // testimonila post 
     public function testimonial_post($var = null)
     {
-        $data = array(
-            'fname'     => $this->input->post('fname', true), 
-            'lname'     => $this->input->post('lname', true), 
-            'email'     => $this->input->post('email', true), 
-            'phone'     => $this->input->post('phone', true), 
-            'best'      => $this->input->post('best', true), 
-            'improve'   => $this->input->post('improve', true), 
-            'service'   => $this->input->post('service', true), 
-            'recomend'  => $this->input->post('recomend', true), 
-            'feedback'  => $this->input->post('feedback', true), 
-        );
-
-        if($this->m_home->testimonial_post($data)){
-            $this->session->set_flashdata('success', 'Your testimonial has been submitted.');
+        $this->form_validation->set_rules('fname', 'First Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('lname', 'Last Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric');
+        $this->form_validation->set_rules('best', 'Best Service', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('improve', 'Need To Improve', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('service', 'Ratings', 'required');
+        $this->form_validation->set_rules('recomend', 'Recomend', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('feedback', 'Feedback', 'alpha_numeric_spaces');
+        if ($this->form_validation->run() == false) {
+            $this->form_validation->set_error_delimiters('', '<br>');
+            $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
             redirect('testimonial','refresh');
-            
         }else{
-            $this->session->set_flashdata('error', 'Server Error, please try again later.');
-            redirect('testimonial','refresh');
+            $data = array(
+                'fname'     => $this->input->post('fname', true), 
+                'lname'     => $this->input->post('lname', true), 
+                'email'     => $this->input->post('email', true), 
+                'phone'     => $this->input->post('phone', true), 
+                'best'      => $this->input->post('best', true), 
+                'improve'   => $this->input->post('improve', true), 
+                'service'   => $this->input->post('service', true), 
+                'recomend'  => $this->input->post('recomend', true), 
+                'feedback'  => $this->input->post('feedback', true), 
+            );
+            if($this->m_home->testimonial_post($data)){
+                $this->session->set_flashdata('success', 'Your testimonial has been submitted.');
+                redirect('testimonial','refresh');
+                
+            }else{
+                $this->session->set_flashdata('error', 'Server Error, please try again later.');
+                redirect('testimonial','refresh');
+            }
         }
-        
     }
     
 
     public function feedback_post($var = null)
     {
-        $data = array(
-            'fname'     => $this->input->post('fname', true), 
-            'lname'     => $this->input->post('lname', true), 
-            'email'     => $this->input->post('email', true), 
-            'phone'     => $this->input->post('phone', true), 
-            'rating'    => $this->input->post('rate', true),
-            'feedback'  => $this->input->post('feedback', true), 
-        );
-           
-        if($this->m_home->feedback_post($data)){
-            $this->session->set_flashdata('success', 'Your feedback has been submitted.');
-            redirect('feedback');
-            
+
+        $this->form_validation->set_rules('fname', 'First Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('lname', 'Last Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric');
+        $this->form_validation->set_rules('rate', 'Ratings', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('feedback', 'Feedback', 'alpha_numeric_spaces');
+        if ($this->form_validation->run() == false) {
+            $this->form_validation->set_error_delimiters('', '<br>');
+            $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
+            redirect('testimonial','refresh');
         }else{
-            $this->session->set_flashdata('error', 'Server Error, please try again later.');
-            redirect('feedback');
+            $data = array(
+                'fname'     => $this->input->post('fname', true), 
+                'lname'     => $this->input->post('lname', true), 
+                'email'     => $this->input->post('email', true), 
+                'phone'     => $this->input->post('phone', true), 
+                'rating'    => $this->input->post('rate', true),
+                'feedback'  => $this->input->post('feedback', true), 
+            );
+            if($this->m_home->feedback_post($data)){
+                $this->session->set_flashdata('success', 'Your feedback has been submitted.');
+                redirect('feedback');
+            }else{
+                $this->session->set_flashdata('error', 'Server Error, please try again later.');
+                redirect('feedback');
+            }
         }
-        
     }
 
 

@@ -180,7 +180,8 @@ Shaadibaraati.com
 
         foreach ($vendor as $key => $value) {}
 
-      $this->form_validation->set_rules('rev_description', 'Review', 'trim|required');
+      $this->form_validation->set_rules('rev_rating', 'Rating', 'required|alpha_numeric_spaces');
+      $this->form_validation->set_rules('rev_description', 'Review', 'trim|required|alpha_numeric_spaces');
       if ($this->form_validation->run() == false) {
             $error = validation_errors();
             $this->session->set_flashdata('error', $error);
@@ -238,6 +239,7 @@ Shaadibaraati.com
 
   public function enquireVendor($id='')
   {
+
         $name       =   $this->input->post('e_name');
         $email      =   $this->input->post('e_email');
         $mobile     =   $this->input->post('e_mobile');
@@ -256,48 +258,44 @@ Shaadibaraati.com
 
         foreach ($vendors as $key => $value) { }
 
-        $insert = array(
-          'user_name'  =>  $name , 
-          'user_email' =>  $email , 
-          'user_phone' =>  $mobile , 
-          'vendor_id'  =>  $value->id, 
-          'fn_date'    =>  $fnDate , 
-          'fn_type'    =>  $fnType , 
-          'fn_time'    =>  $fnTime , 
-          'guest_no'   =>  $guestNo , 
-          'wed_detail' =>  $WedDetail , 
-          'category'   =>  $value->category , 
-          'uniq'       =>  $uniq,
-          'location'   =>  $location,
-          'budget'      =>  $budget
-        );
+          $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.urlencode(str_replace('', '-', strtolower($value->name))).'/'.$vendor_id;
 
-      $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.urlencode(str_replace('', '-', strtolower($value->name))).'/'.$vendor_id;
 
+        $this->form_validation->set_rules('e_name', 'Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('e_email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('e_mobile', 'Phone Number', 'required|numeric');
+        $this->form_validation->set_rules('fn_date', 'Event Date', 'required');
+        $this->form_validation->set_rules('location', 'Location', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('budget', 'Budget', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('wed_detail', 'Wedding Detail', 'alpha_numeric_spaces');
+        if ($this->form_validation->run() == false) {
+            $this->form_validation->set_error_delimiters('', '<br>');
+            $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
+            redirect($url,'refresh');
+        }else{
+        $insert = array('user_name'  =>  $name , 'user_email' =>  $email , 'user_phone' =>  $mobile , 'vendor_id'  =>  $value->id, 'fn_date'    =>  $fnDate , 'fn_type'    =>  $fnType , 'fn_time'    =>  $fnTime , 'guest_no'   =>  $guestNo , 'wed_detail' =>  $WedDetail , 'category'   =>  $value->category , 'uniq'       =>  $uniq, 'location'   =>  $location, 'budget'      =>  $budget );
+        
         $data['output']  =  $this->m_vendors->addenquiry($insert);
         $data['result']  =  $insert;
         $data['value']    =   $value;
+          if (!empty($data['output'])  && !empty($vendors)) {
 
-        
-
-        if (!empty($data['output'])  && !empty($vendors)) {
-
-          $output1 = $this->send_user($data);
-          $output2 = $this->send_admin($data);
-          $output3 = $this->sms_vendor($data);
-          $output4 = $this->sms_user($data);
-            if (!empty($output1)  && !empty($output2)) {
-                $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
-                redirect($url,'refresh');
-            } else {
+            $output1 = $this->send_user($data);
+            $output2 = $this->send_admin($data);
+            $output3 = $this->sms_vendor($data);
+            $output4 = $this->sms_user($data);
+              if (!empty($output1)  && !empty($output2)) {
+                  $this->session->set_flashdata('success', 'Your request has been submitted successfully, Our team will contact you soon.');
+                  redirect($url,'refresh');
+              } else {
+                  $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
+                  redirect($url,'refresh');
+              }
+          }else{
                 $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
                 redirect($url,'refresh');
-            }
-        }else{
-              $this->session->set_flashdata('error', 'Unable to submit your request, Please try again later!');
-              redirect($url,'refresh');
-        } 
-
+          }
+        }
   }
 
   public function sms_vendor($data = '')

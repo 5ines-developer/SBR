@@ -62,6 +62,7 @@
                                 <table id="dynamic" class="striped">
                                     <thead>
                                        <tr class="tt">
+                                          <th id="a" class="h5-para-p2" width="130px">SL NO.</th>
                                           <th id="a" class="h5-para-p2" width="130px">Vendor</th>
                                           <th id="g" class="h5-para-p2" width="62px">City</th>
                                           <th id="g" class="h5-para-p2" width="62px">Category</th>
@@ -70,6 +71,7 @@
                                           <th id="a" class="h5-para-p2" width="130px">Phone</th> 
                                           <th id="a" class="h5-para-p2" width="130px">Date</th> 
                                           <th id="b" class="h5-para-p2" width="100px">Budget</th>
+                                          <th id="b" class="h5-para-p2" width="100px">Enquiry Type</th>
                                           <th id="c" class="h5-para-p2" width="120px">Message</th>
                                        </tr>
                                     </thead>
@@ -78,9 +80,12 @@
                                     <?php
 
                                     if (!empty($result)) {
+                                      $sl = 0;
                                       foreach ($result as $key => $value) {
+                                        $sl++;
                                       ?>
                                       <tr>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo $sl;  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->location))?$value->location:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
@@ -89,8 +94,9 @@
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->date))?date('d M, Y',strtotime($value->date)):'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->budget))?$value->budget:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?></a></td>                                          
-                                        </tr>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->assigned))?'Admin verified ':'OTP Verified'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?></a></td> 
+                                          </tr>
                                       
                                     <?php } } ?>
                                     </tbody>
