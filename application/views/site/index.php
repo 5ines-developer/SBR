@@ -32,8 +32,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-     <?php $this->load->view('includes/favicon.php');  ?>
-    
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/popup.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/modal.css">
+    <?php $this->load->view('includes/favicon.php');  ?>
+
 
 </head>
 
@@ -41,6 +43,9 @@
     <!-- header -->
     <?php $this->load->view('includes/header.php'); ?>
     <!-- end header -->
+    <!-- modal-popup -->
+    <?php $this->load->view('includes/modal-popup.php'); ?>
+    <!-- end-popup -->
     <section>
         <div class="row">
             <div class="banner-img">
@@ -540,6 +545,8 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="<?php echo base_url()?>assets/js/modal.js"></script>
+
  
 
     <script>
