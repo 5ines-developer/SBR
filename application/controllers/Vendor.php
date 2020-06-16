@@ -90,7 +90,7 @@ class Vendor extends CI_Controller {
 
     public function register_insert($value='')
 	{
-        $this->form_validation->set_rules('name', 'Name', 'required',
+        $this->form_validation->set_rules('name', 'Name', 'required|is_unique[vendor.name]',
         array('required'      => 'You have not provided %s.', 'is_unique'     => 'This %s already exists.'));
         $this->form_validation->set_rules('city', 'City', 'required');
         $this->form_validation->set_rules('category', 'Category', 'required');

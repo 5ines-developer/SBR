@@ -37,32 +37,41 @@
                                 <li><a href="<?php echo base_url('select-theme') ?>" class="<?php if(($this->uri->segment(1)=="select-theme")){echo "grey lighten-1";}?>"><i class="material-icons"> insert_invitation </i> Select theme</a>
                                 </li>
                                 <li>
-                                    <?php if (!empty(select_theme())) { ?>
-                                        <a href="<?php echo base_url('bide-groom') ?>" class="<?php if(($this->uri->segment(1)=="bide-groom")){echo "grey lighten-1"; }?>"><i class="material-icons"> supervised_user_circle </i> Groom & Bride Details</a>
+                                    <?php 
+
+                                    if (!empty($this->input->get('eid'))) {
+                                        $id = $this->input->get('eid');
+                                    }else{
+                                        $id = getUniq();
+                                    }
+
+                                    if (!empty(select_theme())) {
+                                    ?>
+                                        <a href="<?php echo base_url('bide-groom?eid='.$id.'') ?>" class="<?php if(($this->uri->segment(1)=="bide-groom")){echo "grey lighten-1"; }?>"><i class="material-icons"> supervised_user_circle </i> Groom & Bride Details</a>
                                     <?php }else{ ?>
-                                        <a href="#" class="tooltipped" data-position="bottom" data-tooltip="Please Select a theme to proceed the next step."><i class="material-icons"> insert_invitation </i> Groom & Bride Details</a>
+                                        <a href="#" class="tooltipped" data-position="bottom" data-tooltip="<?php echo wordwrap("Please Select a theme to proceed the next step",30,"<br>\n") ?>"><i class="material-icons"> insert_invitation </i> Groom & Bride Details</a>
                                     <?php } ?>
                                 </li>
                                 <li>
                                 <?php  if (!empty(brdegroom()->groom)) { ?>
-                                        <a href="<?php echo base_url('invite-event') ?>" class="<?php if(($this->uri->segment(1)=="invite-event")){echo "grey lighten-1";}?>"><i class="material-icons"> emoji_nature </i> Wedding Event</a> 
+                                        <a href="<?php echo base_url('invite-event?eid='.$id.'') ?>" class="<?php if(($this->uri->segment(1)=="invite-event")){echo "grey lighten-1";}?>"><i class="material-icons"> emoji_nature </i> Wedding Event</a> 
                                 <?php }else{ ?>
-                                    <a href="#" class="tooltipped" data-position="bottom" data-tooltip="Please Enter groom & bride details to proceed the next step"><i class="material-icons"> emoji_nature </i> Wedding Event</a> 
+                                    <a href="#" class="tooltipped" data-position="bottom" data-tooltip="<?php echo wordwrap("Please Enter groom & bride details to proceed the next step",30,"<br>\n") ?>"><i class="material-icons"> emoji_nature </i> Wedding Event</a> 
                                 <?php } ?>
                                 </li>
                                 
                                 <li>
                                 <?php  if (!empty(wedEvenet())) { ?>
-                                        <a href="<?php echo base_url('family-member') ?>" class="<?php if(($this->uri->segment(1)=="family-member")){echo "grey lighten-1";}?>"><i class="material-icons"> supervised_user_circle </i> Family Members</a>
+                                        <a href="<?php echo base_url('family-member?eid='.$id.'') ?>" class="<?php if(($this->uri->segment(1)=="family-member")){echo "grey lighten-1";}?>"><i class="material-icons"> supervised_user_circle </i> Family Members</a>
                                 <?php }else{ ?>
-                                     <a href="#" class="tooltipped" data-position="bottom" data-tooltip="Please add the  Wedding Events to proceed the next step"><i class="material-icons"> supervised_user_circle </i> Family Members</a>
+                                     <a href="#" class="tooltipped" data-position="bottom" data-tooltip="<?php echo wordwrap("Please add the  Wedding Events to proceed the next step",30,"<br>\n") ?>"><i class="material-icons"> supervised_user_circle </i> Family Members</a>
                                 <?php } ?>
                                 </li>
                                 <li>
                                     <?php  if (!empty(wedfam())) { ?>
-                                            <a href="<?php echo base_url('wedding-photo') ?>" class="<?php if(($this->uri->segment(1)=="wedding-photo")){ echo "grey lighten-1"; }?>"><i class="material-icons"> photo_library </i> Wedding Photos</a>
+                                            <a href="<?php echo base_url('wedding-photo?eid='.$id.'') ?>" class="<?php if(($this->uri->segment(1)=="wedding-photo")){ echo "grey lighten-1"; }?>"><i class="material-icons"> photo_library </i> Wedding Photos</a>
                                     <?php }else{ ?>
-                                        <a href="#" class="tooltipped" data-position="bottom" data-tooltip="Please Enter a Family Members to proceed the next step"><i class="material-icons"> photo_library </i> Wedding Photos</a>
+                                        <a href="#" class="tooltipped" data-position="bottom" data-tooltip="<?php echo wordwrap("Please Enter a Family Members to proceed the next step",30,"<br>\n") ?>"><i class="material-icons"> photo_library </i> Wedding Photos</a>
                                     <?php } ?>
                                 </li>
 
@@ -70,9 +79,9 @@
 
                                 <li>
                                     <?php  if (!empty(wedphoto())) { ?>
-                                    <a href="<?php echo base_url('wedding-information') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> perm_device_information </i> RSVP</a> 
+                                    <a href="<?php echo base_url('wedding-information?eid='.$id.'') ?>" class="<?php if(($this->uri->segment(1)=="wedding-information")){ echo "grey lighten-1";}?>"><i class="material-icons"> perm_device_information </i> RSVP</a> 
                                     <?php }else{ ?>
-                                        <a href="#" class="tooltipped" data-position="bottom" data-tooltip="Please add the Wedding Photos to proceed the next step"><i class="material-icons"> perm_device_information </i> RSVP</a> 
+                                        <a href="#" class="tooltipped" data-position="bottom" data-tooltip="<?php echo wordwrap("Please add the Wedding Photos to proceed the next step",30,"<br>\n") ?>"><i class="material-icons"> perm_device_information </i> RSVP</a> 
                                     <?php } ?>
                                 </li>
                                 <li>

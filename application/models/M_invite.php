@@ -9,9 +9,15 @@ class M_invite extends CI_Model {
 		
 		$result = $this->db->where('user_id', $insert['user_id'])->where('status',0)->get('einvite')->row();
 		if (!empty($result)) {
-			return $this->db->where('user_id', $insert['user_id'])->where('status',0)->update('einvite',$insert);
+			$this->db->where('user_id', $insert['user_id'])->where('status',0)->update('einvite',$insert);
+			if ($this->db->affected_rows() > 0) {
+				return $result->uniq;
+			}else{
+				return false;
+			}
 		}else{
-			return $this->db->insert('einvite', $insert);
+			$this->db->insert('einvite', $insert);
+			return $insert['uniq'];
 		}
 	}
 
@@ -21,21 +27,33 @@ class M_invite extends CI_Model {
 		return $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('theme');
 	}
 
+	public function getusers($eid='')
+	{
+		return $this->db->where('user_id', $this->session->userdata('shdid'))->where('uniq',$eid)->get('einvite')->row();
+	}
+
+	public function gmUpdate($insert='',$eid='')
+	{
+		$this->db->where('uniq', $eid);
+		$this->db->where('user_id', $this->session->userdata('shdid'));
+		return $this->db->update('einvite', $insert);
+	}
+
 	public function brdeGroom($value='')
 	{
 		return $this->db->select('groom,bride')->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row();
 	}
 
-	public function getEvents($user_id='')
+	public function getEvents($eid='')
 	{
-		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('uniq',$eid)->get('einvite')->row('id');
 		$query = $this->db->where('invite_id',$result)->get('einvite_event')->result();
 		return $query;
 	}
 
-	public function eventInsert($insert='')
+	public function eventInsert($insert='',$eid='')
 	{
-		$result = $this->db->where('user_id', $insert['user_id'])->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $insert['user_id'])->where('uniq',$eid)->get('einvite')->row('id');
 		if (!empty($result)) {
 			$insert['invite_id'] = $result;
 			$query = $this->db->where('invite_id',$result)->get('einvite_event')->result();
@@ -55,15 +73,22 @@ class M_invite extends CI_Model {
 		}
 	}
 
-	public function getfamily($user_id='')
+	public function getfamily($eid='')
+	{
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('uniq',$eid)->get('einvite')->row('id');
+		return $this->db->where('invite_id',$result)->get('e_invite_family')->result();
+	}
+
+	public function getfamilys($user_id='')
 	{
 		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('id');
 		return $this->db->where('invite_id',$result)->get('e_invite_family')->result();
 	}
 
-	public function familyInsert($insert='')
+
+	public function familyInsert($insert='',$eid)
 	{
-		$result = $this->db->where('user_id', $insert['user_id'])->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $insert['user_id'])->where('uniq',$eid)->get('einvite')->row('id');
 		if (!empty($result)) {
 			$insert['invite_id'] = $result;
 			if($this->db->insert('e_invite_family', $insert))
@@ -77,9 +102,9 @@ class M_invite extends CI_Model {
 		}
 	}
 
-	public function insertGallery($insert='')
+	public function insertGallery($insert='',$eid='')
 	{
-		$result = $this->db->where('user_id', $insert['user_id'])->where('status',0)->get('einvite')->row('id');
+		$result = $this->db->where('user_id', $insert['user_id'])->where('uniq',$eid)->get('einvite')->row('id');
 		if (!empty($result)) {
 			$insert['invite_id'] = $result;
 			if($this->db->insert('e_invitegallery', $insert)){
@@ -91,6 +116,12 @@ class M_invite extends CI_Model {
 			return false;
 		}
 	}
+	public function getGlarys($eid='')
+	{
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('uniq',$eid)->get('einvite')->row('id');
+		return $this->db->where('invite_id',$result)->get('e_invitegallery')->result();
+	}
+
 
 	public function getGlary($user_id='')
 	{
@@ -121,6 +152,18 @@ class M_invite extends CI_Model {
 	public function getFam($id='')
 	{
 		return $this->db->where('invite_id',$id)->get('e_invite_family')->result();
+	}
+
+	public function getUniq($value='')
+	{
+		return $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('uniq');
+	}
+
+	public function getEven($user_id='')
+	{
+		$result = $this->db->where('user_id', $this->session->userdata('shdid'))->where('status',0)->get('einvite')->row('id');
+		$query = $this->db->where('invite_id',$result)->get('einvite_event')->result();
+		return $query;
 	}
 
 

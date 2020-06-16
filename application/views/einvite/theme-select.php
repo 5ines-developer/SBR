@@ -223,8 +223,9 @@ $this->load->model('m_account');
                     formData.append('theme', type);
                     axios.post('<?php echo base_url() ?>einvite/themeinsert', formData)
                     .then(response => {
-                        if(response.data == '1'){
-                            window.location.href="<?php echo base_url() ?>bide-groom";
+                        console.log(response);
+                        if(response.data != ''){
+                            window.location.href="<?php echo base_url() ?>bide-groom?eid="+response.data;
                         }
                     })
                     .catch(error => {

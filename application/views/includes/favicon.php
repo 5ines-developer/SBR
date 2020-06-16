@@ -15,3 +15,35 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151213904-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-151213904-1');
+</script>
+
+
+<script>
+(function() {
+  var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+  ta.src = document.location.protocol + '//' + 'static.bytedance.com/pixel/sdk.js?sdkid=BO5FOTFJIRDNFS8UKJFG';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ta, s);
+})();
+</script>
+
+<!-- Global site tag (gtag.js) - Google Ads: 726892140 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-726892140"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-726892140');
+</script>
+
+

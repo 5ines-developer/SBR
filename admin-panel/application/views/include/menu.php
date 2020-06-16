@@ -16,6 +16,8 @@
         <li class="<?php echo $this->uri->segment(1) == 'category'?'active':'' ?>"><a href="<?php echo base_url('category/manage') ?>"><i class="fas fa-th-list li-icon"></i>Category</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'category-banner'?'active':'' ?>"><a href="<?php echo base_url('category-banner/manage') ?>"><i class="fas fa-th-list li-icon"></i>Category Banner</a></li>
 
+        <li class="<?php echo $this->uri->segment(1) == 'content'?'active':'' ?>"><a href="<?php echo base_url('content/manage') ?>"><i class="fas fa-th-list li-icon"></i>Category Content</a></li>
+
         <li class="<?php echo $this->uri->segment(1) == 'real-wedding'?'active':'' ?>"><a href="<?php echo base_url('real-wedding') ?>"><i class="fas fa-image li-icon"></i>Real Wedding</a></li>
 
         <div class="divider"></div>

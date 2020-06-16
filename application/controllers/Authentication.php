@@ -174,7 +174,9 @@ class Authentication extends CI_Controller {
     		$data['title'] = 'Login - ShaadiBaraati';
             $data['authURL'] = $this->fbLogin();
             $data['loginURL'] = $this->googleLogin();
-			$this->load->view('auth/login', $data, FALSE);
+       
+            
+			$this->load->view('auth/login', $data);
     	}else{
     		redirect('profile');
     	}
@@ -237,6 +239,8 @@ class Authentication extends CI_Controller {
             // Insert or update user data
             $userID = $this->m_facebook->checkUser($userData);
 
+
+
             // Check user data insert or update status
             if(!empty($userID)){
                 $data['userData'] = $userData;
@@ -256,7 +260,7 @@ class Authentication extends CI_Controller {
             // Get logout URL
             $data['logoutURL'] = $this->facebook->logout_url();
         }else{
-            // Get login URL
+            // Get login URL         
             return $this->facebook->login_url();
         }
     }
@@ -282,7 +286,6 @@ class Authentication extends CI_Controller {
                 $userData['su_is_active']=1;
                 // Insert or update user data to the database
                 $userID = $this->m_google->checkUser($userData);
-                
                 if(!empty($userID)){
                     $data['userData'] = $userData;
                     $session_data = array(
@@ -300,6 +303,7 @@ class Authentication extends CI_Controller {
                 }
             }    
         }    
+
         return $this->google->loginURL();
     }
 

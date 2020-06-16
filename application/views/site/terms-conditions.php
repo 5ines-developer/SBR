@@ -36,6 +36,19 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
      <?php $this->load->view('includes/favicon.php');  ?>
+     <style>
+         .term-blt li {
+    padding: 5px 0;
+    font-size: 14px;
+}
+.trsection strong {
+    font-weight: 600;
+}
+
+.trsection ul li {
+    list-style-type: disc;
+}
+     </style>
 </head>
 
 <body >
@@ -117,7 +130,34 @@
                 <p>This Terms of Service constitute the entire agreement between the parties with respect to the subject matter hereof and supersedes and replaces all prior or contemporaneous understandings or agreements, written or oral, regarding such subject matter. The clauses as above shall survive the termination or expiry of this agreement.</p>
 
                 
-        </div>    
+        
+            <h5 class="tcheading" >Terms & Conditions – Paid Vendors </h5>
+            <p> <strong>Shaadi Baraati</strong> is a division of <strong>Baraati Media & Entertainment Pvt Ltd.</strong> Shaadi Baraati provides information & assistance to Vendor in providing leads of Shaadi Baraati customers for marriage related services. The condition for opting services of Shaadi Baraati is mentioned herein below: ​</p>
+            <ul class="term-blt">
+                <li><strong>Eligibility -</strong> Vendor is engaged in the business of providing Matrimonial Services and has agreed to provide service for the Leads from Shaadi Baraati.</li>
+                <li>Customer information shall be provided to the Vendor(s) by way of shared Lead(s). There is no exclusivity in providing Lead(s). </li>
+                <li>Lead feedback from the Vendor is to be submitted to Shaadi Baraati within 24 hours.</li>
+                <li>The Vendor(s) shall pay advance as may be mutually agreed with ShaadiBaraati.com.</li>
+                <li>The Vendor shall pay the agreed commission to Shaadibaraati.com once the Vendor closes the deal with the Customer. The amount of commission shall be deducted from the Advance provided and the Vendor shall pay the balance it any to Shaadi Baraati within 3 (three) working days of the intimation of the balance outstanding.</li>
+                <li><strong>Invoicing:</strong> Shaadi Baraati will raise an invoice for the l commission for the converted leads on monthly basis to the Vendor(s). </li>
+                <li>Once the Advance amount is fully deducted, the Vendor shall provide further Advance amount in respect of leads as agreed mutually between the parties. </li>
+                <li>SB shall have the right to conduct surprise inspections in respect of the Mandapam (s) to check on the leads provided by SB which has been converted into business between the Vendor and the Customer </li>
+                <li>SB shall have the right to conduct surprise inspections in respect of the Mandapam (s) to check on the leads provided by SB which has been converted into business between the Vendor and the Customer </li>
+                <li>Vendor(s) are required to exercise due care and caution while interacting with the customer and satisfy themselves before they agree to provide services to the customer. </li>
+                <li>Vendor(s) are required to exercise due care and caution while interacting with the customer and satisfy themselves before they agree to provide services to the customer. </li>
+                <li>If Baraati Media & entertainment Pvt Ltd receive feedback/ complaints against Vendor(s) service, then Baraati Media & Entertainment Pvt Ltd. shall have the right to remove the Vendor(s) from the Lead shared list and shall not deal with such Vendor(s).</li>
+                <li><strong>Policy -</strong> Baraati Media & Entertainment Pvt Ltd has the right to change its terms and conditions without notice to the Vendor(s).</li>
+                <li><strong>Taxes:-</strong> Taxes including GST and Deduction of tax at source shall be applicable at applicable rates as on date.</li>
+                <li><strong>Relation between parties -</strong> Each party shall be and act as an independent contractor and not as partner, joint venture, or agent of the other. </li>
+                <li><strong>Confidential Information- </strong> The term "Confidential Information" means all know-how, methods, financial, business, technical information, Customer information disclosed by or for a party, but not including any information the Vendor(s) can demonstrate is (a) was furnished to it without restriction by a third party, (b) generally available in public without breach of these terms or (c) independently developed by it without reliance on such information. Except for the specific rights granted by this Agreement, the Vendor(s) shall not possess access, use or disclose any of Baraati Media & Entertainment Pvt Ltd Confidential Information without its prior written consent, and shall use reasonable care to protect the Confidential Information. . Promptly after any termination of these terms Vendor(s) shall return the Confidential Information, records and materials to Baraati Media & Entertainment Pvt Ltd. </li> 
+                <li><strong>Limitation of Liability -</strong> In no event will Baraati Media & Entertainment Pvt Ltd. be liable to the Vendor(s) in               connection with these terms for a) any indirect, consequential, incidental, punitive; exemplary or special losses, whether arising in agreement, tort or otherwise; b) loss of data/programs, loss of profits or revenue, loss of anticipated savings or loss of goodwill, even if such losses or damages were reasonably foreseeable or where Baraati Media & Entertainment Pvt Ltd. has been advised of the possibility of such losses or damages.</li>
+                <li><strong>Refund- </strong> The advance payment made to Baraati Media & Entertainment Pvt Ltd. towards Any package is treated as no refundable. Payments once made cannot be assigned to any person/Party or adjusted towards any other service</li>
+                <li><strong>Termination-</strong>  No Termination once activated from either side for termination of this agreement.</li>
+                <li><strong>Indemnity-</strong> The Vendor shall indemnify and keep indemnified Baraati Media & Entertainment Pvt Ltd. against all loss, damages, and claims, actions that are initiated against Baraati Media & Entertainment Pvt Ltd. for any act or omission by Vendor to (i) leads shared by Baraati Media & Entertainment Pvt Ltd. ; (ii) for breach of confidentiality of these terms and Customer information; (iv) for breach of applicable law. </li>
+                <li><strong>Jurisdiction and Dispute Resolution -</strong>  Any disputes arising out of or in connection with this agreement, during its subsistence and after its termination in any manner whatsoever, including the validity of this Agreement shall be referred to arbitration of a sole arbitrator nominated by the Baraati Media & Entertainment Pvt Ltd. to the dispute in accordance with the provisions contained in the Arbitration and Conciliation Act, 1996 or any amendment made thereto. The place of Arbitration shall be Bengaluru and the language of Arbitration shall be English. The decision of the arbitrator shall be final and binding on the parties.</li>
+            </ul>
+
+        </div>
     </section>
  
 

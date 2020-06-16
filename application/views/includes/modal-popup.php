@@ -57,30 +57,26 @@
                         </ul>
                     </div>
                     <div class="col s12 m6 l6">
-                        <form id="contactForm" method="POST" action="#">
-                            <div class="input-field col s6 ">
+                        <form ref="formss" @submit.prevent="formSubmits" id="contactForm" method="POST" action="#">
+                            <div class="input-field col m6 s12 ">
                                 <div class="form-group">
                                     <i class="material-icons prefix pp-c">person</i>
-                                    <input type="text" name="name" id="name" placeholder="Your Name*" name="name" aria-required="true" class="form-control" required="">
+                                    <input type="text" v-model="popname" name="name" id="name" placeholder="Your Name*" name="name" aria-required="true" class="form-control" required="">
                                 </div>
                                 <div class="form-group">
                                     <i class="material-icons prefix pp-c">phone</i>
-                                    <input type="text" name="name" id="name" placeholder="Mobile No*" name="name" aria-required="true" class="form-control" required="">
+                                    <input v-model="popphone" name="name" id="name" placeholder="Mobile No*" name="name" aria-required="true" class="form-control" required=""  type="number"    >
                                 </div>
                                 <div class="form-group">
                                     <i class="material-icons prefix pp-c">mail</i>
-                                    <input type="text" name="name" id="name" placeholder="Your Email*" name="name" aria-required="true" class="form-control" required="">
+                                    <input type="email" v-model="popmail" name="name" id="name" placeholder="Your Email*" name="name" aria-required="true" class="form-control" required="">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-next  btn-fill btn-danger btn-wd" for="yes"> NEXT </button>
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="col s12 m12 l12">
-                        <div class="button-group text-center">
-                            <label class="btn btn-next  btn-fill btn-danger btn-wd" for="yes">
-                <span>NEXT</span>
-                <div class="ripple-container"></div>
-              </label>
-                        </div>
                     </div>
                 </div>
 
@@ -98,31 +94,32 @@
                         </ul>
                     </div>
                     <div class="col s12 m6 l6">
-                        <div class="input-field mm-b file-box"><i class="fas fa-map-pin prefix mm-c"></i>
-                            <select class="" name="chat_bot_city">
-                <option value="">Select City</option>
-                <option value="1">Agartala</option>
-                <option value="32">Agra</option>
-                <option value="15">Ahmedabad</option>
-                <option value="54">Ahmednagar</option>
-                <option value="25">Ajmer</option>
-                <option value="55">Akola</option>
-              </select>
+                         <div class="input-field mm-b file-box"><i class="fas fa-map-pin prefix mm-c"></i>
+                            <select class="browser-default" name="chat_bot_city">
+                            <option value="">Select City</option>
+                            <option value="1">Agartala</option>
+                            <option value="32">Agra</option>
+                            <option value="15">Ahmedabad</option>
+                            <option value="54">Ahmednagar</option>
+                            <option value="25">Ajmer</option>
+                            <option value="55">Akola</option>
+                          </select>
                         </div>
+
                         <div class="input-field mm-b"><i class="far fa-heart prefix mm-c"></i>
                             <select class="browser-default" name="chat_bot_category" id="chat_bot_category">
-                <option value="">Select Services</option>
-                <option value="11">Makeup Artist</option>
-                <option value="5">Photographers</option>
-                <option value="8">Wedding Planners</option>
-                <option value="7">Caterers</option>
-                <option value="33">Mehndi Artist</option>
-                <option value="3">Venues</option>
-                <option value="36">Decorators</option>
-                <option value="2">Bands</option>
-                <option value="16">Honeymoon Packages</option>
+                                <option value="">Select Services</option>
+                                <option value="11">Makeup Artist</option>
+                                <option value="5">Photographers</option>
+                                <option value="8">Wedding Planners</option>
+                                <option value="7">Caterers</option>
+                                <option value="33">Mehndi Artist</option>
+                                <option value="3">Venues</option>
+                                <option value="36">Decorators</option>
+                                <option value="2">Bands</option>
+                                <option value="16">Honeymoon Packages</option>
 
-              </select>
+                            </select>
                         </div>
                         <div class="input-field mm-b"><i class="far fa-money-bill-alt prefix mm-c"></i>
                             <select class="browser-default" name="chat_bot_budget" id="chat_bot_budget">

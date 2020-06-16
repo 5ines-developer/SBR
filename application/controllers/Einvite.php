@@ -8,27 +8,37 @@ class Einvite extends CI_Controller {
         parent::__construct();
         //Do your magic here
         $this->load->model('m_invite');
-        if ($this->session->userdata('shdid') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->id = $this->session->userdata('shdid');
     }
 
     // select theme - load view page
     public function index()
     {
-        $data['title']  = 'ShaadiBaraati | Dashboard';
-        $this->load->view('einvite/theme-select',$data);
+        if ($this->session->userdata('shdid') != '') {
+            $data['title']  = 'ShaadiBaraati | Dashboard';
+            $this->load->view('einvite/theme-select',$data);
+        }else{
+            $this->session->set_flashdata('error', 'Please try again'); 
+            redirect('login');
+        }
     }
 
     // insert selceted theme
     public function themeinsert($value='')
     {
-        $theme = $this->input->post('theme');
-        $insert = array(
-            'user_id' => $this->session->userdata('shdid'), 
-            'theme'   => $theme, 
-        );
-        $output = $this->m_invite->themeinsert($insert);
-        echo $output;
+        if ($this->session->userdata('shdid') != '') {
+            $theme = $this->input->post('theme');
+            $insert = array(
+                'user_id' => $this->session->userdata('shdid'), 
+                'theme'   => $theme, 
+                'uniq'    => random_string('alnum',15)  
+            );
+            $output = $this->m_invite->themeinsert($insert);
+            echo $output;
+        }else{
+            $this->session->set_flashdata('error', 'Please try again'); 
+            redirect('login');
+        }
     }
 
     public function getThemeselect($value='')
@@ -39,46 +49,50 @@ class Einvite extends CI_Controller {
 
     public function manage_user()
     {
-        if (!empty(select_theme())) {
-            $data['title']  = 'ShaadiBaraati | Manage User';
-            $this->load->view('einvite/manage-user',$data);
-        }else{
-            $this->session->set_flashdata('error', 'Please Select a theme to proceed the next step.');
-            redirect('select-theme','refresh');
-        }
+        $eid = $this->input->get('eid');
+        $data['title']  = 'ShaadiBaraati | Manage User';
+        $data['result'] = $this->m_invite->getusers($eid);
+        $this->load->view('einvite/manage-user',$data);
     }
 
     public function insertBgdetail($value='')
     {
-        $config['upload_path'] = 'e-invite/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_width'] = 0;
-        $config['encrypt_name'] = true;
-        $this->load->library('upload');
-        $this->upload->initialize($config); if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
-        if (!$this->upload->do_upload('bfile')) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->session->set_flashdata('error', $this->upload->display_errors());
-            redirect('bide-groom');
-        } else {
-            $upload_data = $this->upload->data();
-            $brideimage = 'e-invite/'.$upload_data['file_name'];
+        $eid = $this->input->post('eid');
+        if (file_exists($_FILES['bfile']['tmp_name'])) {
+            $config['upload_path'] = 'e-invite/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_width'] = 0;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload');
+            $this->upload->initialize($config); if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
+            if (!$this->upload->do_upload('bfile')) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                redirect('bide-groom?eid='.$eid,'refresh');
+            } else {
+                $upload_data = $this->upload->data();
+                $brideimage = 'e-invite/'.$upload_data['file_name'];
+            }
         }
 
-        $config['upload_path'] = 'e-invite/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_width'] = 0;
-        $config['encrypt_name'] = true;
-        $this->load->library('upload');
-        $this->upload->initialize($config); if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
-        if (!$this->upload->do_upload('gro_file')) {
-            $error = array('error' => $this->upload->display_errors());
-            $this->session->set_flashdata('error', $this->upload->display_errors());
-            redirect('bide-groom');
-        } else {
-            $upload_data1 = $this->upload->data();
-            $groomimage = 'e-invite/'.$upload_data1['file_name'];
+        if (file_exists($_FILES['gro_file']['tmp_name'])) {
+            $config['upload_path'] = 'e-invite/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_width'] = 0;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload');
+            $this->upload->initialize($config); if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
+            if (!$this->upload->do_upload('gro_file')) {
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_flashdata('error', $this->upload->display_errors());
+                redirect('bide-groom?eid='.$eid,'refresh');
+            } else {
+                $upload_data1 = $this->upload->data();
+                $groomimage = 'e-invite/'.$upload_data1['file_name'];
+            }
         }
+
+
         $insert = array(
             'fndate' => $this->input->post('wed_date'), 
             'bride' => $this->input->post('brd_name'), 
@@ -89,31 +103,28 @@ class Einvite extends CI_Controller {
         );
         if (!empty($brideimage)) { $insert['bimage'] = $brideimage; }
         if (!empty($groomimage)) { $insert['gimage'] = $groomimage; }
-        $output = $this->m_invite->themeinsert($insert);
+        $output = $this->m_invite->gmUpdate($insert,$eid);
 
         if (!empty($output)) {
             $this->session->set_flashdata('success', 'Groom & Bride details updated successfully');
-            redirect('invite-event','refresh');
+            redirect('invite-event?eid='.$eid,'refresh');
         }else{
             $this->session->set_flashdata('error', 'Something went wrong, please try agin later!');
-            redirect('bide-groom','refresh');
+            redirect('bide-groom?eid='.$eid,'refresh');
         }
     }
 
     public function wedding_event()
     {
-        if (!empty(brdegroom()->groom)) {
-            $data['title']  = 'ShaadiBaraati | Wedding Event';
-            $data['result'] = $this->m_invite->getEvents($this->id);
-            $this->load->view('einvite/wedding-event',$data);
-        }else{
-            $this->session->set_flashdata('error', 'Please Enter groom & bride details to proceed the next step');
-            redirect('bride-groom','refresh');
-        }
+        $eid = $this->input->get('eid');
+        $data['title']  = 'ShaadiBaraati | Wedding Event';
+        $data['result'] = $this->m_invite->getEvents($eid);
+        $this->load->view('einvite/wedding-event',$data);
     }
 
     public function eventInsert($value='')
     {
+        $res='';
             $insert = array(
                 'name'      => $this->input->post('eve_name'), 
                 'venue'     => $this->input->post('eve_venue'), 
@@ -124,22 +135,26 @@ class Einvite extends CI_Controller {
                 'user_id'   => $this->session->userdata('shdid'), 
             );
 
-            $data['result'] = $this->m_invite->eventInsert($insert);
+            $eid = $this->input->post('eid');
+
+            $data['result'] = $this->m_invite->eventInsert($insert,$eid);
             if (!empty($data)) {
+                $res = count($data['result']);
                 $this->session->set_flashdata('success', 'Event details updated successfully');
             }else{
                 $this->session->set_flashdata('error', 'Something went wrong, please try agin later!');
             }
-            if(count($data['result']) >= 2){
-                redirect('family-member','refresh');
+            if($res >= 2){
+                redirect('family-member?eid='.$eid,'refresh');
             }else{
-                $this->load->view('einvite/wedding-event',$data);
+                redirect('invite-event?eid='.$eid,'refresh');
             }
     }
 
 
     public function family_member()
     {
+
         $data['title']  = 'ShaadiBaraati | Family Member';
         if(!empty($this->input->post())){
                 $insert = array(
@@ -148,6 +163,8 @@ class Einvite extends CI_Controller {
                     'realtion'  => $this->input->post('relation'), 
                     'user_id'   => $this->session->userdata('shdid'), 
                 );
+
+                $eid = $this->input->post('eid');
 
                
                 $config['upload_path'] = 'e-invite/';
@@ -166,48 +183,42 @@ class Einvite extends CI_Controller {
                     $insert['image'] = $image;
                 }
 
-            $data['result'] = $this->m_invite->familyInsert($insert);
+            $data['result'] = $this->m_invite->familyInsert($insert,$eid);
             if (!empty($data)) {
                 $this->session->set_flashdata('success', 'Family members updated successfully');
             }else{
                 $this->session->set_flashdata('error', 'Something went wrong, please try agin later!');
             }
-            $this->load->view('einvite/family-member',$data);
+            redirect('family-member?eid='.$eid,'refresh');
 
         }else{
-            if (!empty(wedEvenet())) {
-                $data['result'] = $this->m_invite->getfamily($this->id);
-                $this->load->view('einvite/family-member',$data);
-            }else{
-                $this->session->set_flashdata('error', 'Please Enter events details to proceed the next step');
-                redirect('invite-event','refresh');
-            }
+            $eid = $this->input->get('eid');
+            $data['result'] = $this->m_invite->getfamily($eid);
+            $this->load->view('einvite/family-member',$data);
         }
     }
 
 
     public function wedding_photo()
     {
-        if (!empty(wedfam())) {
-            $data['title']  = 'ShaadiBaraati | Wedding Photo';
-            $this->load->view('einvite/wedding-photo',$data);
-        }else{
-            $this->session->set_flashdata('error', 'Please Enter family details to proceed the next step');
-            redirect('family-member','refresh');
-        }
+        $eid = $this->input->get('eid');
+        $data['title']  = 'ShaadiBaraati | Wedding Photo';
+        $this->load->view('einvite/wedding-photo',$data);
     }
 
     public function gallery($value='')
     {
-        $data = $this->m_invite->getGlary($this->id);
+        $eid = $this->input->get('eid');
+        $data = $this->m_invite->getGlarys($eid);
         echo json_encode($data);
     }
 
     public function galleryInsert($value='')
     {
+
+        $eid = $this->input->post('eid');
         $this->load->library('upload');
         $this->load->library('image_lib');
-
         $files = $_FILES;
         $id = $this->input->post('id');
         $filesCount = count($_FILES['images']['name']);
@@ -234,7 +245,7 @@ class Einvite extends CI_Controller {
                  if (!$this->upload->do_upload('images')) {
                     $error =  $this->upload->display_errors();
                     $this->session->set_flashdata('error', $this->upload->display_errors());
-                    redirect('wedding-photo');
+                    redirect('wedding-photo?eid='.$eid);
                     } else {
                         $upload_data = $this->upload->data();
                         $file_name = $upload_data['file_name'];
@@ -244,7 +255,7 @@ class Einvite extends CI_Controller {
                             'image' =>$image , 
                             'user_id' =>$this->id , 
                         );
-                        $output = $this->m_invite->insertGallery($insert);
+                        $output = $this->m_invite->insertGallery($insert,$eid);
                         $watermark = $this->watermark($upload_data,$file_name);
         } } } 
 
@@ -253,7 +264,7 @@ class Einvite extends CI_Controller {
             }else{
                 $this->session->set_flashdata('error', 'Something went wrong, please try agin later!');
             }
-            redirect('wedding-information','refresh');
+            redirect('wedding-information?eid='.$eid,'refresh');
 
     }
 
@@ -280,9 +291,10 @@ class Einvite extends CI_Controller {
 
     public function galDelete($id='')
     {
+        $eid = $this->input->get('eid');
        if($this->db->where('id', $id )->delete('e_invitegallery'))
        {
-            $data = $this->m_invite->getGlary($this->id);
+            $data = $this->m_invite->getGlarys($eid);
             echo json_encode($data);
        }else{
         echo false;
@@ -292,14 +304,10 @@ class Einvite extends CI_Controller {
 
     public function wedding_information()
     {
-        if (!empty(wedfam())) {
-            $data['title']  = 'ShaadiBaraati | Wedding Information';
+        $eid = $this->input->get('eid');
+        $data['title']  = 'ShaadiBaraati | Wedding Information';
+        $data['result'] = $this->m_invite->getusers($eid);
         $this->load->view('einvite/wedding-information',$data);
-        }else{
-            $this->session->set_flashdata('error', 'Please Add the wedding photos to proceed the next step');
-            redirect('wedding-photo','refresh');
-        }
-        
     }
 
     public function rsvpInsert($value='')
@@ -316,7 +324,9 @@ class Einvite extends CI_Controller {
                 'status'        => '1',
             );
 
-            $data['result'] = $this->m_invite->themeinsert($insert);
+        $eid = $this->input->post('eid');
+
+            $data['result'] = $this->m_invite->gmUpdate($insert,$eid);
             if (!empty($data)) {
                 $this->session->set_flashdata('success', 'RSVP details updated successfully');
             }else{

@@ -66,6 +66,7 @@ $this->load->model('m_account');
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" name="eid" value="<?php echo $this->input->get('eid') ?>">
                                                                 
                                                
 
@@ -123,7 +124,7 @@ $this->load->model('m_account');
             },
             methods: {
                 getData: function() {
-                axios.post('<?php echo base_url() ?>einvite/gallery')
+                axios.post('<?php echo base_url('einvite/gallery?eid='.$this->input->get('eid')) ?>')
                     .then(response => {
                         if (response.data != '') {
                             this.imgs   = response.data;
@@ -135,7 +136,7 @@ $this->load->model('m_account');
                     })
                 },
                 galDelete(id){
-                       axios.post('<?php echo base_url('einvite/galDelete/') ?>'+id)
+                       axios.post('<?php echo base_url('einvite/galDelete/') ?>'+id+'<?php echo '?eid='.$this->input->get('eid') ?>')
                        .then(response => {
                             if (response.data != '') {
                                 this.imgs   = response.data;

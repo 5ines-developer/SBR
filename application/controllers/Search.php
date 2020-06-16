@@ -40,8 +40,8 @@ class Search extends CI_Controller {
 		else{
 			$per_page = 40;
 			
-			$rows = $this->m_search->rowsCount(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category));
-			$data['vendors']    = $this->m_search->getSearch(ucfirst(str_replace("-"," ",$city)),str_replace("-"," ",$category),$per_page,$page);
+			$rows = $this->m_search->rowsCount(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
+			$data['vendors']    = $this->m_search->getSearch(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category),$per_page,$page);
 			
 
 			$config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
@@ -81,7 +81,8 @@ class Search extends CI_Controller {
 			// $data['city']       = $this->m_home->getCity();
 			// $data['category']   = $this->m_home->getCategory();
 
-			$data['banner'] = $this->m_search->bannerGet();
+			$data['banner'] = $this->m_search->bannerGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
+			$data['content'] = $this->m_search->conentGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 		
 			$this->load->view('vendors/result', $data, FALSE);
 		}

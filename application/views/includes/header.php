@@ -11,18 +11,14 @@
                 <span class="white-text">| </span>
                 <span class="white-text">Toll Free: <a href="tel:18004199456">1800 4199 456</a></span>
                 <ul class="right ul-social">
-                    <li><a href="https://www.facebook.com/shaadibaraatiofficial" target="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/facebook-brands.svg"
-                                        class="img-responisve socil-icon" alt=""> </a></li>
-                    <li><a href="https://www.twitter.com/shaadibaraati" target="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/twitter-brands.svg"
-                                        class="img-responisve socil-icon" alt=""></a></li>
-                    <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg" target="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/youtube.svg"
-                                        class="img-responisve socil-icon" alt=""></a></li>
-                    <li><a href="https://www.instagram.com/shaadibaraatiofficial/" target="_blank"><img
-                                        src="<?php echo base_url() ?>assets/img/svg/instagram-brands.svg"
-                                        class="img-responisve socil-icon" alt=""></a></li>
+                    <li><a href="https://www.facebook.com/shaadibaraatiofficial" target="_blank">
+                        <i class="fab fa-facebook socil-icon"></i></a></li>
+                    <li><a href="https://www.twitter.com/shaadibaraati" target="_blank">
+                        <i class="fab fa-twitter socil-icon"></i>
+                    </a></li>
+                    <li><a href="https://www.youtube.com/channel/UCdFxvtsmbh2mUrIGE5d7Txg" target="_blank">
+                        <i class="fab fa-youtube socil-icon"></i></a></li>
+                    <li><a href="https://www.instagram.com/shaadibaraatiofficial/" target="_blank"><i class="fab fa-instagram socil-icon"></i></a></li>
                 </ul>
             </div>
 
@@ -37,7 +33,7 @@
                 <ul>
                     <li><a href="<?php echo base_url()?>">HOME</a></li>
                     <li><a class="dropdown-trigger" href="<?php echo base_url('vendors')?>" data-target="vendordropdown">VENDORS</a></li>
-                    <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
+                    <li><a href="<?php echo base_url() ?>wed-assistance">WEDZ ASSISTANCE</a></li>
                     <li><a href="<?php echo base_url('einvite')?>">E-INVITE</a></li>
                     <li><a href="<?php echo base_url('real-wedding') ?>">REAL WEDDING</a></li>
                     <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
@@ -102,7 +98,7 @@
                                 if($city->status == 1){
                             ?>
                     <li class="hoverable">
-                        <a href="<?php echo base_url('vendors/').strtolower(str_replace(" ","- ",$city->city)) ?>">
+                        <a href="<?php echo base_url('vendors/').strtolower(str_replace(" ","-",$city->city)) ?>">
                                     <img src="<?php echo base_url().$city->icon ?>" class="img-responsive city-icon" alt="<?php echo $city->city ?>" >
                                     <p class="m0"><?php echo $city->city ?></p>
                                 </a>
@@ -134,7 +130,7 @@
         <li><a href="<?php echo base_url()?>">HOME</a></li>
         <li><a href="<?php echo base_url('vendors')?>">VENDORS</a></li>
         <li><a href="<?php echo base_url('einvite')?>">E-INVITE</a></li>
-        <li><a href="<?php echo base_url() ?>wed-assistance">WED ASSISTANCE</a></li>
+        <li><a href="<?php echo base_url() ?>wed-assistance">WEDZ ASSISTANCE</a></li>
         <li><a href="<?php echo base_url('real-wedding') ?>">REAL WEDDING</a></li>
         <li><a href="#citymodel" class="modal-trigger">SELECT CITY</a></li>
         <li><a href="<?php echo base_url() ?>blog">BLOG</a></li>

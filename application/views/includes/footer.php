@@ -39,6 +39,26 @@
                                         class="img-responisve socil-icon" alt=""></a></li>
                         </ul>
                     </div>
+                    <div class="row m0">
+                        <div class="start-row">
+                            <div class="col s6 m6 l6 p0">
+                                <div class="startup-img imstrt1">
+                                    <center>
+                                        <img src="<?php echo base_url('assets/img/startup.jpg') ?>"  alt="">
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="col s6 m6 l6 p0">
+                                <div class="startup-img imstrt2">
+                                    <center>
+                                        <img src="<?php echo base_url('assets/img/msme.png') ?>"  alt="">
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
                </div>
                <div class="col s12 m12 l6">
                     <div class="touch-email">
@@ -238,8 +258,65 @@
                 </div>
             </div>
         </div>
+
+        
+        
         <div class="coptext">
-            <p>© Shaadibaraati.com <?php echo date('Y'); ?>. All right reserved by Baraati Media & Entertainment Pvt Ltd   <a href="<?php echo base_url('terms-conditions') ?>">Terms & Conditions</a>  <a href="<?php echo base_url('privacy-policy') ?>" >Privacy Policy</a></p>
+            <div class="logo-imges">
+            <div class="container">
+            <div class="row m0">
+                <div class="col l3 m3 s6 p0">
+                        <div class="iconbox style1 v1">
+                            <div class="box-header im1">
+                                <center>
+                                <img src="<?php echo base_url('assets/img/magazine.png') ?>"  alt="">
+                            </center>
+                            </div>
+                        </div>
+                </div>
+                <div class="col l3 m3 s6 p0">
+                    <div class="iconbox style1 v1">
+                        <div class="box-header im2">
+                            <center>
+                            <img src="<?php echo base_url('assets/img/invitation.png') ?>"  alt="">
+                        </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l3 m3 s6 p0">
+                    <div class="iconbox style1 v1">
+                        <div class="box-header im3">
+                            <center>
+                            <img src="<?php echo base_url('assets/img/assistance.png') ?>"  alt="">
+                        </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col l3 m3 s6 p0">
+                    <div class="iconbox style1 v1">
+                        <div class="box-header im4">
+                            <center>
+                            <img src="<?php echo base_url('assets/img/bazar.png') ?>"  alt="">
+                        </center>
+                        </div>
+                    </div>
+                </div>
+               <!--  <div class="col l2 m3 s6">
+                    <div class="iconbox style1 v1">
+                        <div class="box-header im5">
+                            <center>
+                            <img src="<?php echo base_url('assets/img/startup.jpeg') ?>"  alt="">
+                        </center>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        </div>
+
+        <p>© Shaadibaraati.com <?php echo date('Y'); ?>. All right reserved by Baraati Media & Entertainment Pvt Ltd   <a href="<?php echo base_url('terms-conditions') ?>">Terms & Conditions</a>  <a href="<?php echo base_url('privacy-policy') ?>" >Privacy Policy</a>
+            </p>
+
         </div>
     </section>
 

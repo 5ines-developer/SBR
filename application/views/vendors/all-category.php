@@ -4,32 +4,6 @@ $this->load->model('m_search');
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
-    <?php
-    $seo = seo();
-    $m_titl = '';
-    $m_descp = '';
-    $m_key = '';
-    $m_can = '';
-
-    if (!empty($seo[0])) {
-        foreach ($seo as $key => $value) {
-            if($value->page == 'all-category' || $value->page == 'All-Category' || $value->page == 'all category' || $value->page == 'All Category'){
-                $m_titl     = $value->title;
-                $m_descp    = $value->m_desc;
-                $m_key      = $value->keywords;
-                $m_can      = $value->can_link; 
-            }
-        }
-    }
-    ?>
-
-    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="<?php echo $m_descp ?>" />
-    <link rel="canonical" href="<?php echo $m_can ?>" />
-    <meta name="keywords" content="<?php echo $m_key ?>" />
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">

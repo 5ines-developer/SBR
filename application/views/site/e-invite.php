@@ -12,7 +12,7 @@
 
     if (!empty($seo[0])) {
         foreach ($seo as $key => $value) {
-            if($value->page == 'e-invite' || $value->page == 'E-invite' || $value->page == 'E invite' || $value->page == 'e invite'){
+            if($value->page == 'e-invite' || $value->page == 'E-Invite' || $value->page == 'E invite' || $value->page == 'e invite'){
                 $m_titl     = $value->title;
                 $m_descp    = $value->m_desc;
                 $m_key      = $value->keywords;
@@ -22,13 +22,13 @@
     }
     ?>
 
-    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <meta name="description" content="<?php echo $m_descp ?>" />
     <link rel="canonical" href="<?php echo $m_can ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
@@ -43,7 +43,7 @@
             <div class="row m0">
                 <div class="col l12 s12">
                     <div class="banner-up ">
-                        <h5 class="white-text">E-Invite</h5>
+                        <h1 class="white-text">E-Invite</h1>
                         <p class="tc white-text pad0-11">Easily customise your Wedding Website design.</p>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <div class="col l12 m12 s12">
                         <div class="e-invite z-depth-1">
                             <div class="e-invite-detail">
-                                <h3>Create Your Free Wedding Invitation Website and Invite Your Family & Friends</h3>
+                                <h2>Create Your Free Wedding Invitation Website and Invite Your Family & Friends</h2>
                                 <p class="tc black-text pad-10">Your wedding events schedule, RSVP, and many more : share all of your details with guests through your Wedding Website!!</p>
                                 <center><a href="<?php echo base_url('login') ?>" class="waves-effect waves-light btn red plr30 accent-4 white-text">Sign In</a></center>
                             </div>
@@ -160,7 +160,7 @@
                                                 <p>Mehndi Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview') ?>?item=mehindi-1"><i class="material-icons">remove_red_eye</i></a> <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview') ?>?item=mehindi-1"><i class="material-icons">remove_red_eye</i></a> <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
                                         <div class="col l5 m4 s12">
@@ -169,7 +169,7 @@
                                                 <p>Mehndi Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=mehindi-2"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=mehindi-2"><i class="material-icons">remove_red_eye</i></a> 
                                              <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@
                                                 <p>Engagement Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-1"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=engagement-1"><i class="material-icons">remove_red_eye</i></a> 
                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
@@ -197,7 +197,7 @@
                                                 <p>Engagement Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=engagement-2"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=engagement-2"><i class="material-icons">remove_red_eye</i></a> 
                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
@@ -215,7 +215,7 @@
                                                 <p>Wedding Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-1"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=wedding-1"><i class="material-icons">remove_red_eye</i></a> 
                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
@@ -225,7 +225,7 @@
                                                 <p>Wedding Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=wedding-2"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=wedding-2"><i class="material-icons">remove_red_eye</i></a> 
                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
@@ -243,7 +243,7 @@
                                                 <p>Reception Template 1</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=reception-1"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=reception-1"><i class="material-icons">remove_red_eye</i></a> 
                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>
@@ -253,7 +253,7 @@
                                                 <p>Reception Template 2</p>
                                             </div>
                                             <div class="temp-view">
-                                            <a href="<?php echo base_url('e-invite/preview')?>?item=reception-2"><i class="material-icons">remove_red_eye</i></a> 
+                                            <a target="_blank" href="<?php echo base_url('e-invite/preview')?>?item=reception-2"><i class="material-icons">remove_red_eye</i></a> 
                                             <a href="<?php echo base_url('select-theme') ?>"><i class="material-icons">edit</i></a>
                                             </div>
                                         </div>

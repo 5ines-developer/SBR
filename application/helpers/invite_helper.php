@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         function wedEvenet() {
             $ci = get_instance();
             $ci->load->model('m_invite');
-            $wedevent =  $ci->m_invite->getEvents();
+            $wedevent =  $ci->m_invite->getEven();
             return $wedevent;
         }
     }
@@ -32,15 +32,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         function wedfam() {
             $ci = get_instance();
             $ci->load->model('m_invite');
-            $family =  $ci->m_invite->getfamily();
+            $family =  $ci->m_invite->getfamilys();
             return $family;
         }
     } 
-       if(!function_exists('wedphoto')) {
+    if(!function_exists('wedphoto')) {
         function wedphoto() {
             $ci = get_instance();
             $ci->load->model('m_invite');
             $family =  $ci->m_invite->getGlary();
             return $family;
+        }
+    } 
+
+    if(!function_exists('getUniq')) {
+        function getUniq() {
+            $ci = get_instance();
+            $ci->load->model('m_invite');
+            $uniq =  $ci->m_invite->getUniq();
+            return $uniq;
         }
     } 

@@ -21,21 +21,20 @@
     }
     ?>
 
-    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <meta charset="UTF-8">
     <meta name="description" content="<?php echo $m_descp ?>" />
     <link rel="canonical" href="<?php echo $m_can ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
+    <meta name="p:domain_verify" content="14689d3a8168f4758e45146daa554c8b"/>
+    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slimselect.min.css"> 
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/popup.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/modal.css">
-    <?php $this->load->view('includes/favicon.php');  ?>
-
+     <?php $this->load->view('includes/favicon.php');  ?>
+    
 
 </head>
 
@@ -43,21 +42,18 @@
     <!-- header -->
     <?php $this->load->view('includes/header.php'); ?>
     <!-- end header -->
-    <!-- modal-popup -->
-    <?php $this->load->view('includes/modal-popup.php'); ?>
-    <!-- end-popup -->
-    <section>
+    <section class="hom-bannr">
         <div class="row">
             <div class="banner-img">
-                <img src="<?php echo base_url() ?>assets/img/b1.jpg" class="img-responsive" width="100%" alt="">
+                <img src="<?php echo base_url() ?>assets/img/banner.png" class="img-responsive" width="100%" alt="">
                 <div class="lec-search">
-                    <h5 class="hide-on-small-only">India's Most Trusted Online Wedding Market</h5>
+                    <h1 class="hide-on-small-only">India's Most Trusted Online Wedding Market</h1>
                     <p class="hide-on-small-only">Find the best wedding vendors with thousands of trusted reviews</p>
                     <div class="row">
                         <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                             <div class="form-search">
                                 <div class="container">
-                                    <div class="col  s6 m4 mp">
+                                    <div class="col  s4 m4 mp">
                                         <div class="input-field if-fil">
                                             <select class="" name="q" id="sel-city">
                                                 <option value="" selected>City</option>
@@ -68,7 +64,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col  m6 s6 mp">
+                                    <div class="col  m6 s4 mp">
                                         <div class="input-field  if-fil-sel">
                                             <select name="ct" class="" id="sel-cato">
                                                 <option value="" selected>Category</option>
@@ -79,7 +75,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col  m2 s12 mp">
+                                    <div class="col  m2 s4 mp">
                                         <div class="input-field ">
                                             <button type="submit" class="btn-find">Get Start</button>
                                         </div>
@@ -220,7 +216,7 @@
             <div class="row m0">
                 <div class="col s12 l12">
                     <div class="vender-detail">
-                        <h4>What is Wed Assistance ?</h4>
+                        <h4>What is Wedz Assistance ?</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
                         <p>Plan your dream wedding with the help of our wedding planning experts. </p>
                     </div>
@@ -228,85 +224,33 @@
                 <div class="col s12 no-padding">
                             
                     <div class="h-wed-slider">
+
                         
-
-
-
-                        <div class="hwed-item hwd2">
+                        <div class="hwed-item">
                             <div class="row m0" >
-                                <div class="col s12 m7 l7 push-l5 push-m5" style="background: #3c10109e;">
-                                    <div class="hwd-conetnt">
-                                        <div class="wdheading">Assisted  Wed Planner</div>
-                                        <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
-                                        <div class="btbtn">
-                                            <a href="https://rzp.io/l/stBAenC"  class="bokmore-btn modal-trigger">Book Now</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="<?php echo base_url()?>wed-assistance"  class="modal-trigger">
+                                    <img class="img-responsive as-img" src="<?php echo base_url('assets/img/free-assistance.png')?>" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="hwed-item">
+                            <div class="row m0" >
+                                <a href="<?php echo base_url()?>wed-assistance"  class="modal-trigger">
+                                    <img class="img-responsive as-img" src="<?php echo base_url('assets/img/assistance2.jpg')?>" alt="">
+                                </a>
                             </div>
                         </div>
                            
-                        <div class="hwed-item hwd3">
+                        <div class="hwed-item">
                             <div class="row m0" >
-                                <div class="col s12 m7 l7 push-l5 push-m5" style="background: #3c10109e;">
-                                    <div class="hwd-conetnt">
-                                        <div class="wdheading">Premium Wed Planner</div>
-                                        <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
-                                        <div class="btbtn">
-                                            <a href="https://rzp.io/l/5L0fPSy" class="bokmore-btn modal-trigger">Book Now</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <a href="<?php echo base_url()?>wed-assistance" target="_blank" class="modal-trigger">
+                                    <img class="img-responsive as-img" src="<?php echo base_url('assets/img/asistance1.jpg')?>" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="h-wed-slider">
-                        
-                        <div class="h-wd-item ">
-                            <div class="h-wd-item-contanier">
-                                <div class="h-wd-item-content">
-                                    <div class="h-wd-item-content-headin">Hello Wed Planner</div>
-                                    <div class="h-wd-item-content-phara">Hello Wedding Planner is an online wedding services brought to you by Shaadi Baraati at free of cost, that helps you to plan your wedding with a qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</div>
-                                    <div class="h-wd-item-button">
-                                        <a class="btn-cate">Book Now</a>
-                                    </div>
-                                   
-                                    <div class="margin-box"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="h-wd-item ">
-                            <div class="h-wd-item-contanier">
-                                <div class="h-wd-item-content">
-                                    <div class="h-wd-item-content-headin">Assisted Wed Planner</div>
-                                    <div class="h-wd-item-content-phara">Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</div>
-                                    <div class="h-wd-item-button">
-                                        <a class="btn-cate">Book Now</a>
-                                    </div>
-                                   
-                                    <div class="margin-box"></div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="h-wd-item ">
-                            <div class="h-wd-item-contanier">
-                                <div class="h-wd-item-content">
-                                    <div class="h-wd-item-content-headin">Premium Wed Planner</div>
-                                    <div class="h-wd-item-content-phara">Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</div>
-                                    <div class="h-wd-item-button">
-                                        <a class="btn-cate">Book Now</a>
-                                    </div>
-                                   
-                                    <div class="margin-box"></div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>  -->
                 </div>
             </div>
         </div>                        
@@ -534,19 +478,19 @@
         </div>
     </section>
 
+    <div class="c19-popup"><a href="https://docs.google.com/forms/d/e/1FAIpQLScT4rYiS8gIRFkuUo8xfInuceDXrVrXWxpP5DmhOSmaE3Xr3A/viewform?vc=0&c=0&w=1&usp=mail_form_link" target="_blank" class="c19-body corona-read"><div class="c19-1"><p>Planning an #IntimateWedding?</p><p>Let’s bring your dream wedding to life</p></div><div class="c19-2"><span>YES</span></div></a><span class="close-c19 corona-close">X</span></div>
+
 
 
     <?php $this->load->view('includes/footer'); ?>
     <!-- script -->
-    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
-    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/vue.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/css/slick/slick.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/script.js"></script>
-    <script src="<?php echo base_url()?>assets/js/modal.js"></script>
-
  
 
     <script>
@@ -649,8 +593,9 @@
             slidesToScroll: 3,
             autoplay: true,
             autoplaySpeed: 3000,
-            nextArrow: false,
-            prevArrow: false,
+            arrows: true,
+            prevArrow: '<span class="material-icons larr">keyboard_arrow_left</span>',
+            nextArrow: '<span class="material-icons rarr">keyboard_arrow_right</span>',
             dots: false,
             responsive: [{
                     breakpoint: 1024,
@@ -748,6 +693,22 @@
     // for submit and change the url
 
     $(document).ready(function() {
+
+        // var cookieArr = document.cookie.split(";");
+        // var cookiePair = cookieArr[0].split("=");
+
+        // if (cookiePair[1] == '') {
+        //     $(".c19-popup").css('display', 'block');
+        // }else{
+        //     $(".c19-popup").css('display', 'none');
+
+        // }
+
+
+
+
+
+
         $(document).on('change', '#sel-city,#sel-cato', function(e) {
             e.preventDefault();
 
@@ -764,6 +725,14 @@
 
             $("#search-form").attr('action', url);
         });
+
+        $(document).on('click', '.corona-close', function(e) {
+            e.preventDefault();
+            $(".c19-popup").fadeOut();
+            $(".c19-popup").css('display', 'none');
+            document.cookie = "covid=Christopher; max-age=" + 7200;
+        });
+
 
     });
     </script>

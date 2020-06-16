@@ -212,6 +212,12 @@ $route['live-report']			       	 	=	'report/liveReport';
 // seo data
 $route['seo/manage']			            =	'seo/index';
 
+//content
+$route['content/manage']			        =	'c_content/index';
+$route['content/add']			            =	'c_content/add';
+$route['content/edit/(:any)']			    =	'c_content/edit/$1';
+$route['content/delete/(:any)']			    =	'c_content/delete/$1';
+
 
 
 

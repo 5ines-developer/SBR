@@ -6,12 +6,35 @@ $this->load->model('m_vendors');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+    <?php
+    $seo = seo();
+    $m_titl = '';
+    $m_descp = '';
+    $m_key = '';
+    $m_can = '';
 
+    if (!empty($seo[0])) {
+        foreach ($seo as $key => $value) {
+            if($value->page == 'Vendors' || $value->page == 'Vendors'){
+                $m_titl     = $value->title;
+                $m_descp    = $value->m_desc;
+                $m_key      = $value->keywords;
+                $m_can      = $value->can_link; 
+            }
+        }
+    }
+    ?>
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="<?php echo $m_descp ?>" />
+    <link rel="canonical" href="<?php echo $m_can ?>" />
+    <meta name="keywords" content="<?php echo $m_key ?>" />
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
+    <meta name="p:domain_verify" content="14689d3a8168f4758e45146daa554c8b"/>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shaadi Baraati</title>
+    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />

@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col l12 s12">
                     <div class="">
-                        <h3 class="white-text">Wed Assistance</h3>
+                        <h3 class="white-text">Wedz Assistance</h3>
                         <p class="text-center white-text">Plan your dream wedding with the help of our wedding planning experts</p>
                         <img src="<?php echo base_url()?>assets/img/saprator.png" class="img-responsive" alt="">
                     </div>
@@ -60,21 +60,32 @@
                         <div class="wda-serviceitem">
                             <div class="col s12 m6 l6">
                                 <div class="wdas-item-content ">
-                                    <p class="wdatitle">Assisted Wed Planner</p>
+                                    <p class="wdatitle">Assisted Wedz Planner</p>
                                     <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact..</p>
                                     <a href="https://rzp.io/l/stBAenC" class="btn-web waves-effect waves-red modal-trigger">Book Now</a>
                                 </div>
                             </div>
+                            <div class="col s12 m6 l6 p0">
+                                <center>
+                                    <img class="img-responsive" src="<?php echo base_url()?>assets/img/wedz-assist1.jpg" alt="">
+                                </center>
+                            </div>
                         </div>
 
                         <div class="wda-serviceitem">
-                            <div class="col s12 m6 l6 push-m6 push-l6">
+                            <div class="col s12 m6 l6 p0">
+                                <center>
+                                    <img class="img-responsive" src="<?php echo base_url()?>assets/img/wedz-assist2.jpg" alt="">
+                                </center>
+                            </div>
+                            <div class="col s12 m6 l6">
                                 <div class="wdas-item-content ">
-                                    <p class="wdatitle">Premium Wed Planner</p>
+                                    <p class="wdatitle">Premium Wedz Planner</p>
                                     <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
                                     <a href="https://rzp.io/l/5L0fPSy"  class="btn-web waves-effect waves-red modal-trigger">Book Now</a>
                                 </div>
                             </div>
+
                         </div>
                         
 
@@ -157,7 +168,7 @@
                             <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
                             <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A;	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
                             </svg>
-                            <div class='pricing-price'><span class='pricing-currency'></span> Assisted Wed Planner  
+                            <div class='pricing-price'><span class='pricing-currency'></span> Assisted Wedz Planner  
                             <span class='pricing-period'> </span>
                             </div>
                             <h3 class='pricing-title'>₹ 999 + Taxes</h3>
@@ -185,7 +196,7 @@
                             <path class='deco-layer deco-layer--3' d='M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716&#x000A;	H42.401L43.415,98.342z' fill='#FFFFFF' opacity='0.7'></path>
                             <path class='deco-layer deco-layer--4' d='M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428&#x000A;	c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z' fill='#FFFFFF'></path>
                             </svg>
-                            <div class='pricing-price'><span class='pricing-currency'></span>Premium Wed Planner
+                            <div class='pricing-price'><span class='pricing-currency'></span>Premium Wedz Planner
                             <span class='pricing-period'></span>
                             </div>
                             <h3 class='pricing-title'>₹ 9999 + Taxes</h3>

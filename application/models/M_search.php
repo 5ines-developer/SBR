@@ -174,9 +174,10 @@ class M_search extends CI_Model {
 
     public function catviseresult($city='')
     {
+        
         $cityId = '';
         if (!empty($city)) {
-            $cityId = $this->db->where('city', $city)->get('city')->row('id');
+            $cityId = $this->db->where('city', ucwords(str_replace("-"," ",$city)))->get('city')->row('id');
         }
       $result = vendor_category();
       foreach ($result as $key => $value) {
@@ -215,14 +216,27 @@ class M_search extends CI_Model {
     }
 
         //get banner
-    public function bannerGet($var = null)
+    public function bannerGet($city = '',$category='')
     {
+        $this->db->where('cty.city', $city);
+        $this->db->where('cat.category', $category);
         $this->db->select('cb.id, cb.city_id, cb.category_id,  cb.image, cty.city, cb.city_id, cb.uniq, cb.category_id, cat.category');
         $this->db->limit(10);
         $this->db->from('category_banner cb');        
         $this->db->join('category cat', 'cat.id = cb.category_id', 'left');
         $this->db->join('city cty', 'cty.id = cb.city_id', 'left');
         return $this->db->order_by('cb.id', 'desc')->get()->result();    
+    }
+
+    public function conentGet($city = '',$category='')
+    {
+        $this->db->where('cty.city', $city);
+        $this->db->where('cat.category', $category);
+        $this->db->select('cc.id, cc.city_id, cc.category_id, cty.city,cat.category,cc.description, cc.uniq');
+        $this->db->from('category_content cc');
+        $this->db->join('category cat', 'cat.id = cc.category_id', 'left');
+        $this->db->join('city cty', 'cty.id = cc.city_id', 'left');
+        return $this->db->get()->row();
     }
 
 }

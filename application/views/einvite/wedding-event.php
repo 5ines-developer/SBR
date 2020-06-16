@@ -69,6 +69,7 @@ $this->load->model('m_account');
                                                             <label for="eve_time">Event Time  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" name="eid" value="<?php echo $this->input->get('eid') ?>">
 
                                                     <div class="col l6 s12 m6">
                                                         <div class="input-field">
@@ -124,7 +125,7 @@ $this->load->model('m_account');
                                         <button type="submit" class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                         <button type="reset" class="waves-effect waves-light btn white plr30 accent-4 black-text">Reset</button>
                                         <?php if (!empty($result)) { ?>
-                                        <a href="<?php echo base_url('family-member') ?>" class="tooltipped waves-effect waves-light btn red accent-4 white-text right" data-position="bottom" data-tooltip="Click here if you dont want to add more event">Next <i class="material-icons dp48" style="position: relative; top: 4px;">chevron_right</i></a>
+                                        <a href="<?php echo base_url('family-member?eid=').$this->input->get('eid'); ?>" class="tooltipped waves-effect waves-light btn red accent-4 white-text right" data-position="bottom" data-tooltip="Click here if you dont want to add more event">Next <i class="material-icons dp48" style="position: relative; top: 4px;">chevron_right</i></a>
                                         <?php } ?>
                                     </form>
                                 </div>

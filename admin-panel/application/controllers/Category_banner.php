@@ -23,7 +23,6 @@ class Category_banner extends CI_Controller {
 	{   
         $data['title']  = 'Category Banner - Shaadibaraati';
         $data['banner'] = $this->m_categoryBanner->bannerGet();
-
 		$this->load->view('banner/manage-banner', $data, FALSE);
     }
     

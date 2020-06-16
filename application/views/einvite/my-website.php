@@ -109,8 +109,8 @@ margin-left: 8px; }
                                                             </div>
                                                             <div class="temp-view">
                                                                 <div class="row">
-                                                                <a href="<?php echo base_url().'my-website/'.$groom.'-weds-'.$bride.'?site='.urlencode(base64_encode($value->id)).'' ?>"><i class="material-icons">remove_red_eye</i></a> 
-                                                                <a @click="themeEdit()"><i class="material-icons">edit</i></a>
+                                                                <a target="_blank" href="<?php echo base_url().'my-website/'.$groom.'-weds-'.$bride.'?site='.urlencode(base64_encode($value->id)).'' ?>"><i class="material-icons">remove_red_eye</i></a> 
+                                                                <a target="_blank" href="<?php echo base_url('bide-groom?eid=').$value->uniq ?>"><i class="material-icons">edit</i></a>
                                                                 <!-- <div class="sharethis-inline-share-buttons"></div> -->
                                                                 </div>
                                                             </div>

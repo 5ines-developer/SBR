@@ -1,13 +1,9 @@
 <?php  $this->ci =& get_instance();
 $this->load->model('m_search'); 
-$this->load->model('m_vendors'); 
-
-
+$this->load->model('m_vendors');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
 
     <?php
     $seo = seo();
@@ -18,7 +14,7 @@ $this->load->model('m_vendors');
 
     if (!empty($seo[0])) {
         foreach ($seo as $key => $value) {
-            if($value->page == 'vendors' || $value->page == 'vendor' || $value->page == 'vendor result' || $value->page == 'Vendor Result'){
+            if($value->page == 'Vendors' || $value->page == 'Vendors'){
                 $m_titl     = $value->title;
                 $m_descp    = $value->m_desc;
                 $m_key      = $value->keywords;
@@ -28,16 +24,17 @@ $this->load->model('m_vendors');
     }
     ?>
 
-    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
+<head>
     <meta charset="UTF-8">
     <meta name="description" content="<?php echo $m_descp ?>" />
     <link rel="canonical" href="<?php echo $m_can ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
-
-    <meta charset="UTF-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
+    <meta name="p:domain_verify" content="14689d3a8168f4758e45146daa554c8b"/>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Shaadi Baraati</title>
+    <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
@@ -45,6 +42,39 @@ $this->load->model('m_vendors');
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
     <?php $this->load->view('includes/favicon.php');  ?>
     <style>
+        strong {
+        font-weight: 600;
+    }
+        h1{
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        h2{
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        h3{
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        h4{
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        h5{
+            font-size: 14px;
+            font-weight: 600;
+        }
+        h6{
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
         .preloader {
             display: none;
         }
@@ -56,19 +86,33 @@ $this->load->model('m_vendors');
             background: rgba(0, 0, 0, 0);
             z-index: 2;
         }
-        
-        .banner-slider {
-            max-height:340px;
-            min-height: 340px;
-            overflow: hidden;
+
+            .banner-slider {
+                max-height:310px;
+                min-height:310px;
+                overflow: hidden;
+            }
+
+        @media screen and (min-width: 1400px) {
+            .banner-slider {
+                max-height:350px;
+                min-height:350px;
+                overflow: hidden;
+            }
+
         }
         
         @media (max-width:991px) {
             .banner-slider {
-                max-height: 264px;
+                max-height:180px;
+                min-height:180px;
+                overflow: hidden;
             }
             .slick-slide img {
                 width: auto;
+            }
+            .vend-head {
+                font-size: 15px !important;
             }
         }
         
@@ -77,15 +121,38 @@ $this->load->model('m_vendors');
                 top: 0px;
             }
             .banner-slider {
-                max-height: 245px;
-                height: 246px;
-                min-height: 245px;
+                max-height: 229px;
+                /* height: 246px; */
+                min-height: 84px;
                 overflow: hidden;
             }
             .slick-slide img {
                 width: auto;
             }
         }
+    .vend-head {
+        margin-top: 0;
+        font-size: 22px;
+        font-weight: 600;
+        padding-left: 10px;
+    }
+    .result-heads.imgres{
+        background-size: cover;
+    }
+    .result-heads.imgres .slick-slide img{
+        width: 100%;
+    }
+
+    .conts ul:not(.browser-default) > li {
+    list-style-type: disc;
+}
+.conts ul{
+	
+padding-left: 40px;
+}
+
+    
+
     </style>
 </head>
 
@@ -93,8 +160,12 @@ $this->load->model('m_vendors');
 
 <?php if(!empty($banner)){ 
 foreach($banner as $ban => $bans){
-if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",strtolower($bans->category)) == $this->uri->segment(3))  ){
-    $back ='1';
+    //  echo $back = strtolower($bans->city).'<br>';
+    // echo $back1 = strtolower(str_replace("-"," ",$this->uri->segment(2))).'<br>1';
+
+if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segment(2)))) && (str_replace(" ","-",strtolower($bans->category)) == $this->uri->segment(3))  ){
+    $back ='1'.'<br>';
+   
 ?>
 <?php }}}?>
     <!-- header -->
@@ -194,18 +265,18 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
         </section> -->
 
         <section class="pb-0">
-            <div class="result-heads" style="background-image:url(<?php echo
+            <div class="result-heads imgres" style="background-image:url(<?php echo
                 $this->m_vendors->bannimage(ucwords(str_replace("-"," ",$this->uri->segment(3))));
              ?>);">
                 <div class="banner-slider">
 
                     <?php if(!empty($banner)){ 
                 foreach($banner as $ban => $bans){
-                if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",strtolower($bans->category)) == $this->uri->segment(3))  ){
+                if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segment(2)))) && (str_replace(" ","-",strtolower($bans->category)) == $this->uri->segment(3))  ){
                     $back ='1';
                 ?>
                     <div>
-                        <img src="<?php echo base_url($bans->image) ?>" alt="" width="100%">
+                        <img src="<?php echo base_url($bans->image) ?>" class="img-responsive" alt="">
                     </div>
                     <?php }}}?>
                 </div>
@@ -228,7 +299,7 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
                     <div class="vendor-search vender-he">
                             <form action="<?php echo base_url()?>vendors" method="post" id="search-form">
                                 <div class="row m0">
-                                    <div class="col s12 m10 l6 ">
+                                    <div class="col s12 m6 l6 ">
                                     <div class="kill">
                                         <input type="search" autocomplete="off" placeholder="Search vendor..." name="vendor" v-on:keyup="vendorcheck" v-model="vendor" id="search-vend"> 
                                     
@@ -297,7 +368,7 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
                                         <select name="q" id="sel-city">
                                             <option value="">All Cities</option>
                                             <?php if (!empty(cities())) {foreach (cities() as $citys => $cities) { ?>
-                                            <option <?php echo (ucfirst($this->uri->segment(2)) == $cities->city)?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
+                                            <option <?php echo (strtolower(str_replace("-"," ",$this->uri->segment(2))) == strtolower(str_replace("-"," ",$cities->city)))?'selected':''; ?> value="<?php echo $cities->city ?>" > <?php echo (!empty($cities->city))?$cities->city:''; ?></option>
                                             <?php   } } ?>
                                         </select>
                                     </div>
@@ -308,6 +379,8 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
                 </div>
             </div>
         </section>
+
+        
 
 
         <?php if (empty($vendors)) { ?>
@@ -533,10 +606,15 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
 
                     <div class="col s12 m12 l12">
                         <div class="row  result-item-box">
-
-
-
-
+                                <h1 class="vend-head"><?php
+                                $cts = $this->uri->segment(2);
+                                if ($cts == 'all') {
+                                	$cts = 'India';
+                                }else if ($cts == 'delhi-ncr'){
+                                    $cts = 'Delhi NCR';
+                                }
+                                echo ucwords(str_replace("-", " ", $this->uri->segment(3))).'&nbsp;in&nbsp;'.ucwords(str_replace("-", " ",$cts));
+                                ?></h1>
                             <?php if (!empty($vendors)) {
                               
                                 $lableImg = '<img src="'.base_url().'assets/img/lable.png" class="v-lable-image" />';
@@ -630,6 +708,18 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
         </section>
 
         <?php } ?>
+
+<?php if (!empty($content->description)) { ?>
+<section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
+    <div class="container-2">
+        <div class="row m0">
+            <div class="col l11 m12 s12">
+            <?php echo (!empty($content->description))?$content->description:''; ?>
+            </div>
+        </div>
+    </div>
+</section>
+<?php } ?>
 
 
 
@@ -793,8 +883,10 @@ if((strtolower($bans->city) == $this->uri->segment(2)) && (str_replace(" ","-",s
             autoplay: true,
             autoplaySpeed: 3000,
             speed: 2000,
-            arrows: false,
+            arrows: true,
             dots: false,
+            prevArrow: '<span class="material-icons larr">keyboard_arrow_left</span>',
+            nextArrow: '<span class="material-icons rarr">keyboard_arrow_right</span>',
 
 
         });

@@ -56,6 +56,7 @@ $this->load->model('m_account');
                                                                <label for="">Family</label>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" name="eid" value="<?php echo $this->input->get('eid') ?>">
                                                     <div class="col l5 s12 m6">
                                                         <div class="input-field">
                                                             <select class="relation" required="" name="relation">
@@ -121,7 +122,7 @@ $this->load->model('m_account');
                                         <button type="submit" class="waves-effect waves-light btn red plr30 accent-4 white-text">Submit</button>
                                         <button type="reset" class="waves-effect waves-light btn white plr30 accent-4 black-text">Reset</button>
                                         <?php if (!empty($result)) { ?>
-                                        <a href="<?php echo base_url('wedding-photo') ?>" class="tooltipped waves-effect waves-light btn red accent-4 white-text right" data-position="bottom" data-tooltip="Click here if you dont want to add more family member">Next <i class="material-icons dp48" style="position: relative; top: 4px;">chevron_right</i></a>
+                                        <a href="<?php echo base_url('wedding-photo?eid=').$this->input->get('eid'); ?>" class="tooltipped waves-effect waves-light btn red accent-4 white-text right" data-position="bottom" data-tooltip="Click here if you dont want to add more family member">Next <i class="material-icons dp48" style="position: relative; top: 4px;">chevron_right</i></a>
                                     <?php } ?>
 
                                     </form>

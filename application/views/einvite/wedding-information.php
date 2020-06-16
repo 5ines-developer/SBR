@@ -47,19 +47,20 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="bname" type="text" name="bname" class="validate">
+                                                            <input id="bname" type="text" name="bname" class="validate" value="<?php echo (!empty($result->brsvp_name))?$result->brsvp_name:''; ?>">
                                                             <label for="bname">Bride Contact Name  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="brelation" type="text" name="brelation" class="validate">
+                                                            <input id="brelation" type="text" name="brelation" class="validate" value="<?php echo (!empty($result->brsvprel))?$result->brsvprel:''; ?>">
                                                             <label for="brelation">Bride Relation  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
+                                                    <input type="hidden" name="eid" value="<?php echo $this->input->get('eid') ?>">
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="bnumber" type="text" name="bnumber" class="validate">
+                                                            <input id="bnumber" type="text" name="bnumber" class="validate"  value="<?php echo (!empty($result->brsvp_phone))?$result->brsvp_phone:''; ?>">
                                                             <label for="bnumber">Bride Contact No  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
@@ -74,19 +75,19 @@ $this->load->model('m_account');
                                                 <div class="row">
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="gname" type="text" name="gname" class="validate">
+                                                            <input id="gname" type="text" name="gname" class="validate" value="<?php echo (!empty($result->grsvp_name))?$result->grsvp_name:''; ?>">
                                                             <label for="gname">Groom Contact Name  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="grelation" type="text" name="grelation" class="validate">
+                                                            <input id="grelation" type="text" name="grelation" class="validate" value="<?php echo (!empty($result->grsvprel))?$result->grsvprel:''; ?>">
                                                             <label for="grelation">Groom Relation  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
                                                     <div class="col l5 m5 s12">
                                                         <div class="input-field">
-                                                            <input id="gnumber" type="text" name="gnumber" class="validate">
+                                                            <input id="gnumber" type="text" name="gnumber" class="validate" value="<?php echo (!empty($result->grsvp_phone))?$result->grsvp_phone:''; ?>">
                                                             <label for="gnumber">Groom Contact No  <span class="red-text">*</span></label>
                                                         </div>
                                                     </div>
