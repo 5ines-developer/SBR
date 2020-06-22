@@ -42,7 +42,6 @@ class C_content extends CI_Controller {
 
 		$this->form_validation->set_rules('city', 'City', 'trim|required');
 		$this->form_validation->set_rules('category', 'Category', 'trim|required');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		if ($this->form_validation->run() == FALSE) {
 			$this->form_validation->set_error_delimiters('', '<br>');
             $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
@@ -50,10 +49,19 @@ class C_content extends CI_Controller {
 		}else{
 
 			$insert = array(
-				'city_id' => $this->input->post('city'), 
-				'category_id' => $this->input->post('category'), 
-				'description' => $this->input->post('description'), 
-				'uniq' => $this->input->post('uniq'), 
+				'city_id' 		=> $this->input->post('city'), 
+				'category_id' 	=> $this->input->post('category'), 
+				'description' 	=> $this->input->post('description'), 
+				'uniq' 			=> $this->input->post('uniq'), 
+				'title' 		=> $this->input->post('title'), 
+				'canoncial' 	=> $this->input->post('can_url'), 
+				'keywords' 		=> $this->input->post('keywords'), 
+				'meta_desc' 	=> $this->input->post('meta_description'),
+				'key1' 			=> $this->input->post('key1'), 
+				'key2' 			=> $this->input->post('key2'), 
+				'key3' 			=> $this->input->post('key3'), 
+				'key4' 			=> $this->input->post('key4'), 
+				'key5' 			=> $this->input->post('key5'), 
 			);
 			$id = $this->input->post('id');
 
@@ -72,17 +80,25 @@ class C_content extends CI_Controller {
 	{
 		$this->form_validation->set_rules('city', 'City', 'trim|required');
 		$this->form_validation->set_rules('category', 'Category', 'trim|required');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		if ($this->form_validation->run() == FALSE) {
 			$this->form_validation->set_error_delimiters('', '<br>');
             $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
             redirect('content/add','refresh');
 		} else {
 			$insert = array(
-				'city_id' => $this->input->post('city'), 
-				'category_id' => $this->input->post('category'), 
-				'description' => $this->input->post('description'), 
-				'uniq' => $this->input->post('uniq'), 
+				'city_id' 		=> $this->input->post('city'), 
+				'category_id' 	=> $this->input->post('category'), 
+				'description' 	=> $this->input->post('description'), 
+				'title' 		=> $this->input->post('title'), 
+				'canoncial' 	=> $this->input->post('can_url'), 
+				'keywords' 		=> $this->input->post('keywords'), 
+				'meta_desc' 	=> $this->input->post('meta_description'), 
+				'uniq' 			=> $this->input->post('uniq'), 
+				'key1' 			=> $this->input->post('key1'), 
+				'key2' 			=> $this->input->post('key2'), 
+				'key3' 			=> $this->input->post('key3'), 
+				'key4' 			=> $this->input->post('key4'), 
+				'key5' 			=> $this->input->post('key5'), 
 			);
 
 			if ($this->m_content->insert($insert)) {

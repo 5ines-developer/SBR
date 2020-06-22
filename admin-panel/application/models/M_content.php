@@ -30,7 +30,7 @@ class M_content extends CI_Model {
 	public function edit($id='')
 	{
 		$this->db->where('cc.uniq', $id);
-		$this->db->select('cc.id, cc.city_id, cc.category_id, cty.city,cat.category,cc.description, cc.uniq');
+		$this->db->select('cc.id, cc.city_id, cc.category_id, cty.city,cat.category,cc.description, cc.uniq,cc.title,cc.canoncial,cc.keywords,cc.meta_desc,cc.key1,cc.key2,cc.key3,cc.key4,cc.key5');
 		$this->db->from('category_content cc');
 		$this->db->join('category cat', 'cat.id = cc.category_id', 'left');
         $this->db->join('city cty', 'cty.id = cc.city_id', 'left');

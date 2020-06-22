@@ -6,20 +6,17 @@ $this->load->model('m_vendors');
 <html lang="en">
 
     <?php
-    $seo = seo();
     $m_titl = '';
     $m_descp = '';
     $m_key = '';
     $m_can = '';
 
-    if (!empty($seo[0])) {
-        foreach ($seo as $key => $value) {
-            if($value->page == 'Vendors' || $value->page == 'Vendors'){
-                $m_titl     = $value->title;
-                $m_descp    = $value->m_desc;
-                $m_key      = $value->keywords;
-                $m_can      = $value->can_link; 
-            }
+    if (!empty($content)) {
+        foreach ($content as $key => $value) {
+                $m_titl     = (!empty($value->title))?$value->title:'';
+                $m_descp    = (!empty($value->meta_desc))?$value->meta_desc:'';
+                $m_key      = (!empty($value->keywords))?$value->keywords:'';
+                $m_can      = (!empty($value->canoncial))?$value->canoncial:''; 
         }
     }
     ?>
@@ -45,31 +42,31 @@ $this->load->model('m_vendors');
         strong {
         font-weight: 600;
     }
-        h1{
+        .conts h1{
             font-size: 22px;
             font-weight: 600;
         }
 
-        h2{
+        .conts h2{
             font-size: 18px;
             font-weight: 600;
         }
 
-        h3{
+        .conts h3{
             font-size: 16px;
             font-weight: 600;
         }
 
-        h4{
+       .conts  h4{
             font-size: 15px;
             font-weight: 600;
         }
 
-        h5{
+        .conts h5{
             font-size: 14px;
             font-weight: 600;
         }
-        h6{
+        .conts h6{
             font-size: 13px;
             font-weight: 600;
         }
@@ -150,8 +147,34 @@ $this->load->model('m_vendors');
 	
 padding-left: 40px;
 }
+.rel-seo li{
+    float: left;
+}
+.rel-seo ul{
+    margin: 0px;
+}
 
+.rel-seo li a{
+    font-size: 20px;
+    color: #333232;
+    font-weight: 600;
+    padding: 30px 40px 0 40px;
+    overflow: hidden;
+    display: block;
+}
+.rel-heading{
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #202020;
+}
     
+.rel-seo{
+    background-color: #fff;
+    padding: 30px !important;
+}
+
 
     </style>
 </head>
@@ -709,7 +732,29 @@ if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segmen
 
         <?php } ?>
 
-<?php if (!empty($content->description)) { ?>
+<?php 
+
+if (!empty($content->key1) || !empty($content->key2) || !empty($content->key3) || !empty($content->key4) || !empty($content->key5)) { ?>
+    <section class="result-body rel-seo">
+        <div class="container">
+            <div class="row m0">
+                <div class="col l12 m12 s12">
+                    <h2 class="rel-heading">Related Search</h2>
+                    <ul>
+                        <li><a href=""><?php echo (!empty($content->key1))?$content->key1:''; ?></a></li>
+                        <li><a href=""><?php echo (!empty($content->key2))?$content->key2:''; ?></a></li>
+                        <li><a href=""><?php echo (!empty($content->key3))?$content->key3:''; ?></a></li>
+                        <li><a href=""><?php echo (!empty($content->key4))?$content->key4:''; ?></a></li>
+                        <li><a href=""><?php echo (!empty($content->key5))?$content->key5:''; ?></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php    }
+
+if (!empty($content->description)) { ?>
 <section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
     <div class="container-2">
         <div class="row m0">
@@ -721,7 +766,53 @@ if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segmen
 </section>
 <?php } ?>
 
+    <section class="sec-footer">
+        <div class="container-fluide">
+            <div class="row">
+                <div class="col l4">
+                    <div class="list-foot vl">
+                        <h6>By Vendor Type</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php if (!empty($foot)) {
+                            foreach ($foot as $fot1 => $fot1s) {
+                                if ($fot1s->seggregation ==1) {?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo (!empty($fot1s->type))?$fot1s->type:'';  ?></a></li>
+                           <?php }} } ?>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="col l4">
+                    <div class="list-foot vl">
+                        <h6>Vendor Categories</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php if (!empty($foot)) {
+                            foreach ($foot as $fotkey => $fotvalue) { if ($fotvalue->seggregation ==2) {?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo (!empty($fotvalue->vendor_category))?$fotvalue->vendor_category:'';  ?></a></li>
+                           <?php }} } ?>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col l4">
+                    <div class="list-foot vl">
+                        <h6>Popular Vendors</h6>
+                        <div class="line"></div>
+                        <ul>
+                            <?php if (!empty($foot)) {
+                            foreach ($foot as $fotkey1 => $fotvalue1) { if ($fotvalue1->seggregation ==3) { ?>
+                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo (!empty($fotvalue1->popular))?$fotvalue1->popular:'';  ?></a></li>
+                           <?php } } } ?>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 
         <?php $this->load->view('includes/footer'); ?>

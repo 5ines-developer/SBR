@@ -62,14 +62,14 @@
                                                 </div>
 
                                                  <?php if(!empty($result)) {?>
-                                                  <div class="form-group">
-                                                      <input type="hidden" name="edit" value="edit">
-                                                      <div class="" id="edt-image">
-                                                          <div class="image view view-first">
-                                                              <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->icon ?>" alt="image">
-                                                          </div>
-                                                      </div>
-                                                  </div>
+                                                                <div class="form-group">
+                                                                    <input type="hidden" name="edit" value="edit">
+                                                                    <div class="" id="edt-image">
+                                                                        <div class="image view view-first">
+                                                                            <img class="city-edit-image"  src="<?php echo $this->config->item('web_url').$result->icon ?>" alt="image">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                  <?php }?>
                                             </div> 
 

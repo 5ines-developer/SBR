@@ -232,11 +232,23 @@ class M_search extends CI_Model {
     {
         $this->db->where('cty.city', $city);
         $this->db->where('cat.category', $category);
-        $this->db->select('cc.id, cc.city_id, cc.category_id, cty.city,cat.category,cc.description, cc.uniq');
+        $this->db->select('cc.id, cc.city_id, cc.category_id, cty.city,cat.category,cc.description, cc.uniq,cc.title,cc.canoncial,cc.keywords,cc.meta_desc,cc.key1,cc.key2,cc.key3,cc.key4,cc.key5');
         $this->db->from('category_content cc');
         $this->db->join('category cat', 'cat.id = cc.category_id', 'left');
         $this->db->join('city cty', 'cty.id = cc.city_id', 'left');
         return $this->db->get()->row();
+    }
+
+    //get footer category
+    public function footGet($city = '',$category='')
+    {
+        $this->db->where('cty.city', $city);
+        $this->db->where('cat.category', $category);
+        $this->db->select('fc.id,fc.type,fc.vendor_category,fc.popular,fc.seggregation,cat.category,cty.city,fc.city as cityId,fc.category as categoryId');
+        $this->db->from('footer_category fc');
+        $this->db->join('category cat', 'cat.id = fc.category', 'left');
+        $this->db->join('city cty', 'cty.id = fc.city', 'left');
+        return $this->db->get()->result();
     }
 
 }

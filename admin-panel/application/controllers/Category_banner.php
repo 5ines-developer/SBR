@@ -124,8 +124,8 @@ class Category_banner extends CI_Controller {
             $category_id =  $this->input->post('category');
             $city_id =  $this->input->post('city');
             $ipimg      = $this->input->post('ipimg');
-
             $files = $_FILES;
+           
             if (!empty($_FILES['images']['name'][0])) {
 
                 $filesCount = count($_FILES['images']['name']);
@@ -172,20 +172,18 @@ class Category_banner extends CI_Controller {
                     }
                 }
             }else{
-
               
-                $insert = array(
-                    'uniq' 		=>	$ipimg,
-                    'category_id'=>$category_id,
-                    'city_id'=>$city_id,
-                    'status'    =>  '1',
-                    );
-                    $result = $this->m_categoryBanner->update_banner($insert,$uniq);
-            }
-                
-                if($result){
-                    $this->session->set_flashdata('success', 'Category Banner added Successfully');
-               }else{
+               //  $insert = array(
+               //      'uniq' 		   =>	$ipimg,
+               //      'category_id'  =>$category_id,
+               //      'city_id'      =>$city_id,
+               //      'status'       =>  '1',
+               //      );
+               //      $result = $this->m_categoryBanner->update_banner($insert,$uniq);
+               //  }
+               //  if($result){
+               //      $this->session->set_flashdata('success', 'Category Banner added Successfully');
+               // }else{
                     $this->session->set_flashdata('error', 'Some error occured please try again');
                     
                }

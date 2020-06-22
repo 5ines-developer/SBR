@@ -50,7 +50,7 @@ class M_report extends CI_Model {
 	public function visitors($year='',$month='')
 	{
 		$newData=array();
-		$counts='';
+		$counts=array();
         $this->db->select('date');
         if (!empty($year) && !empty($month)) {
         	if ($month < 10) {

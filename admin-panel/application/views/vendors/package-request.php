@@ -76,7 +76,7 @@ $this->load->model('m_venquiry');
 
                                     if (!empty($result)) {
                                       $count= 0;
-                                      foreach ($result as $key => $value) { $count += 1;                                        
+                                      foreach ($result as $key => $value) { $count += 1;
                                       ?>
                                       <tr>
                                             <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
@@ -84,7 +84,7 @@ $this->load->model('m_venquiry');
                                             <td ><a href="<?php echo base_url('vendors/view/'.$value->ids.'') ?>"><?php echo (!empty($value->type))?$value->type:'---'  ?></a></td>
 
                                             <td ><a href="<?php echo base_url('vendor-package/view/'.$value->ids.'') ?>">
-                                              <?php echo $this->ci->m_venquiry->package($value->pack,$value->type);  ?>
+                                              <?php echo $value->pack;  ?>
                                                 
 
                                               </a></td>

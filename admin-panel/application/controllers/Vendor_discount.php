@@ -62,7 +62,6 @@ class Vendor_discount extends CI_Controller {
 
     public function invoice($data='')
     {
-        
         $data['invoice'] = $this->m_vdiscount->getDiscount();
         $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
         $this->load->view('vendors/invoice_send',$data);
@@ -92,6 +91,8 @@ class Vendor_discount extends CI_Controller {
             'uniq_id'       => $this->input->post('uniq_id'), 
             'renewal_id'    => $this->input->post('rpid') 
         );
+
+        $data['price'] = $this->m_vdiscount->prices($insert['renewal_id']);
 
         // send to model
         if($this->m_vdiscount->invoiceInsert($insert)){
@@ -135,15 +136,14 @@ class Vendor_discount extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to('prathwi@5ine.in');
-        // $this->email->to($vendor->email,$admin->email);
-        // if (!empty($data['manager'])) {
-        //     $this->email->cc($data['manager']->email);
-        // }
+        $this->email->to($vendor->email,$admin->email,$to);
+        if (!empty($data['manager'])) {
+            $this->email->cc($data['manager']->email);
+        }
         $msg = $this->load->view('email/discount_approve', $data, true);
         $this->email->subject('Vendor Package Invoice');
         $this->email->message($msg);
-        $this->email->attach($_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/admin-panel/'.$pdfFile);
+        $this->email->attach($pdfFile);
         if ($this->email->send()) {
             $this->session->set_flashdata('success', 'Successfully invoice sent to vendor');
            redirect('vendors-discount','refresh');
@@ -153,33 +153,6 @@ class Vendor_discount extends CI_Controller {
         }
         
     }
-
-
-
-
-    public function sendreject($id='')
-    {
-        $data['result'] = $this->m_vdiscount->getVendor($id);
-        $this->load->config('email');
-        $this->load->library('email');
-        $from = $this->config->item('smtp_user');
-        $msg = $this->load->view('email/discount_reject', $data, true); 
-        $this->email->set_newline("\r\n");
-        $this->email->from($from, 'ShaadiBaraati');$this->email->to('prathwi@5ine.in');
-        // $this->email->to($data['result']->email);
-        // if ($this->type != '2') {
-        //     $data['manager'] = $this->m_vdiscount->getManager($data['result']->manager);
-        //     $this->email->cc($data['manager']->email);
-        // }
-        $this->email->subject('Vendor Discount Request');
-        $this->email->message($msg);
-        if ($this->email->send()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 
     public function reject($id='')
     {
@@ -195,6 +168,38 @@ class Vendor_discount extends CI_Controller {
         }else{
            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
            redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
+        }
+    }
+
+    public function sendreject($id='')
+    {
+        $data['result'] = $this->m_vdiscount->getVendor($id);
+
+        $added = $this->db->select('vendor_id,added_by')->where('id', $id)->get('renew_package')->row();
+        $admin = $this->db->select('manager,email')->where('id', $added->added_by)->get('admin')->row();
+        $vendor = $this->db->select('email')->where('id', $added->vendor_id)->get('vendor')->row();
+        if (!empty($admin->manager)) {
+            $data['manager'] = $this->m_vdiscount->getManager($admin->manager);
+        }
+        
+        $this->load->config('email');
+        $this->load->library('email');
+        $to = $this->config->item('vr_to');
+        $cc = $this->config->item('vr_cc');
+        $from = $this->config->item('smtp_user');
+        $msg = $this->load->view('email/discount_reject', $data, true); 
+        $this->email->set_newline("\r\n");
+        $this->email->from($from, 'ShaadiBaraati');
+        $this->email->to($data['result']->email,$to);
+        if (!empty($data['manager'])) {
+            $this->email->cc($data['manager']->email);
+        }
+        $this->email->subject('Vendor Discount Request');
+        $this->email->message($msg);
+        if ($this->email->send()) {
+            return true;
+        } else {
+            return false;
         }
     }
 

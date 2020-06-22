@@ -87,7 +87,7 @@
       <table>
         <thead>
           <tr >
-              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo $_SERVER["DOCUMENT_ROOT"] ?>/shaadibaraati/assets/img/logo.png" alt=""></th>
+              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo $_SERVER["DOCUMENT_ROOT"] ?>/assets/img/logo.png" alt=""></th>
           </tr>
         </thead>        
       </table>
@@ -153,28 +153,22 @@
             <th>Package</th>
             <th>Package Cost</th>
             <th>Discount</th>
-            <th>CGST @9%</th>
-            <th>SGST @9%</th>
-            <th>IGST @18%</th>
+            <th>GST @18%</th>
             <th>Total (Rs.)</th>
           </tr>
           <tr>
             <td><?php echo (!empty($result['package']))?$result['package']:''; ?></td>
             <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
-            <td><?php echo (!empty($result['discount']))?$result['discount']:''; ?></td>
-            <td><?php echo (!empty($result['cgst']))?$result['cgst']:''; ?></td>
-            <td><?php echo (!empty($result['sgst']))?$result['sgst']:''; ?></td>
-            <td><?php echo (!empty($result['igst']))?$result['igst']:''; ?></td>
-            <td><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
+            <td><?php echo (!empty($price->discount))?$price->discount:''; ?></td>
+            <td><?php echo (!empty($price->gst))?$price->gst:''; ?></td>
+            <td><?php echo (!empty($price->total))?$price->total:''; ?></td>
           </tr>
           <tr>
             <th>Total</th>
             <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
-            <td><?php echo (!empty($result['discount']))?$result['discount']:''; ?></td>
-            <td><?php echo (!empty($result['cgst']))?$result['cgst']:''; ?></td>
-            <td><?php echo (!empty($result['sgst']))?$result['sgst']:''; ?></td>
-            <td><?php echo (!empty($result['igst']))?$result['igst']:''; ?></td>
-            <td><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
+            <td><?php echo (!empty($price->discount))?$price->discount:''; ?></td>
+            <td><?php echo (!empty($price->gst))?$price->gst:''; ?></td>
+            <td><?php echo (!empty($price->total))?$price->total:''; ?></td>
           </tr>
         </tbody>
       </table>
@@ -182,7 +176,7 @@
 
       
 
-      <table class="two-table">
+      <table class="two-table borders">
         <tbody>
           <tr>
             <td>
@@ -192,10 +186,6 @@
                   <td><?php echo (!empty($result['w_amount']))?$result['w_amount']:''; ?>  </td>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th class="col-befor">Client Address</th>
-                    <td><?php echo (!empty($result['c_address']))?$result['c_address']:''; ?></td>
-                  </tr>
                   <tr>
                     <th class="col-befor">GSTIN Number   </th>
                     <td><?php echo (!empty($result['c_gstin']))?$result['c_gstin']:'NA'; ?></td>
@@ -221,16 +211,8 @@
                     <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
                   </tr>
                   <tr>
-                    <td>ADD CGST</td>
+                    <td>ADD GST</td>
                     <td><?php echo (!empty($result['cgst']))?$result['cgst']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <td>ADD SGST</td>
-                    <td><?php echo (!empty($result['sgst']))?$result['sgst']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <td>ADD IGST</td>
-                    <td><?php echo (!empty($result['igst']))?$result['igst']:''; ?></td>
                   </tr>
                   <tr>
                     <td>Tax Amount GST</td>

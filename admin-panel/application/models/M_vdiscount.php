@@ -42,13 +42,14 @@ class M_vdiscount extends CI_Model {
 
 	public function getVendor($id='')
 	{
-		$query = $this->db->where('ve.id', $id)
+		$vendor = $this->db->where('rp.id', $id)->get('renew_package rp')->row();
+		return $this->db->where('ve.id', $vendor->vendor_id)
 				->select('ve.name,ve.email,pc.title as package,ad.email as adminMail,ad.manager')
 				->from('vendor ve')
 				->join('admin ad','ad.id = ve.added_by','left')
 				->join('package pc','pc.id = ve.package','left')
 				->get()->row();
-				return $query;
+		return $query;
 	}
 
 	public function getManager($id='')
@@ -65,6 +66,13 @@ class M_vdiscount extends CI_Model {
 		}else{
 			return $this->db->insert('package_invoice', $insert);
 		}
+	}
+
+	public function prices($id='')
+	{
+		return $this->db->select('discount,dr_bank,rec_no,pay_type,gst,total,namopunt')
+		->where('id', $id)
+		->get('renew_package')->row();
 	}
 	
 

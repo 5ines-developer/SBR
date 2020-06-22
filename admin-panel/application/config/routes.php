@@ -218,6 +218,19 @@ $route['content/add']			            =	'c_content/add';
 $route['content/edit/(:any)']			    =	'c_content/edit/$1';
 $route['content/delete/(:any)']			    =	'c_content/delete/$1';
 
+//footer category
+$route['footer-category/manage']			        =	'f_category/index';
+$route['footer-category/add']			            =	'f_category/add';
+$route['footer-category/edit/(:any)/(:any)']		=	'f_category/edit/$1/$2';
+$route['footer-category/delete/(:any)']			    =	'f_category/delete/$1';
+
+//home banner
+$route['home-banner/manage']			=	'h_banner/index'; //manage category
+$route['home-banner/add']			    =	'h_banner/add'; //add category
+$route['home-banner/insert']			=	'h_banner/insert'; 
+$route['home-banner/edit/(:any)']		=	'h_banner/edit/$1'; 
+$route['home-banner/view/(:any)']		=	'h_banner/view/$1';
+$route['home-banner/update/(:any)']		=	'h_banner/update/$1'; 
 
 
 

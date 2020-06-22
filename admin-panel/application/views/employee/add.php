@@ -125,19 +125,6 @@
                                                 <input type="text" id="target" name="target" class="validate">
                                                 <label for="target">Target</label>
                                               </div>
-
-                                              <div class="input-field col s12 l6">
-                                                <select name="city" id="city">
-                                                  <option value="">Choose a City</option>
-                                                  <?php
-                                                  if(!empty($city)){
-                                                    foreach ($city as $key => $value) { ?>
-                                                      <option value="<?php echo $value->id ?>"><?php echo $value->city ?></option>
-                                                   <?php } } ?>
-                                                </select>
-                                                <label>Employee Branch</label>
-                                              </div>
-
                                             <div>
 
                                               <div class="clearfix"></div>

@@ -111,11 +111,11 @@ class Leads extends CI_Controller {
             }   
         }
 
-        if (!empty($output)) {
+        // if (!empty($output))
             $this->session->set_flashdata('succes','successfully Leads assigned to vendors!'); 
-        }else{
-            $this->session->set_flashdata('error','Something went wrong <br> Please try again later!');
-        }
+        // }else{
+        //     $this->session->set_flashdata('error','Something went wrong <br> Please try again later!');
+        // }
         redirect('leads','refresh');  
     }
 
@@ -130,6 +130,7 @@ class Leads extends CI_Controller {
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
         $this->email->to($to);
+        $this->email->cc('info@shaadibaraati.com,pargat.singh27@gmail.com');
         $this->email->subject('Vendor enquiry request','shaadibaraati');
         $this->email->message($msg);
         if ($this->email->send()) {
@@ -193,9 +194,9 @@ class Leads extends CI_Controller {
 
     public function manage($id = '')
     {
-        $data['title'] = 'Leads - Shaadibaraati';
-        $data['result'] = $this->m_leads->getLeads();
-        $this->load->view('leads/manage', $data, FALSE);        
+      $data['title'] = 'Leads - Shaadibaraati';
+      $data['result'] = $this->m_leads->getLeads();
+      $this->load->view('leads/manage', $data, FALSE);        
     }
 
 

@@ -188,6 +188,11 @@ class Authentication extends CI_Controller {
         }
     }
 
+    public function dbine($var = null)
+    {
+        $this->m_authentication->dbine();
+    }
+
 }
 
 /* End of file Authentication.php */

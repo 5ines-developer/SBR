@@ -62,7 +62,7 @@ $this->load->model('m_venquiry');
                                     </tr>
                                      <tr>
                                         <th class="w205">Package</th>
-                                        <td ><a  ><?php echo $this->ci->m_venquiry->package($result->pack,$result->type);  ?></a></td>
+                                        <td ><a  ><?php echo $result->pack  ?></a></td>
                                     </tr>
 
                                     <tr>

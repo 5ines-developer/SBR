@@ -45,7 +45,7 @@
                                                         <option value="<?php echo $cit->id ?>"> <?php echo $cit->city ?></option> <?php  } } ?> </select>
                                                         <label for="city">City</label>
                                                     </div>
-                                                        <div class="input-field col s12 l6">
+                                                    <div class="input-field col s12 l6">
                                                         <select id="category" name="category"  required="">
                                                             <option value="">Choose a category</option>
                                                             <?php if (!empty($categories)) {
@@ -57,14 +57,65 @@
                                                 </div>
                                                 <div class="row m0">
                                                     <div class="col s12 l12">
-                                                        <label for="description" class="mb10">Content<span
-                                                        class="red-text">*</span></label>
+                                                        <label for="description" class="mb10">Content</label>
                                                         <textarea name="description" id="description" class="form-control col-md-7 col-xs-12"></textarea>
                                                         <p><span class="error"><?php echo form_error('about'); ?></span></p>
                                                     </div>
                                                 </div>
-                                                
                                                 <input type="hidden" name="uniq" value="<?php echo random_string('alnum',10) ?>">
+                                                <br>
+                                                <div class="row m0">
+                                                    <p class="pl10">SEO Data</p>
+                                                    <div class="input-field col s12 l6">
+                                                        <input type="text" required="" id="title" name="title" class="validate">
+                                                        <label for="title">Title <span class="red-text">*</span></label>
+                                                    </div>
+                                                </div>
+                                                <div class="row m0">
+                                                    <div class="input-field col s12 l12">
+                                                        <textarea id="can_url" name="can_url"
+                                                        class="materialize-textarea"></textarea>
+                                                        <label for="can_url">Canonical Url</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row m0">
+                                                    <div class="input-field col s12 l12">
+                                                        <textarea id="keywords" required="" name="keywords"
+                                                        class="materialize-textarea"></textarea>
+                                                        <label for="keywords">Keywords<span class="red-text">*</span></label>
+                                                    </div>
+                                                </div>
+                                                <div class="row m0">
+                                                    <div class="input-field col s12">
+                                                        <textarea id="meta_description" required="" name="meta_description"
+                                                        class="materialize-textarea"></textarea>
+                                                        <label for="meta_description">Meta Description</label>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row m0">
+                                                    <p class="pl10">Related Search</p>
+                                                    <div class="input-field col s12 l6">
+                                                        <input type="text" id="key1" name="key1" class="validate">
+                                                        <label for="key1">Keyword 1 </label>
+                                                    </div>
+                                                    <div class="input-field col s12 l6">
+                                                        <input type="text" id="key2" name="key2" class="validate">
+                                                        <label for="key2">Keyword 2 </label>
+                                                    </div>
+                                                    <div class="input-field col s12 l6">
+                                                        <input type="text" id="key3" name="key3" class="validate">
+                                                        <label for="key3">Keyword 3 </label>
+                                                    </div>
+                                                    <div class="input-field col s12 l6">
+                                                        <input type="text" id="key4" name="key4" class="validate">
+                                                        <label for="key4">Keyword 4 </label>
+                                                    </div>
+                                                    <div class="input-field col s12 l6">
+                                                        <input type="text" id="key5" name="key5" class="validate">
+                                                        <label for="key5">Keyword 5 </label>
+                                                    </div>
+                                                </div>
                                                 
                                                 <div class="col s12 mtb20">
                                                     <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
@@ -92,26 +143,24 @@
             <?php $this->load->view('include/message.php'); ?>
             
             </script>
-        <script>
-        $(document).ready(function() {
+            <script>
+            $(document).ready(function() {
             $('select').formSelect();
             $("select").css({display: "inline", height: 0, padding: 0, width: 0});
-
             $("#city-form").validate({
-                rules: {
-                    city: { required: true, },
-                    category:{ required: true, }
-                    },
-                messages: {
-                        city: "Please select a city",
-                        category: "Please select a category",
-                    }
+            rules: {
+            city: { required: true, },
+            category:{ required: true, }
+            },
+            messages: {
+            city: "Please select a city",
+            category: "Please select a category",
+            }
             });
-        });
-        </script>
-        <script>
-        CKEDITOR.replace('description');
-    </script>
-    </body>
-</html>
-
+            });
+            </script>
+            <script>
+            CKEDITOR.replace('description');
+            </script>
+        </body>
+    </html>

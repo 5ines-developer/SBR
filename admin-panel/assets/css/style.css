@@ -1892,6 +1892,16 @@ div.tagsinput div {
 .dash-list a:hover .list-dashboard.green-active p {
     color: #000 !important;
 }
+.pl10{
+    padding-left: 10px;
+}
+
+.marqueeplus {
+    background-color: #1b5e20;
+    padding: 4px 7px;
+    color: #fff;
+    cursor: pointer;
+}
 
 
 /* 29-02-2020 */

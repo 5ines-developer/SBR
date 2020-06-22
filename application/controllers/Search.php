@@ -83,7 +83,7 @@ class Search extends CI_Controller {
 
 			$data['banner'] = $this->m_search->bannerGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$data['content'] = $this->m_search->conentGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
-		
+			$data['foot'] = $this->m_search->footGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$this->load->view('vendors/result', $data, FALSE);
 		}
 	}

@@ -56,9 +56,9 @@ class M_leads extends CI_Model {
     public function getLeads($var = null)
     {
         $this->db->select('ve.*,v.name,v.id,ve.id as ids');
-        $this->db->order_by('ve.date', 'desc');        
         $this->db->from('vendor_enquiry ve');
         $this->db->join('vendor v', 'v.id = ve.vendor_id', 'left');        
+        $this->db->order_by('ve.id', 'desc');        
         return $this->db->get()->result();    
     }
 

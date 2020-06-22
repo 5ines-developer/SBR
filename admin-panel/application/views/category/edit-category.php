@@ -25,15 +25,7 @@
     .marqaddnext {
 
 background-color: #f4f4f4;
-border-radius: 4px;
-margin-bottom: 10px !important;
-}
-.marqaddnext1 {
-    background-color: 
-#f4f4f4;
-border-radius: 4px;
-    margin-bottom: 10px !important;
-}
+border-radius: 4px;}
     </style>
 </head>
 
@@ -91,8 +83,7 @@ border-radius: 4px;
                                                     <input type="file" name="image" accept=".png, .jpg, .jpeg, .gif">
                                                 </div>
                                                 <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text"
-                                                       >
+                                                    <input class="file-path validate" type="text">
                                                 </div>
                                                 <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file
                                                             (eg: .svg) <br> <span class="bold">Max file size:</span>
@@ -121,8 +112,7 @@ border-radius: 4px;
                                                     <input type="file" name="icon" accept=".svg, .SVG">
                                                 </div>
                                                 <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text"
-                                                       >
+                                                    <input class="file-path validate" type="text">
                                                 </div>
                                                 <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file
                                                             (eg: .svg ) <br> <span class="bold">Max file size:</span>
@@ -155,8 +145,7 @@ border-radius: 4px;
                                                         accept=".png, .jpg, .jpeg, .gif">
                                                 </div>
                                                 <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text"
-                                                       >
+                                                    <input class="file-path validate" type="text">
                                                 </div>
                                                 <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file
                                                             (eg: .jpg,png,jpeg ) <br> <span class="bold">Max file
@@ -200,8 +189,8 @@ border-radius: 4px;
                                                 <img class="city-edit-image datacls" style="border: 1px dotted;"
                                                     src="<?php echo $this->config->item('web_url').$value->image; ?>"
                                                     alt="image" width="250px" id="targetimg<?php echo $key ?>">
-                                                <div class="btn btn-small btn-edit black-text grey lighten-3"
-                                                    style="background-color: #151111c2 !important; box-shadow: none; position: absolute;padding: 0px 8px 0px 10px; top: 1px; right: 80px;">
+                                                <div class="btn btn-small black-text grey lighten-3"
+                                                    style="background-color: #151111c2 !important; box-shadow: none; position: absolute;padding: 0px 8px 0px 10px; bottom: 10px; right: 80px;">
                                                     <i class="far fa-edit left m0 "
                                                         style="font-size: 16px;color: #fff;"></i>
                                                     <!-- <span class="">Add Image</span> -->

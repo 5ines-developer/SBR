@@ -187,7 +187,7 @@ $route['my-website/(:any)']   				= 'einvite/myWebsite/$1';
 $route['e-invite/preview']   				= 'einvite/preview';
 
 // landing page
-$route['landing-page']   				= 'home/landing_page';
+$route['landing-page']   					= 'home/landing_page';
 
 
 
