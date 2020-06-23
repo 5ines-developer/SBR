@@ -41,8 +41,8 @@ class F_category extends CI_Controller {
 		if (!empty($type[0])) {
 			$this->m_footercategory->deleteType($city,$category);
 			for ($i=0; $i <count($type) ; $i++) { 
-				$types = array('city' => $city,'category' => $category,'type' => $type[$i],'seggregation' => 1);
 				if (!empty($type[$i])) {
+				$types = array('city' => $city,'category' => $category,'type' => $type[$i],'seggregation' => 1);
 	            	$this->m_footercategory->insertType($types);
 	            }
 	        }
@@ -51,8 +51,8 @@ class F_category extends CI_Controller {
 		if (!empty($vcategory[0])) {
 			$this->m_footercategory->deleteVcategory($city,$category);
 			for ($i=0; $i <count($vcategory) ; $i++) { 
-				$vcategorys = array('city' => $city,'category' => $category,'vendor_category' => $vcategory[$i],'seggregation' => 2);
 				if (!empty($vcategory[$i])) {
+					$vcategorys = array('city' => $city,'category' => $category,'vendor_category' => $vcategory[$i],'seggregation' => 2);
 	            	$this->m_footercategory->insertType($vcategorys);
 	            }
 	        }
@@ -61,8 +61,8 @@ class F_category extends CI_Controller {
 		if (!empty($popular[0])) {
 			$this->m_footercategory->deletePopular($city,$category);
 			for ($i=0; $i <count($vcategory) ; $i++) { 
-				$populars = array('city' => $city,'category' => $category,'popular' => $popular[$i],'seggregation' => 3);
 				if (!empty($popular[$i])) {
+					$populars = array('city' => $city,'category' => $category,'popular' => $popular[$i],'seggregation' => 3);
 	            	$this->m_footercategory->insertType($populars);
 				}
 	        }

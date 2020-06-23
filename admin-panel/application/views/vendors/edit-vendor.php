@@ -322,6 +322,27 @@ $this->load->model('m_vendors');
                                             <?php }  ?>
 
                                         </div>
+
+                                        <div class="row m0">
+                                            <div class="input-field col s12 l6">
+                                                <p>
+                                                  <label>
+                                                    <input type="checkbox" name="v_verify" <?php if(!empty($result->verified)){ echo "checked"; }?> value="1"      class="filled-in"/>
+                                                    <span>Verified Vendor</span>
+                                                  </label>
+                                                </p>
+                                            </div>
+                                            <div class="input-field col s12 l6">
+                                                <p>
+                                                  <label>
+                                                    <input type="checkbox" name="v_chat" <?php if(!empty($result->v_chat)){ echo "checked"; }   ?> value="1" class="filled-in" />
+                                                    <span>Video Chat available</span>
+                                                  </label>
+                                                </p>
+                                            </div>
+                                        </div>
+
+
                                         <div class="row m0">
                                             <div class="input-field col s12 ">
                                                 <textarea id="textarea1" name="address" class="materialize-textarea"><?php echo (!empty($result->address)?$result->address:'') ?></textarea>

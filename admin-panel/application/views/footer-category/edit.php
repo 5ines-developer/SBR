@@ -76,7 +76,7 @@
                                                 <?php if (!empty($result)) {
                                                     foreach ($result as $key => $value) {
                                                        if ($value->seggregation == 1) { ?>
-                                                        <div class="row sides">
+                                                        <div class="row m0 sides">
                                                         <div class="input-field col s12 l4">
                                                               <input type="text" id="quest" name="type[]" class="validate" required value="<?php echo (!empty($value->type))?$value->type:''; ?>">
                                                               <label for="quest">Type </label>
@@ -112,7 +112,7 @@
                                                 <?php if (!empty($result)) {
                                                     foreach ($result as $key => $value) {
                                                        if ($value->seggregation == 2) { ?>
-                                                        <div class="row sides">
+                                                        <div class="row m0 sides">
                                                         <div class="input-field col s12 l4">
                                                           <input type="text" id="vcategory" name="vcategory[]" class="validate" required value="<?php echo (!empty($value->vendor_category))?$value->vendor_category:''; ?>">
                                                           <label for="vcategory">Category </label>
@@ -141,12 +141,12 @@
 
                                                 <div class="bosc">
                                                 <div class="row m0">
-                                                    <p class="bold  black-text col  mb10 h6">Vendor Categories</p>
+                                                    <p class="bold  black-text col  mb10 h6">Popular</p>
                                                 </div>
                                                 <?php if (!empty($result)) {
                                                     foreach ($result as $key => $value) {
                                                        if ($value->seggregation == 3) { ?>
-                                                        <div class="row sides">
+                                                        <div class="row m0 sides">
                                                     <div class="input-field col s12 l4">
                                                       <input type="text" id="popular" name="popular[]" class="validate" required value="<?php echo (!empty($value->popular))?$value->popular:''; ?>">
                                                       <label for="popular">Popular </label>

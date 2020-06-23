@@ -22,6 +22,7 @@ class Home extends CI_Controller {
         $data['city']       = $this->m_home->getCity();
         $data['category']   = $this->m_home->getCategory();
         $data['real']       = $this->m_home->realWed();
+        $data['ban']       = $this->m_home->hom_banget();
         $this->m_home->insertVisitor($this->input->ip_address());
 		$this->load->view('site/index', $data, FALSE);
     }

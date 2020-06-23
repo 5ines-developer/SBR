@@ -40,7 +40,6 @@ class H_banner extends CI_Controller {
             $url    =   $this->input->post('curl');
 
             $files = $_FILES;
-	        $filesCount = count($_FILES['img']['name']);
 	        if (file_exists($_FILES['img']['tmp_name'])) {
 	            $config['upload_path'] = '../banner/';
 	            $config['allowed_types'] = 'jpg|png|jpeg';

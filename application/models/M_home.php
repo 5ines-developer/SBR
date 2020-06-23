@@ -165,8 +165,14 @@ class M_home extends CI_Model
         } else {
             return false;
         }
-
     }
+
+    public function hom_banget($value='')
+    {
+        return $this->db->get('h_banner')->result();
+    }
+
+
 }
 
 /* End of file ModelName.php */

@@ -58,31 +58,34 @@
                 <div class="row">
                     <div class="col s12">
                         <div class="wda-serviceitem">
-                            <div class="col s12 m6 l6">
-                                <div class="wdas-item-content ">
-                                    <p class="wdatitle">Assisted Wedz Planner</p>
-                                    <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact..</p>
-                                    <a href="https://rzp.io/l/stBAenC" class="btn-web waves-effect waves-red modal-trigger">Book Now</a>
+                            <div class="row m0">
+                                <div class="col s12 m6 l6">
+                                    <div class="wdas-item-content ">
+                                        <p class="wdatitle">Assisted Wedz Planner</p>
+                                        <p>Assisted Wedding Planner is a Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact..</p>
+                                        <a href="https://rzp.io/l/stBAenC" class="btn-web waves-effect waves-red modal-trigger">Book Now</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col s12 m6 l6 p0">
-                                <center>
-                                    <img class="img-responsive" src="<?php echo base_url()?>assets/img/wedz-assist1.jpg" alt="">
-                                </center>
+                                <div class="col s12 m6 l6 p0">
+                                        <img class="img-responsive" src="<?php echo base_url()?>assets/img/wedz-assist1.jpg" alt="">
+                                </div>
                             </div>
                         </div>
 
                         <div class="wda-serviceitem">
-                            <div class="col s12 m6 l6 p0">
-                                <center>
-                                    <img class="img-responsive" src="<?php echo base_url()?>assets/img/wedz-assist2.jpg" alt="">
-                                </center>
-                            </div>
-                            <div class="col s12 m6 l6">
-                                <div class="wdas-item-content ">
-                                    <p class="wdatitle">Premium Wedz Planner</p>
-                                    <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
-                                    <a href="https://rzp.io/l/5L0fPSy"  class="btn-web waves-effect waves-red modal-trigger">Book Now</a>
+
+                            <div class="row m0">
+                                <div class="col s12 m6 l6 p0">
+                                    <center>
+                                        <img class="img-responsive" src="<?php echo base_url()?>assets/img/wedz-assist2.jpg" alt="">
+                                    </center>
+                                </div>
+                                <div class="col s12 m6 l6">
+                                    <div class="wdas-item-content ">
+                                        <p class="wdatitle">Premium Wedz Planner</p>
+                                        <p>Guaranteed hassle-free wedding planning experience including wedding day coordination. Our expert takes care of research and scheduling for you and Makes visit to your place. Premium Wedding Planner is a wedding services brought to you by Shaadi Baraati at one-time nominal fee starting at Rs.9999/- that helps you to plan your wedding with a Trusted wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind.</p>
+                                        <a href="https://rzp.io/l/5L0fPSy"  class="btn-web waves-effect waves-red modal-trigger">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
 

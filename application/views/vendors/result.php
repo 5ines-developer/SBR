@@ -12,12 +12,10 @@ $this->load->model('m_vendors');
     $m_can = '';
 
     if (!empty($content)) {
-        foreach ($content as $key => $value) {
-                $m_titl     = (!empty($value->title))?$value->title:'';
-                $m_descp    = (!empty($value->meta_desc))?$value->meta_desc:'';
-                $m_key      = (!empty($value->keywords))?$value->keywords:'';
-                $m_can      = (!empty($value->canoncial))?$value->canoncial:''; 
-        }
+                $m_titl     = (!empty($content->title))?$content->title:'';
+                $m_descp    = (!empty($content->meta_desc))?$content->meta_desc:'';
+                $m_key      = (!empty($content->keywords))?$content->keywords:'';
+                $m_can      = (!empty($content->canoncial))?$content->canoncial:''; 
     }
     ?>
 
@@ -97,6 +95,8 @@ $this->load->model('m_vendors');
                 overflow: hidden;
             }
 
+
+
         }
         
         @media (max-width:991px) {
@@ -111,6 +111,7 @@ $this->load->model('m_vendors');
             .vend-head {
                 font-size: 15px !important;
             }
+
         }
         
         @media (max-width:600px) {
@@ -155,12 +156,12 @@ padding-left: 40px;
 }
 
 .rel-seo li a{
-    font-size: 20px;
-    color: #333232;
-    font-weight: 600;
-    padding: 30px 40px 0 40px;
-    overflow: hidden;
-    display: block;
+    font-size: 14px;
+color: #333232;
+font-weight: 600;
+padding: 30px 15px 0 15px;
+overflow: hidden;
+display: block;
 }
 .rel-heading{
     margin: 0;
@@ -172,8 +173,18 @@ padding-left: 40px;
     
 .rel-seo{
     background-color: #fff;
-    padding: 30px !important;
+    padding: 30px 0px !important;
 }
+.material-tooltip {
+    /* top: 1236.68px !important; */
+    background-color: #3498db;
+}
+
+
+#modal1 {
+    top: 20% !important;
+}
+
 
 
     </style>
@@ -661,8 +672,11 @@ if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segmen
                                                 <div class="row m0">
                                                     <div class="col s12 m12">
                                                         <p class="m0 r-crd-title tit">
-                                                            <?php echo (!empty($value->name))?$value->name:'' ?>
+                                                            <span class="res-tit"><?php echo (!empty($value->name))?$value->name:'' ?></span>
+
+                                                            <span ><?php echo (!empty($value->verified))?'<img class="tooltipped" data-position="bottom" data-tooltip="This vendors address & background has been verified" src="'.base_url('assets/img/verified.svg').'" alt="">':'' ?></span>
                                                         </p>
+                                                        
 
                                                     </div>
                                                     <div class="col s12 m5">
@@ -700,6 +714,32 @@ if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segmen
                                                     echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($value->price_for))?'&nbsp'.$value->price_for:' Per day'; ?>
                                                         </p>
                                                     </div>
+
+                                                    <?php 
+                                                    if (!empty($value->v_chat)) { ?>
+                                                        <div class="col s12 m12"> 
+                                                        <p class="m0 meet-avail">
+                                                            <a class="modal-trigger" href="#modal1">
+                                                                <i class="material-icons"> videocam </i>
+                                                                Available for Video Meetings
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                    <?php }else{ ?>
+                                                        <div class="col s12 m12"> 
+                                                        <p class="m0 meet-avail">
+                                                            <br>
+                                                        </p>
+                                                    </div>
+
+                                                     <?php } ?>
+
+
+
+                                                    
+
+                                                    
+
                                                     <div class="cdivider hide-on-small-only"></div>
                                                     <div class="col s12 m6 hide-on-small-only">
                                                         <p class=" r-crd-category">
@@ -717,6 +757,37 @@ if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segmen
                                     </div>
                                 </div>
                             </div>
+
+
+
+                             <div id="modal1" class="modal meeting-modal">
+                                <div class="modal-content">
+                                    <div class="meet-top">
+                                        <h4 class="avail-tit"><span class="material-icons"> voice_chat </span>   Available for Video Meetings</h4>
+                                        <p>You can have a video call with this Vendor & discuss your details in Safe Environment.</p>
+                                    </div>
+                                    <div class="meet-bottom">
+                                        <p><b>Available for video meetings on:</b></p>
+                                        <ul>
+                                            <li>Google Meet/Hangouts</li>
+                                            <li>WhatsApp Call</li>
+                                            <li>Google Duo</li>
+                                        </ul>
+                                        <p>You will receive all details once you request <b>'Quotation'</b> or <b>'Contact Details'</b> of this Vendor.</p>
+                                        <h6 class="center-align">Doubtful because of COVID-19? We are here to help you!</h6>
+                                        <p>WhatsApp/Call with your personal Wedding Planning Expert – Now @ +91 8431282823
+Tell us your doubts, requirements, budget and get best recommendations
+Get the best deal in your budget and plan!
+</p>
+                                        
+                                    </div>
+
+                                  
+                                </div>
+                               
+                              </div>
+
+
                             <?php   } } ?>
                         </div>
                         <div class="row m0">
@@ -736,16 +807,16 @@ if((strtolower($bans->city) == strtolower(str_replace("-"," ",$this->uri->segmen
 
 if (!empty($content->key1) || !empty($content->key2) || !empty($content->key3) || !empty($content->key4) || !empty($content->key5)) { ?>
     <section class="result-body rel-seo">
-        <div class="container">
+        <div class="container-2">
             <div class="row m0">
                 <div class="col l12 m12 s12">
                     <h2 class="rel-heading">Related Search</h2>
                     <ul>
-                        <li><a href=""><?php echo (!empty($content->key1))?$content->key1:''; ?></a></li>
-                        <li><a href=""><?php echo (!empty($content->key2))?$content->key2:''; ?></a></li>
-                        <li><a href=""><?php echo (!empty($content->key3))?$content->key3:''; ?></a></li>
-                        <li><a href=""><?php echo (!empty($content->key4))?$content->key4:''; ?></a></li>
-                        <li><a href=""><?php echo (!empty($content->key5))?$content->key5:''; ?></a></li>
+                        <li><a target="_blank" href=""><?php echo (!empty($content->key1))?$content->key1:''; ?></a></li>
+                        <li><a target="_blank" href=""><?php echo (!empty($content->key2))?$content->key2:''; ?></a></li>
+                        <li><a target="_blank" href=""><?php echo (!empty($content->key3))?$content->key3:''; ?></a></li>
+                        <li><a target="_blank" href=""><?php echo (!empty($content->key4))?$content->key4:''; ?></a></li>
+                        <li><a target="_blank" href=""><?php echo (!empty($content->key5))?$content->key5:''; ?></a></li>
                         
                     </ul>
                 </div>
@@ -766,6 +837,7 @@ if (!empty($content->description)) { ?>
 </section>
 <?php } ?>
 
+<?php if (!empty($foot)) { ?>
     <section class="sec-footer">
         <div class="container-fluide">
             <div class="row">
@@ -777,7 +849,7 @@ if (!empty($content->description)) { ?>
                             <?php if (!empty($foot)) {
                             foreach ($foot as $fot1 => $fot1s) {
                                 if ($fot1s->seggregation ==1) {?>
-                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo (!empty($fot1s->type))?$fot1s->type:'';  ?></a></li>
+                            <li><a class="hov-a" href=""><?php echo (!empty($fot1s->type))?$fot1s->type:'';  ?></a></li>
                            <?php }} } ?>
                         </ul>
                     </div>
@@ -785,12 +857,12 @@ if (!empty($content->description)) { ?>
 
                 <div class="col l4">
                     <div class="list-foot vl">
-                        <h6>Vendor Categories</h6>
+                        <h6>Vendor Categories in <?php echo (!empty($value->city))?$value->city:''; ?></h6>
                         <div class="line"></div>
                         <ul>
                             <?php if (!empty($foot)) {
                             foreach ($foot as $fotkey => $fotvalue) { if ($fotvalue->seggregation ==2) {?>
-                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo (!empty($fotvalue->vendor_category))?$fotvalue->vendor_category:'';  ?></a></li>
+                            <li><a target="_blank" class="hov-a" href="<?php echo base_url('vendors/').str_replace(" ","-",strtolower($value->city)).'/'.str_replace(" ","-",strtolower($fotvalue->vendor_category) ) ?>"><?php echo (!empty($fotvalue->vendor_category))?$fotvalue->vendor_category:'';  ?></a></li>
                            <?php }} } ?>
                         </ul>
                     </div>
@@ -804,7 +876,7 @@ if (!empty($content->description)) { ?>
                         <ul>
                             <?php if (!empty($foot)) {
                             foreach ($foot as $fotkey1 => $fotvalue1) { if ($fotvalue1->seggregation ==3) { ?>
-                            <li><a class="hov-a" href="<?php echo base_url('vendors/bangalore/').str_replace(" ","-",strtolower($value->category) ) ?>"><?php echo (!empty($fotvalue1->popular))?$fotvalue1->popular:'';  ?></a></li>
+                            <li><a class="hov-a" href=""><?php echo (!empty($fotvalue1->popular))?$fotvalue1->popular:'';  ?></a></li>
                            <?php } } } ?>
                         </ul>
                     </div>
@@ -813,6 +885,7 @@ if (!empty($content->description)) { ?>
             </div>
         </div>
     </section>
+<?php } ?>
 
 
         <?php $this->load->view('includes/footer'); ?>
@@ -949,6 +1022,8 @@ if (!empty($content->description)) { ?>
                 $("#search-form").attr('action', url);
                 $("#search-form").submit();
             });
+
+            $('.tooltipped').tooltip();
 
 
             $('html').click(function() {

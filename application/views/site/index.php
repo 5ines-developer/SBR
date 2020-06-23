@@ -256,6 +256,74 @@
         </div>                        
     </section>
 
+<?php if (!empty($ban) && (count($ban) ==4 || count($ban) ==2)) {
+    $img1='';
+    $img2='';
+    $img3='';
+    $img4='';
+    foreach ($ban as $bans => $bann) { 
+
+        if ($bann->position == 'l1') {
+            $img1 = (!empty($bann->img))?$bann->img:'';
+        }
+
+        if ($bann->position == 'r1') {
+            $img2 = (!empty($bann->img))?$bann->img:'';
+        }
+
+        if ($bann->position == 'l2') {
+            $img3 = (!empty($bann->img))?$bann->img:'';
+        }
+
+        if ($bann->position == 'r2') {
+            $img4 = (!empty($bann->img))?$bann->img:'';
+        }
+    }
+
+?>
+    <section class="sec h_ban bg-col">
+        <div class="container-fluide">
+            <div class="row">
+                <div class="col l12">
+                    <div class="vender-detail">
+                        <h4>Shaadi Baraati Inhouse Services</h4>
+                        <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row m0">
+                <div class="vender-list">
+                    <div class="row m0">
+                        <div class="col l6 s6 p10">
+                                <div class="vender-ei hoverable">
+                                    <img src="<?php echo base_url().$img1 ?>"
+                                        class="img-responsive icn-li" width="100%" alt="">
+                                </div>
+                        </div>
+                        <div class="col l6 s6 p10">
+                                <div class="vender-ei hoverable">
+                                    <img src="<?php echo base_url().$img2 ?>"
+                                        class="img-responsive icn-li" width="100%" alt="">
+                                </div>
+                        </div>
+                        <div class="col l6 s6 p10">
+                                <div class="vender-ei hoverable">
+                                    <img src="<?php echo base_url().$img3 ?>"
+                                        class="img-responsive icn-li" width="100%" alt="">
+                                </div>
+                        </div>
+                        <div class="col l6 s6 p10">
+                                <div class="vender-ei hoverable">
+                                    <img src="<?php echo base_url().$img4 ?>"
+                                        class="img-responsive icn-li" width="100%" alt="">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>
 
 
     <section class="sec ">

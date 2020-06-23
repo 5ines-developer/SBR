@@ -128,6 +128,8 @@
                                           <th id="c" class="h5-para-p2" width="120px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
                                           <th id="c" class="h5-para-p2" width="120px">Package</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Veried Vendor</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Video Chat</th>
                                           <th id="c" class="h5-para-p2" width="120px">Proposal</th>
                                           <th id="e" class="h5-para-p2" width="100px">Reg Date</th>
                                           <th id="f" class="h5-para-p2" width="100px">Status</th>
@@ -150,6 +152,8 @@
                                             <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
                                             <td ><?php echo (!empty($value->title))?$value->title:'Free Listing'  ?></td>
+                                            <td class="status"><?php echo (!empty($value->verified))?'<span class="white-text c-badge green">Verified</span>':'No'  ?></td>
+                                            <td class="status"><?php echo (!empty($value->v_chat ))?'<span class="white-text c-badge green">Available</span>':'Not Available'  ?></td>
 
                                             <td ><?php
                                             if (!empty($value->upgrad)) { ?>

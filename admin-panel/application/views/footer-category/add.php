@@ -94,7 +94,7 @@
                                                 </div><br>
 
                                                 <div class="row m0">
-                                                    <p class="bold  black-text col  mb10 h6">Vendor Categories</p>
+                                                    <p class="bold  black-text col  mb10 h6">Popular</p>
                                                 </div>
                                                 <div class="row m0 marqaddnext2" id="marqaddnext3">
                                                     <div class="input-field col s12 l4">

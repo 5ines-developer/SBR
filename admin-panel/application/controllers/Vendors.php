@@ -89,7 +89,6 @@ class Vendors extends CI_Controller {
                 $this->load->library('upload');
                 $this->load->library('image_lib');
                 $files = $_FILES;
-                $filesCount = count($_FILES['vimage']['name']);
                 if (file_exists($_FILES['vimage']['tmp_name'])) {
                     $config['upload_path'] = '../vendors-profile/';
                     $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
@@ -154,6 +153,8 @@ class Vendors extends CI_Controller {
                             'package'       =>  $this->input->post('package'),
                             'address'       =>  $this->input->post('address'),
                             'discount'      =>  $this->input->post('discount'),
+                            'verified'      =>  $this->input->post('v_verify'),
+                            'v_chat'        =>  $this->input->post('v_chat'),
                         );
 
                         if(!empty($this->input->post('package')))

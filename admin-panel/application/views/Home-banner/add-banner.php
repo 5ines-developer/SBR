@@ -30,6 +30,19 @@
     left: 4px;
     top: 4px;
 }
+
+.btn-floating i {
+    width: inherit;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.btn-floating i:hover {
+    background: green;
+}
         
         </style>
     </head>
@@ -64,7 +77,10 @@
                                         <div class="container-banner l1">
                                             <div class="card">
                                                 <div class="card-image valign-wrapper">
-                                                    <a href="<?php echo base_url('h_banner/delete/?id=').$id; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php if (!empty($img1)) { ?>
+                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('h_banner/delete/?id=').$id; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php } ?>
+                                                    
                                                     <img src="<?php echo $this->config->item('web_url').'/'.$img1 ?>" class="activator">
                                                     <span class="card-title">L1</span>
                                                     <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger aa" href="#modal1" data-id="l1"><i class="fas fa-pencil-alt"></i></a>
@@ -87,7 +103,10 @@
                                         <div class="container-banner l2">
                                             <div class="card">
                                                 <div class="card-image valign-wrapper">
-                                                    <a href="<?php echo base_url('h_banner/delete/?id=').$id2; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php if (!empty($img2)) { ?>
+                                                    <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('h_banner/delete/?id=').$id2; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php } ?>
+
                                                     <img src="<?php echo $this->config->item('web_url').'/'.$img2 ?>" class="activator">
                                                     <span class="card-title">L2</span>
                                                     <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger aa" href="#modal1" data-id="l2"><i class="fas fa-pencil-alt"></i></a>
@@ -110,7 +129,10 @@
                                         <div class="container-banner r1">
                                             <div class="card">
                                                 <div class="card-image valign-wrapper">
-                                                    <a href="<?php echo base_url('h_banner/delete/?id=').$id3; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php if (!empty($img3)) { ?>
+                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('h_banner/delete/?id=').$id3; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php } ?>
+
                                                     <img src="<?php echo $this->config->item('web_url').'/'.$img3 ?>" class="activator">
                                                     <span class="card-title">R1</span>
                                                     <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger aa" href="#modal1" data-id="r1"><i class="fas fa-pencil-alt"></i></a>
@@ -129,7 +151,9 @@
                                         <div class="container-banner r2">
                                             <div class="card">
                                                 <div class="card-image valign-wrapper">
-                                                    <a href="<?php echo base_url('h_banner/delete/?id=').$id4; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php if (!empty($img4)) { ?>
+                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('h_banner/delete/?id=').$id4; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                    <?php } ?>
 
                                                     <img src="<?php echo $this->config->item('web_url').'/'.$img4 ?>" class="activator">s
                                                     <span class="card-title">R2</span>

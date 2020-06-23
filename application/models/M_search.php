@@ -12,7 +12,7 @@ class M_search extends CI_Model {
         if (!empty($city) && $city !='All') { $this->db->where('cty.city', $city); }
         if (!empty($category) && $category !='all category') {$this->db->where('cat.category', $category); }
         $this->db->where('v.is_active', '1');
-        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,');
+        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,,v.verified,v.v_chat ,');
         // $this->db->select('v.package');
         $this->db->protect_identifiers = FALSE;
             $this->db->order_by('v.discount_status', 'desc');
@@ -194,7 +194,7 @@ class M_search extends CI_Model {
 
            $this->db->where('v.city', $cityId);
         }
-        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,'); 
+        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,v.verified,v.v_chat ,'); 
         $this->db->where('v.category', $id);
         $this->db->protect_identifiers = FALSE;
             $this->db->order_by('v.discount_status', 'desc');

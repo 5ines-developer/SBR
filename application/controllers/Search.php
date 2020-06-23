@@ -32,9 +32,11 @@ class Search extends CI_Controller {
 		$data['title']      = 'Vendors - ShaadiBaraati';
 		if($city == 'all' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult();
+			
 			$this->load->view('vendors/category', $data, FALSE);
 		} else if($city != 'all' && $city !='' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult($city);
+			
 			$this->load->view('vendors/category', $data, FALSE);
 		}
 		else{
@@ -42,6 +44,7 @@ class Search extends CI_Controller {
 			
 			$rows = $this->m_search->rowsCount(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$data['vendors']    = $this->m_search->getSearch(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category),$per_page,$page);
+			
 			
 
 			$config['base_url'] = base_url().'vendors/'.$city.'/'.$category;

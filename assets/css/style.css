@@ -1492,7 +1492,7 @@ result-head .dropdown-content li>a,
 
 .result-body .card .card-content {
     padding: 12px;
-    height: 98px;
+    height: 135px;
 }
 
 .r-crd-title {
@@ -2226,8 +2226,8 @@ r-crd-category {
         line-height: 22px
     }
     .result-body .card .card-content {
-        padding: 5px;
-        height: 85px;
+        padding: 3px;
+        height: 100px;
     }
     .result-items .card-image {
         height: 90px;
@@ -4461,7 +4461,18 @@ nav a.sidenav-trigger i {
     }
 }
 
+@media(min-width:993px) {
+    .res-tit{
+    width: 80%; display: inline-block;
+}
+
+}
+
 @media(max-width:1200px) and (min-width:993px) {
+    .res-tit{
+    width: 80%; display: inline-block;
+}
+
     .brand-logo {
         display: none !important
     }
@@ -6389,6 +6400,57 @@ a.c19-body {
     letter-spacing: 2px;
     text-shadow: 0 0 7px #0000008a;
     margin: 1.0933333333rem 0 .656rem 0;
+}
+
+@media screen and (min-width: 1400px) {
+.wdas-item-content {
+    background: #d0021b;
+    padding: 46px;
+    margin: 0 -11px;
+    min-height: 420px;
+    max-height: 420px;
+    overflow: hidden;
+}
+}
+
+.h_ban .vender-ei {
+    position: relative;
+    line-height: 0;
+    max-height: 250px;
+    min-height: 250px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+
+.meet-avail a{
+    color: orange;
+    font-weight: 600;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: inline-flex;
+}
+.meet-avail i{
+    padding-right: 10px;
+}
+.avail-tit{
+    display: inline-flex;
+}
+.avail-tit span{
+padding-right: 15px;
+}
+.meeting-modal .meet-top{
+    border-bottom: 1px solid #80808085;
+}
+.meeting-modal ul{
+    padding-left: 20px;
+}
+.meeting-modal ul li{
+    list-style-type: disc;
+}
+
+.meeting-modal .modal-content {
+    padding: 35px;
 }
 
 
