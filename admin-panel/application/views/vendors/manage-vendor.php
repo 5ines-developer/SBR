@@ -125,6 +125,7 @@
                                           <th id="a" class="h5-para-p2" width="130px">Name</th>
                                           <th id="b" class="h5-para-p2" width="100px">Email ID</th>
                                           <th id="c" class="h5-para-p2" width="120px">Phone</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Contact Person</th>
                                           <th id="c" class="h5-para-p2" width="120px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
                                           <th id="c" class="h5-para-p2" width="120px">Package</th>
@@ -149,6 +150,7 @@
                                             <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
                                             <td ><a href="mailto:<?php echo (!empty($value->email))?$value->email:'---'  ?>" ><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                             <td ><a href="tel:<?php echo (!empty($value->phone))?$value->phone:'---'  ?>" ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
+                                            <td ><?php echo (!empty($value->c_person))?$value->c_person:'---'  ?></td>
                                             <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
                                             <td ><?php echo (!empty($value->title))?$value->title:'Free Listing'  ?></td>

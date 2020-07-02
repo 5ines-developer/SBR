@@ -886,6 +886,8 @@ h6 {
 }
 
 @media(min-width:600px) and (max-width:767px) {
+
+
     /* 28-08 */
     .p10 {
         padding: 10px !important;
@@ -1010,7 +1012,16 @@ h6 {
     }
 }
 
+/* tablet */
+
 @media(min-width:768px) and (max-width:991px) {
+
+    .real-thumb .img-box {
+    max-height: 150px !important;
+    min-height: 150px !important;
+    overflow: hidden;
+}
+
     /*search-box*/
     .kill {
         position: relative !important;
@@ -2226,8 +2237,8 @@ r-crd-category {
         line-height: 22px
     }
     .result-body .card .card-content {
-        padding: 3px;
-        height: 100px;
+        padding: 10px;
+        height: 150px;
     }
     .result-items .card-image {
         height: 90px;
@@ -2238,6 +2249,7 @@ r-crd-category {
     .ss-main .ss-single-selected {
         margin-bottom: 7px;
     }
+
 }
 
 .steps-det img {
@@ -2497,6 +2509,23 @@ a.viewmore:hover {
 }
 
 @media(max-width:767px) {
+
+    .result-items-cols{
+        padding: 0 30px !important;
+    }
+    .meeting-modal{
+        width: 97%;
+    }
+    .meeting-modal .modal-content {
+        padding: 20px  !important;
+    }
+
+    .h_ban .vender-ei {
+    max-height: 180px !important;
+    min-height: 180px !important;
+}
+
+
     /*search-box*/
     .kill {
         position: relative;
@@ -3703,6 +3732,11 @@ nav a.sidenav-trigger i {
     .detail-bs-info {
         margin: auto auto auto auto;
     }
+
+    .h_ban .vender-ei {
+        max-height: 180px !important;
+        min-height: 180px !important;
+    }
 }
 
 
@@ -4463,7 +4497,7 @@ nav a.sidenav-trigger i {
 
 @media(min-width:993px) {
     .res-tit{
-    width: 80%; display: inline-block;
+    display: inline-block;
 }
 
 }
@@ -5458,7 +5492,7 @@ html {
 
 .wed-detail p {
     margin: 0px;
-    padding: 10px 0px;
+    padding: 10px 5px;
 }
 
 .wed-detail a {
@@ -5949,10 +5983,16 @@ html {
 }
 
 
-/* .vendor-sel input {
-    background: #ecebea !important;
+/* mobile device
 } */
 @media(max-width:767px) {
+
+    .real-thumb .img-box {
+    max-height: 150px !important;
+    min-height: 150px !important;
+    overflow: hidden;
+}
+
     /* 3-03-2020 */
     .pricing-palden {
         margin: 0;
@@ -6416,15 +6456,15 @@ a.c19-body {
 .h_ban .vender-ei {
     position: relative;
     line-height: 0;
-    max-height: 250px;
-    min-height: 250px;
+    max-height: 310px;
+    min-height: 310px;
     overflow: hidden;
     border-radius: 5px;
 }
 
 
 .meet-avail a{
-    color: orange;
+    color: #d0021b;
     font-weight: 600;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -6454,4 +6494,76 @@ padding-right: 15px;
 }
 
 
+.conts h1{
+font-size: 22px;
+font-weight: 600;
+}
+.conts h2{
+font-size: 18px;
+font-weight: 600;
+}
+.conts h3{
+font-size: 16px;
+font-weight: 600;
+}
+.conts  h4{
+font-size: 15px;
+font-weight: 600;
+}
+.conts h5{
+font-size: 14px;
+font-weight: 600;
+}
+.conts h6{
+font-size: 13px;
+font-weight: 600;
+}
+.conts ul:not(.browser-default) > li {
+list-style-type: disc;
+}
+.conts ul{
+    
+padding-left: 40px;
+}
+.ver-icn {
+    position: relative;
+    top: 3px;
+}
+
+.rel-seo li{
+        float: left;
+        }
+        .rel-seo ul{
+        margin: 0px;
+        }
+        .rel-seo li a{
+        font-size: 14px;
+        color: #333232;
+        font-weight: 600;
+        padding: 30px 15px 0 15px;
+        overflow: hidden;
+        display: block;
+        }
+        .rel-heading{
+        margin: 0;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 600;
+        color: #202020;
+        }
+        
+        .rel-seo{
+        background-color: #fff;
+        padding: 30px 0px !important;
+        }
+.real-thumb .img-box {
+    max-height: 240px;
+    min-height: 240px;
+    overflow: hidden;
+}
+
+.real-thumb .card-wed:hover {
+    box-shadow: 0px 5px 20px 0px #d5d5d5;
+    transition: 1s;
+}
 

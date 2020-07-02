@@ -62,7 +62,7 @@ class Vendor_discount extends CI_Controller {
 
     public function invoice($data='')
     {
-        $data['invoice'] = $this->m_vdiscount->getDiscount();
+        $data['invoice'] = $this->m_vdiscount->getDiscount($data['rpid']);
         $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
         $this->load->view('vendors/invoice_send',$data);
     }
@@ -84,10 +84,10 @@ class Vendor_discount extends CI_Controller {
             'igst'          => $this->input->post('igst'), 
             'total'         => $this->input->post('total'), 
             'w_amount'      => $this->input->post('w_amount'), 
-            'b_name'        => $this->input->post('b_name'), 
-            'b_account'     => $this->input->post('b_account'), 
-            'ifsc'          => $this->input->post('ifsc'), 
-            'b_address'     => $this->input->post('b_address'), 
+            'pay_mode'      => $this->input->post('pay_mode'), 
+            'inst_no'       => $this->input->post('inst_no'), 
+            'pay_date'      => $this->input->post('pay_date'), 
+            'amount'        => $this->input->post('amount'), 
             'uniq_id'       => $this->input->post('uniq_id'), 
             'renewal_id'    => $this->input->post('rpid') 
         );
@@ -98,18 +98,19 @@ class Vendor_discount extends CI_Controller {
         if($this->m_vdiscount->invoiceInsert($insert)){
 
             $data['result'] = $insert;
-            $this->load->library('pdf');
-            // Get output html
-            $html = $this->output->get_output($this->load->view('vendors/invoice',$data));
-            $pdf = $this->pdf->loadHtml($html);
-            $this->pdf->setPaper('A3', 'Potrait');
-            $this->pdf->render();
-            // Output the generated PDF (1 = download and 0 = preview)
-            // $this->pdf->stream("welcome.pdf", array("Attachment"=>1));
-            $fileName = random_string('alnum',10);
-            file_put_contents('pdf/invoice-'.$fileName.'.pdf',$this->pdf->output());
-            $pdfFile = 'pdf/invoice-'.$fileName.'.pdf';
-            $this->send_invoice($insert,$pdfFile);
+
+            require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+            $mpdf = new \Mpdf\Mpdf([
+                'mode' => 'utf-8',
+                'format' => [190, 236],
+                'orientation' => 'L'
+            ]);
+            $html = $this->load->view('vendors/invoice', $data, TRUE);
+            $mpdf->WriteHTML($html);
+            $content = $mpdf->Output('', 'S');
+            $filename = "vendor-propsal".random_string('alnum',10).".pdf";
+            $pdfFile = 'pdf/invoice-'.$filename.'.pdf';
+            $this->send_invoice($insert,$content,$pdfFile);
             // if you are redirect to list of the data add controller name here
         }else{
            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
@@ -119,7 +120,7 @@ class Vendor_discount extends CI_Controller {
 
 
 
-    public function send_invoice($data='',$pdfFile='')
+    public function send_invoice($data='',$content,$pdfFile='')
     {
 
         $data['result'] = $data;
@@ -136,14 +137,15 @@ class Vendor_discount extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to($vendor->email,$admin->email,$to);
-        if (!empty($data['manager'])) {
-            $this->email->cc($data['manager']->email);
-        }
+        $this->email->to('prathwi@5ine.in');
+        // $this->email->to($vendor->email,$admin->email,$to);
+        // if (!empty($data['manager'])) {
+        //     $this->email->cc($data['manager']->email);
+        // }
         $msg = $this->load->view('email/discount_approve', $data, true);
         $this->email->subject('Vendor Package Invoice');
         $this->email->message($msg);
-        $this->email->attach($pdfFile);
+        $this->email->attach($content, 'attachment', $pdfFile, 'application/pdf');
         if ($this->email->send()) {
             $this->session->set_flashdata('success', 'Successfully invoice sent to vendor');
            redirect('vendors-discount','refresh');

@@ -37,6 +37,7 @@ class F_category extends CI_Controller {
 		$type 		= $this->input->post('type');
 		$vcategory 	= $this->input->post('vcategory');
 		$popular 	= $this->input->post('popular');
+		$link 		= $this->input->post('link');
 
 		if (!empty($type[0])) {
 			$this->m_footercategory->deleteType($city,$category);
@@ -58,11 +59,11 @@ class F_category extends CI_Controller {
 	        }
 		}	
 
-		if (!empty($popular[0])) {
+		if (!empty($popular[0]) && !empty($link[0])) {
 			$this->m_footercategory->deletePopular($city,$category);
 			for ($i=0; $i <count($vcategory) ; $i++) { 
-				if (!empty($popular[$i])) {
-					$populars = array('city' => $city,'category' => $category,'popular' => $popular[$i],'seggregation' => 3);
+				if (!empty($popular[$i]) && !empty($link[$i])) {
+					$populars = array('city' => $city,'category' => $category,'popular' => $popular[$i],'link' => $link[$i],'seggregation' => 3);
 	            	$this->m_footercategory->insertType($populars);
 				}
 	        }

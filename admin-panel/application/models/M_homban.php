@@ -28,6 +28,12 @@ class M_homban extends CI_Model {
     	return $this->db->delete('h_banner');
     }
 
+    public function getlink($position='')
+    {
+        $this->db->where('position', $position);
+        return $this->db->get('h_banner')->row();
+    }
+
 
 
 }

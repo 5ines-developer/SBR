@@ -140,6 +140,13 @@
                                                   </label>
                                                 </p>
                                             </div>
+
+                                             <div class="input-field col s12 l6">
+                                                <input type="text" id="c_person" name="c_person" class="validate"
+                                                value="<?php echo (!empty($result->c_person)?$result->c_person:'') ?>">
+                                                <label for="c_person">Contact Person</label>
+                                            </div>
+
                                             <div class="input-field col s12 ">
                                                 <textarea id="textarea1" name="address" class="materialize-textarea"></textarea>
                                                 <label for="textarea1">Address</label>

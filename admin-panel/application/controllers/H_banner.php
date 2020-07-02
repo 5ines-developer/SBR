@@ -38,8 +38,20 @@ class H_banner extends CI_Controller {
         	$position = $this->input->post('postion');
             $title  =   $this->input->post('ctitle');
             $url    =   $this->input->post('curl');
+            $link    =   $this->input->post('link');
+
+            $data = array(
+                    'position' => $position,
+                    'link'      => $link
+                );
 
             $files = $_FILES;
+
+            
+
+            if (!empty($_FILES['img']['tmp_name'][0])) {
+            
+
 	        if (file_exists($_FILES['img']['tmp_name'])) {
 	            $config['upload_path'] = '../banner/';
 	            $config['allowed_types'] = 'jpg|png|jpeg';
@@ -64,12 +76,13 @@ class H_banner extends CI_Controller {
 	                $this->image_lib->resize();
 	                $file_name = $upload_data['file_name'];
 	                $imgpath = 'banner/'.$file_name;
+                    $data['img'] = $imgpath;
 	            }
 	        }
-                $data = array(
-                    'img'      => $imgpath,
-                    'position' => $position
-                );
+        }
+
+
+                
             
         if($this->m_homban->updateBanner($data)){
             $this->session->set_flashdata('success', 'Banner update successfully');
@@ -90,6 +103,13 @@ class H_banner extends CI_Controller {
             $this->session->set_flashdata('error', 'Some error occured, Please try agin later');
             redirect('home-banner/add');
         }
+    }
+
+    public function singleData($value='')
+    {
+        $position = $this->input->post('position');
+        $result = $this->m_homban->getlink($position);
+        echo json_encode($result);
     }
 
 

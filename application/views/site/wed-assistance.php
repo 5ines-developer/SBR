@@ -23,12 +23,12 @@
     ?>
     <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="<?php echo $m_descp ?>" />
     <link rel="canonical" href="<?php echo $m_can ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
@@ -224,6 +224,19 @@
                 </div>
             </div>
         </section>
+
+        <?php    
+        if (!empty($m_description)) { ?>
+        <section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
+            <div class="container-2">
+                <div class="row m0">
+                    <div class="col l11 m12 s12">
+                        <?php echo (!empty($m_description))?$m_description:''; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
   
         <?php $this->load->view('includes/footer'); ?>
     </div>

@@ -45,7 +45,7 @@ $this->load->model('m_account');
                                                 <div class="row m0">
                                                     <div class="col s12 m6 l7">
                                                         <div class="list-item-head">
-                                                            <?php $category = $this->ci->m_account->getCategory($value->category);  ?>
+                                                            <?php $category = $this->ci->m_account->getCategory($value->category); $cits =$this->ci->m_account->getCity($value->city);  ?>
                                                             <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="truncate"><?php echo $value->name ?></a>
                                                         </div>
                                                         <div class="span-div truncate">
@@ -56,7 +56,7 @@ $this->load->model('m_account');
                                                         
                                                     </div>
                                                     <div class="col s6 m4 l3">
-                                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="btn-small l50 btn-flat waves-effect waves-light">Vendor Detail</a>
+                                                        <a href="<?php echo base_url(str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($cits)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="btn-small l50 btn-flat waves-effect waves-light">Vendor Detail</a>
                                                     </div>
                                                     <div class="col s6 m2 l2">
                                                             <span class=" badge green"><i class=" material-icons ">star</i> <?php $review = $this->ci->m_account->getReview($value->id); 

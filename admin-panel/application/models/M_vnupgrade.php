@@ -140,10 +140,9 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.lname,rp.in_name,rp.gstno,rp.laddress,rp.in_email,rp.in_mobile,rp.landline,rp.total,rp.namopunt,rp.or_id,rp.pan_no,am.admin_type,am.id as empid, am.name as empname,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.pay_date,rp.gst,rp.discount,rp.dr_bank,rp.cat_banner,rp.city_banner,rp.ld_email,rp.ld_email,city.city as incity,rp.state,rp.pay_type,rp.pay_mode,rp.rec_no,rp.dr_bank,rp.pdc,rp.employee,rp.manager,rp.status')
+		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.pdc_mode,rp.pdc_instrmnt,rp.pdc_pay_date,rp.pdc_pay_date,rp.pdc_amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
-		->join('city city', 'city.id = rp.in_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
 		->join('category cat', 'cat.id = rp.v_category', 'left')
 		->join('admin am', 'am.id = rp.added_by', 'left')

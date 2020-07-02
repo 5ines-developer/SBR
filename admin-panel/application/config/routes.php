@@ -123,7 +123,12 @@ $route['enquiries/view/(:any)']	    =	'enquiries/view/$1'; //add vendor
 $route['enquiries/delete/(:any)']	=	'enquiries/delete/$1'; //add vendor
 $route['free-quote']			    =	'enquiries/freequote'; //add vendor
 $route['free-quote/view/(:any)']	=	'enquiries/quoteview/$1'; //add vendor
+$route['free-quote/delete/(:any)']	=	'enquiries/quotedelete/$1'; //add vendor
+
+
+
 $route['newsletter-subcribers']	    =	'enquiries/newsletter'; //add vendor
+$route['newsletter/delete/(:any)']	=	'enquiries/newsdelete/$1'; //add vendor
 
 $route['testimonial']	            =	'enquiries/testimonial'; 
 $route['testimonial/(:any)']	    =	'enquiries/testimonial/$1'; 
@@ -143,6 +148,9 @@ $route['vendor-enquiry']			    =	'vendorenquiry/index';
 $route['vendor-enquiry/view/(:any)']	=	'vendorenquiry/detail/$1'; 
 $route['vendor-package']			    =	'vendorenquiry/packageGet'; 
 $route['vendor-package/view/(:any)']    =	'vendorenquiry/viewPackage/$1';
+
+
+
 //employee
 $route['employees']			        =	'Adminusers/index'; 
 $route['employees/add']			    =	'Adminusers/add'; 
@@ -167,6 +175,8 @@ $route['banner-package/delete/(:any)']		=	'Banner_pacakge/delete/$1';
 //leads management
 $route['leads/add']			        		=	'Leads/index';
 $route['leads']			            		=	'Leads/manage';
+$route['leads/delete/(:any)']				=	'Leads/delete/$1'; 
+
 // vendors renewel - upgrade to paid
 $route['vendors/my-vendors']			    =	'vendors_upgrade/index';
 $route['vendors/upgrade/(:any)']			=	'vendors_upgrade/upgrade/$1';
@@ -231,6 +241,9 @@ $route['home-banner/insert']			=	'h_banner/insert';
 $route['home-banner/edit/(:any)']		=	'h_banner/edit/$1'; 
 $route['home-banner/view/(:any)']		=	'h_banner/view/$1';
 $route['home-banner/update/(:any)']		=	'h_banner/update/$1'; 
+
+$route['employee-target/delete/(:any)/(:any)']		=	'Adminusers/tardelete/$1/$2'; 
+
 
 
 

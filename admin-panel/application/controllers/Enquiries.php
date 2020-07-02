@@ -47,6 +47,16 @@ class Enquiries extends CI_Controller {
         }
     }
 
+    public function delete($id='')
+    {
+        if($this->m_enquiry->deleteEnquiry($id)){
+            $this->session->set_flashdata('success', 'Enquiry deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went wrong please try again later');
+        }
+        redirect('enquiries');
+    }
+
     public function freequote($id = null)
     {
         $acces = array();
@@ -77,6 +87,18 @@ class Enquiries extends CI_Controller {
         }
     }
 
+    
+    public function quotedelete($id='')
+    {
+        if($this->m_enquiry->quotedelete($id)){
+            $this->session->set_flashdata('success', 'Free Quote request deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went wrong please try again later');
+        }
+        redirect('free-quote');
+    }
+
+
     public function newsletter($id = null)
     {
         $acces = array();
@@ -90,6 +112,16 @@ class Enquiries extends CI_Controller {
     		$data['result']  = $this->m_enquiry->newsletter();
     		$this->load->view('enquiry/newsletter', $data, FALSE);
         }
+    }
+
+    public function newsdelete($id='')
+    {
+        if($this->m_enquiry->newsdelete($id)){
+            $this->session->set_flashdata('success', 'Newsletter subscriber deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went wrong please try again later');
+        }
+        redirect('newsletter-subcribers');
     }
 
     public function testimonial($id = '')

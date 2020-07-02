@@ -70,7 +70,6 @@ class M_account extends CI_Model {
         //get enquired
     public function enquireVendor($shduser='')
     {
-
         $this->db->where('ve.user_email', $shduser);
         $this->db->from('vendor_enquiry ve');
         $this->db->join('vendor v', 'v.uniq = ve.vendor_id', 'left');

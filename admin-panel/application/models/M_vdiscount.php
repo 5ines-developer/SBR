@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_vdiscount extends CI_Model {
 
 
-	public function getDiscount($value='')
+	public function getDiscount($rpid='')
 	{
 		 if ($this->session->userdata('sha_type') == '2' ) {
             $addedby = $this->db->select('id')->where('manager',$this->session->userdata('sha_id'))->get('admin')->result();
@@ -21,7 +21,11 @@ class M_vdiscount extends CI_Model {
         	$this->db->where('rp.added_by', $this->session->userdata('sha_id'));
         }
 
-        return $this->db->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.gstno,rp.laddress,p.price,rp.discount,rp.gst,rp.total,rp.total,rp.dr_bank,rp.gst,rp.seen,rp.live,rp.approved,rp.status')
+        if (!empty($rpid)) {
+        	$this->db->where('rp.id', $rpid);
+        }
+        
+        return $this->db->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.pdc_mode,rp.pdc_instrmnt,rp.pdc_pay_date,rp.pdc_pay_date,rp.pdc_amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.seen,rp.live,rp.approved')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -70,7 +74,7 @@ class M_vdiscount extends CI_Model {
 
 	public function prices($id='')
 	{
-		return $this->db->select('discount,dr_bank,rec_no,pay_type,gst,total,namopunt')
+		return $this->db->select('discount,gst_amount,t_amnt,nt_amnt')
 		->where('id', $id)
 		->get('renew_package')->row();
 	}

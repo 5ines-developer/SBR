@@ -51,8 +51,8 @@ class Vendors extends CI_Controller {
      * insert new Vendors into db
      * url : vendors/insert
     **/
-	public function insert_vendors($value='')
-	{
+	   public function insert_vendors($value='')
+    {
         $vid        = $this->input->post('vid');
         $email      = $this->input->post('email');
         $phone      = $this->input->post('phone');
@@ -70,6 +70,8 @@ class Vendors extends CI_Controller {
             }else{
                 redirect('vendors/add');
             }
+        }else{
+            $vemail ='';
         }
 
         $this->db->where('phone', $phone); if (!empty($vid)) { $this->db->where('id !=', $vid); } $vphone = $this->db->get('vendor')->row('phone');
@@ -82,6 +84,8 @@ class Vendors extends CI_Controller {
             }else{
                 redirect('vendors/add');
             }
+        }else{
+            $vphone ='';
         }
 
         /*******vendor profile image*********/
@@ -92,7 +96,7 @@ class Vendors extends CI_Controller {
                 if (file_exists($_FILES['vimage']['tmp_name'])) {
                     $config['upload_path'] = '../vendors-profile/';
                     $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
-                    $config['max_size'] = '2048';
+                    $config['max_size'] = '550';
                     $config['max_width'] = 0;
                     $config['encrypt_name'] = true;
                     $this->load->library('upload');
@@ -155,6 +159,7 @@ class Vendors extends CI_Controller {
                             'discount'      =>  $this->input->post('discount'),
                             'verified'      =>  $this->input->post('v_verify'),
                             'v_chat'        =>  $this->input->post('v_chat'),
+                            'c_person'        =>  $this->input->post('c_person'),
                         );
 
                         if(!empty($this->input->post('package')))
@@ -196,6 +201,7 @@ class Vendors extends CI_Controller {
                         }
         } 
     }
+
 
 
 
@@ -366,6 +372,8 @@ class Vendors extends CI_Controller {
         $id = $this->input->post('id');
         $filesCount = count($_FILES['images']['name']);
 
+        
+
         if ($filesCount > 30) {
             $this->session->set_flashdata('error', 'Maximum you can add 30 files!');
             redirect('vendors/edit/'.$id);
@@ -385,7 +393,7 @@ class Vendors extends CI_Controller {
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_width']     = 0;
             $config['encrypt_name']  = TRUE;
-            $config['max_size'] = '2048';
+            $config['max_size'] = '550';
             
             $this->load->library('upload');
             $this->upload->initialize($config);
@@ -633,7 +641,7 @@ class Vendors extends CI_Controller {
                     $config['upload_path']      = '../offer-image/';
                     $config['allowed_types']    = 'jpg|png|jpeg|gif';
                     $config['max_width']        = 0;
-                    $config['max_size']         = '2048';
+                    $config['max_size'] = '550';
                     $config['encrypt_name']     = true;
                     $this->load->library('upload');
                     $this->upload->initialize($config);

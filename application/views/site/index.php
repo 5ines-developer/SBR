@@ -22,10 +22,10 @@
     ?>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
     <meta name="description" content="<?php echo $m_descp ?>" />
     <link rel="canonical" href="<?php echo $m_can ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
-    <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
     <meta name="p:domain_verify" content="14689d3a8168f4758e45146daa554c8b"/>
     <title><?php echo $m_titl ?> | Shaadi Baraati</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
@@ -265,18 +265,23 @@
 
         if ($bann->position == 'l1') {
             $img1 = (!empty($bann->img))?$bann->img:'';
+            $link1 = (!empty($bann->link))?'href="'.$bann->link.'"':'';
         }
 
         if ($bann->position == 'r1') {
             $img2 = (!empty($bann->img))?$bann->img:'';
+            $link2 = (!empty($bann->link))?'href="'.$bann->link.'"':'';
         }
 
         if ($bann->position == 'l2') {
             $img3 = (!empty($bann->img))?$bann->img:'';
+            $link3 = (!empty($bann->link))?'href="'.$bann->link.'"':'';
+
         }
 
         if ($bann->position == 'r2') {
             $img4 = (!empty($bann->img))?$bann->img:'';
+            $link4 = (!empty($bann->link))?'href="'.$bann->link.'"':'';
         }
     }
 
@@ -284,7 +289,7 @@
     <section class="sec h_ban bg-col">
         <div class="container-fluide">
             <div class="row">
-                <div class="col l12">
+                <div class="col s12 l12">
                     <div class="vender-detail">
                         <h4>Shaadi Baraati Inhouse Services</h4>
                         <img src="<?php echo base_url() ?>assets/img/saprator.png" class="img-responsive" alt="">
@@ -294,30 +299,46 @@
             <div class="row m0">
                 <div class="vender-list">
                     <div class="row m0">
-                        <div class="col l6 s6 p10">
-                                <div class="vender-ei hoverable">
-                                    <img src="<?php echo base_url().$img1 ?>"
-                                        class="img-responsive icn-li" width="100%" alt="">
-                                </div>
-                        </div>
-                        <div class="col l6 s6 p10">
+                        <?php if (!empty($img1)) { ?>
+                            <div class="col l6 s12 m6 p10">
+                                <a <?php echo $link1; ?> target="_blank">
+                                    <div class="vender-ei hoverable">
+                                        <img src="<?php echo base_url().$img1 ?>"
+                                            class="img-responsive icn-li" width="100%" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        <?php } ?>
+                        <?php if (!empty($img2)) { ?>
+                        <div class="col l6 s12 m6 p10">
+                            <a <?php echo $link2; ?> target="_blank">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url().$img2 ?>"
                                         class="img-responsive icn-li" width="100%" alt="">
                                 </div>
+                            </a>
                         </div>
-                        <div class="col l6 s6 p10">
+                        <?php } ?>
+                        <?php if (!empty($img3)) { ?>
+                        <div class="col l6 s12 m6 p10">
+                            <a <?php echo $link3; ?> target="_blank">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url().$img3 ?>"
                                         class="img-responsive icn-li" width="100%" alt="">
                                 </div>
+                            </a>
                         </div>
-                        <div class="col l6 s6 p10">
+                        <?php } ?>
+                        <?php if (!empty($img4)) { ?>
+                        <div class="col l6 s12 m6 p10">
+                            <a <?php echo $link4; ?> target="_blank">
                                 <div class="vender-ei hoverable">
                                     <img src="<?php echo base_url().$img4 ?>"
                                         class="img-responsive icn-li" width="100%" alt="">
                                 </div>
+                            </a>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -463,8 +484,6 @@
                     <div class=" testimonial-wedd">
 
                             <div class="testi-coup">
-                               
-                                   
                                     
                                         <center><img src="<?php echo base_url() ?>assets/img/review/Ravi-S-rathore.jpg"
                                                 class="img-responsive tsimg" alt=""></center>
@@ -474,12 +493,8 @@
                                             was available on my wedding to ensure the quality services"</p>
                                         <center> <img src="<?php echo base_url() ?>assets/img/testi-line.jpg" alt=""
                                                 class="img-responsive"> </center>
-                                    
-                                
                             </div>
-
                             <div class="testi-coup">
-                                
                                         <center><img src="<?php echo base_url() ?>assets/img/review/Raj-Nandi-Testimonial.jpg"
                                                 class="img-responsive tsimg" alt=""></center>
                                         <h6 class="black-text">Mr & Mrs. Nandi</h6>
@@ -491,7 +506,6 @@
 
 
                             <div class="testi-coup">
-                                
                                         <center><img src="<?php echo base_url() ?>assets/img/review/Bharadwaj.jpg"
                                                 class="img-responsive tsimg" alt="Bharadwaj"></center>
                                         <h6 class="black-text">Mr & Mrs Bhardwaj</h6>
@@ -530,7 +544,7 @@
                     <a :href="item.link" class="">
                         <div class="blog-detail hoverable">
                             <div class="blog-img-box">
-                                <img v-if="item.better_featured_image != null" :src="item.better_featured_image.media_details.sizes.medium.source_url" alt=""
+                                <img v-if="item.better_featured_image != null" :src="item.better_featured_image.source_url" alt=""
                                 class="img-responsive blog-img">
                             </div>
                             
@@ -749,7 +763,6 @@
             axios.get('<?php echo base_url() ?>blog/wp-json/wp/v2/posts?per_page=3&orderby=date&order=desc')
                 .then(response => {
                     this.datas = response.data; 
-                    console.log(this.datas);
                 })
             },
         }
@@ -789,7 +802,7 @@
             } else {
                 var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat.replace(" ", "-", );
             }
-            var url = finalUrl.replace(" ", "-", );
+            var url = finalUrl.replace(/\s+/g, '-');
 
             $("#search-form").attr('action', url);
         });

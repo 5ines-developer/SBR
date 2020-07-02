@@ -45,6 +45,13 @@ $this->load->model('m_vendors');
         .preloader {
             display: none;
         }
+        .material-tooltip {
+/* top: 1236.68px !important; */
+background-color: #3498db;
+}
+#modal1 {
+        top: 20% !important;
+        }
     </style>
 </head>
 
@@ -399,10 +406,10 @@ $this->load->model('m_vendors');
                                     }
                                     $lable_class = strtolower(str_replace(' ', '-', $pack)); 
                             ?>
-                            <div class="col s6 m4 l3">
+                            <div class="col s12 m6 l3">
                                 <div class="result-items hoverable">
                                     <div class="card z-depth-0">
-                                        <a href="<?php echo base_url('detail/'.str_replace(" ","- ",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.urlencode(str_replace(" ","- ",strtolower($vendr->name))).'/'.$vendr->uniq)?>" target="_blank">
+                                        <a href="<?php echo base_url(str_replace(" ","-",strtolower(!empty($value->category)?$value->category:'all-category')).'/'.str_replace(" ","-",strtolower(!empty($vendr->city)?$vendr->city:'all')).'/'.str_replace(" ","-",strtolower($vendr->name)).'/'.$vendr->uniq)?>" target="_blank">
                                             <div class="card-image">
                                                 <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                                                 <img src="<?php echo (!empty($vendr->profile_file))? base_url().$vendr->profile_file:'' ?>">
@@ -411,7 +418,8 @@ $this->load->model('m_vendors');
                                                 <div class="row m0">
                                                     <div class="col s12 m12">
                                                         <p class="m0 r-crd-title tit">
-                                                            <?php echo (!empty($vendr->name))?$vendr->name:'' ?>
+                                                            <span class="res-tit"><?php echo (!empty($vendr->name))?character_limiter($vendr->name, 30):''; ?></span>
+                                                        <span class="ver-icn"><?php echo (!empty($vendr->verified))?'&nbsp;<img class="tooltipped" data-position="bottom" data-tooltip="Address & Background Verified By Shaadi Baraati" src="'.base_url('assets/img/verified.svg').'" alt="">':''; ?></span>
                                                         </p>
 
                                                     </div>
@@ -450,13 +458,32 @@ $this->load->model('m_vendors');
                                                     echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($vendr->price_for))?'&nbsp'.$vendr->price_for:' Per day'; ?>
                                                         </p>
                                                     </div>
-                                                    <div class="cdivider hide-on-small-only"></div>
-                                                    <div class="col s12 m6 hide-on-small-only">
+
+                                                <?php
+                                                if (!empty($vendr->v_chat)) { ?>
+                                                <div class="col s12 m12">
+                                                    <p class="m0 meet-avail">
+                                                        <a class="modal-trigger" href="#modal1">
+                                                            <i class="material-icons"> videocam </i>
+                                                            Available for Video Call
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                                <?php }else{ ?>
+                                                <div class="col s12 m12">
+                                                    <p class="m0 meet-avail">
+                                                        <br>
+                                                    </p>
+                                                </div>
+                                                <?php } ?>
+
+                                                    <div class="cdivider"></div>
+                                                    <div class="col s6 m6">
                                                         <p class=" r-crd-category">
                                                             <?php echo $value->category ?>
                                                         </p>
                                                     </div>
-                                                    <div class="col s12 m6 hide-on-small-only">
+                                                    <div class="col s6 m6">
                                                         <p class="m0 r-crd-ratings">
                                                             <?php echo $this->ci->m_search->countReview($vendr->id) ?> reviews <span class="c-badge green"><i
                                                                     class="material-icons">star</i> <?php echo $this->ci->m_search->avgrating($vendr->id) ?> </span></p>
@@ -467,6 +494,33 @@ $this->load->model('m_vendors');
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="modal1" class="modal meeting-modal">
+                                <div class="modal-content">
+                                    <div class="meet-top">
+                                        <h4 class="avail-tit"><span class="material-icons"> voice_chat </span>   Available for Video Call</h4>
+                                        <p>You can have a video call with this Vendor & discuss your details in Safe Environment.</p>
+                                    </div>
+                                    <div class="meet-bottom">
+                                        <p><b>Available for video call on:</b></p>
+                                        <ul>
+                                            <li>Google Meet/Hangouts</li>
+                                            <li>WhatsApp Call</li>
+                                            <li>Google Duo</li>
+                                        </ul>
+                                        <p>You will receive all details once you request <b>'Quotation'</b> or <b>'Contact Details'</b> of this Vendor.</p>
+                                        <h6 class="center-align">Doubtful because of COVID-19? We are here to help you!</h6>
+                                        <p>WhatsApp/Call with your personal Wedding Planning Expert – Now @ +91 8431282823
+                                            Tell us your doubts, requirements, budget and get best recommendations
+                                            Get the best deal in your budget and plan!
+                                        </p>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+
                             <?php } ?>
                         </div>
                         <?php } }?>
@@ -475,6 +529,86 @@ $this->load->model('m_vendors');
             </div>
         </section>
 
+        <?php } ?>
+
+
+
+        <?php
+        if (!empty($content->key1) || !empty($content->key2) || !empty($content->key3) || !empty($content->key4) || !empty($content->key5)) { ?>
+        <section class="result-body rel-seo">
+            <div class="container-2">
+                <div class="row m0">
+                    <div class="col l12 m12 s12">
+                        <h2 class="rel-heading">Related Search</h2>
+                        <ul>
+                            <li><a target="_blank" href=""><?php echo (!empty($content->key1))?$content->key1:''; ?></a></li>
+                            <li><a target="_blank" href=""><?php echo (!empty($content->key2))?$content->key2:''; ?></a></li>
+                            <li><a target="_blank" href=""><?php echo (!empty($content->key3))?$content->key3:''; ?></a></li>
+                            <li><a target="_blank" href=""><?php echo (!empty($content->key4))?$content->key4:''; ?></a></li>
+                            <li><a target="_blank" href=""><?php echo (!empty($content->key5))?$content->key5:''; ?></a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <?php } if (!empty($content->description)) { ?>
+        <section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
+            <div class="container-2">
+                <div class="row m0">
+                    <div class="col l11 m12 s12">
+                        <?php echo (!empty($content->description))?$content->description:''; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+
+        <?php if (!empty($foot)) { ?>
+        <section class="sec-footer">
+            <div class="container-fluide">
+                <div class="row">
+                    <div class="col l4">
+                        <div class="list-foot vl">
+                            <h6>By Vendor Type</h6>
+                            <div class="line"></div>
+                            <ul>
+                                <?php if (!empty($foot)) {
+                                foreach ($foot as $fot1 => $fot1s) {
+                                if ($fot1s->seggregation ==1) {?>
+                                <li><a target="_blank"  class="hov-a" href=""><?php echo (!empty($fot1s->type))?$fot1s->type:'';  ?></a></li>
+                                <?php }} } ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="list-foot vl">
+                            <h6>Vendor Categories in <?php echo (!empty($value->city))?$value->city:''; ?></h6>
+                            <div class="line"></div>
+                            <ul>
+                                <?php if (!empty($foot)) {
+                                foreach ($foot as $fotkey => $fotvalue) { if ($fotvalue->seggregation ==2) {?>
+                                <li><a target="_blank" class="hov-a" href="<?php echo base_url('vendors/all').'/'.str_replace(" ","-",strtolower($fotvalue->vendor_category) ) ?>"><?php echo (!empty($fotvalue->vendor_category))?$fotvalue->vendor_category:'';  ?></a></li>
+                                <?php }} } ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col l4">
+                        <div class="list-foot vl">
+                            <h6>Popular Vendors</h6>
+                            <div class="line"></div>
+                            <ul>
+                                <?php if (!empty($foot)) {
+                                foreach ($foot as $fotkey1 => $fotvalue1) { if ($fotvalue1->seggregation ==3) { ?>
+                                <li><a class="hov-a" target="_blank" href="<?php echo (!empty($fotvalue1->link))?$fotvalue1->link:''; ?>"><?php echo (!empty($fotvalue1->popular))?$fotvalue1->popular:'';  ?></a></li>
+                                <?php } } } ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <?php } ?>
 
 
@@ -591,6 +725,7 @@ $this->load->model('m_vendors');
     <script>
         // search in reasult page
         $(document).ready(function() {
+            $('.tooltipped').tooltip(); 
 
 
             $(document).on('change', '#sel-city,#sel-cato', function(e) {
@@ -606,7 +741,8 @@ $this->load->model('m_vendors');
                 } else {
                     var finalUrl = '<?php echo base_url()?>vendors/' + city.replace(" ", "-", ) + '/' + cat.replace(" ", "-", );
                 }
-                var url = finalUrl.replace(" ", "-", );
+
+                var url = finalUrl.replace(/\s+/g, '-');
 
 
 

@@ -156,6 +156,19 @@
                           <input type="text" id="target" name="target" class="validate" />
                           <label for="target">Target</label>
                         </div>
+
+                        <div class="input-field col s12 l6">
+                          <select name="city" id="city">
+                            <option value="">Choose a City</option>
+                            <?php
+                            if(!empty($city)){
+                              foreach ($city as $key => $value) { ?>
+                                <option value="<?php echo $value->id ?>" <?php if($value->id == $result->city){ echo "selected";} ?> ><?php echo $value->city ?></option>
+                             <?php } } ?>
+                            </select>
+                            <label>Employee Branch</label>
+                          </div>
+                          
                       </div>
                       
 
@@ -196,6 +209,7 @@
                               <th>Sl No.</th>
                               <th>Month</th>
                               <th>Target</th>                        
+                              <th>Action</th>                        
                             </tr>                              
                             </thead>
                               <tbody>
@@ -248,6 +262,9 @@
                                     <td><?php echo (!empty($value))?$key:''; ?></td>
                                     <td><?php echo $month  ?></td>
                                     <td><?php echo (!empty($value->target))?$value->target:''; ?></td>
+                                    <td class="action-btn  center-align">
+                                      <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('employee-target/delete/'.$value->id.'/'.$value->emp_id) ?> " class="red hoverable delete-btn"><i class="fas fa-trash  "></i></a>
+                                    </td>
                                   </tr>
                                    
                                 <?php } }else{ ?>

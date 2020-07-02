@@ -51,7 +51,7 @@
 
                                             <div class="row m0">
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="c_name" name="c_name" class="validate" required value="<?php echo (!empty($invoice[0]->name))?$invoice[0]->name:''; ?>">
+                                                  <input type="text" id="c_name" name="c_name" class="validate" required value="<?php echo (!empty($invoice[0]->invoice_name))?$invoice[0]->invoice_name:''; ?>">
                                                   <label for="c_name">Client name </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
@@ -68,7 +68,7 @@
                                                 </div>
                                                 
                                                 <div class="input-field col s12 l12">
-                                                  <textarea id="c_address" class="materialize-textarea" required name="c_address"><?php echo (!empty($invoice[0]->laddress))?$invoice[0]->laddress:''; ?></textarea>
+                                                  <textarea id="c_address" class="materialize-textarea" required name="c_address"><?php echo (!empty($invoice[0]->invoice_address))?$invoice[0]->invoice_address:''; ?></textarea>
                                                   <label for="c_address">Client Address</label>
                                                 </div>
 
@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="pa_cost" name="pa_cost" class="validate" required 
-                                                  value="<?php echo (!empty($invoice[0]->price))?$invoice[0]->price:''; ?>">
+                                                  value="<?php echo (!empty($invoice[0]->nt_amnt))?$invoice[0]->nt_amnt:''; ?>">
                                                   <label for="pa_cost">package Cost</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
@@ -88,16 +88,16 @@
                                                   <label for="discount">Discount</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="cgst" name="cgst" class="validate" required value="<?php echo (!empty($invoice[0]->gst))?$invoice[0]->gst:''; ?>">
-                                                  <label for="cgst">GST</label>
+                                                  <input type="text" id="cgst" name="cgst" class="validate" required value="<?php echo (!empty($invoice[0]->gst_amount))?$invoice[0]->gst_amount:''; ?>">
+                                                  <label for="cgst">GST 18%</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="total" name="total" class="validate" required 
-                                                  value="<?php echo (!empty($invoice[0]->total))?$invoice[0]->total:''; ?>">
+                                                  value="<?php echo (!empty($invoice[0]->t_amnt))?$invoice[0]->t_amnt:''; ?>">
                                                   <label for="total">Total (Rs.)</label>
                                                 </div>
                                                 <?php
-                                              $num = $invoice[0]->total;
+                                              $num = $invoice[0]->t_amnt;
                                               $num    = ( string ) ( ( int ) $num );
                                      
                                               if( ( int ) ( $num ) && ctype_digit( $num ) )
@@ -163,27 +163,31 @@
                                               ?>
 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="w_amount" name="w_amount" class="validate" required value="<?php echo (!empty($words))?$words:''; ?>">
+                                                  <input type="text" id="w_amount" name="w_amount" class="validate" required value="<?php echo (!empty($invoice[0]->am_words))?$invoice[0]->am_words:''; ?>">
                                                   <label for="w_amount">Total Amount in words</label>
                                                 </div>
 
+
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="b_name" name="b_name" class="validate" required value="<?php echo (!empty($invoice[0]->dr_bank))?$invoice[0]->dr_bank:''; ?>">
-                                                  <label for="b_name">Bank Name</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="b_account" name="b_account" class="validate" required value="<?php echo (!empty($invoice->b_account))?$invoice->b_account:''; ?>">
-                                                  <label for="b_account">Bank Account No.</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="ifsc" name="ifsc" class="validate" required value="<?php echo (!empty($invoice->ifsc))?$invoice->ifsc:''; ?>">
-                                                  <label for="ifsc">Bank IFSC Code</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <textarea id="b_address" class="materialize-textarea" name="b_address"><?php echo (!empty($invoice->b_address))?$invoice->b_address:''; ?></textarea>
-                                                  <label for="b_address">Bank Address</label>
+                                                  <input type="text" id="pay_mode" required name="pay_mode" class="validate" value="<?php echo (!empty($invoice[0]->pay_mode))?$invoice[0]->pay_mode:''; ?>">
+                                                  <label for="inst_no">Payment Mode <span class="red-text">*</span></label>
                                                 </div>
 
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="inst_no" required name="inst_no" class="validate" value="<?php echo (!empty($invoice[0]->inst_no))?$invoice[0]->inst_no:''; ?>">
+                                                  <label for="inst_no">Instrument No <span class="red-text">*</span></label>
+                                                </div>
+
+                                                
+                                                <div class="clearfix"></div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="pay_date" required name="pay_date" class="datepicker validate" value="<?php echo (!empty($invoice[0]->pay_date))?$invoice[0]->pay_date:''; ?>">
+                                                  <label for="pay_date">Payment Date <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="amount" required name="amount" class="validate" value="<?php echo (!empty($invoice[0]->amount))?$invoice[0]->amount:''; ?>">
+                                                  <label for="amount">Amount <span class="red-text">*</span></label>
+                                                </div>
                                             </div>
 
                                             <input type="hidden" name="uniq_id" value="<?php echo random_string('alnum',10) ?>">

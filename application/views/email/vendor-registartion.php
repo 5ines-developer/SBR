@@ -540,7 +540,7 @@
                         
                         <td class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;" valign="top">
                         
-                            <span style="font-size:18px"><a href="*|ARCHIVE|*" target="_blank">Vendor Registration</a></span>
+                            <span style="font-size:18px"><a target="_blank">Vendor Registration</a></span>
                         </td>
                     </tr>
                 </tbody></table>
@@ -608,7 +608,7 @@
                         <td class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;" valign="top">
                         
                             <br>
-<span style="font-size:22px">Dear Customer,</span><br>
+<span style="font-size:22px">Dear Vendor,</span><br>
 <br>
 Thank you for registering with Shaadi Baraati<br>
 <br>

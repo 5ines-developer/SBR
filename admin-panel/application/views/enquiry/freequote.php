@@ -92,6 +92,7 @@
                                               <!-- view user -->
                                                 <a href="<?php echo base_url('free-quote/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
                                               <!-- view user -->
+                                              <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('free-quote/delete/'.$value->id.'') ?> " class="red hoverable delete-btn"><i class="fas fa-trash  "></i></a>
                                             </td>
                                           
                                         </tr>
@@ -132,7 +133,8 @@
                   dom: 'Bfrtip',
                   buttons: [
                       'copy', 'csv', 'excel', 'pdf'
-                  ], 
+                  ],
+                  order: [[ 0, "asc" ]] 
               });
               $('select').formSelect();
           } );

@@ -4,7 +4,7 @@
                <div class="col s12 m12 l6 bfrb">
                
                     <div class="left-align">
-                        <h4>WedZ Assistance</h4>
+                        <h4>Wedz Assistance</h4>
                         <p>Assisted Wedding Planner is Assisted wedding services brought to you by Shaadi Baraati at One-time nominal fee starting at Rs.999/- that helps you plan your wedding with a unlimited qualified wedding vendors as every minute detail is considered carefully with your needs, taste & budget in mind and Dedicated Relationship manager is assigned for each and every queries.Your dedicated relationship expert remains your single point of contact.</p>
                     </div>
                      

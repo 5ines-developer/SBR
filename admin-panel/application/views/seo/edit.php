@@ -78,6 +78,15 @@
                                                     class="materialize-textarea"><?php echo (!empty($result->m_desc))?$result->m_desc:''; ?></textarea>
                                                 <label for="description">Meta Description</label>
                                             </div>
+
+                                            <div class="row m0">
+                                                <div class="col s12 l12">
+                                                    <label for="content" class="mb10">Content</label>
+                                                    <textarea name="content" id="content" class="form-control col-md-7 col-xs-12"><?php echo (!empty($result->description))?$result->description:''; ?></textarea>
+                                                </div>
+                                            </div>
+
+
                                             <div class="col s12 mtb20">
                                                   <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
                                                   <i class="fas fa-paper-plane right"></i>
@@ -106,7 +115,7 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
     <script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
     <script src="<?php echo base_url() ?>assets/js/tag.js"></script>
-    <script src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo base_url() ?>assets/ckeditor1/ckeditor.js"></script>
 
     <script>
     <?php $this->load->view('include/message.php'); ?>
@@ -115,6 +124,9 @@
             'defaultText': 'add a skills',
         });
     });
+    </script>
+    <script>
+        CKEDITOR.replace('content');
     </script>
 </body>
 

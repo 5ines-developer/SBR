@@ -9,7 +9,17 @@ $this->load->model('m_vendors');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo $title ?></title>
+    <title><?php
+    if (!empty($vendor)) {
+    foreach ($vendor as $key => $value) {
+        echo (!empty($value->name))?$value->name:'';
+        echo (!empty($value->category))?' | '.$value->category:'';
+        echo (!empty($value->city))?' in '.$value->city:'';
+        echo ' | Shaadi Baraati';
+    }}else{
+        echo $title;
+    }
+    ?></title>
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
@@ -35,6 +45,9 @@ $this->load->model('m_vendors');
         }
 
         .btn__next .vel-icon.icon{
+            font-size: 50px !important;
+        }
+        .btn__close .icon {
             font-size: 50px !important;
         }
 

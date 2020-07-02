@@ -41,14 +41,18 @@
                                                     <select id="city" name="city" required="">
                                                         <option value="">Choose a city</option>
                                                         <?php if (!empty($cities)) {
+
+                                                            echo '<option value="all" >All City</option>';
+
                                                         foreach ($cities as $row => $cit) { ?>
                                                         <option value="<?php echo $cit->id ?>"> <?php echo $cit->city ?></option> <?php  } } ?> </select>
                                                         <label for="city">City</label>
                                                     </div>
                                                     <div class="input-field col s12 l6">
-                                                        <select id="category" name="category"  required="">
-                                                            <option value="">Choose a category</option>
+                                                        <select id="category" name="category" required="">
+                                                            <option value="">Choose a Category</option>
                                                             <?php if (!empty($categories)) {
+                                                                echo '<option value="all" >All Category</option>';
                                                             foreach ($categories as $row => $cats) { ?>
                                                             <option value="<?php echo $cats->id ?>"> <?php echo $cats->category ?></option> <?php  } } ?>
                                                         </select>
@@ -74,8 +78,6 @@
                                                         <a id="marqueeplus1" class="marqueeplus"><i class="fa fa-plus" aria-hidden="true"></i> </a>
                                                     </div>
                                                 </div><br>
-
-
                                                 <div class="row m0">
                                                     <p class="bold  black-text col  mb10 h6">Vendor Categories</p>
                                                 </div>
@@ -92,25 +94,22 @@
                                                         <a id="marqueeplus2" class="marqueeplus"><i class="fa fa-plus" aria-hidden="true"></i> </a>
                                                     </div>
                                                 </div><br>
-
                                                 <div class="row m0">
                                                     <p class="bold  black-text col  mb10 h6">Popular</p>
                                                 </div>
                                                 <div class="row m0 marqaddnext2" id="marqaddnext3">
-                                                    <div class="input-field col s12 l4">
+                                                    <div class="input-field col s12 l5">
                                                       <input type="text" id="popular" name="popular[]" class="validate" required>
                                                       <label for="popular">Popular </label>
                                                     </div>
-                                                    <div class="input-field col s12 l4">
-                                                      <input type="text" id="popular" name="popular[]" class="validate">
-                                                      <label for="popular">Popular </label>
+                                                    <div class="input-field col s12 l5">
+                                                      <input type="text" id="link" name="link[]" class="validate">
+                                                      <label for="link">Link </label>
                                                     </div><br>
                                                     <div class="col l2">
                                                         <a id="marqueeplus3" class="marqueeplus"><i class="fa fa-plus" aria-hidden="true"></i> </a>
                                                     </div>
                                                 </div>
-
-                                                
                                                 <div class="col s12 mtb20">
                                                     <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
                                                     <i class="fas fa-paper-plane right"></i>
@@ -184,7 +183,7 @@
             $(function() {
                 $('#marqueeplus3').on('click', function(e) {
                     e.preventDefault();
-                    $('<div class="row m0 marqaddnext1"> <div class="input-field col s12 l4"><input type="text" id="popular" name="popular[]" class="validate" required> <label for="popular">Popular </label> </div> <div class="input-field col s12 l4"> <input type="text" id="popular" name="popular[]" class="validate" required> <label for="popular">Popular </label> </div><br> <div class="col l2"> <a id="brandplus2" class="marqueeplus3 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
+                    $('<div class="row m0 marqaddnext1"> <div class="input-field col s12 l5"><input type="text" id="popular" name="popular[]" class="validate" required> <label for="popular">Popular </label> </div> <div class="input-field col s12 l5"> <input type="text" id="link" name="link[]" class="validate" required> <label for="link">Link </label> </div><br> <div class="col l2"> <a id="brandplus2" class="marqueeplus3 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
                         .append().insertBefore('#marqaddnext3');
 
                 });

@@ -122,6 +122,11 @@ class C_content extends CI_Controller {
 		}
 	}
 
+	public function prop($value='')
+	{
+		$this->load->view('sales/proposal');
+	}
+
 }
 
 /* End of file C_content.php */

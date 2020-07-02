@@ -5,21 +5,17 @@ class M_report extends CI_Model {
 
 	public function saleReport($filt='')
 	{
-			$mon='';
-			if ($filt['month'] < 10 ) { $mon = '0'.$filt['month']; }
-			$month = (!empty($filt['month']))?$mon:date('m');
-			$year = (!empty($filt['year']))?date('Y'):date('m');
-			$sdate = $year.'-'.$month.'-01 00:01:01';
-			$edate = $year.'-'.$month.'-31 11:59:00';
-			$this->db->where('rp.added_on >=', $sdate);
-			$this->db->where('rp.added_on <=', $edate);
-			if (!empty($filt['city'])) { $this->db->where('rp.v_city', $filt['city']); }
-			if (!empty($filt['category'])) { $this->db->where('rp.v_category', $filt['category']); }
-		return 
-		$this->db
-		// ->where('rp.status', 1)
-		// ->where('rp.live !=',1)
-		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from,rp.added_on,vn.phone,vn.email,p.title,rp.namopunt,rp.gst,rp.total,rp.discount,am.name as employee,rp.manager,rp.status,rp.live,rp.approved,rp.added_by,rp.validity,')
+		$mon='';
+		if ($filt['month'] < 10 ) { $mon = '0'.$filt['month']; }
+		$month = (!empty($filt['month']))?$mon:date('m');
+		$year = (!empty($filt['year']))?$filt['year']:date('Y');
+		$sdate = $year.'-'.$month.'-01 00:01:01';
+		$edate = $year.'-'.$month.'-31 11:59:00';
+		$this->db->where('rp.added_on >=', $sdate);
+		$this->db->where('rp.added_on <=', $edate);
+		if (!empty($filt['city'])) { $this->db->where('rp.v_city', $filt['city']); }
+		if (!empty($filt['category'])) { $this->db->where('rp.v_category', $filt['category']); }
+		return $this->db->select('rp.id,rp.added_on,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.pdc_mode,rp.pdc_instrmnt,rp.pdc_pay_date,rp.pdc_pay_date,rp.pdc_amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.status,rp.live,rp.approved,rp.added_by,')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -99,23 +95,22 @@ class M_report extends CI_Model {
 
 	public function emp_clear($id='',$month='',$year='')
 	{
+		
 		if ($month == '') { $month = date('m'); }
 		if ($year == '') { $year = date('Y'); }
 		$month = (int)$month;
 		$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
-		$sdate = '01-'.$month.'-'.$year;
-		$edate = $days.'-'.$month.'-'.$year;
-		$start = date('Y-m-d',strtotime($sdate));
-		$end = date('Y-m-d',strtotime($edate));
-		$this->db->select_sum('total');
-		$this->db->where('added_on >=', $start);
-		$this->db->where('added_on <=', $end);
+		$sdate = $year.'-'.$month.'-01 00:01:01';
+		$edate = $year.'-'.$month.'-31 11:59:00';
+		$this->db->select_sum('t_amnt');
+		$this->db->where('added_on >=', $sdate);
+		$this->db->where('added_on <=', $edate);
 		$this->db->where('status', '1');
 		$this->db->where('live', '1');
 		$this->db->where('employee', $id);
 		$result = $this->db->get('renew_package')->row();
-		if (!empty($result->total)) {
-			return $result->total;
+		if (!empty($result->t_amnt)) {
+			return $result->t_amnt;
 		}else{
 			return 0;
 		}
@@ -143,7 +138,7 @@ class M_report extends CI_Model {
 
 	public function mantarget($year='',$month='',$id='')
 	{
-		$target= '';
+		$target = array();
 		if ($month == '') { $month = date('m'); }
 		if ($year == '') { $year = date('Y'); }
 		$month = (int)$month;
@@ -169,20 +164,18 @@ class M_report extends CI_Model {
 		foreach ($query as $key => $value) {
 			if (!empty($month) || !empty($year)) {
 				$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
-				$sdate = '01-'.$month.'-'.$year;
-				$edate = $days.'-'.$month.'-'.$year;
-				$start = date('Y-m-d',strtotime($sdate));
-				$end = date('Y-m-d',strtotime($edate));
-				$this->db->select_sum('total');
-				$this->db->where('added_on >=', $start);
-				$this->db->where('added_on <=', $end);
+				$sdate = $year.'-'.$month.'-01 00:01:01';
+				$edate = $year.'-'.$month.'-31 11:59:00';
+				$this->db->select_sum('t_amnt');
+				$this->db->where('added_on >=', $sdate);
+				$this->db->where('added_on <=', $edate);
 			}
 			$this->db->where('status', '1');
 			$this->db->where('live', '1');
 			$this->db->where('employee', $value->id);
 			$result = $this->db->get('renew_package')->row();
 			if (!empty($result)) {
-				$target[] = str_replace(",", "", $result->total);
+				$target[] = str_replace(",", "", $result->t_amnt);
 			}else{
 				$target = array();
 			}
@@ -197,13 +190,11 @@ class M_report extends CI_Model {
 		$month = (int)$month;
 		if (!empty($month) || !empty($year)) {
 			$days = cal_days_in_month(CAL_GREGORIAN,$month,$year);
-			$sdate = '01-'.$month.'-'.$year;
-			$edate = $days.'-'.$month.'-'.$year;
-			$start = date('Y-m-d',strtotime($sdate));
-			$end = date('Y-m-d',strtotime($edate));
-			$this->db->select_sum('total');
-			$this->db->where('rp.added_on >=', $start);
-			$this->db->where('rp.added_on <=', $end);
+			$sdate = $year.'-'.$month.'-01 00:01:01';
+			$edate = $year.'-'.$month.'-31 11:59:00';
+			$this->db->select_sum('t_amnt');
+			$this->db->where('rp.added_on >=', $sdate);
+			$this->db->where('rp.added_on <=', $edate);
 		}
 
 		if (!empty($city)) { $this->db->where('rp.v_city', $city); } 

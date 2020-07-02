@@ -59,7 +59,7 @@ class Real_wedding extends CI_Controller {
         $data['pagelink'] 	= $this->pagination->create_links();
         $this->load->view('real/real-wedding', $data);
     }
-    public function real_wedding_detail($id='')
+    public function real_wedding_detail($title='',$id='')
     {
         $data['title']  = 'ShaadiBaraati | Real Wedding Detail';  
         $data['related'] = $this->m_real->relatedWedding($id); 

@@ -1903,6 +1903,14 @@ div.tagsinput div {
     cursor: pointer;
 }
 
+.portfolio-img {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    min-height: 100px;
+    max-height: 100px;
+}
+
 
 
 

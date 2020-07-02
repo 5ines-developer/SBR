@@ -48,7 +48,7 @@ class  M_footercategory extends CI_Model {
 	//get footer category
 	public function footGet($value='')
 	{
-		$this->db->select('fc.id,fc.type,fc.vendor_category,fc.popular,cat.category,cty.city,fc.city as cityId,fc.category as categoryId');
+		$this->db->select('fc.id,fc.type,fc.vendor_category,fc.popular,cat.category,cty.city,fc.city as cityId,fc.category as categoryId,fc.link');
 		$this->db->group_by('fc.category,fc.city', 'desc');
 		$this->db->from('footer_category fc');
 		$this->db->join('category cat', 'cat.id = fc.category', 'left');
@@ -60,7 +60,7 @@ class  M_footercategory extends CI_Model {
 	{
 		$this->db->where('fc.city', $city)
 		->where('fc.category', $category)
-		->select('fc.id,fc.type,fc.vendor_category,fc.popular,fc.seggregation,cat.category,cty.city,fc.city as cityId,fc.category as categoryId')
+		->select('fc.id,fc.type,fc.vendor_category,fc.popular,fc.seggregation,cat.category,cty.city,fc.city as cityId,fc.category as categoryId,fc.link')
 		->from('footer_category fc')
 		->join('category cat', 'cat.id = fc.category', 'left')
         ->join('city cty', 'cty.id = fc.city', 'left');

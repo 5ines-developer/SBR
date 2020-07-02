@@ -97,7 +97,7 @@ $route['vendors/(:any)/(:any)']  		= 'search/index/$1/$2';
 $route['vendors/(:any)/(:any)/(:any)']  = 'search/index/$1/$2/$3';
 
 //vendors detail
-$route['detail/(:any)/(:any)/(:any)']   = 'vendors/detail/$1/$2/$3';
+$route['(:any)/(:any)/(:any)/(:any)']   = 'vendors/detail/$1/$2/$3/$4';
 $route['detail/gallery']   				= 'vendors/gallery';
 $route['detail/full-gallery']   		= 'vendors/full_gallery';
 $route['details/gallery-count']   		= 'vendors/galleryCount';
@@ -165,9 +165,9 @@ $route['vendor/leads/(:any)'] 	            = 'Vendor_detail/leads/$1';
 $route['free-quote'] 	            		= 'home/freeQuote';
 
 //real wedding
-$route['real-wedding']   				= 'real_wedding/real_wedding';
-$route['real-wedding/(:any)']   		= 'real_wedding/real_wedding/$1';
-$route['real-wedding/detail/(:any)']   		    = 'real_wedding/real_wedding_detail/$1';
+$route['real-wedding']   					= 'real_wedding/real_wedding';
+$route['real-wedding/(:any)']   			= 'real_wedding/real_wedding/$1';
+$route['real-wedding/(:any)/(:any)']   		= 'real_wedding/real_wedding_detail/$1/$2';
 
 
 // e-invite

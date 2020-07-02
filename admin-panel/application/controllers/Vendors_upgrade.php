@@ -64,74 +64,72 @@
 	            'city_banner'       => $this->input->post('c_bnr'),
 	            'cat_banner'       	=> $this->input->post('cat_bnr'),
 	            'package'        	=> $this->input->post('vpackage'),
-	            'discount'      	=> $this->input->post('discount'),
-	            'lname'            	=> $this->input->post('l_name'),
-	            'lnumber'           => $this->input->post('ld_phone'),
-	            'ld_email'         	=> $this->input->post('ld_email'),
-	            'in_name'         	=> $this->input->post('i_name'),
-	            'city '          	=> $this->input->post('lcity'),
-	            'gstno'     		=> $this->input->post('gstno'),
-	            'laddress'   		=> $this->input->post('li_address'),
-	            'in_mobile'      	=> $this->input->post('i_mobile'),
-	            'in_email'          => $this->input->post('i_email'),
-	            'in_street'         => $this->input->post('str_addrs'),
-	            'in_city'        	=> $this->input->post('incity'),
-	            'state'        		=> $this->input->post('listate'),
-	            'postode'        	=> $this->input->post('postode'),
-	            'namopunt'        	=> $this->input->post('nt_amnt'),
-	            'gst'            	=> $this->input->post('gst_amount'),
-	            'total'            	=> $this->input->post('t_amnt'),
-	            'pay_mode'         	=> $this->input->post('pay_mode'),
-	            'or_id '      		=> $this->input->post('ord_id'),
+	            'invoice_name'     	=> $this->input->post('i_name'),
+	            'gstno'      		=> $this->input->post('gstno'),
+	            'listing_name'      => $this->input->post('l_name'),
+	            'listing_mail'      => $this->input->post('ld_email'),
+	            'listing_phone'    	=> $this->input->post('ld_phone'),
+	            'invoice_address '  => $this->input->post('invoice_address'),
+	            'ord_type'     		=> $this->input->post('ord_type'),
+	            'c_person'   		=> $this->input->post('c_person'),
+	            'alt_phone'      	=> $this->input->post('alt_phone'),
+	            'list_city'         => $this->input->post('lcity'),
+	            'tenure'         	=> $this->input->post('tenure'),
+	            'nt_amnt'        	=> $this->input->post('nt_amnt'),
+	            'discount'        	=> $this->input->post('discount'),
+	            'gst_amount'        => $this->input->post('gst_amount'),
+	            'amt_after_disc'    => $this->input->post('amt_after_disc'),
+	            'tds'            	=> $this->input->post('tds'),
+	            't_amnt'            => $this->input->post('t_amnt'),
+	            'am_words'         	=> $this->input->post('am_words'),
+	            'pay_mode '      	=> $this->input->post('pay_mode'),
+	            'inst_no '      	=> $this->input->post('inst_no'),
 	            'pay_date'        	=> $this->input->post('pay_date'),
-	            'landline'        	=> $this->input->post('i_landl'),
-	            'rec_no'        	=> $this->input->post('rec_no'),
-				'pan_no'        	=> $this->input->post('pan_no'),
-				'dr_bank'        	=> $this->input->post('dr_bank'),
-				'pay_type'        	=> $this->input->post('pay_type'),
-				'pdc'        		=> $this->input->post('pdc'),
+	            'amount'        	=> $this->input->post('amount'),
+	            'pdc_mode'        	=> $this->input->post('pdc_mode'),
+				'pdc_instrmnt'      => $this->input->post('pdc_instrmnt'),
+				'pdc_pay_date'      => $this->input->post('pdc_pay_date'),
+				'pdc_amount'        => $this->input->post('pdc_amount'),
 				'employee'        	=> $this->input->post('emp'),
 				'manager'        	=> $this->input->post('mang'),
 	            'added_by'          => $this->aid,
 	            'started_from'      => date('Y-m-h'),
 	            'uniq'          	=> $this->input->post('uniq'),
-				'acc_no'        	=> $this->input->post('accno'),
-				'ifsc'        		=> $this->input->post('ifsc'),
 	        	);
 			$data = $this->m_vnupgrade->insertProposal($insert);
-			if (!empty($data)) {
-				$insert['insert_id'] = $data;
-				$this->convertPdf($insert);
-				$this->session->set_flashdata('error','Something went wrong please try again later!');
-				redirect('vendors/view-proposal/'.$data,'refresh');
-			}else{
-				$this->session->set_flashdata('error','Something went wrong please try again later!');
-				redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
-			}
+				if (!empty($data)) {
+					$insert['insert_id'] = $data;
+					$this->convertPdf($insert);
+					$this->session->set_flashdata('error','Something went wrong please try again later!');
+					redirect('vendors/view-proposal/'.$data,'refresh');
+				}else{
+					$this->session->set_flashdata('error','Something went wrong please try again later!');
+					redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
+				}
 			}
 		}
 
 		public function convertPdf($insert='')
 		{
-			
+
 			$data['city'] = $this->db->where('id', $insert['v_city'])->get('city')->row('city');
 			$data['category'] = $this->db->where('id', $insert['v_category'])->get('category')->row('category');
 			$data['employee'] = $this->db->select('name as empname,admin_type,id as empid')->where('id', $insert['added_by'])->get('admin')->row();
 			$data['result'] = $insert;
-			$this->load->library('pdf');
-			$html = $this->output->get_output($this->load->view('sales/proposal',$data));
-			$pdf = $this->pdf->loadHtml($html);
-			$this->pdf->setPaper('A3', 'Potrait');
-			$this->pdf->render();
-			// Output the generated PDF (1 = download and 0 = preview)
-            // $this->pdf->stream("welcome.pdf", array("Attachment"=>0));
-			$fileName = random_string('alnum',10);
-			file_put_contents('pdf/propsal-'.$fileName.'.pdf',$this->pdf->output());
-			$pdfFile = 'pdf/propsal-'.$fileName.'.pdf';
-			$this->send_sales($insert,$pdfFile);
+			require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+			$mpdf = new \Mpdf\Mpdf([
+				'mode' => 'utf-8',
+			    'format' => [190, 236],
+			    'orientation' => 'L'
+			]);
+			$html = $this->load->view('sales/proposal', $data, TRUE);
+	        $mpdf->WriteHTML($html);
+	        $content = $mpdf->Output('', 'S');
+        	$filename = "vendor-propsal".random_string('alnum',10).".pdf";
+        	$this->send_sales($insert,$content,$filename);
 		}
 
-	public function send_sales($insert='',$pdfFile='')
+	public function send_sales($insert='',$content='',$filename='')
     {
         $disc = $this->db->where('id', $this->aid)->get('admin')->row();
         $manager = $this->db->where('id', $disc->manager)->get('admin')->row('email');
@@ -144,12 +142,12 @@
         $this->email->from($from, 'ShaadiBaraati');
         $this->email->to('prathwi@5ine.in');
         // $this->email->cc($manager);
-        // $this->email->to($to,$insert['ld_email']);
+        // $this->email->to($to,$insert['listing_mail']);
         // $this->email->cc($manager,$cc);
 
         $this->email->subject('Vendor Package proposal');
         $this->email->message('New Vendor Package proposal has been submitted , document attached');
-        $this->email->attach($_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/admin-panel/'.$pdfFile);
+        $this->email->attach($content, 'attachment', $filename, 'application/pdf'); 
         if ($this->email->send()) {
             $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Admin, admin will verify and approve your request ');
             redirect('vendors/view-proposal/'.$insert['insert_id'],'refresh');
@@ -246,13 +244,16 @@
 	public function downloads($id='')
 	{
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
-		$this->load->library('pdf');
-		$html = $this->output->get_output($this->load->view('sales/proposal',$data));
-		$pdf = $this->pdf->loadHtml($html);
-		$this->pdf->setPaper('A3', 'Potrait');
-		$this->pdf->render();
-		// Output the generated PDF (1 = download and 0 = preview)
-        $this->pdf->stream("vendor-propsal.pdf", array("Attachment"=>1));
+		require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+			$mpdf = new \Mpdf\Mpdf([
+				'mode' => 'utf-8',
+			    'format' => [190, 236],
+			    'orientation' => 'L'
+			]);
+			$html = $this->load->view('sales/proposal', $data, TRUE);
+			$pdfFilePath ="vendor-propsal-".date('Y-m-h')."-.pdf";
+	        $mpdf->WriteHTML($html);
+	        $mpdf->Output($pdfFilePath, "D");
 	}
 }
 	

@@ -87,14 +87,14 @@
                                                   <label for="package">Package <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <select name="c_bnr" required="">
+                                                  <select name="c_bnr">
                                                       <option value="">No</option>
                                                       <option value="1">Yes</option>
                                                   </select>
                                                   <label for="package">City Banner</label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <select name="cat_bnr" required="" id="cat_bnr">
+                                                  <select name="cat_bnr" id="cat_bnr">
                                                       <option value="">No</option>
                                                       <option value="1">Yes</option>
                                                   </select>
@@ -105,21 +105,47 @@
 
 
 
-                                            <p class="m-15">Listing Details</p>
+                                            <p class="m-15">Billing Details</p>
 
                                             <div class="row m0">
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="i_name" name="i_name" class="validate" required value="<?php echo (!empty($result->name))?$result->name:''; ?>">
+                                                  <label for="i_name">Invoicing name <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="gstno" name="gstno" class="validate" required value="<?php echo (!empty($invoice->gstno))?$invoice->gstno:''; ?>">
+                                                  <label for="gstno">GSTIN Number <span class="red-text">*</span></label>
+                                                </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="l_name" name="l_name" class="validate" required value="<?php echo (!empty($result->name))?$result->name:''; ?>">
                                                   <label for="l_name">Listing name <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="ld_phone" name="ld_phone" class="validate" value="<?php echo (!empty($result->phone))?$result->phone:''; ?>">
-                                                  <label for="ld_phone">Lead Mobile Number <span class="red-text">*</span></label>
+                                                  <input type="email" id="ld_email" name="ld_email" class="validate" value="<?php echo (!empty($result->email))?$result->email:''; ?>">
+                                                  <label for="ld_email">Email Id <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="email" id="ld_email" name="ld_email" class="validate" value="<?php echo (!empty($result->email))?$result->email:''; ?>">
-                                                  <label for="ld_email">Lead Email Id <span class="red-text">*</span></label>
+                                                  <input type="text" id="ld_phone" name="ld_phone" class="validate" value="<?php echo (!empty($result->phone))?$result->phone:''; ?>">
+                                                  <label for="ld_phone">Mobile Number <span class="red-text">*</span></label>
                                                 </div>
+                                                <div class="input-field col s12 l12">
+                                                  <textarea id="invoice_address" class="materialize-textarea" required name="invoice_address"><?php echo (!empty($result->address))?$result->address:''; ?></textarea>
+                                                  <label for="invoice_address">Invoicing Address <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="ord_type" name="ord_type" required class="validate"  value="<?php echo (!empty($invoice->ord_type))?$invoice->ord_type:''; ?>">
+                                                  <label for="ord_type">Order Type <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="c_person" name="c_person" required class="validate"  value="<?php echo (!empty($invoice->c_person))?$invoice->c_person:''; ?>">
+                                                  <label for="i_landl">Contact Person <span class="red-text">*</span></label>
+                                                </div>
+                                                
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="alt_phone" name="alt_phone" class="validate" value="<?php echo (!empty($invoice->alt_phone))?$invoice->alt_phone:''; ?>">
+                                                  <label for="alt_phone">Alternate Mobile Number</label>
+                                                </div>
+                                                
                                                 <div class="input-field col s12 l6">
                                                   <select name="lcity" required="">
                                                       <option value="">Choose a City</option>
@@ -127,103 +153,58 @@
                                                       <option value="<?php echo $value->id ?>" <?php if($value->id == $result->citId){ echo 'selected'; } ?>><?php echo $value->city ?></option> 
                                                     <?php } } ?>
                                                   </select>
-                                                  <label>City</label>
-                                                  <p><span class="error"><?php echo form_error('lcity'); ?></span></p>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="gstno" name="gstno" class="validate">
-                                                  <label for="gstno">GSTIN Number </label>
-                                                </div>
-                                                <div class="input-field col s12 l12">
-                                                  <textarea id="li_address" class="materialize-textarea" name="li_address"><?php echo (!empty($result->address))?$result->address:''; ?></textarea>
-                                                  <label for="li_address">Listing Address</label>
-                                                </div>
-                                            </div>
-                                            <div class="divider"> </div>
-
-
-                                            <p class="m-15">Invoice Details</p>
-                                        
-                                          <div class="row m0">
-                                              <div class="input-field col s12 l6">
-                                                  <input type="text" id="i_name" name="i_name" class="validate" required value="<?php echo (!empty($invoice->in_name))?$invoice->in_name:''; ?>">
-                                                  <label for="i_name">Invoicing name <span class="red-text">*</span></label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="i_mobile" name="i_mobile" class="validate" required value="<?php echo (!empty($invoice->in_mobile))?$invoice->in_mobile:''; ?>">
-                                                  <label for="i_mobile">Invoicing Mobile No. <span class="red-text">*</span></label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="i_landl" name="i_landl" class="validate"  value="<?php echo (!empty($invoice->landline))?$invoice->landline:''; ?>">
-                                                  <label for="i_landl">Invoicing Land line. </label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="email" id="i_email" name="i_email" class="validate" value="<?php echo (!empty($invoice->in_email))?$invoice->in_email:''; ?>">
-                                                  <label for="i_email">Invoicing Email ID <span class="red-text">*</span></label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="str_addrs" name="str_addrs" class="validate" value="<?php echo (!empty($invoice->in_street))?$invoice->in_street:''; ?>">
-                                                  <label for="str_addrs">Street Address <span class="red-text">*</span></label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <select name="incity" required="">
-                                                      <option value="">Choose a City</option>
-                                                      <?php if (!empty($city)) { foreach ($city as $key => $value) { if (!empty($invoice->in_city)) {
-                                                          $incity = $invoice->in_city;
-                                                        }else{
-                                                          $incity = $result->citId;
-
-                                                        } 
-
-                                                      ?>
-                                                      <option value="<?php echo $value->id ?>" <?php if($value->id == $incity){ echo 'selected'; } ?>><?php echo $value->city ?></option> 
-                                                    <?php } } ?>
-                                                  </select>
                                                   <label>City <span class="red-text">*</span></label>
-                                                  <p><span class="error"><?php echo form_error('incity'); ?></span></p>
                                                 </div>
+
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="listate" name="listate" class="validate" >
-                                                  <label for="listate">State <span class="red-text">*</span></label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="postode" name="postode" class="validate" >
-                                                  <label for="postode">Postcode</label>
+                                                  <input type="text" id="tenure" name="tenure" required class="validate" value="<?php echo (!empty($invoice->tenure))?$invoice->tenure:''; ?>">
+                                                  <label for="tenure">Tenure <span class="red-text">*</span></label>
                                                 </div>
                                             </div>
+                                          
                                             <div class="divider"> </div>
 
-                                            <p class="m-15">Package Cost</p>
+                                            <p class="m-15">Payment Details</p>
                                         
                                           <div class="row m0">
+
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="discount" name="discount" class="validate">
-                                                  <label for="discount">Discount in %</label>
+                                                  <input type="text" autofocus="" id="nt_amnt" required name="nt_amnt" class="validate" >
+                                                  <label class="ntam" for="nt_amnt">Net Amount <span class="red-text">*</span></label>
+                                                </div>
+
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" autofocus="" required id="discount" name="discount" class="validate">
+                                                  <label for="discount">Total Discount in Percentage <span class="red-text">*</span></label>
+                                                </div>
+                                                
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" autofocus="" required id="gst_amount" name="gst_amount" class="validate">
+                                                  <label  class="active" for="gst_amount">18% GST Amount : <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" readonly="" autofocus="" id="nt_amnt" name="nt_amnt" class="validate" >
-                                                  <label class="ntam" for="nt_amnt">Net Amount</label>
+                                                  <input type="text" autofocus="" required id="amt_after_disc" name="amt_after_disc" class="validate">
+                                                  <label class="amt_after_disc" for="amt_after_disc">Amt Payable After Disc : <span class="red-text">*</span></label>
                                                 </div>
+
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" readonly="" autofocus="" id="gst_amount" name="gst_amount" class="validate">
-                                                  <label  class="active" for="gst_amount">GST Amount</label>
+                                                  <input type="text" autofocus="" id="tds" name="tds" class="validate">
+                                                  <label  class="active" for="tds">TDS If Applicable: </label>
                                                 </div>
+
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" readonly="" id="t_amnt" name="t_amnt" class="validate">
-                                                  <label class="ntam" for="t_amnt">Total Amount</label>
+                                                  <input type="text" autofocus="" required id="t_amnt" name="t_amnt" class="validate">
+                                                  <label for="t_amnt">Total Amount <span class="red-text">*</span></label>
                                                 </div>
-                                                <div class="input-field col s12 l6">
-                                                  <select id="pay_type" name="pay_type" required="">
-                                                    <option value="">Choose the Payment Type</option>
-                                                      <option value="advance">Advance</option>
-                                                      <option value="balance">Balance</option>
-                                                   </select>
-                                                   <label for="pay_type">Payment Type</label>
+
+                                                <div class="input-field col s12 l12">
+                                                  <input type="text" autofocus="" required id="am_words" name="am_words" class="validate">
+                                                  <label for="am_words">Amount in words <span class="red-text">*</span></label>
                                                 </div>
                                             </div>
                                             <div class="divider"> </div>
 
-                                             <p class="m-15">Cheque / DD details / online</p>
+                                             <p class="m-15">Payment Mode : </p>
                                         
                                           <div class="row m0">
                                                 <div class="input-field col s12 l6">
@@ -235,37 +216,42 @@
                                                       <option value="GoglePay/PhonePe">GoglePay/PhonePe/Paytm</option>
                                                       <option value="razorpay">Razor Pay</option>
                                                    </select>
-                                                  <label for="pay_mode">Payment Mode</label>
+                                                  <label for="pay_mode">Payment Mode <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="ord_id" name="ord_id" class="validate" >
-                                                  <label for="ord_id">Order id/ Cheque No</label>
+                                                  <input type="text" id="inst_no" required name="inst_no" class="validate" >
+                                                  <label for="inst_no">Instrument No <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="pay_date" required name="pay_date" class="datepicker validate" >
+                                                  <label for="pay_date">Payment Date <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="pay_date" name="pay_date" class="datepicker validate" value="<?php echo (!empty($result->o_date))?$result->o_date:''; ?>">
-                                                  <label for="pay_date">Payment Date/ Cheque Date</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="rec_no" name="rec_no" class="validate" >
-                                                  <label for="rec_no">Reciept No</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="dr_bank" name="dr_bank" class="validate" >
-                                                  <label for="dr_bank">Drawee Bank</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="accno" name="accno" class="validate" >
-                                                  <label for="accno">Bank Account Number</label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="ifsc" name="ifsc" class="validate" >
-                                                  <label for="ifsc">IFSC Code</label>
-                                                </div>
-                                                <div class="input-field col s12 l6" id="pdcs">
-                                                  <input type="text" id="pdc" name="pdc" class="validate" >
-                                                  <label for="pdc">PDC</label>
-                                                </div>
+                                                  <input type="text" id="amount" required name="amount" class="validate" >
+                                                  <label for="amount">Amount <span class="red-text">*</span></label>
+                                                </div> 
+                                            </div>
 
+                                            <p class="m-15">PDC Details : </p>
+                                        
+                                            <div class="row m0">
+                                                <div class="input-field col s12 l6">
+                                                    <input type="text" id="pdc_mode" required name="pdc_mode" class="validate" >
+                                                  <label for="pdc_mode">Payment Mode <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="pdc_instrmnt" required name="pdc_instrmnt" class="validate" >
+                                                  <label for="pdc_instrmnt">Instrument No <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="pdc_pay_date" required name="pdc_pay_date" class="datepicker validate">
+                                                  <label for="pdc_pay_date">Payment Date <span class="red-text">*</span></label>
+                                                </div>
+                                                <div class="input-field col s12 l6">
+                                                  <input type="text" id="pdc_amount" required name="pdc_amount" class="validate" >
+                                                  <label for="pdc_amount">Amount <span class="red-text">*</span></label>
+                                                </div>
                                             </div>
 
                                             <p class="m-15">Employee Detail</p>
@@ -279,7 +265,7 @@
                                                   <option value="<?php echo $emps->id ?>"><?php echo $emps->name ?></option>
                                                   <?php  }}} ?>
                                                 </select>
-                                                <label for="emp">Select Employee</label>
+                                                <label for="emp">Select Employee <span class="red-text">*</span></label>
                                               </div>
                                               
                                               <div class="input-field col s12 l6">
@@ -290,7 +276,7 @@
                                                   <option value="<?php echo $emps->id ?>"><?php echo $emps->name ?></option>
                                                   <?php  }}} ?>
                                                 </select>
-                                                <label for="mang">Select Manager</label>
+                                                <label for="mang">Select Manager <span class="red-text">*</span></label>
                                               </div>
                                               
                                             </div>
@@ -335,20 +321,21 @@
     $(document).ready(function() {
 
       $('select').formSelect();
+      $("select").css({display: "inline", height: 0, padding: 0, width: 0});
 
-        $("#admin-form").validate({
-            rules: {
-                name: {required: true, }, 
-                email: {required: true, }, 
-                Ad_type:{required:true,},
-              },             
-            messages: {
+        // $("#admin-form").validate({
+        //     rules: {
+        //         name: {required: true, }, 
+        //         email: {required: true, }, 
+        //         Ad_type:{required:true,},
+        //       },             
+        //     messages: {
                 
-                name: "Please enter a name",
-                email: "Please enter a email",
-                ad_type:"Please select the Employee type",
-            }
-        });
+        //         name: "Please enter a name",
+        //         email: "Please enter a email",
+        //         ad_type:"Please select the Employee type",
+        //     }
+        // });
 
         $(document).on('change', '#package', function(){
           var pack = $(this).val();
@@ -381,9 +368,21 @@
             }else{
               var total = tot - amount;
             }
-            $('#t_amnt').val(total);
+            $('#amt_after_disc').val(total);
           }
         });
+
+
+        $(document).on('change', '#tds', function(){
+          var tds   = $(this).val();
+          if (tds =='') { tds=0; }
+          var tot   = $("#amt_after_disc").val();
+          if (tot =='') { tot=0; }
+          var total = parseInt(tds)+ parseInt(tot);
+            $('#t_amnt').val(total);
+        });
+
+        
 
         $(document).on('change', '#pay_mode', function(){
           var payMode  = $(this).val();
@@ -392,22 +391,7 @@
            }else{
             $('#pdcs').css('display','none');
            }
-
-
         });
-
-        
-
-
-        
-
-        
-        
-
-        
-
-        
-
     });
     </script>
         

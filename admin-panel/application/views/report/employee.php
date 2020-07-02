@@ -118,8 +118,9 @@
                                         if (!empty($yr)) {$yrs = $yr; }else{$yrs = date('Y'); }
                                         if (!empty($mn)) {$mnt = $mn; }else{$mnt = date('m'); }
                                         $cleared = $this->ci->m_report->emp_clear($value->id,$mnt,$yrs);
+                                        
                                         $target = str_replace(",","",$value->target);
-                                        if ($cleared > $target) {$pending = $cleared - $target; }else{$pending = $target - $cleared; } 
+                                        if ($cleared > $target) { $pending = 0; }else{ $pending = $target - $cleared; } 
 
                                         $manager = $this->ci->m_report->manager($value->id);
 

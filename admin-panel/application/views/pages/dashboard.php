@@ -158,6 +158,7 @@
                               </div>
                            </div>
                      <!-- chart-table -->
+                     <?php if($this->session->userdata('sha_type') =='1'){ ?>
                      <!-- shorting -->
                      <div class="shorting-table">
                         <div class="row">
@@ -206,6 +207,7 @@
                            </div>
                         </div>
                      </div>
+                   <?php } ?>
                   </div>
                </div>
             </div>

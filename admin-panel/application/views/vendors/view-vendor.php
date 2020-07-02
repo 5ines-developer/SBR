@@ -156,6 +156,10 @@
                                                 <th class="w205"><i class="fas fa-venus-mars mr10"></i>City</th>
                                                 <td><?php echo (!empty($result->city))?$result->city:'---'  ?></td>
                                             </tr>
+                                            <tr>
+                                                <th class="w205"><i class="fas fa-venus-mars mr10"></i>Contact Person</th>
+                                                <td><?php echo (!empty($result->c_person))?$result->c_person:'---'  ?></td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -180,8 +184,10 @@
                                         <?php if (!empty($port)) {
                                 foreach ($port as $key => $value) { ?>
                                         <div class="col s12 l3 m6 ">
+                                            <div class="portfolio-img">
                                             <img class="materialboxed z-depth-1" width="200"
                                                 src="<?php echo $this->config->item('web_url').'/vendor-portfolio/'.$value->thumb_image ?>">
+                                            </div>
                                         </div>
                                         <?php } } ?>
                                     </div>

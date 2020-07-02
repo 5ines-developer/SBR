@@ -259,6 +259,19 @@ Shaadibaraati.com
 		}
     }
 
+    public function contactPerson($value='')
+    {
+        $c_person = $this->input->post('c_person');
+        $output = $this->m_vendorDetail->contactPerson($c_person,$this->uniq);
+        echo $output;
+    }
+
+    public function getPerson($value='')
+    {
+        $output = $this->db->where('uniq',$this->uniq)->get('vendor')->row('c_person');
+        echo $output;
+    }
+
 
 	public function addprice($value='')
 	{
@@ -315,43 +328,42 @@ Shaadibaraati.com
         $this->load->library('upload');
         $this->load->library('image_lib');
 		$files = $_FILES;
-
         if (file_exists($_FILES['banner']['tmp_name'])) {
             $config['upload_path'] = 'vendors-profile/';
             $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
             $config['max_width'] = 0;
-            $config['encrypt_name'] = true;
+            $config['max_size'] = '550';
             $config['encrypt_name'] = true;
             $this->load->library('upload');
             $this->upload->initialize($config);
             if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
-             $this->upload->do_upload('banner');
-	        	$upload_data = $this->upload->data();
-	            $config['image_library'] = 'gd2';
-
-	                $file_name = $upload_data['file_name'];
-	                $imgpath = 'vendors-profile/'.$file_name;
-	                $config['image_library']    = 'gd2';
-	                $config['source_image']     = $upload_data['full_path'];
-	                $config['wm_type']          = 'overlay';
-	                $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
-	                $config['wm_x_transp']      = '4';
-	                $config['wm_y_transp']      = '4';
-	                $config['width']            = '50';
-	                $config['height']           = '50';
-	                $config['padding']          = '50';
-	                $config['wm_opacity']       = '40';
-	                $config['wm_vrt_alignment'] = 'middle';
-                	$config['wm_hor_alignment'] = 'center';
-                	 $this->image_lib->initialize($config);
-	                if (!$this->image_lib->watermark()) {
-	                    $response['wm_errors'] = $this->image_lib->display_errors();
-	                    $response['wm_status'] = 'error';
-	                } else {
-	                    $response['wm_status'] = 'success';
-	                }
-	        $output = $this->m_vendorDetail->banner($imgpath,$file_name,$this->uniq);
-
+                if (!$this->upload->do_upload('banner')) {
+                    $output = '';
+                }else{
+                    $upload_data = $this->upload->data();
+                    $file_name = $upload_data['file_name'];
+                    $imgpath = 'vendors-profile/'.$file_name;
+                    $config['image_library']    = 'gd2';
+                    $config['source_image']     = $upload_data['full_path'];
+                    $config['wm_type']          = 'overlay';
+                    $config['wm_overlay_path']  = 'assets/img/water.png';//the overlay image
+                    $config['wm_x_transp']      = '4';
+                    $config['wm_y_transp']      = '4';
+                    $config['width']            = '50';
+                    $config['height']           = '50';
+                    $config['padding']          = '50';
+                    $config['wm_opacity']       = '40';
+                    $config['wm_vrt_alignment'] = 'middle';
+                    $config['wm_hor_alignment'] = 'center';
+                     $this->image_lib->initialize($config);
+                    if (!$this->image_lib->watermark()) {
+                        $response['wm_errors'] = $this->image_lib->display_errors();
+                        $response['wm_status'] = 'error';
+                    } else {
+                        $response['wm_status'] = 'success';
+                    }
+                   $output = $this->m_vendorDetail->banner($imgpath,$file_name,$this->uniq);
+                }
     	}
     	echo $output;
 	}
@@ -370,7 +382,7 @@ public function offer($output = null)
             $config['allowed_types'] = 'jpg|png|jpeg|gif|svg';
             $config['max_width'] = 0;
             $config['encrypt_name'] = true;
-            $config['encrypt_name'] = true;
+            $config['max_size'] = '550';
             $this->load->library('upload');
             $this->upload->initialize($config);
             if (!is_dir($config['upload_path'])) {mkdir($config['upload_path'], 0777, true); }
@@ -407,6 +419,12 @@ public function offer($output = null)
         $files = $_FILES;
         $id = $this->input->post('id');
         $filesCount = count($_FILES['images']['name']);
+
+        if ($filesCount > 30) {
+            $this->session->set_flashdata('error', 'Maximum you can add 30 files!');
+            redirect('vendor/profile','refresh');
+        }
+        
         if (!empty($filesCount)) {
         for ($i = 0; $i < $filesCount; $i++) {
             $_FILES['images']['name']     = $files['images']['name'][$i];
@@ -418,6 +436,7 @@ public function offer($output = null)
             $config['upload_path']   = 'vendor-portfolio/';
             $config['allowed_types'] = 'jpg|png|jpeg';
             $config['max_width']     = 0;
+            $config['max_size'] = '550';
             $config['encrypt_name']  = TRUE;
             
             $this->load->library('upload');

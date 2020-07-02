@@ -41,15 +41,21 @@ $this->load->model('m_account');
                                 <div class="cboady">
                                     <ul>
 
-                                        <?php if (!empty($vendor)) { foreach ($vendor as $key => $value) {?>
+                                        <?php if (!empty($vendor)) { foreach ($vendor as $key => $value) {
+
+                                            ?>
                                         <li>
                                             <div class="list-item">
                                                 <div class="row m0">
                                                     <div class="col s12 m6 l6">
                                                         <div class="list-item-head">
-                                                                <?php $category = $this->ci->m_account->getCategory($value->category);  ?>
+                                                                <?php 
 
-                                                            <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="truncate"><?php echo $value->name ?></a>
+                                                                $category = $this->ci->m_account->getCategory($value->category);  
+                                                                $cits =$this->ci->m_account->getCity($value->city);
+                                                                ?>
+
+                                                            <a href="<?php echo base_url(str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($cits)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="truncate"><?php echo $value->name ?></a>
                                                         </div>
                                                         <div class="span-div truncate">
                                                             <span><i class=" material-icons ">location_on</i> <?php echo $this->ci->m_account->getCity($value->city); ?></span>
@@ -58,7 +64,7 @@ $this->load->model('m_account');
                                                         
                                                     </div>
                                                     <div class="col s6 m3 l3">
-                                                        <a href="<?php echo base_url('detail/'.str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="rouded-btn ">Contact</a>
+                                                        <a href="<?php echo base_url(str_replace(" ","-",strtolower($category)).'/'.str_replace(" ","-",strtolower($cits)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq)?>" class="rouded-btn ">Contact</a>
                                                     </div>
                                                     <div class="col s6 m3 l3">
                                                             <span class=" badge green"><i class=" material-icons ">star</i> <?php $review = $this->ci->m_account->getReview($value->id); 

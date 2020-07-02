@@ -12,7 +12,7 @@ class M_search extends CI_Model {
         if (!empty($city) && $city !='All') { $this->db->where('cty.city', $city); }
         if (!empty($category) && $category !='all category') {$this->db->where('cat.category', $category); }
         $this->db->where('v.is_active', '1');
-        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,,v.verified,v.v_chat ,');
+        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,cat.category,v.price,v.profile_file,v.id,v.uniq,v.price_for,v.verified,v.v_chat ,');
         // $this->db->select('v.package');
         $this->db->protect_identifiers = FALSE;
             $this->db->order_by('v.discount_status', 'desc');
@@ -190,11 +190,11 @@ class M_search extends CI_Model {
     // get vendors
     public function getVendors($id = null,$cityId='')
     {
-        if (!empty($cityId)) {
 
+        if (!empty($cityId)) {
            $this->db->where('v.city', $cityId);
         }
-        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,v.verified,v.v_chat ,'); 
+        $this->db->select('v.name,v.package,v.discount_status, v.phone,cty.city,,v.price,v.profile_file,v.id,v.uniq,v.price_for,v.verified,v.v_chat'); 
         $this->db->where('v.category', $id);
         $this->db->protect_identifiers = FALSE;
             $this->db->order_by('v.discount_status', 'desc');
@@ -230,8 +230,19 @@ class M_search extends CI_Model {
 
     public function conentGet($city = '',$category='')
     {
-        $this->db->where('cty.city', $city);
-        $this->db->where('cat.category', $category);
+
+        if (!empty($city) && $city =='All') {
+            $this->db->where('cc.city_id', 'all');
+        }else{
+            $this->db->where('cty.city', $city);
+        }
+
+        if (!empty($category) && $category =='all category') {
+            $this->db->where('cc.category_id', 'all');
+        }else{
+            $this->db->where('cat.category', $category);
+        }
+        
         $this->db->select('cc.id, cc.city_id, cc.category_id, cty.city,cat.category,cc.description, cc.uniq,cc.title,cc.canoncial,cc.keywords,cc.meta_desc,cc.key1,cc.key2,cc.key3,cc.key4,cc.key5');
         $this->db->from('category_content cc');
         $this->db->join('category cat', 'cat.id = cc.category_id', 'left');
@@ -242,9 +253,19 @@ class M_search extends CI_Model {
     //get footer category
     public function footGet($city = '',$category='')
     {
-        $this->db->where('cty.city', $city);
-        $this->db->where('cat.category', $category);
-        $this->db->select('fc.id,fc.type,fc.vendor_category,fc.popular,fc.seggregation,cat.category,cty.city,fc.city as cityId,fc.category as categoryId');
+
+        if (!empty($city) && $city =='All') {
+            $this->db->where('fc.city', 'all');
+        }else{
+            $this->db->where('cty.city', $city);
+        }
+        if (!empty($category) && $category =='all category') {
+            $this->db->where('fc.category', 'all');
+        }else{
+            $this->db->where('cat.category', $category);
+        }
+        
+        $this->db->select('fc.id,fc.type,fc.link, fc.vendor_category,fc.popular,fc.seggregation,cat.category,cty.city,fc.city as cityId,fc.category as categoryId');
         $this->db->from('footer_category fc');
         $this->db->join('category cat', 'cat.id = fc.category', 'left');
         $this->db->join('city cty', 'cty.id = fc.city', 'left');

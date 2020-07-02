@@ -105,7 +105,7 @@
                             <th id="c" class="h5-para-p2" width="120px">Discount</th>
                             <th id="c" class="h5-para-p2" width="120px">GST</th>
                             <th id="c" class="h5-para-p2" width="120px">Total</th>
-                            <th id="c" class="h5-para-p2" width="120px">Validity</th>
+                            <th id="c" class="h5-para-p2" width="120px">Tenure</th>
                             <th id="c" class="h5-para-p2" width="120px">Employee Name</th>
                             <th id="c" class="h5-para-p2" width="120px">Manager</th>
                             <th id="c" class="h5-para-p2" width="120px">Status</th>
@@ -121,19 +121,19 @@
                           <tr>
                             <td><?php echo $key ?></td>
                             <td><?php echo (!empty($value->added_on))?date('d M, Y',strtotime($value->added_on)):'---'  ?></td>
-                            <td><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
-                            <td><?php echo (!empty($value->phone))?$value->phone:'---'  ?></td>
-                            <td><?php echo (!empty($value->email))?$value->email:'---'  ?></td>
+                            <td><?php echo (!empty($value->vendorname))?$value->vendorname:'---'  ?></td>
+                            <td><?php echo (!empty($value->listing_phone))?$value->listing_phone:'---'  ?></td>
+                            <td><?php echo (!empty($value->listing_mail))?$value->listing_mail:'---'  ?></td>
                             <td><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
                             <td><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
                             <td><?php echo (!empty($value->title))?$value->title:'---'  ?></td>
-                            <td><?php echo (!empty($value->namopunt))?$value->namopunt:'---'  ?></td>
+                            <td><?php echo (!empty($value->nt_amnt))?$value->nt_amnt:'---'  ?></td>
                             <td><?php echo (!empty($value->discount))?$value->discount.'%':'---'  ?></td>
-                            <td><?php echo (!empty($value->gst))?$value->gst:'---'  ?></td>
-                            <td><?php echo (!empty($value->total))?$value->total:'---'  ?></td>
-                            <td><?php echo (!empty($value->validity))?$value->validity:'---'  ?></td>
-                            <td><?php echo (!empty($value->employee))?$value->employee:'---'  ?></td>
-                            <td><?php echo $this->ci->m_report->leadsCount($value->id);  ?></td>
+                            <td><?php echo (!empty($value->gst_amount))?$value->gst_amount:'---'  ?></td>
+                            <td><?php echo (!empty($value->t_amnt))?$value->t_amnt:'---'  ?></td>
+                            <td><?php echo (!empty($value->tenure))?$value->tenure:'---'  ?></td>
+                            <td><?php echo (!empty($value->empname))?$value->empname:'---'  ?></td>
+                            <td><?php echo $this->ci->m_report->manager($value->employee);  ?></td>
                             <td><?php  if($value->status == '1' && $value->live == '1'){ echo 'Live'; } else if($value->status == '1' && $value->live == '0'){ echo 'Approved'; }else if($value->status == '2'){ echo 'Rejected'; } else if($value->status == '0'){ echo 'Pending'; } ?></td>
                             <!-- <td></td>
                             <td></td> -->

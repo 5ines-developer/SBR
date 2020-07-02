@@ -61,6 +61,8 @@
                                        <tr class="tt">
                                           <th id="a" class="h5-para-p2" width="80px">Sl No.</th>
                                           <th id="b" class="h5-para-p2" width="80px">Email</th>
+                                          <th id="b" class="h5-para-p2" width="80px">Action</th>
+
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -74,6 +76,7 @@
                                       <tr>
                                             <td ><a><?php echo (!empty($result))?$count:'---'  ?></a></td>
                                             <td ><a><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
+                                            <td  class="action-btn  center-align"><a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('newsletter/delete/'.$value->id.'') ?> " class="red hoverable delete-btn"><i class="fas fa-trash  "></i></a></td>
                                         </tr>
                                       
                                     <?php } } ?>
@@ -113,6 +116,7 @@
                   buttons: [
                       'copy', 'csv', 'excel', 'pdf'
                   ], 
+                  order: [[ 0, "asc" ]]
               });
               $('select').formSelect();
           } );

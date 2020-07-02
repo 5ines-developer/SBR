@@ -17,7 +17,7 @@ class Vendors extends CI_Controller {
      * vendors-> load view page
      * url : vendors
     **/
-    public function detail($category="",$name="",$uniqid="")
+    public function detail($category="",$city="",$name="",$uniqid="")
     {
         if($this->session->userdata('shurls') != ''){ 
           $this->session->unset_userdata('shurls');
@@ -185,7 +185,7 @@ Shaadibaraati.com
       if ($this->form_validation->run() == false) {
             $error = validation_errors();
             $this->session->set_flashdata('error', $error);
-            redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq,'refresh');
+            redirect(base_url().str_replace(" ","-",strtolower($value->city)).'/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
       }else{
         
         $insert = array(
@@ -208,7 +208,7 @@ Shaadibaraati.com
           }else{
             $this->session->set_flashdata('error', 'Something went wrong please try again later!');
           }
-          redirect(base_url().'detail/'.str_replace(" ","-",strtolower($value->category)).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq,'refresh');
+          redirect(base_url().str_replace(" ","-",strtolower($value->city)).'/'.str_replace(" ","-",strtolower($value->category)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq,'refresh');
     }
 
   }
@@ -258,7 +258,7 @@ Shaadibaraati.com
 
         foreach ($vendors as $key => $value) { }
 
-          $url = 'detail/'.str_replace('', '-', strtolower($value->category)).'/'.urlencode(str_replace('', '-', strtolower($value->name))).'/'.$vendor_id;
+          $url = str_replace('', '-', strtolower($value->city)).'/'.str_replace('', '-', strtolower($value->category)).'/'.str_replace('', '-', strtolower($value->name)).'/'.$vendor_id;
 
 
         $this->form_validation->set_rules('e_name', 'Name', 'required|alpha_numeric_spaces');

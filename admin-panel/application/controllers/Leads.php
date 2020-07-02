@@ -199,6 +199,15 @@ class Leads extends CI_Controller {
       $this->load->view('leads/manage', $data, FALSE);        
     }
 
+  public function delete($id='')
+    {
+        if($this->m_leads->deleteEnquiry($id)){
+            $this->session->set_flashdata('success', 'Leads deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went wrong please try again later');
+        }
+        redirect('leads');
+    }
 
 
 

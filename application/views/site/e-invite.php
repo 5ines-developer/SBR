@@ -17,6 +17,7 @@
                 $m_descp    = $value->m_desc;
                 $m_key      = $value->keywords;
                 $m_can      = $value->can_link; 
+                $m_description = $value->description; 
             }
         }
     }
@@ -264,6 +265,22 @@
                     </div>
                 </div>
         </section>
+
+
+        <?php    
+        if (!empty($m_description)) { ?>
+        <section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
+            <div class="container-2">
+                <div class="row m0">
+                    <div class="col l11 m12 s12">
+                        <?php echo (!empty($m_description))?$m_description:''; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+
+
         <?php $this->load->view('includes/footer'); ?>
         </div>
         <!-- script -->

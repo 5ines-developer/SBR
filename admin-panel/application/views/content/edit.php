@@ -50,6 +50,9 @@
                                                     <select id="city" name="city" required="">
                                                         <option value="">Choose a city</option>
                                                         <?php if (!empty($cities)) {
+                                                            echo '<option value="all" ';if ($result->city_id == 'all') {
+                                                                echo "selected"; }
+                                                                echo '>All City</option>';
                                                         foreach ($cities as $row => $cit) { ?>
                                                         <option value="<?php echo $cit->id ?>" <?php if ($cit->id == $result->city_id) {echo "selected"; } ?> > <?php echo $cit->city ?></option>
                                                     <?php  } } ?> </select>
@@ -59,6 +62,9 @@
                                                     <select id="category" name="category"  required="">
                                                         <option value="">Choose a category</option>
                                                         <?php if (!empty($categories)) {
+                                                             echo '<option value="all" ';if ($result->city_id == 'all') {
+                                                                echo "selected"; }
+                                                                echo '>All Category</option>';
                                                         foreach ($categories as $row => $cats) { ?>
                                                         <option value="<?php echo $cats->id ?>" <?php if ($result->category_id == $cats->id) {echo "selected"; } ?>> <?php echo $cats->category ?></option>
                                                     <?php  } } ?> </select>

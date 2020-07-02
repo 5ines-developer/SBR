@@ -83,7 +83,7 @@
             </div>
         </section>
 
-        <section>
+        <section class="real-thumb">
             <div class="container-fluide">
                 <div class="row">
                     <div class="col l12 m12 s12">

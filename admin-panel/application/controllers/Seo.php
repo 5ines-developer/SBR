@@ -63,7 +63,10 @@ class Seo extends CI_Controller {
        	'keywords' 	=> $this->input->post('keywords') , 
         'm_desc'  => $this->input->post('description') ,         
        	'can_link' 	=> $this->input->post('can_url') ,       	 
-       	'id' 		=> $this->input->post('id') , 
+        'id'        => $this->input->post('id') , 
+       	'description' 		=> $this->input->post('content') , 
+
+        
        );
 
 

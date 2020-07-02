@@ -73,6 +73,7 @@
                                           <th id="b" class="h5-para-p2" width="100px">Budget</th>
                                           <th id="b" class="h5-para-p2" width="100px">Enquiry Type</th>
                                           <th id="c" class="h5-para-p2" width="120px">Message</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Action</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -96,6 +97,12 @@
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->budget))?$value->budget:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->assigned))?'Admin verified ':'OTP Verified'  ?></a></td>
                                             <td ><a href="<?php echo base_url('vendor-enquiry/view/'.$value->ids.'') ?>"><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?></a></td> 
+                                            <td class="action-btn  center-align">
+                                              <!-- view user -->
+                                                <a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></a>
+                                              <!-- view user -->
+                                              <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('leads/delete/'.$value->ids.'') ?> " class="red hoverable delete-btn"><i class="fas fa-trash  "></i></a>
+                                            </td>
                                           </tr>
                                       
                                     <?php } } ?>

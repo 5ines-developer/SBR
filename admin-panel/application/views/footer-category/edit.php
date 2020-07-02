@@ -52,6 +52,9 @@
                                                     <select id="city" name="city" required="">
                                                         <option value="">Choose a city</option>
                                                         <?php if (!empty($cities)) {
+                                                            echo '<option value="all" ';if ($this->uri->segment(3) == 'all') {
+                                                                echo "selected"; }
+                                                                echo '>All City</option>';
                                                         foreach ($cities as $row => $cit) { ?>
                                                         <option value="<?php echo $cit->id ?>" <?php if($cit->id == $this->uri->segment(3)){ echo "selected"; } ?> > <?php echo $cit->city ?></option> <?php  } } ?> </select>
                                                         <label for="city">City</label>
@@ -60,6 +63,9 @@
                                                         <select id="category" name="category"  required="">
                                                             <option value="">Choose a category</option>
                                                             <?php if (!empty($categories)) {
+                                                                  echo '<option value="all" ';if ($this->uri->segment(4) == 'all') {
+                                                                echo "selected"; }
+                                                                echo '>All Category</option>';
                                                             foreach ($categories as $row => $cats) { ?>
                                                             <option value="<?php echo $cats->id ?>"  <?php if($cats->id == $this->uri->segment(4)){ echo "selected"; } ?>> <?php echo $cats->category ?></option> <?php  } } ?>
                                                         </select>
@@ -147,10 +153,14 @@
                                                     foreach ($result as $key => $value) {
                                                        if ($value->seggregation == 3) { ?>
                                                         <div class="row m0 sides">
-                                                    <div class="input-field col s12 l4">
+                                                    <div class="input-field col s12 l5">
                                                       <input type="text" id="popular" name="popular[]" class="validate" required value="<?php echo (!empty($value->popular))?$value->popular:''; ?>">
                                                       <label for="popular">Popular </label>
                                                     </div>
+                                                    <div class="input-field col s12 l5">
+                                                      <input type="text" id="link" name="link[]" class="validate" value="<?php echo (!empty($value->link))?$value->link:''; ?>">
+                                                      <label for="link">Link </label>
+                                                    </div><br>
                                                     <div class="col l2">
                                                         <a  class="marqueeclose remov" value="<?php echo $value->id; ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
                                                     </div>
@@ -165,9 +175,9 @@
                                                       <input type="text" id="popular" name="popular[]" class="validate" required>
                                                       <label for="popular">Popular </label>
                                                     </div>
-                                                    <div class="input-field col s12 l5">
-                                                      <input type="text" id="popular" name="popular[]" class="validate">
-                                                      <label for="popular">Popular </label>
+                                                    <div class="input-field col s12 l4">
+                                                      <input type="text" id="link" name="link[]" class="validate">
+                                                      <label for="link">Link </label>
                                                     </div><br>
                                                     <div class="col l2">
                                                         <a id="marqueeplus3" class="marqueeplus"><i class="fa fa-plus" aria-hidden="true"></i> </a>
@@ -249,7 +259,7 @@
             $(function() {
                 $('#marqueeplus3').on('click', function(e) {
                     e.preventDefault();
-                    $('<div class="row m0 marqaddnext1"> <div class="input-field col s12 l5"><input type="text" id="popular" name="popular[]" class="validate" required> <label for="popular">Popular </label> </div> <div class="input-field col s12 l5"> <input type="text" id="popular" name="popular[]" class="validate" required> <label for="popular">Popular </label> </div><br> <div class="col l2"> <a id="brandplus2" class="marqueeplus3 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
+                    $('<div class="row m0 marqaddnext1"> <div class="input-field col s12 l4"><input type="text" id="popular" name="popular[]" class="validate" required> <label for="popular">Popular </label> </div> <div class="input-field col s12 l5"> <input type="text" id="link" name="link[]" class="validate" required> <label for="link">Link </label> </div><br> <div class="col l2"> <a id="brandplus2" class="marqueeplus3 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> </div>')
                         .append().insertBefore('#marqaddnext3');
 
                 });

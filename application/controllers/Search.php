@@ -32,11 +32,13 @@ class Search extends CI_Controller {
 		$data['title']      = 'Vendors - ShaadiBaraati';
 		if($city == 'all' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult();
-			
+			$data['content'] = $this->m_search->conentGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
+			$data['foot'] = $this->m_search->footGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$this->load->view('vendors/category', $data, FALSE);
 		} else if($city != 'all' && $city !='' && $category == 'all-category'){
 			$data['vendors'] = $this->m_search->catviseresult($city);
-			
+			$data['content'] = $this->m_search->conentGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
+			$data['foot'] = $this->m_search->footGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$this->load->view('vendors/category', $data, FALSE);
 		}
 		else{
@@ -101,9 +103,9 @@ class Search extends CI_Controller {
 		if (!empty($result)) {
 			foreach ($result as $key => $value) {
 				$city 		= $this->m_search->SingleCity($value->city);
-				$category 	= $this->m_search->SingleCategory($value->city);
+				$category 	= $this->m_search->SingleCategory($value->category);
 				$data .= '<li class="sg-result-list left-align">';
-				$data .= '<a href="'.base_url().'detail/'.urlencode(str_replace(" ","-",strtolower($value->categoryname))).'/'.urlencode(str_replace(" ","-",strtolower($value->name))).'/'.$value->uniq.'">
+				$data .= '<a href="'.base_url().str_replace(" ","-",strtolower($value->categoryname)).'/'.str_replace(" ","-",strtolower($value->cityname)).'/'.str_replace(" ","-",strtolower($value->name)).'/'.$value->uniq.'">
 					<div class="vendor-inf">
 						<div class="row m0">
 							<div class="left">
@@ -111,7 +113,7 @@ class Search extends CI_Controller {
 							</div>
 							<div class="left ml15">
 								<p class="m0 black-text">'.$value->name.'</p>
-								<p class="auto-loc-cat">'.(!empty($category['category']) ? $category['category'].',  ' : '') .$city['city'].'</p>
+								<p class="auto-loc-cat">'.(!empty($category['category'])?$category['category'].',  ':'') .$city['city'].'</p>
 							</div>
 						</div>
 					</div>

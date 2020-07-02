@@ -152,10 +152,10 @@
                                             <div class="card">
                                                 <div class="card-image valign-wrapper">
                                                     <?php if (!empty($img4)) { ?>
-                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('h_banner/delete/?id=').$id4; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left"><i class="fas fa-trash-alt"></i></a>
+                                                        <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('h_banner/delete/?id=').$id4; ?>" class="btn-floating halfway-fab waves-effect waves-light orange left edits-btn"><i class="fas fa-trash-alt"></i></a>
                                                     <?php } ?>
 
-                                                    <img src="<?php echo $this->config->item('web_url').'/'.$img4 ?>" class="activator">s
+                                                    <img src="<?php echo $this->config->item('web_url').'/'.$img4 ?>" class="activator">
                                                     <span class="card-title">R2</span>
                                                     <a class="btn-floating halfway-fab waves-effect waves-light red modal-trigger aa" href="#modal1" data-id="r2"><i class="fas fa-pencil-alt"></i></a>
                                                 </div>
@@ -173,32 +173,40 @@
             </div>
         </section>
         <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <form action="<?php echo base_url() ?>h_banner/update" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-                <div class="modal-content">
-                    <h6 class="bold">Change Banner Article</h6>
-                    <br>
-                    <input type="hidden" name="postion">
-                    <div class="row">
-                        <div class="col s12">
-                            <div class="file-field input-field">
-                                <div class="btn">
-                                    <span>Select Image</span>
-                                    <input type="file" name="img" >
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" name="filepath" type="text">
-                                </div>
-                            </div>
+<div id="modal1" class="modal">
+    <form action="<?php echo base_url() ?>h_banner/update" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+        <div class="modal-content">
+            <h6 class="bold">Change Banner Article</h6>
+            <br>
+            <input type="hidden" name="postion">
+            <div class="row">
+                <div class="col s12">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Select Image</span>
+                            <input type="file" name="img" >
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" name="filepath" type="text">
                         </div>
                     </div>
                 </div>
-            <div class="modal-footer">
-                <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" type="submit">Submit <i class="fas fa-paper-plane right"></i> </button>
-                <a href="#!" class="modal-close waves-effect waves-red hoverable red btn-small">Close <i class="fas fa-times right"></i></a>
             </div>
-        </form>
-    </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="input-field col s12 l12">
+                        <input type="text" id="link" name="link" class="validate">
+                        <label for="link">LInk </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn waves-effect waves-light green darken-4 hoverable btn-small" type="submit">Submit <i class="fas fa-paper-plane right"></i> </button>
+            <a href="#!" class="modal-close waves-effect waves-red hoverable red btn-small">Close <i class="fas fa-times right"></i></a>
+        </div>
+    </form>
+</div>
     <!-- end footer -->
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
@@ -209,12 +217,26 @@
     $(document).ready( function () {
     $('select').formSelect();
     $('.modal').modal();
+
+
     $('.container-banner .card-image .aa').click(function (e) {
-    e.preventDefault();
-    var position = $(this).attr('data-id');
-    $('input[name=postion]').val(position);
+        e.preventDefault();
+        var position = $(this).attr('data-id');
+        $('input[name=postion]').val(position);
+        $.ajax({
+            type: "post",
+            url: "<?php echo base_url() ?>h_banner/singleData",
+            data: {position : position},
+            dataType: "json",
+            success: function (res) {
+                    $('input[name=link]').val(res.link);
+                    $('.file-path').val(res.img);
+               }
+        });
     
     });
+
+
     $(document).on('change', 'input[type=radio]', function (e) {
     e.preventDefault();
     var radio = $(this).val();
@@ -243,6 +265,35 @@
     $('.custom-box, .article-box').fadeOut(0);
     }
     }
+
+
+    $('.edits-btn').click(function (e) { 
+                e.preventDefault();
+                var position = $(this).attr('data-id');
+
+                console.log(position);
+
+
+                $('input[name=postion]').val(position);
+                $.ajax({
+                    type: "post",
+                    url: "<?php echo base_url() ?>h_banner/singleData",
+                    data: {position : position},
+                    dataType: "json",
+                    success: function (res) {
+                        console.log(res);
+                        
+                            // $("input[value=custom]").prop("checked", true);
+                            // $('input[name=ctitle]').val(res.title);
+                            // $('input[name=curl]').val(res.link);
+                            // $('.file-path').val(res.img);
+                       
+
+                    }
+                });
+            });
+
+
     });
     </script>
 </body>

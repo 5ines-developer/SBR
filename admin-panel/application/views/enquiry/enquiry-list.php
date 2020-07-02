@@ -85,8 +85,9 @@
                                             <td><a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"><?php echo (!empty($value->date))?date("M d, Y ", strtotime($value->date)):'---'; ?></a></td>
                                             <td class="action-btn  center-align">
                                               <!-- view user -->
-                                                <a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
+                                                <a href="<?php echo base_url('enquiries/view/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></a>
                                               <!-- view user -->
+                                              <a onclick="return confirm('Are you sure you want to delete this item?');" href="<?php echo base_url('enquiries/delete/'.$value->id.'') ?> " class="red hoverable delete-btn"><i class="fas fa-trash  "></i></a>
                                             </td>
                                           
                                         </tr>
@@ -126,6 +127,7 @@
                   buttons: [
                       'copy', 'csv', 'excel', 'pdf'
                   ], 
+                  order: [[ 0, "asc" ]]
               });
               $('select').formSelect();
           } );

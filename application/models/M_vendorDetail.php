@@ -183,6 +183,16 @@ class M_vendorDetail extends CI_Model {
     	}
     }
 
+    public function contactPerson($c_person='',$uniq='')
+    {
+        $this->db->where('uniq', $uniq)->update('vendor',array('c_person' =>$c_person));
+        if ($this->db->affected_rows() > 0) {
+            return $c_person;
+        }else{
+            return false;
+        }
+    }
+
     public function pricePer($per='',$uniq='')
     {
     	$this->db->where('uniq', $uniq)->update('vendor',array('price_for' =>$per));
@@ -277,9 +287,16 @@ class M_vendorDetail extends CI_Model {
 
     public function insert_portfolio($insert)
     {
-        $this->db->insert('vendor_portfolio',$insert);
-        $insert_id = $this->db->insert_id();
-        return  $insert_id;
+        $this->db->where('vendor_id', $insert['vendor_id']);
+        $query = $this->db->get('vendor_portfolio')->result();
+
+        if (count($query) > 30) {
+            return false;
+        }else{
+            $this->db->insert('vendor_portfolio',$insert);
+            $insert_id = $this->db->insert_id();
+            return  $insert_id;
+        }
     }
 
     public function add_video($insert='')

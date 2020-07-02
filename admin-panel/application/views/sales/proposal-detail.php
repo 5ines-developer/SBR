@@ -1,250 +1,344 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title></title>
-      <meta charset="UTF-8">
-      <meta name="description" content="Free Web tutorials">
-      <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="<?php echo base_url()?>assets/fonts/css/all.min.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/materialize.min.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
-      <!-- bar -->
-      <style>
-        /* .bordered tr{border: 1px solid gray; } 
-        .brt{border-right: 1px solid gray; }
-        .brb{ border-bottom: 1px solid gray; }
-        .no-border-b{ border-bottom :  none !important; }
-        .no-border-t{ border-top :  none !important; }
-        .no-border-tb{ border-top :  none !important; border-bottom :  none !important; } */
-        table tr td {font-size: 13px; font-weight: 600;}
-        td, th {
 
-    padding: 8px 5px; }
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<?php echo base_url()?>assets/fonts/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
+    <!-- bar -->
+    <style>
+        .bordered tr td {
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        td,
+        th {
+            padding: 8px 5px;
+        }
+        
+        .top-head span {
+            font-size: 12px;
+        }
+        
+        .bordered tr {
+            border-bottom: 1px solid black;
+        }
+        
+        .terms tr {
+            border-bottom: none;
+        }
+        
+        .ord-head {
+            background-color: #d0021b;
+            padding: 6px 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 13px !important;
+            border: 1px solid black;
+            position: relative;
+            top: 30px;
+        }
+        
+        .bg1 {
+            background-color: rgba(0, 0, 0, 0.12);
+            border-top: 1px solid black !important;
+            border-bottom: 1px solid black !important;
+        }
+    </style>
+</head>
 
-
-     </style>
-   </head>
-   <body>
+<body>
 
     <div id="header-include">
-      <?php $this->load->view('include/header.php'); ?>
+        <?php $this->load->view('include/header.php'); ?>
     </div>
 
-    
-      <!-- first layout -->
-        <section class="sec-top">
-            <div class="container-wrap">
-                <div class="col l12 m12 s12">
-                    <div class="row">
-                      <?php $this->load->view('include/menu.php'); ?>
-                        <div class="col m12 s12 l8 ">
 
-                          <a onclick="return confirm('Are you sure you want to Download the file?');" href="<?php echo base_url('vendors-proposal/download/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Download</a>
+    <!-- first layout -->
+    <section class="sec-top">
+        <div class="container-wrap">
+            <div class="col l12 m12 s12">
+                <div class="row">
+                    <?php $this->load->view('include/menu.php'); ?>
+                    <div class="col m12 s12 l8 ">
 
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="form-container">
+                        <a onclick="return confirm('Are you sure you want to Download the file?');" href="<?php echo base_url('vendors-proposal/download/'.$result['id'].'') ?>" class="waves-effect waves-light btn white-text  green hoverable">Download</a>
 
-                                      
-      <table class="bordered">
-        <tbody>
-          <tr>
-            <th style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: 1px solid gray;border-right:none;" colspan="2" class="right-align">Order & Agreement Form</td>
-            <th style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-right:1px solid gray;border-left: none;" class="right-align">Toll Free: 18004199456</th>
-          </tr>
-          <tr style="border: 1px solid gray;">
-            <!-- $_SERVER["DOCUMENT_ROOT"] -->
-              <td style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: 1px solid gray;border-right: none;" colspan="2"><img class="p-image" src="<?php echo $this->config->item('web_url') ?>/assets/img/logo.png" alt=""></td>
-              <td  style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: none;border-right:1px solid gray;" class="right-align">
-                <b>Pan NO :</b> <span>AAICB5254G</span>
-                <br>
-                <b>GST NO : </b><span >29AAICB5254GIZJ</span> 
-                <br>
-                <b>CIN : </b><span >U92190KA2019PTC125842</span> 
-                <br>
-                <b>Baraati Media & Entertainment Pvt LTD.</b> 
-                <br>
-                <span >No. 60, Kundan Complex, 2nd Floor, St John Road, Bangalore - 560042</span>
-              </td>
-          </tr>
-          <tr>
-            <td style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: 1px solid gray;border-right: none;" colspan="2">Vendor Listing Name : <?php echo (!empty($result['lname']))?$result['lname']:''; ?> </td>
-            <td style="border-top: 1px solid gray;border-bottom: 1px solid gray;border-left: none;border-right: 1px solid gray;" class="right-align">Date : <?php echo (!empty($result['pay_date']))?date('d M, Y',strtotime($result['pay_date'])):''; ?></td>
-          </tr>
-          <tr><td style="border: 1px solid gray;" colspan="3"> Billing Name: <?php echo (!empty($result['in_name']))?$result['in_name']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">GST NO : <?php echo (!empty($result['gstno']))?$result['gstno']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray; position: relative; top: -15px; bottom: 0; height: 68px;" colspan="3" height="100px;">Address :  <?php echo (!empty($result['laddress']))?$result['laddress']:''; ?></td></tr> <tr><td style="border: 1px solid gray;" colspan="3">City : <?php echo (!empty($result['city']))?$result['city']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">Contact Person : <?php echo (!empty($result['in_name']))?$result['in_name']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">Email Id : <?php echo (!empty($result['in_email']))?$result['in_email']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">Mobile Number : <?php echo (!empty($result['in_mobile']))?$result['in_mobile']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">Landline No: <?php echo (!empty($result['landline']))?$result['landline']:''; ?></td></tr>
-          <tr><td style="border: 1px solid gray;" colspan="3">Category: <?php echo (!empty($result['category']))?$result['category']:''; ?></td></tr>
-          <tr>
-            <th style="border: 1px solid gray;">Sr No</th>
-            <th style="border: 1px solid gray;" colspan="1" >Description</th>
-            <th style="border: 1px solid gray;width: 20%;">Amount in Rs.</th>
-          </tr>
-          <!-- <tr>
-            <td style="border: 1px solid gray;">1</td>
-            <td colspan="1" style="border: 1px solid gray;">Package Name: <?php echo (!empty($result['title']))?$result['title']:''; ?><br>
-            <span style="float: right;">Net Amount - &nbsp;&nbsp;</span><br>
-            <span style="float: right;">GST Amount - &nbsp;&nbsp;</span><br>
-            <span style="float: right;">Discount - &nbsp;&nbsp;</span>
-            <br><br><span><b>Note: 18% GST as applicable</b></span>
-            </td>
-            <td style="border: 1px solid gray;"><br>
-              Net Amount - 
-              <span>Net Amount - &nbsp;&nbsp;</span><br>
-              <span>Net Amount - &nbsp;&nbsp;</span><br>
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="form-container">
 
-              <?php echo (!empty($result['total']))?$result['total']:''; ?></td>
-          </tr> -->
-          <tr style="border-bottom:none;">
-            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;">1</td>
-             <td colspan="1" style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;">Package Name: <?php echo (!empty($result['title']))?$result['title']:''; ?>
-             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
-          </tr>
-          <tr style="border-bottom:none;">
-            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
-             <td colspan="1" style="float:right;border:none;">Net Amount -</td>
-             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"><?php echo (!empty($result['namopunt']))?$result['namopunt']:''; ?></td>
-          </tr>
-          <tr style="border-bottom:none;">
-            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
-             <td colspan="1" style="float:right;border:none;">GST -</td>
-             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"><?php echo (!empty($result['gst']))?$result['gst']:''; ?></td>
-          </tr>
-          <?php 
-            $amount = $result['namopunt'] + $result['gst'];
-            if (!empty($result['discount'])) {
-              $discount =  ($amount * $result['discount']) / 100;
-            }else{
-              $discount =  0;
-            }
-            $total = $amount - $discount;
-          ?>
-          <tr style="border-bottom:none;">
-            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
-             <td colspan="1" style="float:right;border:none;">Discount -
-             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"><?php echo $discount ?></td>
-          </tr>
-          <tr style="border-bottom:none;">
-            <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
-             <td colspan="1" style="float:left;border:none;"><b>Note: 18% GST as applicable</b></td>
-             <td style="border-top:none;border-bottom:none;border-right: 1px solid gray;border-left: 1px solid gray;"></td>
-          </tr>
-          <tr>
-            <td  style="border: 1px solid gray;"></td>
-            <td colspan="1" style="border: 1px solid gray;" class="right-align">Total</td>
-            <td  style="border: 1px solid gray;"><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid gray;" colspan="3">
-              <span>Reciept No : <?php echo (!empty($result['rec_no']))?$result['rec_no']:''; ?></span><br>
-              <span>Recieved with thanks the sum of Rs<span style="border-bottom: 1px solid gray;"><?php echo (!empty($result['total']))?$result['total']:''; ?></span></span><br>
-              <span>Rupees:  <span style="border-bottom: 1px solid gray;"><?php echo (!empty($result['total']))?$result['total']:''; ?></span> as per the details given below </span><br>
-              <span>NEFT/RTGS/IMPS Direct Deposit/Cheque No:<?php echo (!empty($result['or_id']))?$result['or_id']:''; ?></span><br>
-              <span>Drawee Bank : <?php echo (!empty($result['dr_bank']))?$result['dr_bank']:''; ?></span><br>
-              <span>GST NO : <?php echo (!empty($result['gstno']))?$result['gstno']:''; ?></span><br>
-              <span>PAN NO : <?php echo (!empty($result['pan_no']))?$result['pan_no']:''; ?></span><br>
-            </td>
-          </tr>
-          <tr><td style="border: 1px solid gray;" colspan="3"><small>I/We have read and understood the terms and conditions on the back of this order & agreement form, and I/We hereby put My/Our Signature in acceptance thereof</small></td></tr>
-          <tr><th style="border: 1px solid gray;" colspan="3" class="right-align">Baraati Media & Entertainment Pvt LTD.</th></tr>
-          <tr>
-          <td style="border: 1px solid gray;" class="right-align" colspan="2">Employee Name:</td>
-            <td style="border: 1px solid gray;" colspan="1"><?php echo (!empty($result['empname']))?$result['empname']:''; ?></td>
-          </tr>
-          <tr>
-          <td style="border: 1px solid gray;" class="right-align" colspan="2">Employee ID:</td>
-            <td style="border: 1px solid gray;" colspan="1"><?php echo (!empty($result['empid']))?$result['empid']:''; ?></td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid gray;" colspan="3">Note : Cheques / DD Should be in favour of <b>"Baraati Media & Entertainment Pvt LTD."</b></td>
-          </tr>
-          <tr>
-            <td style="border: 1px solid gray;" colspan="3"><small>As Per section 194 C Income Tax TDS applicable for Online Advertisement is 2%</small></td>
-          </tr>
-            
-        </tbody>        
-      </table>
+                                    <table class="bordered">
+                                        <tbody>
+
+                                            <tr class="top-head">
+                                                <td colspan="1"><img class="p-image" src="<?php echo base_url() ?>/assets/img/logo.png" alt=""></td>
+                                                <td><span class="ord-head">Order And Agreement Form</span></td>
+                                                <td class="right-align">
+                                                    <span>Toll Free :  1800 4199 456 </span><br>
+                                                    <span>Baraati Media & Entertainment Pvt LTD.</span><br>
+                                                    <span>PAN No : AAICB5254G</span> <br>
+                                                    <span>GST NO : 29AAICB5254GIZJ</span> <br>
+                                                    <span>CIN : U92190KA2019PTC125842</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2"><b>Billing Details :  </b></td>
+                                                <td><b>Order Date : <?php echo (!empty($result['pay_date']))?date('d M, Y',strtotime($result['pay_date'])):''; ?> </b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"> Invoicing Name:
+                                                    <?php echo (!empty($result['invoice_name']))?$result['invoice_name']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">GSTIN Number :
+                                                    <?php echo (!empty($result['gstno']))?$result['gstno']:''; ?> </td>
+                                                <td>Customer ID :
+                                                    <?php echo (!empty($result['vendorId']))?$result['vendorId']:''; ?> </td>
+                                            </tr>
+                                            <tr style="border-bottom: 2px solid black;">
+                                                <td colspan="3"> Listing Name :
+                                                    <?php echo (!empty($result['listing_name']))?$result['listing_name']:''; ?> </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="3">Email Id :
+                                                    <?php echo (!empty($result['listing_mail']))?$result['listing_mail']:''; ?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"> Invoicing Address:
+                                                    <?php echo (!empty($result['invoice_address']))?$result['invoice_address']:''; ?> </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">Order Type :
+                                                    <?php echo (!empty($result['ord_type']))?$result['ord_type']:''; ?> </td>
+                                                <td>Mobile No :
+                                                    <?php echo (!empty($result['listing_phone']))?$result['listing_phone']:''; ?> </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> Contact Person :
+                                                    <?php echo (!empty($result['c_person']))?$result['c_person']:''; ?>
+                                                </td>
+                                                <td>Category :
+                                                    <?php echo (!empty($result['category']))?$result['category']:''; ?> </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">Alternate No :
+                                                    <?php echo (!empty($result['alt_phone']))?$result['alt_phone']:''; ?>
+                                                </td>
+                                                <td>City :
+                                                    <?php echo (!empty($result['city']))?$result['city']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
 
 
+                                            <tr class="bg1">
+                                                <td colspan="3"><b>Package Details : </b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> Package Name :
+                                                    <?php echo (!empty($result['title']))?$result['title']:''; ?>
+                                                </td>
+                                                <td>Category Name :
+                                                    <?php echo (!empty($result['category']))?$result['category']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">Listing City :
+                                                    <?php echo (!empty($result['city']))?$result['city']:''; ?>
+                                                </td>
+                                                <td>Tenure :
+                                                    <?php echo (!empty($result['tenure']))?$result['tenure']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+
+                                            <tr class="bg1">
+                                                <td colspan="3"><b>Payment Details : </b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> Net Amount :
+                                                    <?php echo (!empty($result['nt_amnt']))?$result['nt_amnt']:''; ?>
+                                                </td>
+                                                <td>Total Discount :
+                                                    <?php echo (!empty($result['discount']))?$result['discount']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">Amt Payable After Disc :
+                                                    <?php echo (!empty($result['amt_after_disc']))?$result['amt_after_disc']:''; ?>
+                                                </td>
+                                                <td>18% GST Amount :
+                                                    <?php echo (!empty($result['gst_amount']))?$result['gst_amount']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"> TDS If Applicable :
+                                                    <?php echo (!empty($result['tds']))?$result['tds']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="3"> Total Amount :
+                                                    <?php echo (!empty($result['t_amnt']))?$result['t_amnt']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"> Amount In Words :
+                                                    <?php echo (!empty($result['am_words']))?$result['am_words']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+
+
+                                            <tr class="bg1">
+                                                <td colspan="3"><b>Payment Mode : </b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> Mode :
+                                                    <?php echo (!empty($result['pay_mode']))?$result['pay_mode']:''; ?>
+                                                </td>
+                                                <td>Instrument No :
+                                                    <?php echo (!empty($result['inst_no']))?$result['inst_no']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">Payment Date :
+                                                    <?php echo (!empty($result['pay_date']))?$result['pay_date']:''; ?>
+                                                </td>
+                                                <td>Amount :
+                                                    <?php echo (!empty($result['amount']))?$result['amount']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+
+                                            <tr class="bg1">
+                                                <td colspan="3"><b>PDC Details : </b></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> Mode :
+                                                    <?php echo (!empty($result['pdc_mode']))?$result['pdc_mode']:''; ?>
+                                                </td>
+                                                <td>Instrument No :
+                                                    <?php echo (!empty($result['pdc_instrmnt']))?$result['pdc_instrmnt']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr class="bg1">
+                                                <td colspan="2">Payment Date :
+                                                    <?php echo (!empty($result['pdc_pay_date']))?$result['pdc_pay_date']:''; ?>
+                                                </td>
+                                                <td>Amount :
+                                                    <?php echo (!empty($result['pdc_amount']))?$result['pay_date']:''; ?>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"></td>
+                                            </tr>
+
+
+                                    </table>
 
 
 
+                                    <table class="terms">
+                                        <thead>
+                                            <tr>
+                                                <th class="t-title">Terms & Conditions</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="term-sub"><b>Shaadi Baraati</b> is a division of <b>Baraati Media & Entertainment Pvt Ltd.</b> Shaadi Baraati provides information & assistance to Vendor in providing leads of Shaadi Baraati customers for marriage
+                                                    related services. The condition for opting services of Shaadi Baraati is mentioned herein below </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <ol>
+                                                        <li><b>Eligibility </b>- Vendor is engaged in the business of providing Matrimonial Services and has agreed to provide service for the Leads from Shaadi Baraati. </li>
+                                                        <li>Customer information shall be provided to the Vendor(s) by way of shared Lead(s). There is no exclusivity in providing Lead(s).</li>
+                                                        <li>Lead feedback from the Vendor is to be submitted to Shaadi Baraati within 24 hours.</li>
+                                                        <li>The Vendor(s) shall pay advance as may be mutually agreed with ShaadiBaraati.com.</li>
+                                                        <li>The Vendor shall pay the agreed commission to Shaadibaraati.com once the Vendor closes the deal with the Customer. The amount of commission shall be deducted from the Advance provided and the Vendor
+                                                            shall pay the balance it any to Shaadi Baraati within 3 (three) working days of the intimation of the balance outstanding.</li>
+                                                        <li><b>Invoicing</b>: Shaadi Baraati will raise an invoice for the commission for the converted leads on monthly basis to the Vendor(s). </li>
+                                                        <li>Once the Advance amount is fully deducted, the Vendor shall provide further Advance amount in respect of leads as agreed mutually between the parties.</li>
+                                                        <li>SB shall have the right to conduct surprise inspections in respect of the Mandapam (s) to check on the leads provided by SB which has been converted into business between the Vendor and the Customer
+                                                            </li>
+                                                        <li>Shaadi Baraati cannot guarantee or assume responsibility for any specific results to the Vendor </li>
+                                                        <li> Vendor(s) are required to exercise due care and caution while interacting with the customer and satisfy themselves before they agree to provide services to the customer. </li>
+                                                        <li>Shaadi Baraati has no obligation, to monitor any such disputes arising between the Vendor(s) and the customer(s) and Shaadi Baraati shall not be party to any such dispute/litigation etc. </li>
+                                                        <li>If Baraati Media & entertainment Pvt Ltd receive feedback/ complaints against Vendor(s) service, then Baraati Media & Entertainment Pvt Ltd. shall have the right to remove the Vendor(s) from the
+                                                            Lead shared list and shall not deal with such Vendor(s). </li>
+                                                        <li><b>Policy -</b> Baraati Media & Entertainment Pvt Ltd has the right to change its terms and conditions without notice to the Vendor(s). </li>
+                                                        <li><b>Taxes:-</b> Taxes including GST and Deduction of tax at source shall be applicable at applicable rates as on date. </li>
+                                                        <li><b>Relation between parties -</b> Each party shall be and act as an independent contractor and not as partner, joint venture, or agent of the other. </li>
+                                                        <li><b>Confidential Information- </b> The term "Confidential Information" means all know-how, methods, financial, business, technical information, Customer information disclosed by or for a party, but
+                                                            not including any information the Vendor(s) can demonstrate is (a) was furnished to it without restriction by a third party, (b) generally available in public without breach of these terms or
+                                                            (c) independently developed by it without reliance on such information. Except for the specific rights granted by this Agreement, the Vendor(s) shall not possess access, use or disclose any of
+                                                            Baraati Media & Entertainment Pvt Ltd Confidential Information without its prior written consent, and shall use reasonable care to protect the Confidential Information. . Promptly after any termination
+                                                            of these terms Vendor(s) shall return the Confidential Information, records and materials to Baraati Media & Entertainment Pvt Ltd.</li>
+                                                        <li><b>Limitation of Liability -</b> In no event will Baraati Media & Entertainment Pvt Ltd. be liable to the Vendor(s) in connection with these terms for a) any indirect, consequential, incidental,
+                                                            punitive; exemplary or special losses, whether arising in agreement, tort or otherwise; b) loss of data/programs, loss of profits or revenue, loss of anticipated savings or loss of goodwill,
+                                                            even if such losses or damages were reasonably foreseeable or where Baraati Media & Entertainment Pvt Ltd. has been advised of the possibility of such losses or damages. </li>
+                                                        <li><b>Refund-</b> The advance payment made to Baraati Media & Entertainment Pvt Ltd. towards Any package is treated as no refundable. Payments once made cannot be assigned to any person/Party or adjusted
+                                                            towards any other service </li>
+                                                        <li><b>Termination-</b> No Termination once activated from either side for termination of this agreement.</li>
+                                                        <li><b>Indemnity-</b> The Vendor shall indemnify and keep indemnified Baraati Media & Entertainment Pvt Ltd. against all loss, damages, and claims, actions that are initiated against Baraati Media &
+                                                            Entertainment Pvt Ltd. for any act or omission by Vendor to (i) leads shared by Baraati Media & Entertainment Pvt Ltd. ; (ii) for breach of confidentiality of these terms and Customer information;
+                                                            (iv) for breach of applicable law. </li>
+                                                        <li style="border-bottom: 1px solid #d0021b;padding-bottom: 15px;"><b>Jurisdiction and Dispute Resolution -</b> Any disputes arising out of or in connection with this agreement, during its subsistence and after its termination in any manner whatsoever, including
+                                                            the validity of this Agreement shall be referred to arbitration of a sole arbitrator nominated by the Baraati Media & Entertainment Pvt Ltd. to the dispute in accordance with the provisions contained
+                                                            in the Arbitration and Conciliation Act, 1996 or any amendment made thereto. The place of Arbitration shall be Bengaluru and the language of Arbitration shall be English. The decision of the
+                                                            arbitrator shall be final and binding on the parties. </li>
+                                                        <span>Note : “This is an electronically <b>generated</b> report,  <b>hence does not require a signature”.</b> All right reserved by <b>Baraati Media & Entertainment Pvt Ltd</b> </span>
+                                                    </ol>
 
 
+                                                </td>
+                                            </tr>
 
+                                        </tbody>
+                                    </table>
 
-     
-
-
-      
-
-
-      
-
-      <!-- <table class="terms">
-        <thead>
-          <tr>
-              <th class="red-text t-title">Terms & Conditions</th>
-          </tr>
-          <tr>
-              <td class="term-sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit.onse ctetur adip isicing elitonse ctetur adip isicing elit </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, cons ectetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consec tetur adipisicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consec tetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-            </ul></td>
-          </tr>
-          
-        </tbody>
-      </table> -->
-
-
-    
-
-
-                                          </div>
-                                    </div>
                                 </div>
-                            </div><!-- cad end -->
+                            </div>
                         </div>
                     </div>
+                    <!-- cad end -->
                 </div>
             </div>
-        </section>
-        
-        <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
-        <script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
+        </div>
+        </div>
+    </section>
 
-        <script>
-  <?php $this->load->view('include/message.php'); ?>
-    
-  </script>
-      <script>
-    $(document).ready(function() {
-        $('select').formSelect();
-    });
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
+
+    <script>
+        <?php $this->load->view('include/message.php'); ?>
     </script>
-        
-    </body>
+    <script>
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+    </script>
+
+</body>
+
 </html>

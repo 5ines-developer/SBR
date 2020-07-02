@@ -73,6 +73,16 @@ class M_leads extends CI_Model {
 		return $this->db->where('id', $id)->get('vendor')->row('phone');		
 	}
 
+	public function deleteEnquiry($id='')
+	{
+		$this->db->where('id', $id)->delete('vendor_enquiry');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 
 
 

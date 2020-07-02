@@ -79,8 +79,21 @@
                                       ?>
                                       <tr>
                                           <td ><?php echo (!empty($result))?$count:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
+                                            <td ><?php 
+                                            if (!empty($value->city_id) && $value->city_id=='all') {
+                                              echo "All City";
+                                            }else if (!empty($value->city)) {
+                                              echo $value->city;
+                                            }else{
+                                              echo '---';
+                                            } ?></td>
+                                            <td ><?php if (!empty($value->category_id) && $value->category_id=='all') {
+                                              echo "All Category";
+                                            }else if (!empty($value->category)) {
+                                              echo $value->category;
+                                            }else{
+                                              echo '---';
+                                            }?></td>
                                             <td class="action-btn  center-align">
                                               
                                               <!-- view user -->

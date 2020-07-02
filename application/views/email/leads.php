@@ -540,7 +540,7 @@
                         
                         <td class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;" valign="top">
                         
-                            <span style="font-size:18px"><a href="*|ARCHIVE|*" target="_blank">Leads</a></span>
+                            <span style="font-size:18px"><a target="_blank">Leads</a></span>
                         </td>
                     </tr>
                 </tbody></table>

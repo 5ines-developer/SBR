@@ -81,7 +81,7 @@
                                       ?>
                                        <tr>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
-                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->vendorname))?$value->vendorname:'---'  ?></a></td>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->title))?$value->title:'---'  ?></a></td>

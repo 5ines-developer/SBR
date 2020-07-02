@@ -41,14 +41,16 @@
                                                     <select id="city" name="city" required="">
                                                         <option value="">Choose a city</option>
                                                         <?php if (!empty($cities)) {
+                                                            echo '<option value="all" >All City</option>';
                                                         foreach ($cities as $row => $cit) { ?>
                                                         <option value="<?php echo $cit->id ?>"> <?php echo $cit->city ?></option> <?php  } } ?> </select>
                                                         <label for="city">City</label>
                                                     </div>
                                                     <div class="input-field col s12 l6">
-                                                        <select id="category" name="category"  required="">
+                                                        <select id="category" name="category" required="">
                                                             <option value="">Choose a category</option>
                                                             <?php if (!empty($categories)) {
+                                                                 echo '<option value="all" >All Category</option>';
                                                             foreach ($categories as $row => $cats) { ?>
                                                             <option value="<?php echo $cats->id ?>"> <?php echo $cats->category ?></option> <?php  } } ?>
                                                         </select>
@@ -149,12 +151,12 @@
             $("select").css({display: "inline", height: 0, padding: 0, width: 0});
             $("#city-form").validate({
             rules: {
-            city: { required: true, },
-            category:{ required: true, }
+            // city: { required: true, },
+            // category:{ required: true, }
             },
             messages: {
-            city: "Please select a city",
-            category: "Please select a category",
+            // city: "Please select a city",
+            // category: "Please select a category",
             }
             });
             });

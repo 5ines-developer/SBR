@@ -98,6 +98,13 @@ $this->load->model('m_vendorDetail');
                                             <span class="helper-text red-text" >{{ perError }}</span>
                                         </div>
                                     </div> 
+                                    <div class="col l6 m5 s12">
+                                        <div class="input-field">
+                                            <label :class="{ active: active }" for="c_person">Contact Person</label>
+                                            <input id="c_person" type="text" class="validate" @change="contactPerson"  v-model="c_person">
+                                            <span class="helper-text red-text" >{{ c_personError }}</span>
+                                        </div>
+                                    </div>
                                     <div class="col l12 m5 s12">
                                         <div class="input-field">
                                             <label :class="{ active: active }" for="vaddress">Address <span class="red-text">*</span></label>
@@ -118,6 +125,8 @@ $this->load->model('m_vendorDetail');
                                         <span class="helper-text-vender"><b class="notes">Note</b>: Please select only image file
                                             (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
                                                 size:</b> 512kb <span class="red-text">*</span></span>
+                                                <div class="clearfix"></div>
+                                                <span class="helper-text red-text" >{{ bannerError }}</span>
                                     </div>
 
                                     <div class="col l6 m5 s12">
@@ -339,7 +348,7 @@ $this->load->model('m_vendorDetail');
                                 
                             </div>
                             <!-- Offer Image-->
-                            <div class="list-profile">
+                           <!--  <div class="list-profile">
                                 <div class="vendor-head1">
                                     <h6>Offer Image</h6>
                                 </div>
@@ -377,7 +386,9 @@ $this->load->model('m_vendorDetail');
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            
                         </div>
                     </div>
                 </div>
@@ -559,6 +570,8 @@ $this->load->model('m_vendorDetail');
                 phone :'',
                 eotpError:'',
                 potpError:'',
+                c_person:'',
+                c_personError:'',
             },
 
             methods: {
@@ -581,7 +594,27 @@ $this->load->model('m_vendorDetail');
                         }
                       })
                 },
-                
+
+                contactPerson(){
+                    this.c_personError = '';
+                    const formData = new FormData();
+                        formData.append('c_person', this.c_person);
+                        axios.post('<?php echo base_url() ?>vendor_detail/contactPerson', formData)
+                      .then(response => {
+                        if(response.data == ''){
+                            this.c_personError = 'Something went wrong, please try again!';
+                            M.toast({html: 'Something went wrong, please try again later!.', classes: 'red darken-2'});
+                        }else{
+                            this.c_person = response.data;
+                            M.toast({html: 'Contact person name updated succesfully.', classes: 'green darken-2'});
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
                 pricePer(){
                     this.priceError = '';
                     const formData = new FormData();
@@ -632,10 +665,13 @@ $this->load->model('m_vendorDetail');
                             } 
                         }
                         ).then(response => {
+                            console.log(response)
                         if(response.data == ''){
                             this.bannerError = 'Something went wrong, please try again!';
+                            M.toast({html: 'Something went wrong, please try again!', classes: 'red darken-2'});
                         }else{
                             this.banner = response.data;
+                            M.toast({html: 'Banner Images upload succesfully.', classes: 'green darken-2'});
                         }
                       })
                       .catch(error => {
@@ -859,6 +895,21 @@ $this->load->model('m_vendorDetail');
                         }
                       })
                 },
+                getPerson(){
+                      axios.post('<?php echo base_url() ?>vendor_detail/getPerson')
+                      .then(response => {
+                        if(response.data != ''){
+                            this.c_person    = response.data;
+                            this.active = true;
+                            
+                        }
+                      })
+                      .catch(error => {
+                        if (error.response) {
+                            this.errormsg = error.response.data.error;
+                        }
+                      })
+                },
 
             },
             mounted: function() {
@@ -867,6 +918,7 @@ $this->load->model('m_vendorDetail');
             this.getAddress();
             this.getEmail();
             this.getPhone();
+            this.getPerson();
         },
         });
     </script>

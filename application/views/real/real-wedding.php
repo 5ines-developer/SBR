@@ -16,6 +16,7 @@
                 $m_descp    = $value->m_desc;
                 $m_key      = $value->keywords;
                 $m_can      = $value->can_link; 
+                $m_description = $value->description; 
             }
         }
     }
@@ -36,23 +37,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>/assets/css/slimselect.min.css">
     <?php $this->load->view('includes/favicon.php');  ?>
     <style>
-        .img-box img {
-            /* max-height:235px;
-            min-height:235px; */
-            width:100%;
-        }
+        
         .wed-detail p{
             color:black;
         }
-        @media (max-width:991px) and (min-width:768px){
-            .img-box img {
-                /* min-height:144px; */
-                width:100%;
-            }
-            /* .card-wed {
-                height: 236px;
-            } */
-        }
+       
     </style>
 </head>
 
@@ -70,7 +59,7 @@
             </div>
         </section>
 
-        <section>
+        <section class="real-thumb">
             <div class="container-fluide">
                 <div class="row">
                     <div class="col l12 m12 s12">
@@ -82,15 +71,20 @@
                 </div>
                 <div class="row">
                     <?php if(!empty($records)){
-                        foreach($records as $row){ ;?>
-                        <a href="<?php echo base_url('real-wedding/detail/'.$row->id.'') ?>" >
+                        foreach($records as $row){ 
+                            $rname = !empty($row->name)?$row->name:'';
+                            $rcity = !empty($row->city)?$row->city:'';
+
+                            ;?>
+                        <a href="<?php echo base_url('real-wedding/'.str_replace(" ","-",strtolower($rname)).'-'.str_replace(" ","-",strtolower($rcity)).'/'.$row->id.'') ?>" >
                             <div class="col l4 s12 m4">
                                 <div class="card-wed">
                                     <div class="img-box">
+
                                     <img src="<?php echo base_url().'/'.$row->image;?>" class="img-responsive" alt="">
                                     </div>
                                     <div class="wed-detail">
-                                        <p><b><?php echo $row->name;?></b> | <?php echo $row->city;?></p>
+                                        <p class="truncate"><b><?php echo $row->name;?></b> | <?php echo $row->city;?></p>
                                     </div>
                                 </div>
                             </div>
@@ -117,6 +111,19 @@
                 </div> -->
             </div>
         </section>
+
+        <?php    
+        if (!empty($m_description)) { ?>
+        <section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
+            <div class="container-2">
+                <div class="row m0">
+                    <div class="col l11 m12 s12">
+                        <?php echo (!empty($m_description))?$m_description:''; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
 
 
         <?php $this->load->view('includes/footer'); ?>

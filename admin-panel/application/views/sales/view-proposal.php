@@ -68,7 +68,7 @@
                                         <tbody>
                                             <tr>
                                                 <th class="w205">Name</th>
-                                                <td><?php echo (!empty($result['name']))?$result['name']:'---'  ?></td>
+                                                <td><?php echo (!empty($result['vendorname']))?$result['vendorname']:'---'  ?></td>
                                             </tr>
                                             <tr>
                                                 <th class="w205">City</th>
@@ -84,11 +84,11 @@
                                             </tr>
                                             <tr>
                                                 <th class="w205">Category Banner</th>
-                                                <td><?php echo (!empty($result['cat_banner']))?'Yes':'---'  ?></td>
+                                                <td><?php echo (!empty($result['cat_banner']))?'Yes':'NO'  ?></td>
                                             </tr>
                                             <tr>
                                                 <th class="w205">City Banner</th>
-                                                <td><?php echo (!empty($result['city_banner']))?'Yes':'---'  ?></td>
+                                                <td><?php echo (!empty($result['city_banner']))?'Yes':'NO'  ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -101,32 +101,56 @@
                           
                             <div class="card scrollspy" id="personal-detail">
                                 <div class="card-content">
-                                    <p class="bold mb10 h6">Listing Details</p>
+                                    <p class="bold mb10 h6">Billing Details</p>
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <th class="w205">Listing Name</th>
-                                                <td><?php echo (!empty($result['lname']))?$result['lname']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Mobile Number</th>
-                                                <td><?php echo (!empty($result['city']))?$result['city']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Email Id</th>
-                                                <td><?php echo (!empty($result['ld_email']))?$result['ld_email']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">City</th>
-                                                <td><?php echo (!empty($result['city']))?$result['city']:'---'  ?></td>
+                                                <th class="w205">Invoice Name</th>
+                                                <td><?php echo (!empty($result['invoice_name']))?$result['invoice_name']:'---'  ?></td>
                                             </tr>
                                             <tr>
                                                 <th class="w205">GSTIN Number</th>
                                                 <td><?php echo (!empty($result['gstno']))?$result['gstno']:'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">Address</th>
-                                                <td><?php echo (!empty($result['laddress']))?$result['laddress']:'---'  ?></td>
+                                                <th class="w205">Customer ID</th>
+                                                <td><?php echo (!empty($result['vendorId']))?$result['vendorId']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Listing Name</th>
+                                                <td><?php echo (!empty($result['listing_name']))?$result['listing_name']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Email Id</th>
+                                                <td><?php echo (!empty($result['listing_mail']))?$result['listing_mail']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Mobile Number</th>
+                                                <td><?php echo (!empty($result['listing_phone']))?$result['listing_phone']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Order Type</th>
+                                                <td><?php echo (!empty($result['ord_type']))?$result['ord_type']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Contact Person</th>
+                                                <td><?php echo (!empty($result['c_person']))?$result['c_person']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Category</th>
+                                                <td><?php echo (!empty($result['category']))?$result['category']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">City</th>
+                                                <td><?php echo (!empty($result['city']))?$result['city']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">Alternate No</th>
+                                                <td><?php echo (!empty($result['alt_phone']))?$result['alt_phone']:'---'  ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="w205">invoice_address</th>
+                                                <td><?php echo (!empty($result['invoice_address']))?$result['invoice_address']:'---'  ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -139,36 +163,146 @@
                             <div class="col 16 m6">
                             <div class="card scrollspy" id="personal-detail">
                                 <div class="card-content">
-                                    <p class="bold mb10 h6">Invoice Details</p>
+                                    <p class="bold mb10 h6">Package Details</p>
                                     <table>
                                         <tbody>
                                             <tr>
-                                                <th class="w205">Invoice Name</th>
-                                                <td><?php echo (!empty($result['in_name']))?$result['in_name']:'---'  ?></td>
+                                                <th class="w205">Net Amount</th>
+                                                <td><?php echo (!empty($result['nt_amnt']))?$result['nt_amnt']:'---'  ?></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th class="w205">GST</th>
+                                                <td><?php echo (!empty($result['gst_amount']))?$result['gst_amount']:'---'  ?></td>
+                                            </tr>
+                                            <?php 
+                                              $amount = $result['nt_amnt'] + $result['gst_amount'];
+                                              if (!empty($result['discount'])) {
+                                                $discount =  ($amount * $result['discount']) / 100;
+                                              }else{
+                                                $discount =  0;
+                                              }
+                                              $total = $amount - $discount;
+                                              $totalamount = $total+$result['tds'];
+                                            ?>
+                                            <tr>
+                                                <th class="w205">Total Discount</th>
+                                                <td><?php echo (!empty($result['discount']))?$result['discount'].'% ( &#8377;'.$discount.')':'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">Mobile Number</th>
-                                                <td><?php echo (!empty($result['in_mobile']))?$result['in_mobile']:'---'  ?></td>
+                                                <th class="w205"> Amount Payable after discount</th> 
+                                                <td><?php echo (!empty($total))?$total:'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">Landline Number</th>
-                                                <td><?php echo (!empty($result['landline']))?$result['landline']:'---'  ?></td>
+                                                <th class="w205"> TDS If Applicable</th> 
+                                                <td><?php echo (!empty($result['tds']))?$result['tds']:'---'  ?></td>
+                                            </tr>
+
+                                            <tr>
+                                                <th class="w205"> Total Amount</th> 
+                                                <td><?php echo (!empty($totalamount))?$totalamount:'---'  ?></td>
+                                            </tr>
+
+
+                                            <?php $num = $totalamount;
+                                              $num    = (string) ((int)$num);
+                                              if((int)($num) && ctype_digit($num))
+                                              {
+                                                  $words  = array();
+                                                  $num    = str_replace(array(',',''),'',trim($num));
+                                                  $list1  = array('','one','two','three','four','five','six','seven',
+                                                      'eight','nine','ten','eleven','twelve','thirteen','fourteen',
+                                                      'fifteen','sixteen','seventeen','eighteen','nineteen');
+                                                  $list2  = array('','ten','twenty','thirty','forty','fifty','sixty',
+                                                      'seventy','eighty','ninety','hundred');
+                                                  $list3  = array('','thousand','million','billion','trillion',
+                                                      'quadrillion','quintillion','sextillion','septillion',
+                                                      'octillion','nonillion','decillion','undecillion',
+                                                      'duodecillion','tredecillion','quattuordecillion',
+                                                      'quindecillion','sexdecillion','septendecillion',
+                                                      'octodecillion','novemdecillion','vigintillion');
+                                                  $num_length = strlen($num);
+                                                  $levels = (int)(($num_length+2)/3);
+                                                  $max_length = $levels * 3;
+                                                  $num    = substr('00'.$num , -$max_length);
+                                                  $num_levels = str_split($num,3);
+                                                  foreach($num_levels as $num_part)
+                                                  {
+                                                      $levels--;
+                                                      $hundreds   = (int)($num_part/100);
+                                                      $hundreds   = ($hundreds?''.$list1[$hundreds].'Hundred'.($hundreds == 1?'':'s').'':'');
+                                                      $tens       = ( int ) ( $num_part % 100 );
+                                                      $singles    = '';
+                                                      if( $tens < 20 ) { $tens = ( $tens ? ' ' . $list1[$tens] . ' ' : '' ); } else { $tens = ( int ) ( $tens / 10 ); $tens = ' ' . $list2[$tens] . ' '; $singles = ( int ) ( $num_part % 10 ); $singles = ' ' . $list1[$singles] . ' '; } $words[] = $hundreds . $tens . $singles . ( ( $levels && ( int ) ( $num_part ) ) ? ' ' . $list3[$levels] . ' ' : '' ); 
+                                                  }
+                                                      $commas = count( $words ); 
+                                                      if( $commas > 1 )
+                                                  {
+                                                      $commas = $commas - 1;
+                                                  }
+                                                  $words  = implode( ', ' , $words );
+                                                  //Some Finishing Touch
+                                                  //Replacing multiples of spaces with one space
+                                                  $words  = trim( str_replace( ' ,' , ',' , trim( ucwords( $words ) ) ) , ', ' );
+                                                  if( $commas )
+                                                  {
+                                                      $words  = str_replace( ',' , ' and' , $words );
+                                                  } }
+                                              else if( ! ( ( int ) $num ) )
+                                              {
+                                                  $words ='';
+                                              }
+                                               ?>
+                                            <tr>
+                                                <th class="w205"> Amount In Words</th> 
+                                                <td><?php echo (!empty($words))?$words:'---'  ?></td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <th class="w205">Payment Mode</th>
+                                                <td><?php echo (!empty($result['pay_mode']))?$result['pay_mode']:'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">Email Id</th>
-                                                <td><?php echo (!empty($result['in_email']))?$result['in_email']:'---'  ?></td>
+                                                <th class="w205">Instrument No</th>
+                                                <td><?php echo (!empty($result['inst_no']))?$result['inst_no']:'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">City</th>
-                                                <td><?php echo (!empty($result['incity']))?$result['incity']:'---'  ?></td>
+                                                <th class="w205">Payment Date</th> 
+                                                <td><?php echo (!empty($result['pay_date']))?date('d M, Y',strtotime($result['pay_date'])):'---'  ?></td>
+                                            </tr>
+                                             <tr>
+                                                <th class="w205">Amount</th> 
+                                                <td><?php echo (!empty($result['amount']))?$result['amount']:'---'  ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+
+
+
+                            <div class="col 16 m6">
+                            <div class="card scrollspy" id="personal-detail">
+                                <div class="card-content">
+                                    <p class="bold mb10 h6">PDC Details</p>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th class="w205">Payment Mode</th>
+                                                <td><?php echo (!empty($result['pdc_mode']))?$result['pdc_mode']:'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">State</th>
-                                                <td><?php echo (!empty($result['state']))?$result['state']:'---'  ?></td>
+                                                <th class="w205">Instrument No</th>
+                                                <td><?php echo (!empty($result['pdc_instrmnt']))?$result['pdc_instrmnt']:'---'  ?></td>
                                             </tr>
                                             <tr>
-                                                <th class="w205">Postcode</th>
-                                                <td><?php echo (!empty($result['postode']))?$result['postode']:'---'  ?></td>
+                                                <th class="w205">Payment Date</th> 
+                                                <td><?php echo (!empty($result['pdc_pay_date']))?date('d M, Y',strtotime($result['pdc_pay_date'])):'---'  ?></td>
+                                            </tr>
+                                             <tr>
+                                                <th class="w205">Amount</th> 
+                                                <td><?php echo (!empty($result['pdc_amount']))?$result['pdc_amount']:'---'  ?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -194,71 +328,7 @@
                             </div>
 
 
-                            <div class="col 16 m6">
-                            <div class="card scrollspy" id="personal-detail">
-                                <div class="card-content">
-                                    <p class="bold mb10 h6">Package Details</p>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <th class="w205">Net Amount</th>
-                                                <td><?php echo (!empty($result['namopunt']))?$result['namopunt']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">GST</th>
-                                                <td><?php echo (!empty($result['gst']))?$result['gst']:'---'  ?></td>
-                                            </tr>
-                                            <?php 
-                                              $amount = $result['namopunt'] + $result['gst'];
-                                              if (!empty($result['discount'])) {
-                                                $discount =  ($amount * $result['discount']) / 100;
-                                              }else{
-                                                $discount =  0;
-                                              }
-                                              $total = $amount - $discount;
-                                            ?>
-
-                                            <tr>
-                                                <th class="w205">Discount</th>
-                                                <td><?php echo (!empty($result['discount']))?$result['discount'].'% - '.$discount:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205"> Total Amount</th> 
-                                                <td><?php echo (!empty($result['total']))?$result['total']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Payment Type</th>
-                                                <td><?php echo (!empty($result['pay_type']))?$result['pay_type']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Payment Mode</th>
-                                                <td><?php echo (!empty($result['pay_mode']))?$result['pay_mode']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Order id/ Cheque No</th>
-                                                <td><?php echo (!empty($result['or_id']))?$result['or_id']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Payment Date/ Cheque Date</th> 
-                                                <td><?php echo (!empty($result['pay_date']))?$result['pay_date']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Reciept No</th> 
-                                                <td><?php echo (!empty($result['rec_no']))?$result['rec_no']:'---'  ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th class="w205">Drawee Bank</th> 
-                                                <td><?php echo (!empty($result['dr_bank']))?$result['dr_bank']:'---'  ?></td>
-                                            </tr>
-                                             <tr>
-                                                <th class="w205">PDC</th> 
-                                                <td><?php echo (!empty($result['pdc']))?$result['pdc']:'---'  ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            </div>
+                            
 
                             
 

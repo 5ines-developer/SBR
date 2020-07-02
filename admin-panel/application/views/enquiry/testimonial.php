@@ -141,6 +141,7 @@
                   buttons: [
                       'copy', 'csv', 'excel', 'pdf'
                   ], 
+                  order: [[ 0, "asc" ]]
               });
               $('select').formSelect();
           } );

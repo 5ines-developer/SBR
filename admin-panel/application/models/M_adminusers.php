@@ -145,6 +145,20 @@ class M_adminusers extends CI_Model {
         return $this->db->where('id', $eid)->update('admin',array('password' => $pass ));
     }
 
+    public function tardelete($id='')
+    {
+        $this->db->where('id', $id);
+        $emp_id = $this->db->get('e_target')->row('emp_id');
+
+        $this->db->where('id', $id);
+        $this->db->delete('e_target');
+        if ($this->db->affected_rows() > 0) {
+            return $emp_id;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 /* End of file M_adminusers.php */
