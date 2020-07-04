@@ -137,11 +137,11 @@ class Vendor_discount extends CI_Controller {
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to('prathwi@5ine.in');
-        // $this->email->to($vendor->email,$admin->email,$to);
-        // if (!empty($data['manager'])) {
-        //     $this->email->cc($data['manager']->email);
-        // }
+        // $this->email->to('prathwi@5ine.in');
+        $this->email->to($vendor->email,$admin->email,$to);
+        if (!empty($data['manager'])) {
+            $this->email->cc($data['manager']->email);
+        }
         $msg = $this->load->view('email/discount_approve', $data, true);
         $this->email->subject('Vendor Package Invoice');
         $this->email->message($msg);

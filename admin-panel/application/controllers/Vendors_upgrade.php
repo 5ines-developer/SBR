@@ -140,10 +140,10 @@
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        $this->email->to('prathwi@5ine.in');
-        // $this->email->cc($manager);
-        // $this->email->to($to,$insert['listing_mail']);
-        // $this->email->cc($manager,$cc);
+        // $this->email->to('prathwi@5ine.in');
+        $this->email->cc($manager);
+        $this->email->to($to,$insert['listing_mail']);
+        $this->email->cc($manager,$cc);
 
         $this->email->subject('Vendor Package proposal');
         $this->email->message('New Vendor Package proposal has been submitted , document attached');

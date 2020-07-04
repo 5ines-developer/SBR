@@ -156,10 +156,6 @@
                                                 <th class="w205"><i class="fas fa-venus-mars mr10"></i>City</th>
                                                 <td><?php echo (!empty($result->city))?$result->city:'---'  ?></td>
                                             </tr>
-                                            <tr>
-                                                <th class="w205"><i class="fas fa-venus-mars mr10"></i>Contact Person</th>
-                                                <td><?php echo (!empty($result->c_person))?$result->c_person:'---'  ?></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

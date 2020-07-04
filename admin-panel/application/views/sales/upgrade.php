@@ -113,8 +113,8 @@
                                                   <label for="i_name">Invoicing name <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="gstno" name="gstno" class="validate" required value="<?php echo (!empty($invoice->gstno))?$invoice->gstno:''; ?>">
-                                                  <label for="gstno">GSTIN Number <span class="red-text">*</span></label>
+                                                  <input type="text" id="gstno" name="gstno" class="validate" value="<?php echo (!empty($invoice->gstno))?$invoice->gstno:''; ?>">
+                                                  <label for="gstno">GSTIN Number </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
                                                   <input type="text" id="l_name" name="l_name" class="validate" required value="<?php echo (!empty($result->name))?$result->name:''; ?>">
@@ -237,20 +237,20 @@
                                         
                                             <div class="row m0">
                                                 <div class="input-field col s12 l6">
-                                                    <input type="text" id="pdc_mode" required name="pdc_mode" class="validate" >
-                                                  <label for="pdc_mode">Payment Mode <span class="red-text">*</span></label>
+                                                    <input type="text" id="pdc_mode" name="pdc_mode" class="validate" >
+                                                  <label for="pdc_mode">Payment Mode </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="pdc_instrmnt" required name="pdc_instrmnt" class="validate" >
-                                                  <label for="pdc_instrmnt">Instrument No <span class="red-text">*</span></label>
+                                                  <input type="text" id="pdc_instrmnt" name="pdc_instrmnt" class="validate" >
+                                                  <label for="pdc_instrmnt">Instrument No </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="pdc_pay_date" required name="pdc_pay_date" class="datepicker validate">
-                                                  <label for="pdc_pay_date">Payment Date <span class="red-text">*</span></label>
+                                                  <input type="text" id="pdc_pay_date" name="pdc_pay_date" class="datepicker validate">
+                                                  <label for="pdc_pay_date">Payment Date </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="pdc_amount" required name="pdc_amount" class="validate" >
-                                                  <label for="pdc_amount">Amount <span class="red-text">*</span></label>
+                                                  <input type="text" id="pdc_amount" name="pdc_amount" class="validate" >
+                                                  <label for="pdc_amount">Amount </label>
                                                 </div>
                                             </div>
 
@@ -261,8 +261,33 @@
                                                 <select id="emp" name="emp" required="">
                                                   <option value="">Choose the Employee</option>
                                                   <?php if (!empty($employee)) { foreach ($employee as $emp => $emps) {
-                                                  if ($emps->admin_type == '3') { ?>
-                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name ?></option>
+
+                                                    switch ($emps->admin_type) {
+                                                      case '2':
+                                                        $tp = 'Manager';
+                                                        break;
+                                                      case '3':
+                                                        $tp = 'Sales Executive';
+                                                        break;
+                                                      case '4':
+                                                        $tp = 'Area Sales Manager';
+                                                        break;
+                                                      case '5':
+                                                        $tp = 'Sales Manager';
+                                                        break;
+                                                      case '6':
+                                                        $tp = 'Tele Caller';
+                                                        break;
+                                                      case '7':
+                                                        $tp = 'Finance Executive';
+                                                        break;
+
+                                                      default:
+                                                        $tp = 'Sales Executive';
+                                                        break;
+                                                    }
+                                                  if ($emps->admin_type != '1' && $emps->admin_type != '2') { ?>
+                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name .'&nbsp;-&nbsp;'.$tp; ?></option>
                                                   <?php  }}} ?>
                                                 </select>
                                                 <label for="emp">Select Employee <span class="red-text">*</span></label>
@@ -369,6 +394,7 @@
               var total = tot - amount;
             }
             $('#amt_after_disc').val(total);
+            $('#t_amnt').val(total);
           }
         });
 

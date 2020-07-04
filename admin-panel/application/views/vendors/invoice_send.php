@@ -55,7 +55,7 @@
                                                   <label for="c_name">Client name </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="c_gstin" name="c_gstin" class="validate" required value="<?php echo (!empty($invoice[0]->gstno))?$invoice[0]->gstno:''; ?>">
+                                                  <input type="text" id="c_gstin" name="c_gstin" class="validate" value="<?php echo (!empty($invoice[0]->gstno))?$invoice[0]->gstno:''; ?>">
                                                   <label for="c_gstin">Client GSTIN </label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
