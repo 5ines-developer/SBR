@@ -66,6 +66,7 @@
                                           <th id="b" class="h5-para-p2" width="100px">City</th>
                                           <th id="c" class="h5-para-p2" width="120px">Category</th>
                                           <th id="c" class="h5-para-p2" width="120px">Package Requested</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Amount</th>
                                           <th id="c" class="h5-para-p2" width="120px">Status</th>
                                           <th id="c" class="h5-para-p2" width="120px">Date</th>
                                           <th id="g" class="h5-para-p2" width="62px">Action</th>
@@ -76,6 +77,7 @@
                                     <?php
 
                                     if (!empty($result)) {
+                                      
                                       $count= 0;
                                       foreach ($result as $key => $value) { $count += 1;
                                       ?>
@@ -85,7 +87,7 @@
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
                                             <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->title))?$value->title:'---'  ?></a></td>
-                                            <td><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
+                                            <td ><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->t_amnt))?$value->t_amnt:'---'  ?></a></td>
                                             <td class="status"><a target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>">
                                               <?php 
                                               if(($value->approved == '1') && ($value->status =='1')){
@@ -98,6 +100,7 @@
                                                 echo '<span class="white-text red lighten-1">Rejected</span>';
                                               } ?>
                                             </a></td>
+                                            <td><a  target="_blank" href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
                                             <td class="action-btn  center-align"> <!-- view user -->
                                              <a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
                                               

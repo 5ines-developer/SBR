@@ -1920,3 +1920,35 @@ div.tagsinput div {
 /* .sec-category {
     margin-bottom: 10px !important;
 } */
+
+
+.prop-pdf .bordered tr td {font-size: 13px; font-weight: 600;}
+    td, th {
+    padding: 8px 5px; }
+    .prop-pdf .top-head span{
+    font-size: 12px;
+    }
+    .prop-pdf .bordered tr{
+    border-bottom: 1px solid black;
+    }
+    .prop-pdf .terms tr{
+    border-bottom: none;
+    }
+    .prop-pdf .ord-head{
+    background-color: #d0021b;
+    padding: 6px 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 13px !important;
+    border: 1px solid black;
+    position: relative;
+    top: 30px;
+    }
+    .prop-pdf .bg1{
+    background-color: rgba(0,0,0,0.12);
+    border-top: 1px solid black !important;
+    border-bottom: 1px solid black !important;
+    }
+    .prop-pdf .b-red{
+     border-top: 1px solid #d0021b;padding-bottom: 15px;
+    }

@@ -5,10 +5,12 @@ class M_vendorsApproval extends CI_Model {
 
 	public function get_vendors($month='',$year='')
 	{
-		$sdate = date($year.'-'.$month.'-1 h:i:s');
-		$edate = date($year.'-'.$month.'-31 h:i:s');
-		$this->db->where('ven.registered_date >=', $sdate);
-		$this->db->where('ven.registered_date<=', $edate);
+		if (!empty($month) && !empty($year)) {
+			$sdate = date($year.'-'.$month.'-1 h:i:s');
+			$edate = date($year.'-'.$month.'-31 h:i:s');
+			$this->db->where('ven.registered_date >=', $sdate);
+			$this->db->where('ven.registered_date<=', $edate);
+		}
 		$this->db->group_start();
 			$this->db->where('ven.is_active', '3');
 			$this->db->or_where('ven.is_active', '0');

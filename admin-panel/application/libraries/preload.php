@@ -34,6 +34,11 @@ class preload
         return  $this->ci->m_preload->getaccess();
     }
 
+    public function vendorApproval($value='')
+    {
+        return $this->ci->m_preload->vendorApproval();
+    }
+
     public function disccount($value='')
     {
         return $this->ci->m_preload->getDisccount();

@@ -172,6 +172,23 @@ class M_home extends CI_Model
         return $this->db->get('h_banner')->result();
     }
 
+    public function addseoenquiry($insert='')
+    {
+        $this->db->where('uniq', $insert['uniq']);
+        $query = $this->db->get('enquiry');
+        if ($query->num_rows() > 0) {
+            $this->db->where('uniq',$insert['uniq']);
+            $this->db->update('enquiry', $insert);
+            if ($this->db->affected_rows() > 0) {
+               return true;
+            }else{
+                return false;
+            }
+        }else{
+            return $this->db->insert('enquiry', $insert);
+        }
+    }
+
 
 }
 

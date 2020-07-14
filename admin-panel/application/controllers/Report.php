@@ -10,7 +10,7 @@ class Report extends CI_Controller {
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_report');
         $this->load->model('m_vendors');
-
+        $this->load->model('m_adminusers');
         $this->ci =& get_instance();
         $accs = $this->ci->preload->access();
         $acces = array();
@@ -35,9 +35,14 @@ class Report extends CI_Controller {
         $filt['month']      = $this->input->get('month');
         $filt['city']       = $this->input->get('city');
         $filt['category']   = $this->input->get('category');
+        $filt['asm']        = $this->input->get('asm');
+        $filt['tele']       = $this->input->get('tele');
+        $filt['nathead']    = $this->input->get('nathead');
+        $filt['branch']     = $this->input->get('branch');
 		$data['result']     = $this->m_report->saleReport($filt);
         $data['city']       = $this->m_vendors->get_city();
         $data['category']   = $this->m_vendors->get_category();
+        $data['employee']   = $this->m_adminusers->getEmployees();
         $this->load->view('report/sales.php', $data, FALSE);
 	}
 
@@ -48,7 +53,7 @@ class Report extends CI_Controller {
         $filt['package']      = $this->input->get('package');
         $filt['city']       = $this->input->get('city');
         $filt['category']   = $this->input->get('category');
-        $data['result']     = $this->m_report->getVendors($filt);
+        $data['result']     = $this->m_report->getLeads($filt);
         $data['city']       = $this->m_vendors->get_city();
         $data['category']   = $this->m_vendors->get_category();
         $data['package']    = $this->m_vendors->getPackage();
@@ -58,7 +63,6 @@ class Report extends CI_Controller {
 
     public function visitors($value='')
     {
-
         $year   = $this->input->get('year');
         $month  = $this->input->get('month');
         $data['title'] = 'Leads Report | Shaadibaraati';
@@ -68,12 +72,16 @@ class Report extends CI_Controller {
 
     public function employee($value='')
     {
-        $year = $this->input->get('year');
-        $month = $this->input->get('month');
-        $city = $this->input->get('city');
         $data['title']      = 'Employee Report | Shaadibaraati';
-        $data['result']     = $this->m_report->employee($year,$month,$city);
+        $filt['year']       = $this->input->get('year');
+        $filt['month']      = $this->input->get('month');
+        $filt['asm']        = $this->input->get('asm');
+        $filt['tele']       = $this->input->get('tele');
+        $filt['nathead']    = $this->input->get('nathead');
+        $filt['branch']     = $this->input->get('branch');
+        $data['result']     = $this->m_report->employee($filt);
         $data['city']       = $this->m_vendors->get_city();
+        $data['employee']   = $this->m_adminusers->getEmployees();
         $this->load->view('report/employee.php', $data, FALSE);
     }
 
@@ -91,8 +99,10 @@ class Report extends CI_Controller {
         $city   = $this->input->get('city');
         $month  = $this->input->get('month');
         $year   = $this->input->get('year');
+        $category = $this->input->get('category');
         $data['title']    = 'Live Report | Shaadibaraati';
-        $data['result']   = $this->m_report->liveReport($city,$month,$year);
+        $data['result']   = $this->m_report->liveReport($category,$city,$month,$year);
+        $data['category'] = $this->m_vendors->get_category();
         $data['city']     = $this->m_vendors->get_city();
         $this->load->view('report/live.php', $data, FALSE);
     }

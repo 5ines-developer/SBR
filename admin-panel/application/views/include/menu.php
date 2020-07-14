@@ -24,12 +24,15 @@
         <li class="<?php echo $this->uri->segment(1) == 'users'?'active':'' ?>"><a href="<?php echo base_url('users/manage') ?>"><i class="fas fa-users li-icon"></i>Manage Users</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'employees'?'active':'' ?>"><a href="<?php echo base_url('employees') ?>"><i class="fas fa-users-cog li-icon"></i>Employees</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'vendors'?'active':'' ?>"><a href="<?php echo base_url('vendors/manage') ?>"><i class="fas fa-handshake li-icon"></i>Vendors</a></li>
-        <li class="<?php echo $this->uri->segment(1) == 'vendor'?'active':'' && $this->uri->segment(2) == 'approval'?'active':'' ?>"><a href="<?php echo base_url('vendor/approval') ?>"><i class="far fa-check-circle li-icon"></i>Vendors Approval</a></li>
+        <li class="<?php echo $this->uri->segment(1) == 'vendor'?'active':'' && $this->uri->segment(2) == 'approval'?'active':'' ?>"><a href="<?php echo base_url('vendor/approval') ?>"><i class="far fa-check-circle li-icon"></i>
+        <?php if($this->ci->preload->vendorApproval() > 0){
+            echo '<span class="new badge">'. $this->ci->preload->vendorApproval() .'</span> ';
+          } ?>Vendors Approval</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'vendors-discount'?'active':'' ?>"><a href="<?php echo base_url('vendors-discount') ?>"><i class="fas fa-tags li-icon"></i>Vendor Renewal
           <?php if($this->ci->preload->disccount() > 0){
             echo '<span class="new badge">'. $this->ci->preload->disccount() .'</span> ';
           } ?></a></li>
-          <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
+          <li class="<?php echo $this->uri->segment(1) == 'vendors'?'active':'' ?>"><a href="<?php echo base_url('vendors/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
         <div class="divider"></div>
         <li class="<?php echo $this->uri->segment(1) == 'package'?'active':'' ?>"><a href="<?php echo base_url('package') ?>"><i class="fas fa-ribbon li-icon"></i>Package</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'banner-package'?'active':'' ?>"><a href="<?php echo base_url('banner-package') ?>"><i class="fas fa-ribbon li-icon"></i>Banner Package</a></li>

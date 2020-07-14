@@ -44,6 +44,8 @@
                                     <p class="h5-para black-text m0">Employees</p>
                                 </div>
                                 <div class="col 12 m6 right-align">
+                                    <a href="<?php echo base_url('employees/types')  ?>" class="waves-effect waves-light btn blue darken-4 white-text hoverable "><i class="fas fa-user left"></i> Employee Types</a>
+
                                     <a href="<?php echo base_url('employees/add')  ?>" class="waves-effect waves-light btn green darken-4 white-text hoverable "><i class="fas fa-plus left"></i> ADD Employees</a>
                                 </div>
                             </div>
@@ -78,34 +80,12 @@
                                       ?>
                                       <tr>
 
-                                      <?php  $type ='';
-
-                                      switch ($value->admin_type) {
-                                         case '2':
-                                            $type = 'Manager';
-                                            break;
-                                          case '3':
-                                             $type = 'Sales Executive';
-                                             break;
-                                          case '4':
-                                             $type = 'Area Sales Manager';
-                                             break;
-                                          case '5':
-                                             $type = 'Sales Manager';
-                                             break;
-                                          case '6':
-                                             $type = 'Tele Caller';
-                                             break;
-
-                                          default:
-                                          $type = 'finance Executive';
-                                            break;
-                                      }
+                                      <?php  
                                       ?>
                                             <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->email))?$value->email:'---'  ?></a></td>
                                             <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->phone))?$value->phone:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo $type ?></a></td>
+                                            <td ><a href="<?php echo base_url('employees/edit/'.$value->id.'') ?>"><?php echo (!empty($value->types))?$value->types:'---' ?></a></td>
 
                                             <td class="action-btn  center-align">
                                               <!-- view user -->

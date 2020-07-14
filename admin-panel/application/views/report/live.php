@@ -72,12 +72,24 @@
                                        <div class="col l3 m6">
                                           <select id="city"  fname="city" class="select-list" name="city">
                                             <option value="">Choose a city</option>
+                                            <option value="">All city</option>
                                             <?php if (!empty($city)) { 
                                               foreach ($city as $cit => $cits) { ?>
                                                 <option value="<?php echo $cits->id ?>" <?php if($this->input->get('city') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->city ?></option> 
                                             <?php  } } ?>
                                           </select>
                                         </div>
+                                        <div class="col l3 m6">
+                                          <select id="category"  fname="category" class="select-list" name="city">
+                                            <option value="">Choose a category</option>
+                                            <option value="">All category</option>
+                                            <?php if (!empty($category)) {
+                                            foreach ($category as $cit => $cits) { ?>
+                                            <option value="<?php echo $cits->id ?>" <?php if($this->input->get('category') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->category ?></option>
+                                            <?php  } } ?>
+                                          </select>
+                                        </div>
+
                                       </div>
                                       <div class="clearfix"></div>
 
@@ -98,6 +110,8 @@
                                           <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
                                           <th id="a" class="h5-para-p2" width="130px">Date</th>
                                           <th id="a" class="h5-para-p2" width="130px">Vendor Name</th>
+                                          <th id="a" class="h5-para-p2" width="130px">City</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Category</th>
                                           <th id="a" class="h5-para-p2" width="130px">Phone No.</th>
                                           <th id="a" class="h5-para-p2" width="130px">Email</th>
                                           <th id="b" class="h5-para-p2" width="100px">Package</th>
@@ -109,7 +123,6 @@
                                           <th id="c" class="h5-para-p2" width="120px">Employee Name</th>
                                           <th id="c" class="h5-para-p2" width="120px">Manager</th>
                                           <th id="c" class="h5-para-p2" width="120px">Status</th>
-                                          <!-- <th id="c" class="h5-para-p2" width="120px">Action</th> -->
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -118,10 +131,13 @@
                                       foreach ($result as $key => $value) {
                                         $count =$key++;
                                       ?>
+
                                         <tr>
                                             <td ><?php echo $key ?></td>
                                             <td ><?php echo (!empty($value->added_on))?date('d M, Y',strtotime($value->added_on)):'---'  ?></td>
                                             <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->cityName))?$value->cityName:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->categoryName))?$value->categoryName:'---'  ?></td>
                                             <td ><?php echo (!empty($value->phone))?$value->phone:'---'  ?></td>
                                             <td ><?php echo (!empty($value->email))?$value->email:'---'  ?></td>
                                             <td ><?php echo (!empty($value->title))?$value->title:'---'  ?></td>
@@ -129,12 +145,10 @@
                                             <td ><?php echo (!empty($value->discount))?$value->discount.'%':'---'  ?></td>
                                             <td ><?php echo (!empty($value->gst_amount))?$value->gst_amount:'---'  ?></td>
                                             <td ><?php echo (!empty($value->t_amnt))?$value->t_amnt:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->tenure))?$value->tenure:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->tenure))?$value->tenure.'+ 1 months':'---'  ?></td>
                                             <td ><?php echo (!empty($value->employee))?$value->employee:'---'  ?></td>
                                             <td ><?php echo $this->ci->m_report->manager($value->employeename);  ?></td>
                                             <td ><?php  if($value->status == '1' && $value->live == '1'){ echo 'Live'; } else if($value->status == '1' && $value->live == '0'){ echo 'Approved'; }else if($value->status == '2'){ echo 'Rejected'; } else if($value->status == '0'){ echo 'Pending'; } ?></td>
-                                            <!-- <td></td>
-                                            <td></td> -->
                                         </tr>
                                     <?php } } ?>
                                     </tbody>

@@ -9,10 +9,12 @@ class M_adminusers extends CI_Model {
     public function getEmployees($var = null)
     {
         if ($this->session->userdata('sha_type') == '2') {
-            $this->db->where('manager', $this->session->userdata('sha_id'));
+            $this->db->where('a.manager', $this->session->userdata('sha_id'));
         }
-        $this->db->where('id !=', $this->session->userdata('sha_id'));
-        return $this->db->where('admin_type !=', '1')->get('admin')->result();        
+        return $this->db->select('a.id,a.email,a.phone,a.name,a.admin_type,et.types,a.manager')
+        ->where('a.admin_type !=', 1)
+        ->from('admin a')->join('emp_types et', 'et.id = a.admin_type', 'left')
+        ->get()->result();
     }
 
     /**
@@ -154,6 +156,39 @@ class M_adminusers extends CI_Model {
         $this->db->delete('e_target');
         if ($this->db->affected_rows() > 0) {
             return $emp_id;
+        }else{
+            return false;
+        }
+    }
+
+    public function empTypes($value='')
+    {
+        return $this->db->get('emp_types')->result();
+    }
+
+    public function typeInsert($insert='')
+    {
+        $query = $this->db->where('uniq', $insert['uniq'])->get('emp_types');
+        if ($query->num_rows() > 0) {
+            $this->db->where('uniq', $insert['uniq'])->update('emp_types',$insert);
+            if ($this->db->affected_rows() > 0) {
+               return true;
+            }else{
+                return false;
+            }
+        }else{
+            return $this->db->insert('emp_types', $insert);
+        }
+    }
+
+    public function typeDelete($id='')
+    {
+        $this->db->where('id', $id);
+        $emp_id = $this->db->get('emp_types')->row('emp_id');
+        $this->db->where('id', $id);
+        $this->db->delete('emp_types');
+        if ($this->db->affected_rows() > 0) {
+            return true;
         }else{
             return false;
         }

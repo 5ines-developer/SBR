@@ -76,23 +76,16 @@
                                       foreach ($result as $key => $value) { $count += 1;
                                       ?>
                                        <tr>
-                                            <td ><a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
-                                            <td ><a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->title))?$value->title:'---'  ?></a></td>
-                                            <td><a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
+                                            <td ><a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($result))?$count:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->name))?$value->name:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->city))?$value->city:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->category))?$value->category:'---'  ?></a></td>
+                                            <td ><a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->title))?$value->title:'---'  ?></a></td>
+                                            <td><a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"><?php echo (!empty($value->started_from))?date("M d, Y ", strtotime($value->started_from)):'---'; ?></a></td>
                                             <td class="action-btn  center-align">
-                                              <?php
-
-                                              if ($this->session->userdata('sha_type') == '7') { ?>
-                                                <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('finance/make-live/'.$value->id.'') ?>"  class="green hoverable">Approve</a>
-                                              <?php }
-
-                                              ?>
-                                              
+                                              <?php if ($this->session->userdata('sha_type') == '7') { ?> <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('finance/make-live/'.$value->id.'') ?>"  class="green hoverable">Make Live</a> <?php } ?>
                                               <!-- view user -->
-                                                <a href="<?php echo base_url('vendors/view-proposal/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
+                                                <a href="<?php echo base_url('finance/view-proposal/'.$value->id.'') ?>"  class="blue hoverable"><i class="fas fa-eye "></i></i></a>
                                               <!-- view user -->
                                             </td>
                                           

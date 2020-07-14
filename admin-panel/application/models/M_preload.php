@@ -108,6 +108,18 @@ class M_preload extends CI_Model {
         ->from('renew_package rp')
         ->get()->result();
     }
+
+    public function vendorApproval($value='')
+    {
+        $this->db->where('is_active', '3');
+        $this->db->or_where('is_active', '0');
+        $result = $this->db->get('vendor');
+        if ($result->num_rows() > 0) {
+            return $result->num_rows();
+        }else{
+            return false;
+        }
+    }
 }
 
 /* End of file m_preload.php */

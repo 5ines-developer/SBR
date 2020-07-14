@@ -34,9 +34,8 @@ class Adminusers extends CI_Controller {
      **/ 
     public function index($id='')
     {
-
         $data['title']  = 'Employee - Shaadibaraati';
-        $data['result'] = $this->m_adminusers->getEmployees();     
+        $data['result'] = $this->m_adminusers->getEmployees();
         $this->load->view('employee/manage', $data, FALSE);  
     }
 
@@ -46,10 +45,11 @@ class Adminusers extends CI_Controller {
     **/ 
     public function add($var = null)
     {
-        $data['title']  = 'Employee - Shaadibaraati';
-        $data['manager'] = $this->m_adminusers->getManager();
-        $data['menues'] = $this->m_adminusers->getMenu();
-        $data['city']     = $this->m_vendors->get_city();
+        $data['title']      = 'Employee - Shaadibaraati';
+        $data['manager']    = $this->m_adminusers->getManager();
+        $data['menues']     = $this->m_adminusers->getMenu();
+        $data['city']       = $this->m_vendors->get_city();
+        $data['employee']   = $this->m_adminusers->empTypes();
         $this->load->view('employee/add', $data, FALSE); 
     }
 
@@ -103,7 +103,6 @@ class Adminusers extends CI_Controller {
                 'city'          =>  $city,
             );
             $result = $this->m_adminusers->insert($insert);
-
             $targt = array(
                 'emp_id'    => $result, 
                 'added_by'  => $this->aid, 
@@ -112,11 +111,7 @@ class Adminusers extends CI_Controller {
                 'target'    => $target,
                 'status'    => '1',
             );
-
-           $this->m_adminusers->empTarget($targt);
-
-
-
+            $this->m_adminusers->empTarget($targt);
             if(!empty($result)){
                 if ($this->userEmail($insert)) {
                     $this->session->set_flashdata('success', 'Employee added Successfully');
@@ -129,10 +124,7 @@ class Adminusers extends CI_Controller {
                 $this->session->set_flashdata('error', 'Some error occured please try again');
                 redirect('employees/add');
             }
-
         }
-
-
     }
 
 
@@ -164,11 +156,12 @@ class Adminusers extends CI_Controller {
 
     public function edit($id = null)
     {
-        $data['result'] = $this->m_adminusers->singleEmp($id);
-        $data['manager'] = $this->m_adminusers->getManager();
-        $data['menues'] = $this->m_adminusers->getMenu(); 
-        $data['target'] = $this->m_adminusers->getTarget($data['result']->id); 
-        $data['city']     = $this->m_vendors->get_city();
+        $data['result']     = $this->m_adminusers->singleEmp($id);
+        $data['manager']    = $this->m_adminusers->getManager();
+        $data['menues']     = $this->m_adminusers->getMenu(); 
+        $data['target']     = $this->m_adminusers->getTarget($data['result']->id); 
+        $data['city']       = $this->m_vendors->get_city();
+        $data['employee']   = $this->m_adminusers->empTypes();
         $this->load->view('employee/edit', $data, FALSE); 
     }
 
@@ -269,16 +262,44 @@ class Adminusers extends CI_Controller {
 
 
     public function tardelete($id='',$emp_id='')
-        {
-            // send to model
-            if($this->m_adminusers->tardelete($id)){
-                $this->session->set_flashdata('success', 'Employee target Deleted Successfully');
-                redirect('employees/edit/'.$emp_id,'refresh'); // if you are redirect to list of the data add controller name here
-            }else{
-                $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
-                redirect('employees/edit/'.$emp_id,'refresh'); // if you are redirect to list of the data add controller name here
-            }
+    {
+        // send to model
+        if($this->m_adminusers->tardelete($id)){
+            $this->session->set_flashdata('success', 'Employee target Deleted Successfully');
+            redirect('employees/edit/'.$emp_id,'refresh'); // if you are redirect to list of the data add controller name here
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+            redirect('employees/edit/'.$emp_id,'refresh'); // if you are redirect to list of the data add controller name here
         }
+    }
+
+    public function empTypes($value='')
+    {
+        $data['title']  = 'Employee - Shaadibaraati';
+        $data['result'] = $this->m_adminusers->empTypes();     
+        $this->load->view('employee/typeManage', $data, FALSE); 
+    }
+
+    public function typeInsert($value='')
+    {
+        $insert = array('types' => $this->input->post('type'),'uniq' => $this->input->post('uniq'));
+        if($this->m_adminusers->typeInsert($insert)){
+            $this->session->set_flashdata('success', 'Employee Type Added Successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+        }
+        redirect('employees/types','refresh');
+    }
+
+    public function typeDelete($id='')
+    {
+        if($this->m_adminusers->typeDelete($id)){
+            $this->session->set_flashdata('success', 'Employee Type Deleted Successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+        }
+        redirect('employees/types','refresh');
+    }
 
 
 

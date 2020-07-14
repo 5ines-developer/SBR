@@ -39,9 +39,9 @@ class M_vdiscount extends CI_Model {
 
 	}
 
-	public function status_change($id='',$status='')
+	public function status_change($id='',$update='')
 	{
-		return $this->db->where('id', $id)->update('renew_package',array('status' => $status,'approved' =>$status));
+		return $this->db->where('id', $id)->update('renew_package',$update);
 	}
 
 	public function getVendor($id='')
@@ -77,6 +77,14 @@ class M_vdiscount extends CI_Model {
 		return $this->db->select('discount,gst_amount,t_amnt,nt_amnt')
 		->where('id', $id)
 		->get('renew_package')->row();
+	}
+
+	public function invoiceDownload($vnid='',$id='')
+	{
+		return $this->db->where('pi.renewal_id', $id)
+		->from('package_invoice pi')
+		->join('renew_package rp', 'rp.id = pi.renewal_id', 'left')
+		->get()->row_array();
 	}
 	
 

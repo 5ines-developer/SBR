@@ -46,6 +46,7 @@
 				$data['package']    = $this->m_vnupgrade->getPackage();
 				$data['invoice']    = $this->m_vnupgrade->getInvoice($id);
 				$data['employee']   = $this->m_vnupgrade->getEmployee();
+				$data['banner']   	= $this->m_vnupgrade->getBanner();
 				$this->load->view('sales/upgrade', $data, FALSE);
 			}
 		}
@@ -81,7 +82,6 @@
 	            'amt_after_disc'    => $this->input->post('amt_after_disc'),
 	            'tds'            	=> $this->input->post('tds'),
 	            't_amnt'            => $this->input->post('t_amnt'),
-	            'am_words'         	=> $this->input->post('am_words'),
 	            'pay_mode '      	=> $this->input->post('pay_mode'),
 	            'inst_no '      	=> $this->input->post('inst_no'),
 	            'pay_date'        	=> $this->input->post('pay_date'),
@@ -92,11 +92,15 @@
 				'pdc_amount'        => $this->input->post('pdc_amount'),
 				'employee'        	=> $this->input->post('emp'),
 				'manager'        	=> $this->input->post('mang'),
+				'bran_mang'        	=> $this->input->post('bran_mang'),
+				'nation_head'       => $this->input->post('nation_head'),
+				'telecaller'        => $this->input->post('telecaller'),
 	            'added_by'          => $this->aid,
 	            'started_from'      => date('Y-m-h'),
 	            'uniq'          	=> $this->input->post('uniq'),
+	            'ban_pack'			=> $this->input->post('ban_pack'),
 	        	);
-			$data = $this->m_vnupgrade->insertProposal($insert);
+				$data = $this->m_vnupgrade->insertProposal($insert);
 				if (!empty($data)) {
 					$insert['insert_id'] = $data;
 					$this->convertPdf($insert);
@@ -116,11 +120,16 @@
 			$data['category'] = $this->db->where('id', $insert['v_category'])->get('category')->row('category');
 			$data['employee'] = $this->db->select('name as empname,admin_type,id as empid')->where('id', $insert['added_by'])->get('admin')->row();
 			$data['result'] = $insert;
-			require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+			require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
 			$mpdf = new \Mpdf\Mpdf([
 				'mode' => 'utf-8',
-			    'format' => [190, 236],
-			    'orientation' => 'L'
+			    'format' => 'A4',
+			    // 'orientation' => 'L',
+			    'margin_top' => 10,
+				'margin_left' => 10,
+				'margin_right' => 10,
+				'margin_bottom' => 10,
+				'default_font_size' => 9,
 			]);
 			$html = $this->load->view('sales/proposal', $data, TRUE);
 	        $mpdf->WriteHTML($html);
@@ -144,7 +153,6 @@
         $this->email->cc($manager);
         $this->email->to($to,$insert['listing_mail']);
         $this->email->cc($manager,$cc);
-
         $this->email->subject('Vendor Package proposal');
         $this->email->message('New Vendor Package proposal has been submitted , document attached');
         $this->email->attach($content, 'attachment', $filename, 'application/pdf'); 
@@ -244,17 +252,90 @@
 	public function downloads($id='')
 	{
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
-		require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+		require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
 			$mpdf = new \Mpdf\Mpdf([
 				'mode' => 'utf-8',
-			    'format' => [190, 236],
-			    'orientation' => 'L'
+			    'format' => 'A4',
+			    // 'orientation' => 'L',
+			    'margin_top' => 10,
+				'margin_left' => 10,
+				'margin_right' => 10,
+				'margin_bottom' => 10,
+				'default_font_size' => 9,
 			]);
 			$html = $this->load->view('sales/proposal', $data, TRUE);
-			$pdfFilePath ="vendor-propsal-".date('Y-m-h')."-.pdf";
+			$pdfFilePath ="vendor-propsal-".date('Y-m-h H:i:s')."-.pdf";
 	        $mpdf->WriteHTML($html);
 	        $mpdf->Output($pdfFilePath, "D");
 	}
+
+	public function editProposal($id='')
+	{
+		$data['result']     = $this->m_vnupgrade->editProposal($id);
+		$data['city']       = $this->m_vnupgrade->get_city();
+		$data['category']   = $this->m_vnupgrade->get_category();
+		$data['package']    = $this->m_vnupgrade->getPackage();
+		$data['employee']   = $this->m_vnupgrade->getEmployee();
+		$data['banner']   	= $this->m_vnupgrade->getBanner();
+		$this->load->view('sales/editPropsal', $data, FALSE);
+	}
+
+
+	public function updateUpgrade($value='')
+		{
+
+			$id = $this->input->post('id');
+			 
+				$insert = array(
+	            'vendor_id'       	=> $this->input->post('vid'),
+	            'v_city'            => $this->input->post('vcity'),
+	            'v_category'        => $this->input->post('vcategory'),
+	            'city_banner'       => $this->input->post('c_bnr'),
+	            'cat_banner'       	=> $this->input->post('cat_bnr'),
+	            'package'        	=> $this->input->post('vpackage'),
+	            'invoice_name'     	=> $this->input->post('i_name'),
+	            'gstno'      		=> $this->input->post('gstno'),
+	            'listing_name'      => $this->input->post('l_name'),
+	            'listing_mail'      => $this->input->post('ld_email'),
+	            'listing_phone'    	=> $this->input->post('ld_phone'),
+	            'invoice_address '  => $this->input->post('invoice_address'),
+	            'ord_type'     		=> $this->input->post('ord_type'),
+	            'c_person'   		=> $this->input->post('c_person'),
+	            'alt_phone'      	=> $this->input->post('alt_phone'),
+	            'list_city'         => $this->input->post('lcity'),
+	            'tenure'         	=> $this->input->post('tenure'),
+	            'nt_amnt'        	=> $this->input->post('nt_amnt'),
+	            'discount'        	=> $this->input->post('discount'),
+	            'gst_amount'        => $this->input->post('gst_amount'),
+	            'amt_after_disc'    => $this->input->post('amt_after_disc'),
+	            'tds'            	=> $this->input->post('tds'),
+	            't_amnt'            => $this->input->post('t_amnt'),
+	            'pay_mode '      	=> $this->input->post('pay_mode'),
+	            'inst_no '      	=> $this->input->post('inst_no'),
+	            'pay_date'        	=> $this->input->post('pay_date'),
+	            'amount'        	=> $this->input->post('amount'),
+	            'pdc_mode'        	=> $this->input->post('pdc_mode'),
+				'pdc_instrmnt'      => $this->input->post('pdc_instrmnt'),
+				'pdc_pay_date'      => $this->input->post('pdc_pay_date'),
+				'pdc_amount'        => $this->input->post('pdc_amount'),
+				'employee'        	=> $this->input->post('emp'),
+				'manager'        	=> $this->input->post('mang'),
+				'bran_mang'        	=> $this->input->post('bran_mang'),
+				'nation_head'       => $this->input->post('nation_head'),
+				'telecaller'        => $this->input->post('telecaller'),
+	            'added_by'          => $this->aid,
+	            'started_from'      => date('Y-m-h'),
+	            'uniq'          	=> $this->input->post('uniq'),
+	            'ban_pack'			=> $this->input->post('ban_pack'),
+	        	);
+				$data = $this->m_vnupgrade->updateUpgrade($insert,$id);
+				if (!empty($data)) {
+					$this->session->set_flashdata('success','Vendor proposal updated successfully.');
+				}else{
+					$this->session->set_flashdata('error','Something went wrong please try again later!');
+				}
+				redirect('vendors/edit-proposal/'.$id,'refresh');
+		}
 }
 	
 	/* End of file Vendors_upgrade.php */

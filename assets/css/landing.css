@@ -189,16 +189,25 @@
 }
 
 .filter-p1.type-label.border-bottom.vndr-ct-filtrflw-0-nxt-web:hover {
-    background: #f4f4f4;
+    background: #dfdfdf;
 }
 
 .filter-p1.budget-label.two-slide-options.border-bottom.vndr-ct-filtrflw-1-nxt-web:hover {
-    background: #f7f7f7;
+    background: #dfdfdf;
 }
 
 .filter-p1.budget-label.two-slide-options.vndr-ct-filtrflw-1-nxt-web:hover {
-    background: #f7f7f7;
+    background: #dfdfdf;
 }
+
+.filter-p1.type-label.border-bottom.vndr-ct-filtrflw-0-nxt-web.plan-wed.active {
+    background: #dfdfdf;
+}
+
+.filter-p1.budget-label.two-slide-options.vndr-ct-filtrflw-1-nxt-web.active {
+    background: #dfdfdf;
+}
+
 
 .filter-p1 h6 {
     font-size: 12px;

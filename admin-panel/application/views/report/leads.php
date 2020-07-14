@@ -51,6 +51,7 @@
                 <div class="col l3 m6">
                   <select id="city"  fname="city" class="select-list" name="city">
                     <option value="">Choose a city</option>
+                    <option value="">All city</option>
                     <?php if (!empty($city)) {
                     foreach ($city as $cit => $cits) { ?>
                     <option value="<?php echo $cits->id ?>" <?php if($this->input->get('city') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->city ?></option>
@@ -60,6 +61,7 @@
                 <div class="col l3 m6">
                   <select id="category"  fname="category" class="select-list" name="city">
                     <option value="">Choose a category</option>
+                    <option value="">All category</option>
                     <?php if (!empty($category)) {
                     foreach ($category as $cit => $cits) { ?>
                     <option value="<?php echo $cits->id ?>" <?php if($this->input->get('category') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->category ?></option>
@@ -94,10 +96,14 @@
                                     <thead>
                                        <tr class="tt">
                                           <th id="a" class="h5-para-p2" width="130px">Sl No.</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Vendor</th>
-                                          <th id="a" class="h5-para-p2" width="130px">Category</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Customer Name</th>
+                                          <th id="a" class="h5-para-p2" width="130px">Customer Email</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Customer Phone</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Category</th>
                                           <th id="c" class="h5-para-p2" width="120px">City</th>
-                                          <th id="c" class="h5-para-p2" width="120px">Package</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Date</th>
+                                          <th id="b" class="h5-para-p2" width="100px">Enquiry Type</th>
+                                          <th id="c" class="h5-para-p2" width="120px">Message</th>
                                           <th id="c" class="h5-para-p2" width="120px">Leads Count</th>
                                        </tr>
                                     </thead>
@@ -107,18 +113,21 @@
                                       $count =0;
                                       foreach ($result as $key => $value) {
                                         $count++;
-
                                        $leads = (!empty($value->leads))?'/'.$value->leads:'';
-                                       $lCount = $this->ci->m_report->leadsCount($value->id);
-
+                                       $lCount = $this->ci->m_report->leadsCount($value->user_name,$value->category);
                                       ?>
                                         <tr>
                                             <td><?php echo $count ?></td>
-                                            <td ><?php echo (!empty($value->name))?$value->name:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->user_name))?$value->user_name:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->user_email))?$value->user_email:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->user_phone))?$value->user_phone:'---'  ?></td>
                                             <td ><?php echo (!empty($value->category))?$value->category:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->city))?$value->city:'---'  ?></td>
-                                            <td ><?php echo (!empty($value->title))?$value->title:'Free Listing'  ?></td>
-                                            <td ><?php echo $lCount.$leads  ?></td>
+                                            <td ><?php echo (!empty($value->location))?$value->location:'---'  ?></td>
+                                            <td ><?php echo (!empty($value->date))?date('d M,Y',strtotime($value->date)):'---'  ?></td>
+                                            <td ><?php echo (!empty($value->assigned))?'Admin verified ':'OTP Verified'  ?></td>
+                                            <td ><?php echo (!empty($value->wed_detail))?$value->wed_detail:'---'  ?></td>
+                                            <td ><?php echo (!empty($lCount))?$lCount:'---';  ?></td>
+
                                         </tr>
                                     <?php } } ?>
                                     </tbody>

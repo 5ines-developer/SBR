@@ -48,12 +48,14 @@ class Vendors_approval extends CI_Controller {
 		}else{
 			$month = $this->input->get('month');
 			$year = $this->input->get('year');
-			if (empty($month)) {
+			if (empty($month) && !empty($year)) {
 				$month = date('m');
 			}
-			if (empty($year)) {
+
+			if (empty($year) && !empty($month) ) {
 				$year = date('Y');
 			}
+
 			$data['result']  = $this->m_vendorsApproval->get_vendors($month,$year);
 			$this->load->view('vendors/vendor-approval', $data, FALSE);
 		}

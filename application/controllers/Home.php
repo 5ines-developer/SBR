@@ -46,7 +46,7 @@ class Home extends CI_Controller {
     **/
     public function subscribe($id = null)
     {
-        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[newsletter.email]',
+        $this->form_validation->set_rules('email', 'email', 'trim|required|is_unique[newsletter.email]',
                 array('required'      => 'You have not provided %s.', 'is_unique'     => 'This %s already exists.') );
         if ($this->form_validation->run() == false) {
             $error = validation_errors();
@@ -80,7 +80,7 @@ class Home extends CI_Controller {
     public function insertcontact($value='')
     {
         $this->form_validation->set_rules('name', 'Name', 'required|alpha_numeric_spaces');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric');
         $this->form_validation->set_rules('subject', 'Subject', 'alpha_numeric_spaces');
         $this->form_validation->set_rules('message', 'Message', 'alpha_numeric_spaces');
@@ -175,7 +175,8 @@ class Home extends CI_Controller {
     }
     public function feedback()
     {
-        $data['title']  = 'ShaadiBaraati | Feedback';
+        // $data['title']  = 'ShaadiBaraati | Feedback';
+        $data['title']  = 'ShaadiBaraati | Wedz Magazine';
         $this->load->view('site/feedback',$data);
     }
 
@@ -215,7 +216,7 @@ class Home extends CI_Controller {
 
         $this->form_validation->set_rules('qfname', 'First Name', 'required|alpha_numeric_spaces');
         $this->form_validation->set_rules('qlname', 'Last Name', 'required|alpha_numeric_spaces');
-        $this->form_validation->set_rules('qemail', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('qemail', 'Email', 'required');
         $this->form_validation->set_rules('qphone', 'Phone Number', 'required|numeric');
         $this->form_validation->set_rules('qservice', 'Service', 'required|alpha_numeric_spaces');
         $this->form_validation->set_rules('qdate', 'Event Date', 'required');
@@ -285,7 +286,7 @@ class Home extends CI_Controller {
     {
         $this->form_validation->set_rules('fname', 'First Name', 'required|alpha_numeric_spaces');
         $this->form_validation->set_rules('lname', 'Last Name', 'required|alpha_numeric_spaces');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric');
         $this->form_validation->set_rules('best', 'Best Service', 'required|alpha_numeric_spaces');
         $this->form_validation->set_rules('improve', 'Need To Improve', 'required|alpha_numeric_spaces');
@@ -325,10 +326,10 @@ class Home extends CI_Controller {
 
         $this->form_validation->set_rules('fname', 'First Name', 'required|alpha_numeric_spaces');
         $this->form_validation->set_rules('lname', 'Last Name', 'required|alpha_numeric_spaces');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('phone', 'Phone Number', 'required|numeric');
-        $this->form_validation->set_rules('rate', 'Ratings', 'required|alpha_numeric_spaces');
-        $this->form_validation->set_rules('feedback', 'Feedback', 'alpha_numeric_spaces');
+        // $this->form_validation->set_rules('rate', 'Ratings', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('feedback', 'Message', 'alpha_numeric_spaces');
         if ($this->form_validation->run() == false) {
             $this->form_validation->set_error_delimiters('', '<br>');
             $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
@@ -339,15 +340,15 @@ class Home extends CI_Controller {
                 'lname'     => $this->input->post('lname', true), 
                 'email'     => $this->input->post('email', true), 
                 'phone'     => $this->input->post('phone', true), 
-                'rating'    => $this->input->post('rate', true),
+                // 'rating'    => $this->input->post('rate', true),
                 'feedback'  => $this->input->post('feedback', true), 
             );
             if($this->m_home->feedback_post($data)){
-                $this->session->set_flashdata('success', 'Your feedback has been submitted.');
-                redirect('feedback');
+                $this->session->set_flashdata('success', 'Your requested has been submitted. <br> Our team will get in touch with you soon.');
+                redirect('wedzmagazine');
             }else{
                 $this->session->set_flashdata('error', 'Server Error, please try again later.');
-                redirect('feedback');
+                redirect('wedzmagazine');
             }
         }
     }
@@ -405,10 +406,95 @@ class Home extends CI_Controller {
     // landing page
     public function landing_page()
     {
+        $this->session->unset_userdata('wplan');
+        $this->session->unset_userdata('wbud');
+        $this->session->unset_userdata('wdate');
         $data['title']  = 'ShaadiBaraati | landing page';
         $this->load->view('site/landing-page',$data);
     }
 
+    public function setuser($value='')
+    {
+        $wplan = $this->input->get('wplan');
+        $bud = $this->input->get('bud');
+        $date = $this->input->get('date');
+        if (!empty($wplan)) {$this->session->unset_userdata('wplan'); $wed_ses = array('wplan' => $wplan ); if($this->session->set_userdata($wed_ses)) {echo true; }else{echo false; } 
+        }
+        if (!empty($bud)) {
+            $this->session->unset_userdata('wbud'); $bud_ses = array('wbud' => $bud ); if($this->session->set_userdata($bud_ses)) {echo true; }else{echo false; }
+        }
+        if (!empty($date)) {
+            $this->session->unset_userdata('wdate'); $date_ses = array('wdate' => $date ); if($this->session->set_userdata($date_ses)) {echo true; }else{echo false; }
+        }
+    }
+    public function checkweduser($value='')
+    {
+        echo json_encode($this->session->userdata());
+    }
+
+     public function insertenquiry($value='')
+    {
+        $this->form_validation->set_rules('name', 'Name', 'required|alpha_numeric_spaces');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('number', 'Phone Number', 'required|numeric');
+        
+        if ($this->form_validation->run() == false) {
+            $this->form_validation->set_error_delimiters('', '<br>');
+            $this->session->set_flashdata('error', str_replace(array("\n", "\r"), '', validation_errors()));
+            redirect('home/landing_page','refresh');
+        }else{
+
+            $name       =   $this->input->post('name');
+            $email      =   $this->input->post('email');
+            $phone      =   $this->input->post('phone');
+            $uniq       =   $this->input->post('uniq');
+            $wedPlan    =   $this->session->userdata('wplan');
+            $wedBudget  =   $this->session->userdata('wbud');
+            $wedDate    =   $this->session->userdata('wdate');
+
+            $insert = array(
+              'name'        =>  $name , 
+              'email'       =>  $email , 
+              'phone'       =>  $phone , 
+              'wedplan'     =>  $wedPlan , 
+              'wedbudget'   =>  $wedBudget ,
+              'weddate'     =>  $wedDate,
+              'uniq'        =>  $uniq
+            );
+
+            $data['result'] = $insert;
+            $data['output']  =  $this->m_home->addseoenquiry($insert);
+            if (!empty($data['output'])) {
+                $this->load->config('email');
+                $this->load->library('email');
+                
+                $to = $this->config->item('vr_to');
+                $cc = $this->config->item('vr_cc');
+
+                $from = $this->config->item('smtp_user');
+                $msg = $this->load->view('email/seo_enquiry', $data, true);
+                
+                $this->email->set_newline("\r\n");
+                $this->email->from($from, 'ShaadiBaraati');
+                // $this->email->to($to);
+                $this->email->to('prathwi@5ine.in');
+                // $this->email->cc($cc);
+                $this->email->subject('Enquiry Form');
+                $this->email->message($msg);
+                if ($this->email->send()) {
+                    $this->session->set_flashdata('success', 'Your request has been submitted successfully, <br />Our team will contact you soon.');
+                    redirect('vendors/all/wedding-planners','refresh');
+
+                } else {
+                    $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
+                    redirect('home/landing_page','refresh');
+                }
+            }else{
+                  $this->session->set_flashdata('error', 'Unable to submit your request, <br />Please try again later!');
+                  redirect('home/landing_page','refresh');
+            }
+        }
+    }
 
 
 

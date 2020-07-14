@@ -15,9 +15,19 @@
 </head>
 
 <body>
-    <!-- header -->
-    <?php $this->load->view('includes/landing-header.php'); ?>
-    <!-- end header -->
+    <nav class="z-depth-1 navbar-fixed">
+    <div class="nav-wrapper white">
+        <a href="#"><img src="<?php echo base_url() ?>assets/img/logo.png" class="img-responsive brand-logo" alt=""></a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger black-text"><i
+                class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down header-ul ">
+            <li><a href="#">HOME</a></li>
+        </ul>
+    </div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="#">HOME</a></li>
+</ul>
 
     <!-- banner -->
     <section class="landing-banner">
@@ -40,11 +50,11 @@
                                     <div class="slide-header"><span class="point-no">1</span>
                                         <h2>What type of planning is required?</h2>
                                     </div>
-                                    <span class="input-options next-one " data-option="1,2,3" data-field="#planning_options"><div class="filter-p1 type-label border-bottom vndr-ct-filtrflw-0-nxt-web"><h6>Full Wedding Planning</h6><span class="sub-text" style="pointer-events: none;">Booking all services + coordination + execution, etc.</span>
+                                    <span class="input-options next-one " data-option="1,2,3" data-field="#planning_options"><div class="filter-p1 type-label border-bottom vndr-ct-filtrflw-0-nxt-web plan-wed" data-id="1">Full Wedding Planning<span class="sub-text" style="pointer-events: none;">Booking all services + coordination + execution, etc.</span>
                                     <i class="material-icons">chevron_right</i>
                                 </div>
                                 </span>
-                                <span class="input-options next-one" data-option="1,2,4" data-field="#planning_options"><div class="filter-p1 type-label border-bottom vndr-ct-filtrflw-0-nxt-web"><h6>Partial Planning</h6><span class="sub-text" style="pointer-events: none;">Booking 2-3 services OR just coordination OR just execution</span>
+                                <span class="input-options next-one" data-option="1,2,4" data-field="#planning_options"><div class="filter-p1 type-label border-bottom vndr-ct-filtrflw-0-nxt-web plan-wed" data-id="2">Partial Planning<span class="sub-text" style="pointer-events: none;">Booking 2-3 services OR just coordination OR just execution</span>
                                 <i class="material-icons">chevron_right</i></div>
                             </span>
                         </div>
@@ -53,12 +63,12 @@
                                 <span class="point-no">2</span>
                                 <h2>Your total wedding budget?</h2>
                             </div>
-                            <span class="input-options next-two" data-option="1" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options border-bottom vndr-ct-filtrflw-1-nxt-web">Less than ₹ 15L <i class="material-icons arrow-p">chevron_right</i></div></span>
-                            <span class="input-options next-two" data-option="2" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options border-bottom vndr-ct-filtrflw-1-nxt-web">₹ 15L - 30L <i class="material-icons arrow-p">chevron_right</i></div></span>
-                            <span class="input-options next-two" data-option="3" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options border-bottom vndr-ct-filtrflw-1-nxt-web">₹ 30L - 60L <i class="material-icons arrow-p">chevron_right</i></div></span>
-                            <span class="input-options next-two" data-option="4" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options vndr-ct-filtrflw-1-nxt-web">More than ₹ 60L <i class="material-icons arrow-p">chevron_right</i></div></span>
+                            <span class="input-options next-two" data-option="1" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options border-bottom vndr-ct-filtrflw-1-nxt-web plan-bud" data-id="1">Less than ₹ 15L <i class="material-icons arrow-p">chevron_right</i></div></span>
+                            <span class="input-options next-two" data-option="2" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options border-bottom vndr-ct-filtrflw-1-nxt-web plan-bud" data-id="2">₹ 15L - 30L <i class="material-icons arrow-p">chevron_right</i></div></span>
+                            <span class="input-options next-two" data-option="3" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options border-bottom vndr-ct-filtrflw-1-nxt-web plan-bud" data-id="3">₹ 30L - 60L <i class="material-icons arrow-p">chevron_right</i></div></span>
+                            <span class="input-options next-two" data-option="4" data-field="#budget_options"><div class="filter-p1 budget-label two-slide-options vndr-ct-filtrflw-1-nxt-web plan-bud" data-id="4">More than ₹ 60L <i class="material-icons arrow-p">chevron_right</i></div></span>
                             <div class="slide-footer">
-                                <span class="input-options back-one" data-option="" data-field="#budget_options"><button class="action-back vndr-ct-filtrflw-1-bck-web"> <i class="material-icons arrow-btn">chevron_left</i> Back </button></span>
+                                <span class="input-options back-one" data-option="" data-field="#budget_options"><button class="action-back vndr-ct-filtrflw-1-bck-web go-back"> <i class="material-icons arrow-btn">chevron_left</i> Back </button></span>
                             </div>
                         </div>
                         <div id="slide-3">
@@ -68,8 +78,8 @@
                             </div>
                             <div class="third-slide-container">
                                 <div class="calender-container cc-date">
-                                    <input type="text" id="datep" placeholder="Select Your Event Date">
-                                    <span class="next-three"><div class="budget-label no-border third-slide-next-but pad-left but-slide-3-next input-options vndr-ct-filtrflw-2-nxt-web" data-option="" data-field="#event_dates">Dates not decided yet <i class="material-icons checker-btn">chevron_right</i></div></span>
+                                    <input type="text" id="datep" name="datep" placeholder="Select Your Event Date">
+                                    <span class="next-three"><div class="budget-label no-border third-slide-next-but pad-left but-slide-3-next input-options vndr-ct-filtrflw-2-nxt-web" data-option="" data-field="#event_dates" id="not_decide">Dates not decided yet <i class="material-icons checker-btn">chevron_right</i></div></span>
                                 </div>
                                 <div class="slide-footer">
                                     <span class="back-two"><button class="action-back vndr-ct-filtrflw-2-bck-web"><i class="material-icons arrow-btn">chevron_left</i> Back </button></span>
@@ -86,22 +96,20 @@
                                 <br>matching your requirements!
                                 </span>
                                 <p class="hide-on-phone">Signup to view them &amp; get quotes</p>
-                                <form action="#" method="post" class="jqueryform2">
+                                <form action="<?php echo base_url('home/insertenquiry'); ?>" method="post" class="jqueryform2">
                                     <div class="field">
-                                        <input type="text" name="fullname" id="fullname" required="">
-                                        <label for="fullname">Name</label>
+                                        <input type="text" name="name" id="fullname" placeholder="name" required="">
                                     </div>
                                     <div class="field">
-                                        <input type="email" name="email" id="email" required="">
-                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email" placeholder="email" required="">
                                     </div>
                                     <div class="field">
-                                        <input type="tel" name="number" id="number" required="">
-                                        <label for="number">Mobile Number</label>
+                                        <input type="number" name="number" id="number" placeholder="number" required="">
+                                        <input type="hidden" name="uniq" value="<?php echo random_string('alnum',10); ?>">
                                     </div>
                                     <button class="action-pink-form" type="submit" value="submit">See Planners</button>
                                 </form>
-                                <p class="hide-on-phone">Want to change your requirements? - <button class="back-three action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web">Go Back</button></p>
+                                <p class="hide-on-phone">Want to change your requirements? - <button class="back-three action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web go-back">Go Back</button></p>
                                 <!-- <button class="action-empty-form back-slide-3 vndr-ct-filtrflw-edtrqmt-web"><i class="fa left fa-angle-left"></i>Go Back &amp; Change</button> -->
                             </div>
                         </div>
@@ -214,27 +222,38 @@
     <div id="div2" style="width:80px;height:80px;display:none;background-color:green;"></div><br>
     <div id="div3" style="width:80px;height:80px;display:none;background-color:blue;"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <?php $this->load->view('includes/landing-footer.php'); ?>
+<section class="sec-footer bg-col">
+    <div class="container-fluide">
+        <div class="row m0">
+            <div class="col l8 m8 s12">
+                <div class="landing-footer">
+                    <h2>ShaadiBaraati</h2>
+                    <a href="<?php echo base_url('about-us') ?>">
+                        <p>About Us</p>
+                    </a>
+                    <a href="<?php echo base_url('privacy-policy') ?>">
+                        <p>Privacy Policy</p>
+                    </a>
+                    <a href="<?php echo base_url('terms-conditions') ?>">
+                        <p>Terms & Condition</p>
+                    </a>
+                </div>
+                <div class="copy-land">
+                    <p>© Shaadibaraati.com <?php echo date('Y') ?>. All right reserved by Baraati Media &amp; Entertainment Pvt Ltd </p>
+                </div>
+            </div>
+            <div class="col l4 m4 s12">
+                <div class="call-to-action">
+                    <h5>
+                        You Can directly call us!
+                    </h5>
+                    <p>Give Us call and discuss your requirements.</p>
+                    <a href="#">Call us on 1800 4199 456</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
@@ -244,7 +263,9 @@
     <script src="<?php echo base_url()?>assets/js/axios.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/slimselect.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/swiper.js"></script>
-
+    <script>
+    <?php $this->load->view('includes/message'); ?>
+    </script>
     <script>
         $(function() {
             $("#datep").datepicker();
@@ -257,6 +278,93 @@
             });
             $(".datepicker-cancel").click(function() {
                 $(".action-pink").css("display", "none");
+            });
+        });
+        
+
+        $(document).on('click','.plan-wed',function() {
+            var wplan = $(this).attr("data-id");
+            $.ajax({
+                url: '<?php echo base_url()?>home/setuser',
+                type: 'Get',
+                dataType: 'html',
+                data: {wplan: wplan },
+                success: function(data) {
+
+                }
+            });
+        });
+        $(document).on('click','.plan-bud',function() {
+            var bud = $(this).attr("data-id");
+            $.ajax({
+                url: '<?php echo base_url()?>home/setuser',
+                type: 'Get',
+                dataType: 'html',
+                data: {bud: bud },
+                success: function(data) {
+
+                }
+            });
+        });
+
+        $(document).on('change','input[name="datep"]',function() {
+            var date = $(this).val();
+            $.ajax({
+                url: '<?php echo base_url()?>home/setuser',
+                type: 'Get',
+                dataType: 'html',
+                data: {date: date },
+                success: function(data) {
+
+                }
+            });
+        });
+
+        $(document).on('click','#not_decide',function() {
+            var date = 'Not Decided';
+            alert('ok')
+            $.ajax({
+                url: '<?php echo base_url()?>home/setuser',
+                type: 'Get',
+                dataType: 'html',
+                data: {date: date },
+                success: function(data) {
+
+                }
+            });
+        });
+
+
+        $(document).on('click','.action-back,.go-back',function() {
+            $.ajax({
+                url: '<?php echo base_url()?>home/checkweduser',
+                type: 'Get',
+                dataType: 'json',
+                success: function(response) {
+
+                    var wplan = response.wplan;
+                    if (wplan != '') {
+                        if ($('.plan-wed').hasClass("active")) { $('.plan-wed').removeClass('active'); }
+                        $('.plan-wed[data-id='+wplan+']').addClass('active');
+                    }
+
+                    var wbud = response.wbud;
+
+                    if (wbud != '') {
+                        if ($('.plan-bud').hasClass("active")) { $('.plan-bud').removeClass('active'); }
+                        $('.plan-bud[data-id='+wbud+']').addClass('active');
+                    }
+
+                    var wdate = response.date;
+                    if (wdate != '' && wdate != 'Not Decided') {
+                        $('input[name="datep"]').val(date);
+                    }
+                    
+
+
+
+
+                }
             });
         });
     </script>

@@ -124,6 +124,10 @@ $this->load->model('m_vendors');
         #modal1{
             z-index: 99999 !important;
         }
+        .portfolio-img.video-thumb{
+            min-height: 250px;
+            max-height: 250px;
+        }
 
 
     </style>
@@ -527,12 +531,19 @@ $this->load->model('m_vendors');
 
                                             <?php //youtube
                                         if (!empty($video)) {
-                                            foreach ($video as $vide => $vids) {
-                                        if ($vids->type == '1') {                                             
+                                        foreach ($video as $vide => $vids) {
+                                        if ($vids->type == '1') {  
+                                            $vidlink = explode("?v=",$vids->link);
+                                            if (!empty($vidlink[1])) {
+                                                $vidlinks = $vidlink[1];
+                                            }else{
+                                                $vidlinks = $vids->link;
+                                            }
+
                                             ?>
                                             <div class="col s12 l3 m6 ">
-                                                <div class="portfolio-img">
-                                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/<?php echo $vids->link ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                <div class="portfolio-img video-thumb">
+                                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/<?php echo $vidlinks ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     <div class="vid-delete">
                                                         <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>">
                                                             <i class="fas fa-trash"></i></a>
@@ -541,7 +552,7 @@ $this->load->model('m_vendors');
                                             </div>
                                             <?php }else if ($vids->type == '2'){  ?>
                                             <div class="col s12 l3 m6 ">
-                                                <div class="portfolio-img">
+                                                <div class="portfolio-img video-thumb">
                                                     <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
                                                         allowTransparency="true" allowFullScreen="true"></iframe>
                                                     <div class="vid-delete">

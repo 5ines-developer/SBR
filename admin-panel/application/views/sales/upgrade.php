@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title></title>
+      <title><?php echo $title ?></title>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,9 @@
         }
         #nt_amnt, #gst_amount, #t_amnt {
           cursor: no-drop;
+        }
+        #ban_pck{
+          display: none;
         }
       </style>
    </head>
@@ -59,7 +62,7 @@
                                                   <label for="id">Vendor Id <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <select name="vcity" required="">
+                                                  <select name="vvcity" required="" disabled>
                                                       <option value="">Choose a City</option>
                                                       <?php if (!empty($city)) { foreach ($city as $key => $value) {  ?>
                                                         <option value="<?php echo $value->id ?>" <?php if($result->citId == $value->id){ echo 'selected'; } ?> ><?php echo $value->city ?> </option>
@@ -67,8 +70,11 @@
                                                   </select>
                                                   <label for="city">Vendor City <span class="red-text">*</span></label>
                                                 </div>
+
+                                                <input type="hidden" name="vcity" value="<?php echo $result->citId ?>">
+
                                                 <div class="input-field col s12 l6">
-                                                  <select name="vcategory" required="">
+                                                  <select name="vvcategory" required="" disabled>
                                                       <option value="">Choose a Category</option>
                                                       <?php if (!empty($category)) { foreach ($category as $key => $value) {  ?>
                                                         <option value="<?php echo $value->id ?>" <?php if($result->catId == $value->id){ echo 'selected'; } ?> ><?php echo $value->category ?> </option>
@@ -76,6 +82,8 @@
                                                   </select>
                                                   <label for="city">Vendor Category <span class="red-text">*</span></label>
                                                 </div>
+
+                                                <input type="hidden" name="vcategory" value="<?php echo $result->catId ?>">
                                                 
                                                 <div class="input-field col s12 l6">
                                                   <select name="vpackage" required="" id="package" >
@@ -87,7 +95,7 @@
                                                   <label for="package">Package <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <select name="c_bnr">
+                                                  <select name="c_bnr" id="c_bnr">
                                                       <option value="">No</option>
                                                       <option value="1">Yes</option>
                                                   </select>
@@ -100,6 +108,20 @@
                                                   </select>
                                                   <label for="cat_bnr">Category Banner</label>
                                                 </div>
+                                                <div class="input-field col s12 l6" id="ban_pck"> 
+                                                  <select name="ban_pack" id="ban_pack">
+                                                    <option value="">Choose a Banner Package</option>
+                                                    <?php if (!empty($banner)) { foreach ($banner as $key => $value) {
+                                                      if (!empty($value->pack1)) { 
+                                                        echo '<option value="'.$value->pack1.'">'.$value->pack1.'</option>';
+                                                       }
+                                                      if (!empty($value->pack2)) { 
+                                                        echo '<option value="'.$value->pack2.'">'.$value->pack2.'</option>';
+                                                    } } }?>
+                                                  </select>
+                                                  <label for="cat_bnr">Banner Package</label>
+                                                </div>
+                                                <input type="hidden" name="ban_price">
                                             </div>
                                             <div class="divider"> </div>
 
@@ -132,13 +154,19 @@
                                                   <textarea id="invoice_address" class="materialize-textarea" required name="invoice_address"><?php echo (!empty($result->address))?$result->address:''; ?></textarea>
                                                   <label for="invoice_address">Invoicing Address <span class="red-text">*</span></label>
                                                 </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="ord_type" name="ord_type" required class="validate"  value="<?php echo (!empty($invoice->ord_type))?$invoice->ord_type:''; ?>">
-                                                  <label for="ord_type">Order Type <span class="red-text">*</span></label>
-                                                </div>
-                                                <div class="input-field col s12 l6">
-                                                  <input type="text" id="c_person" name="c_person" required class="validate"  value="<?php echo (!empty($invoice->c_person))?$invoice->c_person:''; ?>">
-                                                  <label for="i_landl">Contact Person <span class="red-text">*</span></label>
+                                                <div class="row m0">
+                                                  <div class="input-field col s12 l6">
+                                                    <select id="ord_type" name="ord_type" required="">
+                                                        <option value="">Choose a Order Type</option>
+                                                        <option value="Fresh" >Fresh</option>
+                                                        <option value="Renewal" >Renewal</option>
+                                                    </select>
+                                                    <label for="ord_type">Order Type <span class="red-text">*</span></label>
+                                                  </div>
+                                                  <div class="input-field col s12 l6">
+                                                    <input type="text" id="c_person" name="c_person" required class="validate"  value="<?php echo (!empty($result->c_person))?$result->c_person:''; ?>">
+                                                    <label for="i_landl">Contact Person <span class="red-text">*</span></label>
+                                                  </div>
                                                 </div>
                                                 
                                                 <div class="input-field col s12 l6">
@@ -157,19 +185,22 @@
                                                 </div>
 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="tenure" name="tenure" required class="validate" value="<?php echo (!empty($invoice->tenure))?$invoice->tenure:''; ?>">
+                                                  <select id="tenure" name="tenure" required="">
+                                                      <option value="">Choose a tenure</option>
+                                                      <?php $months = array('1', '2', '3', '4', '5', '6', '7 ', '8', '9', '10', '11', '12',);
+                                                      foreach ($months as $key => $value) { ?>
+                                                       <option value="<?php echo $key+1; ?>" <?php if($this->input->get('month') == $key+1){ echo 'selected'; } ?>><?php echo $value.' + 1 Months';?></option>
+                                                      <?php }?>
+                                                  </select>
                                                   <label for="tenure">Tenure <span class="red-text">*</span></label>
                                                 </div>
                                             </div>
                                           
                                             <div class="divider"> </div>
-
                                             <p class="m-15">Payment Details</p>
-                                        
-                                          <div class="row m0">
-
+                                            <div class="row m0">
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" autofocus="" id="nt_amnt" required name="nt_amnt" class="validate" >
+                                                  <input type="text" autofocus="" readonly="" id="nt_amnt" required name="nt_amnt" class="validate" >
                                                   <label class="ntam" for="nt_amnt">Net Amount <span class="red-text">*</span></label>
                                                 </div>
 
@@ -179,11 +210,11 @@
                                                 </div>
                                                 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" autofocus="" required id="gst_amount" name="gst_amount" class="validate">
+                                                  <input type="text" autofocus="" readonly=""  required id="gst_amount" name="gst_amount" class="validate">
                                                   <label  class="active" for="gst_amount">18% GST Amount : <span class="red-text">*</span></label>
                                                 </div>
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" autofocus="" required id="amt_after_disc" name="amt_after_disc" class="validate">
+                                                  <input type="text" autofocus="" readonly=""  required id="amt_after_disc" name="amt_after_disc" class="validate">
                                                   <label class="amt_after_disc" for="amt_after_disc">Amt Payable After Disc : <span class="red-text">*</span></label>
                                                 </div>
 
@@ -193,28 +224,23 @@
                                                 </div>
 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" autofocus="" required id="t_amnt" name="t_amnt" class="validate">
+                                                  <input type="text" autofocus="" readonly=""  required id="t_amnt" name="t_amnt" class="validate">
                                                   <label for="t_amnt">Total Amount <span class="red-text">*</span></label>
-                                                </div>
-
-                                                <div class="input-field col s12 l12">
-                                                  <input type="text" autofocus="" required id="am_words" name="am_words" class="validate">
-                                                  <label for="am_words">Amount in words <span class="red-text">*</span></label>
                                                 </div>
                                             </div>
                                             <div class="divider"> </div>
 
                                              <p class="m-15">Payment Mode : </p>
                                         
-                                          <div class="row m0">
+                                            <div class="row m0">
                                                 <div class="input-field col s12 l6">
                                                    <select id="pay_mode" name="pay_mode" required="">
                                                     <option value="">Choose the Payment Mode</option>
-                                                      <option value="cheque">Cheque</option>
-                                                      <option value="cash">Cash</option>
+                                                      <option value="Cheque">Cheque</option>
+                                                      <option value="Cash">Cash</option>
                                                       <option value="Online">Online NEFT/IMPS</option>
                                                       <option value="GoglePay/PhonePe">GoglePay/PhonePe/Paytm</option>
-                                                      <option value="razorpay">Razor Pay</option>
+                                                      <option value="Razorpay">Razor Pay</option>
                                                    </select>
                                                   <label for="pay_mode">Payment Mode <span class="red-text">*</span></label>
                                                 </div>
@@ -261,33 +287,8 @@
                                                 <select id="emp" name="emp" required="">
                                                   <option value="">Choose the Employee</option>
                                                   <?php if (!empty($employee)) { foreach ($employee as $emp => $emps) {
-
-                                                    switch ($emps->admin_type) {
-                                                      case '2':
-                                                        $tp = 'Manager';
-                                                        break;
-                                                      case '3':
-                                                        $tp = 'Sales Executive';
-                                                        break;
-                                                      case '4':
-                                                        $tp = 'Area Sales Manager';
-                                                        break;
-                                                      case '5':
-                                                        $tp = 'Sales Manager';
-                                                        break;
-                                                      case '6':
-                                                        $tp = 'Tele Caller';
-                                                        break;
-                                                      case '7':
-                                                        $tp = 'Finance Executive';
-                                                        break;
-
-                                                      default:
-                                                        $tp = 'Sales Executive';
-                                                        break;
-                                                    }
-                                                  if ($emps->admin_type != '1' && $emps->admin_type != '2') { ?>
-                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name .'&nbsp;-&nbsp;'.$tp; ?></option>
+                                                  if ($emps->admin_type == '3' || $emps->admin_type == '4' || $emps->admin_type == '7') { ?>
+                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name .'&nbsp;-&nbsp;'.$emps->types; ?></option>
                                                   <?php  }}} ?>
                                                 </select>
                                                 <label for="emp">Select Employee <span class="red-text">*</span></label>
@@ -302,6 +303,39 @@
                                                   <?php  }}} ?>
                                                 </select>
                                                 <label for="mang">Select Manager <span class="red-text">*</span></label>
+                                              </div>
+
+                                              <div class="input-field col s12 l6">
+                                                <select id="bran_mang" name="bran_mang" required="">
+                                                  <option value="">Choose the Branch Manager</option>
+                                                  <?php if (!empty($employee)) { foreach ($employee as $emp => $emps) {
+                                                  if ($emps->admin_type == '8') { ?>
+                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name ?></option>
+                                                  <?php  }}} ?>
+                                                </select>
+                                                <label for="bran_mang">Select Branch Manager <span class="red-text">*</span></label>
+                                              </div>
+
+                                              <div class="input-field col s12 l6">
+                                                <select id="nation_head" name="nation_head" required="">
+                                                  <option value="">Choose the National Head</option>
+                                                  <?php if (!empty($employee)) { foreach ($employee as $emp => $emps) {
+                                                  if ($emps->admin_type == '9') { ?>
+                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name ?></option>
+                                                  <?php  }}} ?>
+                                                </select>
+                                                <label for="nation_head">Select National Head <span class="red-text">*</span></label>
+                                              </div>
+
+                                              <div class="input-field col s12 l6">
+                                                <select id="telecaller" name="telecaller">
+                                                  <option value="">Choose the Tele Caller</option>
+                                                  <?php if (!empty($employee)) { foreach ($employee as $emp => $emps) {
+                                                  if ($emps->admin_type == '6') { ?>
+                                                  <option value="<?php echo $emps->id ?>"><?php echo $emps->name ?></option>
+                                                  <?php  }}} ?>
+                                                </select>
+                                                <label for="telecaller">Select Tele Caller <span class="red-text">*</span></label>
                                               </div>
                                               
                                             </div>
@@ -364,6 +398,8 @@
 
         $(document).on('change', '#package', function(){
           var pack = $(this).val();
+          var ban_price = $('input[name="ban_price"]').val();
+          if (ban_price =='') { var ban_price =0; }
           $.ajax({
             url: '<?php echo base_url() ?>vendors_upgrade/getPrice',
             type: 'GET',
@@ -374,19 +410,44 @@
                 $('#nt_amnt').val(data.price);
                 $('#gst_amount').val(data.gst);
                 $(".ntam").addClass("active");
-                var tot = parseInt(data.price) + parseInt(data.gst);
+                var tot = parseInt(data.price) + parseInt(data.gst) + parseInt(ban_price);
                 $('#t_amnt').val(tot);
               }
           });
-          
+        });
+
+        $(document).on('change', '#ban_pack', function(){
+          var pack = $(this).children("option:selected").val();
+          if (pack !=''){
+            var res = pack.split(":");
+            if (res !='') {
+              var price = res[1];
+              $('input[name=ban_price]').val($.trim(price));
+            }
+          }else{
+            var price = 0;
+            $('input[name=ban_price]').val(price);
+          }
+        });
+
+        $(document).on('change', '#c_bnr,#cat_bnr', function(){
+          var pack = $('#c_bnr').val();
+          var packs = $('#cat_bnr').val();
+          if (pack !='' || packs !='') {
+            $('#ban_pck').css('display', 'block');
+          }else{
+            $('#ban_pck').css('display', 'none');
+          }
         });
 
         $(document).on('change', '#discount', function(){
           var discount  = $(this).val();
           var netam     = $("#nt_amnt").val();
           var gst       = $("#gst_amount").val();
+          var ban_price = $('input[name="ban_price"]').val();
+          if (ban_price =='') { var ban_price =0; }
           if ((netam !='') && (gst !='')) {
-            var tot = parseInt(netam) + parseInt(gst);
+            var tot = parseInt(netam) + parseInt(gst) + parseInt(ban_price);
             var amount =  (parseInt(tot) * parseInt(discount)) / 100;
             if (amount > tot) {
               var total = amount - tot;

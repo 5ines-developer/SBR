@@ -250,7 +250,8 @@
                             <!-- <a href="#" ><li class="hov">wedding Destination</li></a> -->
                             <a href="<?php echo base_url() ?>einvite" ><li class="hov">E-Invite</li></a>
                             <a href="<?php echo base_url() ?>real-wedding" ><li class="hov">Real Wedding</li></a>
-                            <a href="<?php echo base_url() ?>feedback" ><li class="hov">Feedback / Complaints</li></a>
+                            <!-- <a href="<?php echo base_url() ?>feedback" ><li class="hov">Feedback / Complaints</li></a> -->
+                            <a href="<?php echo base_url() ?>wedzmagazine" ><li class="hov">Shaadi Baraati Magazine</li></a>
                             <a href="<?php echo base_url() ?>site-map" ><li class="hov">Sitemap</li></a>
                             <a href="<?php echo base_url() ?>career" ><li class="hov">Career</li></a>
                         </ul>

@@ -46,8 +46,11 @@ class Vendor_discount extends CI_Controller {
         $data['result'] = $this->m_vdiscount->getVendor($id);
         $data['rpid'] = $id;
 		$status = '1';
+
+        $update = array('status' => $status,'approved' =>$status);
+
 		// send to model
-        if($this->m_vdiscount->status_change($id,$status)){
+        if($this->m_vdiscount->status_change($id,$update)){
         	if($this->invoice($data))
             {
                 $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
@@ -99,11 +102,16 @@ class Vendor_discount extends CI_Controller {
 
             $data['result'] = $insert;
 
-            require_once $_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php';
+            require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
             $mpdf = new \Mpdf\Mpdf([
                 'mode' => 'utf-8',
-                'format' => [190, 236],
-                'orientation' => 'L'
+                'format' => 'A4',
+                // 'orientation' => 'L',
+                'margin_top' => 10,
+                'margin_left' => 10,
+                'margin_right' => 10,
+                'margin_bottom' => 10,
+                'default_font_size' => 9,
             ]);
             $html = $this->load->view('vendors/invoice', $data, TRUE);
             $mpdf->WriteHTML($html);
@@ -116,6 +124,26 @@ class Vendor_discount extends CI_Controller {
            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
            redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
         }
+    }
+
+    public function invoiceDownload($id='')
+    {
+        $data['result'] = $this->m_vdiscount->invoiceDownload($this->aid,$id);
+        require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
+        $mpdf = new \Mpdf\Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            // 'orientation' => 'L',
+            'margin_top' => 10,
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_bottom' => 10,
+            'default_font_size' => 9,
+        ]);
+        $html = $this->load->view('vendors/invoiceDownload', $data, TRUE);
+        $pdfFilePath ="vendor-invoice-".date('Y-m-h H:i:s')."-.pdf";
+        $mpdf->WriteHTML($html);
+        $mpdf->Output($pdfFilePath, "D");
     }
 
 
@@ -158,9 +186,11 @@ class Vendor_discount extends CI_Controller {
 
     public function reject($id='')
     {
+        
         $status = '2';
+        $update = array('status' => $status,'approved' =>$status,'live' =>0,'reject_reson' => $this->input->post('reason'));
         // send to model
-        if($this->m_vdiscount->status_change($id,$status)){
+        if($this->m_vdiscount->status_change($id,$update)){
             $this->sendreject($id);
             // if ($this->type != '2') {
             //     $this->sendmanager($id);
@@ -204,6 +234,18 @@ class Vendor_discount extends CI_Controller {
             return false;
         }
     }
+
+    public function make_live($id='')
+    {
+        $this->load->model('m_finance');
+        if ($this->m_finance->makeLive($id)) {
+            $this->session->set_flashdata('success', 'Proposal has been made live successfully');
+        }else{
+            $this->session->set_flashdata('error', 'Something went wrong please try again later!');
+        }
+        redirect('vendors/view-proposal/'.$id,'refresh');
+    }
+
 
 
 

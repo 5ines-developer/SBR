@@ -37,11 +37,12 @@ class Finance extends CI_Controller {
 
 	public function view_proposal($id = null)
 	{
-		$data['title']   = 'Vendors - Shaadibaraati';
-		$data['result'] = $this->m_finance->view_proposal($this->aid,$id);
-
+		$this->load->model('m_vnupgrade');
+		$data['title']  = 'Vendors - Shaadibaraati';
+		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
 		if($this->type == '1'){
-			$this->m_finance->seenChange($id);
+			$this->m_vnupgrade->seenChange($id);
 		}
 		$this->load->view('finance/view-proposal', $data, FALSE);
 	}
@@ -75,6 +76,20 @@ class Finance extends CI_Controller {
 			$this->session->set_flashdata('error', 'Something went wrong please try again later!');
 		}
 		redirect('finance/approved-proposal','refresh');
+	}
+
+	public function reject($id='')
+	{
+		$this->load->model('m_vdiscount');
+		$status = '2';
+        $update = array('status' => $status,'approved' =>$status,'live' =>0,'reject_reson' => $this->input->post('reason'));
+        // send to model
+        if($this->m_vdiscount->status_change($id,$update)){
+        	$this->session->set_flashdata('success', 'Vendor discount request rejected Successfully');
+        }else{
+        	$this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
+        }
+         redirect('finance/view-proposal/'.$id,'refresh');
 	}
 
 }

@@ -16,6 +16,7 @@
                 $m_descp    = $value->m_desc;
                 $m_key      = $value->keywords;
                 $m_can      = $value->can_link; 
+                $m_description = $value->description; 
             }
         }
     }
@@ -42,7 +43,7 @@
                 <div class="row">
                     <div class="col l12 s12">
                         <div class="banner-up ">
-                            <h5 class="white-text">FEEDBACK</h5>
+                            <h5 class="white-text">Subscribe Now</h5>
                         </div>
                     </div>
                 </div>
@@ -52,17 +53,17 @@
                     <div class="row">
                         <div class="col l10 push-l1">
                             <div class="feedback-form z-depth-2">
-                                <h4>Give Us Your Feedback</h4>
+                                <h4>Subscribe your digital copy for free today.</h4>
                                 <div class="form-feed-list">
                                     <form ref="formss" @submit.prevent="checkForms" action="<?php echo base_url('feedback-post') ?>" method="post">
                                         <div class="row">
-                                        <div class="col l12 m12 s12">
+                                            <!-- <div class="col l12 m12 s12">
                                                 <div class="feedback-input padd10">
                                                 <div class="left">Rate us : </div>
                                                  <star-rating v-model="ar" :star-size="20" class="feed-star"></star-rating>
                                                  <input type="hidden" name="rate" :value="ar">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="col l6 m6 s12">
                                                 <div class="feedback-input">
                                                     <div class="input-field">
@@ -99,7 +100,7 @@
                                                 <div class="feedback-input">
                                                     <div class="input-field">
                                                         <textarea id="textarea1" name="feedback" requred class="materialize-textarea" ></textarea>
-                                                        <label for="textarea1">Write your feedback here</label>
+                                                        <label for="textarea1">Message</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -124,6 +125,19 @@
                     </div>
                 </div>
             </section>
+
+            <?php    
+        if (!empty($m_description)) { ?>
+        <section class="result-body conts p0" style="border-top: 1px solid #e3e3e3;">
+            <div class="container-2">
+                <div class="row m0">
+                    <div class="col l11 m12 s12">
+                        <?php echo (!empty($m_description))?$m_description:''; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
 
             <?php $this->load->view('includes/footer'); ?>
     </div>
@@ -192,13 +206,13 @@
                 if (grecaptcha.getResponse() == '') {
                     this.captcha = 'Captcha is required';
                 } else {
-                    if ((this.ar <= '3')) {
-                        if (confirm('Do you really want to give a ' + this.ar + ' rating')) {
-                            this.$refs.formss.submit()
-                        }
-                    }else{
+                    // if ((this.ar <= '3')) {
+                        // if (confirm('Do you really want to give a ' + this.ar + ' rating')) {
+                            // this.$refs.formss.submit()
+                        // }
+                    // }else{
                         this.$refs.formss.submit();
-                    }
+                    // }
                 }
             },
             

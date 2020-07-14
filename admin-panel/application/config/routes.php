@@ -161,8 +161,18 @@ $route['employees/delete/(:any)']	=	'Adminusers/delete/$1';
 $route['employees/verify']			=	'Employe_auth/verify';
 $route['employees/add-password/(:any)/(:any)']	=	'Employe_auth/add_pass/$1/$2';
 $route['employees/update-password']	=	'Employe_auth/update_pass';
+
+$route['employees/types']			=	'Adminusers/empTypes'; 
+$route['employees/types-insert']	=	'Adminusers/typeInsert'; 
+$route['employees/delete-types/(:any)']	=	'Adminusers/typeDelete/$1'; 
+
+
+
+
+
+
 //vendor discount request
-$route['vendors-discount']			=	'vendor_discount/index'; 
+$route['vendors-discount']					=	'vendor_discount/index'; 
 $route['vendors-discount/approve/(:any)']	=	'vendor_discount/approve/$1'; 
 $route['vendors-discount/reject/(:any)']	=	'vendor_discount/reject/$1';
 //banner package
@@ -190,6 +200,13 @@ $route['vendors/cleared-proposal']			=	'vendors_upgrade/clearedProposal';
 $route['vendors/live-proposal']				=	'vendors_upgrade/liveProposal';
 $route['vendors/proposal-detail/(:any)']	=	'vendors_upgrade/viewProps/$1';
 $route['vendors-proposal/download/(:any)']	=	'vendors_upgrade/downloads/$1';
+$route['vendors/edit-proposal/(:any)']		=	'vendors_upgrade/editProposal/$1';
+$route['vendors/upgrade-update']			=	'vendors_upgrade/updateUpgrade';
+
+
+
+
+
 //finance
 $route['finance/new-proposal']			    =	'finance/newProposal';
 $route['finance/view-proposal/(:any)']		=	'finance/view_proposal/$1';

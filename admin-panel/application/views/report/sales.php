@@ -61,21 +61,43 @@
                   </select>
                 </div>
                 <div class="col l3 m6">
-                  <select id="city"  fname="city" class="select-list" name="city">
-                    <option value="">Choose a city</option>
-                    <?php if (!empty($city)) {
-                    foreach ($city as $cit => $cits) { ?>
-                    <option value="<?php echo $cits->id ?>" <?php if($this->input->get('city') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->city ?></option>
-                    <?php  } } ?>
+                  <select id="nathead"  fname="nathead" class="select-list" name="nathead">
+                    <option value="">Choose a National Head</option>
+                    <?php if (!empty($employee)) {
+                    foreach ($employee as $emp1 => $emps1) {
+                    if ($emps1->admin_type == '9' ) { ?>
+                    <option value="<?php echo $emps1->id ?>" <?php if($this->input->get('nathead') == $emps1->id){ echo 'selected'; } ?> ><?php echo $emps1->name ?></option>
+                    <?php } } } ?>
                   </select>
                 </div>
                 <div class="col l3 m6">
-                  <select id="category"  fname="category" class="select-list" name="city">
-                    <option value="">Choose a category</option>
-                    <?php if (!empty($category)) {
-                    foreach ($category as $cit => $cits) { ?>
-                    <option value="<?php echo $cits->id ?>" <?php if($this->input->get('category') == $cits->id){ echo 'selected'; } ?> ><?php echo $cits->category ?></option>
-                    <?php  } } ?>
+                  <select id="branch"  fname="branch" class="select-list" name="branch">
+                    <option value="">Choose a Branch Head</option>
+                    <?php if (!empty($employee)) {
+                    foreach ($employee as $emp2 => $emps2) {
+                    if ($emps2->admin_type == '8' ) { ?>
+                    <option value="<?php echo $emps2->id ?>" <?php if($this->input->get('branch') == $emps2->id){ echo 'selected'; } ?> ><?php echo $emps2->name ?></option>
+                    <?php  } } } ?>
+                  </select>
+                </div>
+                <div class="col l3 m6">
+                  <select id="asm"  fname="asm" class="select-list" name="asm">
+                    <option value="">Area Sales Manager</option>
+                    <?php if (!empty($employee)) {
+                    foreach ($employee as $emp3 => $emps3) {
+                    if ($emps3->admin_type == '4' || $emps3->admin_type == '3' || $emps3->admin_type == '5' ) { ?>
+                    <option value="<?php echo $emps3->id ?>" <?php if($this->input->get('asm') == $emps3->id){ echo 'selected'; } ?> ><?php echo $emps3->name ?></option>
+                    <?php } } } ?>
+                  </select>
+                </div>
+                <div class="col l3 m6">
+                  <select id="tele"  fname="tele" class="select-list" name="tele">
+                    <option value="">Choose a Telecaller</option>
+                    <?php if (!empty($employee)) {
+                    foreach ($employee as $emp4 => $emps4) {
+                    if ($emps4->admin_type == '6' ) { ?>
+                    <option value="<?php echo $emps4->id ?>" <?php if($this->input->get('tele') == $emps4->id){ echo 'selected'; } ?> ><?php echo $emps4->name ?></option>
+                    <?php } } } ?>
                   </select>
                 </div>
               </div>
@@ -108,6 +130,9 @@
                             <th id="c" class="h5-para-p2" width="120px">Tenure</th>
                             <th id="c" class="h5-para-p2" width="120px">Employee Name</th>
                             <th id="c" class="h5-para-p2" width="120px">Manager</th>
+                            <th id="c" class="h5-para-p2" width="120px">Branch Head</th>
+                            <th id="c" class="h5-para-p2" width="120px">National Head</th>
+                            <th id="c" class="h5-para-p2" width="120px">Tele Caller</th>
                             <th id="c" class="h5-para-p2" width="120px">Status</th>
                             <!-- <th id="c" class="h5-para-p2" width="120px">Action</th> -->
                           </tr>
@@ -131,12 +156,46 @@
                             <td><?php echo (!empty($value->discount))?$value->discount.'%':'---'  ?></td>
                             <td><?php echo (!empty($value->gst_amount))?$value->gst_amount:'---'  ?></td>
                             <td><?php echo (!empty($value->t_amnt))?$value->t_amnt:'---'  ?></td>
-                            <td><?php echo (!empty($value->tenure))?$value->tenure:'---'  ?></td>
+                            <td><?php echo (!empty($value->tenure))?$value->tenure.' + 1 Months':'---'  ?></td>
                             <td><?php echo (!empty($value->empname))?$value->empname:'---'  ?></td>
-                            <td><?php echo $this->ci->m_report->manager($value->employee);  ?></td>
-                            <td><?php  if($value->status == '1' && $value->live == '1'){ echo 'Live'; } else if($value->status == '1' && $value->live == '0'){ echo 'Approved'; }else if($value->status == '2'){ echo 'Rejected'; } else if($value->status == '0'){ echo 'Pending'; } ?></td>
-                            <!-- <td></td>
-                            <td></td> -->
+                            <td><?php if (!empty($employee)) {
+                              foreach ($employee as $key1 => $value1) {
+                                if (!empty($value->manager) && $value->manager == $value1->id) {
+                                  echo $value1->name;
+                                }
+                              }
+                            } ?></td>
+                            <td><?php if (!empty($employee)) {
+                              foreach ($employee as $key1 => $value1) {
+                                if (!empty($value->bran_mang) && $value->bran_mang == $value1->id) {
+                                  echo $value1->name;
+                                }
+                              }
+                            } ?></td>
+                            <td><?php if (!empty($employee)) {
+                              foreach ($employee as $key1 => $value1) {
+                                if (!empty($value->nation_head) && $value->nation_head == $value1->id) {
+                                  echo $value1->name;
+                                }
+                              }
+                            } ?></td>
+                            <td><?php if (!empty($employee)) {
+                              foreach ($employee as $key1 => $value1) {
+                                if (!empty($value->telecaller) && $value->telecaller == $value1->id) {
+                                  echo $value1->name;
+                                }
+                              }
+                            } ?></td>
+
+                            <td class="status"> 
+                              <?php
+                              if($value->status == '1' && $value->live == '1'){ echo '<span class="white-text green lighten-1">Live</span>'; }else if($value->status == '1' && $value->live == '0'){ echo '<span class="white-text green">Approved</span>'; }else if($value->status == '2'){ echo '<span class="white-text red">Rejected</span>'; }else if($value->status == '0'){ echo '<span class="white-text blue lighten-1">Pending</span>';
+
+                              } ?>
+                            </td>
+
+
+                           
                           </tr>
                           <?php } } ?>
                         </tbody>

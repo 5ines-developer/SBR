@@ -163,7 +163,7 @@
                                               ?>
 
                                                 <div class="input-field col s12 l6">
-                                                  <input type="text" id="w_amount" name="w_amount" class="validate" required value="<?php echo (!empty($invoice[0]->am_words))?$invoice[0]->am_words:''; ?>">
+                                                  <input type="text" id="w_amount" name="w_amount" class="validate" required value="<?php echo $words; ?>">
                                                   <label for="w_amount">Total Amount in words</label>
                                                 </div>
 

@@ -87,7 +87,7 @@
       <table>
         <thead>
           <tr >
-              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo $_SERVER["DOCUMENT_ROOT"] ?>/assets/img/logo.png" alt=""></th>
+              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo base_url()?>assets/img/logo.png" alt=""></th>
           </tr>
         </thead>        
       </table>

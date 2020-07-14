@@ -36,7 +36,7 @@ class M_vnupgrade extends CI_Model {
     **/
 	public function detail($id='')
 	{
-		$this->db->select('v.id as vId,ct.id as citId, ct.city as city,cat.id as catId, cat.category as category,v.name,v.email,v.phone,v.address')
+		$this->db->select('v.id as vId,ct.id as citId, ct.city as city,cat.id as catId, cat.category as category,v.name,v.email,v.phone,v.address,v.c_person')
 		->where('v.id', $id)
 		->from('vendor v')
 		->join('city ct', 'ct.id = v.city', 'left')
@@ -89,8 +89,11 @@ class M_vnupgrade extends CI_Model {
 	// get new proposal
 	public function newProposal($added = null)
 	{
-		return $this->db->where('rp.added_by', $added)
-		->where('rp.seen !=',1)
+		if ($this->session->userdata('sha_type') == '2' ) {
+			$this->db->where('rp.added_by', $added);
+		}
+
+		return $this->db->where('rp.seen !=',1)
 		->where('rp.live !=',1)
 		->where('rp.status !=', 1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
@@ -107,8 +110,10 @@ class M_vnupgrade extends CI_Model {
 
 	public function approvedProposal($added = null)
 	{
-		return $this->db->where('rp.added_by', $added)
-		->where('rp.status', 1)
+		if ($this->session->userdata('sha_type') == '2' ) {
+			$this->db->where('rp.added_by', $added);
+		}
+		return $this->db->where('rp.status', 1)
 		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
@@ -123,8 +128,12 @@ class M_vnupgrade extends CI_Model {
 
 	public function rejectedProposal($added = null)
 	{
-		return $this->db->where('rp.added_by', $added)
-		->where('rp.status', '2')
+		if ($this->session->userdata('sha_type') == '2' ) {
+			$this->db->where('rp.added_by', $added);
+		}
+		 
+		return $this->db->where('rp.status', '2')
+		->where('rp.approved !=',1)
 		->where('rp.live !=',1)
 		->select('rp.id,vn.name,cty.city,cat.category,p.title,rp.started_from')
 		->from('renew_package rp')
@@ -140,7 +149,7 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.pdc_mode,rp.pdc_instrmnt,rp.pdc_pay_date,rp.pdc_pay_date,rp.pdc_amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId')
+		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.pdc_mode,rp.pdc_instrmnt,rp.pdc_pay_date,rp.pdc_pay_date,rp.pdc_amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.reject_reson,rp.approved,rp.live,rp.ban_pack')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -212,7 +221,10 @@ class M_vnupgrade extends CI_Model {
 
 	public function getEmployee($value='')
 	{
-		return $this->db->where('admin_type !=', 1)->get('admin')->result();
+		return $this->db->select('a.id,a.name,a.admin_type,et.types,a.manager')
+		->where('a.admin_type !=', 1)
+		->from('admin a')->join('emp_types et', 'et.id = a.admin_type', 'left')
+		->get()->result();
 	}
 
 	public function employ($emp='',$manager='')
@@ -228,6 +240,29 @@ class M_vnupgrade extends CI_Model {
 	{
 		return $this->db->where('vendor_id', $id)->where('status', 0)->where('approved',0)->get('renew_package')->row();
 	}
+
+	public function getBanner($id='')
+    {
+    	return $this->db->order_by('id', 'asc')->get('banner_package')->result();
+    }
+
+    public function editProposal($id='')
+    {
+    	return $this->db->where('id', $id)->get('renew_package')->row();
+    }
+
+    public function updateUpgrade($insert='',$id='')
+    {
+    	$this->db->where('id', $id);
+    	$query = $this->db->get('renew_package');
+    	if ($query->num_rows() > 0) {
+    		$this->db->where('id', $id);
+    		return $this->db->update('renew_package', $insert);
+    	}else{
+    		return $this->db->insert('renew_package', $insert);
+
+    	}
+    }
 }
 
 /* End of file M_vnupgrade.php */

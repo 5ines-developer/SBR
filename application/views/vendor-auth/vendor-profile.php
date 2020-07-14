@@ -203,6 +203,12 @@ $this->load->model('m_vendorDetail');
                                         <?php //youtube
                                         if (!empty($value->video)) {
                                             foreach ($value->video as $vide => $vids) {
+                                            $vidlink = explode("?v=",$vids->link);
+                                            if (!empty($vidlink[1])) {
+                                                $vidlinks = $vidlink[1];
+                                            }else{
+                                                $vidlinks = $vids->link;
+                                            }
                                         if ($vids->type == '1') {?>
 
                                             <div class="col l4 m3 s12">
