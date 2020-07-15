@@ -446,7 +446,7 @@ class Home extends CI_Controller {
 
             $name       =   $this->input->post('name');
             $email      =   $this->input->post('email');
-            $phone      =   $this->input->post('phone');
+            $phone      =   $this->input->post('number');
             $uniq       =   $this->input->post('uniq');
             $wedPlan    =   $this->session->userdata('wplan');
             $wedBudget  =   $this->session->userdata('wbud');

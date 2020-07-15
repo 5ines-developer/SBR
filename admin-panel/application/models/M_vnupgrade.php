@@ -238,7 +238,12 @@ class M_vnupgrade extends CI_Model {
 
 	public function checkUpgrade($id='')
 	{
-		return $this->db->where('vendor_id', $id)->where('status', 0)->where('approved',0)->get('renew_package')->row();
+		$query = $this->db->where('vendor_id', $id)->where('status', 0)->where('approved',0)->get('renew_package')->row();
+		if (!empty($query)) {
+			return $query;
+		}else{
+			return false;
+		}
 	}
 
 	public function getBanner($id='')

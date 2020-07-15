@@ -81,6 +81,7 @@
       <div class="divider"></div>
 
       <li class="<?php echo $this->uri->segment(1) == 'seo'?'active':'' ?>"><a href="<?php echo base_url('seo/manage') ?>"><i class="fas fa-poll-h li-icon"></i>Seo Data</a></li>
+      <li class="<?php echo $this->uri->segment(1) == 'seo-enquiry'?'active':'' ?>"><a href="<?php echo base_url('seo-enquiry') ?>"><i class="fas fa-poll-h li-icon"></i>Seo Enquiry</a></li>
 
 
         

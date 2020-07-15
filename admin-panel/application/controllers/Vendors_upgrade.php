@@ -53,11 +53,11 @@
 
 		public function insertUpgrade($value='')
 		{
-			$output = $this->m_vnupgrade->checkUpgrade($this->input->post('vid'));
-			if (!empty($output)) {
-				$this->session->set_flashdata('error', 'You cannot upgrade this vendor, <br> package upgrade is already in process for this vendor.');
-				redirect('vendors/manage/'.$this->input->post('vid'),'refresh');
-			}else{
+			// $output = $this->m_vnupgrade->checkUpgrade($this->input->post('vid'));
+			// if (!empty($output)) {
+			// 	$this->session->set_flashdata('error', 'You cannot upgrade this vendor, <br> package upgrade is already in process for this vendor.');
+			// 	redirect('vendors/manage/'.$this->input->post('vid'),'refresh');
+			// }else{
 				$insert = array(
 	            'vendor_id'       	=> $this->input->post('vid'),
 	            'v_city'            => $this->input->post('vcity'),
@@ -104,13 +104,13 @@
 				if (!empty($data)) {
 					$insert['insert_id'] = $data;
 					$this->convertPdf($insert);
-					$this->session->set_flashdata('error','Something went wrong please try again later!');
+					$this->session->set_flashdata('success','vendor proposal submitted successfully!');
 					redirect('vendors/view-proposal/'.$data,'refresh');
 				}else{
 					$this->session->set_flashdata('error','Something went wrong please try again later!');
 					redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
 				}
-			}
+			// }
 		}
 
 		public function convertPdf($insert='')

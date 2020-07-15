@@ -68,6 +68,16 @@ class M_seo extends CI_Model {
 		}
 	}
 
+	/**
+    *	SEO - fetch seo enquiry
+    *	@ulr : seo-enquiry
+    *	@param: page id
+    **/ 
+    public function getSeoEnquiry($value='')
+    {
+    	return $this->db->get('enquiry')->result();
+    }
+
 }
 
 /* End of file M_seo.php */

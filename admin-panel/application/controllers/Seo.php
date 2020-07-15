@@ -112,7 +112,13 @@ class Seo extends CI_Controller {
             $data['result'] = $this->m_seo->getDseo();            
             $this->load->view('seo/default', $data, FALSE);      
         }
-        
+    }
+
+    public function enquiry($value='')
+    {
+        $data['title']   = 'Enquiry - Shaadibaraati';
+        $data['result']  = $this->m_seo->getSeoEnquiry();
+        $this->load->view('seo/enquiry', $data);
     }
 
 }

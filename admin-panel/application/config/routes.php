@@ -238,6 +238,9 @@ $route['live-report']			       	 	=	'report/liveReport';
 
 // seo data
 $route['seo/manage']			            =	'seo/index';
+$route['seo-enquiry']			            =	'seo/enquiry';
+
+
 
 //content
 $route['content/manage']			        =	'c_content/index';

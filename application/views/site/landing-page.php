@@ -78,7 +78,7 @@
                             </div>
                             <div class="third-slide-container">
                                 <div class="calender-container cc-date">
-                                    <input type="text" id="datep" name="datep" placeholder="Select Your Event Date">
+                                    <input type="text" id="datep" class="datepicker" name="datep" placeholder="Select Your Event Date">
                                     <span class="next-three"><div class="budget-label no-border third-slide-next-but pad-left but-slide-3-next input-options vndr-ct-filtrflw-2-nxt-web" data-option="" data-field="#event_dates" id="not_decide">Dates not decided yet <i class="material-icons checker-btn">chevron_right</i></div></span>
                                 </div>
                                 <div class="slide-footer">
@@ -267,8 +267,12 @@
     <?php $this->load->view('includes/message'); ?>
     </script>
     <script>
-        $(function() {
-            $("#datep").datepicker();
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems, {
+                format: 'yyyy-mm-dd',
+            });
+
         });
     </script>
     <script>
