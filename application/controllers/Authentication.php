@@ -543,10 +543,10 @@ class Authentication extends CI_Controller {
         }
     }
 
-      public function newgal($value='')
-      {
-        $this->load->view('site/test');
-      }
+    public function newgal($value='')
+    {
+      $this->load->view('site/test');
+    }
 
 
 

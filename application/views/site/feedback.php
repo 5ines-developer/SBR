@@ -44,6 +44,7 @@
                     <div class="col l12 s12">
                         <div class="banner-up ">
                             <h5 class="white-text">Subscribe Now</h5>
+                                <p class="tc white-text pad0-11">Shaadi Baraati | Wedz Magazine - Indian Wedding Magazine for Brides & Grooms</p>
                         </div>
                     </div>
                 </div>
@@ -53,7 +54,7 @@
                     <div class="row">
                         <div class="col l10 push-l1">
                             <div class="feedback-form z-depth-2">
-                                <h4>Subscribe your digital copy for free today.</h4>
+                                <h4>Fill the below details to get your free copy now.</h4>
                                 <div class="form-feed-list">
                                     <form ref="formss" @submit.prevent="checkForms" action="<?php echo base_url('feedback-post') ?>" method="post">
                                         <div class="row">
@@ -105,7 +106,7 @@
                                                 </div>
                                             </div>
 
-                                                <div class="col l12 m6 s12 rcaptcha-col">
+                                                <div  id="digital-copy" class="col l12 m6 s12 rcaptcha-col">
                                                 <div class="d-input">
                                                     <div class="input-field">
                                                         <div class="g-recaptcha"
@@ -125,6 +126,23 @@
                     </div>
                 </div>
             </section>
+            <?php if (!empty($this->session->userdata('magUse'))) { ?>
+                <section class="result-body " >
+                <div class="container">
+                    <div class="row m0">
+                            <div class="col l10 push-l1">
+                            <div class="feedback-form z-depth-2">
+                                <h4>Download your Digital copy Now <a target="_blank" href="https://www.shaadibaraati.com/magazine/wedz-magazine.pdf">Click Here</a></h4>
+                            </div>  
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+             <?php } ?>
+
+            
 
             <?php    
         if (!empty($m_description)) { ?>

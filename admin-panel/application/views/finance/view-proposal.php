@@ -321,27 +321,30 @@
                     <div class="col 112 m12">
                       <div class="card scrollspy" id="personal-detail">
                         <div class="card-content">
+                          <?php if (!empty($pdcresult)) { foreach ($pdcresult as $key => $value) { ?>
                           <p class="bold mb10 h6">PDC Details</p>
                           <table>
                             <tbody>
+                              
                               <tr>
                                 <th class="w205">Payment Mode</th>
-                                <td><?php echo (!empty($result['pdc_mode']))?$result['pdc_mode']:'---'  ?></td>
+                                <td><?php echo (!empty($value->mode))?$value->mode:''; ?></td>
                               </tr>
                               <tr>
                                 <th class="w205">Instrument No</th>
-                                <td><?php echo (!empty($result['pdc_instrmnt']))?$result['pdc_instrmnt']:'---'  ?></td>
+                                <td><?php echo (!empty($value->instrument))?$value->instrument:''; ?></td>
                               </tr>
                               <tr>
                                 <th class="w205">Payment Date</th>
-                                <td><?php echo (!empty($result['pdc_pay_date']))?date('d M, Y',strtotime($result['pdc_pay_date'])):'---'  ?></td>
+                                <td><?php echo (!empty($value->date))?$value->date:''; ?></td>
                               </tr>
                               <tr>
                                 <th class="w205">Amount</th>
-                                <td><?php echo (!empty($result['pdc_amount']))?$result['pdc_amount']:'---'  ?></td>
+                                <td><?php echo (!empty($value->amount))?$value->amount:''; ?></td>
                               </tr>
                             </tbody>
                           </table>
+                              <?php }} ?>
                           <p class="bold mb10 h6">Employee Details</p>
                           <table>
                             <tbody>

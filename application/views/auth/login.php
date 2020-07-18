@@ -59,7 +59,7 @@
                                             </div>
                                             <button class="sub-reg z-depth-1 tl" type="submit" value="Submit">Submit</button>
 
-                                            <!-- <div class="row" style="margin-top: 17px;">
+                                            <div class="row" style="margin-top: 17px;">
                                                 <div class="col s6">
                                                     
                                                     <a href="<?php echo $authURL; ?>"> <img style="border-radius: 10px;" src="<?php echo base_url() ?>assets/img/fb.png" class="img-responsive"
@@ -70,7 +70,7 @@
                                                     <a href="<?php echo $loginURL; ?>">  <img style="border-radius: 10px;" src="<?php echo base_url() ?>assets/img/google.png" class="img-responsive"
                                                     alt=""> </a>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
                                             
                                         </div>

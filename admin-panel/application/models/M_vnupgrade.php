@@ -149,7 +149,7 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.pdc_mode,rp.pdc_instrmnt,rp.pdc_pay_date,rp.pdc_pay_date,rp.pdc_amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.reject_reson,rp.approved,rp.live,rp.ban_pack')
+		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.reject_reson,rp.approved,rp.live,rp.ban_pack,rp.add_mon,rp.balance')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -216,6 +216,7 @@ class M_vnupgrade extends CI_Model {
 
 	public function getInvoice($id='')
 	{
+		$this->db->order_by('id', 'desc');
 		return $this->db->where('vendor_id', $id)->get('renew_package')->row();
 	}
 
@@ -265,8 +266,17 @@ class M_vnupgrade extends CI_Model {
     		return $this->db->update('renew_package', $insert);
     	}else{
     		return $this->db->insert('renew_package', $insert);
-
     	}
+    }
+
+    public function insertPdc($insert='')
+    {
+    	return $this->db->insert('rp_pdc', $insert);
+    }
+
+    public function getPdc($id='')
+    {
+    	return $this->db->where('rp_id', $id)->get('rp_pdc')->result();
     }
 }
 

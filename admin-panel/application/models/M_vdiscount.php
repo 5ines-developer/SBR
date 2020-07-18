@@ -86,6 +86,23 @@ class M_vdiscount extends CI_Model {
 		->join('renew_package rp', 'rp.id = pi.renewal_id', 'left')
 		->get()->row_array();
 	}
+
+	public function getTenure($id='')
+	{
+		$this->db->where('id', $id)->select('started_from,add_mon,tenure');
+		return $this->db->get('renew_package')->row();
+	}
+
+	public function checkInvoice($id='')
+	{
+		$this->db->where('renewal_id', $id);
+		$query = $this->db->get('package_invoice');
+		if ($query->num_rows() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 
 }

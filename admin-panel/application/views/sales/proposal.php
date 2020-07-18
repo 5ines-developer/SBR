@@ -18,13 +18,13 @@
     .no-border-t{ border-top :  none !important; }
     .no-border-tb{ border-top :  none !important; border-bottom :  none !important; } */
     .bordered tr td {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     /* padding-top: 4px;
     padding-bottom: 4px; */
-}
+    }
     td, th {
-    padding: 8px 5px; }
+    padding: 5px 5px; }
     .top-head span{
     font-size: 12px;
     }
@@ -67,7 +67,7 @@
                     
                     <tr class="top-head">
                       <td colspan="1"><img class="p-image" src="<?php echo base_url() ?>/assets/img/logo.png" alt=""></td>
-                      <td><span class="ord-head">Order And Agreement Form</span></td>
+                      <td style="text-align: center;"><span class="ord-head">Order And Agreement Form</span></td>
                       <td  class="right-align">
                         <span>Toll Free :  1800 4199 456 </span><br>
                         <span>Baraati Media & Entertainment Pvt LTD.</span><br>
@@ -120,7 +120,14 @@
                     </tr>
                     <tr class="bg1">
                       <td colspan="2">Listing City : <?php echo (!empty($result['city']))?$result['city']:''; ?></td>
-                      <td >Tenure : <?php echo (!empty($result['tenure']))?$result['tenure'].'+ 1 months':''; ?></td>
+                      <td >Tenure : <?php
+                        if (!empty($result['tenure'])) {
+                        echo $result['tenure'];
+                        if (!empty($result['add_mon'])) {
+                        echo ' + '.$result['add_mon'];
+                        }
+                        echo ' Month(s)';
+                      }?></td>
                     </tr>
                     <tr>
                       <td colspan="3"></td>
@@ -185,7 +192,7 @@
                       $words  = trim( str_replace( ' ,' , ',' , trim( ucwords( $words ) ) ) , ', ' );
                       if( $commas )
                       {
-                      $words  = str_replace( ',' , ' and' , $words );
+                      $words  = str_replace( ',' , ' and' , $words ).' Rupees Only';
                       } }
                       else if( ! ( ( int ) $num ) )
                       {
@@ -209,26 +216,25 @@
                       <td colspan="2">Payment Date : <?php echo (!empty($result['pay_date']))?$result['pay_date']:''; ?></td>
                       <td >Amount : <?php echo (!empty($result['amount']))?$result['amount']:''; ?></td>
                     </tr>
+                    
+                    <?php if (!empty($pdcresult)) { 
+                      foreach ($pdcresult as $key => $value) {
+                    ?>
                     <tr>
                       <td colspan="3"></td>
                     </tr>
-
-                    <?php if (!empty($result['pdc_mode'])) { ?>
-                      <tr class="bg1">
-                        <td colspan="3" ><b>PDC Details : </b></td>
-                      </tr>
-                      <tr>
-                        <td colspan="2"> Mode : <?php echo (!empty($result['pdc_mode']))?$result['pdc_mode']:''; ?></td>
-                        <td>Instrument No : <?php echo (!empty($result['pdc_instrmnt']))?$result['pdc_instrmnt']:''; ?></td>
-                      </tr>
-                      <tr class="bg1">
-                        <td colspan="2">Payment Date : <?php echo (!empty($result['pdc_pay_date']))?$result['pdc_pay_date']:''; ?></td>
-                        <td >Amount : <?php echo (!empty($result['pdc_amount']))?$result['pay_date']:''; ?></td>
-                      </tr>
-                      <tr>
-                        <td colspan="3"></td>
-                      </tr>
-                    <?php } ?>
+                    <tr class="bg1">
+                      <td colspan="3" ><b>PDC Details : </b></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"> Mode : <?php echo (!empty($value->mode))?$value->mode:''; ?></td>
+                      <td>Instrument No : <?php echo (!empty($value->instrument))?$value->instrument:''; ?></td>
+                    </tr>
+                    <tr class="bg1">
+                      <td colspan="2">Payment Date : <?php echo (!empty($value->date))?$value->date:''; ?></td>
+                      <td >Amount : <?php echo (!empty($value->amount))?$value->amount:''; ?></td>
+                    </tr>
+                    <?php }} ?>
                     
                   </table>
                   

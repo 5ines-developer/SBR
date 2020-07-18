@@ -175,7 +175,17 @@ class Home extends CI_Controller {
     }
     public function feedback()
     {
-        // $data['title']  = 'ShaadiBaraati | Feedback';
+
+       $magUse = $this->session->userdata('magUse');
+       $magtime = $this->session->userdata('magtime');
+       $now = date('Y-m-d H:i:s');
+
+       $hourdiff = round((strtotime($magtime) - strtotime($now))/3600, 1);
+
+       if (!empty($magUse) && $hourdiff >=1  ) {
+           $this->session->unset_userdata('magUse');
+           $this->session->unset_userdata('magtime');
+       }
         $data['title']  = 'ShaadiBaraati | Wedz Magazine';
         $this->load->view('site/feedback',$data);
     }
@@ -344,8 +354,11 @@ class Home extends CI_Controller {
                 'feedback'  => $this->input->post('feedback', true), 
             );
             if($this->m_home->feedback_post($data)){
-                $this->session->set_flashdata('success', 'Your requested has been submitted. <br> Our team will get in touch with you soon.');
-                redirect('wedzmagazine');
+
+                $fuserd = array('magUse' => 'Approved','magtime' => date('Y-m-d H:i:s'));
+                $this->session->set_userdata($fuserd);
+                $this->session->set_flashdata('success', 'Click the below link  to download your free copy.');
+                redirect('wedzmagazine#digital-copy');
             }else{
                 $this->session->set_flashdata('error', 'Server Error, please try again later.');
                 redirect('wedzmagazine');

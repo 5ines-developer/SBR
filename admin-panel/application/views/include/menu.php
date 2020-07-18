@@ -32,7 +32,9 @@
           <?php if($this->ci->preload->disccount() > 0){
             echo '<span class="new badge">'. $this->ci->preload->disccount() .'</span> ';
           } ?></a></li>
-          <li class="<?php echo $this->uri->segment(1) == 'vendors'?'active':'' ?>"><a href="<?php echo base_url('vendors/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
+          <li class="<?php if($this->uri->segment(1) == 'new-proposal'){ echo 'active'; } ?>"><a href="<?php echo base_url('vendors/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
+
+
         <div class="divider"></div>
         <li class="<?php echo $this->uri->segment(1) == 'package'?'active':'' ?>"><a href="<?php echo base_url('package') ?>"><i class="fas fa-ribbon li-icon"></i>Package</a></li>
         <li class="<?php echo $this->uri->segment(1) == 'banner-package'?'active':'' ?>"><a href="<?php echo base_url('banner-package') ?>"><i class="fas fa-ribbon li-icon"></i>Banner Package</a></li>

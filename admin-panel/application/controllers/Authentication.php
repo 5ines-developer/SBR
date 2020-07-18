@@ -193,6 +193,11 @@ class Authentication extends CI_Controller {
         $this->m_authentication->dbine();
     }
 
+    public function expirePackage($value='')
+    {
+        $this->m_authentication->expirePackage();
+    }
+
 }
 
 /* End of file Authentication.php */

@@ -1,3 +1,4 @@
+<?php $this->ci =& get_instance(); $this->load->model('m_vdiscount'); ?> 
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,77 +41,73 @@
                   <p class="h5-para black-text  m0">Vendor Upgrade Details
                     <a target="_blank" href="<?php echo base_url('vendors/proposal-detail/'.$result['id'])  ?>" class="waves-effect waves-light btn blue darken-1 white-text hoverable ">View </a>
                     <?php if ($result['live'] != '1') { ?>
-                      <a target="_blank" href="<?php echo base_url('vendors/edit-proposal/'.$result['id'])  ?>" class="waves-effect waves-light btn purple darken-1 white-text hoverable ">Edit <i class="fas fa-edit"></i></a>
-                    <?php  } ?> 
+                    <a target="_blank" href="<?php echo base_url('vendors/edit-proposal/'.$result['id'])  ?>" class="waves-effect waves-light btn purple darken-1 white-text hoverable ">Edit <i class="fas fa-edit"></i></a>
+                    <?php  } ?>
                   </p>
-                    
-                  </div>
-                  <div class="col l6 m6 right-align">
-                    <?php if ($this->session->userdata('sha_type') == '7') {
-                      $ul = 'finance/all-proposal';
-                    }else{
-                       $ul = 'vendors/new-proposal';
-                    }   ?>
-                    <a href="<?php echo base_url().$ul; ?>"  class="waves-effect waves-light btn white-text  blue darken-4 hoverable"><i class="fas fa-backward"></i>&nbsp; Back</a>
-                    
-                    <?php
-                    if ($this->session->userdata('sha_type') == '1' && $result['status'] == '0') { ?>
-
-                    <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Approve</a>
-                    <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
-
-                    <?php }
-                    if ($this->session->userdata('sha_type') == '1' && $result['status'] == '1' && $result['live'] != '1') { ?>
-                      <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendor_discount/make_live/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Make Live</a>
-
-                    <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
-                    <?php }else if ($this->session->userdata('sha_type') == '1' && $result['status'] == '2'){ ?>
-                    <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Approve</a>
-                    <?php } ?>
-                  </div>
-
-
-                  <!-- Reject with reason -->
-                  <div id="modal1" class="modal">
-                    <div class="modal-content">
-                      <h6>Reject with reason</h6>
-                      <form action="<?php echo base_url('vendors-discount/reject/'.$result['id'].'') ?>" method="post" style="overflow-y: auto;overflow-x: hidden;" id="city-form" enctype="multipart/form-data">
-                        
-                        <div class="row m0">
-                          <div class="input-field col s12 l6">
-                            <input type="text" id="reason" name="reason" class="validate" required>
-                            <label for="reason">Reason <span class="red-text">*</span></label>
-                          </div>
-                        </div>
-                        <input type="hidden" name="uniq" value="<?php echo random_string('alnum',10) ?>">
-                        
-                        <div class="col s12 mtb20">
-                          <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
-                          <i class="fas fa-paper-plane right"></i>
-                          </button>
-                          <br>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  <!-- Reject with reason -->
                   
-                  </div><!-- end row1 -->
-                  <div class="row">
-                    <div class="col 112 m12">
+                </div>
+                <div class="col l6 m6 right-align">
+                  <?php if ($this->session->userdata('sha_type') == '7') {
+                  $ul = 'finance/all-proposal';
+                  }else{
+                  $ul = 'vendors/new-proposal';
+                  }   ?>
+                  <a href="<?php echo base_url().$ul; ?>"  class="waves-effect waves-light btn white-text  blue darken-4 hoverable"><i class="fas fa-backward"></i>&nbsp; Back</a>
+                  
+                  <?php
+                  if ($this->session->userdata('sha_type') == '1' && $result['status'] == '0') { ?>
+                  <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Approve</a>
+                  <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
+                  <?php }
+                  if ($this->session->userdata('sha_type') == '1' && $result['status'] == '1' && $result['live'] != '1') { ?>
+                  <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendor_discount/make_live/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Make Live</a>
+                  <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
+                  <?php }else if ($this->session->userdata('sha_type') == '1' && $result['status'] == '2'){ ?>
+                  <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Approve</a>
+                  <?php }elseif($result['live'] == '1'){ ?>
+                      <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
+                    <?php } ?>
+                </div>
+                <!-- Reject with reason -->
+                <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h6>Reject with reason</h6>
+                    <form action="<?php echo base_url('vendors-discount/reject/'.$result['id'].'') ?>" method="post" style="overflow-y: auto;overflow-x: hidden;" id="city-form" enctype="multipart/form-data">
                       
-                      <div class="card scrollspy" id="personal-detail">
-                        <div class="card-content">
-                          <p class="bold mb10 h6">Vendor Details  &nbsp;&nbsp;&nbsp; <?php 
+                      <div class="row m0">
+                        <div class="input-field col s12 l6">
+                          <input type="text" id="reason" name="reason" class="validate" required>
+                          <label for="reason">Reason <span class="red-text">*</span></label>
+                        </div>
+                      </div>
+                      <input type="hidden" name="uniq" value="<?php echo random_string('alnum',10) ?>">
+                      
+                      <div class="col s12 mtb20">
+                        <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit
+                        <i class="fas fa-paper-plane right"></i>
+                        </button>
+                        <br>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- Reject with reason -->
+                
+                </div><!-- end row1 -->
+                <div class="row">
+                  <div class="col 112 m12">
+                    
+                    <div class="card scrollspy" id="personal-detail">
+                      <div class="card-content">
+                        <p class="bold mb10 h6">Vendor Details  &nbsp;&nbsp;&nbsp; <?php
                           if ($result['status'] == '1' && $result['live'] == '1'){ ?>
-                            <a class="waves-effect waves-light btn white-text  green">Live</a>
-                          <?php 
+                          <a class="waves-effect waves-light btn white-text  green">Live</a>
+                          <?php
                           }else if ($result['status'] == '1') { ?>
-                            <a class="waves-effect waves-light btn white-text  green">Approved</a>
-                            <?php 
+                          <a class="waves-effect waves-light btn white-text  green">Approved</a>
+                          <?php
                           }else if ($result['status'] == '2'){ ?>
-
-                            <a class="waves-effect waves-light btn white-text  red">rejected  </a>&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp; Because <?php echo (!empty($result['reject_reson']))?$result['reject_reson']:'---'; }  ?></p>
+                          <a class="waves-effect waves-light btn white-text  red">rejected  </a>&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp; Because <?php echo (!empty($result['reject_reson']))?$result['reject_reson']:'---'; }  ?></p>
                           <table>
                             <tbody>
                               <tr>
@@ -152,10 +149,18 @@
                       
                       <div class="card scrollspy" id="personal-detail">
                         <div class="card-content">
-                          <p class="bold mb10 h6">Billing Details 
-                          <?php if ($this->session->userdata('sha_type') =='1' && $result['status'] == '1') { ?>
+                          <p class="bold mb10 h6">Billing Details
+                            <?php 
+
+                            $invce = $this->ci->m_vdiscount->checkInvoice($result["id"]);
+
+
+
+                            if ($this->session->userdata('sha_type') =='1' && $result['live'] == '1' && !empty($invce)) { ?>
                             <a style="color: green" href="<?php echo base_url('vendor_discount/invoiceDownload/'.$result["id"]) ?>"> - Download Invoice <i class="fas fa-download"></i></a>
-                          <?php } ?>
+                            <?php } elseif($result['live'] == '1' && empty($invce)){?>
+                              <a target="_blank" href="<?php echo base_url('vendor_discount/invoice/'.$result['id'])  ?>" class="waves-effect waves-light btn brown darken-1 white-text hoverable ">Generate Invoice </a>
+                              <?php }?>
                           </p>
                           <table>
                             <tbody>
@@ -206,6 +211,23 @@
                               <tr>
                                 <th class="w205">Invoice Address</th>
                                 <td><?php echo (!empty($result['invoice_address']))?$result['invoice_address']:'---'  ?></td>
+                              </tr>
+
+                              <tr>
+                                <th class="w205">Balance From paid to paid vendor</th>
+                                <td><?php echo (!empty($result['balance']))?$result['balance']:'---'  ?></td>
+                              </tr>
+
+                              <tr>
+                                <th class="w205">Tenure</th>
+                                <td><?php
+                                  if (!empty($result['tenure'])) {
+                                  echo $result['tenure'];
+                                  if (!empty($result['add_mon'])) {
+                                  echo ' + '.$result['add_mon'];
+                                  }
+                                  echo ' Month(s)';
+                                }?></td>
                               </tr>
                             </tbody>
                           </table>
@@ -298,7 +320,7 @@
                                   $words  = trim( str_replace( ' ,' , ',' , trim( ucwords( $words ) ) ) , ', ' );
                                   if( $commas )
                                   {
-                                  $words  = str_replace( ',' , ' and' , $words );
+                                  $words  = str_replace( ',' , ' and' , $words ).' Rupees Only';
                                   } }
                                   else if( ! ( ( int ) $num ) )
                                   {
@@ -333,27 +355,30 @@
                     <div class="col 112 m12">
                       <div class="card scrollspy" id="personal-detail">
                         <div class="card-content">
+                          <?php if (!empty($pdcresult)) { foreach ($pdcresult as $key => $value) { ?>
                           <p class="bold mb10 h6">PDC Details</p>
                           <table>
                             <tbody>
+                              
                               <tr>
                                 <th class="w205">Payment Mode</th>
-                                <td><?php echo (!empty($result['pdc_mode']))?$result['pdc_mode']:'---'  ?></td>
+                                <td><?php echo (!empty($value->mode))?$value->mode:''; ?></td>
                               </tr>
                               <tr>
                                 <th class="w205">Instrument No</th>
-                                <td><?php echo (!empty($result['pdc_instrmnt']))?$result['pdc_instrmnt']:'---'  ?></td>
+                                <td><?php echo (!empty($value->instrument))?$value->instrument:''; ?></td>
                               </tr>
                               <tr>
                                 <th class="w205">Payment Date</th>
-                                <td><?php echo (!empty($result['pdc_pay_date']))?date('d M, Y',strtotime($result['pdc_pay_date'])):'---'  ?></td>
+                                <td><?php echo (!empty($value->date))?$value->date:''; ?></td>
                               </tr>
                               <tr>
                                 <th class="w205">Amount</th>
-                                <td><?php echo (!empty($result['pdc_amount']))?$result['pdc_amount']:'---'  ?></td>
+                                <td><?php echo (!empty($value->amount))?$value->amount:''; ?></td>
                               </tr>
                             </tbody>
                           </table>
+                              <?php }} ?>
                           <p class="bold mb10 h6">Employee Details</p>
                           <table>
                             <tbody>

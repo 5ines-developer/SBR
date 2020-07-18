@@ -67,7 +67,7 @@ class M_enquiry extends CI_Model {
 		if(!empty($id)){
 			$this->db->where('id', $id);
 		}
-		return $this->db->order_by('status', 'desc')->get('feedback')->result();
+		return $this->db->order_by('id', 'desc')->get('feedback')->result();
 	}
 
 	// testimonila status update
@@ -88,7 +88,7 @@ class M_enquiry extends CI_Model {
 			$this->updateStatus($id);
 			$this->db->where('id', $id);
 		}
-		return $this->db->order_by('status', 'desc')->get('user_feedback')->result();
+		return $this->db->order_by('id', 'desc')->get('user_feedback')->result();
 	}
 
 	

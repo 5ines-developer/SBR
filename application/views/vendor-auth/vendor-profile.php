@@ -145,9 +145,7 @@ $this->load->model('m_vendorDetail');
                                 <div class="vendor-inputs">
                                     <div class="row">
                                         <div class="col l12 m5 s12">
-                                            <div id="toolbar-container"></div>
-                                                <div id="editor"> <?php echo (!empty($value->detail)?$value->detail:'') ?></div> 
-                                                <textarea name="about" id="description" cols="30" rows="10" style="display: none;"></textarea>
+                                                <textarea name="about" class="materialize-textarea" id="description" cols="30" rows="10"><?php echo (!empty($value->detail)?$value->detail:'') ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -443,7 +441,7 @@ $this->load->model('m_vendorDetail');
     <script>
         <?php $this->load->view('includes/message'); ?>
     </script>
-    <script>
+   <!--  <script>
         DecoupledEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
@@ -453,7 +451,7 @@ $this->load->model('m_vendorDetail');
             .catch(error => {
                 console.error(error);
             });
-    </script>
+    </script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('select');
@@ -491,10 +489,9 @@ $this->load->model('m_vendorDetail');
             });
 
         // update details
-        $("#editor").on('keyup', function(event) {
+        $("#description").on('keyup', function(event) {
             event.preventDefault();
-            var node = $(this).text();
-
+            var node = $(this).val();
             $.ajax({
                 url: "<?php echo base_url();?>vendor_detail/about",
                 type: "get",

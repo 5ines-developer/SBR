@@ -40,6 +40,7 @@ class Finance extends CI_Controller {
 		$this->load->model('m_vnupgrade');
 		$data['title']  = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+		$data['pdcresult'] = $this->m_vnupgrade->getPdc($id);
 		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
 		if($this->type == '1'){
 			$this->m_vnupgrade->seenChange($id);
@@ -70,7 +71,14 @@ class Finance extends CI_Controller {
 
 	public function makeLive($id='')
 	{
-		if ($this->m_finance->makeLive($id)) {
+		$validity= '';
+        $valid = $this->m_vdiscount->getTenure($id);
+        if (!empty($valid->tenure)) {
+            $validity = $valid->tenure + (!empty($valid->add_mon)?$valid->add_mon:'');
+        }
+        $validity = date('Y-m-d', strtotime("+".$validity." months", strtotime(date('Y-m-d'))));
+        
+		if ($this->m_finance->makeLive($id,$validity)) {
 			$this->session->set_flashdata('success', 'Proposal has been made live successfully');
 		}else{
 			$this->session->set_flashdata('error', 'Something went wrong please try again later!');

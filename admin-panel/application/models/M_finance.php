@@ -113,9 +113,9 @@ class M_finance extends CI_Model {
 		->get()->result();
 	}
 
-	public function makeLive($id='')
+	public function makeLive($id='',$validity='')
 	{
-		$this->db->where('id', $id)->update('renew_package',array('live' => '1'));
+		$this->db->where('id', $id)->update('renew_package',array('live' => '1','ends_on'=>$validity));
 		if ($this->db->affected_rows() > 0) {
 			$this->addPackage($id);
 			return true;

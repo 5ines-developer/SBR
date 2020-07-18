@@ -45,6 +45,23 @@
 				$data['category']   = $this->m_vnupgrade->get_category();
 				$data['package']    = $this->m_vnupgrade->getPackage();
 				$data['invoice']    = $this->m_vnupgrade->getInvoice($id);
+
+				$balance = 0;
+				if (!empty($data['invoice']) && $data['invoice']->live =='1') {
+					if (!empty($data['invoice']->tenure)) {
+			            $validity = (int)$data['invoice']->tenure + (int)(!empty($data['invoice']->add_mon)?$data['invoice']->add_mon:'0');
+			            $amnt = (int)$data['invoice']->t_amnt/(int)$validity;
+			            $date_diff=strtotime(date('Y-m-d'))-strtotime($data['invoice']->started_from);
+			            $months = floor(($date_diff)/2628000);
+			            if ($months > 0) {
+			            	$bal = $months * $amnt;
+			            	$balance = round((int)$data['invoice']->t_amnt - (int)$bal);
+			            }elseif ($months == '0') {
+			            	$balance = $data['invoice']->t_amnt;
+			            }
+			        }
+				}
+				$data['balance'] 	= $balance;
 				$data['employee']   = $this->m_vnupgrade->getEmployee();
 				$data['banner']   	= $this->m_vnupgrade->getBanner();
 				$this->load->view('sales/upgrade', $data, FALSE);
@@ -53,11 +70,11 @@
 
 		public function insertUpgrade($value='')
 		{
-			// $output = $this->m_vnupgrade->checkUpgrade($this->input->post('vid'));
-			// if (!empty($output)) {
-			// 	$this->session->set_flashdata('error', 'You cannot upgrade this vendor, <br> package upgrade is already in process for this vendor.');
-			// 	redirect('vendors/manage/'.$this->input->post('vid'),'refresh');
-			// }else{
+			$output = $this->m_vnupgrade->checkUpgrade($this->input->post('vid'));
+			if (!empty($output)) {
+				$this->session->set_flashdata('error', 'You cannot upgrade this vendor, <br> package upgrade is already in process for this vendor.');
+				redirect('vendors/manage/','refresh');
+			}else{
 				$insert = array(
 	            'vendor_id'       	=> $this->input->post('vid'),
 	            'v_city'            => $this->input->post('vcity'),
@@ -86,10 +103,6 @@
 	            'inst_no '      	=> $this->input->post('inst_no'),
 	            'pay_date'        	=> $this->input->post('pay_date'),
 	            'amount'        	=> $this->input->post('amount'),
-	            'pdc_mode'        	=> $this->input->post('pdc_mode'),
-				'pdc_instrmnt'      => $this->input->post('pdc_instrmnt'),
-				'pdc_pay_date'      => $this->input->post('pdc_pay_date'),
-				'pdc_amount'        => $this->input->post('pdc_amount'),
 				'employee'        	=> $this->input->post('emp'),
 				'manager'        	=> $this->input->post('mang'),
 				'bran_mang'        	=> $this->input->post('bran_mang'),
@@ -99,28 +112,46 @@
 	            'started_from'      => date('Y-m-h'),
 	            'uniq'          	=> $this->input->post('uniq'),
 	            'ban_pack'			=> $this->input->post('ban_pack'),
+	            'add_mon'			=> $this->input->post('addMon'),
+	            'balance'			=> $this->input->post('balance'),
 	        	);
+
+
+	        	$pdc_mode      = $this->input->post('pdc_mode');
+				$pdc_instrmnt  = $this->input->post('pdc_instrmnt');
+				$pdc_pay_date  = $this->input->post('pdc_pay_date');
+				$pdc_amount    = $this->input->post('pdc_amount');
+
 				$data = $this->m_vnupgrade->insertProposal($insert);
 				if (!empty($data)) {
 					$insert['insert_id'] = $data;
-					$this->convertPdf($insert);
+					if (!empty($pdc_mode)) { 
+					$pdccount = count($pdc_mode);
+	            	for ($i = 0; $i < $pdccount; $i++) {
+	            		$pdcDetails  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i],'rp_id'=>$data);
+	            		$this->m_vnupgrade->insertPdc($pdcDetails);
+		            	$pdcresult[]  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i] );
+	            	}
+	            	}
+
+					$this->convertPdf($insert,$pdcresult);
 					$this->session->set_flashdata('success','vendor proposal submitted successfully!');
 					redirect('vendors/view-proposal/'.$data,'refresh');
 				}else{
 					$this->session->set_flashdata('error','Something went wrong please try again later!');
-					redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
+					redirect('vendors/manage/','refresh');
 				}
-			// }
+			}
 		}
 
-		public function convertPdf($insert='')
+		public function convertPdf($insert='',$pdcresult='')
 		{
-
 			$data['city'] = $this->db->where('id', $insert['v_city'])->get('city')->row('city');
 			$data['category'] = $this->db->where('id', $insert['v_category'])->get('category')->row('category');
 			$data['employee'] = $this->db->select('name as empname,admin_type,id as empid')->where('id', $insert['added_by'])->get('admin')->row();
 			$data['result'] = $insert;
-			require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
+			$data['pdcresult'] = $pdcresult;
+			require_once $_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/vendor-pdf/autoload.php';
 			$mpdf = new \Mpdf\Mpdf([
 				'mode' => 'utf-8',
 			    'format' => 'A4',
@@ -149,7 +180,6 @@
         $from = $this->config->item('smtp_user');
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
-        // $this->email->to('prathwi@5ine.in');
         $this->email->cc($manager);
         $this->email->to($to,$insert['listing_mail']);
         $this->email->cc($manager,$cc);
@@ -161,8 +191,8 @@
             redirect('vendors/view-proposal/'.$insert['insert_id'],'refresh');
         } else {
             $this->session->set_flashdata('error', 'Unable to submit your request, <br /> Please try again later!');
-            redirect('vendors/upgrade/'.$insert['vendor_id'],'refresh');
-        }        
+            redirect('vendors/new-proposal','refresh');
+        }     
 	}
 	
 
@@ -192,6 +222,7 @@
 	{
 		$data['title']  = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+		$data['pdcresult'] = $this->m_vnupgrade->getPdc($id);
 		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
 		if($this->type == '1'){
 			$this->m_vnupgrade->seenChange($id);
@@ -242,6 +273,7 @@
 	{
 		$data['title']  = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
+		$data['pdcresult'] = $this->m_vnupgrade->getPdc($id);
 		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
 		if($this->type == '1'){
 			$this->m_vnupgrade->seenChange($id);
@@ -252,7 +284,9 @@
 	public function downloads($id='')
 	{
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
-		require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
+		$data['pdcresult'] = $this->m_vnupgrade->getPdc($id);
+		// require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
+		require_once $_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/vendor-pdf/autoload.php';
 			$mpdf = new \Mpdf\Mpdf([
 				'mode' => 'utf-8',
 			    'format' => 'A4',
@@ -272,6 +306,7 @@
 	public function editProposal($id='')
 	{
 		$data['result']     = $this->m_vnupgrade->editProposal($id);
+		$data['pdcresult']  = $this->m_vnupgrade->getPdc($id);
 		$data['city']       = $this->m_vnupgrade->get_city();
 		$data['category']   = $this->m_vnupgrade->get_category();
 		$data['package']    = $this->m_vnupgrade->getPackage();
@@ -285,7 +320,6 @@
 		{
 
 			$id = $this->input->post('id');
-			 
 				$insert = array(
 	            'vendor_id'       	=> $this->input->post('vid'),
 	            'v_city'            => $this->input->post('vcity'),
@@ -314,10 +348,6 @@
 	            'inst_no '      	=> $this->input->post('inst_no'),
 	            'pay_date'        	=> $this->input->post('pay_date'),
 	            'amount'        	=> $this->input->post('amount'),
-	            'pdc_mode'        	=> $this->input->post('pdc_mode'),
-				'pdc_instrmnt'      => $this->input->post('pdc_instrmnt'),
-				'pdc_pay_date'      => $this->input->post('pdc_pay_date'),
-				'pdc_amount'        => $this->input->post('pdc_amount'),
 				'employee'        	=> $this->input->post('emp'),
 				'manager'        	=> $this->input->post('mang'),
 				'bran_mang'        	=> $this->input->post('bran_mang'),
@@ -328,8 +358,22 @@
 	            'uniq'          	=> $this->input->post('uniq'),
 	            'ban_pack'			=> $this->input->post('ban_pack'),
 	        	);
+
+	        	$pdc_mode      = $this->input->post('pdc_mode');
+				$pdc_instrmnt  = $this->input->post('pdc_instrmnt');
+				$pdc_pay_date  = $this->input->post('pdc_pay_date');
+				$pdc_amount    = $this->input->post('pdc_amount');
+
 				$data = $this->m_vnupgrade->updateUpgrade($insert,$id);
 				if (!empty($data)) {
+					if (!empty($pdc_mode)) {
+						$this->db->where('rp_id', $id)->delete('rp_pdc');
+						$pdccount = count($pdc_mode);
+		            	for ($i = 0; $i < $pdccount; $i++) {
+		            		$pdcDetails  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i],'rp_id'=>$id);
+		            		$this->m_vnupgrade->insertPdc($pdcDetails);
+		            	}
+	            	}
 					$this->session->set_flashdata('success','Vendor proposal updated successfully.');
 				}else{
 					$this->session->set_flashdata('error','Something went wrong please try again later!');

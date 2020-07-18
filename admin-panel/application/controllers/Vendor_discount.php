@@ -42,31 +42,26 @@ class Vendor_discount extends CI_Controller {
 
 	public function approve($id='')
 	{
-
         $data['result'] = $this->m_vdiscount->getVendor($id);
         $data['rpid'] = $id;
 		$status = '1';
-
         $update = array('status' => $status,'approved' =>$status);
 
 		// send to model
         if($this->m_vdiscount->status_change($id,$update)){
-        	if($this->invoice($data))
-            {
-                $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
-                redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
-            }
+            $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
+            redirect('vendors-discount','refresh');
        	}else{
            $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
-           redirect('vendors-discount','refresh'); // if you are redirect to list of the data add controller name here
+           redirect('vendors-discount','refresh');
        	}
-		
 	}
 
-    public function invoice($data='')
+    public function invoice($id='')
     {
+        $data['result'] = $this->m_vdiscount->getVendor($id);
+        $data['rpid'] = $id;
         $data['invoice'] = $this->m_vdiscount->getDiscount($data['rpid']);
-        $this->session->set_flashdata('success', 'Vendor discount request approved Successfully');
         $this->load->view('vendors/invoice_send',$data);
     }
 
@@ -237,8 +232,15 @@ class Vendor_discount extends CI_Controller {
 
     public function make_live($id='')
     {
+        $validity= '';
+        $valid = $this->m_vdiscount->getTenure($id);
+        if (!empty($valid->tenure)) {
+            $validity = $valid->tenure + (!empty($valid->add_mon)?$valid->add_mon:'');
+        }
+        $validity = date('Y-m-d', strtotime("+".$validity." months", strtotime(date('Y-m-d'))));
+        
         $this->load->model('m_finance');
-        if ($this->m_finance->makeLive($id)) {
+        if ($this->m_finance->makeLive($id,$validity)) {
             $this->session->set_flashdata('success', 'Proposal has been made live successfully');
         }else{
             $this->session->set_flashdata('error', 'Something went wrong please try again later!');

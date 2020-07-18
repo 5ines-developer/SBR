@@ -60,14 +60,14 @@ class M_authentication extends CI_Model {
 		* @url : update-password
 		* @param : email and forgot-id , new password
 		*/ 
-        public function addforgtpass($email,$newpass,$forgotid)
+    public function addforgtpass($email,$newpass,$forgotid)
 		{
-            $this->db->where('email', $email);
-			$this->db->where('forgot_link', $forgotid);
-			$query = $this->db->get('admin');
-			if($query->num_rows() > 0)
-			{
-			    $this->db->where('email', $email);
+      $this->db->where('email', $email);
+      $this->db->where('forgot_link', $forgotid);
+      $query = $this->db->get('admin');
+      if($query->num_rows() > 0)
+      {
+          $this->db->where('email', $email);
                 $this->db->where('forgot_link', $forgotid);
                 $this->db->update('admin',  array(' password ' =>$newpass,'forgot_link'=>random_string('alnum',16)));
                 if ($this->db->affected_rows() > 0) 
@@ -76,14 +76,13 @@ class M_authentication extends CI_Model {
                 }else{
                 	return false;
                 }
-			}else
-			{
+      }else
+      {
              return false;  
-			}
-			
-        }
+      }
+    }
 
-          //get enquiries
+  //get enquiries
   public function getEnquiry($value='')
   {
     return $this->db->order_by('id', 'desc')->get('contact')->result();
@@ -124,6 +123,24 @@ class M_authentication extends CI_Model {
     }else{
         echo 'error';
     }
+}
+
+public function expirePackage($value='')
+{
+  $this->db->where('ends_on <=', date('Y-m-d'));
+  $this->db->where('live', 1);
+  $query = $this->db->get('renew_package');
+  if ($query->num_rows() > 0) {
+    $this->db->where('ends_on <=', date('Y-m-d'));
+    $this->db->where('live', 1);
+    $this->db->update('renew_package', array('live' =>2,'approved'=>3));
+    foreach ($query->result() as $key => $value) {
+      $this->db->where('id', $value->vendor_id);
+      return $this->db->update('vendor', array('package' =>0,'upgrad'=>'null'));
+    }
+  }else{
+    return false;
+  }
 }
 
   
