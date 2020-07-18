@@ -9,6 +9,20 @@ class Weding extends CI_Controller {
         parent::__construct();
         if ($this->session->userdata('sha_id') == '') {$this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_weding');
+
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();
+        $acces = array();
+        $acces = explode (",", $accs->menu);
+            
+        if (in_array("8", $acces))
+        {
+            $this->access = true;
+        }else{
+            $this->access = null;
+        }
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+
     }
 
     //manage weding

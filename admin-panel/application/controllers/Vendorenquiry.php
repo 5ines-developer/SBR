@@ -19,7 +19,7 @@ class Vendorenquiry extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("14", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("18", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
             redirect(base_url(),'refresh'); 
@@ -35,7 +35,7 @@ class Vendorenquiry extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("11", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("17", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
             redirect(base_url(),'refresh'); 
@@ -50,7 +50,7 @@ class Vendorenquiry extends CI_Controller {
     {
         $acces = array();
         $acces = $this->acces;
-        if (in_array("11", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if (in_array("17", $acces)) {$this->access = true; }else{$this->access = null; } 
         if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
         {  
             redirect(base_url(),'refresh'); 

@@ -11,6 +11,21 @@ class H_banner extends CI_Controller {
         $this->load->model('m_category');
         $this->load->model('m_cities');
         $this->load->model('m_homban');
+
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();
+        $acces = array();
+        $acces = explode (",", $accs->menu);
+        
+        if (in_array("2", $acces))
+        {
+            $this->access = true;
+
+        }else{
+            $this->access = null;
+        }
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+
     }
     
     /**

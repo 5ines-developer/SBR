@@ -15,7 +15,7 @@ class Package extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("9", $acces))
+        if (in_array("15", $acces))
         {
             $this->access = true;
 

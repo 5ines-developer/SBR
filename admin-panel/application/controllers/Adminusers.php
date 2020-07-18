@@ -18,7 +18,7 @@ class Adminusers extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("5", $acces))
+        if (in_array("10", $acces))
         {
             $this->access = true;
 
@@ -103,15 +103,18 @@ class Adminusers extends CI_Controller {
                 'city'          =>  $city,
             );
             $result = $this->m_adminusers->insert($insert);
-            $targt = array(
-                'emp_id'    => $result, 
-                'added_by'  => $this->aid, 
-                'month'     => $month, 
-                'year'      => date('Y'), 
-                'target'    => $target,
-                'status'    => '1',
-            );
+
+            if (!empty($target)) {
+                $targt = array(
+                    'emp_id'    => $result, 
+                    'added_by'  => $this->aid, 
+                    'month'     => $month, 
+                    'year'      => date('Y'), 
+                    'target'    => $target,
+                    'status'    => '1',
+                );
             $this->m_adminusers->empTarget($targt);
+            }
             if(!empty($result)){
                 if ($this->userEmail($insert)) {
                     $this->session->set_flashdata('success', 'Employee added Successfully');
@@ -202,16 +205,18 @@ class Adminusers extends CI_Controller {
             );
             $result = $this->m_adminusers->update($update,$id);
 
-            $targt = array(
-                'emp_id'    => $id, 
-                'added_by'  => $this->aid, 
-                'month'     => $month, 
-                'year'      => date('Y'), 
-                'target'    => $target,
-                'status'    => '1',
-            );
+            if (!empty($target)) {
+                $targt = array(
+                    'emp_id'    => $id, 
+                    'added_by'  => $this->aid, 
+                    'month'     => $month, 
+                    'year'      => date('Y'), 
+                    'target'    => $target,
+                    'status'    => '1',
+                );
+                $this->m_adminusers->empTarget($targt);
+            }
 
-           $this->m_adminusers->empTarget($targt);
 
             if(!empty($result)){
                 $this->session->set_flashdata('success', 'Employee Updated Successfully');

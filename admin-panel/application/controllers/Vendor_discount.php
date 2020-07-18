@@ -21,7 +21,7 @@ class Vendor_discount extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if(in_array("8", $acces))
+        if(in_array("13", $acces))
         {
             $this->access = true;
 

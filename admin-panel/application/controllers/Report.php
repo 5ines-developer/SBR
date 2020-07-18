@@ -16,14 +16,14 @@ class Report extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        // if (in_array("2", $acces))
-        // {
-        //     $this->access = true;
+        if (in_array("25", $acces))
+        {
+            $this->access = true;
 
-        // }else{
-        //     $this->access = null;
-        // }
-        // if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+        }else{
+            $this->access = null;
+        }
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
     }
 
 

@@ -15,7 +15,7 @@ class Category extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("3", $acces))
+        if (in_array("4", $acces))
         {
             $this->access = true;
 

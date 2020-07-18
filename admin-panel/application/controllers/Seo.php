@@ -10,19 +10,11 @@ class Seo extends CI_Controller {
         if ($this->session->userdata('sha_id') == '') { $this->session->set_flashdata('error', 'Please try again'); redirect('login'); }
         $this->load->model('m_seo');
 
-        // $this->ci =& get_instance();
-        // $accs = $this->ci->preload->access();
-        // $acces = array();
-        // $acces = explode (",", $accs->menu);
+        $this->ci =& get_instance();
+        $accs = $this->ci->preload->access();        
+        $this->acces = explode (",", $accs->menu);
         
-        // if (in_array("2", $acces))
-        // {
-        //     $this->access = true;
-
-        // }else{
-        //     $this->access = null;
-        // }
-        // if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1')) {  redirect(base_url(),'refresh'); }
+        
 
     }
 
@@ -32,9 +24,17 @@ class Seo extends CI_Controller {
     **/ 
 	public function index()
 	{
-		$data['title']  = 'SEO - Shaadibaraati';
-		$data['result'] = $this->m_seo->getPage();
-		$this->load->view('seo/list', $data);
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("26", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
+    		$data['title']  = 'SEO - Shaadibaraati';
+    		$data['result'] = $this->m_seo->getPage();
+    		$this->load->view('seo/list', $data);
+        }
 	}
 
 	
@@ -44,9 +44,18 @@ class Seo extends CI_Controller {
     **/
     public function edit($id='')
     {
-    	$data['title']  = 'SEO - Shaadibaraati';
-    	$data['result'] = $this->m_seo->edit($id);
-    	$this->load->view('seo/edit', $data);
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("26", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
+
+        	$data['title']  = 'SEO - Shaadibaraati';
+        	$data['result'] = $this->m_seo->edit($id);
+        	$this->load->view('seo/edit', $data);
+        }
     }
 
     /**
@@ -55,28 +64,32 @@ class Seo extends CI_Controller {
     **/
     public function update($value='')
     {
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("26", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
 
-       $insert = array(
+           $insert = array(
+           	'page' 		=> $this->input->post('page') , 
+           	'title' 	=> $this->input->post('title') , 
+           	'keywords' 	=> $this->input->post('keywords') , 
+            'm_desc'  => $this->input->post('description') ,         
+           	'can_link' 	=> $this->input->post('can_url') ,       	 
+            'id'        => $this->input->post('id') , 
+           	'description' 		=> $this->input->post('content') ,
+           );
 
-       	'page' 		=> $this->input->post('page') , 
-       	'title' 	=> $this->input->post('title') , 
-       	'keywords' 	=> $this->input->post('keywords') , 
-        'm_desc'  => $this->input->post('description') ,         
-       	'can_link' 	=> $this->input->post('can_url') ,       	 
-        'id'        => $this->input->post('id') , 
-       	'description' 		=> $this->input->post('content') , 
-
-        
-       );
-
-
-        if($this->m_seo->update($insert)){
-			$this->session->set_flashdata('success', 'Seo Details updated Successfully');
-			redirect('seo/edit/'.$insert['id'],'refresh');
-       	}else{
-			$this->session->set_flashdata('error', 'Some error occured please try again');
-			redirect('seo/edit/'.$insert['id'],'refresh');
-       	}
+            if($this->m_seo->update($insert)){
+    			$this->session->set_flashdata('success', 'Seo Details updated Successfully');
+    			redirect('seo/edit/'.$insert['id'],'refresh');
+           	}else{
+    			$this->session->set_flashdata('error', 'Some error occured please try again');
+    			redirect('seo/edit/'.$insert['id'],'refresh');
+           	}
+        }
     }
 
 
@@ -116,9 +129,17 @@ class Seo extends CI_Controller {
 
     public function enquiry($value='')
     {
-        $data['title']   = 'Enquiry - Shaadibaraati';
-        $data['result']  = $this->m_seo->getSeoEnquiry();
-        $this->load->view('seo/enquiry', $data);
+        $acces = array();
+        $acces = $this->acces;
+        if (in_array("27", $acces)) {$this->access = true; }else{$this->access = null; } 
+        if ((empty($this->access)) && ($this->session->userdata('sha_type') !='1'))
+        {  
+            redirect(base_url(),'refresh'); 
+        }else{
+            $data['title']   = 'Enquiry - Shaadibaraati';
+            $data['result']  = $this->m_seo->getSeoEnquiry();
+            $this->load->view('seo/enquiry', $data);
+        }
     }
 
 }

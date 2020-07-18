@@ -19,7 +19,7 @@ class Vendors extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("6", $acces))
+        if (in_array("11", $acces))
         {
             $this->access = true;
 
