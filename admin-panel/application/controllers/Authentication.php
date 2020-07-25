@@ -198,6 +198,11 @@ class Authentication extends CI_Controller {
         $this->m_authentication->expirePackage();
     }
 
+    public function invoice($value='')
+    {
+        $this->load->view('sales/invoice');
+    }
+
 }
 
 /* End of file Authentication.php */

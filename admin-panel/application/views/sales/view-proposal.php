@@ -64,9 +64,17 @@
                   <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
                   <?php }else if ($this->session->userdata('sha_type') == '1' && $result['status'] == '2'){ ?>
                   <a onclick="return confirm('Are you sure you want to Approve?');" href="<?php echo base_url('vendors-discount/approve/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Approve</a>
-                  <?php }elseif($result['live'] == '1'){ ?>
+                  <?php }elseif($result['live'] == '1'){ 
+
+                  $invce = $this->ci->m_vdiscount->checkInvoice($result["id"]);
+                  
+                  if ($this->session->userdata('sha_type') =='1' && !empty($invce)) { ?>
+
+                    <a onclick="return confirm('Are you sure you want to send the invoice?');" href="<?php echo base_url('vendor_discount/send_invoice/'.$result['id'].'') ?>"  class="waves-effect waves-light btn white-text  green hoverable">Send Invoice</a>
+                  <?php } ?>
+
                       <a onclick="return confirm('Are you sure you want to Reject?');" class="waves-effect waves-light btn white-text red hoverable modal-trigger" href="#modal1"  >Reject</a>
-                    <?php } ?>
+                    <?php }  ?>
                 </div>
                 <!-- Reject with reason -->
                 <div id="modal1" class="modal">
@@ -239,7 +247,7 @@
                       <div class="card scrollspy" id="personal-detail">
                         <div class="card-content">
                           <p class="bold mb10 h6">Package Details</p>
-                          <table>
+                          <table> 
                             <tbody>
                               <tr>
                                 <th class="w205">Net Amount</th>
@@ -250,14 +258,11 @@
                                 <td><?php echo (!empty($result['gst_amount']))?$result['gst_amount']:'---'  ?></td>
                               </tr>
                               <?php
-                              (int)$amount = $result['nt_amnt'] + $result['gst_amount'];
-                              if (!empty($result['discount'])) {
-                              (int)$discount =  ($amount * (int)$result['discount']) / 100;
-                              }else{
-                              $discount =  0;
-                              }
-                              $total = (int)$amount - (int)$discount;
-                              (int)$totalamount = (int)$total + (int)$result['tds'];
+                                  if (!empty($result['discount'])) {
+                                  (int)$discount =  ((int)$result['nt_amnt'] * (int)$result['discount']) / 100;
+                                  }else{
+                                  $discount =  0;
+                                  }
                               ?>
                               <tr>
                                 <th class="w205">Total Discount</th>
@@ -265,7 +270,7 @@
                               </tr>
                               <tr>
                                 <th class="w205"> Amount Payable after discount</th>
-                                <td><?php echo (!empty($total))?$total:'---'  ?></td>
+                                <td><?php echo (!empty($result['amt_after_disc']))?$result['amt_after_disc']:'---'  ?></td>
                               </tr>
                               <tr>
                                 <th class="w205"> TDS If Applicable</th>
@@ -273,7 +278,7 @@
                               </tr>
                               <tr>
                                 <th class="w205"> Total Amount</th>
-                                <td><?php echo (!empty($totalamount))?$totalamount:'---'  ?></td>
+                                <td><?php echo (!empty($result['t_amnt']))?$result['t_amnt']:'---'  ?></td>
                               </tr>
                               
                               <tr>
@@ -394,6 +399,22 @@
                                 <th class="w205">Manager Name</th>
                                 <td><?php echo (!empty($emp->manager->name))?$emp->manager->name:'---'  ?></td>
                               </tr>
+
+                              <tr>
+                                <th class="w205">Branch Head</th>
+                                <td><?php echo (!empty($emp->bran_mang->name))?$emp->bran_mang->name:'---'  ?></td>
+                              </tr>
+
+                              <tr>
+                                <th class="w205">National Head</th>
+                                <td><?php echo (!empty($emp->nation_head->name))?$emp->nation_head->name:'---'  ?></td>
+                              </tr>
+
+                              <tr>
+                                <th class="w205">Telecaller</th>
+                                <td><?php echo (!empty($emp->telecaller->name))?$emp->telecaller->name:'---'  ?></td>
+                              </tr>
+
                             </tbody>
                           </table>
                         </div>

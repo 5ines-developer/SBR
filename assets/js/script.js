@@ -52,3 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Collapsible.init(elems);
 
 });
+
+$(document).ready(function(){
+    $('.tabs').tabs();
+  });

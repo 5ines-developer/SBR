@@ -263,8 +263,7 @@ class M_vendors extends CI_Model
     }
 
     public function similarVendors($city='',$category='',$id='')
-    {    
-
+    {
         $this->db->where('v.id !=', $id);
         $this->db->select('v.package,v.discount_status,v.id,v.name,v.phone,v.email,v.price,v.address,v.price_for,v.profile_file,v.detail,v.policy,v.tags,v.specification,v.location,v.uniq,cty.city,cat.category,cty.id as cityId, cat.id as catId,v.verified,v.v_chat');
         $this->db->where('v.city', $city);

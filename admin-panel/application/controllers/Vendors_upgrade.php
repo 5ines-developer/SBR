@@ -130,22 +130,24 @@
 	            'balance'			=> $this->input->post('balance'),
 	        	);
 
-
 	        	$pdc_mode      = $this->input->post('pdc_mode');
 				$pdc_instrmnt  = $this->input->post('pdc_instrmnt');
 				$pdc_pay_date  = $this->input->post('pdc_pay_date');
 				$pdc_amount    = $this->input->post('pdc_amount');
 
 				$data = $this->m_vnupgrade->insertProposal($insert);
+				$pdcresult = array();
 				if (!empty($data)) {
 					$insert['insert_id'] = $data;
 					if (!empty($pdc_mode)) { 
 					$pdccount = count($pdc_mode);
-	            	for ($i = 0; $i < $pdccount; $i++) {
-	            		$pdcDetails  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i],'rp_id'=>$data);
-	            		$this->m_vnupgrade->insertPdc($pdcDetails);
-		            	$pdcresult[]  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i] );
-	            	}
+		            	for ($i = 0; $i < $pdccount; $i++) {
+		            		if (!empty($pdc_mode[$i])) {
+			            		$pdcDetails  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i],'rp_id'=>$data);
+			            		$this->m_vnupgrade->insertPdc($pdcDetails);
+				            	$pdcresult[]  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i] );
+				            }
+		            	}
 	            	}
 
 					$this->convertPdf($insert,$pdcresult);
@@ -160,20 +162,20 @@
 
 		public function convertPdf($insert='',$pdcresult='')
 		{
-			$data['city'] = $this->db->where('id', $insert['v_city'])->get('city')->row('city');
-			$data['category'] = $this->db->where('id', $insert['v_category'])->get('category')->row('category');
-			$data['employee'] = $this->db->select('name as empname,admin_type,id as empid')->where('id', $insert['added_by'])->get('admin')->row();
-			$data['result'] = $insert;
-			$data['pdcresult'] = $pdcresult;
-			require_once $_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/vendor-pdf/autoload.php';
+
+			$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$insert['insert_id']);
+			$data['pdcresult'] = $this->m_vnupgrade->getPdc($insert['insert_id']);
+
+			// require_once $_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/vendor-pdf/autoload.php';
+			require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
 			$mpdf = new \Mpdf\Mpdf([
 				'mode' => 'utf-8',
 			    'format' => 'A4',
 			    // 'orientation' => 'L',
-			    'margin_top' => 10,
-				'margin_left' => 10,
-				'margin_right' => 10,
-				'margin_bottom' => 10,
+			    'margin_top' => 0,
+				'margin_left' => 0,
+				'margin_right' => 0,
+				'margin_bottom' => 0,
 				'default_font_size' => 9,
 			]);
 			$html = $this->load->view('sales/proposal', $data, TRUE);
@@ -185,6 +187,7 @@
 
 	public function send_sales($insert='',$content='',$filename='')
     {
+    	$data['result'] = $insert;
         $disc = $this->db->where('id', $this->aid)->get('admin')->row();
         $manager = $this->db->where('id', $disc->manager)->get('admin')->row('email');
         $this->load->config('email');
@@ -195,10 +198,13 @@
         $this->email->set_newline("\r\n");
         $this->email->from($from, 'ShaadiBaraati');
         $this->email->cc($manager);
-        $this->email->to($to,$insert['listing_mail']);
-        $this->email->cc($manager,$cc);
+        $recipients = array($insert['listing_mail'],$to);
+        $ccrec = array($manager,$cc);
+        $this->email->to(implode(', ', $recipients));
+        $this->email->cc(implode(', ', $ccrec));
         $this->email->subject('Vendor Package proposal');
-        $this->email->message('New Vendor Package proposal has been submitted , document attached');
+        $msg = $this->load->view('email/proposal', $data, true);
+        $this->email->message($msg);
         $this->email->attach($content, 'attachment', $filename, 'application/pdf'); 
         if ($this->email->send()) {
             $this->session->set_flashdata('success', 'You request for adding discount for the vendors <br /> has been submitted to the Admin, admin will verify and approve your request ');
@@ -237,7 +243,7 @@
 		$data['title']  = 'Vendors - Shaadibaraati';
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
 		$data['pdcresult'] = $this->m_vnupgrade->getPdc($id);
-		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager']);
+		$data['emp'] 	= $this->m_vnupgrade->employ($data['result']['employee'],$data['result']['manager'],$data['result']['bran_mang'],$data['result']['nation_head'],$data['result']['telecaller']);
 		if($this->type == '1'){
 			$this->m_vnupgrade->seenChange($id);
 		}
@@ -299,16 +305,16 @@
 	{
 		$data['result'] = $this->m_vnupgrade->view_proposal($this->aid,$id);
 		$data['pdcresult'] = $this->m_vnupgrade->getPdc($id);
-		// require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
-		require_once $_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/vendor-pdf/autoload.php';
+		// require_once $_SERVER['DOCUMENT_ROOT'].'/shaadibaraati/vendor-pdf/autoload.php';
+		require_once $_SERVER['DOCUMENT_ROOT'].'/vendor-pdf/autoload.php';
 			$mpdf = new \Mpdf\Mpdf([
 				'mode' => 'utf-8',
 			    'format' => 'A4',
 			    // 'orientation' => 'L',
-			    'margin_top' => 10,
-				'margin_left' => 10,
-				'margin_right' => 10,
-				'margin_bottom' => 10,
+			    'margin_top' => 0,
+				'margin_left' => 0,
+				'margin_right' => 0,
+				'margin_bottom' => 0,
 				'default_font_size' => 9,
 			]);
 			$html = $this->load->view('sales/proposal', $data, TRUE);
@@ -331,7 +337,7 @@
 
 
 	public function updateUpgrade($value='')
-		{
+	{
 
 			$id = $this->input->post('id');
 				$insert = array(
@@ -384,8 +390,10 @@
 						$this->db->where('rp_id', $id)->delete('rp_pdc');
 						$pdccount = count($pdc_mode);
 		            	for ($i = 0; $i < $pdccount; $i++) {
+		            		if (!empty($pdc_mode[$i])) {
 		            		$pdcDetails  = array('mode' =>$pdc_mode[$i] , 'date' =>$pdc_pay_date[$i] ,'instrument' =>$pdc_instrmnt[$i] ,'amount' =>$pdc_amount[$i],'rp_id'=>$id);
 		            		$this->m_vnupgrade->insertPdc($pdcDetails);
+		            	}
 		            	}
 	            	}
 					$this->session->set_flashdata('success','Vendor proposal updated successfully.');

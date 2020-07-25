@@ -189,7 +189,7 @@
                             <option value="">Choose a tenure</option>
                             <?php $months = array('1', '2', '3', '4', '5', '6', '7 ', '8', '9', '10', '11', '12',);
                             foreach ($months as $key => $value) { ?>
-                            <option value="<?php echo $key+1; ?>" <?php if($result->tenure ==  $key+1){ echo 'selected'; } ?>><?php echo $value.' + 1 Months';?></option>
+                            <option value="<?php echo $key+1; ?>" <?php if($result->tenure ==  $key+1){ echo 'selected'; } ?>><?php echo $value.'Months';?></option>
                             <?php }?>
                           </select>
                           <label for="tenure">Tenure <span class="red-text">*</span></label>
@@ -411,112 +411,137 @@
     $(document).ready(function() {
     $('select').formSelect();
     $("select").css({display: "inline", height: 0, padding: 0, width: 0});
-    // $("#admin-form").validate({
-    //     rules: {
-    //         name: {required: true, },
-    //         email: {required: true, },
-    //         Ad_type:{required:true,},
-    //       },
-    //     messages: {
-    
-    //         name: "Please enter a name",
-    //         email: "Please enter a email",
-    //         ad_type:"Please select the Employee type",
-    //     }
-    // });
+ 
 
     $(function() {
-    var count = 0;
-    $('#marqueeplus1').on('click', function(e) {
-    count += 1;
-    e.preventDefault();
-    var inLength = $(":input[name='pdc_mode[]']").length;
-    if (inLength <=2) {
-    $('<div class="row m0 marqaddnext1"> <div class="col l12"> <a id="brandplus" class="marqueeplus1 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_mode" name="pdc_mode[]" class="validate" > <label for="pdc_mode">Payment Mode </label> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_instrmnt" name="pdc_instrmnt[]" class="validate" > <label for="pdc_instrmnt">Instrument No </label> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_pay_date" name="pdc_pay_date[]" class="datepicker validate"> <label for="pdc_pay_date">Payment Date </label> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_amount" name="pdc_amount[]" class="validate" > <label for="pdc_amount">Amount </label> </div> </div><br>') .append().insertBefore('#marqaddnext1');
-    }
-    });
-    $(document).on('click', '.marqueeplus1.remov', function(e) {
-    e.preventDefault();
-    $(this).closest('div.row').remove();
-    });
+      var count = 0;
+      $('#marqueeplus1').on('click', function(e) {
+      count += 1;
+      e.preventDefault();
+      var inLength = $(":input[name='pdc_mode[]']").length;
+      if (inLength <=2) {
+      $('<div class="row m0 marqaddnext1"> <div class="col l12"> <a id="brandplus" class="marqueeplus1 remov"><i class="fa fa-times" aria-hidden="true"></i></a> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_mode" name="pdc_mode[]" class="validate" > <label for="pdc_mode">Payment Mode </label> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_instrmnt" name="pdc_instrmnt[]" class="validate" > <label for="pdc_instrmnt">Instrument No </label> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_pay_date" name="pdc_pay_date[]" class="datepicker validate"> <label for="pdc_pay_date">Payment Date </label> </div> <div class="input-field col s12 l6"> <input type="text" id="pdc_amount" name="pdc_amount[]" class="validate" > <label for="pdc_amount">Amount </label> </div> </div><br>') .append().insertBefore('#marqaddnext1');
+      }
+      });
+      $(document).on('click', '.marqueeplus1.remov', function(e) {
+      e.preventDefault();
+      $(this).closest('div.row').remove();
+      });
     });
 
-    $(document).on('change', '#package', function(){
-    var pack = $(this).val();
-    var ban_price = $('input[name="ban_price"]').val();
-    if (ban_price =='') { var ban_price =0; }
-    $.ajax({
-    url: '<?php echo base_url() ?>vendors_upgrade/getPrice',
-    type: 'GET',
-    dataType: 'json',
-    data: {package: pack},
-    success:function(data)
-    {
-    $('#nt_amnt').val(data.price);
-    $('#gst_amount').val(data.gst);
-    $(".ntam").addClass("active");
-    var tot = parseInt(data.price) + parseInt(data.gst) + parseInt(ban_price);
-    $('#t_amnt').val(tot);
-    }
+
+
+    $(document).on('change', '#package', function() {
+        var pack = $(this).val();
+        var ban_price = $('input[name="ban_price"]').val();
+        if (ban_price == '') {var ban_price = 0; }
+        var balance = $('#balance').val();
+        var discount = $('#discount').val();
+        if (discount == '') { var discounts = 0; }else{ var discounts = discount; }
+        $.ajax({
+            url: '<?php echo base_url() ?>vendors_upgrade/getPrice',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+                package: pack
+            },
+            success: function(data) {
+                $('#nt_amnt').val(data.price);
+                $('#gst_amount').val(data.gst);
+                $(".ntam").addClass("active");
+
+                if (discounts =='' || discounts == 'undefined') {
+                  var discamount  = 0;
+                }else{
+                  var discamount = (parseInt(data.price) * parseInt(discounts)) / 100; 
+                }
+                var tot = ((parseInt(data.price) - parseInt(discamount)) + parseInt(data.gst) + parseInt(ban_price)) - parseInt(balance);
+                $('#t_amnt').val(tot);
+            }
+        });
     });
+
+    // banner package select
+    $(document).on('change', '#ban_pack', function() {
+        var netam     = $("#nt_amnt").val();
+        var pack = $(this).children("option:selected").val();
+        if (pack != '') {
+            var res = pack.split(":");
+            if (res != '') {
+                var price = res[1];
+                $('input[name=ban_price]').val($.trim(price));
+
+                $('#nt_amnt').val(parseInt($.trim(price)) + parseInt(netam));
+            }
+        } else {
+            var price = 0;
+            $('input[name=ban_price]').val(price);
+        }
     });
-    $(document).on('change', '#ban_pack', function(){
-    var pack = $(this).children("option:selected").val();
-    if (pack !=''){
-    var res = pack.split(":");
-    if (res !='') {
-    var price = res[1];
-    $('input[name=ban_price]').val($.trim(price));
-    }
-    }else{
-    var price = 0;
-    $('input[name=ban_price]').val(price);
-    }
+
+    $(document).on('change', '#c_bnr,#cat_bnr', function() {
+        var pack = $('#c_bnr').val();
+        var packs = $('#cat_bnr').val();
+        if (pack != '' || packs != '') {
+            $('#ban_pck').css('display', 'block');
+        } else {
+            $('#ban_pck').css('display', 'none');
+        }
     });
-    $(document).on('change', '#c_bnr,#cat_bnr', function(){
-    var pack = $('#c_bnr').val();
-    var packs = $('#cat_bnr').val();
-    if (pack !='' || packs !='') {
-    $('#ban_pck').css('display', 'block');
-    }else{
-    $('#ban_pck').css('display', 'none');
-    }
+
+    $(document).on('change', '#discount', function() {
+        // ****Get all the values
+        var discount = $(this).val();
+        var netam     = $("#nt_amnt").val();
+        var gst       = $("#gst_amount").val();
+        var ban_price = $('#ban_price').val();
+        var balance   = $('#balance').val();
+        // **** calculate the discount with netamount
+        if (discount == '') { var discount = 0; var discamount = 0; }else{ var discamount = (parseInt(netam) * parseInt(discount)) / 100; }
+        if (ban_price == '') { var ban_price = 0; }
+        // **** get the total by discount with netamount
+        if ((netam != '') && (gst != '')) {
+            var amt_after_disc =(parseInt(netam) - parseInt(discamount));
+            var total = (amt_after_disc + parseInt(gst) ) - parseInt(balance);
+            $('#amt_after_disc').val(amt_after_disc);
+            $('#t_amnt').val(total);
+        }
     });
-    $(document).on('change', '#discount', function(){
-    var discount  = $(this).val();
-    var netam     = $("#nt_amnt").val();
-    var gst       = $("#gst_amount").val();
-    var ban_price = $('input[name="ban_price"]').val();
-    if (ban_price =='') { var ban_price =0; }
-    if ((netam !='') && (gst !='')) {
-    var tot = parseInt(netam) + parseInt(gst) + parseInt(ban_price);
-    var amount =  (parseInt(tot) * parseInt(discount)) / 100;
-    if (amount > tot) {
-    var total = amount - tot;
-    }else{
-    var total = tot - amount;
-    }
-    $('#amt_after_disc').val(total);
-    $('#t_amnt').val(total);
-    }
+
+
+        $(document).on('change', '#tds', function() {
+        var tds = $(this).val();
+        if (tds == '') {
+            tds = 0;
+        }
+        var tot = $("#t_amnt").val();
+        if (tot == '') {
+            tot = 0;
+        }
+        var deltds = ((parseInt(tot)) * parseInt(tds)) / 100;
+        var total = parseInt(tot) - parseInt(deltds);
+        $('#t_amnt').val(total);
     });
-    $(document).on('change', '#tds', function(){
-    var tds   = $(this).val();
-    if (tds =='') { tds=0; }
-    var tot   = $("#amt_after_disc").val();
-    if (tot =='') { tot=0; }
-    var total = parseInt(tds)+ parseInt(tot);
-    $('#t_amnt').val(total);
+
+    $(document).on('change', '#pay_mode', function() {
+        var payMode = $(this).val();
+        if (payMode == 'cheque') {
+            $('#pdcs').css('display', 'block');
+        } else {
+            $('#pdcs').css('display', 'none');
+        }
     });
     
-    $(document).on('change', '#pay_mode', function(){
-    var payMode  = $(this).val();
-    if(payMode == 'cheque'){
-    $('#pdcs').css('display','block');
-    }else{
-    $('#pdcs').css('display','none');
-    }
-    });
+
+    
+
+
+   
+
+    
+ 
+    
+    
     });
     </script>
     

@@ -564,6 +564,162 @@
 
 
 
+      <!-- Modal Trigger -->
+
+  <!-- Modal Structure -->
+    <div id="pop-modal" class="modal">
+        <div class="pop-overlay"></div>
+        <div class="modal-content">
+            <p class="top-text">Welcome to <span style="color: #d0021b">Shaadibaraati.com</span> - India's Most Trusted Online Wedding Market</p>
+            <div class="row m0">
+                <div class="col l6 m6 s6">
+                    <h2 class="pop-mod-header m0"><span>#</span>Intimate Wedding</h2>
+                </div>
+                <div class="col l6 m6 s6">
+                    <p class="pop-sharedet m0">Share your details below & get upto 30% off</p> 
+                </div>
+            </div>
+            <p class="top-text">Hassle Free Planning & Booking at Our Guaranteed Best Prices.</p>
+            <div class="row">
+                <div class="col s12">
+                  <ul class="tabs">
+                    <li class="tab col s4"><a class="tabLink" href="#test1">Wedz Assist</a></li>
+                    <li class="tab col s4"><a class="tabLink" class="active" href="#test2">Basic Details</a></li>
+                    <li class="tab col s4"><a class="tabLink" href="#test4">Wedding Details</a></li>
+                  </ul>
+                </div>
+                <div id="test1" class="col s12">
+                    <div class="row">
+                        <div class="col l6 m6 s6">
+                            <p class="top-text mt0">Works Book a vendors in simple steps</p>
+                            <div class="tab-ssb">
+                                <div class="tab-ssb-inner">
+                                    <img src="<?php echo base_url()?>assets/img/icon/c.png" alt="">
+                                    <span>SEARCH</span>
+                                </div>
+                                <div class="tab-ssb-inner">
+                                    <img src="<?php echo base_url()?>assets/img/icon/b.png" alt="">
+                                    <span>SELECT</span>
+                                </div>
+                                <div class="tab-ssb-inner">
+                                    <span><img src="<?php echo base_url()?>assets/img/icon/a.png" alt=""></span>
+                                    <span>BOOK</span>
+                                </div>
+                            </div>
+                            <div class="tab-wed-vendrs">
+                                <h6 class="tab-wed-head">Find the Top wedding vendors</h6>
+                                <ul>
+                                    <li>Wedding Venues</li>
+                                    <li>Catering</li>
+                                    <li>Bridal Makeup</li>
+                                    <li>Wedding Decorator</li>
+                                    <li>Bridal Mehendi</li>
+                                    <li>Photographer</li>
+                                    <li>Bridal Makeup</li>
+                                    <li>Wedding Planner</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s6">
+                            <p class="top-text">Need help with wedding Planning vendor selection?</p>
+                            <div class="center-align tab-wed-yes">
+                                <a class="waves-effect waves-light btn">Yes</a>
+                                <a class="waves-effect waves-light btn">No</a>
+                            </div>
+                            <ul class="tab-right-ul">
+                                <li>Online Support</li>
+                                <li>Provided verified vendors only</li>
+                                <li>Unlimited Vendor Details</li>
+                                <li>Exclusive packages and discounts</li>
+                                <li>Dedicated wedding planning expert takes care of research</li>
+                                <li>Bargain on your behalf</li>
+                                <li>No hidden cost</li>
+                                <li>Your dedicated RM remains your single point of contact</li>
+                            </ul>
+                            <p class="mt10 mb0 center-align" style="font-size: 12px; font-weight: 600;">Planning An #IntimateWedding?</p>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <p class="pop-sharedet ft-tx m0 center">Share your details below & get upto 30% off</p> 
+                    </div>
+                </div>
+                <div id="test2" class="col s12">
+                    <div class="row">
+                        <div class="col l6 m6 s6">
+                            <div class="tab-ssb">
+                                <div class="tab-ssb-inner2">
+                                    <center>
+                                        <img src="<?php echo base_url()?>assets/img/popup/t2.png" alt="">
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="tab-wed-vendrs">
+                                <h6 class="tab-wed-head">Find the Top wedding vendors</h6>
+                                <ul>
+                                    <li>Wedding Venues</li>
+                                    <li>Catering</li>
+                                    <li>Bridal Makeup</li>
+                                    <li>Wedding Decorator</li>
+                                    <li>Bridal Mehendi</li>
+                                    <li>Photographer</li>
+                                    <li>Bridal Makeup</li>
+                                    <li>Wedding Planner</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s6">
+                            <p class="top-text">Fill your details to view our list of suggestions Share your details below & get upto 30% off</p>
+                            <div class="center-align tab-wed-yes">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <p class="pop-sharedet ft-tx m0 center">Share your details below & get upto 30% off</p> 
+                    </div>
+                </div>
+                <div id="test4" class="col s12">
+                    <div class="row">
+                        <div class="col l6 m6 s6">
+                            <div class="tab-ssb">
+                                <div class="tab-ssb-inner3">
+                                    <center>
+                                        <img src="<?php echo base_url()?>assets/img/popup/t1.png" alt="">
+                                    </center>
+                                </div>
+                            </div>
+                            <div class="tab-wed-vendrs mt0">
+                                <h6 class="tab-wed-head">Find the Top wedding vendors</h6>
+                                <ul>
+                                    <li>Wedding Venues</li>
+                                    <li>Catering</li>
+                                    <li>Bridal Makeup</li>
+                                    <li>Wedding Decorator</li>
+                                    <li>Bridal Mehendi</li>
+                                    <li>Photographer</li>
+                                    <li>Bridal Makeup</li>
+                                    <li>Wedding Planner</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col l6 m6 s6">
+                            <p class="top-text">Get customized list of suggestions according to your preference</p>
+                            <div class="center-align tab-wed-yes">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <p class="pop-sharedet ft-tx m0 center">Share your details below & get upto 30% off</p> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
     <?php $this->load->view('includes/footer'); ?>
     <!-- script -->
     <script src="<?php echo base_url()?>assets/js/jquery-3.4.1.min.js"></script>
@@ -579,6 +735,12 @@
     <?php $this->load->view('includes/message'); ?>
     </script>
     <script>
+
+        $(window).on('load', function () {
+            var Modalelem = document.querySelector('#pop-modal');
+            var instance = M.Modal.init(Modalelem,{ dismissible: false });
+            instance.open();
+       });
         
           new SlimSelect({ select: '.input-field select'});
           new SlimSelect({ select: '.input-field select#sel-cato'});
@@ -784,6 +946,7 @@
         //     $(".c19-popup").css('display', 'none');
 
         // }
+
 
 
 

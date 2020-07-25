@@ -122,7 +122,7 @@
                                                 <div class="file-path-wrapper">
                                                     <input class="file-path validate" type="text">
                                                 </div>
-                                                <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 512kb  </i> <span class="red-text">*</span></small></h6>
+                                                <h6 class=" m0"><small> <i><b>Note</b>: Please select only image file (eg: .svg ) <br> <span class="bold">Max file size:</span> 550KB  </i> <span class="red-text">*</span></small></h6>
                                             </div>
                                             <div class="input-field col s12 l6">
                                                 <p>

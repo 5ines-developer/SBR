@@ -74,6 +74,14 @@ class M_vnupgrade extends CI_Model {
 
 	public function insertProposal($insert='')
 	{
+		$this->db->where('id', $insert['vendor_id']);
+		$package = $this->db->from('vendor')->get()->row('package');
+		$this->db->where('vendor_id', $insert['vendor_id']);
+		$ends_on = $this->db->from('renew_package')->get()->row('ends_on');
+		
+		if (!empty($package)) { $insert['oldpack'] = $package; }
+		if($ends_on){ $insert['oldval'] 	= $ends_on; }
+
 		$this->db->where('uniq', $insert['uniq']);
 		$query = $this->db->get('renew_package');
 		if ($query->num_rows() > 0) {
@@ -149,7 +157,7 @@ class M_vnupgrade extends CI_Model {
 	public function view_proposal($added = null,$id = null)
 	{
 		return $this->db->where('rp.id', $id)
-		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.reject_reson,rp.approved,rp.live,rp.ban_pack,rp.add_mon,rp.balance')
+		->select('rp.id,rp.city_banner,rp.cat_banner,rp.package as renewPack,rp.invoice_name,rp.gstno,rp.listing_name,rp.listing_mail,rp.listing_phone,rp.invoice_address,rp.ord_type,rp.c_person,rp.alt_phone,rp.list_city,rp.tenure,rp.nt_amnt,rp.discount,rp.gst_amount,rp.amt_after_disc,rp.tds,rp.t_amnt,rp.am_words,rp.pay_mode,rp.inst_no,rp.pay_date,rp.amount,rp.status, am.admin_type,am.id as empid, am.name as empname,vn.name as vendorname,cty.city,cat.category,p.title,rp.started_from, rp.employee,rp.manager, rp.status,vn.id as vendorId,rp.reject_reson,rp.approved,rp.live,rp.ban_pack,rp.add_mon,rp.balance,rp.bran_mang,rp.nation_head,rp.telecaller,')
 		->from('renew_package rp')
 		->join('city cty', 'cty.id = rp.v_city', 'left')
 		->join('vendor vn', 'vn.id = rp.vendor_id', 'left')
@@ -228,11 +236,14 @@ class M_vnupgrade extends CI_Model {
 		->get()->result();
 	}
 
-	public function employ($emp='',$manager='')
+	public function employ($emp='',$manager='',$bran_mang='',$nation_head='',$telecaller='')
 	{
 		$query = $this->db->select('id,name')->where('id', $emp)->get('admin')->row();
 		if(!empty($query)){
-			$query->manager = $this->db->select('id,name')->where('id', $manager)->get('admin')->row();
+			$query->manager 	= $this->db->select('id,name')->where('id', $manager)->get('admin')->row();
+			$query->bran_mang 	= $this->db->select('id,name')->where('id', $bran_mang)->get('admin')->row();
+			$query->nation_head = $this->db->select('id,name')->where('id', $nation_head)->get('admin')->row();
+			$query->telecaller 	= $this->db->select('id,name')->where('id', $telecaller)->get('admin')->row();
 		}
 		return $query;
 	}

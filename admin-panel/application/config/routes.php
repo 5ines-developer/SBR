@@ -264,6 +264,9 @@ $route['home-banner/update/(:any)']		=	'h_banner/update/$1';
 
 $route['employee-target/delete/(:any)/(:any)']		=	'Adminusers/tardelete/$1/$2'; 
 
+$route['e-invite']			=	'einvite/index'; //manage category
+
+
 
 
 

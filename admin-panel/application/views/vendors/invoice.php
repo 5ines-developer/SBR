@@ -1,310 +1,318 @@
+<?php $this->ci =& get_instance(); $this->load->model('m_vdiscount'); ?>
 <!DOCTYPE html>
 <html>
-   <head>
-      <title></title>
-      <meta charset="UTF-8">
-      <meta name="description" content="Free Web tutorials">
-      <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="<?php echo base_url()?>assets/fonts/css/all.min.css" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/materialize.min.css">
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
-      <!-- bar -->
-      <style>
-        .bt-red{border-top: 4px solid red; }
-        .p-image {width: 260px;}
-        .m-10{ margin: 10px !important; }
-        .prop-title{
-          background-color:
-          #D0021B !important;
-          line-height: 22px;
-          padding: 4px 10px 4px 10px;
-          font-size: 20px;
-          font-weight: 500;
-        }
-        .b-none{
-          border: none;
-        }
-        #billing th{width: 150px;}
-
-        .col-befor{
-          position: relative;
-          padding-right: 15px;
-        }
-        .col-befor::after{
-          content: ":";
-          position: absolute;
-          right: 7px;
-        }
-        #billing td{
-          padding: 4px 5px;
-          
-        }
-        #billing th{
-          font-size: 12px;
-        }
-        #billing .t-title {
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<?php echo base_url()?>assets/fonts/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
+    <!-- bar -->
+    <style>
+    .card .card-content {padding: 35px; }
+    .top-tit{font-weight: 600; margin-right: 20px; color: gray;padding-right: 25px; }
+    .top.no-borders tr,th,td{
+    border: none !important;
+    padding: 2px 0px;
+    font-size: 10px;
+    }
+    .fw-700{
+    font-weight: 600;
+    font-size: 12px;
+    }
+    .fw-600{
+    font-weight: 600;
+    }
+    .bill-box {
+    margin-top: 15px;
     padding-bottom: 10px;
-}
-        .t-title {font-size: 16px !important; } 
-        .listing{border-bottom: 3px solid black; }
-        .listing tr{border-bottom: 2px solid rgba(0,0,0,0.12); }
-        .terms tr{border: none; }
-        .term-sub{padding: 5px; }
-        .terms ul:not(.browser-default) > li {list-style-type: decimal; }
-        .terms ul{padding-left: 20px; margin: 0; }
-        .sell th{font-size: 12px; } 
-        .package th{font-size: 12px; }
-        .cheque th{font-size: 12px; } 
-        .company-repr tbody > tr > th{font-size: 12px; width: 200px; }
-        .no-borders tr, .no-borders td , .no-borders th{border: none !important; } 
-        .no-borders td , .no-borders th{padding: 0; } 
-        .no-borders {margin-top: 30px; margin-bottom: 10px; } 
-        .borders tr, .borders td , .borders th{border: 1px solid #80808075; } 
-        .borders{margin-bottom: 20px;}
-        .outer-borders{border: 1px solid #80808075; }
-        .outer-borders tr,.outer-borders th,.outer-borders td{border: none !important; }
-        .two-table .outer-borders th, .two-table .outer-borders td{ padding: 8px !important; }
-        .two-table .borders th, .two-table .borders td{ padding: 6px !important; }
-
-
-     </style>
-   </head>
-   <body>
+    }
+    .bill-by {
+    background-color: #efebf9;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 12px;
+    }
+    .bill-by tr td, .bill-by tr th{
+    font-size: 12px !important;
+    padding: 1px 0px 1px 10px;
+    }
+    .bill-to tr td, .bill-to tr th{
+    font-size: 12px !important;
+    padding: 1px 0px 1px 10px;
+    }
+    .bill-to {
+    background-color: #efebf9;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 12px;
+    }
+    .val-table .first-tr{
+    background-color: #6539c0;
+    color: white;
+    border-radius: 4px;
+    border: none !important;
+    }
+    .val-table .scnd-tr{
+    background-color: #efebf9;
+    color: black;
+    border-radius: 4px;
+    border: none !important;
+    }
     
-      <!-- first layout -->
-        <section class="sec-top">
-            <div class="container-wrap">
-                <div class="col l12 m12 s12">
-                    <div class="row">
-                        <div class="col m12 s12 l9 offset-l2">
-
-                            <div class="card">
-                                <div class="card-content">
-                                    <div class="form-container bt-red">
-
-                                      
-      <table>
-        <thead>
-          <tr >
-              <th class="center-align" colspan="2"><img class="p-image" src="<?php echo base_url()?>assets/img/logo.png" alt=""></th>
-          </tr>
-        </thead>        
-      </table>
-
-      <table class="no-borders">
-        <thead>
-          <tr>
-            <td><b>Baraati Media and Entertainment Private Limited</b></td>
-            <th class="right-align">Support : <span class="red-text">1800 4199 456</span></th>
-            
-          </tr>
-          <tr>
-            <td>No 60, Old no, 32/1, 2nd Floor St. John Road, Ulsor.</td>
-            <th class="right-align">Email : <span ><a class="red-text" href="mailto:support@shaadibaraati.com">support@shaadibaraati.com</a></span> </th>
-          </tr>
-          <tr>
-            <td>Bangalore, Karnataka 560042 IN</td>
-          </tr>
-          <tr>
-            <td><b>GSTIN</b> : 89AAICB5254GIZJ </td>
-          </tr>
-        </thead>        
-      </table>
-      <div class="divider"></div>
+    .val-table .first-tr td {
+    padding: 12px;
+    border-right: 1px solid #fbfbfb3d !important;
+    font-size: 12px;
+    color: white;
+    }
+    .val-table .scnd-tr td{
+    padding: 10px;
+    }
+    .am-word{
+    font-weight: 600;
+    font-size: 12px;
+    padding: 10px 0;
+    }
+    .no-borders tr,th,td{
+    border: none;
+    }
+    .bill-box ul li{
+    font-size: 12px;
+    }
+    .suply-cont{
+    font-size: 12px;
+    }
+    </style>
+  </head>
+  <body>
+    
+    <!-- first layout -->
+    <section class="">
+      <div class="c">
+        <div class="col l12 m12 s12">
+          <div class="row">
+              <div class="card">
+                <div class="card-content">
+                  <div class="form-container">
+                    <h5 class="m0" style="color: #6539c0;padding-bottom: 10px;">Invoice</h5>
 
 
-      <table class="no-borders" id="billing">
-        <thead>
-          <tr>
-              <th class="red-text t-title">Billing Details</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <th class="col-befor">Client name </th>
-            <td><?php echo (!empty($result['c_name']))?$result['c_name']:''; ?></td>
-          </tr>
-          <tr>
-            <th class="col-befor">Client Address</th>
-            <td><?php echo (!empty($result['c_address']))?$result['c_address']:''; ?></td>
-          </tr>
-            <tr>
-            <th class="col-befor">GSTIN Number   </th>
-            <td><?php echo (!empty($result['c_gstin']))?$result['c_gstin']:''; ?></td>
-          </tr>
-          <tr>
-            <th class="col-befor">Invoice No.    </th>
-            <td><?php echo (!empty($result['invoice_no']))?$result['invoice_no']:''; ?></td>
-          </tr>
-          <tr>
-            <th class="col-befor">Invoice Date    </th>
-            <td><?php echo (!empty($result['in_date']))?$result['in_date']:''; ?></td>
-          </tr>
-          
-        </tbody>
-      </table>
-
-      <table class="borders">
-        
-        <tbody>
-          <tr>
-            <th>Package</th>
-            <th>Package Cost</th>
-            <th>Discount</th>
-            <th>GST @18%</th>
-            <th>Total (Rs.)</th>
-          </tr>
-          <tr>
-            <td><?php echo (!empty($result['package']))?$result['package']:''; ?></td>
-            <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
-            <td><?php echo (!empty($price->discount))?$price->discount:''; ?></td>
-            <td><?php echo (!empty($price->gst))?$price->gst:''; ?></td>
-            <td><?php echo (!empty($price->total))?$price->total:''; ?></td>
-          </tr>
-          <tr>
-            <th>Total</th>
-            <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
-            <td><?php echo (!empty($price->discount))?$price->discount:''; ?></td>
-            <td><?php echo (!empty($price->gst))?$price->gst:''; ?></td>
-            <td><?php echo (!empty($price->total))?$price->total:''; ?></td>
-          </tr>
-        </tbody>
-      </table>
+                    <table class="top no-borders">
+                      <tr>
+                        <td>
+                        <table class="top no-borders" style="margin: 0px">
+                          <tr>
+                            <td class="top-tit" style="width: 150px">Invoice No</td>
+                            <td class="fw-600" colspan="2"><?php echo (!empty($result['invoice_no']))?$result['invoice_no']:'---'; ?></td>
+                          </tr>
+                          <tr>
+                            <td class="top-tit" style="width: 150px">Invoice Date</td>
+                            <td class="fw-600" colspan="2"><?php echo (!empty($result['in_date']))?date('M d, Y',strtotime($result['in_date'])):'---'; ?></td>
+                          </tr>
+                          <tr>
+                            <td class="top-tit" style="width: 150px">Due Date</td>
+                            <td class="fw-600" colspan="2"><?php echo (!empty($result['due_date']))?date('M d, Y',strtotime($result['due_date'])):''; ?></td>
+                          </tr>
+                          <tr>
+                            <td class="top-tit" style="width: 150px;padding-bottom: 20px;">Proposal No</td>
+                            <td class="fw-600" style="padding-bottom: 20px;" colspan="2"><?php echo (!empty($result['renewal_id']))?$result['renewal_id']:'---'; ?></td>
+                          </tr>
+                        </table>
+                     </td>
+                        <td style="line-height: 84px;">
+                          <img src="<?php echo $this->config->item('web_url')?>/assets/img/logo.png" alt="">
+                        </td>
+                      </tr>
+                    </table>
 
 
-      
-
-      <table class="two-table borders">
-        <tbody>
-          <tr>
-            <td>
-              <table>
-                <thead>
-                  <th>Total Amount paid in words </th>
-                  <td><?php echo (!empty($result['w_amount']))?$result['w_amount']:''; ?>  </td>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th class="col-befor">GSTIN Number   </th>
-                    <td><?php echo (!empty($result['c_gstin']))?$result['c_gstin']:'NA'; ?></td>
-                  </tr>
-                  <tr>
-                    <th class="col-befor">Invoice No.    </th>
-                    <td><?php echo (!empty($result['invoice_no']))?$result['invoice_no']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <th class="col-befor">Invoice Date    </th>
-                    <td><?php echo (!empty($result['in_date']))?$result['in_date']:''; ?></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </td>
-            <td>
-              <table class="borders">
-                
-                <tbody>
-                  <tr>
-                    <th>Amount Before Tax</th>
-                    <td><?php echo (!empty($result['pa_cost']))?$result['pa_cost']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <td>ADD GST</td>
-                    <td><?php echo (!empty($result['cgst']))?$result['cgst']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <td>Tax Amount GST</td>
-                    <td><?php echo (!empty($result['cgst']))?$result['cgst']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <td>Total Amount With GST</td>
-                    <td><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
-                  </tr>
-                  <tr>
-                    <td>GST Payable on Reverse Charge</td>
-                    <td><?php echo (!empty($result['total']))?$result['total']:''; ?></td>
-                  </tr>
-                 
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <table class="terms">
-        <thead>
-          <tr>
-              <th class="red-text t-title">Terms & Conditions</th>
-          </tr>
-          <tr>
-              <td class="term-sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit.onse ctetur adip isicing elitonse ctetur adip isicing elit </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adip isicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, cons ectetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consec tetur adipisicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consec tetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, conse ctetur adipi sicing elit. </li>
-            </ul></td>
-          </tr>
-          
-        </tbody>
-      </table>
-
-
-      
-
-
-
-                                          </div>
-                                    </div>
-                                </div>
-                            </div><!-- cad end -->
-                        </div>
+                    
+                    <table class="no-borders" style="padding-top: 10px;">
+                      <tr>
+                        <td style="padding-right: 20px;width: 50%;border-radius: 5px;">
+                          <table class="bill-by no-borders">
+                            <tr>
+                              <td style="padding-bottom: 2px;padding-top: 10px;"><h5 class="m0" style="color: #6539c0;padding-bottom: 2px;padding-top: 10px;font-size: 14px;">Billed By</h5></td>
+                            </tr>
+                            <tr><td style="font-weight: 600;">Pargat</td></tr>
+                            <tr><td>Bangalore, </td></tr>
+                            <tr><td>Bangalore, </td></tr>
+                            <tr><td>Karnataka, India- 560040</td></tr>
+                            <tr><td><b>GSTIN:</b> 29AAICB5254G1ZJ</td></tr>
+                            <tr><td style="padding-bottom: 15px"><b>PAN:</b> AAICB5254G</td></tr>
+                          </table>
+                        </td>
+                        <td style="width: 50%;border-radius: 5px;">
+                          <table class="bill-to">
+                            <tr>
+                              <td  style="padding-bottom: 2px;padding-top: 10px;"><h5 class="m0" style="color: #6539c0;padding-bottom: 2px;font-size: 14px;padding-top: 10px;">Billed To</h5></td>
+                            </tr>
+                            <tr><td style="font-weight: 600;"><?php echo (!empty($result['c_name']))?$result['c_name']:'---'; ?></td></tr>
+                            <tr><td><?php echo (!empty($result['c_address']))?$result['c_address']:'---'; ?>, </td></tr>
+                            <tr><td><?php echo $this->ci->m_vdiscount->cityName($result['city']); ?>, </td></tr>
+                            <tr><td><?php echo $this->ci->m_vdiscount->stateName($result['state']); ?>, India- <?php echo (!empty($result['pincode']))?$result['pincode']:'---'; ?></td></tr>
+                            <tr><td><b>PAN:</b> <?php echo (!empty($result['pan_no']))?$result['pan_no']:'---'; ?></td></tr>
+                            <tr><td style="padding-bottom: 15px;color: #efebf9;">test</td></tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    <table class="top no-borders" style="margin: 0px">
+                      <tr>
+                        <td style="text-align: center;padding: 10px 0;"> <b>Country of Supply : </b> India </td>
+                        <td style="text-align: center;padding: 10px 0;"><b>Place of Supply : </b> <?php echo $this->ci->m_vdiscount->stateName($result['state']); ?></td>
+                      </tr>
+                    </table>
+                    
+                    <table class="val-table">
+                      <tr class="first-tr">
+                        <td>sl no.</td>
+                        <td>Item</td>
+                        <td>HSCN/SAC</td>
+                        <td>GST</td>
+                        <td>Quantity</td>
+                        <td>Rate</td>
+                        <td>Discount</td>
+                        <td>Taxable Amount</td>
+                        <?php if (!empty($result['gst']) && $result['state'] == '18') { ?>
+                        <td>CGST</td>
+                        <td>SGST</td>
+                        <?php }else if (!empty($result['gst']) && $result['state'] != '18') { ?>
+                        <td>IGST</td>
+                        <?php } ?>
+                        <td>Total</td>
+                      </tr>
+                      <tr class="scnd-tr">
+                        <td>1.</td>
+                        <td><?php echo (!empty($result['packName']))?$result['packName']:'---'; ?></td>
+                        <td>998365</td>
+                        <td>18%</td>
+                        <td>1</td>
+                        <td><?php echo (!empty($result['nt_amnt']))?'₹ '.$result['nt_amnt']:'---'; ?></td>
+                        <td><?php echo (!empty($result['discount']))?$result['discount']:'---'; ?></td>
+                        <td><?php echo (!empty($result['amt_after_disc']))?'₹ '.$result['amt_after_disc']:'---'; ?></td>
+                        <?php if (!empty($result['gst']) && $result['state'] == '18') { ?>
+                        <td><?php echo (!empty($result['cgst']))?$result['cgst']:'---'; ?></td>
+                        <td><?php echo (!empty($result['sgst']))?$result['sgst']:'---'; ?></td>
+                        <?php }else if (!empty($result['gst']) && $result['state'] != '18') { ?>
+                        <td><?php echo (!empty($result['igst']))?$result['igst']:'---'; ?></td>
+                        <?php } ?>
+                        <td><?php echo (!empty($result['total']))?$result['total']:'---'; ?></td>
+                      </tr>
+                    </table>
+                    <div class="row m0">
+                      <div class="col l12 m12 s12">
+                        <p class="am-word">Invoice total (in words) : <?php echo (!empty($result['w_amount']))?$result['w_amount']:'---'; ?></p>
+                      </div>
                     </div>
+                    <table class="no-borders" style="padding-top: 10px;">
+                      <tr>
+                        <td style="padding-right: 20px;width: 70%;border-radius: 5px;">
+                          <table class="no-borders">
+                            <tr>
+                              <td style="padding-bottom: 2px;padding-top: 10px;"><h5 class="m0" style="color: #6539c0;padding-bottom: 2px;padding-top: 10px;font-size: 14px;">Bank Details</h5></td>
+                            </tr>
+                            <tr>
+                              <td class="top-tit">Account Holder Name</td>
+                              <td colspan="2">Baraati Media And Entertainment Pvt Ltd</td>
+                            </tr>
+                            <tr>
+                              <td class="top-tit">Account Number</td>
+                              <td colspan="2">919020055863383</td>
+                            </tr>
+                            <tr>
+                              <td class="top-tit">IFSC</td>
+                              <td colspan="2">UTIB0000006</td>
+                            </tr>
+                            <tr>
+                              <td class="top-tit">Account Type</td>
+                              <td colspan="2">Current</td>
+                            </tr>
+                            <tr>
+                              <td class="top-tit">Bank</td>
+                              <td colspan="2">Axis Bank</td>
+                            </tr>
+                            <tr>
+                              <td class="top-tit">Branch</td>
+                              <td colspan="2">MG Road, Bangalore</td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td style="width: 30%;border-radius: 5px;">
+                          <table class="no-borders">
+                            <tr>
+                              <td>Taxable Amount</td>
+                              <td><?php echo (!empty($result['amt_after_disc']))?'₹ '.$result['amt_after_disc']:'---'; ?></td>
+                            </tr>
+                            <?php if (!empty($result['gst']) && $result['state'] == '18') { ?>
+                            <tr>
+                              <td>CGST</td>
+                              <td><?php echo (!empty($result['cgst']))?'₹ '.$result['cgst']:'---'; ?></td>
+                            </tr>
+                            <tr>
+                              <td>SGST</td>
+                              <td><?php echo (!empty($result['sgst']))?'₹ '.$result['sgst']:'---'; ?></td>
+                            </tr>
+                            <?php }else if (!empty($result['gst']) && $result['state'] != '18') { ?>
+                            <tr>
+                              <td>IGST</td>
+                              <td><?php echo (!empty($result['igst']))?'₹ '.$result['igst']:'---'; ?></td>
+                            </tr>
+                            <?php } ?>
+
+                            <tr>
+                              <td>TDS</td>
+                              <td><?php 
+
+                              $tdsAmount = (($result['amt_after_disc'] + $result['gst']) * $result['tds'])/100;
+
+
+                              echo (!empty($result['tds']))?'₹ '.$tdsAmount:'---'; ?></td>
+                            </tr>
+                            
+                            <tr style="border-top: 2px solid black;">
+                              <td>Total</td>
+                              <td><?php
+                                $etax = (!empty($result['etax']))?(int)$result['etax']:0;
+                                $tots = (!empty($result['total']))?$result['total']:0;
+                                $totrup = (int)$tots + (int)$etax;
+                              echo (!empty($totrup))?'₹ '.$totrup:'---'; ?></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                    
+                    
+                  </div>
+                <div class="row m0">
+                  <h6 style="color: #6539c0;font-size: 12px;">Terms and Conditions</h6>
+                  <ol style="padding-left: 25px;font-size: 11px; ">
+                    <li>Shaadibaraati.com is owned by Baraati Media & Entertainment Pvt Ltd.</li>
+                    <li>This Invoice is valid subject to Cheque realization only.</li>
+                    <li>All disputes are subject to bangalore jurisdiction only.</li>
+                    <li>Official support email id of Shaadi Baraati is support@shaadibaraati.com .</li>
+                  <?php if (!empty($result['terms'])) {
+                      foreach ($result['terms'] as $key => $value) { 
+                       echo '<li>'.$value->terms.'</li>';
+                       }
+                    } ?>
+                  </ol>
                 </div>
+              </div>
             </div>
-        </section>
-        
-        <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
-        <script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <script>
-  <?php $this->load->view('include/message.php'); ?>
-    
-  </script>
-      <script>
-    $(document).ready(function() {
-
-        $('select').formSelect();
-        $("#city-form").validate({
-            rules: {
-                city: {
-                    required: true,
-                },
-            },
-            messages: {
-                
-                city: "Please enter a city",
-            }
-        });
-    });
-    </script>
-        
-    </body>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
+</body>
 </html>

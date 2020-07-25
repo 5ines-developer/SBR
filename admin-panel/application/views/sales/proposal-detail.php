@@ -65,10 +65,10 @@
         <div class="col l12 m12 s12">
           <div class="row">
             <?php $this->load->view('include/menu.php'); ?>
-            <div class="col m12 s12 l8 ">
+            <div class="col m12 s12 l8">
               <a onclick="return confirm('Are you sure you want to Download the file?');" href="<?php echo base_url('vendors-proposal/download/'.$result['id'].'') ?>" class="waves-effect waves-light btn white-text  green hoverable">Download</a>
               <div class="card">
-                <div class="card-content">
+                <div class="card-content" style="padding: 30px 40px;height: 100%;">
                   <div class="form-container">
                     <table class="bordered">
                       <tbody>

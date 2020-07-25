@@ -11,17 +11,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/style.css">
     <!-- bar -->
     <style>
-    /* .bordered tr{border: 1px solid gray; }
-    .brt{border-right: 1px solid gray; }
-    .brb{ border-bottom: 1px solid gray; }
-    .no-border-b{ border-bottom :  none !important; }
-    .no-border-t{ border-top :  none !important; }
-    .no-border-tb{ border-top :  none !important; border-bottom :  none !important; } */
+  
     .bordered tr td {
     font-size: 12px;
     font-weight: 600;
-    /* padding-top: 4px;
-    padding-bottom: 4px; */
     }
     td, th {
     padding: 5px 5px; }
@@ -59,7 +52,7 @@
       <div class="col l12 m12 s12">
         <div class="row">
           <div class="card">
-            <div class="card-content">
+            <div class="card-content"  style="padding: 30px 40px;">
               <div class="form-container">
                 
                 <table class="bordered">

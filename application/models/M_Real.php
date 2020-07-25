@@ -12,6 +12,7 @@ class M_real extends CI_Model
     public function getProfile($per_page='',$page='')
     {
         $this->db->limit($per_page, $page);
+        $this->db->order_by('id', 'desc');
 
         $query = $this->db->get('real_wed');
         if ($query->num_rows() > 0) {
@@ -43,11 +44,17 @@ class M_real extends CI_Model
     }
     public function relatedWedding($id)
     {
-        $this->db->where('id!=',$id);
-        $this->db->limit(3); 
-        $query = $this->db->get('real_wed');
-        if(($query->num_rows()>0)){
-            return $query->result();
+        $this->db->where('id', $id);
+        $result = $this->db->get('real_wed')->row();
+        if (!empty($result)) {
+            $this->db->where('id >',$id);
+            $this->db->limit(3); 
+            $query = $this->db->get('real_wed');
+            if(($query->num_rows()>0)){
+                return $query->result();
+            }else{
+                return false;
+            }
         }else{
             return false;
         }

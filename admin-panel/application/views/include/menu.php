@@ -5,12 +5,7 @@
     $accsmenu = explode (",", $accs->menu);
     $access ='';
     $type = $this->session->userdata('sha_type');
-    foreach ($accsmenu as $key => $value) { 
-
-
-      
-
-
+    foreach ($accsmenu as $key => $value) {
     ?>
     <ul class="li-list ">
       <?php if ($type == '1') { ?>
@@ -56,6 +51,10 @@
       <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
       <div class="divider"></div>
       <?php } ?>
+
+      <?php if ($value == '28' || $type == '1') { ?>
+      <li class="<?php echo $this->uri->segment(1) == 'e-invite'?'active':'' ?>"><a href="<?php echo base_url('e-invite') ?>"><i class="fas fa-ribbon li-icon"></i>E-invite Data</a></li>
+      <?php }  ?>
 
 
       <?php if ($value == '15' || $type == '1') { ?>

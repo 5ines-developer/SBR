@@ -527,15 +527,32 @@ $this->load->model('m_vendors');
                                     <div v-if="videocount >= <?php echo $vid +  $totalrate ?>"
                                         class="col s12 m6 l4 mb15">
                                         <?php //youtube
-                                        if ($vids->type == '1') { ?>
+                                        if ($vids->type == '1') { 
+
+                                            $vidlink = explode("?v=",$vids->link);
+                                            if (!empty($vidlink[1])) {
+                                                $vidlinks = $vidlink[1];
+                                            }else{
+                                                $vidlinks = $vids->link;
+                                            } ?>
+
                                         <iframe width="100%" height="200"
-                                            src="https://www.youtube.com/embed/<?php echo $vids->link ?>"
+                                            src="https://www.youtube.com/embed/<?php echo $vidlinks ?>"
                                             frameborder="0"
                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen></iframe>
-                                        <?php }else if ($vids->type == '2'){ ?>
+                                        <?php }else if ($vids->type == '2'){ 
+
+                                            $vidlink = explode("facebook.com/",$vids->link);
+                                            if (!empty($vidlink[1])) {
+                                                $vidlinks = $vidlink[1];
+                                            }else{
+                                                $vidlinks = $vids->link;
+                                            }
+
+                                        ?>
                                         <iframe
-                                            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vids->link); ?>&show_text=0&width=476"
+                                            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace("/","%2F",$vidlinks); ?>&show_text=0&width=476"
                                             width="100%" height="200" style="border:none;overflow:auto" scrolling="no"
                                             frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
 
@@ -977,11 +994,13 @@ $this->load->model('m_vendors');
                                         <span class="v-lable <?php echo $lable_class ?>"><?php echo $lableImg . $pack ?></span>
                                             <img src="<?php echo (!empty($simi->profile_file))?base_url().$simi->profile_file:'' ?>">
                                         </div>
-                                        <div class="card-content simil-crd">
+                                        <div class="card-content ">
                                             <div class="row m0">
                                                 <div class="col s12 m6">
-                                                    <p class="m0 r-crd-title tit">
-                                                        <?php echo (!empty($simi->name))?$simi->name:'' ?></p>
+                                                     <p class="m0 r-crd-title tit">
+                                                        <span class="res-tit"><?php echo (!empty($value->name))?character_limiter($value->name, 30):''; ?></span>
+                                                        <span class="ver-icn"><?php echo (!empty($value->verified))?'&nbsp;<img class="tooltipped" data-position="bottom" data-tooltip="Address & Background Verified By Shaadi Baraati" src="'.base_url('assets/img/verified.svg').'" alt="">':''; ?></span>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="row m0">
@@ -1015,8 +1034,27 @@ $this->load->model('m_vendors');
                                                     }
                                                     echo (!empty($thecash))?'&#8377; '.$thecash:''; echo (!empty($value->price_for))?'&nbsp'.$value->price_for:' Per day'; ?></p>
                                                 </div>
-                                                <div class="cdivider hide-on-small-only"></div>
-                                                <div class="col s12 m6 hide-on-small-only">
+
+                                                <?php
+                                                if (!empty($value->v_chat)) { ?>
+                                                <div class="col s12 m12">
+                                                    <p class="m0 meet-avail">
+                                                        <a class="modal-trigger" href="#modal1">
+                                                            <i class="material-icons"> videocam </i>
+                                                            Available for Video Call
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                                <?php }else{ ?>
+                                                <div class="col s12 m12">
+                                                    <p class="m0 meet-avail">
+                                                        <br>
+                                                    </p>
+                                                </div>
+                                                <?php } ?>
+
+                                                <div class="cdivider"></div>
+                                                <div class="col s12 m6">
                                                     <p class=" r-crd-category"><?php echo $simi->category ?></p>
                                                 </div>
                                                 <div class="col s12 m6 hide-on-small-only">
@@ -1029,6 +1067,34 @@ $this->load->model('m_vendors');
                                 </div>
                             </div>
                         </div>
+
+
+                        <div id="modal1" class="modal meeting-modal">
+                                <div class="modal-content">
+                                    <div class="meet-top">
+                                        <h4 class="avail-tit"><span class="material-icons"> voice_chat </span>   Available for Video Call</h4>
+                                        <p>You can have a video call with this Vendor & discuss your details in Safe Environment.</p>
+                                    </div>
+                                    <div class="meet-bottom">
+                                        <p><b>Available for video call on:</b></p>
+                                        <ul>
+                                            <li>Google Meet/Hangouts</li>
+                                            <li>WhatsApp Call</li>
+                                            <li>Google Duo</li>
+                                        </ul>
+                                        <p>You will receive all details once you request <b>'Quotation'</b> or <b>'Contact Details'</b> of this Vendor.</p>
+                                        <h6 class="center-align">Doubtful because of COVID-19? We are here to help you!</h6>
+                                        <p>WhatsApp/Call with your personal Wedding Planning Expert – Now @ +91 8431282823
+                                            Tell us your doubts, requirements, budget and get best recommendations
+                                            Get the best deal in your budget and plan!
+                                        </p>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            
                         <?php  if ($sim == 3) break; }   } ?>
                     </div>
                 </div>

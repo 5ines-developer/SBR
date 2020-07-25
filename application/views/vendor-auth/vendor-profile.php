@@ -123,8 +123,8 @@ $this->load->model('m_vendorDetail');
                                             </div>
                                         </div>
                                         <span class="helper-text-vender"><b class="notes">Note</b>: Please select only image file
-                                            (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
-                                                size:</b> 512kb <span class="red-text">*</span></span>
+                                            (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max file
+                                                size:</b> 550KB <span class="red-text">*</span></span>
                                                 <div class="clearfix"></div>
                                                 <span class="helper-text red-text" >{{ bannerError }}</span>
                                     </div>
@@ -177,8 +177,9 @@ $this->load->model('m_vendorDetail');
                                             <div class="file-field input-field mm-drop">
                                                 <div class="input-images pad10" id="file" ></div>
                                                 <span class="helper-text-vender "><b class="notes">Note</b>: Please select only image file
-                                                            (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
-                                                                size:</b> 512kb <span class="red-text">*</span></span>
+                                                            (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max file
+                                                                size:</b> 550KB <br> <b class="notes">Max files
+                                                                </b> upto 30 files. <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -211,17 +212,25 @@ $this->load->model('m_vendorDetail');
 
                                             <div class="col l4 m3 s12">
                                             <div class="portfolio-img vd">
-                                                <iframe width="100%" src="https://www.youtube.com/embed/<?php echo $vids->link ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen height="200"></iframe>
+                                                <iframe width="100%" src="https://www.youtube.com/embed/<?php echo $vidlinks ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen height="200"></iframe>
                                                 <div class="vid-delete">
                                                     <a onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendor_detail/video_delete/').$vids->id?>"><i class="material-icons">delete</i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php }else if ($vids->type == '2'){  ?>
+                                        <?php }else if ($vids->type == '2'){ 
+                                            $vidlink = explode("facebook.com/",$vids->link);
+                                            if (!empty($vidlink[1])) {
+                                                $vidlinks = $vidlink[1];
+                                            }else{
+                                                $vidlinks = $vids->link;
+                                            }
+
+                                        ?>
 
                                             <div class="col l4 m3 s12">
                                             <div class="portfolio-img vd">
-                                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
+                                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vidlinks); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
                                                         allowTransparency="true" allowFullScreen="true"></iframe>
                                                 <div class="vid-delete">
                                                     <a onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendor_detail/video_delete/').$vids->id ?>">
@@ -253,9 +262,10 @@ $this->load->model('m_vendorDetail');
                                         <div >
                                             <div class="input-field col s12 l8">
                                                 <input type="text" name="vd_link" id="autocomplete-input"  @change="videoAdd" class="autocomplete" v-model="vlink">
-                                                <p id="youtube-link" style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
-                                                </p>
-                                                <p id="fb-link" style="font-size: 12px;">Eg : https://www.facebook.com/<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
+                                                <p id="youtube-link" style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=d-4cYdH_6kg <br>
+                                                <b>Note :</b> Please Upload the actual URL</p>
+                                                <p id="fb-link" style="font-size: 12px;">Eg : https://www.facebook.com/shaadibaraatiofficial/videos/712634046205862/<br>
+                                               <b> Note : </b> Please Upload only the share link</span>
                                                 </p>
                                                 <label for="autocomplete-input">Link<span class="red-text">*</span></label>
                                                 <p><span class="error"></span></p>
@@ -370,8 +380,8 @@ $this->load->model('m_vendorDetail');
                                                     </div>
                                                 </div>
                                                 <span class="helper-text-vender"><b class="notes">Note</b>: Please select only image file
-                                                            (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max filesiemens
-                                                                size:</b> 512kb <span class="red-text">*</span></span>
+                                                            (eg: .jpg, .png, .jpeg etc.) <br> <b class="notes">Max file
+                                                                size:</b> 550KB <span class="red-text">*</span></span>
                                             </div>
 
                                             <?php if ($value->offer) { ?>

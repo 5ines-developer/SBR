@@ -32,6 +32,9 @@ html {
     margin-top: 0px;
 }
 
+.mt10{
+    margin-top: 10px;
+}
 .header-ul a {
     color: black;
     font-size: 14px;
@@ -6566,4 +6569,203 @@ padding-left: 40px;
     box-shadow: 0px 5px 20px 0px #d5d5d5;
     transition: 1s;
 }
+
+
+/* home page popup modal */
+
+#pop-modal{
+    background-image: url("http://localhost/shaadibaraati/assets/img/popup/pop-background.jpg");
+    z-index: 999999999;
+    opacity: 1;
+    top: 10%;
+    transform: scaleX(1) scaleY(1);
+    max-height: 100%;
+    width: 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#pop-modal .top-text{
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center; 
+}
+
+#pop-modal.modal .modal-content {
+    padding: 10px 25px;
+}
+
+#pop-modal .pop-mod-header{
+    font-size: 34px;
+    font-weight: 600;
+    position: relative;
+    line-height: 22px;
+    text-align: center;
+}
+
+.pop-mod-header span{
+    font-size: 27px;
+    font-weight: 600;
+}
+
+
+#pop-modal .pop-mod-header::after {
+    background-color: #ffd734;
+    padding: 7px 0;
+    content: "";
+    position: relative;
+    top: -20px;
+    display: inline-block;
+    z-index: -1;
+    width: 87%;
+}
+
+#pop-modal  .pop-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    background-color: #000;
+}
+
+#pop-modal  .modal .modal-content {
+    padding: 24px 35px;
+}
+#pop-modal .pop-sharedet {
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    padding: 2px 2px 2px 15px;
+}
+
+#pop-modal .pop-sharedet.ft-tx{
+    display: inline-block;
+    text-align: center;
+}
+
+#pop-modal .tabs {
+    background-color: transparent;
+}
+
+#pop-modal .tabLink {
+    color: white;
+    padding: 0 27px;
+    height: auto;
+    line-height: 30px;
+    font-weight: 700;
+    background-color: red;
+    width: 95%;
+}
+
+#pop-modal .tab-ssb-inner {
+    width: calc(100% / 3);
+    padding: 5px 27px 5px 16px;
+    transition: .3s;
+    cursor: auto;
+}
+
+#pop-modal .tab-ssb {
+    display: flex;
+}
+#pop-modal .tab-ssb-inner img {
+    height: 65px;
+    float: left;
+}
+
+#pop-modal .tabs .indicator {
+    position: unset;
+    bottom: 0;
+    height: 0;
+    background-color: transparent;
+    will-change: unset;
+}
+
+#pop-modal .tab-wed-vendrs {
+    background-color: red;
+    padding: 5px 0px;
+    border-radius: 20px;
+    margin-top: 40px;
+    margin-left: 25px;
+}
+
+#pop-modal .tab-wed-vendrs ul {
+    display: inline-block;
+    padding: 0 4px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 0px;
+    text-align: center;
+}
+#pop-modal .tab-wed-vendrs .tab-wed-head {
+    text-align: center;
+    color: #fff;
+    margin-top: 5px;
+}
+
+#pop-modal .tab-wed-vendrs ul li{
+    display: inline-block;
+    padding: 2px 8px;
+    text-align: justify;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#pop-modal .tab-wed-yes a {
+    color: #fff;
+    background-color: red;
+    box-shadow: none;
+    border-radius: 20px;
+    font-weight: 700;
+    text-transform: unset;
+    width: 23%;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+}
+#pop-modal .tab-right-ul{
+    margin-left: 40px;
+    list-style-type: disc;
+    margin-bottom: 0;
+}
+
+#pop-modal .tab-right-ul li{
+    list-style-type: disc;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#pop-modal a:hover{
+    background-color: #7ed957;
+}
+
+#pop-modal .tabLink.active {
+    background-color: #7ed957 !important;
+}
+
+#pop-modal .tab-ssb-inner2 img{
+    height: 120px;
+    position: relative;
+    left: 74%;
+    top: 46px;
+}
+
+#pop-modal .tab-ssb-inner3 img{
+height: 300px;
+position: relative;
+top: -114px;
+z-index: -1;
+}
+
+#pop-modal #test4 .tab-ssb {
+    display: flex;
+    height: 172px;
+}
+
+
+
+
+.c19-popup {
+    display: none;
+}
+
+
 

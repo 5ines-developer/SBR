@@ -314,7 +314,7 @@ $this->load->model('m_vendors');
                                                 </div>
                                                 <span class="helper-text"><b>Note</b>: Please select only image file
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
-                                                        size:</span> 2MB <span class="red-text">*</span></span>
+                                                        size:</span> 550KB <span class="red-text">*</span></span>
                                             </div>
 
                                              <?php if (!empty($result->profile_file)) {?> 
@@ -498,15 +498,12 @@ $this->load->model('m_vendors');
                                                 <div class="input-images"></div>
                                                 <span class="helper-text" data-error="wrong" data-success="right"><b>Note</b>: Please select only image file (eg:
                                                     .jpg, .png, .jpeg, .gif etc.) <br> <span class="bold">Max file
-                                                        size:</span> 2MB <span class="red-text">*</span></span>
+                                                        size:</span> 550KB <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                         <input type="hidden" value="<?php echo $result->id ?>" name="id">
                                         <div class="col s12">
-                                            <?php
-                                                                        echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''
-                                                                        ?>
-                                                <?php ?>
+                                            <?php echo ($this->session->flashdata('formerror'))? '<span class="red-text">'.$this->session->flashdata('formerror').'</span>' : ''; ?>
                                         </div>
                                         <input type="hidden" name="vendor_id" value="<?php echo random_string('alnum',10) ?>">
                                         <div class="col s12 center mtb20">
@@ -545,18 +542,28 @@ $this->load->model('m_vendors');
                                                 <div class="portfolio-img video-thumb">
                                                     <iframe width="100%" height="200" src="https://www.youtube.com/embed/<?php echo $vidlinks ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     <div class="vid-delete">
-                                                        <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>">
+                                                        <a  onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>">
                                                             <i class="fas fa-trash"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php }else if ($vids->type == '2'){  ?>
+                                            <?php }else if ($vids->type == '2'){  
+
+                                            $vidlink = explode("facebook.com/",$vids->link);
+                                            if (!empty($vidlink[1])) {
+                                                $vidlinks = $vidlink[1];
+                                            }else{
+                                                $vidlinks = $vids->link;
+                                            }
+
+
+                                            ?>
                                             <div class="col s12 l3 m6 ">
                                                 <div class="portfolio-img video-thumb">
-                                                    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vids->link); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
+                                                    <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F<?php echo str_replace(" / ","%2F ",$vidlinks); ?>&show_text=0&width=476" width="auto" height="200" style="border:none;overflow:auto" scrolling="no" frameborder="0"
                                                         allowTransparency="true" allowFullScreen="true"></iframe>
                                                     <div class="vid-delete">
-                                                        <a href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>"><i class="fas fa-trash"></i></a>
+                                                        <a  onclick="return confirm('Are you sure you want to delete this item?');"  href="<?php echo base_url('vendors/video_delete/').$vids->id.'/'.$result->id ?>"><i class="fas fa-trash"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -581,8 +588,8 @@ $this->load->model('m_vendors');
                                         <div class="row m0" id="youtube-link">
                                             <div class="input-field col s12 l8">
                                                 <input type="text" name="vd_link" id="autocomplete-input" class="autocomplete">
-                                                <p style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">4GuiHfZDjtc</span>
-                                                </p>
+                                                <p style="font-size: 12px;">Eg : https://www.youtube.com/watch?v=d-4cYdH_6kg <br>
+                                                <b>Note :</b> Please Upload the actual URL </p>
                                                 <label for="autocomplete-input">Link<span
                                                         class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('vd_link'); ?></span></p>
@@ -592,8 +599,8 @@ $this->load->model('m_vendors');
 
                                             <div class="input-field col s12 l8">
                                                 <input type="text" name="vdfb_link" id="autocomplete-input1" class="autocomplete">
-                                                <p style="font-size: 12px;">Eg : https://www.facebook.com/<span style="background-color: cadetblue; color: white; padding: 5px; font-size: 14px;">countychampionship/videos/349068499381369/</span>
-                                                </p>
+                                                <p style="font-size: 12px;">Eg : https://www.facebook.com/shaadibaraatiofficial/videos/712634046205862/<br>
+                                               <b> Note : </b> Please Upload only the share link</p>
                                                 <label for="autocomplete-input1">Link<span
                                                         class="red-text">*</span></label>
                                                 <p><span class="error"><?php echo form_error('vd_link'); ?></span></p>
@@ -684,7 +691,7 @@ $this->load->model('m_vendors');
                                                 </div>
                                                 <span class="helper-text"><b>Note</b>: Please select only image file
                                                     (eg: .jpg, .png, .jpeg etc.) <br> <span class="bold">Max file
-                                                        size:</span> 2MB <span class="red-text">*</span></span>
+                                                        size:</span> 550KB <span class="red-text">*</span></span>
                                             </div>
                                         </div>
                                         <div class="col s12">
