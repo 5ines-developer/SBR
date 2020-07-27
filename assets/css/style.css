@@ -6575,7 +6575,7 @@ padding-left: 40px;
 
 #pop-modal{
     background-image: url("http://localhost/shaadibaraati/assets/img/popup/pop-background.jpg");
-    z-index: 999999999;
+    z-index: 999999999 !important;
     opacity: 1;
     top: 10%;
     transform: scaleX(1) scaleY(1);
@@ -6590,9 +6590,7 @@ padding-left: 40px;
     text-align: center; 
 }
 
-#pop-modal.modal .modal-content {
-    padding: 10px 25px;
-}
+
 
 #pop-modal .pop-mod-header{
     font-size: 34px;
@@ -6627,7 +6625,7 @@ padding-left: 40px;
     background-color: #000;
 }
 
-#pop-modal  .modal .modal-content {
+#pop-modal  .modal .modal-content.pmcd {
     padding: 24px 35px;
 }
 #pop-modal .pop-sharedet {
@@ -6761,11 +6759,148 @@ z-index: -1;
 }
 
 
+#pop-modal .select-wrapper {
+    background-color: #f9d8d1;
+}
 
-
-.c19-popup {
-    display: none;
+#pop-modal .pop-next{
+color: #fff;
+background-color: red;
 }
 
 
+#pop-modal .dropdown-content li > a, #pop-modal .dropdown-content li > span {
+    font-size: 13px;
 
+}
+
+#pop-modal  .select-wrapper input.select-dropdown {
+    font-size: 13px;
+}
+
+
+#pop-modal  input::placeholder {
+    color: black;
+    opacity: 1;
+    font-size: 13px;
+}
+
+.datepicker-controls .select-wrapper {
+    background-color: transparent !important;
+}
+
+#pop-modal .datepicker-date-display {
+    background-color: #d0021b;
+}
+
+#pop-modal .datepicker-cancel, .datepicker-clear, .datepicker-today, .datepicker-done {
+    color: #202020 !important;
+    padding: 0 1rem;
+
+}
+
+#pop-modal .datepicker-cancel:hover, .datepicker-clear:hover, .datepicker-today:hover, .datepicker-done:hover {
+    background-color: #a70015;
+    color: #fff !important;
+}
+
+
+.pop-date .modal-overlay {
+    height: 150%;
+}
+
+.tab-ssb-inner3{
+    height: 175px;
+
+}
+
+/* mobile device
+*/
+    /* home page popup */
+@media(max-width:767px) {
+
+    .pop-modal{
+        width: 95% !important;
+    }
+
+    .pop-modal.modal .modal-content.pmcd {
+        padding: 8px;
+    }
+    .pop-modal .top-text {
+        font-size: 12px  !important;
+        font-weight: 600  !important;
+        text-align: center  !important;
+    }
+    .pop-modal .pop-mod-header {
+        font-size: 13px !important;
+    }
+
+    .pop-mod-header span {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .pop-modal .pop-mod-header::after {
+        padding: 3px 0;
+    }
+
+    .pop-modal .pop-sharedet {
+        font-weight: 600  !important;
+        padding: 2px 2px 2px 10px  !important;
+        font-size: 12px;
+    }
+    .pop-modal .tabLink{
+        padding: 0 2px  !important;
+        font-size: 10px  !important;
+        height: 30px  !important;
+        color: #fff  !important;
+        width: 100% !important;
+    }
+
+    .pop-modal .tab.s4{
+        padding: 4px;
+    }
+
+    .pmp0{
+        padding: 0px !important;
+    }
+    .pop-modal .tab-ssb-inner img {
+        height: 35px !important;
+    }
+    .pop-modal .tab-ssb-inner span{
+        font-size: 10px;
+    }
+    .pop-modal .tab-wed-vendrs {
+        margin-top: 10px !important;
+        margin-left: 0px !important;
+    }
+    .pmpr0{
+        padding-right: 0px !important;
+    }
+
+    .pop-modal .tab-wed-head {
+        font-size: 11px;
+        font-weight: 600;
+    }
+    .pop-modal .tab-wed-vendrs ul li {
+        padding: 2px 3px !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+    }
+
+    .pop-modal .tab-wed-yes a {
+        border-radius: 20px !important;
+        font-weight: 600 !important;
+        width: 30% !important;
+        height: 25px !important;
+        line-height: 25px !important;
+    }
+    .pop-modal .tab-right-ul {
+        margin-left: 12px !important;
+        padding-right: 4px !important;
+    }
+
+    .pop-modal .tab-right-ul li {
+        list-style-type: none !important;
+    }
+}

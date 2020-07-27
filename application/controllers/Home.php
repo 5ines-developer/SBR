@@ -23,6 +23,9 @@ class Home extends CI_Controller {
         $data['category']   = $this->m_home->getCategory();
         $data['real']       = $this->m_home->realWed();
         $data['ban']       = $this->m_home->hom_banget();
+        $this->session->unset_userdata('pophone');
+        $this->session->unset_userdata('poemail');
+        $this->session->unset_userdata('poname');
         $this->m_home->insertVisitor($this->input->ip_address());
 		$this->load->view('site/index', $data, FALSE);
     }
@@ -507,6 +510,32 @@ class Home extends CI_Controller {
                   redirect('home/landing_page','refresh');
             }
         }
+    }
+
+    public function popSetuser($value='')
+    {
+        $poname     = $this->input->post('poname');
+        $pophone    = $this->input->post('pophone');
+        $poemail     = $this->input->post('poemail');
+        if (!empty($poname)) {
+            $this->session->unset_userdata('poname'); $bud_ses = array('poname' => $poname ); 
+            $this->session->set_userdata($bud_ses);
+        }
+        if (!empty($pophone)) {
+            $this->session->unset_userdata('pophone'); $bud_ses = array('pophone' => $pophone ); 
+            $this->session->set_userdata($bud_ses);
+        }
+        if (!empty($poemail)) {
+            $this->session->unset_userdata('poemail'); $bud_ses = array('poemail' => $poemail ); 
+            $this->session->set_userdata($bud_ses);
+        }
+
+        if (!empty($this->session->userdata('poname')) && !empty($this->session->userdata('pophone')) && !empty($this->session->userdata('poemail'))) {
+            $output = '1';
+        }else{
+            $output = '';
+        }
+        echo json_encode($output);
     }
 
 

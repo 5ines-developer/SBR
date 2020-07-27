@@ -567,9 +567,9 @@
       <!-- Modal Trigger -->
 
   <!-- Modal Structure -->
-    <div id="pop-modal" class="modal">
+    <div id="pop-modal" class="modal pop-modal">
         <div class="pop-overlay"></div>
-        <div class="modal-content">
+        <div class="modal-content pmcd">
             <p class="top-text">Welcome to <span style="color: #d0021b">Shaadibaraati.com</span> - India's Most Trusted Online Wedding Market</p>
             <div class="row m0">
                 <div class="col l6 m6 s6">
@@ -581,16 +581,16 @@
             </div>
             <p class="top-text">Hassle Free Planning & Booking at Our Guaranteed Best Prices.</p>
             <div class="row">
-                <div class="col s12">
+                <div class="col l12 m12 s12">
                   <ul class="tabs">
-                    <li class="tab col s4"><a class="tabLink" href="#test1">Wedz Assist</a></li>
-                    <li class="tab col s4"><a class="tabLink" class="active" href="#test2">Basic Details</a></li>
-                    <li class="tab col s4"><a class="tabLink" href="#test4">Wedding Details</a></li>
+                    <li class="tab col l4 m4 s4"><a class="tabLink pop-t1" href="#pop-test1">Wedz Assist</a></li>
+                    <li class="tab col l4 m4 s4"><a class="tabLink pop-t2" class="active" href="#pop-test2">Basic Details</a></li>
+                    <li class="tab col l4 m4 s4"><a class="tabLink pop-t3" href="#pop-test3">Wedding Details</a></li>
                   </ul>
                 </div>
-                <div id="test1" class="col s12">
+                <div id="pop-test1" class="col l12 m12 s12 pmp0">
                     <div class="row">
-                        <div class="col l6 m6 s6">
+                        <div class="col l6 m6 s6 pmpr0">
                             <p class="top-text mt0">Works Book a vendors in simple steps</p>
                             <div class="tab-ssb">
                                 <div class="tab-ssb-inner">
@@ -620,10 +620,10 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col l6 m6 s6">
+                        <div class="col l6 m6 s6 pmp0">
                             <p class="top-text">Need help with wedding Planning vendor selection?</p>
                             <div class="center-align tab-wed-yes">
-                                <a class="waves-effect waves-light btn">Yes</a>
+                                <a class="waves-effect waves-light btn" href="#test1" >Yes</a>
                                 <a class="waves-effect waves-light btn">No</a>
                             </div>
                             <ul class="tab-right-ul">
@@ -643,7 +643,7 @@
                         <p class="pop-sharedet ft-tx m0 center">Share your details below & get upto 30% off</p> 
                     </div>
                 </div>
-                <div id="test2" class="col s12">
+                <div id="pop-test2" class="col s12">
                     <div class="row">
                         <div class="col l6 m6 s6">
                             <div class="tab-ssb">
@@ -668,9 +668,31 @@
                             </div>
                         </div>
                         <div class="col l6 m6 s6">
-                            <p class="top-text">Fill your details to view our list of suggestions Share your details below & get upto 30% off</p>
+                            <p class="top-text mb0">Fill your details to view our list of suggestions Share your details below & get upto 30% off</p>
                             <div class="center-align tab-wed-yes">
-                                
+                                <div class="col s12 m12 l10 offset-l1">
+                                    <div class="row m0">
+                                        <div class="col l12 m12 s12">
+                                            <form id="pop-form" method="post">
+                                                <div class="input-field mb0">
+                                                    <input id="poname" type="text" class="validate" placeholder="Name" name="poname">
+                                                    <span class="left ponameError red-text"></span>
+                                                </div>
+                                                <div class="input-field mb0">
+                                                    <input id="pophone" type="text" class="validate" placeholder="Phone" name="pophone">
+                                                    <span class="left pophoneError red-text"></span>
+                                                </div>
+                                                <div class="input-field mb0">
+                                                    <input id="poemail" type="text" class="validate" placeholder="Email" name="poemail">
+                                                    <span class="left poemailError red-text"></span>
+                                                </div>
+                                                <div class="input-field" style="margin-top: 2rem;">
+                                                     <button style="border-radius: 0px" class="waves-effect waves-light btn pop-next">Next</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -678,7 +700,7 @@
                         <p class="pop-sharedet ft-tx m0 center">Share your details below & get upto 30% off</p> 
                     </div>
                 </div>
-                <div id="test4" class="col s12">
+                <div id="pop-test3" class="col s12">
                     <div class="row">
                         <div class="col l6 m6 s6">
                             <div class="tab-ssb">
@@ -705,7 +727,48 @@
                         <div class="col l6 m6 s6">
                             <p class="top-text">Get customized list of suggestions according to your preference</p>
                             <div class="center-align tab-wed-yes">
-                                
+                                <div class="row">
+                                        <div class="col l12 m12 s12">
+                                            <div class="input-field">
+                                                <select name="pop_cit" required="" id="pop_cit" class="pop-select">
+                                                    <option value="">Select Your City</option>
+                                                    <?php if (!empty(cities())) {
+                                                        foreach (cities() as $vcity => $vcities) {
+                                                            echo '<option value="'.$vcities->city.'">'.$vcities->city.'</option>';
+                                                        }
+                                                    } ?>
+                                                </select>
+                                            </div>
+                                            <div class="input-field">
+                                                <select name="pop_cat" required="" id="pop_cat" class="pop-select">
+                                                    <option value="">Select a Service</option>
+                                                    <?php if (!empty(vendor_category())) {
+                                                        foreach (vendor_category() as $vkey => $vvalue) {
+                                                            echo '<option value="'.$vvalue->category.'">'.$vvalue->category.'</option>';
+                                                        }
+                                                    } ?>
+                                                </select>
+                                            </div>
+                                            <div class="input-field">
+                                                <select required name="pop_bud">
+                                                    <option value="" selected>Budget</option>
+                                                    <option value="Below 50k">Below 50k</option>
+                                                    <option value="Upto 1 Lakh">Upto 1 Lakh</option>
+                                                    <option value="1lakh - 5lakh">1 Lakh - 5 Lakh</option>
+                                                    <option value="5lakh - 10lakh">5 Lakh - 10 Lakh</option>
+                                                    <option value="10lakh - 20lakh">10 Lakh - 20 Lakh</option>
+                                                    <option value="25lakh - 50lakh">25 Lakh - 50 Lakh</option>
+                                                    <option value="Above 50 lakh">Above 50 Lakh</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-field pop-date">
+                                                <input id="pop_bud" type="text" name="pop_bud" placeholder="Event Date" class="validate datepicker" required>
+                                            </div>
+                                            <div class="input-field">
+                                                    <textarea id="textarea1" class="materialize-textarea " placeholder="Message" name="qmessage"></textarea>
+                                            </div>
+                                        </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -738,9 +801,15 @@
 
         $(window).on('load', function () {
             var Modalelem = document.querySelector('#pop-modal');
-            var instance = M.Modal.init(Modalelem,{ dismissible: false });
+            var instance = M.Modal.init(Modalelem,{ dismissible: true });
             instance.open();
        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.pop-select');
+            var instances = M.FormSelect.init(elems);
+        });
         
           new SlimSelect({ select: '.input-field select'});
           new SlimSelect({ select: '.input-field select#sel-cato'});
@@ -937,15 +1006,15 @@
 
     $(document).ready(function() {
 
-        // var cookieArr = document.cookie.split(";");
-        // var cookiePair = cookieArr[0].split("=");
+        var cookieArr = document.cookie.split(";");
+        var cookiePair = cookieArr[0].split("=");
 
-        // if (cookiePair[1] == '') {
-        //     $(".c19-popup").css('display', 'block');
-        // }else{
-        //     $(".c19-popup").css('display', 'none');
+        if (cookiePair[1] == '') {
+            $(".c19-popup").css('display', 'block');
+        }else{
+            $(".c19-popup").css('display', 'none');
 
-        // }
+        }
 
 
 
@@ -977,7 +1046,36 @@
             document.cookie = "covid=Christopher; max-age=" + 7200;
         });
 
+        $(document).on('submit', '#pop-form', function(e) {
+            e.preventDefault();
+            $('.ponameError > span').remove();
+            $('.pophoneError > span').remove();
+            $('.poemailError > span').remove();
+            var poname  = $('input[name="poname"]').val();
+            var pophone = $('input[name="pophone"]').val();
+            var poemail = $('input[name="poemail"]').val();
+            if (poname == '')  {  $('.ponameError').append("<span>Please Enter Your Name"); }
+            if (pophone == '') { $('.pophoneError').append("<span>Please Enter Your Phone Number"); }
+            if (poemail == '') { $('.poemailError').append("<span>Please Enter Your Email"); }
+            var DataString = $(this).serialize();
+            $.ajax({
+                url: '<?php echo base_url()?>home/popSetuser',
+                type: 'POST',
+                dataType: 'html',
+                data: DataString,
+                success: function(data) {
+                    if (data !='') {
+                        $('#pop-test3').addClass('active');
+                        $("#pop-test3").attr("style", "display:block");
+                        $('.pop-t3').addClass('active');
+                        $('#pop-test2').attr("style", "display:none");
+                        $('#pop-test3').removeClass('active');
+                        $('.pop-t3').removeClass('active');
+                    }
 
+                }
+            });
+        });
     });
     </script>
 </body>

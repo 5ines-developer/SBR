@@ -326,7 +326,6 @@
 
         $(document).on('click','#not_decide',function() {
             var date = 'Not Decided';
-            alert('ok')
             $.ajax({
                 url: '<?php echo base_url()?>home/setuser',
                 type: 'Get',

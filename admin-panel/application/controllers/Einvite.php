@@ -15,7 +15,7 @@ class Einvite extends CI_Controller {
         $acces = array();
         $acces = explode (",", $accs->menu);
         
-        if (in_array("2", $acces))
+        if (in_array("28", $acces))
         {
             $this->access = true;
 
@@ -30,9 +30,6 @@ class Einvite extends CI_Controller {
 	{
 		$data['title']  = 'E-invite - Shaadibaraati';
 		$data['result'] = $this->m_invite->getinvite();
-		echo "<pre>";
-		print_r ($data['result']);
-		echo "</pre>";
 		$this->load->view('einvite/list', $data, FALSE);
 	}
 

@@ -245,21 +245,21 @@
                           <table class="no-borders">
                             <tr>
                               <td>Taxable Amount</td>
-                              <td><?php echo (!empty($result['amt_after_disc']))?'₹ '.$result['amt_after_disc']:'---'; ?></td>
+                              <td><?php echo (!empty($result['amt_after_disc']))?'&nbsp;&nbsp;₹ '.$result['amt_after_disc']:'---'; ?></td>
                             </tr>
                             <?php if (!empty($result['gst']) && $result['state'] == '18') { ?>
                             <tr>
                               <td>CGST</td>
-                              <td><?php echo (!empty($result['cgst']))?'₹ '.$result['cgst']:'---'; ?></td>
+                              <td><?php echo (!empty($result['cgst']))?'(+) &nbsp; ₹ '.$result['cgst']:'---'; ?></td>
                             </tr>
                             <tr>
                               <td>SGST</td>
-                              <td><?php echo (!empty($result['sgst']))?'₹ '.$result['sgst']:'---'; ?></td>
+                              <td><?php echo (!empty($result['sgst']))?'(+) &nbsp; ₹ '.$result['sgst']:'---'; ?></td>
                             </tr>
                             <?php }else if (!empty($result['gst']) && $result['state'] != '18') { ?>
                             <tr>
                               <td>IGST</td>
-                              <td><?php echo (!empty($result['igst']))?'₹ '.$result['igst']:'---'; ?></td>
+                              <td><?php echo (!empty($result['igst']))?'(+) &nbsp; ₹ '.$result['igst']:'---'; ?></td>
                             </tr>
                             <?php } ?>
 
@@ -270,7 +270,7 @@
                               $tdsAmount = (($result['amt_after_disc'] + $result['gst']) * $result['tds'])/100;
 
 
-                              echo (!empty($result['tds']))?'₹ '.$tdsAmount:'---'; ?></td>
+                              echo (!empty($result['tds']))?'(-) &nbsp; ₹ '.$tdsAmount:'---'; ?></td>
                             </tr>
                             
                             <tr style="border-top: 2px solid black;">
@@ -279,7 +279,7 @@
                                 $etax = (!empty($result['etax']))?(int)$result['etax']:0;
                                 $tots = (!empty($result['total']))?$result['total']:0;
                                 $totrup = (int)$tots + (int)$etax;
-                              echo (!empty($totrup))?'₹ '.$totrup:'---'; ?></td>
+                              echo (!empty($totrup))?'&nbsp;&nbsp;₹ '.$totrup:'---'; ?></td>
                             </tr>
                           </table>
                         </td>
