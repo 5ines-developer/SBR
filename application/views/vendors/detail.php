@@ -97,8 +97,15 @@ $this->load->model('m_vendors');
                                             </div>
                                         </div>
                                         <div class="col s12 m7 l8">
-                                            <span
-                                                class="mb10 location"><?php echo (!empty($value->city))?$value->city:''; ?></span>
+                                            <span class="mb10 location"><?php echo (!empty($value->city))?$value->city:''; ?></span>
+                                            <p class="mb10 location"><?php 
+
+                                            $kcat = (!empty($value->category))?$value->category:'';
+                                            $kcity = (!empty($value->city))?$value->city:'';
+
+
+                                            echo $kcat.' in '.$kcity; ?></p>
+
                                             <p><?php echo (!empty($value->address))?$value->address:''; ?> </p>
                                         </div>
 

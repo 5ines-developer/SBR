@@ -7,21 +7,15 @@ $this->load->model('m_vendors');
 <!DOCTYPE html>
 <html lang="en">
     <?php
-    $seo = seo();
     $m_titl = '';
     $m_descp = '';
     $m_key = '';
     $m_can = '';
-
-    if (!empty($seo[0])) {
-        foreach ($seo as $key => $value) {
-            if($value->page == 'Vendors' || $value->page == 'Vendors'){
-                $m_titl     = $value->title;
-                $m_descp    = $value->m_desc;
-                $m_key      = $value->keywords;
-                $m_can      = $value->can_link; 
-            }
-        }
+    if (!empty($content)) {
+    $m_titl     = (!empty($content->title))?$content->title:'';
+    $m_descp    = (!empty($content->meta_desc))?$content->meta_desc:'';
+    $m_key      = (!empty($content->keywords))?$content->keywords:'';
+    $m_can      = (!empty($content->canoncial))?$content->canoncial:'';
     }
     ?>
 <head>

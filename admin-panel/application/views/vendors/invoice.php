@@ -267,19 +267,17 @@
                               <td>TDS</td>
                               <td><?php 
 
-                              $tdsAmount = (($result['amt_after_disc'] + $result['gst']) * $result['tds'])/100;
+                              $tdsAmount = (((int)$result['amt_after_disc'] + (int)$result['gst']) * (int)$result['tds'])/100;
 
 
-                              echo (!empty($result['tds']))?'(-) &nbsp; ₹ '.$tdsAmount:'---'; ?></td>
+                              echo (!empty($result['tds']))?'(-) &nbsp; ₹ '.(int)$tdsAmount:'---'; ?></td>
                             </tr>
                             
                             <tr style="border-top: 2px solid black;">
                               <td>Total</td>
                               <td><?php
-                                $etax = (!empty($result['etax']))?(int)$result['etax']:0;
-                                $tots = (!empty($result['total']))?$result['total']:0;
-                                $totrup = (int)$tots + (int)$etax;
-                              echo (!empty($totrup))?'&nbsp;&nbsp;₹ '.$totrup:'---'; ?></td>
+                                $tots = (!empty($result['total']))?(int)$result['total']:0;
+                              echo (!empty($tots))?'&nbsp;&nbsp;₹ '.$tots:'---'; ?></td>
                             </tr>
                           </table>
                         </td>

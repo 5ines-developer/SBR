@@ -40,21 +40,16 @@ class Search extends CI_Controller {
 			$data['content'] = $this->m_search->conentGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$data['foot'] = $this->m_search->footGet(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$this->load->view('vendors/category', $data, FALSE);
-		}
-		else{
+		} else{
 			$per_page = 40;
-			
 			$rows = $this->m_search->rowsCount(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category));
 			$data['vendors']    = $this->m_search->getSearch(ucwords(str_replace("-"," ",$city)),str_replace("-"," ",$category),$per_page,$page);
-			
-			
 
 			$config['base_url'] = base_url().'vendors/'.$city.'/'.$category;
 			$config['total_rows'] = (!empty($rows)? count($rows) : '0');
 			$config['per_page'] = 40;
 			$config['reuse_query_string'] = TRUE;
 			$config['num_links'] = 15;
-
 			$config['full_tag_open'] = '<div class="center-align"><ul class="pagination">';
 			$config['full_tag_close'] = '</ul></div>';
 

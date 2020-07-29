@@ -223,7 +223,7 @@ $this->load->model('m_vendors');
                         <div class="card scrollspy" id="personal-detail">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/insert" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/insert" method="post" id="vendor-form" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">Profile</p>
                                         </div>
@@ -434,7 +434,7 @@ $this->load->model('m_vendors');
                         <div class="card scrollspy" id="about">
                             <div class="card-content">
                                 <div class="form-container">
-                                    <form action="<?php echo base_url() ?>vendors/insert_about" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-about" enctype="multipart/form-data">
+                                    <form action="<?php echo base_url() ?>vendors/insert_about" method="post" id="vendor-about" enctype="multipart/form-data">
                                         <div class="row m0">
                                             <p class="bold  black-text  mb10 h6">About Vendor</p>
                                         </div>
