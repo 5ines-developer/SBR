@@ -538,6 +538,57 @@ class Home extends CI_Controller {
         echo json_encode($output);
     }
 
+    public function popsetUsers($value='')
+    {
+        $pop_cit    = $this->input->post('pop_cit');
+        $pop_cat    = $this->input->post('pop_cat');
+        $pop_bud    = $this->input->post('pop_bud');
+        $pop_date   = $this->input->post('pop_date');
+        $pop_msg    = $this->input->post('pop_msg');
+
+        $poname     =   $this->session->userdata('poname');
+        $pophone    =   $this->session->userdata('pophone');
+        $qemail     =   $this->session->userdata('poemail');
+        
+
+            $insert = array(
+              'firstname'  =>  $poname , 
+              'email'      =>  $qemail , 
+              'phone'      =>  $pophone , 
+              'service'    =>  $pop_cat ,
+              'date'       =>  $pop_date,
+              'city'       =>  $pop_cit,
+              'budget'     =>  $pop_bud,
+              'message'    =>  $pop_msg,
+              'uniq'       =>  random_string('alnum',10),
+            );
+            $data['result'] = $insert;
+            $data['output']  =  $this->m_home->quoterequest($insert);
+            if (!empty($data['output'])) {
+                $this->load->config('email');
+                $this->load->library('email');
+                $to = $this->config->item('vr_to');
+                $cc = $this->config->item('vr_cc');
+                $from = $this->config->item('smtp_user');
+                $msg = $this->load->view('email/getquote', $data, true);
+                $this->email->set_newline("\r\n");
+                $this->email->from($from, 'ShaadiBaraati');
+                $this->email->to($to);
+                $this->email->to($to);
+                $this->email->cc($cc);
+                $this->email->subject('Free Quote request');
+                $this->email->message($msg);
+                if ($this->email->send()) {
+                    $output = array('status' => 1, 'msg' => 'Your request has been submitted successfully, br /> Our team will reach you soon.');
+                } else {
+                    $output = array('status' => 0, 'msg' => 'Something went wrong please try again later.');
+                }
+            }else{
+                  $output = array('status' => 0, 'msg' => 'Something went wrong please try again later.');
+            }
+            echo json_encode($data);
+    }
+
 
 
 

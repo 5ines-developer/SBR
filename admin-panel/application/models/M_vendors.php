@@ -516,6 +516,21 @@ class M_vendors extends CI_Model {
         return $this->db->where('id', $eid)->update('vendor',array('password' => $pass ));
     }
 
+    public function updateSeo($insert='')
+    {
+    	$query = $this->db->where('ven_id', $insert['ven_id'])->get('vendor_seo')->row();
+    	if (!empty($query)) {
+    		return $this->db->where('ven_id', $insert['ven_id'])->update('vendor_seo',$insert);
+    	}else{
+    		return $this->db->insert('vendor_seo', $insert);
+    	}
+    }
+
+    public function getvendSeo($id='')
+    {
+    	return $this->db->where('ven_id', $id)->get('vendor_seo')->row();
+    }
+
 
 
 	

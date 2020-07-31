@@ -72,6 +72,20 @@ class Vendor_discount extends CI_Controller {
         $this->load->view('vendors/invoice_send',$data);
     }
 
+    
+
+    public function editInvoice($id='')
+    {
+       $output = $this->m_vdiscount->invoiceDownload($this->aid,$id);
+        if (!empty($output['invoiceId'])) {
+           $output['terms'] = $this->m_vdiscount->termsGet($output['invoiceId']);
+        }
+        $data['city'] = $this->m_vdiscount->getCity();
+        $data['state'] = $this->m_vdiscount->getStates();
+        $data['result'] = $output;
+        $this->load->view('vendors/invoiceEdit',$data);
+    }
+
 
     public function insert_invoice($value='')
     {
@@ -108,15 +122,17 @@ class Vendor_discount extends CI_Controller {
         $data['price'] = $this->m_vdiscount->prices($insert['renewal_id']);
 
         $invoiceId = $this->m_vdiscount->invoiceInsert($insert);
+
         if(!empty($invoiceId)){
-
-
-        $terms = $this->input->post('terms');
+        $terms = $this->input->post('terms');   
         if (!empty($terms)) {   
+            $this->db->where('invoice_id', $invoiceId)->delete('invoice_terms');
             $termscount = count($terms);
             for ($i = 0; $i < $termscount; $i++) {
-                $insertIterm  = array('invoice_id' =>$invoiceId , 'terms' =>$terms[$i]);
-                $this->m_vdiscount->insertIterm($insertIterm);
+                if (!empty($terms[$i])){ 
+                    $insertIterm  = array('invoice_id' =>$invoiceId , 'terms' =>$terms[$i]);
+                    $this->m_vdiscount->insertIterm($insertIterm);
+                }
             }
         }
 
@@ -318,6 +334,16 @@ class Vendor_discount extends CI_Controller {
             return false;
         }
     }
+
+
+    public function invoiceData($value='')
+    {
+        $data['title']  = 'vendor Renewal | shaadibaraati';
+        $data['result'] = $this->m_vdiscount->invoiceData();
+        $this->load->view('vendors/invoiceData', $data, FALSE);
+    }
+
+
 }
 
 /* End of file Vendor_discount.php */

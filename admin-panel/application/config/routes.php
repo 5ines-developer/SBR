@@ -65,7 +65,7 @@ $route['update-password']   	= 'authentication/update_pass'; 		//forgot password
 //change password
 $route['change-password']   	= 'account/index'; 						//forgot password email click
 $route['password/change']   	= 'account/password_validation'; 		//forgot password email click
-$route['cache']   	= 'account/cachedetail'; 		//forgot password email click
+$route['cache']   				= 'account/cachedetail'; 		//forgot password email click
 
 
 //account settings
@@ -175,6 +175,12 @@ $route['employees/delete-types/(:any)']	=	'Adminusers/typeDelete/$1';
 $route['vendors-discount']					=	'vendor_discount/index'; 
 $route['vendors-discount/approve/(:any)']	=	'vendor_discount/approve/$1'; 
 $route['vendors-discount/reject/(:any)']	=	'vendor_discount/reject/$1';
+
+$route['invoice-data']						=	'vendor_discount/invoiceData'; 
+
+
+
+
 //banner package
 $route['banner-package']			        =	'Banner_pacakge/index';
 $route['banner-package/add']			    =	'Banner_pacakge/add';
@@ -202,6 +208,9 @@ $route['vendors/proposal-detail/(:any)']	=	'vendors_upgrade/viewProps/$1';
 $route['vendors-proposal/download/(:any)']	=	'vendors_upgrade/downloads/$1';
 $route['vendors/edit-proposal/(:any)']		=	'vendors_upgrade/editProposal/$1';
 $route['vendors/upgrade-update']			=	'vendors_upgrade/updateUpgrade';
+
+
+
 
 
 
@@ -265,6 +274,8 @@ $route['home-banner/update/(:any)']		=	'h_banner/update/$1';
 $route['employee-target/delete/(:any)/(:any)']		=	'Adminusers/tardelete/$1/$2'; 
 
 $route['e-invite']			=	'einvite/index'; //manage category
+
+
 
 
 

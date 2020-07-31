@@ -165,7 +165,9 @@
 
 
                             if ($this->session->userdata('sha_type') =='1' && $result['live'] == '1' && !empty($invce)) { ?>
-                            <a style="color: green" href="<?php echo base_url('vendor_discount/invoiceDownload/'.$result["id"]) ?>"> - Download Invoice <i class="fas fa-download"></i></a>
+                            <a style="color: green" href="<?php echo base_url('vendor_discount/invoiceDownload/'.$result["id"]) ?>"> - Download Invoice <i class="fas fa-download"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a target="_blank" href="<?php echo base_url('vendor_discount/editInvoice/'.$result['id'])  ?>" class="waves-effect waves-light btn purple darken-1 white-text hoverable ">Edit <i class="fas fa-edit"></i></a>
+
                             <?php } elseif($result['live'] == '1' && empty($invce)){?>
                               <a target="_blank" href="<?php echo base_url('vendor_discount/invoice/'.$result['id'])  ?>" class="waves-effect waves-light btn brown darken-1 white-text hoverable ">Generate Invoice </a>
                               <?php }?>

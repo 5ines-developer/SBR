@@ -305,13 +305,15 @@ class M_vendors extends CI_Model
 
     public function faans($fid ='',$vid='')
     {
-        
         $this->db->select('asw');
         $this->db->where('vendor_id', $vid);
         $this->db->where('fq_id', $fid);
         return $this->db->get('vendor_faq')->row('asw');
-       
-       
+    }
+
+    public function getvendSeo($id='')
+    {
+        return $this->db->where('ven_id', $id)->get('vendor_seo')->row();
     }
     
 

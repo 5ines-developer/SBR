@@ -46,11 +46,15 @@
       } ?></a></li>
       <?php } if ($value == '14' || $type == '1') { ?>
       <li class="<?php if($this->uri->segment(1) == 'new-proposal'){ echo 'active'; } ?>"><a href="<?php echo base_url('vendors/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
-       <div class="divider"></div>
       <?php } else if($value == '14' || $type == '7'){ ?>
       <li class="<?php echo $this->uri->segment(1) == 'finance'?'active':'' ?>"><a href="<?php echo base_url('finance/new-proposal') ?>"><i class="fas fa-comments li-icon"></i>Sales</a></li>
-      <div class="divider"></div>
+      
       <?php } ?>
+
+      <?php if ($value == '29' || $type == '1') { ?>
+      <li class="<?php echo $this->uri->segment(1) == 'invoice-data'?'active':'' ?>"><a href="<?php echo base_url('invoice-data') ?>"><i class="fas fa-tags li-icon"></i>Invoice generated Data</a></li>
+      <div class="divider"></div>
+      <?php }  ?>
 
       <?php if ($value == '28' || $type == '1') { ?>
       <li class="<?php echo $this->uri->segment(1) == 'e-invite'?'active':'' ?>"><a href="<?php echo base_url('e-invite') ?>"><i class="fas fa-ribbon li-icon"></i>E-invite Data</a></li>

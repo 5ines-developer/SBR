@@ -21,7 +21,7 @@ $this->load->model('m_vendors');
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="<?php echo $m_descp ?>" />
-    <link rel="canonical" href="<?php echo $m_can ?>" />
+    <link rel="canonical" href="<?php echo current_url(); ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
     <meta name="p:domain_verify" content="14689d3a8168f4758e45146daa554c8b"/>

@@ -18,13 +18,14 @@
                 $m_can      = $value->can_link; 
             }
         }
+
     }
     ?>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no" />
     <meta name="description" content="<?php echo $m_descp ?>" />
-    <link rel="canonical" href="<?php echo $m_can ?>" />
+    <link rel="canonical" href="<?php echo current_url(); ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta name="p:domain_verify" content="14689d3a8168f4758e45146daa554c8b"/>
     <title><?php echo $m_titl ?> | Shaadi Baraati</title>
@@ -482,9 +483,7 @@
                 <div class="row">
                         <div class="col l8 s12 m12 push-l2">
                     <div class=" testimonial-wedd">
-
                             <div class="testi-coup">
-                                    
                                         <center><img src="<?php echo base_url() ?>assets/img/review/Ravi-S-rathore.jpg"
                                                 class="img-responsive tsimg" alt=""></center>
                                         <h6 class="black-text">Mr & Mrs. Rathore</h6>
@@ -503,8 +502,6 @@
                                                 class="img-responsive"> </center>
                                   
                             </div>
-
-
                             <div class="testi-coup">
                                         <center><img src="<?php echo base_url() ?>assets/img/review/Bharadwaj.jpg"
                                                 class="img-responsive tsimg" alt="Bharadwaj"></center>
@@ -516,9 +513,6 @@
                                   
                             </div>
                             </div>
-
-                            
-                            
                     </div>
                 </div>
             </div>
@@ -609,14 +603,14 @@
                             <div class="tab-wed-vendrs">
                                 <h6 class="tab-wed-head">Find the Top wedding vendors</h6>
                                 <ul>
-                                    <li>Wedding Venues</li>
-                                    <li>Catering</li>
-                                    <li>Bridal Makeup</li>
-                                    <li>Wedding Decorator</li>
-                                    <li>Bridal Mehendi</li>
-                                    <li>Photographer</li>
-                                    <li>Bridal Makeup</li>
-                                    <li>Wedding Planner</li>
+                                    <?php if (!empty(vendor_category())) {
+                                        foreach (vendor_category() as $vkey => $vvalue) { 
+                                        $clink = strtolower(str_replace(" ","-",$vvalue->category));
+                                        echo  '<li><a href="'.base_url().'vendors/all/'.$clink.'">'.$vvalue->category.'</a></li>';
+                                        if ($vkey == 7) {
+                                            break;
+                                        }
+                                    } } ?>
                                 </ul>
                             </div>
                         </div>
@@ -656,14 +650,14 @@
                             <div class="tab-wed-vendrs">
                                 <h6 class="tab-wed-head">Find the Top wedding vendors</h6>
                                 <ul>
-                                    <li>Wedding Venues</li>
-                                    <li>Catering</li>
-                                    <li>Bridal Makeup</li>
-                                    <li>Wedding Decorator</li>
-                                    <li>Bridal Mehendi</li>
-                                    <li>Photographer</li>
-                                    <li>Bridal Makeup</li>
-                                    <li>Wedding Planner</li>
+                                    <?php if (!empty(vendor_category())) {
+                                        foreach (vendor_category() as $vkey => $vvalue) { 
+                                        $clink = strtolower(str_replace(" ","-",$vvalue->category));
+                                        echo  '<li><a href="'.base_url().'vendors/all/'.$clink.'">'.$vvalue->category.'</a></li>';
+                                        if ($vkey == 7) {
+                                            break;
+                                        }
+                                    } } ?>
                                 </ul>
                             </div>
                         </div>
@@ -713,14 +707,14 @@
                             <div class="tab-wed-vendrs mt0">
                                 <h6 class="tab-wed-head">Find the Top wedding vendors</h6>
                                 <ul>
-                                    <li>Wedding Venues</li>
-                                    <li>Catering</li>
-                                    <li>Bridal Makeup</li>
-                                    <li>Wedding Decorator</li>
-                                    <li>Bridal Mehendi</li>
-                                    <li>Photographer</li>
-                                    <li>Bridal Makeup</li>
-                                    <li>Wedding Planner</li>
+                                    <?php if (!empty(vendor_category())) {
+                                        foreach (vendor_category() as $vkey => $vvalue) { 
+                                        $clink = strtolower(str_replace(" ","-",$vvalue->category));
+                                        echo  '<li><a href="'.base_url().'vendors/all/'.$clink.'">'.$vvalue->category.'</a></li>';
+                                        if ($vkey == 7) {
+                                            break;
+                                        }
+                                    } } ?>
                                 </ul>
                             </div>
                         </div>
@@ -728,9 +722,10 @@
                             <p class="top-text">Get customized list of suggestions according to your preference</p>
                             <div class="center-align tab-wed-yes">
                                 <div class="row">
+                                    <form id="pop-form2" method="post">
                                         <div class="col l12 m12 s12">
                                             <div class="input-field">
-                                                <select name="pop_cit" required="" id="pop_cit" class="pop-select">
+                                                <select name="pop_cit" required="" id="pop_cit" class="pop-select pop_cit">
                                                     <option value="">Select Your City</option>
                                                     <?php if (!empty(cities())) {
                                                         foreach (cities() as $vcity => $vcities) {
@@ -738,9 +733,10 @@
                                                         }
                                                     } ?>
                                                 </select>
+                                                <span class="left pop_citError red-text"></span>
                                             </div>
                                             <div class="input-field">
-                                                <select name="pop_cat" required="" id="pop_cat" class="pop-select">
+                                                <select name="pop_cat" required="" id="pop_cat" class="pop-select pop_cat">
                                                     <option value="">Select a Service</option>
                                                     <?php if (!empty(vendor_category())) {
                                                         foreach (vendor_category() as $vkey => $vvalue) {
@@ -748,9 +744,10 @@
                                                         }
                                                     } ?>
                                                 </select>
+                                                <span class="left pop_catError red-text"></span>
                                             </div>
                                             <div class="input-field">
-                                                <select required name="pop_bud">
+                                                <select required name="pop_bud" class="pop-select pop_bud">
                                                     <option value="" selected>Budget</option>
                                                     <option value="Below 50k">Below 50k</option>
                                                     <option value="Upto 1 Lakh">Upto 1 Lakh</option>
@@ -760,14 +757,21 @@
                                                     <option value="25lakh - 50lakh">25 Lakh - 50 Lakh</option>
                                                     <option value="Above 50 lakh">Above 50 Lakh</option>
                                                 </select>
+                                                <span class="left pop_budError red-text"></span>
                                             </div>
                                             <div class="input-field pop-date">
-                                                <input id="pop_bud" type="text" name="pop_bud" placeholder="Event Date" class="validate datepicker" required>
+                                                <input id="pop_date" type="text" name="pop_date" placeholder="Event Date" class="validate datepicker pop_date" required>
+                                                <span class="left pop_dateError red-text"></span>
                                             </div>
                                             <div class="input-field">
-                                                    <textarea id="textarea1" class="materialize-textarea " placeholder="Message" name="qmessage"></textarea>
+                                                    <textarea id="textarea1" class="materialize-textarea pop_msg" placeholder="Message" name="pop_msg"></textarea>
+                                                    <span class="left pop_msgError red-text"></span>
                                             </div>
+                                            <div class="input-field" style="margin-top: 2rem;">
+                                                     <button style="border-radius: 0px" class="waves-effect waves-light btn pop-next">SUBMIT</button>
+                                                </div>
                                         </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -1016,12 +1020,6 @@
 
         }
 
-
-
-
-
-
-
         $(document).on('change', '#sel-city,#sel-cato', function(e) {
             e.preventDefault();
 
@@ -1046,6 +1044,15 @@
             document.cookie = "covid=Christopher; max-age=" + 7200;
         });
 
+
+        $(document).on('click', '.pop-t3', function(e) {
+            
+
+        });
+
+
+        
+
         $(document).on('submit', '#pop-form', function(e) {
             e.preventDefault();
             $('.ponameError > span').remove();
@@ -1058,24 +1065,67 @@
             if (pophone == '') { $('.pophoneError').append("<span>Please Enter Your Phone Number"); }
             if (poemail == '') { $('.poemailError').append("<span>Please Enter Your Email"); }
             var DataString = $(this).serialize();
-            $.ajax({
-                url: '<?php echo base_url()?>home/popSetuser',
-                type: 'POST',
-                dataType: 'html',
-                data: DataString,
-                success: function(data) {
-                    if (data !='') {
-                        $('#pop-test3').addClass('active');
-                        $("#pop-test3").attr("style", "display:block");
-                        $('.pop-t3').addClass('active');
-                        $('#pop-test2').attr("style", "display:none");
-                        $('#pop-test3').removeClass('active');
-                        $('.pop-t3').removeClass('active');
-                    }
 
-                }
-            });
+            if (poname != '' && pophone != '' && poemail != '') {
+                $.ajax({
+                    url: '<?php echo base_url()?>home/popSetuser',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: DataString,
+                    success: function(data) {
+                        if (data !='') {
+                            $('#pop-test3').addClass('active');
+                            $("#pop-test3").attr("style", "display:block");
+                            $('.pop-t3').addClass('active');
+                            $('#pop-test2').attr("style", "display:none");
+                            $('#pop-test3').removeClass('active');
+                            $('.pop-t2').removeClass('active');
+                        }else{
+                             e.preventDefault();
+                        }
+
+                    }
+                });
+            }
         });
+
+        $(document).on('submit', '#pop-form2', function(e) {
+            e.preventDefault();
+
+            $('.pop_citError > span').remove();
+            $('.pop_catError > span').remove();
+            $('.pop_budError > span').remove();
+            $('.pop_dateError > span').remove();
+            $('.pop_msgError > span').remove();
+
+            var pop_cit     = $('input[name="pop_cit"]').val();
+            var pop_cat     = $('input[name="pop_cat"]').val();
+            var pop_bud     = $('input[name="pop_bud"]').val();
+            var pop_date    = $('input[name="pop_date"]').val();
+            var pop_msg     = $('input[name="pop_msg"]').val();
+
+            if (pop_cit == '')  {  $('.pop_citError').append("<span>Please Enter Your Name"); }
+            if (pop_cat == '') { $('.pop_catError').append("<span>Please Enter Your Phone Number"); }
+            if (pop_bud == '') { $('.pop_budError').append("<span>Please Enter Your Email"); }
+            if (pop_date == '') { $('.pop_dateError').append("<span>Please Enter Your Email"); }
+            if (pop_msg == '') { $('.pop_msgError').append("<span>Please Enter Your Email"); }
+            var DataString = $(this).serialize();
+
+            if (pop_cit != '' && pop_cat != '' && pop_bud != '' && pop_date != '' && pop_msg != '') {
+                $.ajax({
+                    url: '<?php echo base_url()?>home/popsetUsers',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: DataString,
+                    success: function(resp) {
+                        var msg = response.data.msg;
+                        M.toast({html: msg, classes: 'green darken-2'});
+                    }
+                });
+            }
+         });
+
+
     });
     </script>
 </body>

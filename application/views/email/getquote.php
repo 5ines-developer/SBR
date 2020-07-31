@@ -642,7 +642,14 @@ New Free Quote Request has been Submitted from the user, Details are mentioned b
                     <tbody>
                       <tr>
                         <th class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:10px;" valign="top">User</th>
-                        <td class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:10px;" valign="top"><?php echo (!empty($result['firstname']))?': &nbsp;'.$result['firstname'].$result['lastname']:''; ?> </td>
+                        <td class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:10px;" valign="top"><?php 
+
+                        $fname = (!empty($result['firstname']))?': &nbsp;'.$result['firstname']:'';
+                        $lname = (!empty($result['lastname']))?': &nbsp;'.$result['lastname']:'';
+
+
+
+                        echo $fname.$lname; ?> </td>
                       </tr>
                       <tr>
                         <th class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:10px;" valign="top">Email</th>

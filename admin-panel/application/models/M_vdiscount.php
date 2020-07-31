@@ -63,7 +63,7 @@ class M_vdiscount extends CI_Model {
 		$query = $this->db->where('uniq_id', $insert['uniq_id'])->get('package_invoice');
 		if ($query->num_rows() > 0) {
 			$this->db->where('uniq_id', $insert['uniq_id'])->update('package_invoice',$insert);
-			return $this->db->insert_id();
+			return $query->row('id');
 		}else{
 			$this->db->insert('package_invoice', $insert);
 			return $this->db->insert_id();
@@ -138,6 +138,15 @@ class M_vdiscount extends CI_Model {
 	public function termsGet($id='')
 	{
 		return $this->db->where('invoice_id', $id)->get('invoice_terms')->result();
+	}
+
+	public function invoiceData()
+	{
+		$this->db->select('rp.*,pi.*,pi.package as packName,pi.id as invoiceId,cat.category as catGory');
+		return $this->db->from('package_invoice pi')
+		->join('renew_package rp', 'rp.id = pi.renewal_id', 'left')
+		->join('category cat', 'cat.id = rp.v_category', 'left')
+		->get()->result();
 	}
 	
 

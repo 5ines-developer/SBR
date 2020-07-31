@@ -23,7 +23,7 @@
 
     <meta charset="UTF-8">
     <meta name="description" content="<?php echo $m_descp ?>" />
-    <link rel="canonical" href="<?php echo $m_can ?>" />
+    <link rel="canonical" href="<?php echo current_url(); ?>" />
     <meta name="keywords" content="<?php echo $m_key ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

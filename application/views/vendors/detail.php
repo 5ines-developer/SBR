@@ -5,10 +5,27 @@ $this->load->model('m_vendors');
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    $m_titl = '';
+    $m_descp = '';
+    $m_key = '';
+    $m_can = '';
+    if (!empty($seo)) {
+    $m_titl     = (!empty($seo->title))?$seo->title:'';
+    $m_descp    = (!empty($seo->m_desc))?$seo->m_desc:'';
+    $m_key      = (!empty($seo->keywords))?$seo->keywords:'';
+    $m_can      = (!empty($seo->canoncial))?$seo->canoncial:'';
+    }
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="<?php echo $m_descp ?>" />
+    <link rel="canonical" href="<?php echo current_url(); ?>" />
+    <meta name="keywords" content="<?php echo $m_key ?>" />
+
     <title><?php
     if (!empty($vendor)) {
     foreach ($vendor as $key => $value) {
@@ -20,6 +37,7 @@ $this->load->model('m_vendors');
         echo $title;
     }
     ?></title>
+
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/slick/slick.css" />
@@ -49,6 +67,13 @@ $this->load->model('m_vendors');
         }
         .btn__close .icon {
             font-size: 50px !important;
+        }
+
+        p.location a{
+            color: black;
+        }
+        p.location a:hover{
+            color: #d50000;
         }
 
     </style>
@@ -101,12 +126,14 @@ $this->load->model('m_vendors');
                                             <p class="mb10 location"><?php 
 
                                             $kcat = (!empty($value->category))?$value->category:'';
-                                            $kcity = (!empty($value->city))?$value->city:'';
+                                            $kcity = (!empty($value->city))?$value->city:''; ?>
+
+                                            <a target="_blank" href="<?php echo base_url('vendors/'.str_replace(" ","-",strtolower($value->city)).'/'.str_replace(" ","-",strtolower($value->category))) ?>">
 
 
-                                            echo $kcat.' in '.$kcity; ?></p>
+                                            <?php echo $kcat.' in '.$kcity; ?></a></p>
 
-                                            <p><?php echo (!empty($value->address))?$value->address:''; ?> </p>
+                                            <!-- <p><?php echo (!empty($value->address))?$value->address:''; ?> </p> -->
                                         </div>
 
                                         <form action="" style="display: none">

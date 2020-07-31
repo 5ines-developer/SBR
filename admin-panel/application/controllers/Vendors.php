@@ -298,6 +298,7 @@ class Vendors extends CI_Controller {
         $data['port']       = $this->m_vendors->get_portfolio($id);
         $data['video']      = $this->m_vendors->get_video($id);
         $data['package']  = $this->m_vendors->getPackage();
+        $data['seo']  = $this->m_vendors->getvendSeo($id);
         $data['title']      = $data['result']->name.' - Shaadibaraati';
         $this->load->view('vendors/edit-vendor', $data, FALSE);
     }
@@ -705,6 +706,25 @@ class Vendors extends CI_Controller {
             $this->session->set_flashdata('error', 'Something went to wrong. Please try again later!');
         }
         redirect('vendors/edit/'.$eid,'refresh');
+    }
+
+    public function updateSeo($value='')
+    {
+            $insert = array(
+                'title'     => $this->input->post('setitle') , 
+                'keywords'  => $this->input->post('skeywords') , 
+                'm_desc'    => $this->input->post('sdescription') ,         
+                'can_link'  => $this->input->post('can_url') ,           
+                'ven_id'        => $this->input->post('id') , 
+                'description' => $this->input->post('scontent') ,
+           );
+
+            if($this->m_vendors->updateSeo($insert)){
+                $this->session->set_flashdata('success', 'Seo Details updated Successfully');
+            }else{
+                $this->session->set_flashdata('error', 'Some error occured please try again');
+            }
+            redirect('vendors/edit/'.$insert['ven_id'],'refresh');
     }
 
 

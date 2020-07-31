@@ -76,10 +76,10 @@ class Seo extends CI_Controller {
            	'page' 		=> $this->input->post('page') , 
            	'title' 	=> $this->input->post('title') , 
            	'keywords' 	=> $this->input->post('keywords') , 
-            'm_desc'  => $this->input->post('description') ,         
+            'm_desc'    => $this->input->post('description') ,         
            	'can_link' 	=> $this->input->post('can_url') ,       	 
             'id'        => $this->input->post('id') , 
-           	'description' 		=> $this->input->post('content') ,
+           	'description' => $this->input->post('content') ,
            );
 
             if($this->m_seo->update($insert)){

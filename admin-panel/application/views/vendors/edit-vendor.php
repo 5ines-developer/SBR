@@ -149,9 +149,10 @@ $this->load->model('m_vendors');
                     </div>
                     <div class="col m12 s12 l9">
                         <div class="row">
-                            <div class="col 12 m6">
-                                <p class="h5-para black-text  m0">Update Vendor</p>
-                            </div>
+                           <div class="col 12 m6">
+                                <p class="h5-para black-text  m0">Update Vendor </p>
+                               <!--   <a href="<?php echo base_url('vendors/seo-data/'.$result->id) ?>"  class="add-seo-btn"><i class="fas fa-edit "></i><span>Seo Data</span></a> -->
+                            </div> 
                             <div class="col 12 m6 right-align">
                                 <a class="waves-effect waves-light btn modal-trigger blue " href="#modal1">Reset Password</a>
 
@@ -217,6 +218,7 @@ $this->load->model('m_vendors');
                                 <li class="tab1 col s2"><a href="#video" class="">Video Links</a></li>
                                 <li class="tab1 col s1"><a href="#faq" class="">FAQ's</a></li>
                                 <li class="tab1 col s2"><a href="#offer" class="">Offers</a></li>
+                                <li class="tab1 col s2"><a href="#seo" class="">SEO</a></li>
                             </ul>
                         </div>
 
@@ -442,10 +444,7 @@ $this->load->model('m_vendors');
                                             <div class="col s12 l12">
                                                 <label for="description" class="mb10">About Vendor<span
                                                         class="red-text">*</span></label>
-                                                <div id="toolbar-container"></div>
-                                                <div id="editor">
-                                                    <?php echo (!empty($result->detail)?$result->detail:'') ?> </div>
-                                                <textarea name="about" id="description" style="display:none"></textarea>
+                                                <textarea name="about" id="description"><?php echo (!empty($result->detail)?$result->detail:'') ?></textarea>
                                                 <p><span class="error"><?php echo form_error('about'); ?></span></p>
                                             </div>
                                         </div>
@@ -712,6 +711,59 @@ $this->load->model('m_vendors');
                             </div>
                         </div>
 
+                        <div class="card scrollspy" id="seo">
+                            <div class="card-content">
+                                <div class="form-container">
+                                    <form action="<?php echo base_url() ?>vendors/updateSeo" method="post" style="overflow-y: auto;overflow-x: hidden;" id="vendor-form" enctype="multipart/form-data">
+                                        <div class="row m0">
+                                            <p class="bold  black-text  mb10 h6">SEO Data</p>
+                                        </div>
+                                            <input type="hidden" required="" id="id" name="id" class="validate"
+                                                value="<?php echo (!empty($result->id))?$result->id:''; ?>">
+
+                                            <div class="input-field col s12 l6">
+                                                <input type="text" required="" id="setitle" name="setitle" class="validate"
+                                                    value="<?php echo (!empty($seo->title))?$seo->title:''; ?>">
+                                                <label for="setitle">Title <span class="red-text">*</span></label>
+                                            </div>
+
+                                            <div class="input-field col s12 l12">
+                                                <textarea id="can_url" name="can_url"
+                                                    class="materialize-textarea"><?php echo (!empty($seo->can_link))?$seo->can_link:''; ?></textarea>
+                                                <label for="can_url">Canonical Url</label>
+                                            </div>
+
+
+                                            <div class="input-field col s12 l12">
+                                                <textarea id="skeywords" required="" name="skeywords"
+                                                    class="materialize-textarea"><?php echo (!empty($seo->keywords))?$seo->keywords:''; ?></textarea>
+                                                <label for="skeywords">Keywords<span class="red-text">*</span></label>
+                                            </div>
+
+                                            <div class="input-field col s12">
+                                                <textarea id="sdescription" required="" name="sdescription"
+                                                    class="materialize-textarea"><?php echo (!empty($seo->m_desc))?$seo->m_desc:''; ?></textarea>
+                                                <label for="sdescription">Meta Description</label>
+                                            </div>
+
+                                            <!-- <div class="row m0">
+                                                <div class="col s12 l12">
+                                                    <label for="content" class="mb10">Content</label>
+                                                    <textarea name="scontent" id="scontent" class="form-control col-md-7 col-xs-12"><?php echo (!empty($seo->description))?$seo->description:''; ?></textarea>
+                                                </div>
+                                            </div> -->
+
+
+                                            <div class="col s12 mtb20">
+                                                  <button class="btn waves-effect waves-light green darken-4 hoverable btn-large" type="submit">Submit <i class="fas fa-paper-plane right"></i> </button> <br>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                     </div>
                     <!-- cad end -->
 
@@ -727,11 +779,15 @@ $this->load->model('m_vendors');
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/materialize.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/script.js"></script>
     <script src="<?php echo base_url() ?>assets/js/jquery.validate.min.js"></script>
-    <script src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
+    <script src="<?php echo base_url() ?>assets/ckeditor1/ckeditor.js"></script>
     <script src="<?php echo base_url() ?>assets/js/image-uploader.min.js"></script>
     <script src="<?php echo base_url()?>assets/js/croppie.js"></script>
     <script>
         <?php $this->load->view('include/message.php'); ?>
+    </script>
+    <script>
+        // CKEDITOR.replace('scontent');
+        CKEDITOR.replace('description');
     </script>
     <script>
         $(document).ready(function() {
@@ -763,11 +819,11 @@ $this->load->model('m_vendors');
             $('select').formSelect();
             // $('.materialboxed').materialbox();
             $('.input-images').imageUploader();
-            $('#vendor-about').submit(function() {
-                var text = $('#editor').html();
-                $('#description').val(text);
+            // $('#vendor-about').submit(function() {
+            //     var text = $('#editor').html();
+            //     $('#description').val(text);
                 
-            });
+            // });
             $('input.autocomplete').autocomplete({
                 data: {
                     "Apple": null,
@@ -823,7 +879,7 @@ $this->load->model('m_vendors');
 
         });
     </script>
-    <script>
+    <!-- <script>
         DecoupledEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
@@ -833,7 +889,7 @@ $this->load->model('m_vendors');
             .catch(error => {
                 console.error(error);
             });
-    </script>
+    </script> -->
     <script>
         $(document).ready(function() {
 
